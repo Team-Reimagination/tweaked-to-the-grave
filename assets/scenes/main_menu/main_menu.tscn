@@ -1,12 +1,90 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds181oh1yp62m"]
+[gd_scene load_steps=11 format=3 uid="uid://ds181oh1yp62m"]
 
 [ext_resource type="Texture2D" uid="uid://t55dtlxhtc6l" path="res://assets/images/menu/logo.png" id="1_6o0yw"]
+[ext_resource type="Shader" uid="uid://cs54tgle3j2j5" path="res://assets/shaders/screen/worldCurve.gdshader" id="1_8qhov"]
+[ext_resource type="Texture2D" uid="uid://dnqbxxibclpwv" path="res://assets/images/menu/clouds.png" id="1_acsil"]
+[ext_resource type="Texture2D" uid="uid://bq5ru0a1lbcnn" path="res://assets/images/menu/hill.png" id="3_spayh"]
+[ext_resource type="Texture2D" uid="uid://b3kgvtapbgivj" path="res://assets/images/menu/tree.png" id="4_tfy4q"]
+[ext_resource type="Texture2D" uid="uid://bnwe2owpy6pdd" path="res://assets/images/menu/grave.png" id="5_tfy4q"]
+[ext_resource type="Script" uid="uid://c13517oqq03a8" path="res://assets/scripts/hover.gd" id="7_trycp"]
+
+[sub_resource type="Gradient" id="Gradient_8qhov"]
+offsets = PackedFloat32Array(0, 0.690141)
+colors = PackedColorArray(0.0477528, 0.0828651, 0.129269, 1, 0.217365, 0.248442, 0.25061, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_spayh"]
+gradient = SubResource("Gradient_8qhov")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spayh"]
+shader = ExtResource("1_8qhov")
+shader_parameter/radius = 0.89
 
 [node name="Main Menu" type="Node2D"]
+texture_filter = 1
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Background" type="ParallaxBackground" parent="."]
+layer = -3
+
+[node name="Sky" type="Parallax2D" parent="Background"]
+
+[node name="Sky" type="Sprite2D" parent="Background/Sky"]
+position = Vector2(640, 480)
+scale = Vector2(21.0625, 15.7685)
+texture = SubResource("GradientTexture2D_spayh")
+
+[node name="Clouds" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(20, 0)
+repeat_times = 2
+follow_viewport = false
+
+[node name="Shaders" type="CanvasLayer" parent="Background/Clouds"]
+layer = -1
+
+[node name="WorldCurve" type="ColorRect" parent="Background/Clouds/Shaders"]
+material = SubResource("ShaderMaterial_spayh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Clouds" type="Sprite2D" parent="Background/Clouds"]
+texture = ExtResource("1_acsil")
+centered = false
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="Ground" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="Ground" type="Sprite2D" parent="ParallaxBackground/Ground"]
+position = Vector2(0, 590)
+texture = ExtResource("3_spayh")
+centered = false
+
+[node name="Tree" type="Sprite2D" parent="ParallaxBackground/Ground"]
+position = Vector2(175, 228)
+texture = ExtResource("4_tfy4q")
+centered = false
+
+[node name="Grave" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="Grave" type="Sprite2D" parent="ParallaxBackground/Grave"]
+position = Vector2(640, 673)
+texture = ExtResource("5_tfy4q")
 
 [node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(640, 249)
-scale = Vector2(0.67167, 0.67167)
+position = Vector2(640, 200)
+scale = Vector2(0.619137, 0.619137)
 texture = ExtResource("1_6o0yw")
+script = ExtResource("7_trycp")
+metadata/y_float = 0.15
+metadata/y_speed = 0.6
 
-[node name="ButtonGroup" type="CanvasGroup" parent="."]
+[connection signal="tree_entered" from="Logo" to="Logo" method="_on_tree_entered"]
