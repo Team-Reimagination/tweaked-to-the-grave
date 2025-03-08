@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3w5gwnffkggo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7wmb"]
+sky_top_color = Color(0.341176, 0.756863, 0.866667, 1)
+sky_horizon_color = Color(0.922624, 0.89463, 0.634002, 1)
+sky_curve = 0.0891904
+ground_bottom_color = Color(0.984314, 0.905882, 0.568627, 1)
+ground_horizon_color = Color(0.983016, 0.907593, 0.569528, 1)
+ground_curve = 0.40786
+sun_angle_max = 40.64
+sun_curve = 0.0416088
+
+[sub_resource type="Sky" id="Sky_wtpd3"]
+sky_material = SubResource("ProceduralSkyMaterial_p7wmb")
+
+[sub_resource type="Environment" id="Environment_oi2qx"]
+background_mode = 2
+sky = SubResource("Sky_wtpd3")
+ambient_light_color = Color(0.255965, 0.029543, 0.183454, 1)
+tonemap_white = 10.35
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.980392, 0.905882, 0.568627, 1)
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_height = 66.07
+fog_height_density = 0.0126
+fog_depth_curve = 0.189465
+fog_depth_end = 40.0
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_edc5a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7wmb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wtpd3"]
+
+[node name="PlayState" type="Node3D"]
+
+[node name="Background" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_oi2qx")
+camera_attributes = SubResource("CameraAttributesPractical_edc5a")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.943524, 0.331305, 0, -0.331305, -0.943524, -0.695551, 4.4608, 2.72634)
+light_color = Color(1, 0.924127, 0.602602, 1)
+light_energy = 1.375
+light_indirect_energy = 0.5
+light_volumetric_fog_energy = 2.375
+light_angular_distance = 0.7
+light_specular = 2.58
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64541, 0)
+fov = 90.0
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(56.4777, 0, 0, 0, 1.98437, 0, 0, 0, 26.7303, 0, 0, -26.408)
+material_override = SubResource("StandardMaterial3D_p7wmb")
+mesh = SubResource("PlaneMesh_wtpd3")
