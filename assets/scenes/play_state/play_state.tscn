@@ -25,8 +25,7 @@ fog_density = 1.0
 fog_sky_affect = 0.0
 fog_height = 66.07
 fog_height_density = 0.0126
-fog_depth_curve = 0.189465
-fog_depth_end = 40.0
+fog_depth_curve = 0.0883885
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_edc5a"]
@@ -57,6 +56,6 @@ fov = 90.0
 [node name="Floor" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(56.4777, 0, 0, 0, 1.98437, 0, 0, 0, 26.7303, 0, 0, -26.408)
+transform = Transform3D(169.957, 0, 0, 0, 1.98437, 0, 0, 0, 160.47, 0, 0, -158.117)
 material_override = SubResource("StandardMaterial3D_p7wmb")
 mesh = SubResource("PlaneMesh_wtpd3")
