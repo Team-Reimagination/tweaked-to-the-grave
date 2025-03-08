@@ -1,4 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=10 format=3 uid="uid://d3w5gwnffkggo"]
+
+[ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
+[ext_resource type="PackedScene" uid="uid://b56b0d2gngc5i" path="res://assets/objects/general/ship/ship.tscn" id="1_wtpd3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7wmb"]
 sky_top_color = Color(0.341176, 0.756863, 0.866667, 1)
@@ -23,16 +26,20 @@ fog_mode = 1
 fog_light_color = Color(0.980392, 0.905882, 0.568627, 1)
 fog_density = 1.0
 fog_sky_affect = 0.0
-fog_height = 66.07
-fog_height_density = 0.0126
-fog_depth_curve = 0.0883885
+fog_depth_curve = 0.594605
+fog_depth_begin = 100.0
+fog_depth_end = 600.0
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_edc5a"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7wmb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtpd3"]
+albedo_color = Color(0.652763, 0, 0.283952, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wtpd3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oi2qx"]
+size = Vector3(2.77423, 6.50195, 0.762573)
 
 [node name="PlayState" type="Node3D"]
 
@@ -53,9 +60,21 @@ light_specular = 2.58
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64541, 0)
 fov = 90.0
 
-[node name="Floor" type="StaticBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(169.957, 0, 0, 0, 1.98437, 0, 0, 0, 160.47, 0, 0, -158.117)
-material_override = SubResource("StandardMaterial3D_p7wmb")
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(900, 0, 0, 0, 0.319, 0, 0, 0, 900, 0, -50, -158.117)
+material_override = SubResource("StandardMaterial3D_wtpd3")
 mesh = SubResource("PlaneMesh_wtpd3")
+skeleton = NodePath("")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Objects"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, -20)
+script = ExtResource("1_oi2qx")
+
+[node name="ship" parent="Objects/CharacterBody3D" instance=ExtResource("1_wtpd3")]
+
+[node name="Hitbox" type="CollisionShape3D" parent="Objects/CharacterBody3D"]
+transform = Transform3D(4.06381, 0, 0, 0, 1.1283, 0, 0, 0, 6.55579, -6.35552, -3.3265, -0.0356119)
+shape = SubResource("BoxShape3D_oi2qx")
+debug_color = Color(0, 0.741176, 1, 1)
