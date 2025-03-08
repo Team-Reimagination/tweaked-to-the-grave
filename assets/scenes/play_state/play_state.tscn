@@ -58,7 +58,10 @@ light_specular = 2.58
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64541, 0)
+keep_aspect = 0
 fov = 90.0
+near = 0.001
+far = 2000.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(900, 0, 0, 0, 0.319, 0, 0, 0, 900, 0, -50, -158.117)
@@ -68,13 +71,13 @@ skeleton = NodePath("")
 
 [node name="Objects" type="Node3D" parent="."]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="Objects"]
-transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, -20)
+[node name="Ship" type="CharacterBody3D" parent="Objects"]
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 0, 0, -20)
 script = ExtResource("1_oi2qx")
 
-[node name="ship" parent="Objects/CharacterBody3D" instance=ExtResource("1_wtpd3")]
+[node name="Model" parent="Objects/Ship" instance=ExtResource("1_wtpd3")]
 
-[node name="Hitbox" type="CollisionShape3D" parent="Objects/CharacterBody3D"]
+[node name="Hitbox" type="CollisionShape3D" parent="Objects/Ship"]
 transform = Transform3D(4.06381, 0, 0, 0, 1.1283, 0, 0, 0, 6.55579, -6.35552, -3.3265, -0.0356119)
 shape = SubResource("BoxShape3D_oi2qx")
 debug_color = Color(0, 0.741176, 1, 1)

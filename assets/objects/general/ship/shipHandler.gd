@@ -1,13 +1,21 @@
 extends CharacterBody3D
 
-var speed = 40;
+# movement speed
+var speed = 50;
 var accel = Input.get_vector("Left_GP", "Right_GP", "Down_GP", "Up_GP");
+
+#velocities
 var vel = Vector3.ZERO
-var decel = 30;
+var topVel = 35;
+var maxVel = 60;
+
+#deleration when at standstill and strength of speed when turning around
+var decel = 40;
 var turnAroundMod = 2.3;
 
+#individual handlers
 var leftRight;
-var upDown
+var upDown;
 
 func _physics_process(delta: float) -> void:
 	accel = Vector3.ZERO;
@@ -32,10 +40,14 @@ func _physics_process(delta: float) -> void:
 	if accel != Vector3.ZERO:
 		velocity += accel * delta;
 		
+		for i in ["x", "y", "z"]:
+			if (abs(velocity[i]) > maxVel): velocity[i] = maxVel if velocity[i] > 0 else -maxVel
+			if (abs(velocity[i]) > topVel): velocity[i] = lerpf(velocity[i], (topVel if velocity[i] > 0 else -topVel), 0.3)
+		
 	for i in ["x", "y", "z"]:
 		if abs(accel[i]) < 0.0001:
 			velocity[i] = max(0.0, velocity[i] - decel * delta) if velocity[i] > 0 else min(0.0, velocity[i] + decel * delta)
 	
-	self.rotation.x = velocity.x / 80;
-	self.rotation.z = velocity.y / 80;
+	self.rotation.x = lerpf(self.rotation.x, velocity.x / 80, 0.15);
+	self.rotation.z = lerpf(self.rotation.z, velocity.y / 80, 0.15);
 	move_and_slide()
