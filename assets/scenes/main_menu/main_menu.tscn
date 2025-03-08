@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds181oh1yp62m"]
+
+[ext_resource type="Texture2D" uid="uid://t55dtlxhtc6l" path="res://assets/images/menu/logo.png" id="1_6o0yw"]
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(640, 249)
+scale = Vector2(0.67167, 0.67167)
+texture = ExtResource("1_6o0yw")
+
+[node name="ButtonGroup" type="CanvasGroup" parent="."]
