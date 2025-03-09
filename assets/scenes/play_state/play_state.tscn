@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://b56b0d2gngc5i" path="res://assets/objects/general/ship/ship.tscn" id="1_wtpd3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7wmb"]
-sky_top_color = Color(0.341176, 0.756863, 0.866667, 1)
+sky_top_color = Color(0.468835, 0.693709, 0.872935, 1)
 sky_horizon_color = Color(0.922624, 0.89463, 0.634002, 1)
-sky_curve = 0.0891904
+sky_curve = 0.279909
 ground_bottom_color = Color(0.984314, 0.905882, 0.568627, 1)
 ground_horizon_color = Color(0.983016, 0.907593, 0.569528, 1)
 ground_curve = 0.40786
@@ -19,11 +19,13 @@ sky_material = SubResource("ProceduralSkyMaterial_p7wmb")
 [sub_resource type="Environment" id="Environment_oi2qx"]
 background_mode = 2
 sky = SubResource("Sky_wtpd3")
-ambient_light_color = Color(0.255965, 0.029543, 0.183454, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.282387, 0.0849556, 0.11312, 1)
+ambient_light_energy = 0.0
 tonemap_white = 10.35
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.980392, 0.905882, 0.568627, 1)
+fog_light_color = Color(0.984314, 0.905882, 0.568627, 1)
 fog_density = 1.0
 fog_sky_affect = 0.0
 fog_depth_curve = 0.594605
@@ -39,7 +41,7 @@ albedo_color = Color(0.652763, 0, 0.283952, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_wtpd3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oi2qx"]
-size = Vector3(2.77423, 6.50195, 0.762573)
+size = Vector3(2.77423, 5.13818, 0.762573)
 
 [node name="PlayState" type="Node3D"]
 
@@ -49,7 +51,7 @@ camera_attributes = SubResource("CameraAttributesPractical_edc5a")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.943524, 0.331305, 0, -0.331305, -0.943524, -0.695551, 4.4608, 2.72634)
-light_color = Color(1, 0.924127, 0.602602, 1)
+light_color = Color(0.926339, 0.922573, 0.894879, 1)
 light_energy = 1.375
 light_indirect_energy = 0.5
 light_volumetric_fog_energy = 2.375
@@ -64,7 +66,7 @@ near = 0.001
 far = 2000.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(900, 0, 0, 0, 0.319, 0, 0, 0, 900, 0, -50, -158.117)
+transform = Transform3D(900, 0, 0, 0, 0.319, 0, 0, 0, 900, 0, -20, -158.117)
 material_override = SubResource("StandardMaterial3D_wtpd3")
 mesh = SubResource("PlaneMesh_wtpd3")
 skeleton = NodePath("")
@@ -78,6 +80,6 @@ script = ExtResource("1_oi2qx")
 [node name="Model" parent="Objects/Ship" instance=ExtResource("1_wtpd3")]
 
 [node name="Hitbox" type="CollisionShape3D" parent="Objects/Ship"]
-transform = Transform3D(4.06381, 0, 0, 0, 1.1283, 0, 0, 0, 6.55579, -6.35552, -3.3265, -0.0356119)
+transform = Transform3D(4.06381, 0, 1.59162e-12, 0, 1.1283, 0, -7.24754e-13, 0, 6.55579, -6.35552, -2.55713, -0.0356119)
 shape = SubResource("BoxShape3D_oi2qx")
 debug_color = Color(0, 0.741176, 1, 1)

@@ -6,11 +6,11 @@ var accel = Input.get_vector("Left_GP", "Right_GP", "Down_GP", "Up_GP");
 
 #velocities
 var vel = Vector3.ZERO
-var topVel = 35;
+var topVel = 30;
 var maxVel = 60;
 
 #deleration when at standstill and strength of speed when turning around
-var decel = 40;
+var decel = 50;
 var turnAroundMod = 2.3;
 
 #individual handlers
