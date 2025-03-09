@@ -22,5 +22,3 @@ func _process(_delta: float) -> void:
 	if (abs(player.position.y) >= vertOffset):
 		camera.v_offset = clampf(((vertOffset + player.position.y) if player.position.y < 0.0 else (player.position.y - vertOffset)) * 1.2, -maxBoundMod, maxBoundMod)
 		camera.rotation.x = camera.v_offset / -80
-		
-	print(camera.h_offset, camera.v_offset);
