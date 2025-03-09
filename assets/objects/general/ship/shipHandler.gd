@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var scene = self.get_parent().get_parent();
+
 # movement speed
 var speed = 50;
 var accel = Input.get_vector("Left_GP", "Right_GP", "Down_GP", "Up_GP");
@@ -12,6 +14,7 @@ var maxVel = 60;
 #deleration when at standstill and strength of speed when turning around
 var decel = 50;
 var turnAroundMod = 2.3;
+var boundForcefield = [1.0, 1.0, 1.0, 1.0];
 
 #individual handlers
 var leftRight;
@@ -25,18 +28,38 @@ func _physics_process(delta: float) -> void:
 	upDown = Input.get_axis("Down_GP", "Up_GP")
 	
 	if (abs(leftRight) > 0.00001) :
-		if leftRight < 0:
-			accel.x = -speed * (1.0 if accel.x > 0 else turnAroundMod) * abs(leftRight)
-		if leftRight > 0:
-			accel.x = speed * (1.0 if accel.x < 0 else turnAroundMod) * abs(leftRight)
+		if leftRight < 0: #left
+			accel.x = -speed * (1.0 if accel.x > 0 else turnAroundMod) * abs(leftRight) * boundForcefield[0]
+		if leftRight > 0: #right
+			accel.x = speed * (1.0 if accel.x < 0 else turnAroundMod) * abs(leftRight) * boundForcefield[1]
 			
 	if (abs(upDown) > 0.00001) :
-		if upDown < 0:
-			accel.y = -speed * (1.0 if accel.y > 0 else turnAroundMod) * abs(upDown)
-		if upDown > 0:
-			accel.y = speed * (1.0 if accel.y < 0 else turnAroundMod) * abs(upDown)
+		if upDown < 0: #down
+			accel.y = -speed * (1.0 if accel.y > 0 else turnAroundMod) * abs(upDown) * boundForcefield[2]
+		if upDown > 0: #up
+			accel.y = speed * (1.0 if accel.y < 0 else turnAroundMod) * abs(upDown) * boundForcefield[3]
 	
 	#MOVEMENT HANDLER
+	boundForcefield = [1.0, 1.0, 1.0, 1.0]
+	
+	if (abs(self.position.x) >= scene.rotateBound):
+		if (self.position.x < 0):
+			boundForcefield[0] = max(1.0 + (scene.rotateBound + self.position.x)/(scene.maxBoundMod/1.5), 0)
+			if (leftRight < 0): velocity.x *= boundForcefield[0]
+		else:
+			boundForcefield[1] = max(1.0 - (self.position.x - scene.rotateBound)/(scene.maxBoundMod/1.5), 0)
+			if (leftRight > 0): velocity.x *= boundForcefield[1]
+			
+	if (abs(self.position.y) >= scene.vertOffset):
+		if (self.position.y < 0):
+			boundForcefield[2] = max(1.0 + (scene.vertOffset + self.position.y)/(scene.maxBoundMod/1.5), 0)
+			if (upDown < 0): velocity.y *= boundForcefield[2]
+		else:
+			boundForcefield[3] = max(1.0 - (self.position.y - scene.vertOffset)/(scene.maxBoundMod/1.5), 0)
+			if (upDown > 0): velocity.y *= boundForcefield[3]
+	
+	print(boundForcefield)
+	
 	if accel != Vector3.ZERO:
 		velocity += accel * delta;
 		
@@ -50,4 +73,5 @@ func _physics_process(delta: float) -> void:
 	
 	self.rotation.x = lerpf(self.rotation.x, velocity.x / 80, 0.15);
 	self.rotation.z = lerpf(self.rotation.z, velocity.y / 80, 0.15);
+	
 	move_and_slide()

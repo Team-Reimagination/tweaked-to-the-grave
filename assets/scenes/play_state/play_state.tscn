@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=11 format=3 uid="uid://d3w5gwnffkggo"]
 
+[ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
 [ext_resource type="PackedScene" uid="uid://b56b0d2gngc5i" path="res://assets/objects/general/ship/ship.tscn" id="1_wtpd3"]
 
@@ -44,6 +45,7 @@ albedo_color = Color(0.652763, 0, 0.283952, 1)
 size = Vector3(2.77423, 5.13818, 0.762573)
 
 [node name="PlayState" type="Node3D"]
+script = ExtResource("1_edc5a")
 
 [node name="Background" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oi2qx")
@@ -66,7 +68,7 @@ near = 0.001
 far = 2000.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(900, 0, 0, 0, 0.319, 0, 0, 0, 900, 0, -20, -158.117)
+transform = Transform3D(900, 0, 0, 0, 0.319, 0, 0, 0, 900, 0, -50, -158.117)
 material_override = SubResource("StandardMaterial3D_wtpd3")
 mesh = SubResource("PlaneMesh_wtpd3")
 skeleton = NodePath("")
