@@ -79,7 +79,7 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_fmn5d")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oi2qx"]
-size = Vector3(11.359, 5.348, 11.508)
+size = Vector3(11.359, 6.30129, 11.508)
 
 [node name="PlayState" type="Node3D"]
 script = ExtResource("1_edc5a")
@@ -127,7 +127,7 @@ script = ExtResource("1_oi2qx")
 [node name="Model" parent="Objects/Ship" instance=ExtResource("1_wtpd3")]
 
 [node name="Hitbox" type="CollisionShape3D" parent="Objects/Ship"]
-transform = Transform3D(1, 0, 1.78343e-13, 0, 1, 0, -1.78343e-13, 0, 1, -6.35552, -2.55713, -0.0356119)
+transform = Transform3D(1, 0, 1.77636e-13, 0, 1, 0, -1.77636e-13, 0, 1, -0.149689, -0.121717, -0.0356116)
 shape = SubResource("BoxShape3D_oi2qx")
 debug_color = Color(0, 0.741176, 1, 1)
 

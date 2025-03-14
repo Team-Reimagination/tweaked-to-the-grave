@@ -4,8 +4,8 @@ extends Node3D
 @onready var camera = $Camera;
 
 #BOUND VARIABLES
-static var rotateBound = 10;
-static var maxBoundMod = 10;
+static var rotateBound = 13;
+static var maxBoundMod = 13;
 static var vertOffset = rotateBound;
 
 #LEVEL VARIABLES
@@ -93,7 +93,7 @@ func _process(delta: float) -> void:
 		a.mesh.material.uv1_offset -= scrollSpeed * delta * (scrollModFLOOR if a.name == "Floor" else scrollModSKY)
 	
 	#BOUND CAMERA CONTROL
-	vertOffset = (rotateBound - 8.5) if player.position.y < 0 else (rotateBound + 5.0)
+	vertOffset = (rotateBound - 8.0) if player.position.y < 0 else (rotateBound + 2.0)
 	
 	camera.h_offset = 0.0
 	camera.v_offset = 0.0
