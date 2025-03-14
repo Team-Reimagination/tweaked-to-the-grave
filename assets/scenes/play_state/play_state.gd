@@ -10,19 +10,20 @@ static var vertOffset = rotateBound;
 
 #LEVEL VARIABLES
 const PATH_LEVELS : String = 'res://assets/data/'
-static var levelID = "SHR";
 static var levelDefs;
 
 func _ready() -> void:
 	#PREPARE LEVEL
-	if !levelDefs:
-		if FileAccess.file_exists(PATH_LEVELS+'level_'+levelID+'.json'):
-			levelDefs = JSON.parse_string(FileAccess.open(PATH_LEVELS+'level_'+levelID+'.json', FileAccess.READ).get_as_text())
+	if !PlayGlobals.levelDefs:
+		if FileAccess.file_exists(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json'):
+			PlayGlobals.levelDefs = JSON.parse_string(FileAccess.open(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json', FileAccess.READ).get_as_text())
+			levelDefs = PlayGlobals.levelDefs
 			
 			buildLevel();
 		else :
-			print("Could Not Find LEVEL For "+levelID+'!')
+			print("Could Not Find LEVEL For "+PlayGlobals.levelID+'!')
 	else:
+		levelDefs = PlayGlobals.levelDefs
 		buildLevel();
 	
 @onready var btmF = $Floor
@@ -44,13 +45,13 @@ func buildLevel():
 	if (btmF.visible):
 		btmF.position.y = levelDefs.floor.y
 		btmF.mesh.material.uv1_scale = Vector3(levelDefs.floor.scale[0], levelDefs.floor.scale[1], levelDefs.floor.scale[2])
-		btmF.mesh.material.albedo_texture = load("res://assets/images/levels/"+levelID+"/"+levelDefs.floor.texture+".png")
+		btmF.mesh.material.albedo_texture = load("res://assets/images/levels/"+PlayGlobals.levelID+"/"+levelDefs.floor.texture+".png")
 		scrollModFLOOR = Vector3(levelDefs.floor.scrollMod[0], levelDefs.floor.scrollMod[1], levelDefs.floor.scrollMod[2]) if levelDefs.floor.has("scrollMod") else Vector3(0,1,0)
 	
 	if (topF.visible):
 		topF.position.y = levelDefs.sky.y
 		topF.mesh.material.uv1_scale = Vector3(levelDefs.sky.scale[0], levelDefs.sky.scale[1], levelDefs.sky.scale[2])
-		topF.mesh.material.albedo_texture = load("res://assets/images/levels/"+levelID+"/"+levelDefs.sky.texture+".png")
+		topF.mesh.material.albedo_texture = load("res://assets/images/levels/"+PlayGlobals.levelID+"/"+levelDefs.sky.texture+".png")
 		scrollModSKY = Vector3(levelDefs.sky.scrollMod[0], levelDefs.sky.scrollMod[1], levelDefs.sky.scrollMod[2]) if levelDefs.sky.has("scrollMod") else Vector3(0,1,0)
 		
 	#SUN
