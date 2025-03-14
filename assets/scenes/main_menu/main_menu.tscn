@@ -1,12 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://ds181oh1yp62m"]
+[gd_scene load_steps=39 format=3 uid="uid://ds181oh1yp62m"]
 
 [ext_resource type="Texture2D" uid="uid://t55dtlxhtc6l" path="res://assets/images/menu/logo.png" id="1_6o0yw"]
 [ext_resource type="Shader" uid="uid://cs54tgle3j2j5" path="res://assets/shaders/screen/worldCurve.gdshader" id="1_8qhov"]
 [ext_resource type="Texture2D" uid="uid://dnqbxxibclpwv" path="res://assets/images/menu/clouds.png" id="1_acsil"]
+[ext_resource type="Script" uid="uid://csmyl4kbogxkr" path="res://assets/scenes/main_menu/main_menu.gd" id="1_f6bh1"]
 [ext_resource type="Texture2D" uid="uid://bq5ru0a1lbcnn" path="res://assets/images/menu/hill.png" id="3_spayh"]
 [ext_resource type="Texture2D" uid="uid://b3kgvtapbgivj" path="res://assets/images/menu/tree.png" id="4_tfy4q"]
 [ext_resource type="Texture2D" uid="uid://bnwe2owpy6pdd" path="res://assets/images/menu/grave.png" id="5_tfy4q"]
+[ext_resource type="Script" uid="uid://dck1vvjhfm4y7" path="res://assets/scenes/main_menu/grave.gd" id="6_r27g3"]
+[ext_resource type="Texture2D" uid="uid://bkmgr5lktkomw" path="res://assets/images/menu/buttons/adventure.png" id="7_b43tu"]
 [ext_resource type="Script" uid="uid://c13517oqq03a8" path="res://assets/scripts/hover.gd" id="7_trycp"]
+[ext_resource type="Texture2D" uid="uid://bsh370l44682p" path="res://assets/images/menu/buttons/trophies.png" id="8_6qh68"]
+[ext_resource type="Texture2D" uid="uid://bv4i45hut2g4q" path="res://assets/images/menu/buttons/options.png" id="9_x0mfv"]
+[ext_resource type="Texture2D" uid="uid://c4xro1wlloata" path="res://assets/images/menu/tweaked_hand.png" id="10_x0mfv"]
 
 [sub_resource type="Gradient" id="Gradient_8qhov"]
 offsets = PackedFloat32Array(0, 0.690141)
@@ -20,16 +26,200 @@ fill_to = Vector2(0, 1)
 shader = ExtResource("1_8qhov")
 shader_parameter/radius = 0.89
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r27g3"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(547, 0, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwglk"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(1094, 0, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1cmu"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(1641, 0, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43lun"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(2188, 0, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2eox"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(0, 414, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61kpw"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(547, 414, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhpin"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(1094, 414, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq2b6"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(1641, 414, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3qo3"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(2188, 414, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it18e"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(0, 828, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kq5p"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(547, 828, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj2b1"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(1094, 828, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp10m"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(1641, 828, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eumn"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(2188, 828, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14a7l"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(0, 1242, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlihf"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(547, 1242, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odlbs"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(1094, 1242, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3ew4"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(1641, 1242, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5civ7"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(2188, 1242, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ual5k"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(0, 1656, 547, 414)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arhkj"]
+atlas = ExtResource("10_x0mfv")
+region = Rect2(0, 0, 547, 414)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cjlv6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r27g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwglk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1cmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43lun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2eox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61kpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhpin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq2b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq2b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3qo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it18e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kq5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj2b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp10m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp10m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eumn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14a7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlihf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odlbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3ew4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3ew4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5civ7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5civ7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5civ7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ual5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ual5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ual5k")
+}],
+"loop": true,
+"name": &"Appear",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arhkj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 24.0
+}]
+
 [node name="Main Menu" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_f6bh1")
 
 [node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="Background" type="ParallaxBackground" parent="."]
 layer = -3
+follow_viewport_enabled = true
 
 [node name="Sky" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0, 0)
 
 [node name="Sky" type="Sprite2D" parent="Background/Sky"]
 position = Vector2(640, 480)
@@ -37,15 +227,25 @@ scale = Vector2(21.0625, 15.7685)
 texture = SubResource("GradientTexture2D_spayh")
 
 [node name="Clouds" type="Parallax2D" parent="Background"]
-repeat_size = Vector2(1280, 0)
-autoscroll = Vector2(20, 0)
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1320.96, 0)
+autoscroll = Vector2(15, 0)
 repeat_times = 2
-follow_viewport = false
 
-[node name="Shaders" type="CanvasLayer" parent="Background/Clouds"]
+[node name="Clouds" type="Sprite2D" parent="Background/Clouds"]
+position = Vector2(-20.318, -20)
+scale = Vector2(1.03175, 1.03175)
+texture = ExtResource("1_acsil")
+centered = false
+
+[node name="Shaders" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0, 0)
+
+[node name="Shaders" type="CanvasLayer" parent="Background/Shaders"]
 layer = -1
+follow_viewport_scale = 0.001
 
-[node name="WorldCurve" type="ColorRect" parent="Background/Clouds/Shaders"]
+[node name="WorldCurve" type="ColorRect" parent="Background/Shaders/Shaders"]
 material = SubResource("ShaderMaterial_spayh")
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,17 +254,16 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Clouds" type="Sprite2D" parent="Background/Clouds"]
-texture = ExtResource("1_acsil")
-centered = false
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
+follow_viewport_enabled = true
 
 [node name="Ground" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.35, 0.35)
 
 [node name="Ground" type="Sprite2D" parent="ParallaxBackground/Ground"]
-position = Vector2(0, 590)
+position = Vector2(-20.7567, 596)
+scale = Vector2(1.03243, 1.03243)
 texture = ExtResource("3_spayh")
 centered = false
 
@@ -74,12 +273,81 @@ texture = ExtResource("4_tfy4q")
 centered = false
 
 [node name="Grave" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.6, 0.6)
+script = ExtResource("6_r27g3")
 
 [node name="Grave" type="Sprite2D" parent="ParallaxBackground/Grave"]
-position = Vector2(640, 673)
+position = Vector2(640, 686)
 texture = ExtResource("5_tfy4q")
 
-[node name="Logo" type="Sprite2D" parent="."]
+[node name="Buttons" type="Control" parent="ParallaxBackground/Grave"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Adventure" type="TextureButton" parent="ParallaxBackground/Grave/Buttons"]
+offset_left = 409.0
+offset_top = 470.0
+offset_right = 876.0
+offset_bottom = 565.0
+pivot_offset = Vector2(233, 47)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_b43tu")
+stretch_mode = 0
+metadata/ID = 0
+
+[node name="Trophies" type="TextureButton" parent="ParallaxBackground/Grave/Buttons"]
+offset_left = 418.0
+offset_top = 569.0
+offset_right = 870.0
+offset_bottom = 669.0
+pivot_offset = Vector2(226, 50)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_6qh68")
+stretch_mode = 0
+metadata/ID = 1
+
+[node name="Options" type="TextureButton" parent="ParallaxBackground/Grave/Buttons"]
+offset_left = 429.0
+offset_top = 675.0
+offset_right = 856.0
+offset_bottom = 766.0
+pivot_offset = Vector2(213, 45)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_x0mfv")
+stretch_mode = 0
+metadata/ID = 2
+
+[node name="Hand" type="AnimatedSprite2D" parent="ParallaxBackground/Grave"]
+texture_filter = 1
+position = Vector2(614, 714)
+scale = Vector2(1.16425, 1.16425)
+sprite_frames = SubResource("SpriteFrames_cjlv6")
+animation = &"Idle"
+autoplay = "Idle"
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://assets/images/menu",
+"o_name": "tweaked_hand",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "D:/GODOT/projectFiles - TTTG/2d/gravehand.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "1d2c453ba48b6159d1fa6c900b994747"
+
+[node name="Logo" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0, 0)
+
+[node name="Logo" type="Sprite2D" parent="ParallaxBackground/Logo"]
 position = Vector2(640, 200)
 scale = Vector2(0.619137, 0.619137)
 texture = ExtResource("1_6o0yw")
@@ -87,4 +355,4 @@ script = ExtResource("7_trycp")
 metadata/y_float = 0.15
 metadata/y_speed = 0.6
 
-[connection signal="tree_entered" from="Logo" to="Logo" method="_on_tree_entered"]
+[connection signal="tree_entered" from="ParallaxBackground/Logo/Logo" to="ParallaxBackground/Logo/Logo" method="_on_tree_entered"]

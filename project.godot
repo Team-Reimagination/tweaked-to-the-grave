@@ -19,6 +19,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+SaveSystem="*res://assets/scripts/saveSystem.gd"
+
 [display]
 
 window/size/viewport_width=1280

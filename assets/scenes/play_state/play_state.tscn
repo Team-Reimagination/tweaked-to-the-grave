@@ -1,16 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=15 format=3 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
 [ext_resource type="PackedScene" uid="uid://b56b0d2gngc5i" path="res://assets/objects/general/ship/ship.tscn" id="1_wtpd3"]
+[ext_resource type="Texture2D" uid="uid://drky0bx8pl5hu" path="res://assets/images/levels/SHR/floor.png" id="2_lovw6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7wmb"]
-sky_top_color = Color(0.468835, 0.693709, 0.872935, 1)
-sky_horizon_color = Color(0.922624, 0.89463, 0.634002, 1)
-sky_curve = 0.279909
-ground_bottom_color = Color(0.984314, 0.905882, 0.568627, 1)
-ground_horizon_color = Color(0.983016, 0.907593, 0.569528, 1)
-ground_curve = 0.40786
+sky_top_color = Color(0.35, 0.61, 1, 1)
+sky_horizon_color = Color(0.7, 1, 0.975, 1)
+sky_curve = 0.117687
+ground_bottom_color = Color(0.98, 0.938677, 0.7546, 1)
+ground_horizon_color = Color(0.98505, 0.99, 0.891, 1)
+ground_curve = 0.00568102
 sun_angle_max = 40.64
 sun_curve = 0.0416088
 
@@ -26,20 +27,52 @@ ambient_light_energy = 0.0
 tonemap_white = 10.35
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.984314, 0.905882, 0.568627, 1)
-fog_density = 1.0
+fog_light_color = Color(0.980392, 0.945098, 0.776471, 1)
+fog_density = 0.9045
 fog_sky_affect = 0.0
-fog_depth_curve = 0.594605
-fog_depth_begin = 100.0
-fog_depth_end = 600.0
+fog_depth_curve = 0.870553
+fog_depth_begin = 0.0
+fog_depth_end = 500.0
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_edc5a"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtpd3"]
-albedo_color = Color(0.652763, 0, 0.283952, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lovw6"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_lovw6")
+uv1_scale = Vector3(500, 500, 500)
+uv1_triplanar_sharpness = 9.84916
+texture_filter = 4
+distance_fade_min_distance = 1092.26
+distance_fade_max_distance = 864.7
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_km3m7"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_lovw6")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c2p2b"]
+load_path = "res://.godot/imported/sky.png-7d0889cd5e1065c82792a7ab1b8b37e5.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmn5d"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+disable_fog = true
+albedo_texture = SubResource("CompressedTexture2D_c2p2b")
+uv1_scale = Vector3(20, 20, 20)
+uv1_triplanar_sharpness = 9.84916
+texture_filter = 4
+disable_receive_shadows = true
+distance_fade_mode = 2
+distance_fade_min_distance = 1400.0
+distance_fade_max_distance = 300.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wtpd3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_fmn5d")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oi2qx"]
 size = Vector3(2.77423, 5.13818, 0.762573)
@@ -52,13 +85,13 @@ environment = SubResource("Environment_oi2qx")
 camera_attributes = SubResource("CameraAttributesPractical_edc5a")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.943524, 0.331305, 0, -0.331305, -0.943524, -0.695551, 4.4608, 2.72634)
-light_color = Color(0.926339, 0.922573, 0.894879, 1)
-light_energy = 1.375
-light_indirect_energy = 0.5
-light_volumetric_fog_energy = 2.375
-light_angular_distance = 0.7
-light_specular = 2.58
+transform = Transform3D(1, 0, 0, 0, -0.939693, 0.34202, 0, -0.34202, -0.939693, -0.695551, 4.4608, 2.72634)
+light_color = Color(0.944882, 0.968301, 0.955761, 1)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 1.0
+light_specular = 10.0
+light_bake_mode = 0
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64541, 0)
@@ -68,8 +101,12 @@ near = 0.001
 far = 2000.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(900, 0, 0, 0, 0.319, 0, 0, 0, 900, 0, -50, -158.117)
-material_override = SubResource("StandardMaterial3D_wtpd3")
+transform = Transform3D(15916, 0, 0, 0, 0.319, 0, 0, 0, 15916, 0, -30.3064, -158.117)
+mesh = SubResource("PlaneMesh_km3m7")
+skeleton = NodePath("")
+
+[node name="Sky" type="MeshInstance3D" parent="."]
+transform = Transform3D(3723.91, 0, 0, 0, 0.319, 0, 0, 0, 3723.91, 0, 200, -158.117)
 mesh = SubResource("PlaneMesh_wtpd3")
 skeleton = NodePath("")
 
@@ -85,3 +122,6 @@ script = ExtResource("1_oi2qx")
 transform = Transform3D(4.06381, 0, 1.59162e-12, 0, 1.1283, 0, -7.24754e-13, 0, 6.55579, -6.35552, -2.55713, -0.0356119)
 shape = SubResource("BoxShape3D_oi2qx")
 debug_color = Color(0, 0.741176, 1, 1)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 3
