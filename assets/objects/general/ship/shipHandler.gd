@@ -58,8 +58,6 @@ func _physics_process(delta: float) -> void:
 			boundForcefield[3] = max(1.0 - (self.position.y - scene.vertOffset)/(scene.maxBoundMod/1.5), 0)
 			if (upDown > 0): velocity.y *= boundForcefield[3]
 	
-	print(boundForcefield)
-	
 	if accel != Vector3.ZERO:
 		velocity += accel * delta;
 		
