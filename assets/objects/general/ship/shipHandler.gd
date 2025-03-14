@@ -23,7 +23,11 @@ var boundForcefield = [1.0, 1.0, 1.0, 1.0];
 var leftRight;
 var upDown;
 
-func _process(delta: float) -> void:
+#Barrel Roll
+var barrelSpin = 0.0;
+var barrelMod = 1.0;
+
+func _process(_delta: float) -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
@@ -62,11 +66,12 @@ func handleInput():
 			velocity.x = maxVel * boundForcefield[1] if leftRight > 0 else -maxVel * boundForcefield[0] * abs(leftRight)
 			velocity.y = maxVel * boundForcefield[3] if upDown > 0 else -maxVel * boundForcefield[2] * abs(upDown)
 			decel *= barrelDecelMod
+			barrelSpin = 360 * 2 * (-1 if leftRight > 0 or upDown > 0 else 1)
+			barrelMod = 1.0
 	elif (action == "barrel"):
-		if abs(velocity.x) <= topVel/2.0 and abs(velocity.y) <= topVel/2.0:
+		if abs(barrelMod) < 0.5:
 			action = "fly"
 			decel /= barrelDecelMod
-		pass
 
 func handleMovement(delta):
 	boundForcefield = [1.0, 1.0, 1.0, 1.0]
@@ -104,6 +109,6 @@ func handleMovement(delta):
 		self.rotation_degrees.x = lerpf(self.rotation_degrees.x, velocity.x * 0.9, 0.15);
 		self.rotation_degrees.z = lerpf(self.rotation_degrees.z, velocity.y * 0.9, 0.15);
 	elif (action == "barrel"):
-		#MAKE ANIMATION HANDLER
-		self.rotation_degrees.z = lerpf(self.rotation_degrees.z, velocity.y * 1.2, 0.15);
-		pass
+		self.rotation_degrees.x = barrelSpin * barrelMod
+		barrelMod = lerp(barrelMod, 0.0, 0.03)
+		self.rotation_degrees.z = 0;
