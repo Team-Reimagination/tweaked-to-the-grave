@@ -44,6 +44,7 @@ adjustment_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lovw6"]
 resource_local_to_scene = true
 transparency = 1
+cull_mode = 2
 shading_mode = 0
 albedo_texture = ExtResource("2_lovw6")
 uv1_scale = Vector3(500, 500, 500)
@@ -62,7 +63,7 @@ load_path = "res://.godot/imported/sky.png-7d0889cd5e1065c82792a7ab1b8b37e5.s3tc
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmn5d"]
 resource_local_to_scene = true
 transparency = 1
-cull_mode = 1
+cull_mode = 2
 shading_mode = 0
 disable_fog = true
 albedo_texture = SubResource("CompressedTexture2D_c2p2b")
@@ -107,12 +108,12 @@ near = 0.001
 far = 2000.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(15916, 0, 0, 0, 0.319, 0, 0, 0, 15916, 0, -30.3064, -158.117)
+transform = Transform3D(2000, 0, 0, 0, 0.319, 0, 0, 0, 2000, 0, -30.306, -1900)
 mesh = SubResource("PlaneMesh_km3m7")
 skeleton = NodePath("")
 
 [node name="Sky" type="MeshInstance3D" parent="."]
-transform = Transform3D(3723.91, 0, 0, 0, 0.319, 0, 0, 0, 3723.91, 0, 200, -158.117)
+transform = Transform3D(2000, 0, 0, 0, 0.319, 0, 0, 0, 2000, 0, 200, -1900)
 mesh = SubResource("PlaneMesh_wtpd3")
 skeleton = NodePath("")
 
@@ -133,20 +134,26 @@ transform = Transform3D(1, 0, 1.77636e-13, 0, 1, 0, -1.77636e-13, 0, 1, -0.14968
 shape = SubResource("BoxShape3D_oi2qx")
 debug_color = Color(0, 0.741176, 1, 1)
 
+[node name="Chunk References For Future" type="Node3D" parent="."]
+transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -48)
+visible = false
+
+[node name="BGChunkWidthRef" type="MeshInstance3D" parent="Chunk References For Future"]
+layers = 2
+mesh = SubResource("BoxMesh_lovw6")
+skeleton = NodePath("../..")
+
+[node name="BGChunkWidthRef2" type="MeshInstance3D" parent="Chunk References For Future"]
+transform = Transform3D(0.176, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.38798)
+layers = 2
+mesh = SubResource("BoxMesh_lovw6")
+skeleton = NodePath("../..")
+
+[node name="PLChunkWidthRef" type="MeshInstance3D" parent="Chunk References For Future"]
+transform = Transform3D(0.0623375, 0, 0, 0, 1.08541, 0, 0, 0, 1.54274, 0, 0.00820291, 6.13094)
+layers = 2
+mesh = SubResource("BoxMesh_lovw6")
+skeleton = NodePath("../..")
+
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 3
-
-[node name="BGChunkWidthRef" type="MeshInstance3D" parent="."]
-transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -48)
-layers = 2
-mesh = SubResource("BoxMesh_lovw6")
-
-[node name="BGChunkWidthRef2" type="MeshInstance3D" parent="."]
-transform = Transform3D(140.8, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -43.9082)
-layers = 2
-mesh = SubResource("BoxMesh_lovw6")
-
-[node name="PLChunkWidthRef" type="MeshInstance3D" parent="."]
-transform = Transform3D(49.87, 0, 0, 0, 64.175, 0, 0, 0, 4.548, 0, -29.61, -29.926)
-layers = 2
-mesh = SubResource("BoxMesh_lovw6")

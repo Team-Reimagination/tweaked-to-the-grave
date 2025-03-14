@@ -4,13 +4,13 @@
 	"floor": {
 		"texture": "floor",
 		"y": -20,
-		"scale": [800,800,800],
+		"scale": [100,100,100],
 		"scrollMod": [0, 1.0, 0]
 	},
 	"sky": {
 		"texture": "sky",
 		"y": 300,
-		"scale": [20,20,20],
+		"scale": [10,10,10],
 		"scrollMod": [0.008, 0.015, -0.004]
 	},
 	"sun": {
