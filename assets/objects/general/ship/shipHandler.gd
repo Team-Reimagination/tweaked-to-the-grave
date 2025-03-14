@@ -49,7 +49,15 @@ func handleInput():
 			if upDown > 0: #up
 				accel.y = speed * (1.0 if accel.y < 0 else turnAroundMod) * abs(upDown) * boundForcefield[3]
 				
-		if Input.is_action_just_pressed("Barrel_GP") and (leftRight != 0.0 or upDown != 0.0):
+		if Input.is_action_just_pressed("Barrel_GP") and (
+			(leftRight < 0 && boundForcefield[0] >= 1.0)
+			or
+			(leftRight > 0 && boundForcefield[1] >= 1.0)
+			or
+			(upDown < 0 && boundForcefield[2] >= 1.0)
+			or
+			(upDown > 0 && boundForcefield[3] >= 1.0)
+			):
 			action = "barrel"
 			velocity.x = maxVel * boundForcefield[1] if leftRight > 0 else -maxVel * boundForcefield[0] * abs(leftRight)
 			velocity.y = maxVel * boundForcefield[3] if upDown > 0 else -maxVel * boundForcefield[2] * abs(upDown)
