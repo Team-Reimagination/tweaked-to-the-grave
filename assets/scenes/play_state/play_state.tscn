@@ -6,14 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://drky0bx8pl5hu" path="res://assets/images/levels/SHR/floor.png" id="2_lovw6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7wmb"]
-sky_top_color = Color(0.35, 0.61, 1, 1)
+sky_top_color = Color(0.382845, 0.629386, 1, 1)
 sky_horizon_color = Color(0.7, 1, 0.975, 1)
-sky_curve = 0.117687
+sky_curve = 0.109806
 ground_bottom_color = Color(0.98, 0.938677, 0.7546, 1)
 ground_horizon_color = Color(0.98505, 0.99, 0.891, 1)
 ground_curve = 0.00568102
-sun_angle_max = 40.64
-sun_curve = 0.0416088
+sun_curve = 0.115853
 
 [sub_resource type="Sky" id="Sky_wtpd3"]
 sky_material = SubResource("ProceduralSkyMaterial_p7wmb")
@@ -22,9 +21,14 @@ sky_material = SubResource("ProceduralSkyMaterial_p7wmb")
 background_mode = 2
 sky = SubResource("Sky_wtpd3")
 ambient_light_source = 3
-ambient_light_color = Color(0.282387, 0.0849556, 0.11312, 1)
+ambient_light_color = Color(0.76011, 1, 0.618103, 1)
 ambient_light_energy = 0.0
 tonemap_white = 10.35
+glow_intensity = 1.79
+glow_bloom = 0.09
+glow_hdr_threshold = 0.56
+glow_hdr_scale = 1.46
+glow_hdr_luminance_cap = 45.1
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.980392, 0.945098, 0.776471, 1)

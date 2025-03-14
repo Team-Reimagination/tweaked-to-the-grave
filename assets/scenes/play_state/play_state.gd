@@ -11,7 +11,7 @@ static var vertOffset = rotateBound;
 #LEVEL VARIABLES
 const PATH_LEVELS : String = 'res://assets/data/'
 static var levelID = "SHR";
-@export var levelDefs:Dictionary;
+static var levelDefs;
 
 func _ready() -> void:
 	#PREPARE LEVEL
@@ -28,15 +28,18 @@ func _ready() -> void:
 @onready var btmF = $Floor
 @onready var topF = $Sky
 @onready var sun = $Sun
+@onready var bg = $Background
 var scrollSpeed = 0;
 var scrollModFLOOR
 var scrollModSKY
 
 func buildLevel():
+	#SCROLL SPEED
+	scrollSpeed = levelDefs.speed;
+	
+	#FLOOR AND SKY
 	btmF.visible = levelDefs.has("floor")
 	topF.visible = levelDefs.has("sky")
-	
-	scrollSpeed = levelDefs.speed;
 	
 	if (btmF.visible):
 		btmF.position.y = levelDefs.floor.y
@@ -50,10 +53,36 @@ func buildLevel():
 		topF.mesh.material.albedo_texture = load("res://assets/images/levels/"+levelID+"/"+levelDefs.sky.texture+".png")
 		scrollModSKY = Vector3(levelDefs.sky.scrollMod[0], levelDefs.sky.scrollMod[1], levelDefs.sky.scrollMod[2]) if levelDefs.sky.has("scrollMod") else Vector3(0,1,0)
 		
+	#SUN
 	sun.rotate_x(levelDefs.sun.angle[0])
 	sun.rotate_y(levelDefs.sun.angle[1])
 	sun.rotate_z(levelDefs.sun.angle[2])
-	print(sun.rotation)
+	sun.sky_mode = 0 if levelDefs.sun.showSun.to_lower() == "true" else 1
+	sun.light_color = Color(levelDefs.sun.color[0]/255, levelDefs.sun.color[1]/255, levelDefs.sun.color[2]/255, 1.0)
+	sun.light_energy = levelDefs.sun.energy
+	sun.light_indirect_energy = levelDefs.sun.lie
+	sun.light_angular_distance = levelDefs.sun.lad
+	sun.light_specular = levelDefs.sun.specular
+	bg.environment.sky.sky_material.set_sun_angle_max(levelDefs.sun.maxAng)
+	bg.environment.sky.sky_material.set_sun_curve(levelDefs.sun.curve)
+	
+	#BACKGROUND
+	bg.environment.sky.sky_material.sky_top_color = Color(levelDefs.background.sky.top[0], levelDefs.background.sky.top[1], levelDefs.background.sky.top[2])/255
+	bg.environment.sky.sky_material.sky_horizon_color = Color(levelDefs.background.sky.bottom[0], levelDefs.background.sky.bottom[1], levelDefs.background.sky.bottom[2])/255
+	bg.environment.sky.sky_material.sky_curve = levelDefs.background.sky.curve
+	
+	bg.environment.sky.sky_material.ground_horizon_color = Color(levelDefs.background.ground.top[0], levelDefs.background.ground.top[1], levelDefs.background.ground.top[2])/255
+	bg.environment.sky.sky_material.ground_bottom_color = Color(levelDefs.background.ground.bottom[0], levelDefs.background.ground.bottom[1], levelDefs.background.ground.bottom[2])/255
+	bg.environment.sky.sky_material.ground_curve = levelDefs.background.ground.curve
+	
+	#FOG
+	bg.environment.fog_light_color = bg.environment.sky.sky_material.ground_bottom_color
+	bg.environment.fog_light_energy = levelDefs.fog.energy
+	bg.environment.fog_sun_scatter = levelDefs.fog.sunScatter
+	bg.environment.fog_density = levelDefs.fog.density
+	bg.environment.fog_depth_begin = levelDefs.fog.distance.start
+	bg.environment.fog_depth_end = levelDefs.fog.distance.end
+	bg.environment.fog_depth_curve = levelDefs.fog.distance.curve
 
 func _process(delta: float) -> void:
 	
