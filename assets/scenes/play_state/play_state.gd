@@ -5,7 +5,7 @@ extends Node3D
 
 #BOUND VARIABLES
 static var rotateBound = 13;
-static var maxBoundMod = 13;
+static var maxBoundMod = 20;
 static var vertOffset = rotateBound;
 
 #LEVEL VARIABLES

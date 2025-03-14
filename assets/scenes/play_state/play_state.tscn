@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=16 format=3 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
@@ -81,6 +81,8 @@ material = SubResource("StandardMaterial3D_fmn5d")
 [sub_resource type="BoxShape3D" id="BoxShape3D_oi2qx"]
 size = Vector3(11.359, 6.30129, 11.508)
 
+[sub_resource type="BoxMesh" id="BoxMesh_lovw6"]
+
 [node name="PlayState" type="Node3D"]
 script = ExtResource("1_edc5a")
 
@@ -133,3 +135,18 @@ debug_color = Color(0, 0.741176, 1, 1)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 3
+
+[node name="BGChunkWidthRef" type="MeshInstance3D" parent="."]
+transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -48)
+layers = 2
+mesh = SubResource("BoxMesh_lovw6")
+
+[node name="BGChunkWidthRef2" type="MeshInstance3D" parent="."]
+transform = Transform3D(140.8, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -43.9082)
+layers = 2
+mesh = SubResource("BoxMesh_lovw6")
+
+[node name="PLChunkWidthRef" type="MeshInstance3D" parent="."]
+transform = Transform3D(49.87, 0, 0, 0, 64.175, 0, 0, 0, 4.548, 0, -29.61, -29.926)
+layers = 2
+mesh = SubResource("BoxMesh_lovw6")
