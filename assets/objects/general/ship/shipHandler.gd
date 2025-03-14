@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 @onready var scene = self.get_parent().get_parent();
 
+var action = "fly"
+
 # movement speed
 var speed = 50;
 var accel = Input.get_vector("Left_GP", "Right_GP", "Down_GP", "Up_GP");
@@ -9,10 +11,11 @@ var accel = Input.get_vector("Left_GP", "Right_GP", "Down_GP", "Up_GP");
 #velocities
 var vel = Vector3.ZERO
 var topVel = 30;
-var maxVel = 60;
+var maxVel = 90;
 
 #deleration when at standstill and strength of speed when turning around
 var decel = 50;
+var barrelDecelMod = 2.5
 var turnAroundMod = 2.3;
 var boundForcefield = [1.0, 1.0, 1.0, 1.0];
 
@@ -20,26 +23,44 @@ var boundForcefield = [1.0, 1.0, 1.0, 1.0];
 var leftRight;
 var upDown;
 
+func _process(delta: float) -> void:
+	pass
+	
 func _physics_process(delta: float) -> void:
 	accel = Vector3.ZERO;
+	handleInput()
+	handleMovement(delta)
+	move_and_slide()
 	
-	#INPUT HANDLER
-	leftRight = Input.get_axis("Left_GP", "Right_GP")
-	upDown = Input.get_axis("Down_GP", "Up_GP")
-	
-	if (abs(leftRight) > 0.00001) :
-		if leftRight < 0: #left
-			accel.x = -speed * (1.0 if accel.x > 0 else turnAroundMod) * abs(leftRight) * boundForcefield[0]
-		if leftRight > 0: #right
-			accel.x = speed * (1.0 if accel.x < 0 else turnAroundMod) * abs(leftRight) * boundForcefield[1]
-			
-	if (abs(upDown) > 0.00001) :
-		if upDown < 0: #down
-			accel.y = -speed * (1.0 if accel.y > 0 else turnAroundMod) * abs(upDown) * boundForcefield[2]
-		if upDown > 0: #up
-			accel.y = speed * (1.0 if accel.y < 0 else turnAroundMod) * abs(upDown) * boundForcefield[3]
-	
-	#MOVEMENT HANDLER
+func handleInput():
+	if (action == "fly"):
+		leftRight = Input.get_axis("Left_GP", "Right_GP")
+		upDown = Input.get_axis("Down_GP", "Up_GP")
+		
+		if (abs(leftRight) > 0.00001) :
+			if leftRight < 0: #left
+				accel.x = -speed * (1.0 if accel.x > 0 else turnAroundMod) * abs(leftRight) * boundForcefield[0]
+			if leftRight > 0: #right
+				accel.x = speed * (1.0 if accel.x < 0 else turnAroundMod) * abs(leftRight) * boundForcefield[1]
+				
+		if (abs(upDown) > 0.00001) :
+			if upDown < 0: #down
+				accel.y = -speed * (1.0 if accel.y > 0 else turnAroundMod) * abs(upDown) * boundForcefield[2]
+			if upDown > 0: #up
+				accel.y = speed * (1.0 if accel.y < 0 else turnAroundMod) * abs(upDown) * boundForcefield[3]
+				
+		if Input.is_action_just_pressed("Barrel_GP") and (leftRight != 0.0 or upDown != 0.0):
+			action = "barrel"
+			velocity.x = maxVel * boundForcefield[1] if leftRight > 0 else -maxVel * boundForcefield[0] * abs(leftRight)
+			velocity.y = maxVel * boundForcefield[3] if upDown > 0 else -maxVel * boundForcefield[2] * abs(upDown)
+			decel *= barrelDecelMod
+	elif (action == "barrel"):
+		if abs(velocity.x) <= topVel/2.0 and abs(velocity.y) <= topVel/2.0:
+			action = "fly"
+			decel /= barrelDecelMod
+		pass
+
+func handleMovement(delta):
 	boundForcefield = [1.0, 1.0, 1.0, 1.0]
 	
 	if (abs(self.position.x) >= scene.rotateBound):
@@ -69,7 +90,12 @@ func _physics_process(delta: float) -> void:
 		if abs(accel[i]) < 0.0001:
 			velocity[i] = max(0.0, velocity[i] - decel * delta) if velocity[i] > 0 else min(0.0, velocity[i] + decel * delta)
 	
-	self.rotation.x = lerpf(self.rotation.x, velocity.x / 80, 0.15);
-	self.rotation.z = lerpf(self.rotation.z, velocity.y / 80, 0.15);
+	self.rotation_degrees.y = 90
 	
-	move_and_slide()
+	if (action == "fly"):
+		self.rotation_degrees.x = lerpf(self.rotation_degrees.x, velocity.x * 0.9, 0.15);
+		self.rotation_degrees.z = lerpf(self.rotation_degrees.z, velocity.y * 0.9, 0.15);
+	elif (action == "barrel"):
+		#MAKE ANIMATION HANDLER
+		self.rotation_degrees.z = lerpf(self.rotation_degrees.z, velocity.y * 1.2, 0.15);
+		pass

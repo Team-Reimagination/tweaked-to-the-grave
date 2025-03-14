@@ -20,7 +20,7 @@
 		"energy": 1.0,
 		"lie": 0.0,
 		"lad": 0.5,
-		"specular": 10.0,
+		"specular": 3.0,
 		"maxAng": 30.0,
 		"curve": 0.0416
 	},
