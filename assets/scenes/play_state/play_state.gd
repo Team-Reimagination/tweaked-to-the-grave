@@ -33,10 +33,15 @@ func _ready() -> void:
 		buildLevel();
 		
 	#LIRA FORMULA
-	levelUpLira()
+	lvl()
 
 static func levelUpLiraFormula(lv):
 	return 25*(pow(lv, 2) - lv + 2)
+	
+func lvl():
+	levelUpLira()
+	$HUD.levelUpLira()
+	player.levelUpLira()
 	
 static func levelUpLira():
 	liraLevel += 1
@@ -127,5 +132,5 @@ func _process(delta: float) -> void:
 		camera.rotation.x = camera.v_offset / -80
 		
 	#LIRA LEVEL
-	if liraPGR >= liraMax:
-		levelUpLira()
+	if liraPGR >= liraMax and liraLevel < 10:
+		lvl()

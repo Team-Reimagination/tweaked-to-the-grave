@@ -27,6 +27,33 @@ var upDown;
 var barrelSpin = 0.0;
 var barrelMod = 1.0;
 
+#Weapon
+var levelTable = {
+	1: [2.0, 32.0, 1],
+	2: [1.75, 32.0, 1],
+	3: [1.75, 40.0, 1],
+	4: [1.5, 40.0, 1],
+	5: [1.5, 40.0, 2],
+	6: [1.25, 48.0, 2],
+	7: [1.25, 56.0, 2],
+	8: [1, 56.0, 2],
+	9: [1, 56.0, 2],
+	10: [0.75, 56.0, 3],
+}
+var bltCLD = 0.0;
+var bltPWR = 0.0
+var bltCNT = 0
+var canShoot = true;
+
+func _ready() -> void:
+	$Ambience.play()
+
+func levelUpLira():
+	if levelTable[scene.liraLevel] != null:
+		bltCLD = levelTable[scene.liraLevel][0]
+		bltPWR = levelTable[scene.liraLevel][1]
+		bltCNT = levelTable[scene.liraLevel][2]
+
 func _process(_delta: float) -> void:
 	pass
 	

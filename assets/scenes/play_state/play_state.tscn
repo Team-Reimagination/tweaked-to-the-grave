@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=30 format=3 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://crlf2306tx65u" path="res://assets/images/hud/powersicon.png" id="5_km3m7"]
 [ext_resource type="AudioStream" uid="uid://b0lq3d8lgrxpf" path="res://assets/sounds/ambience/stampede_amb.ogg" id="5_m3iyk"]
 [ext_resource type="FontFile" uid="uid://7m4vhh4738ar" path="res://assets/images/hud/powerscounter.png" id="6_c2p2b"]
+[ext_resource type="Shader" uid="uid://8rcyn51imi8r" path="res://assets/shaders/screen/colorMod.gdshader" id="7_l10d1"]
+[ext_resource type="Texture2D" uid="uid://bvnaovxwoc6a8" path="res://assets/images/hud/lira_empty.png" id="7_uuhey"]
+[ext_resource type="Texture2D" uid="uid://dsuf8fdy3wmbv" path="res://assets/images/hud/lira_prog.png" id="8_qg2ls"]
+[ext_resource type="AudioStream" uid="uid://bnpvn00oye0bc" path="res://assets/sounds/ui/levelup.ogg" id="12_u4v7s"]
+[ext_resource type="Texture2D" uid="uid://hno6dj4x2yxl" path="res://assets/images/hud/lira.png" id="13_15aj6"]
+[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="14_yewxg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7wmb"]
 sky_top_color = Color(0.382845, 0.629386, 1, 1)
@@ -88,6 +94,37 @@ size = Vector3(11.359, 6.30129, 11.508)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lovw6"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4v7s"]
+shader = ExtResource("7_l10d1")
+shader_parameter/multipliers = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/offsets = Vector4(0, 0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_yewxg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.179775), -2.04494, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6reie"]
+curve = SubResource("Curve_yewxg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rof2u"]
+lifetime_randomness = 0.41
+emission_shape_scale = Vector3(1.75, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 13.08
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+inherit_velocity_ratio = 0.236
+velocity_pivot = Vector3(4.61, 0, 0)
+direction = Vector3(0, -3.84, 0)
+spread = 24.623
+flatness = 0.33
+initial_velocity_min = 200.0
+initial_velocity_max = 422.73
+gravity = Vector3(0, 98, 0)
+scale_min = 0.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_6reie")
+
 [node name="PlayState" type="Node3D"]
 script = ExtResource("1_edc5a")
 
@@ -134,16 +171,15 @@ script = ExtResource("1_oi2qx")
 [node name="Model" parent="Objects/Ship" instance=ExtResource("1_wtpd3")]
 
 [node name="Hitbox" type="CollisionShape3D" parent="Objects/Ship"]
-transform = Transform3D(1, 0, 1.77636e-13, 0, 1, 0, -1.77636e-13, 0, 1, -0.149689, -0.121717, -0.0356116)
+transform = Transform3D(1, 0, 1.81188e-13, 0, 1, 0, -1.81188e-13, 0, 1, -0.149689, -0.121717, -0.0356116)
 shape = SubResource("BoxShape3D_oi2qx")
 debug_color = Color(0, 0.741176, 1, 1)
 metadata/type = "player"
 
 [node name="Ambience" type="AudioStreamPlayer3D" parent="Objects/Ship"]
 stream = ExtResource("5_m3iyk")
-max_db = -10.0
+max_db = -15.0
 pitch_scale = 0.18
-autoplay = true
 bus = &"Ambience"
 
 [node name="Chunk References For Future" type="Node3D" parent="."]
@@ -171,11 +207,26 @@ skeleton = NodePath("../..")
 layer = 3
 script = ExtResource("5_fmn5d")
 
-[node name="Bag" type="Sprite2D" parent="HUD"]
+[node name="LiraGroup" type="CanvasGroup" parent="HUD"]
+material = SubResource("ShaderMaterial_u4v7s")
+fit_margin = 100.0
+
+[node name="LiraBar" type="TextureProgressBar" parent="HUD/LiraGroup"]
+offset_left = 1200.0
+offset_top = 556.0
+offset_right = 1232.0
+offset_bottom = 840.0
+allow_greater = true
+allow_lesser = true
+fill_mode = 3
+texture_under = ExtResource("7_uuhey")
+texture_progress = ExtResource("8_qg2ls")
+
+[node name="Bag" type="Sprite2D" parent="HUD/LiraGroup"]
 position = Vector2(1196, 862)
 texture = ExtResource("5_km3m7")
 
-[node name="Powers" type="Label" parent="HUD"]
+[node name="Lira" type="Label" parent="HUD/LiraGroup"]
 offset_left = 696.0
 offset_top = 853.0
 offset_right = 1216.0
@@ -183,3 +234,34 @@ offset_bottom = 928.0
 theme_override_fonts/font = ExtResource("6_c2p2b")
 text = "1234567890"
 horizontal_alignment = 2
+
+[node name="LiraParticles" type="GPUParticles2D" parent="HUD/LiraGroup"]
+self_modulate = Color(1, 1, 1, 0.00392157)
+position = Vector2(1213, 817)
+emitting = false
+amount = 40
+texture = ExtResource("13_15aj6")
+lifetime = 1.2
+one_shot = true
+preprocess = 0.27
+speed_scale = 2.05
+explosiveness = 0.88
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_rof2u")
+
+[node name="LevelText" type="Label" parent="HUD/LiraGroup"]
+offset_left = 1179.0
+offset_top = 513.0
+offset_right = 1257.0
+offset_bottom = 557.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("14_yewxg")
+theme_override_font_sizes/font_size = 32
+text = "LV 0"
+horizontal_alignment = 1
+
+[node name="LevelUp" type="AudioStreamPlayer2D" parent="HUD/LiraGroup"]
+stream = ExtResource("12_u4v7s")
+max_polyphony = 3
+panning_strength = 0.0
+bus = &"SFX"
