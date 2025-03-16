@@ -33,7 +33,7 @@ func _ready() -> void:
 		buildLevel();
 		
 	#LIRA FORMULA
-	if liraLevel == 0: levelUpLira()
+	levelUpLira()
 
 func levelUpLiraFormula(lv):
 	return 25*(pow(lv, 2) - lv + 2)

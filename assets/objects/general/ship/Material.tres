@@ -6,6 +6,7 @@
 resource_name = "Material"
 albedo_texture = ExtResource("1_6ys83")
 roughness = 0.5
+texture_filter = 2
 distance_fade_mode = 2
 distance_fade_min_distance = 2.5
 distance_fade_max_distance = 7.5
