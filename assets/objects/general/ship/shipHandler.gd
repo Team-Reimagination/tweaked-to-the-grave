@@ -90,6 +90,8 @@ func handleInput():
 			or
 			(upDown > 0 && boundForcefield[3] >= 1.0)
 		):
+			$Barrelroll.play()
+			
 			action = "barrel"
 			velocity.x = maxVel * boundForcefield[1] if leftRight > 0 else -maxVel * boundForcefield[0] * abs(leftRight)
 			velocity.y = maxVel * boundForcefield[3] if upDown > 0 else -maxVel * boundForcefield[2] * abs(upDown)

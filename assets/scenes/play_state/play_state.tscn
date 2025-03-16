@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=32 format=3 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://chmlr1hxcscp1" path="res://assets/sounds/gameplay/railring.ogg" id="6_6reie"]
 [ext_resource type="FontFile" uid="uid://7m4vhh4738ar" path="res://assets/images/hud/powerscounter.png" id="6_c2p2b"]
 [ext_resource type="Shader" uid="uid://8rcyn51imi8r" path="res://assets/shaders/screen/colorMod.gdshader" id="7_l10d1"]
+[ext_resource type="AudioStream" uid="uid://by43f72wxgt2h" path="res://assets/sounds/gameplay/barrelroll.ogg" id="7_rof2u"]
 [ext_resource type="Texture2D" uid="uid://bvnaovxwoc6a8" path="res://assets/images/hud/lira_empty.png" id="7_uuhey"]
 [ext_resource type="Texture2D" uid="uid://dsuf8fdy3wmbv" path="res://assets/images/hud/lira_prog.png" id="8_qg2ls"]
 [ext_resource type="AudioStream" uid="uid://bnpvn00oye0bc" path="res://assets/sounds/ui/levelup.ogg" id="12_u4v7s"]
@@ -187,6 +188,11 @@ bus = &"Ambience"
 stream = ExtResource("6_6reie")
 volume_db = -18.881
 max_polyphony = 6
+bus = &"SFX"
+
+[node name="Barrelroll" type="AudioStreamPlayer" parent="Objects/Ship"]
+stream = ExtResource("7_rof2u")
+max_polyphony = 2
 bus = &"SFX"
 
 [node name="ShootLines" type="Node3D" parent="Objects/Ship"]
