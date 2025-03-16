@@ -4,11 +4,22 @@
 
 [node name="ship" instance=ExtResource("1_78wjo")]
 
-[node name="Plane" parent="." index="0"]
-transform = Transform3D(-0.529487, -0.848318, 0, 0.848318, -0.529487, 0, 0, 0, 0.247972, 5.85801, 2.17583, 0)
-
-[node name="Cone_001" parent="." index="1"]
+[node name="Cone_001" parent="." index="0"]
 transform = Transform3D(0.183586, -0.0717852, -0.169657, -0.191237, 0.190467, -0.157266, 0.0546822, 0.907114, 0.0195951, -1.26162, 0.140988, 6.60379)
 
-[node name="Cone" parent="." index="2"]
+[node name="Cone" parent="." index="1"]
 transform = Transform3D(-0.181261, -0.0863157, 0.172527, -0.182445, 0.190671, -0.165449, -0.0211663, -0.904335, -0.0513506, -1.41079, 0.140988, -6.57135)
+
+[node name="Armature" parent="." index="2"]
+transform = Transform3D(-1.50151, 0.420121, 0, -0.420121, -1.50151, 0, 0, 0, 1.55918, 2.64807, 2.47623, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/11/rotation = Quaternion(-0.0677413, -0.0424325, 0.0685121, 0.994443)
+bones/12/rotation = Quaternion(0.523846, -8.07923e-08, 0.0900343, 0.847041)
+bones/16/rotation = Quaternion(0.058804, 0.05122, 0.123561, 0.989268)
+bones/21/rotation = Quaternion(0.179333, -0.0407556, 0.131993, 0.974041)
+bones/22/rotation = Quaternion(-0.295297, 0.0156656, -0.591761, 0.749915)
+bones/26/rotation = Quaternion(-0.175509, 0.00357204, 0.0574837, 0.982792)
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "ArmatureAction"

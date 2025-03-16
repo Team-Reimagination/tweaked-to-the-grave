@@ -1,9 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=20 format=3 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
 [ext_resource type="PackedScene" uid="uid://b56b0d2gngc5i" path="res://assets/objects/general/ship/ship.tscn" id="1_wtpd3"]
 [ext_resource type="Texture2D" uid="uid://drky0bx8pl5hu" path="res://assets/images/levels/SHR/floor.png" id="2_lovw6"]
+[ext_resource type="Script" uid="uid://d0y83okyn781q" path="res://assets/scenes/play_state/hud.gd" id="5_fmn5d"]
+[ext_resource type="Texture2D" uid="uid://crlf2306tx65u" path="res://assets/images/hud/powersicon.png" id="5_km3m7"]
+[ext_resource type="AudioStream" uid="uid://b0lq3d8lgrxpf" path="res://assets/sounds/ambience/stampede_amb.ogg" id="5_m3iyk"]
+[ext_resource type="FontFile" uid="uid://7m4vhh4738ar" path="res://assets/images/hud/powerscounter.png" id="6_c2p2b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7wmb"]
 sky_top_color = Color(0.382845, 0.629386, 1, 1)
@@ -133,6 +137,14 @@ script = ExtResource("1_oi2qx")
 transform = Transform3D(1, 0, 1.77636e-13, 0, 1, 0, -1.77636e-13, 0, 1, -0.149689, -0.121717, -0.0356116)
 shape = SubResource("BoxShape3D_oi2qx")
 debug_color = Color(0, 0.741176, 1, 1)
+metadata/type = "player"
+
+[node name="Ambience" type="AudioStreamPlayer3D" parent="Objects/Ship"]
+stream = ExtResource("5_m3iyk")
+max_db = -10.0
+pitch_scale = 0.18
+autoplay = true
+bus = &"Ambience"
 
 [node name="Chunk References For Future" type="Node3D" parent="."]
 transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -48)
@@ -157,3 +169,17 @@ skeleton = NodePath("../..")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 3
+script = ExtResource("5_fmn5d")
+
+[node name="Bag" type="Sprite2D" parent="HUD"]
+position = Vector2(1196, 862)
+texture = ExtResource("5_km3m7")
+
+[node name="Powers" type="Label" parent="HUD"]
+offset_left = 696.0
+offset_top = 853.0
+offset_right = 1216.0
+offset_bottom = 928.0
+theme_override_fonts/font = ExtResource("6_c2p2b")
+text = "1234567890"
+horizontal_alignment = 2
