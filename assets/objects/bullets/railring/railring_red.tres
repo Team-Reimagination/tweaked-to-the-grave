@@ -6,3 +6,7 @@ metallic = 1.0
 metallic_specular = 0.86
 roughness = 0.5
 refraction_enabled = true
+proximity_fade_distance = 100.0
+distance_fade_mode = 3
+distance_fade_min_distance = 2.5
+distance_fade_max_distance = 7.5

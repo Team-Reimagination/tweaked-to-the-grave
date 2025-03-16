@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=31 format=3 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://d0y83okyn781q" path="res://assets/scenes/play_state/hud.gd" id="5_fmn5d"]
 [ext_resource type="Texture2D" uid="uid://crlf2306tx65u" path="res://assets/images/hud/powersicon.png" id="5_km3m7"]
 [ext_resource type="AudioStream" uid="uid://b0lq3d8lgrxpf" path="res://assets/sounds/ambience/stampede_amb.ogg" id="5_m3iyk"]
+[ext_resource type="AudioStream" uid="uid://chmlr1hxcscp1" path="res://assets/sounds/gameplay/railring.ogg" id="6_6reie"]
 [ext_resource type="FontFile" uid="uid://7m4vhh4738ar" path="res://assets/images/hud/powerscounter.png" id="6_c2p2b"]
 [ext_resource type="Shader" uid="uid://8rcyn51imi8r" path="res://assets/shaders/screen/colorMod.gdshader" id="7_l10d1"]
 [ext_resource type="Texture2D" uid="uid://bvnaovxwoc6a8" path="res://assets/images/hud/lira_empty.png" id="7_uuhey"]
@@ -161,7 +162,7 @@ skeleton = NodePath("")
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="Ship" type="CharacterBody3D" parent="Objects"]
-transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 0.0286674, 4.76837e-07, -20.0608)
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 0, 0, -20.061)
 motion_mode = 1
 slide_on_ceiling = false
 floor_max_angle = 3.14159
@@ -178,9 +179,29 @@ metadata/type = "player"
 
 [node name="Ambience" type="AudioStreamPlayer3D" parent="Objects/Ship"]
 stream = ExtResource("5_m3iyk")
-max_db = -15.0
+max_db = -10.0
 pitch_scale = 0.18
 bus = &"Ambience"
+
+[node name="Shot" type="AudioStreamPlayer" parent="Objects/Ship"]
+stream = ExtResource("6_6reie")
+volume_db = -18.881
+max_polyphony = 6
+bus = &"SFX"
+
+[node name="ShootLines" type="Node3D" parent="Objects/Ship"]
+
+[node name="1" type="Marker3D" parent="Objects/Ship/ShootLines"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 11.2765, -1.28679, 4.91736e-07)
+metadata/levelConstrain = PackedInt32Array(1, 3)
+
+[node name="2" type="Marker3D" parent="Objects/Ship/ShootLines"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -1.06581e-14, 0, 1.48976, 7.51899, -1.40075, -1.40902)
+metadata/levelConstrain = PackedInt32Array(2, 3)
+
+[node name="3" type="Marker3D" parent="Objects/Ship/ShootLines"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -1.06581e-14, 0, 1.48976, 7.51982, -1.40075, 1.41361)
+metadata/levelConstrain = PackedInt32Array(2, 3)
 
 [node name="Chunk References For Future" type="Node3D" parent="."]
 transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -48)
@@ -250,15 +271,16 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_rof2u")
 
 [node name="LevelText" type="Label" parent="HUD/LiraGroup"]
-offset_left = 1179.0
+offset_left = 1167.0
 offset_top = 513.0
-offset_right = 1257.0
+offset_right = 1268.0
 offset_bottom = 557.0
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("14_yewxg")
 theme_override_font_sizes/font_size = 32
-text = "LV 0"
+text = "LV 10"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LevelUp" type="AudioStreamPlayer2D" parent="HUD/LiraGroup"]
 stream = ExtResource("12_u4v7s")

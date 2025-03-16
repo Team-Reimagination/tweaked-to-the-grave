@@ -39,6 +39,12 @@ movie_writer/movie_file="D:/Videos/tttg.avi"
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
+[global_group]
+
+Entity="Gameplay Objects that can fade in and out with distance"
+Enemy="This will damage the player if touching them"
+Ally="This will damage any enemy if touching them"
+
 [input]
 
 Left_UI={
@@ -124,6 +130,10 @@ Shoot_GP={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="harm"
 
 [rendering]
 

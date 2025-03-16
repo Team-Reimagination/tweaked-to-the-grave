@@ -33,20 +33,18 @@ func _ready() -> void:
 		buildLevel();
 		
 	#LIRA FORMULA
-	lvl()
+	levelUpLira()
 
-static func levelUpLiraFormula(lv):
+func levelUpLiraFormula(lv):
 	return 25*(pow(lv, 2) - lv + 2)
 	
-func lvl():
-	levelUpLira()
-	$HUD.levelUpLira()
-	player.levelUpLira()
-	
-static func levelUpLira():
+func levelUpLira():
 	liraLevel += 1
 	liraPGR = liraPGR - liraMax;
 	liraMax = levelUpLiraFormula(liraLevel)
+	
+	$HUD.levelUpLira()
+	player.levelUpLira()
 
 @onready var btmF = $Floor
 @onready var topF = $Sky
@@ -133,4 +131,11 @@ func _process(delta: float) -> void:
 		
 	#LIRA LEVEL
 	if liraPGR >= liraMax and liraLevel < 10:
-		lvl()
+		levelUpLira()
+	
+func spawnOBJ(obj):
+	$Objects.add_child(obj)
+
+func entityProcess(obj):
+	if obj.position.z > 0:
+		obj.queue_free()

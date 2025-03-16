@@ -58,5 +58,5 @@ func process_button():
 		scene.canInput = false
 		if selectedButton == 0:
 			var instance = stageSel.instantiate()
-			scene.add_sibling(instance)
-			#get_tree().change_scene_to_file("res://assets/scenes/play_state/play_state.tscn")
+			#scene.add_sibling(instance)
+			get_tree().change_scene_to_file("res://assets/scenes/play_state/play_state.tscn")

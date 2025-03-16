@@ -29,27 +29,28 @@ var barrelMod = 1.0;
 
 #Weapon
 var levelTable = {
-	1: [2.0, 32.0, 1],
-	2: [1.75, 32.0, 1],
-	3: [1.75, 40.0, 1],
-	4: [1.5, 40.0, 1],
-	5: [1.5, 40.0, 2],
-	6: [1.25, 48.0, 2],
-	7: [1.25, 56.0, 2],
-	8: [1, 56.0, 2],
-	9: [1, 56.0, 2],
-	10: [0.75, 56.0, 3],
+	1: [0.5, 32.0, 1],
+	2: [0.45, 32.0, 1],
+	3: [0.45, 40.0, 1],
+	4: [0.4, 40.0, 1],
+	5: [0.4, 40.0, 2],
+	6: [0.3, 48.0, 2],
+	7: [0.3, 56.0, 2],
+	8: [0.2, 56.0, 2],
+	9: [0.2, 56.0, 2],
+	10: [0.1, 56.0, 3],
 }
 var bltCLD = 0.0;
 var bltPWR = 0.0
 var bltCNT = 0
 var canShoot = true;
+var blt = preload("res://assets/objects/bullets/railring/railring.tscn")
 
 func _ready() -> void:
 	$Ambience.play()
 
 func levelUpLira():
-	if levelTable[scene.liraLevel] != null:
+	if levelTable[scene.liraLevel]:
 		bltCLD = levelTable[scene.liraLevel][0]
 		bltPWR = levelTable[scene.liraLevel][1]
 		bltCNT = levelTable[scene.liraLevel][2]
@@ -88,13 +89,17 @@ func handleInput():
 			(upDown < 0 && boundForcefield[2] >= 1.0)
 			or
 			(upDown > 0 && boundForcefield[3] >= 1.0)
-			):
+		):
 			action = "barrel"
 			velocity.x = maxVel * boundForcefield[1] if leftRight > 0 else -maxVel * boundForcefield[0] * abs(leftRight)
 			velocity.y = maxVel * boundForcefield[3] if upDown > 0 else -maxVel * boundForcefield[2] * abs(upDown)
 			decel *= barrelDecelMod
 			barrelSpin = 360 * 2 * (-1 if leftRight > 0 or upDown > 0 else 1)
 			barrelMod = 1.0
+			
+		if Input.is_action_pressed("Shoot_GP") and canShoot:
+			shoot()
+
 	elif (action == "barrel"):
 		if abs(barrelMod) < 0.5:
 			action = "fly"
@@ -139,3 +144,18 @@ func handleMovement(delta):
 		self.rotation_degrees.x = barrelSpin * barrelMod
 		barrelMod = lerp(barrelMod, 0.0, 0.03)
 		self.rotation_degrees.z = 0;
+
+func shoot():
+	canShoot = false;
+	
+	var shootFromWhere = $"ShootLines".get_children(true).filter(func(x): return x.get_meta("levelConstrain").has(bltCNT))
+	$Shot.play()
+	
+	for spot in shootFromWhere:
+		var bull = blt.instantiate()
+		bull.set_meta("power", bltPWR)
+		bull.set_meta("spawnPosition", spot.global_position)
+		scene.spawnOBJ(bull)
+	
+	await get_tree().create_timer(bltCLD).timeout
+	canShoot = true;

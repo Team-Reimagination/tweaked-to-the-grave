@@ -1833,6 +1833,12 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/objects/general/ship/Material.tres"
+}
 }
 }
 gltf/naming_version=1

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cheantbka3twt" path="res://assets/objects/general/ship/ship.glb" id="1_78wjo"]
 
-[node name="ship" instance=ExtResource("1_78wjo")]
+[node name="ship" groups=["Entity"] instance=ExtResource("1_78wjo")]
 
 [node name="Cone_001" parent="." index="0"]
 transform = Transform3D(0.183586, -0.0717852, -0.169657, -0.191237, 0.190467, -0.157266, 0.0546822, 0.907114, 0.0195951, -1.26162, 0.140988, 6.60379)
