@@ -12,6 +12,12 @@ static var vertOffset = rotateBound;
 const PATH_LEVELS : String = 'res://assets/data/'
 static var levelDefs;
 
+#POWERS
+static var TRUElira:int = 0;
+static var liraPGR:int = 0;
+static var liraMax:int = 0;
+static var liraLevel:int = 0;
+
 func _ready() -> void:
 	#PREPARE LEVEL
 	if !PlayGlobals.levelDefs:
@@ -25,7 +31,18 @@ func _ready() -> void:
 	else:
 		levelDefs = PlayGlobals.levelDefs
 		buildLevel();
+		
+	#LIRA FORMULA
+	levelUpLira()
+
+static func levelUpLiraFormula(lv):
+	return 25*(pow(lv, 2) - lv + 2)
 	
+static func levelUpLira():
+	liraLevel += 1
+	liraPGR = liraPGR - liraMax;
+	liraMax = levelUpLiraFormula(liraLevel)
+
 @onready var btmF = $Floor
 @onready var topF = $Sky
 @onready var sun = $Sun
@@ -108,3 +125,7 @@ func _process(delta: float) -> void:
 	if (abs(player.position.y) >= vertOffset):
 		camera.v_offset = clampf(((vertOffset + player.position.y) if player.position.y < 0.0 else (player.position.y - vertOffset)) * 1.2, -maxBoundMod, maxBoundMod)
 		camera.rotation.x = camera.v_offset / -80
+		
+	#LIRA LEVEL
+	if liraPGR >= liraMax:
+		levelUpLira()
