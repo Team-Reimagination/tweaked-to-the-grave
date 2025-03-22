@@ -2,27 +2,33 @@ extends Node3D
 
 @onready var player = $Objects/Ship;
 @onready var camera = $Camera;
+@onready var shaders = $Shaders;
+
+var gameOverState = preload("res://assets/scenes/[SUB-SCENES]/game_over/game_over.tscn")
 
 #BOUND VARIABLES
-static var rotateBound = 13;
-static var maxBoundMod = 20;
-static var vertOffset = rotateBound;
+var rotateBound = 13;
+var maxBoundMod = 20;
+var vertOffset = rotateBound;
 
 #LEVEL VARIABLES
 const PATH_LEVELS : String = 'res://assets/data/'
 static var levelDefs;
 
 #POWERS
-static var TRUElira:int = 0;
-static var liraPGR:int = 0;
-static var liraMax:int = 0;
-static var liraLevel:int = 0;
+var TRUElira:int = 0;
+var liraPGR:int = 0;
+var liraMax:int = 0;
+var liraLevel:int = 0;
 
 #HEALTH
-static var levelNum = 0;
-static var lives = 3;
-static var player_health = 3;
-static var boss_health = 1200;
+static var levelNum:int = 0;
+var lives:int = 1;
+var player_health:int = 3;
+var boss_health:float = 1200;
+var cur_boss_health:float = 1200;
+
+var isWarning = false
 
 func _ready() -> void:
 	#PREPARE LEVEL
@@ -40,7 +46,10 @@ func _ready() -> void:
 		buildLevel();
 		
 	#LIRA FORMULA
-	if TRUElira == 0: levelUpLira()
+	if liraLevel == 0: levelUpLira()
+	else:
+		$HUD.levelUpLira()
+		player.levelUpLira()
 
 func levelUpLiraFormula(lv):
 	return 25*(pow(lv, 2) - lv + 2)
@@ -52,6 +61,45 @@ func levelUpLira():
 	
 	$HUD.levelUpLira()
 	player.levelUpLira()
+	
+func restartHealth():
+	player_health = 3
+	
+func hurtPlayer():
+	player_health -= 1
+	
+	if player_health > 0:
+		camera.shake(5.0, 1.0)
+		$HUD.hurtPlayer()
+		player.hurtPlayer()
+	else:
+		isWarning = false
+		lives -= 1
+		camera.shake(15.0, 2.0)
+		$HUD.loseLife()
+		player.loseLife()
+		
+	if lives <= 0:
+		gameOver()
+		$HUD.gameOver()
+		player.gameOver()
+		
+func gameOver():
+	var musicFade = get_tree().create_tween()
+	musicFade.tween_property($Audio/Music, "pitch_scale", 0.00000001, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	var speedTween = get_tree().create_tween()
+	speedTween.tween_property(self, "scrollSpeed", 0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	await get_tree().create_timer(0.5).timeout
+	shaders.gameOver()
+	$Audio/HeatStroke.play()
+	
+	await get_tree().create_timer(3.5).timeout
+	
+	var gama = gameOverState.instantiate()
+	add_sibling(gama)
+	get_tree().paused = true
 
 @onready var btmF = $Floor
 @onready var topF = $Sky
@@ -116,6 +164,14 @@ func buildLevel():
 	bg.environment.fog_depth_begin = levelDefs.fog.distance.start
 	bg.environment.fog_depth_end = levelDefs.fog.distance.end
 	bg.environment.fog_depth_curve = levelDefs.fog.distance.curve
+	
+	#HEALTH
+	boss_health = levelDefs.bosshealth
+	cur_boss_health = boss_health
+	
+	#MUSIC
+	$Audio/Music.stream = load("res://assets/music/levels/"+PlayGlobals.levelID+".ogg")
+	$Audio/Music.play()
 
 func _process(delta: float) -> void:
 	
@@ -144,6 +200,11 @@ func _process(delta: float) -> void:
 	#LIRA LEVEL
 	if liraPGR >= liraMax and liraLevel < 10:
 		levelUpLira()
+		
+	#WARNING
+	$Audio/Warning.volume_db = lerpf($Audio/Warning.volume_db, 10 if isWarning else -80, 0.3)
+	if (player_health == 1 or lives == 1) and not isWarning:
+		isWarning = true
 	
 func spawnOBJ(obj):
 	$Objects.add_child(obj)

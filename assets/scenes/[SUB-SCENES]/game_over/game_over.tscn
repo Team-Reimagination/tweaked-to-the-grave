@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5y0yek0jbdjp"]
+
+[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="1_l2xgx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5widj"]
+font = ExtResource("1_l2xgx")
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="CanvasLayer"]
+process_mode = 2
+layer = 4
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -22.0
+offset_right = 320.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "YOU GOT A HEAT STROKE!"
+label_settings = SubResource("LabelSettings_5widj")
+horizontal_alignment = 1
+vertical_alignment = 1

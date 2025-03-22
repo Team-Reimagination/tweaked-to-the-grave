@@ -3,6 +3,8 @@ extends CharacterBody3D
 @onready var scene = $"../.."
 
 var action = "fly"
+var canBeHit = true
+var canInput = true
 
 # movement speed
 var speed = 50;
@@ -64,47 +66,67 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func handleInput():
-	if (action == "fly"):
-		leftRight = Input.get_axis("Left_GP", "Right_GP")
-		upDown = Input.get_axis("Down_GP", "Up_GP")
-		
-		if (abs(leftRight) > 0.00001) :
-			if leftRight < 0: #left
-				accel.x = -speed * (1.0 if accel.x > 0 else turnAroundMod) * abs(leftRight) * boundForcefield[0]
-			if leftRight > 0: #right
-				accel.x = speed * (1.0 if accel.x < 0 else turnAroundMod) * abs(leftRight) * boundForcefield[1]
-				
-		if (abs(upDown) > 0.00001) :
-			if upDown < 0: #down
-				accel.y = -speed * (1.0 if accel.y > 0 else turnAroundMod) * abs(upDown) * boundForcefield[2]
-			if upDown > 0: #up
-				accel.y = speed * (1.0 if accel.y < 0 else turnAroundMod) * abs(upDown) * boundForcefield[3]
-				
-		if Input.is_action_just_pressed("Barrel_GP") and (
-			(leftRight < 0 && boundForcefield[0] >= 1.0)
-			or
-			(leftRight > 0 && boundForcefield[1] >= 1.0)
-			or
-			(upDown < 0 && boundForcefield[2] >= 1.0)
-			or
-			(upDown > 0 && boundForcefield[3] >= 1.0)
-		):
-			$Barrelroll.play()
+	if canInput:
+		if (action == "fly"):
+			leftRight = Input.get_axis("Left_GP", "Right_GP")
+			upDown = Input.get_axis("Down_GP", "Up_GP")
 			
-			action = "barrel"
-			velocity.x = maxVel * boundForcefield[1] if leftRight > 0 else -maxVel * boundForcefield[0] * abs(leftRight)
-			velocity.y = maxVel * boundForcefield[3] if upDown > 0 else -maxVel * boundForcefield[2] * abs(upDown)
-			decel *= barrelDecelMod
-			barrelSpin = 360 * 2 * (-1 if leftRight > 0 or upDown > 0 else 1)
-			barrelMod = 1.0
-			
-		if Input.is_action_pressed("Shoot_GP") and canShoot:
-			shoot()
+			if (abs(leftRight) > 0.00001) :
+				if leftRight < 0: #left
+					accel.x = -speed * (1.0 if accel.x > 0 else turnAroundMod) * abs(leftRight) * boundForcefield[0]
+				if leftRight > 0: #right
+					accel.x = speed * (1.0 if accel.x < 0 else turnAroundMod) * abs(leftRight) * boundForcefield[1]
+					
+			if (abs(upDown) > 0.00001) :
+				if upDown < 0: #down
+					accel.y = -speed * (1.0 if accel.y > 0 else turnAroundMod) * abs(upDown) * boundForcefield[2]
+				if upDown > 0: #up
+					accel.y = speed * (1.0 if accel.y < 0 else turnAroundMod) * abs(upDown) * boundForcefield[3]
+					
+			if Input.is_action_just_pressed("Barrel_GP") and (
+				(leftRight < 0 && boundForcefield[0] >= 1.0)
+				or
+				(leftRight > 0 && boundForcefield[1] >= 1.0)
+				or
+				(upDown < 0 && boundForcefield[2] >= 1.0)
+				or
+				(upDown > 0 && boundForcefield[3] >= 1.0)
+			):
+				$Barrelroll.play()
+				$Barrelroll.pitch_scale = randf_range(0.75,1.25)
+				
+				action = "barrel"
+				velocity.x = maxVel * boundForcefield[1] if leftRight > 0 else -maxVel * boundForcefield[0] * abs(leftRight)
+				velocity.y = maxVel * boundForcefield[3] if upDown > 0 else -maxVel * boundForcefield[2] * abs(upDown)
+				decel *= barrelDecelMod
+				barrelSpin = 360 * 2 * (-1 if leftRight > 0 or upDown > 0 else 1)
+				barrelMod = 1.0
+				
+			if Input.is_action_pressed("Shoot_GP") and canShoot:
+				shoot()
+				
+		#DEBUG FUNCS
+		if Input.is_physical_key_pressed(KEY_BACKSPACE) and canBeHit: 
+			scene.hurtPlayer()
 
-	elif (action == "barrel"):
-		if abs(barrelMod) < 0.5:
-			action = "fly"
-			decel /= barrelDecelMod
+		elif (action == "barrel"):
+			if abs(barrelMod) < 0.5:
+				action = "fly"
+				quitBarrel()
+				
+		elif (action == "hurt"):
+			if hurtSpinMod < 0.5:
+				action = "fly"
+				invincibilityFrames()
+
+var hurtSpin:float = 0;
+var hurtSpinMod:float = 0;
+
+func gameOver():
+	pass
+
+func quitBarrel():
+	decel /= barrelDecelMod
 
 func handleMovement(delta):
 	boundForcefield = [1.0, 1.0, 1.0, 1.0]
@@ -112,18 +134,18 @@ func handleMovement(delta):
 	if (abs(self.position.x) >= scene.rotateBound):
 		if (self.position.x < 0):
 			boundForcefield[0] = max(1.0 + (scene.rotateBound + self.position.x)/(scene.maxBoundMod/1.5), 0)
-			if (leftRight < 0): velocity.x *= boundForcefield[0]
+			if (leftRight < 0 or (action == 'hurt' and boundForcefield[0] < 1.0)): velocity.x *= boundForcefield[0]
 		else:
 			boundForcefield[1] = max(1.0 - (self.position.x - scene.rotateBound)/(scene.maxBoundMod/1.5), 0)
-			if (leftRight > 0): velocity.x *= boundForcefield[1]
+			if (leftRight > 0 or (action == 'hurt' and boundForcefield[1] < 1.0)): velocity.x *= boundForcefield[1]
 			
 	if (abs(self.position.y) >= scene.vertOffset):
 		if (self.position.y < 0):
 			boundForcefield[2] = max(1.0 + (scene.vertOffset + self.position.y)/(scene.maxBoundMod/1.5), 0)
-			if (upDown < 0): velocity.y *= boundForcefield[2]
+			if (upDown < 0 or (action == 'hurt' and boundForcefield[2] < 1.0)): velocity.y *= boundForcefield[2]
 		else:
 			boundForcefield[3] = max(1.0 - (self.position.y - scene.vertOffset)/(scene.maxBoundMod/1.5), 0)
-			if (upDown > 0): velocity.y *= boundForcefield[3]
+			if (upDown > 0 or (action == 'hurt' and boundForcefield[3] < 1.0)): velocity.y *= boundForcefield[3]
 	
 	if accel != Vector3.ZERO:
 		velocity += accel * delta;
@@ -132,19 +154,25 @@ func handleMovement(delta):
 			if (abs(velocity[i]) > maxVel): velocity[i] = maxVel if velocity[i] > 0 else -maxVel
 			if (abs(velocity[i]) > topVel): velocity[i] = lerpf(velocity[i], (topVel if velocity[i] > 0 else -topVel), 0.3)
 		
-	for i in ["x", "y", "z"]:
-		if abs(accel[i]) < 0.0001:
-			velocity[i] = max(0.0, velocity[i] - decel * delta) if velocity[i] > 0 else min(0.0, velocity[i] + decel * delta)
+	if action != "hurt" and action != 'explode':
+		for i in ["x", "y", "z"]:
+			if abs(accel[i]) < 0.0001:
+				velocity[i] = max(0.0, velocity[i] - decel * delta) if velocity[i] > 0 else min(0.0, velocity[i] + decel * delta)
 	
 	self.rotation_degrees.y = 90
 	
-	if (action == "fly"):
+	if action == "fly":
 		self.rotation_degrees.x = lerpf(self.rotation_degrees.x, velocity.x * 0.9, 0.15);
 		self.rotation_degrees.z = lerpf(self.rotation_degrees.z, velocity.y * 0.9, 0.15);
-	elif (action == "barrel"):
+	elif action == "barrel":
 		self.rotation_degrees.x = barrelSpin * barrelMod
 		barrelMod = lerp(barrelMod, 0.0, 0.03)
-		self.rotation_degrees.z = 0;
+		self.rotation_degrees.z = lerpf(self.rotation_degrees.z, 0, 0.15);
+	elif action == "hurt":
+		hurtSpin += delta*25
+		hurtSpinMod = lerpf(hurtSpinMod, 0.0, 0.05)
+		self.rotation_degrees.z = lerpf(self.rotation_degrees.z, 0, 0.15);
+		self.rotation_degrees.x = sin(hurtSpin) * hurtSpinMod
 
 var blt = preload("res://assets/objects/bullets/railring/railring.tscn")
 func shoot():
@@ -152,6 +180,7 @@ func shoot():
 	
 	var shootFromWhere = $"ShootLines".get_children(true).filter(func(x): return x.get_meta("levelConstrain").has(bltCNT))
 	$Shot.play()
+	$Shot.pitch_scale = randf_range(0.75,1.25)
 	
 	for spot in shootFromWhere:
 		var bull = blt.instantiate()
@@ -161,3 +190,63 @@ func shoot():
 	
 	await get_tree().create_timer(bltCLD).timeout
 	canShoot = true;
+
+func hurtPlayer():
+	if action == "barrel":
+		decel /= barrelDecelMod
+		
+	canBeHit = false
+	action = "hurt"
+	hurtSpin = 0;
+	hurtSpinMod = 25;
+	
+	$Hurt.play()
+	$Hurt.pitch_scale = randf_range(0.85,1.15)
+	
+	velocity = -velocity
+	if velocity == Vector3.ZERO: 
+		velocity = Vector3(randf_range(-5,5),randf_range(-5,5),0)
+		
+	for i in ["x", "y", "z"]:
+		velocity[i] = clampf(velocity[i], -5.0, 5.0)
+	
+	accel = Vector3.ZERO
+	
+func loseLife():
+	if action == "barrel":
+		decel /= barrelDecelMod
+		
+	canBeHit = false
+	action = "explode"
+	velocity = Vector3.ZERO
+	accel = Vector3.ZERO
+	
+	$Ambience.stop()
+	
+	self.rotation_degrees.z = 0
+	self.rotation_degrees.x = 0
+	self.visible = false
+	
+	$Explode.play()
+	
+	if (scene.lives > 0):
+		await get_tree().create_timer(1.5).timeout
+		action = "fly"
+		
+		scene.restartHealth()
+		$"../../HUD".restartHealth()
+		
+		$Ambience.play()
+		invincibilityFrames()
+
+func invincibilityFrames(isVisible = true):
+	$"../../HUD".updateIcon()
+	
+	self.visible = not self.visible
+	for num in range(13):
+		await get_tree().create_timer(0.1).timeout
+		self.visible = not self.visible
+	
+	self.visible = isVisible
+
+	canBeHit = true
