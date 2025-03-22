@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@onready var scene = self.get_parent().get_parent();
+@onready var scene = $"../.."
 
 var action = "fly"
 
@@ -44,7 +44,6 @@ var bltCLD = 0.0;
 var bltPWR = 0.0
 var bltCNT = 0
 var canShoot = true;
-var blt = preload("res://assets/objects/bullets/railring/railring.tscn")
 
 func _ready() -> void:
 	$Ambience.play()
@@ -147,6 +146,7 @@ func handleMovement(delta):
 		barrelMod = lerp(barrelMod, 0.0, 0.03)
 		self.rotation_degrees.z = 0;
 
+var blt = preload("res://assets/objects/bullets/railring/railring.tscn")
 func shoot():
 	canShoot = false;
 	

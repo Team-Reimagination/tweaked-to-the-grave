@@ -13,6 +13,12 @@ var lirsColorTween;
 func _ready() -> void:
 	powerText.text = str(lira)
 	
+	#LIVE TEXT SETUP
+	$HealthGroup/IconSeezee/Lives.text = str(scene.lives)
+	$HealthGroup/IconTweak/Lives.text = str(8 - scene.levelNum)
+	
+	$HealthGroup/IconSeezee.animation = "Heat_"+str(scene.player_health)
+	
 func _on_tree_entered() -> void:
 	liraGroup.material.set("shader_parameter/multipliers", [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
 	

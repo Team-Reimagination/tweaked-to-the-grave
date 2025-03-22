@@ -1,5 +1,6 @@
 {
 	"name": "The Saharaland",
+	"id": 0,
 	"speed": 3.5,
 	"floor": {
 		"texture": "floor",

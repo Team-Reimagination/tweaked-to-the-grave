@@ -18,12 +18,19 @@ static var liraPGR:int = 0;
 static var liraMax:int = 0;
 static var liraLevel:int = 0;
 
+#HEALTH
+static var levelNum = 0;
+static var lives = 3;
+static var player_health = 3;
+static var boss_health = 1200;
+
 func _ready() -> void:
 	#PREPARE LEVEL
 	if !PlayGlobals.levelDefs:
 		if FileAccess.file_exists(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json'):
 			PlayGlobals.levelDefs = JSON.parse_string(FileAccess.open(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json', FileAccess.READ).get_as_text())
 			levelDefs = PlayGlobals.levelDefs
+			levelNum = levelDefs.id
 			
 			buildLevel();
 		else :
@@ -33,7 +40,7 @@ func _ready() -> void:
 		buildLevel();
 		
 	#LIRA FORMULA
-	levelUpLira()
+	if TRUElira == 0: levelUpLira()
 
 func levelUpLiraFormula(lv):
 	return 25*(pow(lv, 2) - lv + 2)
@@ -53,6 +60,11 @@ func levelUpLira():
 var scrollSpeed = 0;
 var scrollModFLOOR
 var scrollModSKY
+
+func preloadShit():
+	var bull = await $ResourcePreloader.get_resource("railring").instantiate()
+	add_child(bull)
+	bull.hide()
 
 func buildLevel():
 	#SCROLL SPEED

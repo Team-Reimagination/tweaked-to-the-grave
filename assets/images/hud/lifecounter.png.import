@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://bfrysyfaih6em"
+path="res://.godot/imported/lifecounter.png-4f3fa743aa27aec10b18449adde588c6.fontdata"
+
+[deps]
+
+source_file="res://assets/images/hud/lifecounter.png"
+dest_files=["res://.godot/imported/lifecounter.png-4f3fa743aa27aec10b18449adde588c6.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("\'0\'-\'9\'")
+kerning_pairs=PackedStringArray()
+columns=10
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

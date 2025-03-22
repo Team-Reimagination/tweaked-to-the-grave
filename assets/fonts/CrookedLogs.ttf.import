@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/CrookedLogs.ttf-392b23c100d496242451fb7691f75
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
