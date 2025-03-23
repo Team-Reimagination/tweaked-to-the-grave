@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://8rcyn51imi8r" path="res://assets/shaders/screen/colorMod.gdshader" id="1_207sq"]
 [ext_resource type="Texture2D" uid="uid://b7vn3l5hout6v" path="res://assets/images/menu/ssb_splash.png" id="1_cykml"]
 [ext_resource type="Script" uid="uid://b4ji8nmev168b" path="res://assets/scenes/sbb_splash/sbb_splash.gd" id="1_kqa8s"]
-[ext_resource type="AudioStream" uid="uid://rt6fubeg7n0k" path="res://assets/sounds/ui/sbb_splash.ogg" id="2_iw4xc"]
+[ext_resource type="AudioStream" uid="uid://rt6fubeg7n0k" path="res://assets/sounds/menu/sbb_splash.ogg" id="2_iw4xc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_207sq"]
 shader = ExtResource("1_207sq")

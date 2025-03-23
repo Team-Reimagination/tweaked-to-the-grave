@@ -1,4 +1,4 @@
-[gd_scene load_steps=219 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=220 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://drwspvnf78q74" path="res://assets/images/hud/seezee_health1.png" id="25_is55c"]
 [ext_resource type="Texture2D" uid="uid://nykqkvm46il3" path="res://assets/images/hud/tweak_health_empty.png" id="28_3g363"]
 [ext_resource type="Texture2D" uid="uid://dwuspjgaqy5i5" path="res://assets/images/hud/tweak_health_full.png" id="29_f74kq"]
+[ext_resource type="AudioStream" uid="uid://0adjqms8ojjl" path="res://assets/sounds/ui/moneyloss.ogg" id="29_o5i65"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7wmb"]
 sky_top_color = Color(0.382845, 0.629386, 1, 1)
@@ -194,6 +195,7 @@ shader_parameter/outerRadius = 4.0
 shader_parameter/MainAlpha = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qnhqf"]
+resource_local_to_scene = true
 shader = ExtResource("16_agdm6")
 shader_parameter/fireMovement = Vector2(0, 0)
 shader_parameter/distortionStrength = -2.0
@@ -1484,21 +1486,18 @@ script = ExtResource("1_edc5a")
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="Music" type="AudioStreamPlayer2D" parent="Audio"]
-panning_strength = 0.0
+[node name="Music" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -10.0
 bus = &"Music"
 
-[node name="HeatStroke" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="HeatStroke" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("2_qnhqf")
-panning_strength = 0.0
 bus = &"Music"
 
-[node name="Warning" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="Warning" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("2_ngmgm")
 volume_db = -80.0
 autoplay = true
-max_distance = 1000.0
-panning_strength = 0.0
 bus = &"Ambience"
 
 [node name="Background" type="WorldEnvironment" parent="."]
@@ -1567,6 +1566,7 @@ metadata/type = "player"
 
 [node name="Ambience" type="AudioStreamPlayer3D" parent="Objects/Ship"]
 stream = ExtResource("5_m3iyk")
+volume_db = -10.0
 max_db = -10.0
 pitch_scale = 0.18
 bus = &"Ambience"
@@ -1746,6 +1746,12 @@ vertical_alignment = 1
 
 [node name="LevelUp" type="AudioStreamPlayer2D" parent="HUD/LiraGroup"]
 stream = ExtResource("12_u4v7s")
+max_polyphony = 3
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="MoneyLoss" type="AudioStreamPlayer2D" parent="HUD/LiraGroup"]
+stream = ExtResource("29_o5i65")
 max_polyphony = 3
 panning_strength = 0.0
 bus = &"SFX"

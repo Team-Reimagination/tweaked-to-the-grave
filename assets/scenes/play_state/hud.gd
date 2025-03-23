@@ -112,6 +112,29 @@ func loseLife():
 	explosion.visible = true
 	explosion.position = $"../Camera".unproject_position($"../Objects/Ship".position)
 	explosion.play("default")
+	
+	if scene.liraLevel > 1:
+		scene.liraPGR = 0
+		scene.liraLevel = max(1, scene.liraLevel - 3)
+		
+		scene.liraMax = scene.levelUpLiraFormula(scene.liraLevel)
+		liraBar.max_value = scene.liraMax
+		
+		$LiraGroup/LevelText.text = "LV "+str(scene.liraLevel)
+		
+		$LiraGroup/MoneyLoss.play()
+		
+		liraGroup.position.y = 50.0;
+		if liraShakeTween:
+			liraShakeTween.kill()
+		liraShakeTween = get_tree().create_tween()
+		liraShakeTween.tween_property(liraGroup, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+		
+		liraGroup.material.set("shader_parameter/offsets", Vector4(1.0, -1.0, -1.0, 0.0))
+		if liraColorTween:
+			liraColorTween.kill()
+		liraColorTween = get_tree().create_tween()
+		liraColorTween.tween_property(liraGroup.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
 
 func restartHealth():
 	for i in $HealthGroup/HealthSeezee/HealthSteps.get_children():

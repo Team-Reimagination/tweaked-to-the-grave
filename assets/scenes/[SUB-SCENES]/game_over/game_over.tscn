@@ -1,6 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5y0yek0jbdjp"]
+[gd_scene load_steps=15 format=3 uid="uid://c5y0yek0jbdjp"]
 
+[ext_resource type="Texture2D" uid="uid://dbjvyd2xgr18e" path="res://assets/images/gameover/title.png" id="1_5widj"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="1_l2xgx"]
+[ext_resource type="Script" uid="uid://cetnv02v714ge" path="res://assets/scenes/[SUB-SCENES]/game_over/game_over.gd" id="1_wdgj4"]
+[ext_resource type="AudioStream" uid="uid://cqysf106p30yy" path="res://assets/sounds/menu/itssoover.ogg" id="2_rewee"]
+[ext_resource type="AudioStream" uid="uid://8nb2eam1hr8j" path="res://assets/sounds/voice/heat_stroke.wav" id="3_tgttw"]
+[ext_resource type="Script" uid="uid://bwwb20tj2ffaj" path="res://assets/scenes/[SUB-SCENES]/game_over/buttons.gd" id="5_40cmd"]
+[ext_resource type="AudioStream" uid="uid://cbh8wwigbq8b5" path="res://assets/sounds/ui/switch.ogg" id="7_ds4ew"]
+[ext_resource type="Texture2D" uid="uid://be5w8eivou70p" path="res://assets/images/gameover/newtries.png" id="7_tgttw"]
+[ext_resource type="AudioStream" uid="uid://dugb3vpltfpd6" path="res://assets/sounds/ui/select.ogg" id="8_12jm8"]
+[ext_resource type="Texture2D" uid="uid://c7h0obqcrb6a0" path="res://assets/images/gameover/return.png" id="8_od56e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5widj"]
 font = ExtResource("1_l2xgx")
@@ -8,20 +17,61 @@ font_size = 32
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
-[node name="GameOver" type="CanvasLayer"]
-process_mode = 2
-layer = 4
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wdgj4"]
+blend_mode = 1
 
-[node name="Label" type="Label" parent="."]
+[sub_resource type="Gradient" id="Gradient_n1sda"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.325, 0.695)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_40cmd"]
+gradient = SubResource("Gradient_n1sda")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="GameOver" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+
+[node name="NewLayer" type="CanvasLayer" parent="."]
+layer = 4
+script = ExtResource("1_wdgj4")
+
+[node name="SoOver" type="AudioStreamPlayer" parent="NewLayer"]
+stream = ExtResource("2_rewee")
+autoplay = true
+bus = &"Music"
+
+[node name="Stroked" type="AudioStreamPlayer" parent="NewLayer"]
+stream = ExtResource("3_tgttw")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="BG" type="ColorRect" parent="NewLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 227.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Text" type="Label" parent="NewLayer"]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -320.0
-offset_top = -22.0
+offset_top = 42.0
 offset_right = 320.0
-offset_bottom = 22.0
+offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -29,3 +79,57 @@ text = "YOU GOT A HEAT STROKE!"
 label_settings = SubResource("LabelSettings_5widj")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Title" type="Sprite2D" parent="NewLayer"]
+position = Vector2(640, 384)
+scale = Vector2(0.1, 1)
+texture = ExtResource("1_5widj")
+
+[node name="Gradient" type="Sprite2D" parent="NewLayer"]
+material = SubResource("CanvasItemMaterial_wdgj4")
+position = Vector2(640, 384)
+scale = Vector2(0.1, 0.1)
+texture = SubResource("GradientTexture2D_40cmd")
+
+[node name="Buttons" type="Control" parent="NewLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_40cmd")
+
+[node name="Sounds" type="Node" parent="NewLayer/Buttons"]
+
+[node name="Switch" type="AudioStreamPlayer" parent="NewLayer/Buttons/Sounds"]
+stream = ExtResource("7_ds4ew")
+max_polyphony = 10
+bus = &"SFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="NewLayer/Buttons/Sounds"]
+stream = ExtResource("8_12jm8")
+max_polyphony = 10
+bus = &"SFX"
+
+[node name="New Tries" type="TextureButton" parent="NewLayer/Buttons"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 614.0
+offset_right = 574.0
+offset_bottom = 709.0
+pivot_offset = Vector2(233, 47)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_tgttw")
+stretch_mode = 0
+metadata/ID = 0
+
+[node name="Return" type="TextureButton" parent="NewLayer/Buttons"]
+layout_mode = 0
+offset_left = 714.0
+offset_top = 609.0
+offset_right = 1166.0
+offset_bottom = 709.0
+pivot_offset = Vector2(226, 50)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_od56e")
+stretch_mode = 0
+metadata/ID = 1

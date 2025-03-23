@@ -108,6 +108,8 @@ func handleInput():
 		#DEBUG FUNCS
 		if Input.is_physical_key_pressed(KEY_BACKSPACE) and canBeHit: 
 			scene.hurtPlayer()
+			scene.hurtPlayer()
+			scene.hurtPlayer()
 
 		elif (action == "barrel"):
 			if abs(barrelMod) < 0.5:

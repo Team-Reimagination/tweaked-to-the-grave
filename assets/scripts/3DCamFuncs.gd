@@ -1,14 +1,13 @@
 extends Camera3D
 
 var posi = Vector3(0.0,4.0,0.0)
-var roti = Vector3(0.0,0.0,0.0)
 
 var strength = 0.0
 var shakeMod = Vector3.ZERO
 var shakePos = Vector3.ZERO
 
-var rotiMod = Vector3.ZERO
-var rotiPos = Vector3.ZERO
+var rotiMod = 0.0
+var rotiPos = 0.0
 
 func shake(stt, time):
 	strength = stt
@@ -19,14 +18,14 @@ func shake(stt, time):
 func _process(_delta: float) -> void:
 	if strength >= 0.01:
 		shakeMod = Vector3(randf_range(-1,1)*strength, randf_range(-1,1)*strength, 0.0)
-		rotiMod = Vector3(0.0, 0.0, randf_range(-1,1)*strength)
+		rotiMod = randf_range(-1,1)*strength
 		
+		rotiPos = lerpf(rotiPos, rotiMod, 0.25)
 		for i in ["x", "y", "z"]:
 			shakePos[i] = lerpf(shakePos[i], shakeMod[i], 0.5)
-			rotiPos[i] = lerpf(rotiPos[i], rotiMod[i], 0.25)
 	else:
 		if shakePos != Vector3.ZERO: shakePos = Vector3.ZERO
-		if rotiPos != Vector3.ZERO: rotiPos = Vector3.ZERO
+		if rotiPos != 0.0: rotiPos = 0.0
 	
 	position = posi + shakePos
-	rotation_degrees = roti + rotiPos
+	rotation_degrees.z = rotiPos

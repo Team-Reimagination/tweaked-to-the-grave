@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var cam = $Camera
-static var canInput = true;
+var canInput = true;
 
 func _process(_delta: float) -> void:
 	if canInput:

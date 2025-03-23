@@ -5,6 +5,7 @@ extends Node3D
 @onready var shaders = $Shaders;
 
 var gameOverState = preload("res://assets/scenes/[SUB-SCENES]/game_over/game_over.tscn")
+var gama;
 
 #BOUND VARIABLES
 var rotateBound = 13;
@@ -23,7 +24,7 @@ var liraLevel:int = 0;
 
 #HEALTH
 static var levelNum:int = 0;
-var lives:int = 1;
+var lives:int = 3;
 var player_health:int = 3;
 var boss_health:float = 1200;
 var cur_boss_health:float = 1200;
@@ -97,9 +98,13 @@ func gameOver():
 	
 	await get_tree().create_timer(3.5).timeout
 	
-	var gama = gameOverState.instantiate()
+	gama = gameOverState.instantiate()
 	add_sibling(gama)
 	get_tree().paused = true
+	
+func transOut():
+	get_tree().paused = false
+	gama.queue_free()
 
 @onready var btmF = $Floor
 @onready var topF = $Sky
@@ -202,7 +207,7 @@ func _process(delta: float) -> void:
 		levelUpLira()
 		
 	#WARNING
-	$Audio/Warning.volume_db = lerpf($Audio/Warning.volume_db, 10 if isWarning else -80, 0.3)
+	$Audio/Warning.volume_db = lerpf($Audio/Warning.volume_db, -10 if isWarning else -80, 0.3)
 	if (player_health == 1 or lives == 1) and not isWarning:
 		isWarning = true
 	

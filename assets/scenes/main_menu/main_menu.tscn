@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ds181oh1yp62m"]
+[gd_scene load_steps=42 format=3 uid="uid://ds181oh1yp62m"]
 
 [ext_resource type="Texture2D" uid="uid://t55dtlxhtc6l" path="res://assets/images/menu/logo.png" id="1_6o0yw"]
 [ext_resource type="Shader" uid="uid://cs54tgle3j2j5" path="res://assets/shaders/screen/worldCurve.gdshader" id="1_8qhov"]
@@ -11,8 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://bkmgr5lktkomw" path="res://assets/images/menu/buttons/adventure.png" id="7_b43tu"]
 [ext_resource type="Script" uid="uid://c13517oqq03a8" path="res://assets/scripts/hover.gd" id="7_trycp"]
 [ext_resource type="Texture2D" uid="uid://bsh370l44682p" path="res://assets/images/menu/buttons/trophies.png" id="8_6qh68"]
+[ext_resource type="AudioStream" uid="uid://syqw263ncdbw" path="res://assets/sounds/voice/adventure_mode.ogg" id="9_43lun"]
 [ext_resource type="Texture2D" uid="uid://bv4i45hut2g4q" path="res://assets/images/menu/buttons/options.png" id="9_x0mfv"]
 [ext_resource type="Texture2D" uid="uid://c4xro1wlloata" path="res://assets/images/menu/tweaked_hand.png" id="10_x0mfv"]
+[ext_resource type="AudioStream" uid="uid://cbh8wwigbq8b5" path="res://assets/sounds/ui/switch.ogg" id="12_43lun"]
+[ext_resource type="AudioStream" uid="uid://dugb3vpltfpd6" path="res://assets/sounds/ui/select.ogg" id="13_f2eox"]
 
 [sub_resource type="Gradient" id="Gradient_8qhov"]
 offsets = PackedFloat32Array(0, 0.690141)
@@ -298,6 +301,9 @@ texture_normal = ExtResource("7_b43tu")
 stretch_mode = 0
 metadata/ID = 0
 
+[node name="AdventureMode" type="AudioStreamPlayer2D" parent="ParallaxBackground/Grave/Buttons/Adventure"]
+stream = ExtResource("9_43lun")
+
 [node name="Trophies" type="TextureButton" parent="ParallaxBackground/Grave/Buttons"]
 layout_mode = 0
 offset_left = 418.0
@@ -321,6 +327,18 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("9_x0mfv")
 stretch_mode = 0
 metadata/ID = 2
+
+[node name="Sounds" type="Node" parent="ParallaxBackground/Grave/Buttons"]
+
+[node name="Switch" type="AudioStreamPlayer" parent="ParallaxBackground/Grave/Buttons/Sounds"]
+stream = ExtResource("12_43lun")
+max_polyphony = 10
+bus = &"SFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="ParallaxBackground/Grave/Buttons/Sounds"]
+stream = ExtResource("13_f2eox")
+max_polyphony = 10
+bus = &"SFX"
 
 [node name="Hand" type="AnimatedSprite2D" parent="ParallaxBackground/Grave"]
 texture_filter = 1
