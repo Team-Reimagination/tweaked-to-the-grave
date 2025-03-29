@@ -24,14 +24,17 @@ var liraLevel:int = 0;
 
 #HEALTH
 static var levelNum:int = 0;
-var lives:int = 3;
-var player_health:int = 3;
+
+var lives:int = PlayGlobals.lifeCount[0];
+var player_health:int = PlayGlobals.lifeCount[1];
 var boss_health:float = 1200;
 var cur_boss_health:float = 1200;
 
 var isWarning = false
 
 func _ready() -> void:
+	PlayGlobals.applyDifficulty()
+	
 	#PREPARE LEVEL
 	if !PlayGlobals.levelDefs:
 		if FileAccess.file_exists(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json'):
@@ -53,7 +56,7 @@ func _ready() -> void:
 		player.levelUpLira()
 
 func levelUpLiraFormula(lv):
-	return 25*(pow(lv, 2) - lv + 2)
+	return round((25*(pow(lv, 2) - lv + 2))/PlayGlobals.LiraGainSpeed)
 	
 func levelUpLira():
 	liraLevel += 1
@@ -99,12 +102,9 @@ func gameOver():
 	await get_tree().create_timer(3.5).timeout
 	
 	gama = gameOverState.instantiate()
-	add_sibling(gama)
-	get_tree().paused = true
+	PlayGlobals.addSubstate(self, gama)
 	
-func transOut():
-	get_tree().paused = false
-	gama.queue_free()
+	self.process_mode = Node.PROCESS_MODE_DISABLED
 
 @onready var btmF = $Floor
 @onready var topF = $Sky
@@ -203,7 +203,7 @@ func _process(delta: float) -> void:
 		camera.rotation.x = camera.v_offset / -80
 		
 	#LIRA LEVEL
-	if liraPGR >= liraMax and liraLevel < 10:
+	if liraPGR >= liraMax and liraLevel < PlayGlobals.maxLiraLevel:
 		levelUpLira()
 		
 	#WARNING

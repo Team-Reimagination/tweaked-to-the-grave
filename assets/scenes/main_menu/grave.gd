@@ -40,19 +40,20 @@ func _process(_delta: float) -> void:
 	if scene.canInput:
 		if Input.is_action_just_pressed("Up_UI"): 
 			selectedButton = (selectedButton - 1) % 3
+			if selectedButton < 0: selectedButton = 2
 			updateButtonSelection()
-			$Buttons/Sounds/Switch.play()
+			MenuSounds.playMenuSound('switch')
 		elif Input.is_action_just_pressed("Down_UI"):
 			selectedButton = (selectedButton + 1) % 3
 			updateButtonSelection()
-			$Buttons/Sounds/Switch.play()
+			MenuSounds.playMenuSound('switch')
 		
 		if Input.is_action_just_pressed("Accept_UI"):
 			process_button()
 
 func mouse_button(button):
 	if scene.canInput:
-		if selectedButton != button.get_meta("ID", 0): $Buttons/Sounds/Switch.play()
+		if selectedButton != button.get_meta("ID", 0): MenuSounds.playMenuSound('switch')
 		
 		selectedButton = button.get_meta("ID", 0)
 		updateButtonSelection()
@@ -60,10 +61,11 @@ func mouse_button(button):
 func process_button():
 	if scene.canInput:
 		scene.canInput = false
-		$Buttons/Sounds/Select.play()
+		MenuSounds.playMenuSound('select')
 		
 		if selectedButton == 0:
-			$Buttons/Adventure/AdventureMode.play()
 			var instance = stageSel.instantiate()
-			#scene.add_sibling(instance)
-			get_tree().change_scene_to_file("res://assets/scenes/play_state/play_state.tscn")
+			PlayGlobals.addSubstate(scene, instance);
+			
+		await get_tree().create_timer(0.5).timeout
+		$Buttons/Adventure/AdventureMode.play()

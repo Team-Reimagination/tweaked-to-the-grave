@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dohoiocrvynyh"]
+
+[ext_resource type="Script" uid="uid://cdmymtp7oo21v" path="res://assets/scenes/web_check/web_check.gd" id="1_nhcoe"]
+[ext_resource type="Texture2D" uid="uid://bt788kqh8ymjf" path="res://assets/images/web/img.png" id="2_7bqfw"]
+
+[node name="WebCheck" type="Node2D"]
+script = ExtResource("1_nhcoe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7bqfw")
+centered = false
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 470.0
+offset_top = 312.0
+offset_right = 611.0
+offset_bottom = 443.0
+rotation = 0.201658
+mouse_default_cursor_shape = 2

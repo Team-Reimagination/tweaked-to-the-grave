@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5y0yek0jbdjp"]
+[gd_scene load_steps=13 format=3 uid="uid://c5y0yek0jbdjp"]
 
 [ext_resource type="Texture2D" uid="uid://dbjvyd2xgr18e" path="res://assets/images/gameover/title.png" id="1_5widj"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="1_l2xgx"]
@@ -6,9 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cqysf106p30yy" path="res://assets/sounds/menu/itssoover.ogg" id="2_rewee"]
 [ext_resource type="AudioStream" uid="uid://8nb2eam1hr8j" path="res://assets/sounds/voice/heat_stroke.wav" id="3_tgttw"]
 [ext_resource type="Script" uid="uid://bwwb20tj2ffaj" path="res://assets/scenes/[SUB-SCENES]/game_over/buttons.gd" id="5_40cmd"]
-[ext_resource type="AudioStream" uid="uid://cbh8wwigbq8b5" path="res://assets/sounds/ui/switch.ogg" id="7_ds4ew"]
 [ext_resource type="Texture2D" uid="uid://be5w8eivou70p" path="res://assets/images/gameover/newtries.png" id="7_tgttw"]
-[ext_resource type="AudioStream" uid="uid://dugb3vpltfpd6" path="res://assets/sounds/ui/select.ogg" id="8_12jm8"]
 [ext_resource type="Texture2D" uid="uid://c7h0obqcrb6a0" path="res://assets/images/gameover/return.png" id="8_od56e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5widj"]
@@ -97,18 +95,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_40cmd")
-
-[node name="Sounds" type="Node" parent="NewLayer/Buttons"]
-
-[node name="Switch" type="AudioStreamPlayer" parent="NewLayer/Buttons/Sounds"]
-stream = ExtResource("7_ds4ew")
-max_polyphony = 10
-bus = &"SFX"
-
-[node name="Select" type="AudioStreamPlayer" parent="NewLayer/Buttons/Sounds"]
-stream = ExtResource("8_12jm8")
-max_polyphony = 10
-bus = &"SFX"
 
 [node name="New Tries" type="TextureButton" parent="NewLayer/Buttons"]
 layout_mode = 0

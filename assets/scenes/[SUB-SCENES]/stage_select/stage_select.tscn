@@ -1,6 +1,76 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv4g7mohlhiwc"]
+[gd_scene load_steps=16 format=3 uid="uid://dv4g7mohlhiwc"]
 
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="1_hs2lo"]
+[ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/grave-rect.png" id="2_hphh6"]
+[ext_resource type="Script" uid="uid://bs0q7ef3frjd2" path="res://assets/scenes/[SUB-SCENES]/stage_select/stage_select.gd" id="3_0ohju"]
+[ext_resource type="Texture2D" uid="uid://b2u648du43731" path="res://assets/images/menu/difficulties.png" id="4_0ohju"]
+[ext_resource type="Script" uid="uid://cjpv5gnp0fncx" path="res://assets/scenes/[SUB-SCENES]/stage_select/difficulty.gd" id="4_t6dtf"]
+[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="5_diba5"]
+[ext_resource type="Texture2D" uid="uid://ch3rdb11om0r4" path="res://assets/images/menu/buttons/arrow.png" id="5_rj44l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
+resource_local_to_scene = true
+content_margin_left = 80.0
+content_margin_top = 80.0
+content_margin_right = 80.0
+content_margin_bottom = 80.0
+texture = ExtResource("2_hphh6")
+texture_margin_left = 80.0
+texture_margin_top = 80.0
+texture_margin_right = 80.0
+texture_margin_bottom = 80.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_rj44l"]
+font = ExtResource("5_diba5")
+font_size = 24
+font_color = Color(0.796078, 0.858824, 0.988235, 1)
+outline_size = 12
+outline_color = Color(0.156863, 0.184314, 0.309804, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi2w2"]
+atlas = ExtResource("4_0ohju")
+region = Rect2(0, 0, 223, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg8oj"]
+atlas = ExtResource("4_0ohju")
+region = Rect2(223, 0, 223, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj44l"]
+atlas = ExtResource("4_0ohju")
+region = Rect2(446, 0, 223, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q7je"]
+atlas = ExtResource("4_0ohju")
+region = Rect2(0, 144, 223, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6dtf"]
+atlas = ExtResource("4_0ohju")
+region = Rect2(223, 144, 223, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_diba5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi2w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg8oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj44l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q7je")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6dtf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
 
 [node name="StageSelect" type="Control"]
 layout_mode = 3
@@ -11,3 +81,121 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Base" parent="." instance=ExtResource("1_hs2lo")]
+
+[node name="Background" parent="Base" index="1"]
+theme_override_styles/panel = SubResource("StyleBoxTexture_oi2w2")
+
+[node name="Inside" type="CanvasLayer" parent="."]
+layer = 5
+offset = Vector2(640, 480)
+transform = Transform2D(1, 0, 0, 1, 640, 480)
+script = ExtResource("3_0ohju")
+
+[node name="Separator" type="Line2D" parent="Inside"]
+position = Vector2(-242, -153)
+points = PackedVector2Array(0, 0, 0, 310)
+width = 2.0
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Difficulty" type="CanvasGroup" parent="Inside"]
+position = Vector2(-242, -153)
+script = ExtResource("4_t6dtf")
+
+[node name="Text" type="Label" parent="Inside/Difficulty"]
+offset_left = -208.0
+offset_top = 9.0
+offset_right = -29.0
+offset_bottom = 42.0
+text = "DIFFICULTY:"
+label_settings = SubResource("LabelSettings_rj44l")
+horizontal_alignment = 1
+
+[node name="Images" type="AnimatedSprite2D" parent="Inside/Difficulty"]
+texture_filter = 1
+position = Vector2(-122, 174)
+sprite_frames = SubResource("SpriteFrames_diba5")
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": true,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://assets/images/menu",
+"o_name": "difficulties",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "D:/GODOT/projectFiles - TTTG/2d/difficulties.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "a55fce951fd79b1b2a5f6ddd2c424bf6"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Inside/Difficulty/Images"]
+
+[node name="Buttons" type="Control" parent="Inside/Difficulty"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Up" type="TextureButton" parent="Inside/Difficulty/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.15
+anchor_top = 1.8
+anchor_right = -3.15
+anchor_bottom = 1.8
+offset_left = -45.0
+offset_top = -22.0
+offset_right = 45.0
+offset_bottom = 22.0
+pivot_offset = Vector2(45, 22)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_rj44l")
+stretch_mode = 0
+metadata/ID = 0
+
+[node name="Down" type="TextureButton" parent="Inside/Difficulty/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.075
+anchor_top = 7.05
+anchor_right = -3.075
+anchor_bottom = 7.05
+offset_left = -45.0
+offset_top = -22.0
+offset_right = 45.0
+offset_bottom = 22.0
+rotation = -3.14159
+pivot_offset = Vector2(45, 22)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_rj44l")
+stretch_mode = 0
+metadata/ID = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Levels" type="CanvasGroup" parent="Inside"]
+position = Vector2(-242, -153)
+
+[node name="Renderer" type="ColorRect" parent="Inside/Levels"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 226.0
+offset_top = -1.0
+offset_right = 905.0
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
+
+[editable path="Base"]

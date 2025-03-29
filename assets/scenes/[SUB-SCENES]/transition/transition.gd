@@ -13,16 +13,18 @@ var twa;
 
 func progress():
 	if not isTransIn:
-		for obj in get_tree().root.find_children("*", "", true, false):
-			if obj.has_method("transOut"): obj.call("transOut")
+		#for obj in get_tree().root.find_children("*", "", true, false):
+		#	if obj.has_method("transOut"): obj.call("transOut")
 		
 		isTransIn = true;
 		isItReady = false
 		
+		PlayGlobals.removeAllSubstates()
+		
 		if state == "reset":
-			get_tree().root.get_child(2).get_tree().reload_current_scene()
+			get_tree().root.get_child(3).get_tree().reload_current_scene()
 		else:
-			get_tree().root.get_child(2).get_tree().change_scene_to_packed(newState)
+			get_tree().root.get_child(3).get_tree().change_scene_to_packed(newState)
 	else:
 		get_parent().queue_free()
 

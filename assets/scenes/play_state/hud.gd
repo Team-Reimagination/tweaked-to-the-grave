@@ -31,11 +31,14 @@ func _ready() -> void:
 	for i in $HealthGroup/HealthSeezee/HealthSteps.get_children(true):
 		if int(i.name) > scene.player_health: i.visible = false
 	
+	$LiraGroup/LiraBar.visible = PlayGlobals.maxLiraLevel > 1
+	$LiraGroup/LevelText.visible = PlayGlobals.maxLiraLevel > 1
+	
 func _on_tree_entered() -> void:
 	liraGroup.material.set("shader_parameter/multipliers", [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
 	
 func levelUpLira():
-	if scene.liraLevel < 10:
+	if scene.liraLevel < PlayGlobals.maxLiraLevel:
 		liraBar.max_value = scene.liraMax
 	else:
 		liraBar.max_value = 0

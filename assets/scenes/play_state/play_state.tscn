@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://qgtd8wp8g74u" path="res://assets/images/fx/hurt.png" id="11_f74kq"]
 [ext_resource type="AudioStream" uid="uid://bnpvn00oye0bc" path="res://assets/sounds/ui/levelup.ogg" id="12_u4v7s"]
 [ext_resource type="Texture2D" uid="uid://hno6dj4x2yxl" path="res://assets/images/hud/lira.png" id="13_15aj6"]
-[ext_resource type="Shader" uid="uid://4rnqmo5fqx73" path="res://assets/shaders/screen/vignette.gdshader" id="13_vn6he"]
+[ext_resource type="Shader" uid="uid://4rnqmo5fqx73" path="res://assets/shaders/object/vignette.gdshader" id="13_vn6he"]
 [ext_resource type="Script" uid="uid://dp010ic0bq3lx" path="res://assets/scenes/play_state/shaders.gd" id="13_w87tq"]
 [ext_resource type="Texture2D" uid="uid://bekrp7111ygmi" path="res://assets/images/fx/explosion.png" id="14_sskn8"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="14_yewxg"]

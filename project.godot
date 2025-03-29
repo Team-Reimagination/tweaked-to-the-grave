@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tweaked To The Grave"
-run/main_scene="uid://dqltw6h6e3tta"
+run/main_scene="uid://dohoiocrvynyh"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 SaveSystem="*res://assets/scripts/saveSystem.gd"
 PlayGlobals="*res://assets/scripts/playGlobals.gd"
+MenuSounds="*res://assets/scripts/menuSounds.gd"
 
 [display]
 

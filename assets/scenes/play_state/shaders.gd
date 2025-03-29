@@ -14,10 +14,8 @@ func _ready() -> void:
 
 func gameOver():
 	var ass = get_tree().create_tween()
-	ass.tween_property(fire.material, "shader_parameter/distortionStrength", 4.0, 5.0).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
-	
-	var ass2 = get_tree().create_tween()
-	ass2.tween_property(self, "moveStr", 0.0, 3.0).set_delay(2.0)
+	ass.tween_property(fire.material, "shader_parameter/distortionStrength", 4.0, 4.0).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	ass.parallel().tween_property(self, "moveStr", 0.0, 3.0).set_delay(2.0)
 
 func _process(delta: float) -> void:
 	warning.material.set("shader_parameter/outerRadius", 3.5 + sin(warnTimer.time_left*3.1))

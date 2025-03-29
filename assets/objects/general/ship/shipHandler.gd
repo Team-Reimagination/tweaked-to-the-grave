@@ -52,8 +52,8 @@ func _ready() -> void:
 
 func levelUpLira():
 	if levelTable[scene.liraLevel]:
-		bltCLD = levelTable[scene.liraLevel][0]
-		bltPWR = levelTable[scene.liraLevel][1]
+		bltCLD = levelTable[scene.liraLevel][0] * PlayGlobals.bulletCooldown
+		bltPWR = levelTable[scene.liraLevel][1] / PlayGlobals.bulletPower
 		bltCNT = levelTable[scene.liraLevel][2]
 
 func _process(_delta: float) -> void:
@@ -91,7 +91,7 @@ func handleInput():
 				(upDown < 0 && boundForcefield[2] >= 1.0)
 				or
 				(upDown > 0 && boundForcefield[3] >= 1.0)
-			):
+			) and PlayGlobals.canBarrelRoll:
 				$Barrelroll.play()
 				$Barrelroll.pitch_scale = randf_range(0.75,1.25)
 				
@@ -102,6 +102,7 @@ func handleInput():
 				barrelSpin = 360 * 2 * (-1 if leftRight > 0 or upDown > 0 else 1)
 				barrelMod = 1.0
 				
+		if action == 'fly' or (action == 'barrel' and PlayGlobals.canBarrelShoot):
 			if Input.is_action_pressed("Shoot_GP") and canShoot:
 				shoot()
 				

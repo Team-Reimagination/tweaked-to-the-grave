@@ -40,14 +40,15 @@ func _process(_delta: float) -> void:
 	if canInput:
 		if Input.is_action_just_pressed("Left_UI"): 
 			selectedButton = (selectedButton - 1) % 2
+			if selectedButton < 0: selectedButton = 1
 			updateButtonSelection()
 			updateScale()
-			$Sounds/Switch.play()
+			MenuSounds.playMenuSound('switch')
 		elif Input.is_action_just_pressed("Right_UI"):
 			selectedButton = (selectedButton + 1) % 2
 			updateButtonSelection()
 			updateScale()
-			$Sounds/Switch.play()
+			MenuSounds.playMenuSound('switch')
 		
 		if Input.is_action_just_pressed("Accept_UI"):
 			$"../SoOver".stop()
@@ -57,7 +58,7 @@ func _process(_delta: float) -> void:
 
 func mouse_button(button):
 	if canInput:
-		if selectedButton != button.get_meta("ID", 0): $Sounds/Switch.play()
+		if selectedButton != button.get_meta("ID", 0): MenuSounds.playMenuSound('switch')
 		
 		selectedButton = button.get_meta("ID", 0)
 		updateButtonSelection()
@@ -65,7 +66,7 @@ func mouse_button(button):
 
 func process_button():
 	if canInput:
-		canInput = false
-		$Sounds/Select.play()
+		MenuSounds.playMenuSound('select')
 		
 		PlayGlobals.transition(self.get_parent().get_parent(), "reset" if selectedButton == 0 else "res://assets/scenes/main_menu/main_menu.tscn")
+		self.process_mode = Node.PROCESS_MODE_DISABLED
