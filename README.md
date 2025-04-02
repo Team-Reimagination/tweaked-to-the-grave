@@ -7,3 +7,5 @@ also the codebase is a little messy lmfao
 
 FOR DEVS:
 Look into the TODO for now
+
+passion
