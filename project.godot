@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 SaveSystem="*res://assets/scripts/saveSystem.gd"
 PlayGlobals="*res://assets/scripts/playGlobals.gd"
 MenuSounds="*res://assets/scripts/menuSounds.gd"
+TransFuncs="*res://assets/scripts/transFuncs.gd"
 
 [display]
 

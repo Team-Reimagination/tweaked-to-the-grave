@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://dp4lxb1pd4ll3"]
+
+[ext_resource type="Script" uid="uid://onjjk5tq0bpd" path="res://assets/scenes/loading/loading.gd" id="1_15age"]
+[ext_resource type="Texture2D" uid="uid://y7uunb5oc6dd" path="res://assets/images/menu/loading.png" id="2_ktmuw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2prlt"]
+atlas = ExtResource("2_ktmuw")
+region = Rect2(0, 0, 146, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ibs"]
+atlas = ExtResource("2_ktmuw")
+region = Rect2(146, 0, 146, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwfu3"]
+atlas = ExtResource("2_ktmuw")
+region = Rect2(292, 0, 146, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxrvl"]
+atlas = ExtResource("2_ktmuw")
+region = Rect2(438, 0, 146, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ggb"]
+atlas = ExtResource("2_ktmuw")
+region = Rect2(0, 92, 146, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7f4r"]
+atlas = ExtResource("2_ktmuw")
+region = Rect2(146, 92, 146, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u04qc"]
+atlas = ExtResource("2_ktmuw")
+region = Rect2(292, 92, 146, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b75qi"]
+atlas = ExtResource("2_ktmuw")
+region = Rect2(438, 92, 146, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnkli"]
+atlas = ExtResource("2_ktmuw")
+region = Rect2(0, 184, 146, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65alj"]
+atlas = ExtResource("2_ktmuw")
+region = Rect2(146, 184, 146, 92)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6xmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2prlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ibs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwfu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxrvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4ggb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7f4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u04qc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b75qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnkli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65alj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2prlt")
+}],
+"loop": true,
+"name": &"Loop",
+"speed": 12.0
+}]
+
+[node name="Loading" type="Node2D"]
+script = ExtResource("1_15age")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1191, 898)
+sprite_frames = SubResource("SpriteFrames_h6xmd")
+animation = &"Loop"
+autoplay = "Loop"
+frame_progress = 0.248497
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://assets/images/menu",
+"o_name": "loading",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "D:/GODOT/projectFiles - TTTG/2d/tweakLoad.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "679e96d15e96ae732e6375e809058f90"

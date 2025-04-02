@@ -83,7 +83,7 @@ func hurtPlayer():
 	hurt.scale.x = randf_range(2.5,3.5)
 	hurt.scale.y = hurt.scale.x
 	hurt.position = $"../Camera".unproject_position($"../Objects/Ship".position)
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.1, false).timeout
 	hurt.visible = false
 	
 func loseLife():
@@ -147,7 +147,7 @@ func restartHealth():
 		healer2.tween_property(i, "modulate", Color(1.0,1.0,1.0,1.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 
 func gameOver():
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2, false).timeout
 	seezeeIcon.play("Over")
 	
 	var fuckingbegone = get_tree().create_tween()

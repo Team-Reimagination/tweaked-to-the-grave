@@ -1,19 +1,19 @@
-[gd_scene load_steps=42 format=3 uid="uid://ds181oh1yp62m"]
+[gd_scene load_steps=43 format=3 uid="uid://ds181oh1yp62m"]
 
-[ext_resource type="Texture2D" uid="uid://t55dtlxhtc6l" path="res://assets/images/menu/logo.png" id="1_6o0yw"]
+[ext_resource type="Texture2D" uid="uid://t55dtlxhtc6l" path="res://assets/images/menu/mainmenu/logo.png" id="1_6o0yw"]
 [ext_resource type="Shader" uid="uid://cs54tgle3j2j5" path="res://assets/shaders/screen/worldCurve.gdshader" id="1_8qhov"]
-[ext_resource type="Texture2D" uid="uid://dnqbxxibclpwv" path="res://assets/images/menu/clouds.png" id="1_acsil"]
+[ext_resource type="Texture2D" uid="uid://dnqbxxibclpwv" path="res://assets/images/menu/mainmenu/clouds.png" id="1_acsil"]
 [ext_resource type="Script" uid="uid://csmyl4kbogxkr" path="res://assets/scenes/main_menu/main_menu.gd" id="1_f6bh1"]
-[ext_resource type="Texture2D" uid="uid://bq5ru0a1lbcnn" path="res://assets/images/menu/hill.png" id="3_spayh"]
-[ext_resource type="Texture2D" uid="uid://b3kgvtapbgivj" path="res://assets/images/menu/tree.png" id="4_tfy4q"]
-[ext_resource type="Texture2D" uid="uid://bnwe2owpy6pdd" path="res://assets/images/menu/grave.png" id="5_tfy4q"]
+[ext_resource type="Texture2D" uid="uid://bq5ru0a1lbcnn" path="res://assets/images/menu/mainmenu/hill.png" id="3_spayh"]
+[ext_resource type="Texture2D" uid="uid://b3kgvtapbgivj" path="res://assets/images/menu/mainmenu/tree.png" id="4_tfy4q"]
+[ext_resource type="Texture2D" uid="uid://bnwe2owpy6pdd" path="res://assets/images/menu/mainmenu/grave.png" id="5_tfy4q"]
 [ext_resource type="Script" uid="uid://dck1vvjhfm4y7" path="res://assets/scenes/main_menu/grave.gd" id="6_r27g3"]
-[ext_resource type="Texture2D" uid="uid://bkmgr5lktkomw" path="res://assets/images/menu/buttons/adventure.png" id="7_b43tu"]
+[ext_resource type="Texture2D" uid="uid://bkmgr5lktkomw" path="res://assets/images/buttons/mainmenu/adventure.png" id="7_b43tu"]
 [ext_resource type="Script" uid="uid://c13517oqq03a8" path="res://assets/scripts/hover.gd" id="7_trycp"]
-[ext_resource type="Texture2D" uid="uid://bsh370l44682p" path="res://assets/images/menu/buttons/trophies.png" id="8_6qh68"]
-[ext_resource type="AudioStream" uid="uid://syqw263ncdbw" path="res://assets/sounds/voice/adventure_mode.ogg" id="9_43lun"]
-[ext_resource type="Texture2D" uid="uid://bv4i45hut2g4q" path="res://assets/images/menu/buttons/options.png" id="9_x0mfv"]
-[ext_resource type="Texture2D" uid="uid://c4xro1wlloata" path="res://assets/images/menu/tweaked_hand.png" id="10_x0mfv"]
+[ext_resource type="Texture2D" uid="uid://bsh370l44682p" path="res://assets/images/buttons/mainmenu/trophies.png" id="8_6qh68"]
+[ext_resource type="Texture2D" uid="uid://bv4i45hut2g4q" path="res://assets/images/buttons/mainmenu/options.png" id="9_x0mfv"]
+[ext_resource type="Texture2D" uid="uid://c4xro1wlloata" path="res://assets/images/menu/mainmenu/tweaked_hand.png" id="10_x0mfv"]
+[ext_resource type="Shader" uid="uid://bn0ot4jakjbs7" path="res://assets/shaders/screen/pixel.gdshader" id="16_43lun"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="17_f2eox"]
 
 [sub_resource type="Gradient" id="Gradient_8qhov"]
@@ -196,7 +196,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ual5k")
 }],
-"loop": true,
+"loop": false,
 "name": &"Appear",
 "speed": 24.0
 }, {
@@ -215,12 +215,19 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2eox"]
+shader = ExtResource("16_43lun")
+shader_parameter/pixel_size = 0
+
 [node name="Main Menu" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_f6bh1")
 
 [node name="Camera" type="Camera2D" parent="."]
-anchor_mode = 0
+position = Vector2(640, 480)
+ignore_rotation = false
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 0.17
 
 [node name="Background" type="ParallaxBackground" parent="."]
 layer = -3
@@ -285,8 +292,15 @@ scroll_scale = Vector2(0.6, 0.6)
 script = ExtResource("6_r27g3")
 
 [node name="Grave" type="Sprite2D" parent="ParallaxBackground/Grave"]
-position = Vector2(640, 686)
+position = Vector2(640, 740)
 texture = ExtResource("5_tfy4q")
+
+[node name="Narration" type="AudioStreamPlayer2D" parent="ParallaxBackground/Grave"]
+position = Vector2(409, 470)
+volume_db = 10.0
+attenuation = 0.241484
+panning_strength = 0.0
+bus = &"SFX"
 
 [node name="Buttons" type="Control" parent="ParallaxBackground/Grave"]
 layout_mode = 3
@@ -305,13 +319,6 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_b43tu")
 stretch_mode = 0
 metadata/ID = 0
-
-[node name="AdventureMode" type="AudioStreamPlayer2D" parent="ParallaxBackground/Grave/Buttons/Adventure"]
-stream = ExtResource("9_43lun")
-volume_db = 10.0
-attenuation = 0.241484
-panning_strength = 0.0
-bus = &"SFX"
 
 [node name="Trophies" type="TextureButton" parent="ParallaxBackground/Grave/Buttons"]
 layout_mode = 0
@@ -342,7 +349,7 @@ texture_filter = 1
 position = Vector2(614, 714)
 scale = Vector2(1.16425, 1.16425)
 sprite_frames = SubResource("SpriteFrames_cjlv6")
-animation = &"Idle"
+animation = &"Appear"
 autoplay = "Idle"
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": false,
@@ -388,5 +395,24 @@ text = "Created by Verwex, Terionic & Glitch.smh | 2025"
 label_settings = SubResource("LabelSettings_61kpw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Shaders" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Flash" type="ColorRect" parent="Shaders"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Pixelation" type="ColorRect" parent="Shaders"]
+material = SubResource("ShaderMaterial_f2eox")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="tree_entered" from="ParallaxBackground/Logo/Logo" to="ParallaxBackground/Logo/Logo" method="_on_tree_entered"]

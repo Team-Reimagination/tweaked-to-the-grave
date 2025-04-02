@@ -4,7 +4,6 @@ extends CharacterBody3D
 
 var action = "fly"
 var canBeHit = true
-var canInput = true
 
 # movement speed
 var speed = 50;
@@ -46,6 +45,7 @@ var bltCLD = 0.0;
 var bltPWR = 0.0
 var bltCNT = 0
 var canShoot = true;
+@onready var autofire = SaveSystem.settings.get_value('gameplay', 'autofire')
 
 func _ready() -> void:
 	$Ambience.play()
@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func handleInput():
-	if canInput:
+	if scene.canInput:
 		if (action == "fly"):
 			leftRight = Input.get_axis("Left_GP", "Right_GP")
 			upDown = Input.get_axis("Down_GP", "Up_GP")
@@ -103,7 +103,7 @@ func handleInput():
 				barrelMod = 1.0
 				
 		if action == 'fly' or (action == 'barrel' and PlayGlobals.canBarrelShoot):
-			if Input.is_action_pressed("Shoot_GP") and canShoot:
+			if (Input.is_action_pressed("Shoot_GP") or autofire == true) and canShoot:
 				shoot()
 				
 		#DEBUG FUNCS
@@ -191,7 +191,7 @@ func shoot():
 		bull.set_meta("spawnPosition", spot.global_position)
 		scene.spawnOBJ(bull)
 	
-	await get_tree().create_timer(bltCLD).timeout
+	await get_tree().create_timer(bltCLD, false).timeout
 	canShoot = true;
 
 func hurtPlayer():
@@ -233,7 +233,7 @@ func loseLife():
 	$Explode.play()
 	
 	if (scene.lives > 0):
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1.5, false).timeout
 		action = "fly"
 		
 		scene.restartHealth()
@@ -247,9 +247,13 @@ func invincibilityFrames(isVisible = true):
 	
 	self.visible = not self.visible
 	for num in range(13):
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.1, false).timeout
 		self.visible = not self.visible
 	
 	self.visible = isVisible
 
 	canBeHit = true
+
+func startLevel():
+	position.z = 0;
+	get_tree().create_tween().tween_property(self, "position:z", -20.0, 0.75).set_ease(Tween.EASE_OUT).set_delay(1.5).set_trans(Tween.TRANS_CIRC)

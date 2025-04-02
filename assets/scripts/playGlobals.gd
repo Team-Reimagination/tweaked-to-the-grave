@@ -35,26 +35,20 @@ func applyDifficulty():
 	LiraGainSpeed = diffy[6]
 	doColelctibles = diffy[7]
 
-#TRANSITION
-var transState = preload("res://assets/scenes/[SUB-SCENES]/transition/transition.tscn")
-
-func transition(parent, intendedState = "reset", destroyEarly = false):
-	var ass = transState.instantiate()
-	parent.add_sibling(ass)
-	
-	var shit = ass.get_child(0)
-	
-	shit.doDestroyEarly = destroyEarly
-	shit.state = intendedState
-
 #SUBSTATE SHIT
 var substates = []
 func addSubstate(parent, child):
 	parent.add_sibling(child)
+	child.set_meta("parent", parent);
 	substates.push_back(child)
+	
+func subCallings(node, functionate):
+	var parent = node.get_meta("parent", null)
+	if parent != null and parent.has_method(functionate): parent.call(functionate)
 	
 func removeSubstate(sub):
 	var ind = substates.find(sub)
+	print(ind);
 	if ind != -1:
 		substates[ind].queue_free()
 		substates.remove_at(ind)

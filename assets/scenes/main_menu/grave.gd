@@ -4,7 +4,8 @@ extends Parallax2D
 @onready var graveHand = $Hand
 @onready var scene = get_tree().current_scene
 
-var stageSel = preload("res://assets/scenes/[SUB-SCENES]/stage_select/stage_select.tscn")
+var stageSel = load("res://assets/scenes/[SUB-SCENES]/stage_select/stage_select.tscn")
+var myfreindOptions = load("res://assets/scenes/[SUB-SCENES]/options_menu/options_menu.tscn")
 
 var buttonScales = [1.0,1.0,1.0]
 var selectedButton = 0;
@@ -16,7 +17,7 @@ func _ready() -> void:
 	for butt in buttons:
 		butt.mouse_entered.connect(mouse_button.bind(butt))
 		butt.pressed.connect(process_button.bind())
-	
+
 func instantScale():
 	for i in range(buttons.size()):
 		buttons[i].scale.x = buttonScales[i]
@@ -65,7 +66,15 @@ func process_button():
 		
 		if selectedButton == 0:
 			var instance = stageSel.instantiate()
+			$Narration.stream = load("res://assets/sounds/voice/adventure_mode.ogg")
+			PlayGlobals.addSubstate(scene, instance);
+		elif selectedButton == 2:
+			var instance = myfreindOptions.instantiate()
+			$Narration.stream = load("res://assets/sounds/voice/options.ogg")
 			PlayGlobals.addSubstate(scene, instance);
 			
 		await get_tree().create_timer(0.5).timeout
-		$Buttons/Adventure/AdventureMode.play()
+		$Narration.play()
+
+func wellithinkitstimetomoveonok():
+	graveHand.play("Appear")

@@ -31,7 +31,7 @@ func tweenHandler():
 		switchScene();
 		
 func switchScene():
-	get_tree().change_scene_to_file("res://assets/scenes/main_menu/main_menu.tscn")
+	TransFuncs.switchScenes(self, "res://assets/scenes/main_menu/main_menu.tscn", false)
 
 func _on_tree_entered() -> void:
 	$Shaders/ColorMod.material.set("shader_parameter/multipliers", [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])

@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
-	if not OS.has_feature("web"): get_tree().change_scene_to_file("res://assets/scenes/sbb_splash/sbb_splash.tscn")
+	if not OS.has_feature("web"): get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/sbb_splash/sbb_splash.tscn")
 	else:
 		$Sprite2D.visible = true
 	

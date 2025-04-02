@@ -2,6 +2,7 @@ extends CanvasGroup
 
 @onready var buttons = [$Buttons/Up, $Buttons/Down]
 @onready var fuckassSOVL = $Images
+@onready var substate = $"../.."
 
 var buttonScales = [0.0,0.0]
 
@@ -42,24 +43,25 @@ func _process(_delta: float) -> void:
 		buttons[i].scale.x = lerp(buttons[i].scale.x, buttonScales[i], 0.3)
 		buttons[i].scale.y = buttons[i].scale.x
 		
-	if Input.is_action_just_pressed("Up_UI"): 
-		movement(-1)
-		
-		selectedButton = 0
-		mouseBtn = -1
-		
-		updatemyhardness(-1)
-		updateButtonSelection(false)
-		MenuSounds.playMenuSound('small_select')
-	elif Input.is_action_just_pressed("Down_UI"):
-		movement(1)
-		
-		selectedButton = 1
-		mouseBtn = -1
-		
-		updatemyhardness(1)
-		updateButtonSelection(false)
-		MenuSounds.playMenuSound('small_select')
+	if substate.canInput:
+		if Input.is_action_just_pressed("Up_UI"): 
+			movement(-1)
+			
+			selectedButton = 0
+			mouseBtn = -1
+			
+			updatemyhardness(-1)
+			updateButtonSelection(false)
+			MenuSounds.playMenuSound('small_select')
+		elif Input.is_action_just_pressed("Down_UI"):
+			movement(1)
+			
+			selectedButton = 1
+			mouseBtn = -1
+			
+			updatemyhardness(1)
+			updateButtonSelection(false)
+			MenuSounds.playMenuSound('small_select')
 
 func movement(proposition):
 	if proposition == -1:

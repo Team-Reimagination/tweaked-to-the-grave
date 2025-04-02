@@ -1,6 +1,7 @@
 extends Control
 
 @onready var buttons = [$"New Tries", $Return]
+@onready var scene = $"../.."
 
 var buttonScales = [0.0,0.0]
 var selectedButton = 0;
@@ -68,5 +69,5 @@ func process_button():
 	if canInput:
 		MenuSounds.playMenuSound('select')
 		
-		PlayGlobals.transition(self.get_parent().get_parent(), "reset" if selectedButton == 0 else "res://assets/scenes/main_menu/main_menu.tscn")
+		TransFuncs.switchScenes(scene.get_meta("parent"), "reset" if selectedButton == 0 else "res://assets/scenes/main_menu/main_menu.tscn")
 		self.process_mode = Node.PROCESS_MODE_DISABLED

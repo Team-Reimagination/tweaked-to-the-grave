@@ -1,0 +1,308 @@
+[gd_scene load_steps=19 format=3 uid="uid://csysid81qiy0y"]
+
+[ext_resource type="Script" uid="uid://c7stks28jaj3w" path="res://assets/scenes/[SUB-SCENES]/pause_menu/pause_menu.gd" id="1_1tfqh"]
+[ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="2_dt6p4"]
+[ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/backgrounds/grave-rect.png" id="3_f8nfc"]
+[ext_resource type="Texture2D" uid="uid://b4aidilwrgr8t" path="res://assets/images/pause/quick_label.png" id="4_f8nfc"]
+[ext_resource type="Texture2D" uid="uid://c3cd3jshweinr" path="res://assets/images/pause/button_label.png" id="5_qtn8h"]
+[ext_resource type="Texture2D" uid="uid://km777imgrgpg" path="res://assets/images/buttons/general/scroll_grab.png" id="6_qtn8h"]
+[ext_resource type="Texture2D" uid="uid://bc6374bbi8tof" path="res://assets/images/buttons/general/scroll_bg.png" id="7_tilcf"]
+[ext_resource type="Script" uid="uid://de0a4e14oxoiu" path="res://assets/scripts/optionMetadata.gd" id="8_4fpqp"]
+[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="8_xrgvl"]
+[ext_resource type="Texture2D" uid="uid://d1v1yw8v2sii4" path="res://assets/images/buttons/general/checkbox1.png" id="10_bxueh"]
+[ext_resource type="Texture2D" uid="uid://bav0b2ubq8ynd" path="res://assets/images/buttons/general/checkbox2.png" id="11_uy73s"]
+[ext_resource type="Texture2D" uid="uid://yajvjpec0u5c" path="res://assets/images/buttons/pause/resume.png" id="12_ksnrs"]
+[ext_resource type="Texture2D" uid="uid://ck6nq1leqy6sd" path="res://assets/images/buttons/pause/restart.png" id="13_umid3"]
+[ext_resource type="Texture2D" uid="uid://cbv7bff105ixh" path="res://assets/images/buttons/pause/leave.png" id="14_6cws6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
+resource_local_to_scene = true
+content_margin_left = 80.0
+content_margin_top = 80.0
+content_margin_right = 80.0
+content_margin_bottom = 80.0
+texture = ExtResource("3_f8nfc")
+texture_margin_left = 80.0
+texture_margin_top = 80.0
+texture_margin_right = 80.0
+texture_margin_bottom = 80.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrgvl"]
+content_margin_left = 14.0
+content_margin_right = 14.0
+texture = ExtResource("7_tilcf")
+texture_margin_left = 13.0
+texture_margin_right = 13.0
+expand_margin_top = 12.0
+expand_margin_bottom = 12.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_5k6y7"]
+font = ExtResource("8_xrgvl")
+font_size = 12
+outline_size = 8
+outline_color = Color(0.156863, 0.184314, 0.309804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4fpqp"]
+font = ExtResource("8_xrgvl")
+font_size = 12
+outline_size = 8
+outline_color = Color(0.156863, 0.184314, 0.309804, 1)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -10.52
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1tfqh")
+
+[node name="Base" parent="." instance=ExtResource("2_dt6p4")]
+
+[node name="Background" parent="Base" index="0"]
+theme_override_styles/panel = SubResource("StyleBoxTexture_oi2w2")
+
+[node name="ScaleRef" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -267.0
+offset_right = 244.0
+offset_bottom = 267.0
+grow_horizontal = 2
+grow_vertical = 2
+border_width = 2.0
+
+[node name="Inside" type="CanvasLayer" parent="."]
+layer = 5
+offset = Vector2(640, 480)
+transform = Transform2D(1, 0, 0, 1, 640, 480)
+
+[node name="QuickLabel" type="Sprite2D" parent="Inside"]
+position = Vector2(0, 55)
+texture = ExtResource("4_f8nfc")
+
+[node name="ButtonLabel" type="Sprite2D" parent="Inside"]
+position = Vector2(0, -207)
+texture = ExtResource("5_qtn8h")
+
+[node name="QuickOptions" type="Control" parent="Inside"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -192.0
+offset_top = 180.0
+offset_right = -192.0
+offset_bottom = 180.0
+
+[node name="Master" type="HSlider" parent="Inside/QuickOptions"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = -39.0
+offset_right = 177.0
+offset_bottom = -3.0
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("6_qtn8h")
+theme_override_icons/grabber_highlight = ExtResource("6_qtn8h")
+theme_override_icons/grabber_disabled = ExtResource("6_qtn8h")
+theme_override_styles/slider = SubResource("StyleBoxTexture_xrgvl")
+max_value = 1.0
+step = 0.01
+ticks_on_borders = true
+script = ExtResource("8_4fpqp")
+optionCategory = "volume"
+optionValue = "master"
+
+[node name="MasterLabel" type="Label" parent="Inside/QuickOptions"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -29.0
+offset_right = 47.0
+offset_bottom = -6.0
+text = "MASTER"
+label_settings = SubResource("LabelSettings_5k6y7")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Music" type="HSlider" parent="Inside/QuickOptions"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 7.0
+offset_right = 177.0
+offset_bottom = 43.0
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("6_qtn8h")
+theme_override_icons/grabber_highlight = ExtResource("6_qtn8h")
+theme_override_icons/grabber_disabled = ExtResource("6_qtn8h")
+theme_override_styles/slider = SubResource("StyleBoxTexture_xrgvl")
+max_value = 1.0
+step = 0.01
+ticks_on_borders = true
+script = ExtResource("8_4fpqp")
+optionCategory = "volume"
+optionValue = "music"
+
+[node name="MusicLabel" type="Label" parent="Inside/QuickOptions"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 17.0
+offset_right = 48.0
+offset_bottom = 40.0
+text = "MUSIC"
+label_settings = SubResource("LabelSettings_5k6y7")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="SFX" type="HSlider" parent="Inside/QuickOptions"]
+layout_mode = 0
+offset_left = 268.0
+offset_top = -39.0
+offset_right = 373.0
+offset_bottom = -3.0
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("6_qtn8h")
+theme_override_icons/grabber_highlight = ExtResource("6_qtn8h")
+theme_override_icons/grabber_disabled = ExtResource("6_qtn8h")
+theme_override_styles/slider = SubResource("StyleBoxTexture_xrgvl")
+max_value = 1.0
+step = 0.01
+ticks_on_borders = true
+script = ExtResource("8_4fpqp")
+optionCategory = "volume"
+optionValue = "sfx"
+
+[node name="SFXLabel" type="Label" parent="Inside/QuickOptions"]
+layout_mode = 0
+offset_left = 217.0
+offset_top = -29.0
+offset_right = 243.0
+offset_bottom = -6.0
+text = "SFX"
+label_settings = SubResource("LabelSettings_5k6y7")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Ambience" type="HSlider" parent="Inside/QuickOptions"]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 7.0
+offset_right = 373.0
+offset_bottom = 43.0
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("6_qtn8h")
+theme_override_icons/grabber_highlight = ExtResource("6_qtn8h")
+theme_override_icons/grabber_disabled = ExtResource("6_qtn8h")
+theme_override_styles/slider = SubResource("StyleBoxTexture_xrgvl")
+max_value = 1.0
+step = 0.01
+ticks_on_borders = true
+script = ExtResource("8_4fpqp")
+optionCategory = "volume"
+optionValue = "ambience"
+
+[node name="AmbienceLabel" type="Label" parent="Inside/QuickOptions"]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 17.0
+offset_right = 244.0
+offset_bottom = 40.0
+text = "MOOD"
+label_settings = SubResource("LabelSettings_5k6y7")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Autofire" type="TextureButton" parent="Inside/QuickOptions"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 212.0
+offset_top = -103.0
+offset_right = 259.0
+offset_bottom = -49.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("10_bxueh")
+texture_pressed = ExtResource("11_uy73s")
+script = ExtResource("8_4fpqp")
+optionCategory = "gameplay"
+optionValue = "autofire"
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://assets/images/menu/buttons",
+"o_name": "checkbox",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "D:/GODOT/projectFiles - TTTG/2d/checkbox.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "2dec9fc98fae370b0d12ee481cadc85f"
+
+[node name="AutofireLabel" type="Label" parent="Inside/QuickOptions"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = -74.0
+offset_right = 201.0
+offset_bottom = -51.0
+text = "AUTOFIRE"
+label_settings = SubResource("LabelSettings_4fpqp")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Buttons" type="Control" parent="Inside"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -658.0
+offset_top = -502.0
+offset_right = -618.0
+offset_bottom = -462.0
+
+[node name="Resume" type="TextureButton" parent="Inside/Buttons"]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 322.0
+offset_right = 839.0
+offset_bottom = 385.0
+pivot_offset = Vector2(180, 31)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("12_ksnrs")
+stretch_mode = 0
+metadata/ID = 0
+
+[node name="Restart" type="TextureButton" parent="Inside/Buttons"]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 389.0
+offset_right = 834.0
+offset_bottom = 455.0
+pivot_offset = Vector2(178, 33)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_umid3")
+stretch_mode = 0
+metadata/ID = 1
+
+[node name="Quit" type="TextureButton" parent="Inside/Buttons"]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 454.0
+offset_right = 842.0
+offset_bottom = 524.0
+pivot_offset = Vector2(182, 35)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("14_6cws6")
+stretch_mode = 0
+metadata/ID = 2
+
+[editable path="Base"]

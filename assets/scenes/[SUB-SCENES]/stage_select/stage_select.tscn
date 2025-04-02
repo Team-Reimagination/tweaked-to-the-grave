@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dv4g7mohlhiwc"]
+[gd_scene load_steps=15 format=3 uid="uid://dv4g7mohlhiwc"]
 
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="1_hs2lo"]
 [ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/grave-rect.png" id="2_hphh6"]
 [ext_resource type="Script" uid="uid://bs0q7ef3frjd2" path="res://assets/scenes/[SUB-SCENES]/stage_select/stage_select.gd" id="3_0ohju"]
 [ext_resource type="Texture2D" uid="uid://b2u648du43731" path="res://assets/images/menu/difficulties.png" id="4_0ohju"]
 [ext_resource type="Script" uid="uid://cjpv5gnp0fncx" path="res://assets/scenes/[SUB-SCENES]/stage_select/difficulty.gd" id="4_t6dtf"]
-[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="5_diba5"]
+[ext_resource type="Texture2D" uid="uid://n0s15pletk1w" path="res://assets/images/menu/diff_label.png" id="5_2q7je"]
 [ext_resource type="Texture2D" uid="uid://ch3rdb11om0r4" path="res://assets/images/menu/buttons/arrow.png" id="5_rj44l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
@@ -21,13 +21,6 @@ texture_margin_right = 80.0
 texture_margin_bottom = 80.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-
-[sub_resource type="LabelSettings" id="LabelSettings_rj44l"]
-font = ExtResource("5_diba5")
-font_size = 24
-font_color = Color(0.796078, 0.858824, 0.988235, 1)
-outline_size = 12
-outline_color = Color(0.156863, 0.184314, 0.309804, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oi2w2"]
 atlas = ExtResource("4_0ohju")
@@ -79,17 +72,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_0ohju")
 
 [node name="Base" parent="." instance=ExtResource("1_hs2lo")]
 
-[node name="Background" parent="Base" index="1"]
+[node name="Background" parent="Base" index="0"]
 theme_override_styles/panel = SubResource("StyleBoxTexture_oi2w2")
+
+[node name="ScaleRef" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -511.0
+offset_top = -199.0
+offset_right = 511.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+border_width = 2.0
 
 [node name="Inside" type="CanvasLayer" parent="."]
 layer = 5
 offset = Vector2(640, 480)
 transform = Transform2D(1, 0, 0, 1, 640, 480)
-script = ExtResource("3_0ohju")
 
 [node name="Separator" type="Line2D" parent="Inside"]
 position = Vector2(-242, -153)
@@ -102,14 +110,9 @@ end_cap_mode = 2
 position = Vector2(-242, -153)
 script = ExtResource("4_t6dtf")
 
-[node name="Text" type="Label" parent="Inside/Difficulty"]
-offset_left = -208.0
-offset_top = 9.0
-offset_right = -29.0
-offset_bottom = 42.0
-text = "DIFFICULTY:"
-label_settings = SubResource("LabelSettings_rj44l")
-horizontal_alignment = 1
+[node name="Text" type="Sprite2D" parent="Inside/Difficulty"]
+position = Vector2(-119, 22)
+texture = ExtResource("5_2q7je")
 
 [node name="Images" type="AnimatedSprite2D" parent="Inside/Difficulty"]
 texture_filter = 1
@@ -134,8 +137,6 @@ metadata/_aseprite_wizard_config_ = {
 "source": "D:/GODOT/projectFiles - TTTG/2d/difficulties.aseprite"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "a55fce951fd79b1b2a5f6ddd2c424bf6"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Inside/Difficulty/Images"]
 
 [node name="Buttons" type="Control" parent="Inside/Difficulty"]
 layout_mode = 3

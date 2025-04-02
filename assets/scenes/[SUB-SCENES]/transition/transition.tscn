@@ -5,17 +5,18 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i802f"]
 shader = ExtResource("3_ua5wy")
-shader_parameter/time = 0.0
+shader_parameter/time = -3.0
+shader_parameter/radius = 100.0
 
 [node name="Transition" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_51v8m")
 
 [node name="Shaders" type="CanvasLayer" parent="."]
-layer = 128
+layer = 127
 follow_viewport_scale = 0.001
-script = ExtResource("1_51v8m")
 
 [node name="Transition" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_i802f")
