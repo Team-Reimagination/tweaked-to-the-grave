@@ -14,14 +14,14 @@ var gloTimer = 0.0;
 var watimer = 0.0;
 
 func _process(delta: float) -> void:
-	if canInput:
+	if canInput: #parallax with mouse dependent on if it's the state's turn to use the mouse or not
 		cam.offset.x = lerp(cam.offset.x, clampf(get_global_mouse_position().x - 640.0, -640.0, 640.0) / 50, 0.3)
 		cam.offset.y = lerp(cam.offset.y, clampf(get_global_mouse_position().y - 480.0, -480.0, 480.0) / 50, 0.3)
 	else:
 		cam.offset.x = lerp(cam.offset.x, clampf(0, -640.0, 640.0) / 50, 0.3)
 		cam.offset.y = lerp(cam.offset.y, clampf(0, -480.0, 480.0) / 50, 0.3)
 		
-	if isTransitioning:
+	if isTransitioning: #sweet camerashots when about to transition into gameplay
 		gloTimer += delta
 		watimer += delta
 		
@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		cam.set_position(Vector2(lerpf(cam.position.x, 640.0 + posMod.x, 0.3), lerpf(cam.position.y, 920.0 + posMod.y, 0.3)))
 		cam.rotation_degrees = rotMod
 
-func wellithinkitstimetomoveonok():
+func wellithinkitstimetomoveonok(): #hand materaliza
 	$ParallaxBackground/Grave.wellithinkitstimetomoveonok()
 	isTransitioning = true
 	

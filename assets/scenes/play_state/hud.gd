@@ -10,11 +10,7 @@ extends CanvasLayer
 
 var lira:int = 0;
 var liraShakeTween;
-var liraColorTween;
-
 var lifeShakeTween;
-var lifeColorTween;
-var lifeColorTween2;
 
 func _ready() -> void:
 	powerText.text = str(lira)
@@ -23,30 +19,37 @@ func _ready() -> void:
 	$HealthGroup/IconSeezee/Lives/Label.text = str(scene.lives)
 	$HealthGroup/IconTweak/Lives/Label.text = str(int(8 - scene.levelNum))
 	
+	#choose health icon
 	seezeeIcon.play("Heat_"+str(scene.player_health))
 	
+	#value healthing
 	$HealthGroup/HealthTweak/HealthBar.max_value = scene.boss_health
 	$HealthGroup/HealthTweak/HealthBar.value = scene.cur_boss_health
 	
 	for i in $HealthGroup/HealthSeezee/HealthSteps.get_children(true):
 		if int(i.name) > scene.player_health: i.visible = false
 	
+	#lira, only visible if you're not willing to go kill yourself
 	$LiraGroup/LiraBar.visible = PlayGlobals.maxLiraLevel > 1
 	$LiraGroup/LevelText.visible = PlayGlobals.maxLiraLevel > 1
 	
-func _on_tree_entered() -> void:
+func _on_tree_entered() -> void: #some preparation because you never know
 	liraGroup.material.set("shader_parameter/multipliers", [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
 	
 func levelUpLira():
+	#if at max level, make it look like there is no more room
 	if scene.liraLevel < PlayGlobals.maxLiraLevel:
 		liraBar.max_value = scene.liraMax
 	else:
 		liraBar.max_value = 0
 	
+	#one more particleshot
 	$LiraGroup/LiraParticles.restart()
+	#set level
 	$LiraGroup/LevelText.text = "LV "+str(scene.liraLevel)
 	
 	if scene.liraLevel > 1:
+		#of course do that because by default it is invisible
 		$LiraGroup/LiraParticles.self_modulate = Color(1.0,1.0,1.0,1.0)
 		$LiraGroup/LevelUp.play()
 		
@@ -57,23 +60,19 @@ func levelUpLira():
 		liraShakeTween.tween_property(liraGroup, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		
 		liraGroup.material.set("shader_parameter/offsets", Vector4(1.0, 1.0, 1.0, 0.0))
-		if liraColorTween:
-			liraColorTween.kill()
-		liraColorTween = get_tree().create_tween()
-		liraColorTween.tween_property(liraGroup.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
+		liraShakeTween.set_parallel().tween_property(liraGroup.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
 
-func healthLoss():
+func healthLoss(): #go away you got a minor heatstroke
 	var heal = $HealthGroup/HealthSeezee/HealthSteps.get_child(3 - (scene.player_health+1))
 	
 	var healer1 = get_tree().create_tween()
-	var healer2 = get_tree().create_tween()
 	healer1.tween_property(heal, "scale", Vector2(1.3,1.3), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
-	healer2.tween_property(heal, "modulate", Color(1.0,1.0,1.0,0.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	healer1.set_parallel().tween_property(heal, "modulate", Color(1.0,1.0,1.0,0.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 
 func updateIcon():
 	seezeeIcon.play("Heat_"+str(scene.player_health))
 
-func hurtPlayer():
+func hurtPlayer(): #minor heatstroke
 	healthLoss()
 	
 	seezeeIcon.play("Hurt")
@@ -82,7 +81,7 @@ func hurtPlayer():
 	hurt.rotation = randf()
 	hurt.scale.x = randf_range(2.5,3.5)
 	hurt.scale.y = hurt.scale.x
-	hurt.position = $"../Camera".unproject_position($"../Objects/Ship".position)
+	hurt.position = $"../Camera".unproject_position($"../Objects/Ship".position) #3d space into 3d screen
 	await get_tree().create_timer(0.1, false).timeout
 	hurt.visible = false
 	
@@ -97,25 +96,21 @@ func loseLife():
 	lifeShakeTween.tween_property(canyougivemelife, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		
 	canyougivemelife.material.set("shader_parameter/multipliers", [1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0])
-	if lifeColorTween:
-		lifeColorTween.kill()
-	lifeColorTween = get_tree().create_tween()
-	lifeColorTween.tween_property(canyougivemelife.material, "shader_parameter/multipliers", [1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0], 0.2).set_trans(Tween.TRANS_QUART)
+	lifeShakeTween.set_parallel().tween_property(canyougivemelife.material, "shader_parameter/multipliers", [1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0], 0.2).set_trans(Tween.TRANS_QUART)
 	
 	canyougivemelife.material.set("shader_parameter/offsets", Vector4(1.0, 0.0, 0.0, 0.0))
-	if lifeColorTween2:
-		lifeColorTween2.kill()
-	lifeColorTween2 = get_tree().create_tween()
-	lifeColorTween2.tween_property(canyougivemelife.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
+	lifeShakeTween.set_parallel().tween_property(canyougivemelife.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
 	
 	$HealthGroup/IconSeezee/Lives/Label.text = str(scene.lives)
 	
+	#random chance
 	seezeeIcon.play("Death" if randf() > 0.1 else "Death_Alt")
 	
 	explosion.visible = true
 	explosion.position = $"../Camera".unproject_position($"../Objects/Ship".position)
 	explosion.play("default")
 	
+	#DOWNGRADE YOUR POWERS, THE FUCKING PUNISHMENT FOR BEING BAD /j
 	if scene.liraLevel > 1:
 		scene.liraPGR = 0
 		scene.liraLevel = max(1, scene.liraLevel - 3)
@@ -134,19 +129,15 @@ func loseLife():
 		liraShakeTween.tween_property(liraGroup, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		
 		liraGroup.material.set("shader_parameter/offsets", Vector4(1.0, -1.0, -1.0, 0.0))
-		if liraColorTween:
-			liraColorTween.kill()
-		liraColorTween = get_tree().create_tween()
-		liraColorTween.tween_property(liraGroup.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
+		lifeShakeTween.set_parallel().tween_property(liraGroup.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
 
-func restartHealth():
+func restartHealth(): #go back to no heatstrokes but you already suffered major strokes
 	for i in $HealthGroup/HealthSeezee/HealthSteps.get_children():
 		var healer1 = get_tree().create_tween()
-		var healer2 = get_tree().create_tween()
 		healer1.tween_property(i, "scale", Vector2(1,1), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
-		healer2.tween_property(i, "modulate", Color(1.0,1.0,1.0,1.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+		healer1.set_parallel().tween_property(i, "modulate", Color(1.0,1.0,1.0,1.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 
-func gameOver():
+func gameOver(): #ow
 	await get_tree().create_timer(2, false).timeout
 	seezeeIcon.play("Over")
 	

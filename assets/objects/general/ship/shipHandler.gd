@@ -50,14 +50,11 @@ var canShoot = true;
 func _ready() -> void:
 	$Ambience.play()
 
-func levelUpLira():
+func levelUpLira(): #upgrade new powers bsaed on level
 	if levelTable[scene.liraLevel]:
 		bltCLD = levelTable[scene.liraLevel][0] * PlayGlobals.bulletCooldown
 		bltPWR = levelTable[scene.liraLevel][1] / PlayGlobals.bulletPower
 		bltCNT = levelTable[scene.liraLevel][2]
-
-func _process(_delta: float) -> void:
-	pass
 	
 func _physics_process(delta: float) -> void:
 	accel = Vector3.ZERO;
@@ -68,7 +65,7 @@ func _physics_process(delta: float) -> void:
 func handleInput():
 	if scene.canInput:
 		if (action == "fly"):
-			leftRight = Input.get_axis("Left_GP", "Right_GP")
+			leftRight = Input.get_axis("Left_GP", "Right_GP") #analog support for direction i believe
 			upDown = Input.get_axis("Down_GP", "Up_GP")
 			
 			if (abs(leftRight) > 0.00001) :
@@ -83,7 +80,7 @@ func handleInput():
 				if upDown > 0: #up
 					accel.y = speed * (1.0 if accel.y < 0 else turnAroundMod) * abs(upDown) * boundForcefield[3]
 					
-			if Input.is_action_just_pressed("Barrel_GP") and (
+			if Input.is_action_just_pressed("Barrel_GP") and ( #if about to barrel and are not holding the direction the invisible forcefield is preventing from doing
 				(leftRight < 0 && boundForcefield[0] >= 1.0)
 				or
 				(leftRight > 0 && boundForcefield[1] >= 1.0)
@@ -95,12 +92,20 @@ func handleInput():
 				$Barrelroll.play()
 				$Barrelroll.pitch_scale = randf_range(0.75,1.25)
 				
-				action = "barrel"
+				action = "barrel" #do acts and immediately change speed
 				velocity.x = maxVel * boundForcefield[1] if leftRight > 0 else -maxVel * boundForcefield[0] * abs(leftRight)
 				velocity.y = maxVel * boundForcefield[3] if upDown > 0 else -maxVel * boundForcefield[2] * abs(upDown)
 				decel *= barrelDecelMod
 				barrelSpin = 360 * 2 * (-1 if leftRight > 0 or upDown > 0 else 1)
 				barrelMod = 1.0
+		elif (action == "barrel"): #if barreling but almost run out of barrel juices (nooo my barrel juices)
+			if abs(barrelMod) < 0.5:
+				action = "fly"
+				quitBarrel()
+		elif (action == "hurt"): #outchie but almost out of booboos
+			if hurtSpinMod < 0.5:
+				action = "fly"
+				invincibilityFrames()
 				
 		if action == 'fly' or (action == 'barrel' and PlayGlobals.canBarrelShoot):
 			if (Input.is_action_pressed("Shoot_GP") or autofire == true) and canShoot:
@@ -112,36 +117,30 @@ func handleInput():
 			scene.hurtPlayer()
 			scene.hurtPlayer()
 
-		elif (action == "barrel"):
-			if abs(barrelMod) < 0.5:
-				action = "fly"
-				quitBarrel()
-				
-		elif (action == "hurt"):
-			if hurtSpinMod < 0.5:
-				action = "fly"
-				invincibilityFrames()
-
 var hurtSpin:float = 0;
 var hurtSpinMod:float = 0;
 
 func gameOver():
 	pass
 
-func quitBarrel():
+func quitBarrel(): #revert back the increased develeration
 	decel /= barrelDecelMod
 
 func handleMovement(delta):
-	boundForcefield = [1.0, 1.0, 1.0, 1.0]
+	boundForcefield = [1.0, 1.0, 1.0, 1.0] #invisible forcefield
 	
+	#horizontal forcefield
+	#controlled by position detection but affects movement when inputing or when hurt
 	if (abs(self.position.x) >= scene.rotateBound):
 		if (self.position.x < 0):
-			boundForcefield[0] = max(1.0 + (scene.rotateBound + self.position.x)/(scene.maxBoundMod/1.5), 0)
+			boundForcefield[0] = max(1.0 + (scene.rotateBound + self.position.x)/(scene.maxBoundMod/1.5), 0) 
 			if (leftRight < 0 or (action == 'hurt' and boundForcefield[0] < 1.0)): velocity.x *= boundForcefield[0]
 		else:
 			boundForcefield[1] = max(1.0 - (self.position.x - scene.rotateBound)/(scene.maxBoundMod/1.5), 0)
 			if (leftRight > 0 or (action == 'hurt' and boundForcefield[1] < 1.0)): velocity.x *= boundForcefield[1]
 			
+	#vertical forcefield that is slightly different in detection because the camera is placed in a place when the elephant is 0,0,-20
+	#controlled by position detection but affects movement when inputing or when hurt
 	if (abs(self.position.y) >= scene.vertOffset):
 		if (self.position.y < 0):
 			boundForcefield[2] = max(1.0 + (scene.vertOffset + self.position.y)/(scene.maxBoundMod/1.5), 0)
@@ -151,19 +150,20 @@ func handleMovement(delta):
 			if (upDown > 0 or (action == 'hurt' and boundForcefield[3] < 1.0)): velocity.y *= boundForcefield[3]
 	
 	if accel != Vector3.ZERO:
-		velocity += accel * delta;
+		velocity += accel * delta; #movement propositions
 		
-		for i in ["x", "y", "z"]:
+		for i in ["x", "y", "z"]: #max and toppies
 			if (abs(velocity[i]) > maxVel): velocity[i] = maxVel if velocity[i] > 0 else -maxVel
 			if (abs(velocity[i]) > topVel): velocity[i] = lerpf(velocity[i], (topVel if velocity[i] > 0 else -topVel), 0.3)
 		
-	if action != "hurt" and action != 'explode':
+	if action != "hurt" and action != 'explode': #if not hurting, decelerate normally
 		for i in ["x", "y", "z"]:
 			if abs(accel[i]) < 0.0001:
 				velocity[i] = max(0.0, velocity[i] - decel * delta) if velocity[i] > 0 else min(0.0, velocity[i] + decel * delta)
 	
-	self.rotation_degrees.y = 90
+	self.rotation_degrees.y = 90 #constant
 	
+	#rotation modes per action
 	if action == "fly":
 		self.rotation_degrees.x = lerpf(self.rotation_degrees.x, velocity.x * 0.9, 0.15);
 		self.rotation_degrees.z = lerpf(self.rotation_degrees.z, velocity.y * 0.9, 0.15);
@@ -181,6 +181,7 @@ var blt = preload("res://assets/objects/bullets/railring/railring.tscn")
 func shoot():
 	canShoot = false;
 	
+	#get places to shoot from depending on level and shoot from there
 	var shootFromWhere = $"ShootLines".get_children(true).filter(func(x): return x.get_meta("levelConstrain").has(bltCNT))
 	$Shot.play()
 	$Shot.pitch_scale = randf_range(0.75,1.25)
@@ -195,7 +196,7 @@ func shoot():
 	canShoot = true;
 
 func hurtPlayer():
-	if action == "barrel":
+	if action == "barrel": #chande deceleration, dangeroud
 		decel /= barrelDecelMod
 		
 	canBeHit = false
@@ -242,7 +243,7 @@ func loseLife():
 		$Ambience.play()
 		invincibilityFrames()
 
-func invincibilityFrames(isVisible = true):
+func invincibilityFrames(isVisible = true): #custom flicker function
 	$"../../HUD".updateIcon()
 	
 	self.visible = not self.visible
@@ -254,6 +255,6 @@ func invincibilityFrames(isVisible = true):
 
 	canBeHit = true
 
-func startLevel():
+func startLevel(): #starting
 	position.z = 0;
 	get_tree().create_tween().tween_property(self, "position:z", -20.0, 0.75).set_ease(Tween.EASE_OUT).set_delay(1.5).set_trans(Tween.TRANS_CIRC)

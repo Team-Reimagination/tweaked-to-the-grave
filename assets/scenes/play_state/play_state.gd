@@ -6,6 +6,7 @@ extends Node3D
 @onready var countdown = $Audio/Coutndown
 @onready var countHand = $HUD/Countdown
 
+#preload
 var gameOverState = preload("res://assets/scenes/[SUB-SCENES]/game_over/game_over.tscn")
 var gama;
 var pauseState = preload("res://assets/scenes/[SUB-SCENES]/pause_menu/pause_menu.tscn")
@@ -39,6 +40,7 @@ var cur_boss_health:float = 1200;
 var isWarning = false
 
 func _ready() -> void:
+	#make sure you can pause to avoid anything fishy
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	
 	#PREPARE LEVEL
@@ -86,17 +88,17 @@ func initiateCountdown():
 		countHand.self_modulate.a  = 1.0
 		countTween.parallel().tween_property(countHand, "self_modulate:a", 0.0 , 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set_delay(0.35)
 		
-		await get_tree().create_timer(0.5,false).timeout
+		await get_tree().create_timer(0.5,false).timeout #i like how this delays everything in the function
 	canInput = true;
 	$Audio/Music.play()
 	$Audio/Music.volume_db = -10.0
 
 func startLevel():
-	await get_tree().create_timer(0.75,false).timeout
+	await get_tree().create_timer(0.75,false).timeout #arbitrary thing but works with transitions in mind so i don't care
 	
 	initiateCountdown()
 
-func levelUpLiraFormula(lv):
+func levelUpLiraFormula(lv): #my lira
 	return round((25*(pow(lv, 2) - lv + 2))/PlayGlobals.LiraGainSpeed)
 	
 func levelUpLira():
@@ -154,11 +156,6 @@ func gameOver():
 var scrollSpeed = 0;
 var scrollModFLOOR
 var scrollModSKY
-
-func preloadShit():
-	var bull = await $ResourcePreloader.get_resource("railring").instantiate()
-	add_child(bull)
-	bull.hide()
 
 func buildLevel():
 	#SCROLL SPEED
@@ -220,9 +217,10 @@ func buildLevel():
 	$Audio/Music.play()
 
 func _process(delta: float) -> void:
-	
+	#SCENE RESTART
 	if Input.is_key_pressed(KEY_R): get_tree().reload_current_scene()
 	
+	#PAUSING IT, although funnily enough canPause is not needed for now. Will be saved in case there's need.
 	if canPause and Input.is_action_just_pressed("Accept_UI"):
 		var assback = pauseState.instantiate()
 		PlayGlobals.addSubstate(self, assback);
@@ -260,13 +258,15 @@ func _process(delta: float) -> void:
 func wellithinkitstimetomoveonok():
 	get_tree().paused = false
 	
+#setting application
 func applySetting(type, value):
 	if type == 'autofire':
 		player.autofire = value
 	
-func spawnOBJ(obj):
+func spawnOBJ(obj): #spawn to the right group
 	$Objects.add_child(obj)
 
+#acts up for every object that passes through this, to disappear when needed to
 func entityProcess(obj):
 	if obj.position.z > 0:
 		obj.queue_free()

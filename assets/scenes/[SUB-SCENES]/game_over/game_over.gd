@@ -8,6 +8,7 @@ extends CanvasLayer
 var isItReady = false
 
 func start() -> void:
+	#this is so jank but it works, just don't fucking do this
 	var gra = get_parent().create_tween()
 	gra.tween_property($BG, "color", Color(0.0,0.0,0.0,0.5), 0.2)
 	

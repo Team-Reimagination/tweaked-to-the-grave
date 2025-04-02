@@ -24,7 +24,7 @@ func applyImmediateSettings() -> void:
 		for nam in settings.get_section_keys(sec):
 			applySetting(nam, settings.get_value(sec, nam))
 
-func applySetting(type, valuemysanityplease):
+func applySetting(type, valuemysanityplease): #this shit has no switch cases :sob:
 	if type == 'resolution':
 		if not OS.has_feature("web"): DisplayServer.window_set_size(valuemysanityplease)
 	elif type == 'fullscreen':

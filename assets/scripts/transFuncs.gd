@@ -2,7 +2,7 @@ extends Node
 
 var transState = preload("res://assets/scenes/[SUB-SCENES]/transition/transition.tscn")
 var loading = preload("res://assets/scenes/loading/loading.tscn")
-var ass;
+var ass = null;
 
 var doTransOut = true
 var doTransIn = true
@@ -12,6 +12,8 @@ var tIN = null
 
 var parentToChange;
 var intendedScene;
+
+#i think this is alright
 
 func switchScenes(parent, intendedState = "reset", doOut = true, doIn = true, doUn = false):
 	doTransOut = doOut
@@ -34,7 +36,7 @@ func switchScenes(parent, intendedState = "reset", doOut = true, doIn = true, do
 			parent.add_sibling(ass)
 			ass.process_mode = Node.PROCESS_MODE_ALWAYS
 			
-			ass.mytransrights()
+		if not ass == null: ass.mytransrights()
 
 func changeClothes():
 	if not tIN:
@@ -50,3 +52,4 @@ func changeClothes():
 			if ass: ass.queue_free()
 	else:
 		ass.queue_free()
+		ass = null

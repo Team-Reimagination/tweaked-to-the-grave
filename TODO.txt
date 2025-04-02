@@ -1,3 +1,15 @@
 Pause Menu:
  - Non-mouse Support
  - Highlighting for the button and sliders when you're about to select them
+ - Kill all noise right when you click the restart button because the sound plays for a split second and it's weird ass
+ - Should not be able to pause when game overing (when the fire starts appearing)
+
+Custom Cursors:
+ - Idle and Hand cursors for now
+
+Adventure Mode Select:
+ - Difficulty switch sound plays when mouse was used and then enter was pressed when it should not play any stage select sounds
+
+Pixel shader:
+ - Weird gaps
+ - gotta restart it :sob:
