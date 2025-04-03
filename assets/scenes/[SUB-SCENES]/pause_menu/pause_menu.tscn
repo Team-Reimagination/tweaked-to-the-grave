@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://csysid81qiy0y"]
+[gd_scene load_steps=20 format=3 uid="uid://csysid81qiy0y"]
 
 [ext_resource type="Script" uid="uid://c7stks28jaj3w" path="res://assets/scenes/[SUB-SCENES]/pause_menu/pause_menu.gd" id="1_1tfqh"]
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="2_dt6p4"]
@@ -28,6 +28,9 @@ texture_margin_right = 80.0
 texture_margin_bottom = 80.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ksnrs"]
+blend_mode = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrgvl"]
 content_margin_left = 14.0
@@ -95,6 +98,14 @@ texture = ExtResource("4_f8nfc")
 position = Vector2(0, -207)
 texture = ExtResource("5_qtn8h")
 
+[node name="QuickColor" type="ColorRect" parent="Inside"]
+material = SubResource("CanvasItemMaterial_ksnrs")
+offset_left = -83.0
+offset_top = 84.0
+offset_right = 77.0
+offset_bottom = 138.0
+color = Color(0.97, 0.759833, 0, 0.258824)
+
 [node name="QuickOptions" type="Control" parent="Inside"]
 layout_mode = 3
 anchors_preset = 0
@@ -109,6 +120,7 @@ offset_left = 72.0
 offset_top = -39.0
 offset_right = 177.0
 offset_bottom = -3.0
+mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
 theme_override_icons/grabber = ExtResource("6_qtn8h")
 theme_override_icons/grabber_highlight = ExtResource("6_qtn8h")
@@ -120,6 +132,16 @@ ticks_on_borders = true
 script = ExtResource("8_4fpqp")
 optionCategory = "volume"
 optionValue = "master"
+metadata/ID = 4
+
+[node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Master"]
+visible = false
+layout_mode = 0
+offset_left = -86.0
+offset_top = -3.0
+offset_right = 125.0
+offset_bottom = 41.0
+mouse_filter = 1
 
 [node name="MasterLabel" type="Label" parent="Inside/QuickOptions"]
 layout_mode = 0
@@ -138,6 +160,7 @@ offset_left = 72.0
 offset_top = 7.0
 offset_right = 177.0
 offset_bottom = 43.0
+mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
 theme_override_icons/grabber = ExtResource("6_qtn8h")
 theme_override_icons/grabber_highlight = ExtResource("6_qtn8h")
@@ -149,6 +172,15 @@ ticks_on_borders = true
 script = ExtResource("8_4fpqp")
 optionCategory = "volume"
 optionValue = "music"
+metadata/ID = 6
+
+[node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Music"]
+visible = false
+offset_left = -79.0
+offset_top = -3.0
+offset_right = 125.0
+offset_bottom = 41.0
+mouse_filter = 1
 
 [node name="MusicLabel" type="Label" parent="Inside/QuickOptions"]
 layout_mode = 0
@@ -167,6 +199,7 @@ offset_left = 268.0
 offset_top = -39.0
 offset_right = 373.0
 offset_bottom = -3.0
+mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
 theme_override_icons/grabber = ExtResource("6_qtn8h")
 theme_override_icons/grabber_highlight = ExtResource("6_qtn8h")
@@ -178,6 +211,15 @@ ticks_on_borders = true
 script = ExtResource("8_4fpqp")
 optionCategory = "volume"
 optionValue = "sfx"
+metadata/ID = 5
+
+[node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/SFX"]
+visible = false
+offset_left = -61.0
+offset_top = -3.0
+offset_right = 129.0
+offset_bottom = 41.0
+mouse_filter = 1
 
 [node name="SFXLabel" type="Label" parent="Inside/QuickOptions"]
 layout_mode = 0
@@ -196,6 +238,7 @@ offset_left = 268.0
 offset_top = 7.0
 offset_right = 373.0
 offset_bottom = 43.0
+mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
 theme_override_icons/grabber = ExtResource("6_qtn8h")
 theme_override_icons/grabber_highlight = ExtResource("6_qtn8h")
@@ -207,6 +250,15 @@ ticks_on_borders = true
 script = ExtResource("8_4fpqp")
 optionCategory = "volume"
 optionValue = "ambience"
+metadata/ID = 7
+
+[node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Ambience"]
+visible = false
+offset_left = -70.0
+offset_top = -3.0
+offset_right = 129.0
+offset_bottom = 41.0
+mouse_filter = 1
 
 [node name="AmbienceLabel" type="Label" parent="Inside/QuickOptions"]
 layout_mode = 0
@@ -226,6 +278,7 @@ offset_left = 212.0
 offset_top = -103.0
 offset_right = 259.0
 offset_bottom = -49.0
+pivot_offset = Vector2(23.5, 33.63)
 mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource("10_bxueh")
@@ -249,6 +302,15 @@ metadata/_aseprite_wizard_config_ = {
 "source": "D:/GODOT/projectFiles - TTTG/2d/checkbox.aseprite"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "2dec9fc98fae370b0d12ee481cadc85f"
+metadata/ID = 3
+
+[node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Autofire"]
+visible = false
+offset_left = -87.0
+offset_top = 9.0
+offset_right = 49.0
+offset_bottom = 57.0
+mouse_filter = 1
 
 [node name="AutofireLabel" type="Label" parent="Inside/QuickOptions"]
 layout_mode = 0

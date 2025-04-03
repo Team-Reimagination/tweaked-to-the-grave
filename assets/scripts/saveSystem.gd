@@ -17,7 +17,7 @@ func makeSave() -> void:
 	
 	settings.set_value("gameplay", "autofire", false)
 	
-	settings.save(SETTING_FILE_PATH)
+	save()
 
 func applyImmediateSettings() -> void:
 	for sec in settings.get_sections():
@@ -39,6 +39,9 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 	elif type == 'ambience':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(valuemysanityplease))
 
+func save():
+	settings.save(SETTING_FILE_PATH)
+
 func resetSave() -> void:
 	makeSave()
 	applyImmediateSettings()
@@ -46,7 +49,7 @@ func resetSave() -> void:
 func _ready() -> void:
 	var _error := settings.load(SETTING_FILE_PATH)
 	
-	#if error != OK:
+	#if _error != OK:
 	makeSave()
 		
 	applyImmediateSettings()
