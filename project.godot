@@ -25,6 +25,7 @@ SaveSystem="*res://assets/scripts/saveSystem.gd"
 PlayGlobals="*res://assets/scripts/playGlobals.gd"
 MenuSounds="*res://assets/scripts/menuSounds.gd"
 TransFuncs="*res://assets/scripts/transFuncs.gd"
+CustomCursor="*res://assets/scripts/customCursor.gd"
 
 [display]
 
@@ -46,6 +47,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 Entity="Gameplay Objects that can fade in and out with distance"
 Enemy="This will damage the player if touching them"
 Ally="This will damage any enemy if touching them"
+Sound="Sounds"
 
 [input]
 
