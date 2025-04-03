@@ -19,6 +19,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 SaveSystem="*res://assets/scripts/saveSystem.gd"
