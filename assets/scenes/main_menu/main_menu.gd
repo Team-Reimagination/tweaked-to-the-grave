@@ -44,11 +44,11 @@ func wellithinkitstimetomoveonok(): #hand materaliza
 	$ParallaxBackground/Grave.wellithinkitstimetomoveonok()
 	isTransitioning = true
 	
-	$ParallaxBackground/Grave/Narration.process_mode = Node.PROCESS_MODE_DISABLED
-	MenuSounds.bequietmylittlechud()
+	PlayGlobals.youarenolongermyfriendsoundnowgoaway()
 	
 	$Shaders.visible = true
 	$Shaders/Flash.color.a = 1.0
+	$Shaders/Pixelation.material["shader_parameter/pixel_size"] = 0.1;
 	get_tree().create_tween().tween_property($Shaders/Flash, "color:a", 0.0, 0.5).set_ease(Tween.EASE_OUT)
 	
 	get_tree().create_tween().tween_property($ParallaxBackground/Logo, "modulate:a", 0.0, 0.1).set_ease(Tween.EASE_OUT)

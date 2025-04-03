@@ -21,6 +21,7 @@ func _process(_delta: float) -> void:
 		get_tree().create_tween().tween_property($Base/Background, "scale", Vector2.ZERO, 0.1).set_ease(Tween.EASE_IN)
 		
 		if Input.is_action_just_pressed("Accept_UI"):
+			$Inside/Difficulty.mouseBtn = -1
 			PlayGlobals.difficulty = $Inside/Difficulty.antiterios
 			PlayGlobals.applyDifficulty()
 			

@@ -57,3 +57,6 @@ func removeAllSubstates():
 	for a in substates:
 		a.queue_free()
 	substates = []
+
+func youarenolongermyfriendsoundnowgoaway():
+	get_parent().get_tree().call_group('Sound', 'stop')

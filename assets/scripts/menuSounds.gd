@@ -9,6 +9,7 @@ func _ready() -> void:
 	for a in list:
 		var b = get(a)
 		add_child(b)
+		b.add_to_group('Sound')
 		b.stream = load("res://assets/sounds/ui/"+a+".ogg")
 		b.max_polyphony = 10;
 		b.bus = 'SFX';

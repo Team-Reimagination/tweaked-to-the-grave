@@ -79,7 +79,7 @@ func mouse_button(button):
 	updateScale()
 	
 func process_button():
-	MenuSounds.playMenuSound('small_select')
+	if mouseBtn >= 0: MenuSounds.playMenuSound('small_select')
 	
 	movement(-1 if selectedButton == 0 else 1)
 	updatemyhardness(-1 if selectedButton == 0 else 1)

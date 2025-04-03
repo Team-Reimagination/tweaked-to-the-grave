@@ -31,13 +31,13 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 		if not OS.has_feature("web"): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if valuemysanityplease else DisplayServer.WINDOW_MODE_WINDOWED)
 	
 	elif type == 'master':
-		AudioServer.set_bus_volume_db(0, linear_to_db(valuemysanityplease))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(valuemysanityplease))
 	elif type == 'music':
-		AudioServer.set_bus_volume_db(1, linear_to_db(valuemysanityplease))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(valuemysanityplease))
 	elif type == 'sfx':
-		AudioServer.set_bus_volume_db(2, linear_to_db(valuemysanityplease))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(valuemysanityplease))
 	elif type == 'ambience':
-		AudioServer.set_bus_volume_db(3, linear_to_db(valuemysanityplease))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(valuemysanityplease))
 
 func resetSave() -> void:
 	makeSave()

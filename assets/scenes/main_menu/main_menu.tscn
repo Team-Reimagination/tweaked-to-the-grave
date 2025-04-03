@@ -295,7 +295,7 @@ script = ExtResource("6_r27g3")
 position = Vector2(640, 740)
 texture = ExtResource("5_tfy4q")
 
-[node name="Narration" type="AudioStreamPlayer2D" parent="ParallaxBackground/Grave"]
+[node name="Narration" type="AudioStreamPlayer2D" parent="ParallaxBackground/Grave" groups=["Sound"]]
 position = Vector2(409, 470)
 volume_db = 10.0
 attenuation = 0.241484
