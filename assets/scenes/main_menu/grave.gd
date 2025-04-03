@@ -74,7 +74,7 @@ func process_button():
 			PlayGlobals.addSubstate(scene, instance);
 			
 		await get_tree().create_timer(0.5).timeout
-		$Narration.play()
+		if scene.canInput: $Narration.play()
 
 func wellithinkitstimetomoveonok():
 	graveHand.play("Appear")
