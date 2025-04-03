@@ -223,7 +223,7 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_R): get_tree().reload_current_scene()
 	
 	#PAUSING IT, although funnily enough canPause is not needed for now. Will be saved in case there's need.
-	if canPause and Input.is_action_just_pressed("Accept_UI"):
+	if canPause and Input.is_action_just_pressed("Pause_GP"):
 		var assback = pauseState.instantiate()
 		PlayGlobals.addSubstate(self, assback);
 		get_tree().paused = true
