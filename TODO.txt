@@ -1,8 +1,6 @@
 Pause Menu:
  - Non-mouse Support
  - Highlighting for the button and sliders when you're about to select them
- - Kill all noise right when you click the restart button because the sound plays for a split second and it's weird ass
- - Should not be able to pause when game overing (when the fire starts appearing)
 
 Pixel Shader:
  - Weird Gaps

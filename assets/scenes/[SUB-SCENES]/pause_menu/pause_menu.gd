@@ -86,7 +86,7 @@ func process_button():
 		leave(selectedButton != 2)
 		
 		if selectedButton == 1:
-			#NOTE: STOP ALL SFX
+			PlayGlobals.youarenolongermyfriendsoundnowgoaway()
 			TransFuncs.switchScenes(get_meta("parent"), "reset", false, false)
 		elif selectedButton == 2:
 			MenuSounds.playMenuSound('select')

@@ -132,6 +132,8 @@ func hurtPlayer():
 		player.gameOver()
 		
 func gameOver():
+	canPause = false;
+	
 	var musicFade = get_tree().create_tween()
 	musicFade.tween_property($Audio/Music, "pitch_scale", 0.00000001, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
