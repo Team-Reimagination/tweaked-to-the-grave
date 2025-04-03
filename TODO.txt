@@ -1,6 +1,3 @@
 Pause Menu:
  - Non-mouse Support
  - Highlighting for the button and sliders when you're about to select them
-
-Pixel Shader:
- - Weird Gaps
