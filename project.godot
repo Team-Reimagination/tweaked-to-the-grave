@@ -25,10 +25,11 @@ general/default_playback_type.web=0
 
 [autoload]
 
+Passion="*res://assets/scripts/passion.gd"
 SaveSystem="*res://assets/scripts/saveSystem.gd"
 PlayGlobals="*res://assets/scripts/playGlobals.gd"
-MenuSounds="*res://assets/scripts/menuSounds.gd"
 TransFuncs="*res://assets/scripts/transFuncs.gd"
+MenuSounds="*res://assets/scripts/menuSounds.gd"
 CustomCursor="*res://assets/scripts/customCursor.gd"
 
 [display]

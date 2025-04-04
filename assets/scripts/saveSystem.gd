@@ -15,6 +15,8 @@ func makeSave() -> void:
 	settings.set_value("volume", "sfx", 1.0)
 	settings.set_value("volume", "ambience", 1.0)
 	
+	settings.set_value("video", "passion", true)
+	
 	settings.set_value("gameplay", "autofire", false)
 	
 	save()
@@ -38,6 +40,9 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(valuemysanityplease))
 	elif type == 'ambience':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(valuemysanityplease))
+		
+	elif type == 'passion':
+		Passion.visibility(valuemysanityplease)
 
 func save():
 	settings.save(SETTING_FILE_PATH)

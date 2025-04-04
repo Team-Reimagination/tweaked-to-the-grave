@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjcb50h4qf5mv"]
+
+[ext_resource type="Shader" uid="uid://cvj3yelhocog2" path="res://assets/shaders/screen/godrays.gdshader" id="1_lm6rq"]
+[ext_resource type="Shader" uid="uid://b0glx4j1jswf" path="res://assets/shaders/screen/bloom.gdshader" id="3_mctdj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uq8wr"]
+shader = ExtResource("3_mctdj")
+shader_parameter/BLOOM_THRESHOLD = 0.53
+shader_parameter/BLOOM_INTENSITY = 2.355
+shader_parameter/DIRT_INTENSITY = 5
+shader_parameter/BLUR_ITERATIONS = 8
+shader_parameter/BLUR_SIZE = 0.055
+shader_parameter/BLUR_SUBDIVISIONS = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdblb"]
+shader = ExtResource("1_lm6rq")
+shader_parameter/Density = 0.76
+shader_parameter/Weight = 0.05
+shader_parameter/illuminationDecay = 1.46
+
+[node name="Transition" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Shaders" type="CanvasLayer" parent="."]
+layer = 128
+follow_viewport_scale = 0.001
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Shaders"]
+
+[node name="Bloom" type="ColorRect" parent="Shaders/CanvasGroup"]
+material = SubResource("ShaderMaterial_uq8wr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="God Rays" type="ColorRect" parent="Shaders/CanvasGroup"]
+material = SubResource("ShaderMaterial_jdblb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
