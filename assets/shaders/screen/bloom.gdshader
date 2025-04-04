@@ -4,13 +4,8 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest_mipmap;
 //Bloom Settings
 //BLOOM_THRESHOLD - how bright a pixel needs to be to become blurred
 //BLOOM_INTENSITY - how bright the bloom effect is
-//LENS_DIRT - draws lens dirt on the screen
-//DIRT_INTENSITY - how intense the dirt effect is
-//BLOOM_ONLY - only shows the blur created by bloom
 uniform float BLOOM_THRESHOLD = 0.1;
 uniform float  BLOOM_INTENSITY = 1;
-uniform int  DIRT_INTENSITY = 5;
-//#define BLOOM_ONLY
 
 //Blur Settings
 //BLUR_ITERATIONS - how many times a blur is created

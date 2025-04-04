@@ -15,7 +15,7 @@ func makeSave() -> void:
 	settings.set_value("volume", "sfx", 1.0)
 	settings.set_value("volume", "ambience", 1.0)
 	
-	settings.set_value("video", "passion", true)
+	settings.set_value("video", "passion", false)
 	
 	settings.set_value("gameplay", "autofire", false)
 	

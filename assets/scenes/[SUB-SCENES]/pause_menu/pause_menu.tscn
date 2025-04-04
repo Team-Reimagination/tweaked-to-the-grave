@@ -176,6 +176,7 @@ metadata/ID = 6
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Music"]
 visible = false
+layout_mode = 0
 offset_left = -79.0
 offset_top = -3.0
 offset_right = 125.0
@@ -215,6 +216,7 @@ metadata/ID = 5
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/SFX"]
 visible = false
+layout_mode = 0
 offset_left = -61.0
 offset_top = -3.0
 offset_right = 129.0
@@ -254,6 +256,7 @@ metadata/ID = 7
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Ambience"]
 visible = false
+layout_mode = 0
 offset_left = -70.0
 offset_top = -3.0
 offset_right = 129.0
@@ -306,6 +309,7 @@ metadata/ID = 3
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Autofire"]
 visible = false
+layout_mode = 0
 offset_left = -87.0
 offset_top = 9.0
 offset_right = 49.0

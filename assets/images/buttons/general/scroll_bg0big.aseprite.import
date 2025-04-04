@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bbhkmgtxakvqq"
+path="res://.godot/imported/scroll_bg0big.aseprite-b8a022479d8bd4e7fe300b980a1f34ea.res"
+
+[deps]
+
+source_file="res://assets/images/buttons/general/scroll_bg0big.aseprite"
+dest_files=["res://.godot/imported/scroll_bg0big.aseprite-b8a022479d8bd4e7fe300b980a1f34ea.res"]
+
+[params]
+

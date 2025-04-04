@@ -1,22 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjcb50h4qf5mv"]
+[gd_scene load_steps=7 format=3 uid="uid://bjcb50h4qf5mv"]
 
 [ext_resource type="Shader" uid="uid://cvj3yelhocog2" path="res://assets/shaders/screen/godrays.gdshader" id="1_lm6rq"]
+[ext_resource type="Shader" uid="uid://2ifarcjm7ryo" path="res://assets/shaders/screen/blooming.gdshader" id="1_mctdj"]
 [ext_resource type="Shader" uid="uid://b0glx4j1jswf" path="res://assets/shaders/screen/bloom.gdshader" id="3_mctdj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uq8wr"]
 shader = ExtResource("3_mctdj")
-shader_parameter/BLOOM_THRESHOLD = 0.53
-shader_parameter/BLOOM_INTENSITY = 2.355
-shader_parameter/DIRT_INTENSITY = 5
-shader_parameter/BLUR_ITERATIONS = 8
+shader_parameter/BLOOM_THRESHOLD = 0.805
+shader_parameter/BLOOM_INTENSITY = 1.945
+shader_parameter/BLUR_ITERATIONS = 4
 shader_parameter/BLUR_SIZE = 0.055
-shader_parameter/BLUR_SUBDIVISIONS = 8
+shader_parameter/BLUR_SUBDIVISIONS = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jdblb"]
 shader = ExtResource("1_lm6rq")
-shader_parameter/Density = 0.76
-shader_parameter/Weight = 0.05
-shader_parameter/illuminationDecay = 1.46
+shader_parameter/Density = 0.375
+shader_parameter/Weight = 0.29
+shader_parameter/illuminationDecay = 0.185
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8iwjs"]
+shader = ExtResource("1_mctdj")
 
 [node name="Transition" type="Control"]
 process_mode = 3
@@ -27,28 +30,44 @@ anchors_preset = 0
 layer = 128
 follow_viewport_scale = 0.001
 
-[node name="CanvasGroup" type="CanvasGroup" parent="Shaders"]
+[node name="A" type="BackBufferCopy" parent="Shaders"]
+scale = Vector2(0.0976563, 0.114583)
+copy_mode = 2
+rect = Rect2(0, 0, 1280, 960)
 
-[node name="Bloom" type="ColorRect" parent="Shaders/CanvasGroup"]
+[node name="Bloom" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_uq8wr")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1280.0
-offset_bottom = 960.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
-[node name="God Rays" type="ColorRect" parent="Shaders/CanvasGroup"]
+[node name="B" type="BackBufferCopy" parent="Shaders"]
+scale = Vector2(0.04375, 0.0489583)
+copy_mode = 2
+rect = Rect2(0, 0, 1280, 960)
+
+[node name="God Rays" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_jdblb")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1280.0
-offset_bottom = 960.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
+
+[node name="C" type="BackBufferCopy" parent="Shaders"]
+scale = Vector2(0.0703125, 0.0489583)
+copy_mode = 2
+rect = Rect2(0, 0, 1280, 960)
+
+[node name="Blooming" type="ColorRect" parent="Shaders"]
+material = SubResource("ShaderMaterial_8iwjs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
