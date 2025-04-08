@@ -5,7 +5,7 @@
 	"speed": 3.5,
 	"floor": {
 		"texture": "floor",
-		"y": -20,
+		"y": -30,
 		"scale": [100,100,100],
 		"scrollMod": [0, 1.0, 0]
 	},
