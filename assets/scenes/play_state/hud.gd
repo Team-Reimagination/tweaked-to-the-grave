@@ -7,12 +7,16 @@ extends CanvasLayer
 @onready var hurt = $Hurt
 @onready var explosion = $Explosion
 @onready var seezeeIcon = $HealthGroup/IconSeezee
+@onready var bossIcon = $HealthGroup/IconTweak
 
 var lira:int = 0;
 var liraShakeTween;
 var lifeShakeTween;
 
-func _ready() -> void:
+func postLevelBuild():
+	bossIcon.sprite_frames = load("res://assets/images/hud/icons/"+scene.levelDefs.boss+".tres")
+	bossIcon.play("Idle")
+	
 	powerText.text = str(lira)
 	
 	#LIVE TEXT SETUP

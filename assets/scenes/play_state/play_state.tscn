@@ -1,4 +1,4 @@
-[gd_scene load_steps=226 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=216 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
@@ -29,8 +29,7 @@
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="14_yewxg"]
 [ext_resource type="Shader" uid="uid://doihid8bwsqxt" path="res://assets/shaders/screen/burn.gdshader" id="16_agdm6"]
 [ext_resource type="Texture2D" uid="uid://dq2b5hsgwxuxe" path="res://assets/images/hud/icon_layout.png" id="17_60fkw"]
-[ext_resource type="Texture2D" uid="uid://d1pg6oe0al3jo" path="res://assets/images/hud/icon_seezee.png" id="18_j3klm"]
-[ext_resource type="Texture2D" uid="uid://c6nscb05dcrkg" path="res://assets/images/hud/icon_tweak.png" id="19_7bb72"]
+[ext_resource type="Texture2D" uid="uid://1mskbbtw4pdm" path="res://assets/images/hud/icons/seezee.png" id="18_j3klm"]
 [ext_resource type="Texture2D" uid="uid://b30waadie4s7l" path="res://assets/images/hud/lifesphere.png" id="19_pqvw0"]
 [ext_resource type="FontFile" uid="uid://bfrysyfaih6em" path="res://assets/images/hud/lifecounter.png" id="20_ih15a"]
 [ext_resource type="Texture2D" uid="uid://qwkyxw2s82vp" path="res://assets/images/hud/myhandyfuckinghands.png" id="21_8500i"]
@@ -1414,98 +1413,6 @@ shader = ExtResource("25_g0adn")
 shader_parameter/multipliers = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 shader_parameter/offsets = Vector4(0, 0, 0, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jo530"]
-atlas = ExtResource("19_7bb72")
-region = Rect2(188, 0, 94, 94)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wuenx"]
-atlas = ExtResource("19_7bb72")
-region = Rect2(0, 94, 94, 94)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xc2jy"]
-atlas = ExtResource("19_7bb72")
-region = Rect2(94, 94, 94, 94)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjhw0"]
-atlas = ExtResource("19_7bb72")
-region = Rect2(188, 94, 94, 94)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5n6w"]
-atlas = ExtResource("19_7bb72")
-region = Rect2(0, 188, 94, 94)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8a2b"]
-atlas = ExtResource("19_7bb72")
-region = Rect2(94, 188, 94, 94)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yj1hs"]
-atlas = ExtResource("19_7bb72")
-region = Rect2(0, 0, 94, 94)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5bgca"]
-atlas = ExtResource("19_7bb72")
-region = Rect2(94, 0, 94, 94)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1ekep"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jo530")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wuenx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xc2jy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xc2jy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fjhw0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fjhw0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5n6w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5n6w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5n6w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5n6w")
-}],
-"loop": false,
-"name": &"Death",
-"speed": 24.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k8a2b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5n6w")
-}],
-"loop": true,
-"name": &"Death_Loop",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yj1hs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5bgca")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 4.0
-}]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g0adn"]
 shader = ExtResource("25_g0adn")
 shader_parameter/multipliers = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -1826,7 +1733,6 @@ position = Vector2(640, 82)
 texture = ExtResource("17_60fkw")
 
 [node name="IconSeezee" type="AnimatedSprite2D" parent="HUD/HealthGroup"]
-texture_filter = 1
 position = Vector2(550, 82)
 sprite_frames = SubResource("SpriteFrames_jo530")
 animation = &"Death_Alt"
@@ -1875,10 +1781,8 @@ vertical_alignment = 1
 [node name="IconTweak" type="AnimatedSprite2D" parent="HUD/HealthGroup"]
 texture_filter = 1
 position = Vector2(730, 82)
-sprite_frames = SubResource("SpriteFrames_1ekep")
-animation = &"Idle"
+animation = &""
 autoplay = "Idle"
-frame_progress = 0.406654
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": false,
@@ -1890,14 +1794,14 @@ metadata/_aseprite_wizard_config_ = {
 "embed_tex": false,
 "layers": [],
 "o_ex_p": "",
-"o_folder": "res://assets/images/hud",
-"o_name": "icon_tweak",
+"o_folder": "res://assets/images/hud/icons",
+"o_name": "tweak-final",
 "only_visible": false,
 "should_round_fps": true,
 "slice": "",
-"source": "D:/GODOT/projectFiles - TTTG/2d/icon_thetweak.aseprite"
+"source": "D:/GODOT/projectFiles - TTTG/2d/icon_finaltweak.aseprite"
 }
-metadata/_aseprite_wizard_source_file_hash_ = "a561f0d9409850dd7330f501284bef68"
+metadata/_aseprite_wizard_source_file_hash_ = "dccdb85c83aca7b3334b7da97c23e783"
 
 [node name="Lives" type="Node2D" parent="HUD/HealthGroup/IconTweak"]
 material = SubResource("ShaderMaterial_g0adn")

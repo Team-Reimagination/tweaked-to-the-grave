@@ -1,6 +1,6 @@
 extends Node
 
-var levelID = "SHR"
+var levelID = "SNH"
 var levelDefs;
 
 #DIFFICULTY STUFF

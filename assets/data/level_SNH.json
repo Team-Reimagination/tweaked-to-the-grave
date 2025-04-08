@@ -1,6 +1,7 @@
 {
 	"name": "The Sunshine Hill",
 	"id": 7,
+	"boss": "tweak-final",
 	"bosshealth": 50000,
 	"speed": 5.5,
 	"floor": {

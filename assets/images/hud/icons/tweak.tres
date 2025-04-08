@@ -1,0 +1,96 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://ce3eocwmrlwdt"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o5i65"]
+load_path = "res://.godot/imported/tweak.png-9c9415615e4775be501ddbe9be2f6613.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo530"]
+atlas = SubResource("CompressedTexture2D_o5i65")
+region = Rect2(188, 0, 94, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuenx"]
+atlas = SubResource("CompressedTexture2D_o5i65")
+region = Rect2(0, 94, 94, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc2jy"]
+atlas = SubResource("CompressedTexture2D_o5i65")
+region = Rect2(94, 94, 94, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjhw0"]
+atlas = SubResource("CompressedTexture2D_o5i65")
+region = Rect2(188, 94, 94, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5n6w"]
+atlas = SubResource("CompressedTexture2D_o5i65")
+region = Rect2(0, 188, 94, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8a2b"]
+atlas = SubResource("CompressedTexture2D_o5i65")
+region = Rect2(94, 188, 94, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj1hs"]
+atlas = SubResource("CompressedTexture2D_o5i65")
+region = Rect2(0, 0, 94, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bgca"]
+atlas = SubResource("CompressedTexture2D_o5i65")
+region = Rect2(94, 0, 94, 94)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo530")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuenx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc2jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc2jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjhw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjhw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5n6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5n6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5n6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5n6w")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8a2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5n6w")
+}],
+"loop": true,
+"name": &"Death_Loop",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj1hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bgca")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}]

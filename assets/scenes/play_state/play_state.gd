@@ -30,7 +30,7 @@ var liraMax:int = 0;
 var liraLevel:int = 0;
 
 #HEALTH
-static var levelNum:int = 0;
+var levelNum:int = 0;
 
 var lives:int = PlayGlobals.lifeCount[0];
 var player_health:int = PlayGlobals.lifeCount[1];
@@ -47,14 +47,11 @@ func _ready() -> void:
 	if true:#!PlayGlobals.levelDefs:
 		if FileAccess.file_exists(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json'):
 			PlayGlobals.levelDefs = JSON.parse_string(FileAccess.open(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json', FileAccess.READ).get_as_text())
-			levelDefs = PlayGlobals.levelDefs
-			levelNum = levelDefs.id
 			
 			buildLevel();
 		else :
 			print("Could Not Find LEVEL For "+PlayGlobals.levelID+'!')
 	else:
-		levelDefs = PlayGlobals.levelDefs
 		buildLevel();
 		
 	#LIRA FORMULA
@@ -65,6 +62,7 @@ func _ready() -> void:
 		
 	startLevel()
 	player.startLevel()
+	$HUD.postLevelBuild()
 	
 func initiateCountdown():
 	var county = ["three", "two", "one", "start"]
@@ -160,6 +158,9 @@ var scrollModFLOOR
 var scrollModSKY
 
 func buildLevel():
+	levelDefs = PlayGlobals.levelDefs
+	levelNum = levelDefs.id
+
 	#SCROLL SPEED
 	scrollSpeed = levelDefs.speed;
 	

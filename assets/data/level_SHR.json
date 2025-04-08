@@ -1,6 +1,7 @@
 {
 	"name": "The Saharaland",
 	"id": 0,
+	"boss": "tweak",
 	"bosshealth": 2000,
 	"speed": 3.5,
 	"floor": {
