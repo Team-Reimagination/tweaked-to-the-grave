@@ -44,7 +44,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	
 	#PREPARE LEVEL
-	if !PlayGlobals.levelDefs:
+	if true:#!PlayGlobals.levelDefs:
 		if FileAccess.file_exists(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json'):
 			PlayGlobals.levelDefs = JSON.parse_string(FileAccess.open(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json', FileAccess.READ).get_as_text())
 			levelDefs = PlayGlobals.levelDefs

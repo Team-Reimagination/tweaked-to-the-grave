@@ -1,0 +1,51 @@
+{
+	"name": "The Sunshine Hill",
+	"id": 7,
+	"bosshealth": 50000,
+	"speed": 5.5,
+	"floor": {
+		"texture": "floor",
+		"y": -50,
+		"scale": [100,100,100],
+		"scrollMod": [0, 1.0, 0]
+	},
+	"sky": {
+		"texture": "sky",
+		"y": 220,
+		"scale": [8,8,8],
+		"scrollMod": [-0.02, 0.012, -0.001]
+	},
+	"sun": {
+		"showSun": "false",
+		"angle": [-0.08, -0.2, 0],
+		"color": [167,186,229],
+		"energy": 0.5,
+		"lie": 1.4,
+		"lad": 0.2,
+		"specular": 1.0,
+		"maxAng": 30.0,
+		"curve": 0.0116
+	},
+	"background": {
+		"sky": {
+			"top": [13,22,33],
+			"bottom": [55,63,63],
+			"curve": 0.08
+		},
+		"ground": {
+			"top": [70, 72, 72],
+			"bottom": [60, 60, 60],
+			"curve": 0.0096	
+		}
+	},
+	"fog": {
+		"energy": 1.0,
+		"sunScatter": 0.0,
+		"density": 1,
+		"distance": {
+			"start": 30.0,
+			"end": 500.0,
+			"curve": 0.170
+		}
+	}
+}
