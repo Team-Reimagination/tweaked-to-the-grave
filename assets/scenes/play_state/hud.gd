@@ -14,7 +14,7 @@ var liraShakeTween;
 var lifeShakeTween;
 
 func postLevelBuild():
-	bossIcon.sprite_frames = load("res://assets/images/hud/icons/"+scene.levelDefs.boss+".tres")
+	bossIcon.sprite_frames = load("res://assets/images/hud/icons/"+scene.bossDEF.type+".tres")
 	bossIcon.play("Idle")
 	
 	powerText.text = str(lira)
@@ -27,8 +27,8 @@ func postLevelBuild():
 	seezeeIcon.play("Heat_"+str(scene.player_health))
 	
 	#value healthing
-	$HealthGroup/HealthTweak/HealthBar.max_value = scene.boss_health
-	$HealthGroup/HealthTweak/HealthBar.value = scene.cur_boss_health
+	#$HealthGroup/HealthTweak/HealthBar.max_value = scene.boss_health
+	#$HealthGroup/HealthTweak/HealthBar.value = scene.cur_boss_health
 	
 	for i in $HealthGroup/HealthSeezee/HealthSteps.get_children(true):
 		if int(i.name) > scene.player_health: i.visible = false
@@ -85,7 +85,7 @@ func hurtPlayer(): #minor heatstroke
 	hurt.rotation = randf()
 	hurt.scale.x = randf_range(2.5,3.5)
 	hurt.scale.y = hurt.scale.x
-	hurt.position = $"../Camera".unproject_position($"../Objects/Ship".position) #3d space into 3d screen
+	hurt.position = $"../Camera".unproject_position(scene.player.position) #3d space into 3d screen
 	await get_tree().create_timer(0.1, false).timeout
 	hurt.visible = false
 	
@@ -111,7 +111,7 @@ func loseLife():
 	seezeeIcon.play("Death" if randf() > 0.1 else "Death_Alt")
 	
 	explosion.visible = true
-	explosion.position = $"../Camera".unproject_position($"../Objects/Ship".position)
+	explosion.position = $"../Camera".unproject_position(scene.player.position)
 	explosion.play("default")
 	
 	#DOWNGRADE YOUR POWERS, THE FUCKING PUNISHMENT FOR BEING BAD /j

@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dkmnuxygkfioc"
+path.s3tc="res://.godot/imported/tweak_Tweak.png-6b7ac09f1f0deaace503662a260d80ac.s3tc.ctex"
+path.etc2="res://.godot/imported/tweak_Tweak.png-6b7ac09f1f0deaace503662a260d80ac.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "0bac32dc3fb8963e5eb8e952c18f76fc"
+}
+
+[deps]
+
+source_file="res://assets/objects/bosses/tweak/tweak_Tweak.png"
+dest_files=["res://.godot/imported/tweak_Tweak.png-6b7ac09f1f0deaace503662a260d80ac.s3tc.ctex", "res://.godot/imported/tweak_Tweak.png-6b7ac09f1f0deaace503662a260d80ac.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

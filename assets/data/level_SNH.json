@@ -1,7 +1,12 @@
 {
 	"name": "The Sunshine Hill",
 	"id": 7,
-	"boss": "tweak-final",
+	"boss": {
+		"type": "tweak",
+		"distance": 140,
+		"scale": 2.5,
+		"rotation": 180
+	},
 	"bosshealth": 50000,
 	"speed": 5.5,
 	"floor": {

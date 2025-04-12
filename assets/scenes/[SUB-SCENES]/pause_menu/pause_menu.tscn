@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3cd3jshweinr" path="res://assets/images/pause/button_label.png" id="5_qtn8h"]
 [ext_resource type="Texture2D" uid="uid://km777imgrgpg" path="res://assets/images/buttons/general/scroll_grab.png" id="6_qtn8h"]
 [ext_resource type="Texture2D" uid="uid://bc6374bbi8tof" path="res://assets/images/buttons/general/scroll_bg.png" id="7_tilcf"]
-[ext_resource type="Script" uid="uid://de0a4e14oxoiu" path="res://assets/scripts/optionMetadata.gd" id="8_4fpqp"]
+[ext_resource type="Script" uid="uid://de0a4e14oxoiu" path="res://assets/scripts/funcs/optionMetadata.gd" id="8_4fpqp"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="8_xrgvl"]
 [ext_resource type="Texture2D" uid="uid://d1v1yw8v2sii4" path="res://assets/images/buttons/general/checkbox1.png" id="10_bxueh"]
 [ext_resource type="Texture2D" uid="uid://bav0b2ubq8ynd" path="res://assets/images/buttons/general/checkbox2.png" id="11_uy73s"]

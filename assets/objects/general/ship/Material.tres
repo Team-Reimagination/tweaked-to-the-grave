@@ -1,12 +1,20 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dqv1pjio4sus5"]
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://dqv1pjio4sus5"]
 
 [ext_resource type="Texture2D" uid="uid://dn2y14gwvdytt" path="res://assets/objects/general/ship/ship_Elephant.png" id="1_6ys83"]
+[ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="2_3osbr"]
+[ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="3_jmf6q"]
+[ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="4_ccqch"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3osbr"]
+render_priority = 0
+shader = ExtResource("2_3osbr")
+shader_parameter/albedo_texture = ExtResource("1_6ys83")
+shader_parameter/diffuse_gradient = ExtResource("3_jmf6q")
+shader_parameter/specular_gradient = ExtResource("4_ccqch")
 
 [resource]
 resource_name = "Material"
+next_pass = SubResource("ShaderMaterial_3osbr")
 albedo_texture = ExtResource("1_6ys83")
-roughness = 0.5
-texture_filter = 2
-distance_fade_mode = 2
 distance_fade_min_distance = 2.5
 distance_fade_max_distance = 7.5

@@ -1,13 +1,30 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://bng5xy85cefdi"]
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://bng5xy85cefdi"]
+
+[ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="1_lbpi1"]
+[ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="2_4dtec"]
+[ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="3_pwuhm"]
+
+[sub_resource type="Gradient" id="Gradient_crr65"]
+colors = PackedColorArray(0.354083, 0.873386, 1, 1, 0.352941, 0.87451, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_emksk"]
+gradient = SubResource("Gradient_crr65")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n1dk1"]
+render_priority = 1
+shader = ExtResource("1_lbpi1")
+shader_parameter/albedo_texture = SubResource("GradientTexture1D_emksk")
+shader_parameter/diffuse_gradient = ExtResource("2_4dtec")
+shader_parameter/specular_gradient = ExtResource("3_pwuhm")
 
 [resource]
+next_pass = SubResource("ShaderMaterial_n1dk1")
+shading_mode = 2
 albedo_color = Color(0.821494, 0.978282, 0.991707, 1)
 metallic = 1.0
 metallic_specular = 1.0
 roughness = 0.3
-clearcoat_roughness = 0.12
 refraction_enabled = true
 refraction_scale = 0.54
-distance_fade_mode = 2
 distance_fade_min_distance = 2.5
 distance_fade_max_distance = 7.5

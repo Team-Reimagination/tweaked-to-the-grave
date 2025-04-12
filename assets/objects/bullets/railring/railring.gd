@@ -9,7 +9,6 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	position.z -= 500 * delta #movement propossitions
-	scene.entityProcess(self)
 
 	if position.z < -500: #kill if too far away
 		queue_free()

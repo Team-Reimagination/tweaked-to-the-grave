@@ -1,10 +1,11 @@
 extends Node3D
 
-@onready var player = $Objects/Ship
 @onready var camera = $Camera
 @onready var shaders = $Shaders
 @onready var countdown = $Audio/Coutndown
 @onready var countHand = $HUD/Countdown
+var player
+var boss;
 
 #preload
 var gameOverState = preload("res://assets/scenes/[SUB-SCENES]/game_over/game_over.tscn")
@@ -34,8 +35,7 @@ var levelNum:int = 0;
 
 var lives:int = PlayGlobals.lifeCount[0];
 var player_health:int = PlayGlobals.lifeCount[1];
-var boss_health:float = 1200;
-var cur_boss_health:float = 1200;
+var bossDEF;
 
 var isWarning = false
 
@@ -211,9 +211,20 @@ func buildLevel():
 	bg.environment.fog_depth_end = levelDefs.fog.distance.end
 	bg.environment.fog_depth_curve = levelDefs.fog.distance.curve
 	
-	#HEALTH
-	boss_health = levelDefs.bosshealth
-	cur_boss_health = boss_health
+	#PLAYER
+	player = load("res://assets/objects/general/ship/ship.tscn").instantiate()
+	spawnOBJ(player)
+	#player.position.y = -20.0
+	player.scale = Vector3(0.4,0.4,0.4)
+	
+	#BOSS
+	bossDEF = levelDefs.boss;
+	boss = load("res://assets/objects/bosses/"+bossDEF.type+"/"+bossDEF.type+".tscn").instantiate()
+	spawnOBJ(boss)
+	boss.position.z = -bossDEF.distance
+	boss.position.y = levelDefs.floor.y
+	boss.scale = Vector3(bossDEF.scale, bossDEF.scale, bossDEF.scale)
+	boss.rotation_degrees.y = bossDEF.rotation
 	
 	#MUSIC
 	$Audio/Music.stream = load("res://assets/music/levels/"+PlayGlobals.levelID+".ogg")
@@ -268,8 +279,3 @@ func applySetting(type, value):
 	
 func spawnOBJ(obj): #spawn to the right group
 	$Objects.add_child(obj)
-
-#acts up for every object that passes through this, to disappear when needed to
-func entityProcess(obj):
-	if obj.position.z > 0:
-		obj.queue_free()

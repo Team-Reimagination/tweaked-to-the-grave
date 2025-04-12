@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://b5tu2e5x8r20h"]
+
+[ext_resource type="Texture2D" uid="uid://dkmnuxygkfioc" path="res://assets/objects/bosses/tweak/tweak_Tweak.png" id="1_1tnmr"]
+[ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="2_b21al"]
+[ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="3_p5lmq"]
+[ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="4_dhidq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm1tc"]
+render_priority = 0
+shader = ExtResource("2_b21al")
+shader_parameter/albedo_texture = ExtResource("1_1tnmr")
+shader_parameter/diffuse_gradient = ExtResource("3_p5lmq")
+shader_parameter/specular_gradient = ExtResource("4_dhidq")
+
+[resource]
+resource_name = "Material"
+next_pass = SubResource("ShaderMaterial_wm1tc")
+cull_mode = 2
+albedo_texture = ExtResource("1_1tnmr")

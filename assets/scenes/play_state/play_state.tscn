@@ -1,25 +1,18 @@
-[gd_scene load_steps=216 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=209 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
-[ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_oi2qx"]
-[ext_resource type="PackedScene" uid="uid://b56b0d2gngc5i" path="res://assets/objects/general/ship/ship.tscn" id="1_wtpd3"]
 [ext_resource type="Texture2D" uid="uid://drky0bx8pl5hu" path="res://assets/images/levels/SHR/floor.png" id="2_lovw6"]
 [ext_resource type="AudioStream" uid="uid://c3a1fmviekmje" path="res://assets/sounds/ambience/warning.ogg" id="2_ngmgm"]
 [ext_resource type="AudioStream" uid="uid://dgt04vyagnmlb" path="res://assets/sounds/gameplay/burning.ogg" id="2_qnhqf"]
-[ext_resource type="Script" uid="uid://dnlq4crl6dlsb" path="res://assets/scripts/3DCamFuncs.gd" id="3_4namv"]
+[ext_resource type="Script" uid="uid://dnlq4crl6dlsb" path="res://assets/scripts/funcs/3DCamFuncs.gd" id="3_4namv"]
 [ext_resource type="Material" uid="uid://b12nxbyimqnm3" path="res://assets/objects/bullets/railring/railring_red.tres" id="3_is55c"]
 [ext_resource type="Material" uid="uid://bng5xy85cefdi" path="res://assets/objects/bullets/railring/railring_white.tres" id="4_rh624"]
 [ext_resource type="Script" uid="uid://d0y83okyn781q" path="res://assets/scenes/play_state/hud.gd" id="5_fmn5d"]
 [ext_resource type="Texture2D" uid="uid://crlf2306tx65u" path="res://assets/images/hud/powersicon.png" id="5_km3m7"]
-[ext_resource type="AudioStream" uid="uid://b0lq3d8lgrxpf" path="res://assets/sounds/ambience/stampede_amb.ogg" id="5_m3iyk"]
-[ext_resource type="AudioStream" uid="uid://chmlr1hxcscp1" path="res://assets/sounds/gameplay/railring.ogg" id="6_6reie"]
 [ext_resource type="FontFile" uid="uid://7m4vhh4738ar" path="res://assets/images/hud/powerscounter.png" id="6_c2p2b"]
 [ext_resource type="Shader" uid="uid://8rcyn51imi8r" path="res://assets/shaders/screen/colorMod.gdshader" id="7_l10d1"]
-[ext_resource type="AudioStream" uid="uid://by43f72wxgt2h" path="res://assets/sounds/gameplay/barrelroll.ogg" id="7_rof2u"]
 [ext_resource type="Texture2D" uid="uid://bvnaovxwoc6a8" path="res://assets/images/hud/lira_empty.png" id="7_uuhey"]
 [ext_resource type="Texture2D" uid="uid://dsuf8fdy3wmbv" path="res://assets/images/hud/lira_prog.png" id="8_qg2ls"]
-[ext_resource type="AudioStream" uid="uid://b4hkft6vbu4rr" path="res://assets/sounds/gameplay/hurt.ogg" id="9_ieicj"]
-[ext_resource type="AudioStream" uid="uid://v2tgwl75erpi" path="res://assets/sounds/gameplay/explode.ogg" id="10_ewg7u"]
 [ext_resource type="Texture2D" uid="uid://qgtd8wp8g74u" path="res://assets/images/fx/hurt.png" id="11_f74kq"]
 [ext_resource type="AudioStream" uid="uid://bnpvn00oye0bc" path="res://assets/sounds/ui/levelup.ogg" id="12_u4v7s"]
 [ext_resource type="Texture2D" uid="uid://hno6dj4x2yxl" path="res://assets/images/hud/lira.png" id="13_15aj6"]
@@ -41,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://nykqkvm46il3" path="res://assets/images/hud/tweak_health_empty.png" id="28_3g363"]
 [ext_resource type="Texture2D" uid="uid://dwuspjgaqy5i5" path="res://assets/images/hud/tweak_health_full.png" id="29_f74kq"]
 [ext_resource type="AudioStream" uid="uid://0adjqms8ojjl" path="res://assets/sounds/ui/moneyloss.ogg" id="29_o5i65"]
+[ext_resource type="SpriteFrames" uid="uid://ce3eocwmrlwdt" path="res://assets/images/hud/icons/tweak.tres" id="36_fnjxo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7wmb"]
 sky_top_color = Color(0.382845, 0.629386, 1, 1)
@@ -183,9 +177,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_25o5j")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_oi2qx"]
-size = Vector3(11.359, 6.30129, 11.508)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lovw6"]
 
@@ -1452,7 +1443,7 @@ environment = SubResource("Environment_oi2qx")
 camera_attributes = SubResource("CameraAttributesPractical_edc5a")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.939693, 0.34202, 0, -0.34202, -0.939693, -0.695551, 4.4608, 2.72634)
+transform = Transform3D(1, 0, 0, 0, -0.939693, 0.34202, 0, -0.34202, -0.939693, -0.695551, 163.009, -1183.27)
 light_color = Color(0.944882, 0.968301, 0.955761, 1)
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -1462,10 +1453,6 @@ light_bake_mode = 0
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-keep_aspect = 0
-fov = 90.0
-near = 0.001
-far = 2000.0
 script = ExtResource("3_4namv")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
@@ -1494,62 +1481,6 @@ mesh = SubResource("ArrayMesh_4tli5")
 skeleton = NodePath("")
 
 [node name="Objects" type="Node3D" parent="."]
-
-[node name="Ship" type="CharacterBody3D" parent="Objects"]
-transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 0, 0, -20.061)
-motion_mode = 1
-slide_on_ceiling = false
-floor_max_angle = 3.14159
-floor_snap_length = 0.0
-script = ExtResource("1_oi2qx")
-
-[node name="Model" parent="Objects/Ship" instance=ExtResource("1_wtpd3")]
-
-[node name="Hitbox" type="CollisionShape3D" parent="Objects/Ship"]
-transform = Transform3D(1, 0, 1.81188e-13, 0, 1, 0, -1.81188e-13, 0, 1, -0.149689, -0.121717, -0.0356116)
-shape = SubResource("BoxShape3D_oi2qx")
-debug_color = Color(0, 0.741176, 1, 1)
-metadata/type = "player"
-
-[node name="Ambience" type="AudioStreamPlayer3D" parent="Objects/Ship"]
-stream = ExtResource("5_m3iyk")
-volume_db = -10.0
-max_db = -10.0
-pitch_scale = 0.18
-bus = &"Ambience"
-
-[node name="Shot" type="AudioStreamPlayer" parent="Objects/Ship" groups=["Sound"]]
-stream = ExtResource("6_6reie")
-volume_db = -15.0
-max_polyphony = 6
-bus = &"SFX"
-
-[node name="Hurt" type="AudioStreamPlayer" parent="Objects/Ship" groups=["Sound"]]
-stream = ExtResource("9_ieicj")
-bus = &"SFX"
-
-[node name="Explode" type="AudioStreamPlayer" parent="Objects/Ship" groups=["Sound"]]
-stream = ExtResource("10_ewg7u")
-bus = &"SFX"
-
-[node name="Barrelroll" type="AudioStreamPlayer" parent="Objects/Ship" groups=["Sound"]]
-stream = ExtResource("7_rof2u")
-max_polyphony = 2
-bus = &"SFX"
-
-[node name="ShootLines" type="Node3D" parent="Objects/Ship"]
-
-[node name="1" type="Marker3D" parent="Objects/Ship/ShootLines"]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 11.2765, -1.28679, 4.91736e-07)
-metadata/levelConstrain = PackedInt32Array(1, 3)
-
-[node name="2" type="Marker3D" parent="Objects/Ship/ShootLines"]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -1.06581e-14, 0, 1.48976, 7.51899, -1.40075, -1.40902)
-metadata/levelConstrain = PackedInt32Array(2, 3)
-
-[node name="3" type="Marker3D" parent="Objects/Ship/ShootLines"]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -1.06581e-14, 0, 1.48976, 7.51982, -1.40075, 1.41361)
-metadata/levelConstrain = PackedInt32Array(2, 3)
 
 [node name="Chunk References For Future" type="Node3D" parent="."]
 transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -48)
@@ -1781,7 +1712,8 @@ vertical_alignment = 1
 [node name="IconTweak" type="AnimatedSprite2D" parent="HUD/HealthGroup"]
 texture_filter = 1
 position = Vector2(730, 82)
-animation = &""
+sprite_frames = ExtResource("36_fnjxo")
+animation = &"Idle"
 autoplay = "Idle"
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,

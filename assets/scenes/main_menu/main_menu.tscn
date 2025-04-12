@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bnwe2owpy6pdd" path="res://assets/images/menu/mainmenu/grave.png" id="5_tfy4q"]
 [ext_resource type="Script" uid="uid://dck1vvjhfm4y7" path="res://assets/scenes/main_menu/grave.gd" id="6_r27g3"]
 [ext_resource type="Texture2D" uid="uid://bkmgr5lktkomw" path="res://assets/images/buttons/mainmenu/adventure.png" id="7_b43tu"]
-[ext_resource type="Script" uid="uid://c13517oqq03a8" path="res://assets/scripts/hover.gd" id="7_trycp"]
+[ext_resource type="Script" uid="uid://c13517oqq03a8" path="res://assets/scripts/funcs/hover.gd" id="7_trycp"]
 [ext_resource type="Texture2D" uid="uid://bsh370l44682p" path="res://assets/images/buttons/mainmenu/trophies.png" id="8_6qh68"]
 [ext_resource type="Texture2D" uid="uid://bv4i45hut2g4q" path="res://assets/images/buttons/mainmenu/options.png" id="9_x0mfv"]
 [ext_resource type="Texture2D" uid="uid://c4xro1wlloata" path="res://assets/images/menu/mainmenu/tweaked_hand.png" id="10_x0mfv"]

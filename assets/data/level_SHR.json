@@ -1,7 +1,12 @@
 {
 	"name": "The Saharaland",
 	"id": 0,
-	"boss": "tweak",
+	"boss": {
+		"type": "tweak",
+		"distance": 300,
+		"scale": 2.5,
+		"rotation": 180
+	},
 	"bosshealth": 2000,
 	"speed": 3.5,
 	"floor": {
@@ -44,9 +49,9 @@
 		"sunScatter": 0.0,
 		"density": 0.9,
 		"distance": {
-			"start": 50.0,
+			"start": 100.0,
 			"end": 500.0,
-			"curve": 0.870
+			"curve": 0.970
 		}
 	}
 }
