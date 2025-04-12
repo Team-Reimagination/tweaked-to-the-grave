@@ -4,6 +4,10 @@ extends TTTG_Obstacle
 var finalHit = AudioStreamPlayer.new()
 var death = AudioStreamPlayer.new()
 
+@export var hasAltDeath = false
+@export var altChance = 1.0
+var hasGotIt = false
+
 func _ready() -> void:
 	super._ready()
 	
@@ -16,9 +20,13 @@ func _ready() -> void:
 	finalHit.bus = 'SFX';
 	finalHit.volume_db = -3.0
 	
+	if hasAltDeath:
+		var rander = randf()
+		hasGotIt = rander <= altChance
+	
 	add_child(death)
 	death.add_to_group('Sound')
-	death.stream = load("res://assets/sounds/boss/"+scene.bossDEF.type+"_death.ogg")
+	death.stream = load("res://assets/sounds/boss/"+scene.bossDEF.type+"_death"+("_alt" if (hasAltDeath and hasGotIt) else "")+".ogg")
 	death.max_polyphony = 1;
 	death.bus = 'SFX';
 
