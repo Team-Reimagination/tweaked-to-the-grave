@@ -50,6 +50,7 @@ var canShoot = true;
 
 func _ready() -> void:
 	$Ambience.play()
+	$Model/AnimationPlayer.play("ArmatureAction")
 
 func levelUpLira(): #upgrade new powers bsaed on level
 	if levelTable[scene.liraLevel]:
