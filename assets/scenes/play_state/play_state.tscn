@@ -1521,14 +1521,6 @@ script = ExtResource("13_w87tq")
 wait_time = 2.0
 autostart = true
 
-[node name="Flash" type="ColorRect" parent="Shaders"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-
 [node name="Vignette" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_w87tq")
 anchors_preset = 15
@@ -1537,6 +1529,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.838861, 0, 0.142293, 1)
+
+[node name="Flash" type="ColorRect" parent="Shaders"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Burn" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_qnhqf")
