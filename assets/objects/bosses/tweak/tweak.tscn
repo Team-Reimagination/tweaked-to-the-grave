@@ -5156,6 +5156,7 @@ transform = Transform3D(-0.991242, 1.6645e-09, -8.78597e-08, -8.66571e-08, -0.01
 material_overlay = SubResource("ShaderMaterial_h8j36")
 offset = Vector2(0, -54.175)
 pixel_size = 0.1
+double_sided = false
 texture = ExtResource("10_qxfdj")
 script = ExtResource("11_h8j36")
 
