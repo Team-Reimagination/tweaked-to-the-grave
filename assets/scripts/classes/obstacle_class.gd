@@ -25,4 +25,3 @@ func imKillingMyself():
 func detectCollission(_areID, are, _arSID, _loSID):
 	if are.type == "player_bullet" and camBeHit:
 		damage(are.get_meta("power"))
-		are.killYourself()

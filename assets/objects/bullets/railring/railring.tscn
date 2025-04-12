@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://d1hgqyio7cgj2"]
+[gd_scene load_steps=10 format=4 uid="uid://d1hgqyio7cgj2"]
 
 [ext_resource type="Script" uid="uid://bi4bdomjgp1pp" path="res://assets/objects/bullets/railring/railring.gd" id="1_4evfx"]
 [ext_resource type="Material" uid="uid://b12nxbyimqnm3" path="res://assets/objects/bullets/railring/railring_red.tres" id="2_j18nb"]
 [ext_resource type="Material" uid="uid://bng5xy85cefdi" path="res://assets/objects/bullets/railring/railring_white.tres" id="3_ojr4h"]
+[ext_resource type="AudioStream" uid="uid://cxbilg75xfw1e" path="res://assets/sounds/gameplay/railring_land.ogg" id="4_ojr4h"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_k4bet"]
 _surfaces = [{
@@ -95,3 +96,11 @@ skeleton = NodePath("")
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13433, 0)
 shape = SubResource("BoxShape3D_fv64t")
+
+[node name="Death" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ojr4h")
+unit_size = 100.0
+max_db = 0.0
+max_distance = 500.0
+panning_strength = 0.48
+bus = &"SFX"

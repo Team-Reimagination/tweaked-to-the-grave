@@ -16,6 +16,7 @@ var pauseState = preload("res://assets/scenes/[SUB-SCENES]/pause_menu/pause_menu
 
 var canInput = false
 var canPause = true
+var hasBitchWon = false
 
 #BOUND VARIABLES
 var rotateBound = 13;
@@ -268,7 +269,7 @@ func _process(delta: float) -> void:
 		
 	#WARNING
 	$Audio/Warning.volume_db = lerpf($Audio/Warning.volume_db, -10 if isWarning else -80, 0.3)
-	if (player_health == 1 or lives == 1) and not isWarning:
+	if (player_health == 1 or lives == 1) and not isWarning and not hasBitchWon:
 		isWarning = true
 	
 func wellithinkitstimetomoveonok():

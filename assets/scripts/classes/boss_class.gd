@@ -2,6 +2,7 @@ class_name TTTG_Boss
 extends TTTG_Obstacle
 
 var toFlash
+var finalHit
 
 func _ready() -> void:
 	super._ready()
@@ -9,6 +10,13 @@ func _ready() -> void:
 	toFlash = find_child("Model").find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_overlay != null)
 	
 	self.get_node("Model/AnimationPlayer").animation_finished.connect(ImDoneGoodbye.bind())
+	
+	finalHit = AudioStreamPlayer.new()
+	add_child(finalHit)
+	finalHit.add_to_group('Sound')
+	finalHit.stream = load("res://assets/sounds/boss/final_boss_hit.ogg")
+	finalHit.max_polyphony = 1;
+	finalHit.bus = 'SFX';
 
 func ImDoneGoodbye(anim):
 	if anim == 'Death':
@@ -21,17 +29,22 @@ func _process(delta: float) -> void:
 func damage(healthTaken):
 	super.damage(healthTaken)
 	
+	scene.find_child("HUD").damage()
+	
 	if health > 0:
 		for a in toFlash:
 			a.material_overlay.set("shader_parameter/intensity", 1.0);
 			get_tree().create_tween().tween_property(a.material_overlay, "shader_parameter/intensity", 0.0, 0.15).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
-			
-	
-	scene.find_child("HUD").damage()
 
 func imKillingMyself():
+	PlayGlobals.youarenolongermyfriendsoundnowgoaway()
+	finalHit.play()
+	
+	scene.isWarning = false;
+	
 	canDie = false
 	camBeHit = false
+	scene.hasBitchWon = true
 	
 	scene.canInput = false;
 	scene.canPause = false;
