@@ -1,5 +1,15 @@
 extends TTTG_Boss
 
+var toFlash2
+
+func _ready() -> void:
+	super._ready()
+	
+	toFlash += find_child("Model").find_children("*", "Sprite3D", true, true)
+
+func damage(healthTaken):
+	super.damage(healthTaken)
+
 func _process(delta: float) -> void:
 	super._process(delta)
 
