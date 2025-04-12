@@ -11,13 +11,14 @@ colors = PackedColorArray(0.354083, 0.873386, 1, 1, 0.352941, 0.87451, 1, 1)
 gradient = SubResource("Gradient_crr65")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1dk1"]
-render_priority = 1
+render_priority = 0
 shader = ExtResource("1_lbpi1")
 shader_parameter/albedo_texture = SubResource("GradientTexture1D_emksk")
 shader_parameter/diffuse_gradient = ExtResource("2_4dtec")
 shader_parameter/specular_gradient = ExtResource("3_pwuhm")
 
 [resource]
+render_priority = 1
 next_pass = SubResource("ShaderMaterial_n1dk1")
 shading_mode = 2
 albedo_color = Color(0.821494, 0.978282, 0.991707, 1)

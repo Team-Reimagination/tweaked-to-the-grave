@@ -12,15 +12,10 @@ void fragment() {
 }
 
 void light() {
-    // Diffuse calculation
     float diffuse_intensity = clamp((dot(NORMAL, LIGHT)+1.0)/2.0, 0.0, 1.0);
 	
     vec3 diffuse_color = texture(diffuse_gradient, vec2(diffuse_intensity, 0.0)).rgb;
 	vec3 specular_color = texture(specular_gradient, vec2(diffuse_intensity, 0.0)).rgb;
     
-    // Multiply blend with vertex color
-    DIFFUSE_LIGHT = ALBEDO.rgb * diffuse_color;
-    
-    // Additive specular
-    DIFFUSE_LIGHT += specular_color;
+    DIFFUSE_LIGHT = ALBEDO.rgb * diffuse_color + specular_color;
 }

@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dg2wng5wx0iuy"]
+
+[ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="1_5m5b3"]
+[ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="3_7to4i"]
+[ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="4_eimuv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2g2um"]
+load_path = "res://.godot/imported/ship_Elephant.png-8063cb7d79524f6145b17eb30e6e4246.s3tc.ctex"
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5m5b3")
+shader_parameter/albedo_texture = SubResource("CompressedTexture2D_2g2um")
+shader_parameter/diffuse_gradient = ExtResource("3_7to4i")
+shader_parameter/specular_gradient = ExtResource("4_eimuv")
