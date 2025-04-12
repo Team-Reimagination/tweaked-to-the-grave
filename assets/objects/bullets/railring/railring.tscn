@@ -75,7 +75,7 @@ shadow_mesh = SubResource("ArrayMesh_25o5j")
 [sub_resource type="BoxShape3D" id="BoxShape3D_fv64t"]
 size = Vector3(1, 2.27588, 1)
 
-[node name="Rail Ring" type="StaticBody3D" groups=["Ally", "Entity"]]
+[node name="Rail Ring" type="Area3D" groups=["Ally", "Entity"]]
 script = ExtResource("1_4evfx")
 metadata/power = 1.0
 metadata/spawnPosition = Vector3(0, 0, 0)

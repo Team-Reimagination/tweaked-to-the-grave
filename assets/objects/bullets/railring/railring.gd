@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var type = 'player_bullet';
 @onready var scene = self.get_parent().get_parent();
 
 func _ready() -> void:
@@ -12,3 +13,6 @@ func _process(delta: float) -> void:
 
 	if position.z < -500: #kill if too far away
 		queue_free()
+
+func killYourself():
+	queue_free()

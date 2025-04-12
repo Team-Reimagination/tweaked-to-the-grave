@@ -5,9 +5,9 @@
 		"type": "tweak",
 		"distance": 140,
 		"scale": 2.5,
-		"rotation": 180
+		"rotation": 180,
+		"health": 50000
 	},
-	"bosshealth": 50000,
 	"speed": 5.5,
 	"floor": {
 		"texture": "floor",

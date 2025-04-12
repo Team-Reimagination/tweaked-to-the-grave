@@ -39,3 +39,7 @@ func _process(_delta: float) -> void:
 	if not isItReady:
 		isItReady = true
 		start()
+		
+	if buttons.canInput and $Stroked.playing == false and $Music.volume_db < 0.0:
+		$Music.play()
+		$Music.volume_db = 0.0;

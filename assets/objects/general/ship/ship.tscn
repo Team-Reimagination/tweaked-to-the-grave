@@ -453,7 +453,6 @@ libraries = {
 transform = Transform3D(1, 0, 1.81188e-13, 0, 1, 0, -1.81188e-13, 0, 1, -0.149689, -0.121717, -0.0356116)
 shape = SubResource("BoxShape3D_xidln")
 debug_color = Color(0, 0.741176, 1, 1)
-metadata/type = "player"
 
 [node name="Ambience" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_cq4vs")

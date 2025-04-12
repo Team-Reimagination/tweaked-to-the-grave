@@ -2,10 +2,12 @@ extends Node3D
 
 @onready var camera = $Camera
 @onready var shaders = $Shaders
+@onready var hud = $HUD
 @onready var countdown = $Audio/Coutndown
 @onready var countHand = $HUD/Countdown
+@onready var music = $Audio/Music
 var player
-var boss;
+var boss
 
 #preload
 var gameOverState = preload("res://assets/scenes/[SUB-SCENES]/game_over/game_over.tscn")
@@ -57,12 +59,12 @@ func _ready() -> void:
 	#LIRA FORMULA
 	if liraLevel == 0: levelUpLira()
 	else:
-		$HUD.levelUpLira()
+		hud.levelUpLira()
 		player.levelUpLira()
 		
 	startLevel()
 	player.startLevel()
-	$HUD.postLevelBuild()
+	hud.postLevelBuild()
 	
 func initiateCountdown():
 	var county = ["three", "two", "one", "start"]
@@ -88,8 +90,8 @@ func initiateCountdown():
 		
 		await get_tree().create_timer(0.5,false).timeout #i like how this delays everything in the function
 	canInput = true;
-	$Audio/Music.play()
-	$Audio/Music.volume_db = -10.0
+	music.play()
+	music.volume_db = -10.0
 
 func startLevel():
 	await get_tree().create_timer(0.75,false).timeout #arbitrary thing but works with transitions in mind so i don't care
@@ -104,7 +106,7 @@ func levelUpLira():
 	liraPGR = liraPGR - liraMax;
 	liraMax = levelUpLiraFormula(liraLevel)
 	
-	$HUD.levelUpLira()
+	hud.levelUpLira()
 	player.levelUpLira()
 	
 func restartHealth():
@@ -115,25 +117,25 @@ func hurtPlayer():
 	
 	if player_health > 0:
 		camera.shake(5.0, 1.0)
-		$HUD.hurtPlayer()
+		hud.hurtPlayer()
 		player.hurtPlayer()
 	else:
 		isWarning = false
 		lives -= 1
 		camera.shake(15.0, 2.0)
-		$HUD.loseLife()
+		hud.loseLife()
 		player.loseLife()
 		
 	if lives <= 0:
 		gameOver()
-		$HUD.gameOver()
+		hud.gameOver()
 		player.gameOver()
 		
 func gameOver():
 	canPause = false;
 	
 	var musicFade = get_tree().create_tween()
-	musicFade.tween_property($Audio/Music, "pitch_scale", 0.00000001, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	musicFade.tween_property(music, "pitch_scale", 0.00000001, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
 	var speedTween = get_tree().create_tween()
 	speedTween.tween_property(self, "scrollSpeed", 0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
@@ -214,7 +216,6 @@ func buildLevel():
 	#PLAYER
 	player = load("res://assets/objects/general/ship/ship.tscn").instantiate()
 	spawnOBJ(player)
-	#player.position.y = -20.0
 	player.scale = Vector3(0.4,0.4,0.4)
 	
 	#BOSS
@@ -225,10 +226,11 @@ func buildLevel():
 	boss.position.y = levelDefs.floor.y
 	boss.scale = Vector3(bossDEF.scale, bossDEF.scale, bossDEF.scale)
 	boss.rotation_degrees.y = bossDEF.rotation
+	boss.health = bossDEF.health
 	
 	#MUSIC
-	$Audio/Music.stream = load("res://assets/music/levels/"+PlayGlobals.levelID+".ogg")
-	$Audio/Music.play()
+	music.stream = load("res://assets/music/levels/"+PlayGlobals.levelID+".ogg")
+	music.play()
 
 func _process(delta: float) -> void:
 	#SCENE RESTART
@@ -279,3 +281,14 @@ func applySetting(type, value):
 	
 func spawnOBJ(obj): #spawn to the right group
 	$Objects.add_child(obj)
+
+func completeLevel():
+	$Audio/Victory.play()
+	$Audio/Victory.volume_db = 0.0;
+	
+	hud.abracadabrahocuspocusnowyouwilldisappear()
+	
+	get_tree().create_tween().tween_property(camera, "posi:z", 0.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+	get_tree().create_tween().tween_property(camera, "posi:y", 4.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+	
+	get_tree().create_tween().tween_property(player, "position", Vector3(0.0,0.0,-20.0), 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)

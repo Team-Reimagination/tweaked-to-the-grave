@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5y0yek0jbdjp"]
+[gd_scene load_steps=14 format=3 uid="uid://c5y0yek0jbdjp"]
 
 [ext_resource type="Texture2D" uid="uid://dbjvyd2xgr18e" path="res://assets/images/gameover/title.png" id="1_5widj"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="1_l2xgx"]
 [ext_resource type="Script" uid="uid://cetnv02v714ge" path="res://assets/scenes/[SUB-SCENES]/game_over/game_over.gd" id="1_wdgj4"]
 [ext_resource type="AudioStream" uid="uid://cqysf106p30yy" path="res://assets/sounds/menu/itssoover.ogg" id="2_rewee"]
+[ext_resource type="AudioStream" uid="uid://ynpqnn3o1luw" path="res://assets/music/game_over.ogg" id="3_od56e"]
 [ext_resource type="AudioStream" uid="uid://8nb2eam1hr8j" path="res://assets/sounds/voice/heat_stroke.wav" id="3_tgttw"]
 [ext_resource type="Script" uid="uid://bwwb20tj2ffaj" path="res://assets/scenes/[SUB-SCENES]/game_over/buttons.gd" id="5_40cmd"]
 [ext_resource type="Texture2D" uid="uid://be5w8eivou70p" path="res://assets/images/gameover/newtries.png" id="7_tgttw"]
@@ -41,6 +42,12 @@ script = ExtResource("1_wdgj4")
 
 [node name="SoOver" type="AudioStreamPlayer" parent="NewLayer" groups=["Sound"]]
 stream = ExtResource("2_rewee")
+autoplay = true
+bus = &"Music"
+
+[node name="Music" type="AudioStreamPlayer" parent="NewLayer" groups=["Sound"]]
+stream = ExtResource("3_od56e")
+volume_db = -80.0
 autoplay = true
 bus = &"Music"
 

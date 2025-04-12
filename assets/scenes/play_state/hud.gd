@@ -13,6 +13,13 @@ var lira:int = 0;
 var liraShakeTween;
 var lifeShakeTween;
 
+func abracadabrahocuspocusnowyouwilldisappear():
+	var fuckingbegone = get_tree().create_tween()
+	fuckingbegone.tween_property($Color, "color", Color(1.0,1.0,1.0,0.0), 1.0)
+
+func damage():
+	$HealthGroup/HealthTweak/HealthBar.value = scene.boss.health
+
 func postLevelBuild():
 	bossIcon.sprite_frames = load("res://assets/images/hud/icons/"+scene.bossDEF.type+".tres")
 	bossIcon.play("Idle")
@@ -27,8 +34,8 @@ func postLevelBuild():
 	seezeeIcon.play("Heat_"+str(scene.player_health))
 	
 	#value healthing
-	#$HealthGroup/HealthTweak/HealthBar.max_value = scene.boss_health
-	#$HealthGroup/HealthTweak/HealthBar.value = scene.cur_boss_health
+	$HealthGroup/HealthTweak/HealthBar.max_value = scene.boss.health
+	$HealthGroup/HealthTweak/HealthBar.value = scene.boss.health
 	
 	for i in $HealthGroup/HealthSeezee/HealthSteps.get_children(true):
 		if int(i.name) > scene.player_health: i.visible = false
@@ -145,8 +152,7 @@ func gameOver(): #ow
 	await get_tree().create_timer(2, false).timeout
 	seezeeIcon.play("Over")
 	
-	var fuckingbegone = get_tree().create_tween()
-	fuckingbegone.tween_property($Color, "color", Color(1.0,1.0,1.0,0.0), 1.0)
+	abracadabrahocuspocusnowyouwilldisappear()
 
 func _process(_delta: float) -> void:
 	#LIRA TEXT
@@ -160,8 +166,9 @@ func _process(_delta: float) -> void:
 	if abs(liraBar.value - scene.liraPGR) <= 5: liraBar.value = scene.liraPGR
 	
 	#SEEZEE ICON FUNCS
-	if (seezeeIcon.animation == "Death" or seezeeIcon.animation == "Death_Alt") and not seezeeIcon.is_playing():
-		seezeeIcon.play(seezeeIcon.animation + "_Loop")
+	for a in [seezeeIcon, bossIcon]:
+		if (a.animation == "Death" or a.animation == "Death_Alt") and not a.is_playing():
+			a.play(a.animation + "_Loop")
 	
 	#DEBUG FUNCS
 	if Input.is_key_pressed(KEY_EQUAL): 

@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@export var type = 'player';
 @onready var scene = $"../.."
 
 var action = "fly"
