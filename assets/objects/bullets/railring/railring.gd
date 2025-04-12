@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		$Death.max_db = -80.0
 	
 	if not isKillingYourself:
-		position.z -= 500 * delta #movement propossitions
+		position.z -= 400 * delta #movement propossitions
 
 		if position.z < -500: #kill if too far away
 			queue_free()
@@ -32,4 +32,5 @@ func killYourself():
 		$Model.visible = false
 
 func detectCollission(_areID, are, _arSID, _loSID):
-	killYourself()
+	if are.type != 'player_bullet':
+		killYourself()

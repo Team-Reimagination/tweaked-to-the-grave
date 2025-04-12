@@ -1,10 +1,11 @@
 extends Node
 
-var levelID = "SHR"
+var levelID = "SNH"
 var levelDefs;
 
 #DIFFICULTY STUFF
 var difficulty = 2
+var areWeFNFFreeDownload = false
 
 var diffMod = {
 	0: [0.3, true, true, [10,3], 0.5, 10, 1.5, true],
