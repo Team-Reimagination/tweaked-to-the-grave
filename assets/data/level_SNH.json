@@ -1,6 +1,7 @@
 {
 	"name": "The Sunshine Hill",
-	"id": 1,
+	"id": 7,
+	"nextLevel": "ending",
 	"boss": {
 		"type": "tweak",
 		"distance": 140,

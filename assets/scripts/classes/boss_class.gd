@@ -2,7 +2,9 @@ class_name TTTG_Boss
 extends TTTG_Obstacle
 
 var toFlash
-var finalHit
+
+var finalHit = AudioStreamPlayer.new()
+var death = AudioStreamPlayer.new()
 
 func _ready() -> void:
 	super._ready()
@@ -10,13 +12,19 @@ func _ready() -> void:
 	toFlash = find_child("Model").find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_overlay != null)
 	
 	self.get_node("Model/AnimationPlayer").animation_finished.connect(ImDoneGoodbye.bind())
-	
-	finalHit = AudioStreamPlayer.new()
+
 	add_child(finalHit)
 	finalHit.add_to_group('Sound')
 	finalHit.stream = load("res://assets/sounds/boss/final_boss_hit.ogg")
 	finalHit.max_polyphony = 1;
 	finalHit.bus = 'SFX';
+	finalHit.volume_db = -3.0
+	
+	add_child(death)
+	death.add_to_group('Sound')
+	death.stream = load("res://assets/sounds/boss/"+scene.bossDEF.type+"_death.ogg")
+	death.max_polyphony = 1;
+	death.bus = 'SFX';
 
 func ImDoneGoodbye(anim):
 	if anim == 'Death':
@@ -39,6 +47,7 @@ func damage(healthTaken):
 func imKillingMyself():
 	PlayGlobals.youarenolongermyfriendsoundnowgoaway()
 	finalHit.play()
+	death.play()
 	
 	scene.isWarning = false;
 	

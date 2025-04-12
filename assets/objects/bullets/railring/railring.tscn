@@ -80,6 +80,7 @@ size = Vector3(1, 2.27588, 1)
 script = ExtResource("1_4evfx")
 metadata/power = 1.0
 metadata/spawnPosition = Vector3(0, 0, 0)
+metadata/howMany = 0
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -99,8 +100,9 @@ shape = SubResource("BoxShape3D_fv64t")
 
 [node name="Death" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_ojr4h")
+volume_db = -10.0
 unit_size = 100.0
-max_db = 0.0
+max_db = -10.0
 max_distance = 500.0
 panning_strength = 0.48
 bus = &"SFX"

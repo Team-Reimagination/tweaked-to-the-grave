@@ -10,12 +10,15 @@ func _ready() -> void:
 	rotation_degrees.x = -90
 	scale = Vector3(0.8,0.8,0.8)
 	
+	$Death.volume_db = -10.0 + 10.0 / get_meta("howMany");
+	$Death.max_db = $Death.volume_db
+	
 	self.area_shape_entered.connect(detectCollission.bind())
 	
 func _process(delta: float) -> void:
 	if scene.hasBitchWon:
 		$Death.volume_db = -80.0;
-		$Death.max_db = -80.0
+		$Death.max_db = $Death.volume_db
 	
 	if not isKillingYourself:
 		position.z -= 400 * delta #movement propossitions

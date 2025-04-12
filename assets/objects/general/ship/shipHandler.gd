@@ -191,6 +191,7 @@ func shoot():
 		var bull = blt.instantiate()
 		bull.set_meta("power", bltPWR)
 		bull.set_meta("spawnPosition", spot.global_position)
+		bull.set_meta("howMany", bltCNT)
 		scene.spawnOBJ(bull)
 	
 	await get_tree().create_timer(bltCLD, false).timeout
