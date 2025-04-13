@@ -4151,14 +4151,14 @@ size = Vector3(9.8, 11.665, 11.16)
 [node name="Tweak" type="Area3D"]
 script = ExtResource("1_q3ouc")
 hasAltDeath = true
-altChance = 0.05
+altChance = 0.1
 type = "enemy"
 metadata/_custom_type_script = "uid://cbnyu4nbttghp"
 
 [node name="Model" type="Node3D" parent="."]
 
 [node name="Pimple1" type="BoneAttachment3D" parent="Model"]
-transform = Transform3D(0.705952, 0.669524, -0.23102, -0.317372, 0.00743808, -0.948272, -0.633172, 0.742754, 0.217739, 11.8751, 32.0829, -20.8147)
+transform = Transform3D(0.705952, 0.669524, -0.231019, -0.317372, 0.00743788, -0.948272, -0.633172, 0.742754, 0.217739, 11.8751, 32.0829, -20.8147)
 bone_name = "Chin.007.L.004.R"
 bone_idx = 79
 use_external_skeleton = true
@@ -4183,7 +4183,7 @@ texture = ExtResource("2_ej4qs")
 script = ExtResource("3_30n3s")
 
 [node name="Pimple2" type="BoneAttachment3D" parent="Model"]
-transform = Transform3D(-0.518627, -0.827947, -0.213375, -0.120616, -0.176217, 0.976934, -0.84645, 0.532401, -0.00847332, -3.92166, 36.4257, -12.8752)
+transform = Transform3D(-0.518627, -0.827948, -0.213375, -0.120616, -0.176217, 0.976934, -0.84645, 0.532401, -0.00847302, -3.92167, 36.4257, -12.8752)
 bone_name = "Chin.007.L.005.L"
 bone_idx = 72
 use_external_skeleton = true
@@ -4199,7 +4199,7 @@ texture = ExtResource("2_ej4qs")
 script = ExtResource("3_30n3s")
 
 [node name="Pimple3" type="BoneAttachment3D" parent="Model"]
-transform = Transform3D(0.0379329, 0.517633, -0.854761, -0.320612, -0.803851, -0.501031, -0.946451, 0.293052, 0.135467, 16.5271, 19.3038, -12.8587)
+transform = Transform3D(0.037933, 0.517633, -0.854762, -0.320612, -0.803851, -0.501031, -0.946451, 0.293052, 0.135467, 16.5271, 19.3038, -12.8587)
 bone_name = "Chin.007.L.008.R"
 bone_idx = 83
 use_external_skeleton = true
@@ -4215,7 +4215,7 @@ texture = ExtResource("2_ej4qs")
 script = ExtResource("3_30n3s")
 
 [node name="Pimple5" type="BoneAttachment3D" parent="Model"]
-transform = Transform3D(0.531294, 0.116907, 0.839083, -0.728903, 0.567857, 0.382412, -0.431772, -0.814783, 0.386913, 21.6347, 8.45714, -18.4777)
+transform = Transform3D(0.531294, 0.116907, 0.839082, -0.728903, 0.567857, 0.382412, -0.431773, -0.814783, 0.386913, 21.6347, 8.45714, -18.4777)
 bone_name = "Knuckle_2_R.L"
 bone_idx = 39
 use_external_skeleton = true
@@ -4231,7 +4231,7 @@ texture = ExtResource("2_ej4qs")
 script = ExtResource("3_30n3s")
 
 [node name="Pimple4" type="BoneAttachment3D" parent="Model"]
-transform = Transform3D(0.704581, -0.562785, 0.432248, 0.0106666, 0.617454, 0.786535, -0.709543, -0.549567, 0.441049, -14.3052, 14.0834, -6.38765)
+transform = Transform3D(0.704581, -0.562786, 0.432248, 0.0106675, 0.617454, 0.786535, -0.709543, -0.549567, 0.44105, -14.3052, 14.0834, -6.38765)
 bone_name = "Arm_6_R.R"
 bone_idx = 6
 use_external_skeleton = true
@@ -4256,7 +4256,7 @@ texture = ExtResource("2_ej4qs")
 script = ExtResource("3_30n3s")
 
 [node name="EL" type="BoneAttachment3D" parent="Model"]
-transform = Transform3D(0.986682, -0.142898, 0.0777074, -0.114481, -0.270688, 0.955836, -0.115552, -0.952002, -0.283442, -2.23495, 29.0803, -21.6983)
+transform = Transform3D(0.986682, -0.142898, 0.0777072, -0.114481, -0.270688, 0.955836, -0.115552, -0.952002, -0.283442, -2.23495, 29.0803, -21.6983)
 bone_name = "EyeLeft.L"
 bone_idx = 70
 use_external_skeleton = true
@@ -4271,7 +4271,7 @@ skin = SubResource("Skin_j1n4a")
 skeleton = NodePath("../../Armature/Skeleton3D")
 
 [node name="ER" type="BoneAttachment3D" parent="Model"]
-transform = Transform3D(-0.958198, -0.142898, -0.247863, 0.278722, -0.270688, -0.921435, 0.0645777, -0.952002, 0.299202, 11.3508, 26.3344, -22.953)
+transform = Transform3D(-0.958198, -0.142898, -0.247863, 0.278721, -0.270688, -0.921435, 0.0645776, -0.952002, 0.299202, 11.3508, 26.3344, -22.953)
 bone_name = "EyeRight.R"
 bone_idx = 78
 use_external_skeleton = true
@@ -4285,7 +4285,7 @@ mesh = SubResource("ArrayMesh_ubc8n")
 skeleton = NodePath("")
 
 [node name="TT" type="BoneAttachment3D" parent="Model"]
-transform = Transform3D(0.986682, -0.142899, 0.0777079, -0.114482, -0.270689, 0.955835, -0.115553, -0.952002, -0.283444, 3.39404, 24.485, -27.7952)
+transform = Transform3D(0.986682, -0.142899, 0.0777076, -0.114482, -0.270689, 0.955836, -0.115553, -0.952002, -0.283443, 3.39404, 24.485, -27.7952)
 bone_name = "Nose"
 bone_idx = 68
 use_external_skeleton = true
@@ -4298,7 +4298,7 @@ mesh = SubResource("ArrayMesh_sstai")
 skeleton = NodePath("")
 
 [node name="TD" type="BoneAttachment3D" parent="Model"]
-transform = Transform3D(0.976155, -0.125632, 0.177026, -0.197352, -0.173968, 0.964773, -0.0904092, -0.976705, -0.194614, 2.20796, 15.1322, -19.9615)
+transform = Transform3D(0.976155, -0.125632, 0.177026, -0.197351, -0.173968, 0.964773, -0.0904091, -0.976705, -0.194613, 2.20796, 15.1322, -19.9615)
 bone_name = "Chin"
 bone_idx = 57
 use_external_skeleton = true
