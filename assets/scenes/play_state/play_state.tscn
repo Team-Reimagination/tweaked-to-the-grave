@@ -1,4 +1,4 @@
-[gd_scene load_steps=210 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=213 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="Texture2D" uid="uid://drky0bx8pl5hu" path="res://assets/images/levels/SHR/floor.png" id="2_lovw6"]
@@ -11,9 +11,13 @@
 [ext_resource type="Script" uid="uid://d0y83okyn781q" path="res://assets/scenes/play_state/hud.gd" id="5_fmn5d"]
 [ext_resource type="Texture2D" uid="uid://crlf2306tx65u" path="res://assets/images/hud/powersicon.png" id="5_km3m7"]
 [ext_resource type="FontFile" uid="uid://7m4vhh4738ar" path="res://assets/images/hud/powerscounter.png" id="6_c2p2b"]
+[ext_resource type="Shader" uid="uid://kdrm0nymd0j2" path="res://assets/shaders/object/UVScroll+fog.gdshader" id="6_qnhqf"]
+[ext_resource type="Shader" uid="uid://dgvljiek78nnk" path="res://assets/shaders/object/UVScroll.gdshader" id="7_4namv"]
 [ext_resource type="Shader" uid="uid://8rcyn51imi8r" path="res://assets/shaders/screen/colorMod.gdshader" id="7_l10d1"]
 [ext_resource type="Texture2D" uid="uid://bvnaovxwoc6a8" path="res://assets/images/hud/lira_empty.png" id="7_uuhey"]
+[ext_resource type="Texture2D" uid="uid://rjshy7aio3h3" path="res://assets/images/levels/SHR/sky.png" id="8_agdm6"]
 [ext_resource type="Texture2D" uid="uid://dsuf8fdy3wmbv" path="res://assets/images/hud/lira_prog.png" id="8_qg2ls"]
+[ext_resource type="Script" uid="uid://cm14hj53uhsns" path="res://assets/scenes/play_state/chunk_generator.gd" id="9_w87tq"]
 [ext_resource type="Texture2D" uid="uid://qgtd8wp8g74u" path="res://assets/images/fx/hurt.png" id="11_f74kq"]
 [ext_resource type="AudioStream" uid="uid://bnpvn00oye0bc" path="res://assets/sounds/ui/levelup.ogg" id="12_u4v7s"]
 [ext_resource type="Texture2D" uid="uid://hno6dj4x2yxl" path="res://assets/images/hud/lira.png" id="13_15aj6"]
@@ -73,43 +77,27 @@ adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_edc5a"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lovw6"]
-resource_local_to_scene = true
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-albedo_texture = ExtResource("2_lovw6")
-uv1_scale = Vector3(500, 500, 500)
-uv1_triplanar_sharpness = 9.84916
-texture_filter = 4
-distance_fade_min_distance = 1092.26
-distance_fade_max_distance = 864.7
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5i65"]
+render_priority = 0
+shader = ExtResource("6_qnhqf")
+shader_parameter/tex = ExtResource("2_lovw6")
+shader_parameter/uv_scale = Vector2(100, 100)
+shader_parameter/uv_offset_speed = Vector2(0, 0.035)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_km3m7"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_lovw6")
+material = SubResource("ShaderMaterial_o5i65")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c2p2b"]
-load_path = "res://.godot/imported/sky.png-7d0889cd5e1065c82792a7ab1b8b37e5.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmn5d"]
-resource_local_to_scene = true
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-disable_fog = true
-albedo_texture = SubResource("CompressedTexture2D_c2p2b")
-uv1_scale = Vector3(20, 20, 20)
-uv1_triplanar_sharpness = 9.84916
-texture_filter = 4
-disable_receive_shadows = true
-distance_fade_mode = 2
-distance_fade_min_distance = 1400.0
-distance_fade_max_distance = 300.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8500i"]
+render_priority = 0
+shader = ExtResource("7_4namv")
+shader_parameter/tex = ExtResource("8_agdm6")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset_speed = Vector2(0, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wtpd3"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_fmn5d")
+material = SubResource("ShaderMaterial_8500i")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_k4bet"]
 _surfaces = [{
@@ -1466,12 +1454,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 script = ExtResource("3_4namv")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(2000, 0, 0, 0, 0.319, 0, 0, 0, 2000, 0, -30.306, -1900)
+transform = Transform3D(-2000, 0, -0.000174846, 0, 0.319, 0, 0.000174846, 0, -2000, 0, -30.306, -1900)
 mesh = SubResource("PlaneMesh_km3m7")
 skeleton = NodePath("")
 
 [node name="Sky" type="MeshInstance3D" parent="."]
-transform = Transform3D(2000, 0, 0, 0, 0.319, 0, 0, 0, 2000, 0, 200, -1900)
+transform = Transform3D(2000, -2.78879e-08, 0.000174846, -0.000174846, -0.319, -2.4847e-18, 0.000174846, -2.43803e-15, -2000, 0, 200, -1900)
 mesh = SubResource("PlaneMesh_wtpd3")
 skeleton = NodePath("")
 
@@ -1491,27 +1479,16 @@ mesh = SubResource("ArrayMesh_4tli5")
 skeleton = NodePath("")
 
 [node name="Objects" type="Node3D" parent="."]
+script = ExtResource("9_w87tq")
 
 [node name="Chunk References For Future" type="Node3D" parent="."]
 transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -48)
-visible = false
-
-[node name="BGChunkWidthRef" type="MeshInstance3D" parent="Chunk References For Future"]
-layers = 2
-mesh = SubResource("BoxMesh_lovw6")
-skeleton = NodePath("../..")
-
-[node name="BGChunkWidthRef2" type="MeshInstance3D" parent="Chunk References For Future"]
-transform = Transform3D(0.176, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.38798)
-layers = 2
-mesh = SubResource("BoxMesh_lovw6")
-skeleton = NodePath("../..")
 
 [node name="PLChunkWidthRef" type="MeshInstance3D" parent="Chunk References For Future"]
 transform = Transform3D(0.0623375, 0, 0, 0, 1.08541, 0, 0, 0, 1.54274, 0, 0.00820291, 6.13094)
-layers = 2
+visible = false
 mesh = SubResource("BoxMesh_lovw6")
-skeleton = NodePath("../..")
+skeleton = NodePath("")
 
 [node name="Shaders" type="CanvasLayer" parent="."]
 layer = 3

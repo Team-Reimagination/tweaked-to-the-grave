@@ -5154,7 +5154,7 @@ libraries = {
 autoplay = "Idle"
 
 [node name="Gooey" type="Sprite3D" parent="Model"]
-transform = Transform3D(-0.991242, 1.6645e-09, -8.78597e-08, -8.66571e-08, -0.0190397, 1.005, 0, 1.36524, 0.0140157, 0.0266533, -0.262146, -6.79259)
+transform = Transform3D(-0.991242, 1.6645e-09, -8.78597e-08, -8.66571e-08, -0.0190397, 1.005, 0, 1.36524, 0.0140157, 0.027, 0.02, -6.793)
 material_overlay = SubResource("ShaderMaterial_h8j36")
 offset = Vector2(0, -54.175)
 pixel_size = 0.1
@@ -5167,7 +5167,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.202883, 18.2084, -8.16278)
 shape = SubResource("BoxShape3D_j1n4a")
 
 [node name="Shadow" type="Sprite3D" parent="."]
-transform = Transform3D(0.551721, 0, 0, 0, -1.60777e-08, -1, 0, 0.367814, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(0.551721, 0, 0, 0, -1.60777e-08, -1, 0, 0.367814, -4.37114e-08, 0, 0.01, 0)
 modulate = Color(1, 1, 1, 0.5)
 pixel_size = 1.0
 texture = ExtResource("12_mqlwr")

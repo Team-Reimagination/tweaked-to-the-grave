@@ -10,5 +10,5 @@ func _ready() -> void:
 	pass
 
 func _process(_delta: float) -> void:
-	if self.position.z > 0:
+	if self.global_position.z > 100 and type != 'boss':
 		self.queue_free()

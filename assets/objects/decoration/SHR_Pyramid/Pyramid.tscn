@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=4 uid="uid://bivklgx5s2amu"]
+
+[ext_resource type="Script" uid="uid://di2lyy6fws75b" path="res://assets/scripts/classes/entity_class.gd" id="1_na513"]
+[ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="2_pam1m"]
+[ext_resource type="Texture2D" uid="uid://bwmecdml3hngn" path="res://assets/objects/decoration/SHR_Pyramid/pyramid_pyramid.png" id="3_u8vyc"]
+[ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="4_26au0"]
+[ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="5_dr53h"]
+[ext_resource type="Material" uid="uid://h4t6qkyafnsm" path="res://assets/objects/decoration/SHR_Pyramid/Pyramid.tres" id="6_nw1se"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hvymp"]
+render_priority = 1
+shader = ExtResource("2_pam1m")
+shader_parameter/albedo_texture = ExtResource("3_u8vyc")
+shader_parameter/diffuse_gradient = ExtResource("4_26au0")
+shader_parameter/specular_gradient = ExtResource("5_dr53h")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_eguhk"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1.82646, 2),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAgADAAAABAADAAEAAAADAAQAAAAEAAEA"),
+"name": "Pyramid",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//wAA//8AAP//AAAAAAAA/3////9/AAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x1ufk"]
+resource_name = "pyramid_Plane_002"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1.82646, 2),
+"attribute_data": PackedByteArray("hXe54HmIrPF5iLnghXes8bsTh9BuggIVIvGH0LsTh9BuggIVIvGH0LsTh9BuggIVIvGH0LsTh9BuggIVIvGH0A=="),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkACgALAAwADQAOAA8A"),
+"material": ExtResource("6_nw1se"),
+"name": "Pyramid",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAAAA/z///wAA////P///AAAAAP8/AAAAAP///z8AAAAA//9olP9/////f2iU//8AAP//aJT//wAA//+Awv9/////f4DC//8AAAAAgML//wAAAAD///9/////f///AAAAAAAA//8AAAAAAACAwv9/////f4DCAAAAAP//gMIAAP9/AAD/fwAA/38AAP9//v//f/7//3/+//9/UqupFVKrqRVSq6kV/3/r5f9/6+X/f+vlqZWr1KmVq9SplavU")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_eguhk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pam1m"]
+size = Vector3(0, 0, 0)
+
+[node name="Pyramid" type="Area3D"]
+monitoring = false
+monitorable = false
+script = ExtResource("1_na513")
+type = "decoration"
+metadata/_custom_type_script = "uid://di2lyy6fws75b"
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Plane" type="MeshInstance3D" parent="Model"]
+material_overlay = SubResource("ShaderMaterial_hvymp")
+mesh = SubResource("ArrayMesh_x1ufk")
+skeleton = NodePath("")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pam1m")

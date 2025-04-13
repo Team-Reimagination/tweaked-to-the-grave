@@ -11,6 +11,8 @@ var hasGotIt = false
 func _ready() -> void:
 	super._ready()
 	
+	type = 'boss'
+	
 	self.get_node("Model/AnimationPlayer").animation_finished.connect(ImDoneGoodbye.bind())
 
 	add_child(finalHit)

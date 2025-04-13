@@ -9,7 +9,7 @@
 load_path = "res://.godot/imported/ship_Elephant.png-8063cb7d79524f6145b17eb30e6e4246.s3tc.ctex"
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_5m5b3")
 shader_parameter/albedo_texture = SubResource("CompressedTexture2D_2g2um")
 shader_parameter/diffuse_gradient = ExtResource("3_7to4i")

@@ -9,18 +9,18 @@
 		"rotation": 180,
 		"health": 2000
 	},
-	"speed": 3.5,
+	"speed": 0.035,
 	"floor": {
 		"texture": "floor",
 		"y": -30,
-		"scale": [100,100,100],
-		"scrollMod": [0, 1.0, 0]
+		"scale": [100,100],
+		"scrollMod": [0, 1.0]
 	},
 	"sky": {
 		"texture": "sky",
 		"y": 300,
-		"scale": [10,10,10],
-		"scrollMod": [0.008, 0.015, -0.004]
+		"scale": [10,10],
+		"scrollMod": [0.008, 0.015]
 	},
 	"sun": {
 		"showSun": "true",

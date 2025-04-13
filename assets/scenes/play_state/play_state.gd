@@ -6,6 +6,7 @@ extends Node3D
 @onready var countdown = $Audio/Coutndown
 @onready var countHand = $HUD/Countdown
 @onready var music = $Audio/Music
+@onready var chunkLoader = $Objects
 var player
 var boss
 
@@ -66,6 +67,8 @@ func _ready() -> void:
 	startLevel()
 	player.startLevel()
 	hud.postLevelBuild()
+	
+	chunkLoader.makeBGChunk()
 	
 func initiateCountdown():
 	var county = ["three", "two", "one", "start"]
@@ -173,15 +176,17 @@ func buildLevel():
 	
 	if (btmF.visible):
 		btmF.position.y = levelDefs.floor.y
-		btmF.mesh.material.uv1_scale = Vector3(levelDefs.floor.scale[0], levelDefs.floor.scale[1], levelDefs.floor.scale[2])
-		btmF.mesh.material.albedo_texture = load("res://assets/images/levels/"+PlayGlobals.levelID+"/"+levelDefs.floor.texture+".png")
-		scrollModFLOOR = Vector3(levelDefs.floor.scrollMod[0], levelDefs.floor.scrollMod[1], levelDefs.floor.scrollMod[2]) if levelDefs.floor.has("scrollMod") else Vector3(0,1,0)
+		btmF.mesh.material.set("shader_parameter/uv_scale",Vector2(levelDefs.floor.scale[0], levelDefs.floor.scale[1]))
+		btmF.mesh.material.set("shader_parameter/tex",load("res://assets/images/levels/"+PlayGlobals.levelID+"/"+levelDefs.floor.texture+".png"))
+		
+		scrollModFLOOR = Vector2(levelDefs.floor.scrollMod[0], levelDefs.floor.scrollMod[1]) if levelDefs.floor.has("scrollMod") else Vector2(0,1)
 	
 	if (topF.visible):
 		topF.position.y = levelDefs.sky.y
-		topF.mesh.material.uv1_scale = Vector3(levelDefs.sky.scale[0], levelDefs.sky.scale[1], levelDefs.sky.scale[2])
-		topF.mesh.material.albedo_texture = load("res://assets/images/levels/"+PlayGlobals.levelID+"/"+levelDefs.sky.texture+".png")
-		scrollModSKY = Vector3(levelDefs.sky.scrollMod[0], levelDefs.sky.scrollMod[1], levelDefs.sky.scrollMod[2]) if levelDefs.sky.has("scrollMod") else Vector3(0,1,0)
+		topF.mesh.material.set("shader_parameter/uv_scale",Vector2(levelDefs.sky.scale[0], levelDefs.sky.scale[1]))
+		topF.mesh.material.set("shader_parameter/tex",load("res://assets/images/levels/"+PlayGlobals.levelID+"/"+levelDefs.sky.texture+".png"))
+		
+		scrollModSKY = Vector2(levelDefs.sky.scrollMod[0], levelDefs.sky.scrollMod[1]) if levelDefs.sky.has("scrollMod") else Vector2(0,1)
 		
 	#SUN
 	sun.rotate_x(levelDefs.sun.angle[0])
@@ -232,6 +237,9 @@ func buildLevel():
 	#MUSIC
 	music.stream = load("res://assets/music/levels/"+PlayGlobals.levelID+".ogg")
 	music.play()
+	
+	#CHUNKS
+	chunkLoader.prepareChunks()
 
 func _process(delta: float) -> void:
 	#SCENE RESTART
@@ -247,7 +255,8 @@ func _process(delta: float) -> void:
 	
 	#SCROLLING
 	for a in [btmF, topF]:
-		a.mesh.material.uv1_offset -= scrollSpeed * delta * (scrollModFLOOR if a.name == "Floor" else scrollModSKY)
+		a.mesh.material.set("shader_parameter/uv_offset_speed",Vector2(scrollSpeed, scrollSpeed) * (scrollModFLOOR if a.name == "Floor" else scrollModSKY))
+		print(a.mesh.material["shader_parameter/uv_offset_speed"])
 	
 	#BOUND CAMERA CONTROL
 	vertOffset = (rotateBound - 8.0) if player.position.y < 0 else (rotateBound + 2.0)
