@@ -236,6 +236,8 @@ func buildLevel():
 func _process(delta: float) -> void:
 	#SCENE RESTART
 	if Input.is_key_pressed(KEY_R): get_tree().reload_current_scene()
+	if Input.is_key_pressed(KEY_MINUS): 
+		boss.damage(boss.health)
 	
 	#PAUSING IT, although funnily enough canPause is not needed for now. Will be saved in case there's need.
 	if canPause and Input.is_action_just_pressed("Pause_GP"):
