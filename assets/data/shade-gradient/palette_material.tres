@@ -1,6 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dg2wng5wx0iuy"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://dg2wng5wx0iuy"]
 
 [ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="1_5m5b3"]
+[ext_resource type="Texture2D" uid="uid://b6u1b3yxgifvg" path="res://assets/objects/general/ship/ship_Elephant_emission.png" id="3_5m5b3"]
 [ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="3_7to4i"]
 [ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="4_eimuv"]
 
@@ -13,3 +14,4 @@ shader = ExtResource("1_5m5b3")
 shader_parameter/albedo_texture = SubResource("CompressedTexture2D_2g2um")
 shader_parameter/diffuse_gradient = ExtResource("3_7to4i")
 shader_parameter/specular_gradient = ExtResource("4_eimuv")
+shader_parameter/emissive_texture = ExtResource("3_5m5b3")
