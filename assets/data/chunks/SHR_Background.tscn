@@ -36,13 +36,13 @@ script = ExtResource("2_waefi")
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="Chunks/0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.02269)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4327, 0.386765, -105.889)
 
 [node name="StartPos" type="Marker3D" parent="Chunks/0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.0142)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.9946, 0, 42.3997)
 
 [node name="Pyramid" parent="Chunks/0" instance=ExtResource("1_ipjx4")]
-transform = Transform3D(2.01632, 0, 1.47799, 0, 2.5, 0, -1.47799, 0, 2.01632, 20.8812, 0, 12.0642)
+transform = Transform3D(20.1632, 0, 14.7799, 0, 25, 0, -14.7799, 0, 20.1632, 201.861, 0, -19.8433)
 
 [node name="Pyramid2" parent="Chunks/0" instance=ExtResource("1_ipjx4")]
-transform = Transform3D(0.524747, 0, 1.40522, 0, 1.5, 0, -1.40522, 0, 0.524747, -6.57717, 0, 12.0642)
+transform = Transform3D(5.24747, 0, 14.0522, 0, 15, 0, -14.0522, 0, 5.24747, -165.855, 0, 14.7736)

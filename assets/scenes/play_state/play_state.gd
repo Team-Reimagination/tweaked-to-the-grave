@@ -137,12 +137,8 @@ func hurtPlayer():
 		
 func gameOver():
 	canPause = false;
-	
-	var musicFade = get_tree().create_tween()
-	musicFade.tween_property(music, "pitch_scale", 0.00000001, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	
-	var speedTween = get_tree().create_tween()
-	speedTween.tween_property(self, "scrollSpeed", 0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	get_tree().create_tween().tween_property(music, "pitch_scale", 0.00000001, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
 	await get_tree().create_timer(0.5, false).timeout
 	shaders.gameOver()
@@ -241,7 +237,7 @@ func buildLevel():
 	#CHUNKS
 	chunkLoader.prepareChunks()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#SCENE RESTART
 	if Input.is_key_pressed(KEY_R): get_tree().reload_current_scene()
 	if Input.is_key_pressed(KEY_MINUS): 
@@ -256,7 +252,6 @@ func _process(delta: float) -> void:
 	#SCROLLING
 	for a in [btmF, topF]:
 		a.mesh.material.set("shader_parameter/uv_offset_speed",Vector2(scrollSpeed, scrollSpeed) * (scrollModFLOOR if a.name == "Floor" else scrollModSKY))
-		print(a.mesh.material["shader_parameter/uv_offset_speed"])
 	
 	#BOUND CAMERA CONTROL
 	vertOffset = (rotateBound - 8.0) if player.position.y < 0 else (rotateBound + 2.0)

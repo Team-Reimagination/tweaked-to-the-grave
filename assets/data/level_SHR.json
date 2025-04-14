@@ -20,7 +20,7 @@
 		"texture": "sky",
 		"y": 300,
 		"scale": [10,10],
-		"scrollMod": [0.008, 0.015]
+		"scrollMod": [0.08, 0.15]
 	},
 	"sun": {
 		"showSun": "true",

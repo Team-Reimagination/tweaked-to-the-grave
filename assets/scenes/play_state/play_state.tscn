@@ -82,7 +82,7 @@ render_priority = 0
 shader = ExtResource("6_qnhqf")
 shader_parameter/tex = ExtResource("2_lovw6")
 shader_parameter/uv_scale = Vector2(100, 100)
-shader_parameter/uv_offset_speed = Vector2(0, 0.035)
+shader_parameter/uv_offset_speed = Vector2(0, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_km3m7"]
 resource_local_to_scene = true
@@ -92,8 +92,10 @@ material = SubResource("ShaderMaterial_o5i65")
 render_priority = 0
 shader = ExtResource("7_4namv")
 shader_parameter/tex = ExtResource("8_agdm6")
-shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scale = Vector2(10, 10)
 shader_parameter/uv_offset_speed = Vector2(0, 0)
+shader_parameter/fade_start = 2000.0
+shader_parameter/fade_end = 800.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wtpd3"]
 resource_local_to_scene = true
