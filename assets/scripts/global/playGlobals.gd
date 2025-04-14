@@ -59,5 +59,8 @@ func removeAllSubstates():
 		a.queue_free()
 	substates = []
 
+func getDistance():
+	return levelDefs.fog.distance.end * 2
+
 func youarenolongermyfriendsoundnowgoaway():
 	get_parent().get_tree().call_group('Sound', 'stop')

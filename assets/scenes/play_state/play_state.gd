@@ -10,6 +10,8 @@ extends Node3D
 var player
 var boss
 
+var shadertime = 0.0
+
 #preload
 var gameOverState = preload("res://assets/scenes/[SUB-SCENES]/game_over/game_over.tscn")
 var gama;
@@ -237,7 +239,7 @@ func buildLevel():
 	#CHUNKS
 	chunkLoader.prepareChunks()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	#SCENE RESTART
 	if Input.is_key_pressed(KEY_R): get_tree().reload_current_scene()
 	if Input.is_key_pressed(KEY_MINUS): 
@@ -250,8 +252,10 @@ func _process(_delta: float) -> void:
 		get_tree().paused = true
 	
 	#SCROLLING
+	shadertime += delta;
 	for a in [btmF, topF]:
 		a.mesh.material.set("shader_parameter/uv_offset_speed",Vector2(scrollSpeed, scrollSpeed) * (scrollModFLOOR if a.name == "Floor" else scrollModSKY))
+		a.mesh.material.set("shader_parameter/custom_time",shadertime)
 	
 	#BOUND CAMERA CONTROL
 	vertOffset = (rotateBound - 8.0) if player.position.y < 0 else (rotateBound + 2.0)

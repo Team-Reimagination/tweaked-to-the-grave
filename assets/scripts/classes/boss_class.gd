@@ -12,6 +12,7 @@ func _ready() -> void:
 	super._ready()
 	
 	type = 'boss'
+	doProcessDistanceFade = false
 	
 	self.get_node("Model/AnimationPlayer").animation_finished.connect(ImDoneGoodbye.bind())
 
