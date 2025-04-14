@@ -8,13 +8,14 @@
 [ext_resource type="Material" uid="uid://h4t6qkyafnsm" path="res://assets/objects/decoration/SHR_Pyramid/Pyramid.tres" id="6_nw1se"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvymp"]
+resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("2_pam1m")
 shader_parameter/albedo_texture = ExtResource("3_u8vyc")
 shader_parameter/diffuse_gradient = ExtResource("4_26au0")
 shader_parameter/specular_gradient = ExtResource("5_dr53h")
-shader_parameter/fade_start = 10000.0
-shader_parameter/fade_end = 9999.0
+shader_parameter/fade_start = 30.0
+shader_parameter/fade_end = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_eguhk"]
 _surfaces = [{
@@ -31,6 +32,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_x1ufk"]
+resource_local_to_scene = true
 resource_name = "pyramid_Plane_002"
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 1.82646, 2),

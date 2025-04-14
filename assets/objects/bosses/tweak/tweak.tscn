@@ -34,6 +34,8 @@ shader = ExtResource("3_f1ye2")
 shader_parameter/albedo_texture = ExtResource("1_j1n4a")
 shader_parameter/diffuse_gradient = ExtResource("4_u0ke6")
 shader_parameter/specular_gradient = ExtResource("5_iv312")
+shader_parameter/fade_start = 10000.0
+shader_parameter/fade_end = 9999.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s08oq"]
 resource_name = "Material"
@@ -147,6 +149,8 @@ render_priority = 0
 shader = ExtResource("3_f1ye2")
 shader_parameter/diffuse_gradient = ExtResource("4_u0ke6")
 shader_parameter/specular_gradient = ExtResource("5_iv312")
+shader_parameter/fade_start = 10000.0
+shader_parameter/fade_end = 9999.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8xqar"]
 _surfaces = [{
@@ -200,6 +204,8 @@ render_priority = 0
 shader = ExtResource("3_f1ye2")
 shader_parameter/diffuse_gradient = ExtResource("4_u0ke6")
 shader_parameter/specular_gradient = ExtResource("5_iv312")
+shader_parameter/fade_start = 10000.0
+shader_parameter/fade_end = 9999.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gmcrt"]
 _surfaces = [{
@@ -252,6 +258,8 @@ shader = ExtResource("3_f1ye2")
 shader_parameter/albedo_texture = ExtResource("1_j1n4a")
 shader_parameter/diffuse_gradient = ExtResource("4_u0ke6")
 shader_parameter/specular_gradient = ExtResource("5_iv312")
+shader_parameter/fade_start = 10000.0
+shader_parameter/fade_end = 9999.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_yejmf"]
 resource_name = "tweak_Plane"
@@ -4153,6 +4161,7 @@ script = ExtResource("1_q3ouc")
 hasAltDeath = true
 altChance = 0.1
 type = "enemy"
+doProcessDistanceFade = false
 metadata/_custom_type_script = "uid://cbnyu4nbttghp"
 
 [node name="Model" type="Node3D" parent="."]

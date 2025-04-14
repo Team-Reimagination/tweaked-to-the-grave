@@ -8,8 +8,8 @@ uniform sampler2D specular_gradient: hint_default_black;
 
 uniform sampler2D emissive_texture: hint_default_black;
 
-uniform float fade_start = 10000; // Distance where fading begins
-uniform float fade_end = 9999;   // Distance where object becomes fully transparent
+uniform float fade_start = 0.0; // Distance where fading begins
+uniform float fade_end = 0.0;   // Distance where object becomes fully transparent
 
 void fragment() {
     // Sample base albedo texture

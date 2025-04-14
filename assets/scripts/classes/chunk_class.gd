@@ -11,3 +11,7 @@ func _process(delta: float) -> void:
 	
 	if get_child_count() <= 2:
 		self.queue_free()
+
+func passReady():
+	for a in self.find_children("*", "MeshInstance3D", true, true):
+		a.isReady = true
