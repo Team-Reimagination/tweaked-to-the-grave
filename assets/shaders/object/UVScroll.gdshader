@@ -11,12 +11,12 @@ uniform float custom_time;
 void fragment() {
   // Apply offset FIRST, then scale
     vec2 uv = (UV + uv_offset_speed * custom_time) * uv_scale;
-    
+
     // Sample texture with corrected UV
     vec4 t3t = texture(tex, uv);
 	ALPHA = t3t.a;
     ALBEDO = t3t.rgb;
-	
+
 	{
 		// Distance Fade: Pixel Dither
 		float fade_distance = length(VERTEX.xz);

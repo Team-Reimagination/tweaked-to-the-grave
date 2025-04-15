@@ -8,7 +8,7 @@ extends Area3D
 
 @export var doProcessDistanceFade = true
 var distanceFadePhase = 0;
-var isReady = false
+var isReady : bool = false
 
 var meshInstances = []
 var meshesWithOverlay = []
@@ -27,6 +27,9 @@ func _ready() -> void:
 			a.mesh.surface_get_material(0).distance_fade_max_distance = PlayGlobals.getDistance() - 100
 
 func _process(_delta: float) -> void:
+	if self.global_position.z > 100 and type != 'boss':
+			self.queue_free()
+	
 	if isReady:
 		if doProcessDistanceFade and PlayGlobals.levelDefs != null:
 			if distanceFadePhase == 0 and self.global_position.z > -100:
@@ -38,6 +41,3 @@ func _process(_delta: float) -> void:
 					a.mesh.surface_get_material(0).distance_fade_min_distance = 10
 					a.mesh.surface_get_material(0).distance_fade_max_distance = 20
 				distanceFadePhase = 1
-		
-		if self.global_position.z > 100 and type != 'boss':
-			self.queue_free()

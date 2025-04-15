@@ -9,8 +9,8 @@ var curBGChunk
 var prevBGChunk
 
 func prepareChunks() -> void:
-	bgChunkNode = load("res://assets/data/chunks/SHR_Background.tscn").instantiate()
-	bgChunks = bgChunkNode.get_child(1).get_children()
+	bgChunkNode = load("res://assets/data/chunks/"+PlayGlobals.levelID+"/background.tscn").instantiate()
+	bgChunks = bgChunkNode.get_children()
 	
 	for a in bgChunks:
 		a.owner = null
@@ -33,6 +33,7 @@ func makeBGChunk():
 	newChunk.position.y = scene.levelDefs.floor.y
 	newChunk.position.z = ogPos
 	newChunk.passReady()
+	newChunk.visible = true
 	
 	if newChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*2: makeBGChunk()
 

@@ -15,3 +15,5 @@ shader_parameter/albedo_texture = SubResource("CompressedTexture2D_2g2um")
 shader_parameter/diffuse_gradient = ExtResource("3_7to4i")
 shader_parameter/specular_gradient = ExtResource("4_eimuv")
 shader_parameter/emissive_texture = ExtResource("3_5m5b3")
+shader_parameter/fade_start = 0.0
+shader_parameter/fade_end = 0.0

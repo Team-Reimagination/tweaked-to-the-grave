@@ -17,7 +17,7 @@ void fragment() {
 	
 	{
 		// Distance Fade: Pixel Dither
-		float fade_distance = length(VERTEX.xz);
+		float fade_distance = length(VERTEX.z);
 
 		// Use interleaved gradient noise, which is fast but still looks good.
 		const vec3 magic = vec3(0.06711056, 0.00583715, 52.9829189);

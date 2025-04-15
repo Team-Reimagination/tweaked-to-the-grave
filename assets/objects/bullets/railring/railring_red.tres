@@ -16,6 +16,8 @@ shader = ExtResource("1_ipjaa")
 shader_parameter/albedo_texture = SubResource("GradientTexture1D_rmj42")
 shader_parameter/diffuse_gradient = ExtResource("2_nhfo0")
 shader_parameter/specular_gradient = ExtResource("3_hjq0f")
+shader_parameter/fade_start = 0.0
+shader_parameter/fade_end = 0.0
 
 [resource]
 render_priority = -1

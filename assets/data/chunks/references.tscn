@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6ttbed3daqwm"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_waefi"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yyejg"]
+
+[node name="References" type="Node3D"]
+transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, 0, 32.7832)
+visible = false
+
+[node name="BGChunkWidthRef" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.79642)
+mesh = SubResource("PlaneMesh_waefi")
+skeleton = NodePath("")
+
+[node name="BGChunkWidthRef2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.176, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.38798)
+mesh = SubResource("PlaneMesh_yyejg")
+skeleton = NodePath("")

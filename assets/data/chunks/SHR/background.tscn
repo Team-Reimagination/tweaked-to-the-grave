@@ -1,0 +1,215 @@
+[gd_scene load_steps=5 format=3 uid="uid://08aethha4sde"]
+
+[ext_resource type="Script" uid="uid://8fviwb4leujf" path="res://assets/scripts/classes/chunk_class.gd" id="1_lc0n7"]
+[ext_resource type="PackedScene" uid="uid://bivklgx5s2amu" path="res://assets/objects/decoration/SHR_Pyramid/Pyramid.tscn" id="2_vf808"]
+[ext_resource type="PackedScene" uid="uid://bj27sd76vnlp8" path="res://assets/objects/decoration/SHR_Pyramid/Cactus_Small.tscn" id="3_5quhj"]
+[ext_resource type="PackedScene" uid="uid://dqbavxiqkba6a" path="res://assets/objects/decoration/SHR_Pyramid/Cactus_Tall.tscn" id="4_b3drw"]
+
+[node name="ShrBackground" type="Node3D"]
+
+[node name="0" type="Node3D" parent="."]
+script = ExtResource("1_lc0n7")
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.540897, 0.386765, -551.181)
+
+[node name="StartPos" type="Marker3D" parent="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0209999, 0, 42.9094)
+
+[node name="Pyramid" parent="0" instance=ExtResource("2_vf808")]
+transform = Transform3D(64.5222, 0, 47.2957, 0, 80, 0, -47.2957, 0, 64.5222, 288.905, 0, -230.997)
+
+[node name="Pyramid3" parent="0" instance=ExtResource("2_vf808")]
+transform = Transform3D(124.829, 0, -63.3846, 0, 140, 0, 63.3846, 0, 124.829, -455.744, 0, -162.661)
+
+[node name="ShortCacti6" parent="0" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 224.026, 0, 5.4806)
+
+[node name="ShortCacti9" parent="0" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 429.296, 0, -144.707)
+
+[node name="ShortCacti10" parent="0" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -280.549, 0, -515.401)
+
+[node name="ShortCacti5" parent="0" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -169.701, 0, -46.7603)
+
+[node name="TallCacti3" parent="0" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -224.853, 0, -210.227)
+
+[node name="TallCacti8" parent="0" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -327.121, 0, -29.1929)
+
+[node name="TallCacti11" parent="0" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 401.118, 0, -455.413)
+
+[node name="TallCacti12" parent="0" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 199.646, 0, -328.979)
+
+[node name="TallCacti9" parent="0" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -305.472, 0, -297.724)
+
+[node name="TallCacti4" parent="0" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 155.465, 0, -57.2337)
+
+[node name="TallCacti5" parent="0" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 191.759, 0, -528.387)
+
+[node name="1" type="Node3D" parent="."]
+visible = false
+script = ExtResource("1_lc0n7")
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.540897, 0.386765, -388.334)
+
+[node name="StartPos" type="Marker3D" parent="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0209999, 0, -6.1595)
+
+[node name="Pyramid3" parent="1" instance=ExtResource("2_vf808")]
+transform = Transform3D(69.9817, 0, 56.5911, 0, 90, 0, -56.5911, 0, 69.9817, 356.192, 0, -229.129)
+
+[node name="Pyramid2" parent="1" instance=ExtResource("2_vf808")]
+transform = Transform3D(4.42962, 0, 29.6712, 0, 30, 0, -29.6712, 0, 4.42962, -225.728, 0, -90.5559)
+
+[node name="Pyramid4" parent="1" instance=ExtResource("2_vf808")]
+transform = Transform3D(23.2437, 0, 18.9666, 0, 30, 0, -18.9666, 0, 23.2437, -364.323, 0, -214.25)
+
+[node name="ShortCacti6" parent="1" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 224.026, 0, -140.237)
+
+[node name="ShortCacti9" parent="1" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -423.824, 0, -144.707)
+
+[node name="ShortCacti10" parent="1" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 463.893, 0, -100.264)
+
+[node name="ShortCacti5" parent="1" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -169.701, 0, -151.727)
+
+[node name="TallCacti3" parent="1" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -283.699, 0, -135.996)
+
+[node name="TallCacti8" parent="1" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -327.121, 0, -29.1929)
+
+[node name="TallCacti11" parent="1" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 295.173, 0, -52.1842)
+
+[node name="TallCacti12" parent="1" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 199.646, 0, -328.979)
+
+[node name="TallCacti9" parent="1" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -305.472, 0, -297.724)
+
+[node name="TallCacti4" parent="1" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 155.465, 0, -57.2337)
+
+[node name="2" type="Node3D" parent="."]
+visible = false
+script = ExtResource("1_lc0n7")
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.540897, 0.386765, -388.334)
+
+[node name="StartPos" type="Marker3D" parent="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0209999, 0, -115.949)
+
+[node name="Pyramid2" parent="2" instance=ExtResource("2_vf808")]
+transform = Transform3D(35.4355, 0, 35.275, 0, 50, 0, -35.275, 0, 35.4355, -381.971, 0, -263.408)
+
+[node name="ShortCacti10" parent="2" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 316.978, 0, -232.128)
+
+[node name="ShortCacti5" parent="2" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -169.701, 0, -211.498)
+
+[node name="TallCacti3" parent="2" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -332.223, 0, -135.996)
+
+[node name="TallCacti11" parent="2" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 215.328, 0, -150.388)
+
+[node name="TallCacti12" parent="2" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 204.834, 0, -328.979)
+
+[node name="TallCacti9" parent="2" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -266.303, 0, -297.724)
+
+[node name="3" type="Node3D" parent="."]
+visible = false
+script = ExtResource("1_lc0n7")
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.540897, 0.386765, -462.881)
+
+[node name="StartPos" type="Marker3D" parent="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0209999, 0, -6.1595)
+
+[node name="ShortCacti6" parent="3" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 224.026, 0, -45.4349)
+
+[node name="ShortCacti7" parent="3" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 371.72, 0, -127.756)
+
+[node name="ShortCacti8" parent="3" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 275.519, 0, -249.972)
+
+[node name="ShortCacti9" parent="3" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -239.437, 0, -119.245)
+
+[node name="ShortCacti10" parent="3" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -438.146, 0, -52.1421)
+
+[node name="ShortCacti12" parent="3" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -256.201, 0, -293.064)
+
+[node name="TallCacti3" parent="3" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -332.223, 0, -135.996)
+
+[node name="TallCacti4" parent="3" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -208.616, 0, -25.4035)
+
+[node name="TallCacti5" parent="3" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -208.616, 0, -222.552)
+
+[node name="TallCacti6" parent="3" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -365.051, 0, -410.882)
+
+[node name="TallCacti8" parent="3" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 408.335, 0, -410.882)
+
+[node name="TallCacti10" parent="3" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 366.344, 0, -50.1831)
+
+[node name="TallCacti11" parent="3" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 173.184, 0, -173.264)
+
+[node name="TallCacti12" parent="3" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 186.521, 0, -377.119)
+
+[node name="4" type="Node3D" parent="."]
+visible = false
+script = ExtResource("1_lc0n7")
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.540897, 0.386765, -75.495)
+
+[node name="StartPos" type="Marker3D" parent="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0209999, 0, -6.1595)
+
+[node name="ShortCacti6" parent="4" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 224.026, 0, -45.4349)
+
+[node name="ShortCacti9" parent="4" instance=ExtResource("3_5quhj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -210.775, 0, -47.9081)
+
+[node name="TallCacti8" parent="4" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -293.575, 0, -29.1929)
+
+[node name="TallCacti4" parent="4" instance=ExtResource("4_b3drw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 320.591, 0, -57.2337)

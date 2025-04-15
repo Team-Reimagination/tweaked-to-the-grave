@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj27sd76vnlp8"]
+
+[ext_resource type="Script" uid="uid://di2lyy6fws75b" path="res://assets/scripts/classes/entity_class.gd" id="1_tg0kh"]
+[ext_resource type="Texture2D" uid="uid://c2sa7s6qwfrm" path="res://assets/images/levels/SHR/cacti_short.png" id="2_4abjy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pam1m"]
+size = Vector3(0, 0, 0)
+
+[node name="ShortCacti" type="Area3D"]
+input_ray_pickable = false
+monitoring = false
+monitorable = false
+script = ExtResource("1_tg0kh")
+type = "decoration"
+doProcessDistanceFade = false
+metadata/_custom_type_script = "uid://di2lyy6fws75b"
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.864051, 0)
+billboard = 2
+alpha_cut = 1
+texture = ExtResource("2_4abjy")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pam1m")
