@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=4 uid="uid://bds265foreo2v"]
+
+[ext_resource type="Script" uid="uid://di2lyy6fws75b" path="res://assets/scripts/classes/entity_class.gd" id="1_im6a4"]
+[ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="2_78hs2"]
+[ext_resource type="Texture2D" uid="uid://c6sl4idelmbwv" path="res://assets/objects/decoration/SHR_Pyramid/obelisk_obelisk.png" id="3_im6a4"]
+[ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="4_utr2m"]
+[ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="5_ygicy"]
+[ext_resource type="Material" uid="uid://c6ol6d6app12c" path="res://assets/objects/decoration/SHR_Pyramid/Obelisk.tres" id="6_78hs2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j834e"]
+render_priority = 1
+shader = ExtResource("2_78hs2")
+shader_parameter/albedo_texture = ExtResource("3_im6a4")
+shader_parameter/diffuse_gradient = ExtResource("4_utr2m")
+shader_parameter/specular_gradient = ExtResource("5_ygicy")
+shader_parameter/fade_start = 0.0
+shader_parameter/fade_end = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_usihx"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 4.6234, 2),
+"format": 34896613377,
+"index_count": 90,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEABQAAAAIABQACAAQABgAAAAUABgADAAAABwABAAMABwADAAYABAABAAcACAAGAAUACQAFAAQACAAFAAkACgAEAAcACQAEAAoACwAHAAYACwAGAAgACgAHAAsADAAIAAkADQAJAAoADAAJAA0ADgAKAAsADQAKAA4ADQAPAAwADgAPAA0AEAAIAAwAEAALAAgADAAPABAADgALABAAEAAPAA4A"),
+"name": "Obelisk",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 17,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//wAA//8AAP//AAAAAAAAAAAAAP//AACF6jQ3eRUAAHkVNDd5FQAAeRU0N4XqAACF6jQ3heoAACsxNDfTzgAAKzE0NysxAADTzjQ3KzEAANPONDfTzgAAT1F33K+uAABPUXfcT1EAAK+ud9xPUQAA/3////9/AACvrnfcr64AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2370o"]
+resource_name = "obelisk_Plane_008"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 4.6234, 2),
+"attribute_data": PackedByteArray("AAAAAP///////wAAAAD//7z0+beqAIP/RAz5tyr9g/+89Pm3qgCD/0QM+bcq/YP/vPT5t6oAg/9EDPm3Kv2D/7z0+beqAIP/RAz5tyr9g/+h2BelFCRbt/ojGaXA2Vu3odgXpRQkW7f6IxmlwNlbt6HYF6UUJFu3+iMZpcDZW7eh2BelFCRbt/ojGaXA2Vu3w+tYL+oDkrTHA1kvN+2RtMPrWC/qA5K0xwNZLzftkbTD61gv6gOStMcDWS837ZG0w+tYL+oDkrTHA1kvN+2RtI4BOSvqftsARfw5K44BOSvqftsARfw5K44BOSvqftsARfw5K44BOSvqftsARfw5Kw=="),
+"format": 34896613399,
+"index_count": 90,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANwA4ADkAOgA7ADwAPQA+AD8A"),
+"material": ExtResource("6_78hs2"),
+"name": "Obelisk",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 64,
+"vertex_data": PackedByteArray("AAAAAAAA/z///wAA////P///AAAAAP8/AAAAAP///z95FTQ3hepHwAAAAAAAAEfAeRU0N3kVR8AAAAAA//9HwIXqNDeF6sqGAAAAAP//yoZ5FTQ3herKhv//AAD//8qGheo0N3kVR8D//wAA//9HwIXqNDeF6kfA//8AAAAAR8B5FTQ3eRX/////AAAAAP//heo0N3kV//8AAAAAAAD//ysxNDfTzlTVeRU0N3kVVNUrMTQ3KzFV1XkVNDeF6lTV0840N9PO/795FTQ3her/vysxNDfTzv+/heo0N4Xq/7/TzjQ3KzFU1YXqNDeF6lTV0840N9POU9WF6jQ3eRVU1SsxNDcrMf//heo0N3kV///TzjQ3KzH//3kVNDd5Ff//T1F33K+uEcArMTQ3KzERwE9Rd9xPURHAKzE0N9POEcCvrnfcr65qgysxNDfTzmqDT1F33K+uaoPTzjQ3085qg6+ud9xPURHA0840N9POEcCvrnfcr64RwNPONDcrMRHAT1F33E9R///TzjQ3KzH//6+ud9xPUf//KzE0Nysx//9PUXfcr64Olf9/////fw6Vr6533K+uDpWvrnfcr66pwv9/////f6nCr6533E9RqcKvrnfcT1H///9/////f///T1F33E9R//9PUXfcT1Gpwv9/////f6nCT1F33K+uqcIAAP9/AAD/fwAA/38AAP9/KYmr7SmJq+0piavtKYmr7f7//3/+//9//v//f/7//39TkikJU5IpCVOSKQlTkikJ/38g9v9/IPb/fyD2/38g9qmqqqqpqqqqqaqqqqmqqqr+//9//P8AgPv/AYD+//9/VNWqKlTVqypU1asqVNWqKv9//7//vwAA/78AAP9//7/0hBT29IQU9vSEFPb0hBT29///f/n//3/2//9/+v//f+qJ9QTqifUE6on1BOqJ9QT/f9b6/3/W+v9/1vr/f9b6/v//f/7//3/+//9/RKwiFkSsIhZErCIW/3875f9/O+X/fzvlIZa60yGWutMhlrrT")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_usihx")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pam1m"]
+size = Vector3(0, 0, 0)
+
+[node name="Obelisk" type="Area3D"]
+input_ray_pickable = false
+monitoring = false
+monitorable = false
+script = ExtResource("1_im6a4")
+type = "decoration"
+metadata/_custom_type_script = "uid://di2lyy6fws75b"
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Plane_006" type="MeshInstance3D" parent="Model"]
+material_overlay = SubResource("ShaderMaterial_j834e")
+mesh = SubResource("ArrayMesh_2370o")
+skeleton = NodePath("")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pam1m")

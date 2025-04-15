@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c6ol6d6app12c"]
+
+[ext_resource type="Texture2D" uid="uid://c6sl4idelmbwv" path="res://assets/objects/decoration/SHR_Pyramid/obelisk_obelisk.png" id="1_xh7ty"]
+
+[resource]
+resource_name = "Obelisk"
+cull_mode = 2
+albedo_texture = ExtResource("1_xh7ty")
+roughness = 0.5
+distance_fade_mode = 2
+distance_fade_max_distance = 0.0

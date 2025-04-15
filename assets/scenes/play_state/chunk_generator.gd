@@ -32,6 +32,7 @@ func makeBGChunk():
 	newChunk.position.x = 0.0 + (0.0 - newChunk.startPos.global_position.x)
 	newChunk.position.y = scene.levelDefs.floor.y
 	newChunk.position.z = ogPos
+	
 	newChunk.passReady()
 	newChunk.visible = true
 	

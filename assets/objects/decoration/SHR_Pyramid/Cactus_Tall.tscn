@@ -20,7 +20,6 @@ metadata/_custom_type_script = "uid://di2lyy6fws75b"
 [node name="Sprite3D" type="Sprite3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45457, 0)
 billboard = 2
-alpha_cut = 1
 texture = ExtResource("2_hye6l")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
