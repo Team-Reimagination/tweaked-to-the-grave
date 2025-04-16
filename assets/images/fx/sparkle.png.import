@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmrec2etsk5kw"
-path.s3tc="res://.godot/imported/ewthatssonasty.png-10580172f2cd782fe249bcf878e44916.s3tc.ctex"
-path.etc2="res://.godot/imported/ewthatssonasty.png-10580172f2cd782fe249bcf878e44916.etc2.ctex"
+uid="uid://dr0jovf6bn73t"
+path.s3tc="res://.godot/imported/sparkle.png-d70fd801f40254c32d82ef363ddf6eac.s3tc.ctex"
+path.etc2="res://.godot/imported/sparkle.png-d70fd801f40254c32d82ef363ddf6eac.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/additional_entities/tweak/ewthatssonasty.png"
-dest_files=["res://.godot/imported/ewthatssonasty.png-10580172f2cd782fe249bcf878e44916.s3tc.ctex", "res://.godot/imported/ewthatssonasty.png-10580172f2cd782fe249bcf878e44916.etc2.ctex"]
+source_file="res://assets/images/fx/sparkle.png"
+dest_files=["res://.godot/imported/sparkle.png-d70fd801f40254c32d82ef363ddf6eac.s3tc.ctex", "res://.godot/imported/sparkle.png-d70fd801f40254c32d82ef363ddf6eac.etc2.ctex"]
 
 [params]
 

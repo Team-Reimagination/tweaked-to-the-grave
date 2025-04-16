@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://b56b0d2gngc5i"]
+[gd_scene load_steps=20 format=4 uid="uid://b56b0d2gngc5i"]
 
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_ntkcy"]
 [ext_resource type="Animation" uid="uid://3c1fmvv5eomo" path="res://assets/objects/general/ship/anim/idle.res" id="2_1tqx3"]
 [ext_resource type="Material" uid="uid://dg2wng5wx0iuy" path="res://assets/data/shade-gradient/palette_material.tres" id="2_4hhuq"]
+[ext_resource type="Script" uid="uid://di2lyy6fws75b" path="res://assets/scripts/classes/entity_class.gd" id="4_bff7c"]
 [ext_resource type="AudioStream" uid="uid://b0lq3d8lgrxpf" path="res://assets/sounds/ambience/stampede_amb.ogg" id="8_cq4vs"]
 [ext_resource type="AudioStream" uid="uid://chmlr1hxcscp1" path="res://assets/sounds/gameplay/railring.ogg" id="9_2uiom"]
 [ext_resource type="AudioStream" uid="uid://b4hkft6vbu4rr" path="res://assets/sounds/gameplay/hurt.ogg" id="10_mats1"]
@@ -211,6 +212,9 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xidln"]
 size = Vector3(11.359, 6.30129, 11.508)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bff7c"]
+size = Vector3(11.359, 3.5061, 5.61621)
 
 [node name="ship" type="CharacterBody3D" groups=["Entity"]]
 script = ExtResource("1_ntkcy")
@@ -449,9 +453,28 @@ libraries = {
 &"": SubResource("AnimationLibrary_glyrl")
 }
 
-[node name="Hitbox" type="CollisionShape3D" parent="."]
+[node name="Ar" type="Area3D" parent="."]
+script = ExtResource("4_bff7c")
+type = "player"
+doProcessDistanceFade = false
+hasModel = false
+metadata/_custom_type_script = "uid://di2lyy6fws75b"
+
+[node name="Hitbox" type="CollisionShape3D" parent="Ar"]
 transform = Transform3D(1, 0, 1.81188e-13, 0, 1, 0, -1.81188e-13, 0, 1, -0.149689, -0.121717, -0.0356116)
 shape = SubResource("BoxShape3D_xidln")
+debug_color = Color(0, 0.741176, 1, 1)
+
+[node name="Ar2" type="Area3D" parent="."]
+script = ExtResource("4_bff7c")
+type = "player_collector"
+doProcessDistanceFade = false
+hasModel = false
+metadata/_custom_type_script = "uid://di2lyy6fws75b"
+
+[node name="Hitbox" type="CollisionShape3D" parent="Ar2"]
+transform = Transform3D(1, 0, 1.81188e-13, 0, 1, 0, -1.81188e-13, 0, 1, -0.149689, -0.121717, -0.0356116)
+shape = SubResource("BoxShape3D_bff7c")
 debug_color = Color(0, 0.741176, 1, 1)
 
 [node name="Ambience" type="AudioStreamPlayer3D" parent="."]

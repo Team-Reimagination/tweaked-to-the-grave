@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bph6gewxnb6mk"
-path.s3tc="res://.godot/imported/gooey.png-34a3562799d6f3cb7f90fedb094a74a4.s3tc.ctex"
-path.etc2="res://.godot/imported/gooey.png-34a3562799d6f3cb7f90fedb094a74a4.etc2.ctex"
+uid="uid://dmrec2etsk5kw"
+path.s3tc="res://.godot/imported/ewthatssonasty.png-18eb7c1fbddc3d39fbc34b52c2c841ed.s3tc.ctex"
+path.etc2="res://.godot/imported/ewthatssonasty.png-18eb7c1fbddc3d39fbc34b52c2c841ed.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/additional_entities/tweak/gooey.png"
-dest_files=["res://.godot/imported/gooey.png-34a3562799d6f3cb7f90fedb094a74a4.s3tc.ctex", "res://.godot/imported/gooey.png-34a3562799d6f3cb7f90fedb094a74a4.etc2.ctex"]
+source_file="res://assets/images/entities/tweak/ewthatssonasty.png"
+dest_files=["res://.godot/imported/ewthatssonasty.png-18eb7c1fbddc3d39fbc34b52c2c841ed.s3tc.ctex", "res://.godot/imported/ewthatssonasty.png-18eb7c1fbddc3d39fbc34b52c2c841ed.etc2.ctex"]
 
 [params]
 

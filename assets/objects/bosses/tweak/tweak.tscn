@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://dkmnuxygkfioc" path="res://assets/objects/bosses/tweak/tweak_Tweak.png" id="1_j1n4a"]
 [ext_resource type="Script" uid="uid://b7uyb2dcueb5x" path="res://assets/objects/bosses/tweak/tweak.gd" id="1_q3ouc"]
 [ext_resource type="Material" uid="uid://b8cgmn86riumq" path="res://assets/objects/bosses/tweak/pimpleMaterial.tres" id="2_30n3s"]
-[ext_resource type="Texture2D" uid="uid://dmrec2etsk5kw" path="res://assets/images/additional_entities/tweak/ewthatssonasty.png" id="2_ej4qs"]
+[ext_resource type="Texture2D" uid="uid://dmrec2etsk5kw" path="res://assets/images/entities/tweak/ewthatssonasty.png" id="2_ej4qs"]
 [ext_resource type="Shader" uid="uid://bdrwiprw3hnm1" path="res://assets/shaders/object/colorMod3D.gdshader" id="2_iv312"]
 [ext_resource type="Script" uid="uid://bfodocgoo2gbn" path="res://assets/objects/bosses/tweak/pimple.gd" id="3_30n3s"]
 [ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="3_f1ye2"]
 [ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="4_u0ke6"]
 [ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="5_iv312"]
-[ext_resource type="Texture2D" uid="uid://bph6gewxnb6mk" path="res://assets/images/additional_entities/tweak/gooey.png" id="10_qxfdj"]
+[ext_resource type="Texture2D" uid="uid://bph6gewxnb6mk" path="res://assets/images/entities/tweak/gooey.png" id="10_qxfdj"]
 [ext_resource type="Script" uid="uid://cw0v2mcmidkn6" path="res://assets/objects/bosses/tweak/gooey.gd" id="11_h8j36"]
 [ext_resource type="Texture2D" uid="uid://fvopa4yo5pm2" path="res://assets/images/fx/shadow.png" id="12_mqlwr"]
 
@@ -5169,6 +5169,8 @@ offset = Vector2(0, -54.175)
 pixel_size = 0.1
 double_sided = false
 texture = ExtResource("10_qxfdj")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 126.109)
 script = ExtResource("11_h8j36")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
