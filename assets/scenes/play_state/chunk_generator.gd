@@ -5,6 +5,7 @@ extends Node3D
 var bgChunks = []
 var bgChunkNode;
 
+var predictedBGChunk
 var curBGChunk
 var prevBGChunk
 
@@ -15,9 +16,12 @@ func prepareChunks() -> void:
 	for a in bgChunks:
 		a.owner = null
 		a.get_parent().remove_child(a)
+		
+	bgChunks = bgChunks.filter(func(x): return !x.isSubChunk)
 	
 func makeBGChunk():
-	var newChunk = bgChunks.pick_random().duplicate()
+	var chunker = bgChunks.pick_random() if predictedBGChunk == null else predictedBGChunk
+	var newChunk = chunker.duplicate()
 	var ogPos = 0.0;
 	
 	scene.spawnOBJ(newChunk)
@@ -35,6 +39,9 @@ func makeBGChunk():
 	
 	newChunk.passReady()
 	newChunk.visible = true
+	
+	if newChunk.nextChunk != null: predictedBGChunk = newChunk.nextChunk
+	else: predictedBGChunk = null
 	
 	if newChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*2: makeBGChunk()
 

@@ -1,6 +1,9 @@
 class_name TTTG_Chunk
 extends Node3D
 
+@export var nextChunk : TTTG_Chunk
+@export var isSubChunk : bool
+
 @onready var scene = get_parent().get_parent()
 
 @onready var startPos = $StartPos
