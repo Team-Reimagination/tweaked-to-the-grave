@@ -68,6 +68,8 @@ func process_button():
 			var instance = stageSel.instantiate()
 			$Narration.stream = load("res://assets/sounds/voice/adventure_mode.ogg")
 			PlayGlobals.addSubstate(scene, instance);
+		elif selectedButton == 1:
+			$Narration.stream = load("res://assets/sounds/voice/trophies.ogg")
 		elif selectedButton == 2:
 			var instance = myfreindOptions.instantiate()
 			$Narration.stream = load("res://assets/sounds/voice/options.ogg")
