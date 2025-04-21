@@ -52,9 +52,6 @@ func _process(_delta: float) -> void:
 			MenuSounds.playMenuSound('switch')
 		
 		if Input.is_action_just_pressed("Accept_UI"):
-			$"../SoOver".stop()
-			$"../Stroked".stop()
-
 			process_button()
 
 func mouse_button(button):
@@ -67,6 +64,7 @@ func mouse_button(button):
 
 func process_button():
 	if canInput:
+		PlayGlobals.youarenolongermyfriendsoundnowgoaway()
 		MenuSounds.playMenuSound('select')
 		
 		TransFuncs.switchScenes(scene.get_meta("parent"), "reset" if selectedButton == 0 else "res://assets/scenes/main_menu/main_menu.tscn")
