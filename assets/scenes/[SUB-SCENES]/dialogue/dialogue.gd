@@ -36,7 +36,7 @@ func _ready() -> void:
 	dialName.visible = false
 	dialText.visible = false
 	
-	startDialogue("freindly")
+	#startDialogue("freindly")
 
 func startDialogue(path):
 	if FileAccess.file_exists(PATH_DIALOGUE+path+'.json'):
