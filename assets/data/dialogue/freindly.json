@@ -5,7 +5,7 @@
 			"char": "freindly",
 			"text": "i am a very freindly fellow",
 			"voice": "freindly",
-			"nextAccess": "timeout"
+			"nextAccess": "none"
 		}
 	]
 }

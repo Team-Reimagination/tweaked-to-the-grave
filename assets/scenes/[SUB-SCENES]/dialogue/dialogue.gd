@@ -109,14 +109,14 @@ func typeIt():
 	if dialEvent.has("voice"):
 		dialVoice.stream = load("res://assets/sounds/voice/dialogue/"+dialEvent.voice+".ogg")
 		dialVoice.play()
-		if dialAccess != "keys": processVoice()
+		if dialAccess != "keys" and dialAccess != "none": processVoice()
 	
 	for character in range(len(dialText.text)):
 		if !typing: break
 		dialText.visible_characters += 1;
 		await get_tree().create_timer(dialTime).timeout
 	
-	if !dialEvent.has("voice") and dialAccess != "keys": wait()
+	if !dialEvent.has("voice") and dialAccess != "keys" and dialAccess != "none": wait()
 	
 	portrait.stop()
 	portrait.frame = 0
@@ -154,18 +154,22 @@ func _process(_delta: float) -> void:
 		pressedToSkip = false
 		nextDialogue()
 
-	if dialAccess != "timeout":
+	if dialAccess != "timeout" and dialAccess != "none":
 		if Input.is_action_just_pressed("Accept_UI"):
-			if typing:
-				typing = false;
-				dialText.visible_characters = -10;
-				timeout.stop()
-				timeoutInitialized = false
-				pressedToSkip = true
-			else:
-				if !movingOn:
-					timeout.stop()
-					timeoutInitialized = false
-					pressedToSkip = false
-					if dialVoice.playing: dialVoice.stop()
-					nextDialogue()
+			if typing: skipText()
+			else: moveOn()
+
+func skipText():
+	typing = false;
+	dialText.visible_characters = -10;
+	timeout.stop()
+	timeoutInitialized = false
+	pressedToSkip = true
+	
+func moveOn():
+	if !movingOn:
+		timeout.stop()
+		timeoutInitialized = false
+		pressedToSkip = false
+		if dialVoice.playing: dialVoice.stop()
+		nextDialogue()
