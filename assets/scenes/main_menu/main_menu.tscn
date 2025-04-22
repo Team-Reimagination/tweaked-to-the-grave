@@ -1,9 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://ds181oh1yp62m"]
+[gd_scene load_steps=45 format=3 uid="uid://ds181oh1yp62m"]
 
 [ext_resource type="Texture2D" uid="uid://t55dtlxhtc6l" path="res://assets/images/menu/mainmenu/logo.png" id="1_6o0yw"]
 [ext_resource type="Shader" uid="uid://cs54tgle3j2j5" path="res://assets/shaders/screen/worldCurve.gdshader" id="1_8qhov"]
 [ext_resource type="Texture2D" uid="uid://dnqbxxibclpwv" path="res://assets/images/menu/mainmenu/clouds.png" id="1_acsil"]
 [ext_resource type="Script" uid="uid://csmyl4kbogxkr" path="res://assets/scenes/main_menu/main_menu.gd" id="1_f6bh1"]
+[ext_resource type="AudioStream" uid="uid://sca771bnba1l" path="res://assets/music/menu_loop.ogg" id="2_f2eox"]
+[ext_resource type="AudioStream" uid="uid://jnk06axho5cf" path="res://assets/music/menu_end.ogg" id="3_61kpw"]
 [ext_resource type="Texture2D" uid="uid://bq5ru0a1lbcnn" path="res://assets/images/menu/mainmenu/hill.png" id="3_spayh"]
 [ext_resource type="Texture2D" uid="uid://b3kgvtapbgivj" path="res://assets/images/menu/mainmenu/tree.png" id="4_tfy4q"]
 [ext_resource type="Texture2D" uid="uid://bnwe2owpy6pdd" path="res://assets/images/menu/mainmenu/grave.png" id="5_tfy4q"]
@@ -222,6 +224,19 @@ shader_parameter/pixel_size = 0
 [node name="Main Menu" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_f6bh1")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="Loop" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("2_f2eox")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[node name="End" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_61kpw")
+volume_db = -10.0
+bus = &"Music"
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(640, 480)

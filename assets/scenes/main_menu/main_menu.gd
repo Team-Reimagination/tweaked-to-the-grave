@@ -46,6 +46,9 @@ func wellithinkitstimetomoveonok(): #hand materaliza
 	
 	PlayGlobals.youarenolongermyfriendsoundnowgoaway()
 	
+	$Music/Loop.stop()
+	$Music/End.play()
+	
 	$Shaders.visible = true
 	$Shaders/Flash.color.a = 1.0
 	$Shaders/Pixelation.material["shader_parameter/pixel_size"] = 0.1;
