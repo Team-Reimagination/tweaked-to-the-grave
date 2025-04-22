@@ -46,7 +46,7 @@ var bltCLD = 0.0;
 var bltPWR = 0.0
 var bltCNT = 0
 var canShoot = true;
-@onready var autofire = SaveSystem.settings.get_value('gameplay', 'autofire')
+@onready var autofire = SaveSystem.optionsData.gameplay_autofire
 
 func _ready() -> void:
 	$Ambience.play()

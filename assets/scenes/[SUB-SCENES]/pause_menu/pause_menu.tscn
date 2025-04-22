@@ -130,8 +130,7 @@ max_value = 1.0
 step = 0.01
 ticks_on_borders = true
 script = ExtResource("8_4fpqp")
-optionCategory = "volume"
-optionValue = "master"
+optionValue = "volume_master"
 metadata/ID = 4
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Master"]
@@ -170,8 +169,7 @@ max_value = 1.0
 step = 0.01
 ticks_on_borders = true
 script = ExtResource("8_4fpqp")
-optionCategory = "volume"
-optionValue = "music"
+optionValue = "volume_music"
 metadata/ID = 6
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Music"]
@@ -210,8 +208,7 @@ max_value = 1.0
 step = 0.01
 ticks_on_borders = true
 script = ExtResource("8_4fpqp")
-optionCategory = "volume"
-optionValue = "sfx"
+optionValue = "volume_sfx"
 metadata/ID = 5
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/SFX"]
@@ -250,8 +247,7 @@ max_value = 1.0
 step = 0.01
 ticks_on_borders = true
 script = ExtResource("8_4fpqp")
-optionCategory = "volume"
-optionValue = "ambience"
+optionValue = "volume_ambience"
 metadata/ID = 7
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Ambience"]
@@ -287,8 +283,7 @@ toggle_mode = true
 texture_normal = ExtResource("10_bxueh")
 texture_pressed = ExtResource("11_uy73s")
 script = ExtResource("8_4fpqp")
-optionCategory = "gameplay"
-optionValue = "autofire"
+optionValue = "gameplay_autofire"
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "pending_changes": {}

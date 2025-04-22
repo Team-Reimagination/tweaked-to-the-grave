@@ -288,7 +288,7 @@ func wellithinkitstimetomoveonok():
 	
 #setting application
 func applySetting(type, value):
-	if type == 'autofire':
+	if type == 'gameplay_autofire':
 		player.autofire = value
 	
 func spawnOBJ(obj): #spawn to the right group

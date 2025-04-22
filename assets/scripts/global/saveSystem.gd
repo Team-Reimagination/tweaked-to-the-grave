@@ -1,60 +1,85 @@
 extends Node
 
-const SETTING_FILE_PATH = "user://settings.ini"
-var settings = ConfigFile.new()
+var optionsData = {
+	"video_resolution" = Vector2(1280, 960), ##PC ONLY
+	"video_fullscreen" = false, ##PC ONLY
+	"video_passion" = false,
+	
+	"volume_master" = 1.0,
+	"volume_music" = 1.0,
+	"volume_sfx" = 1.0,
+	"volume_ambience" = 1.0,
+	
+	"gameplay_autofire" = false
+}
 
-func makeSave() -> void:
-	##PC ONLY
-	if not OS.has_feature("web"):
-		settings.set_value("video", "resolution", Vector2(1280, 960))
-		settings.set_value("video", "fullscreen", false)
+var achievementData = {
+	"_data": {
 		
-	#ALL DEVICES
-	settings.set_value("volume", "master", 1.0)
-	settings.set_value("volume", "music", 1.0)
-	settings.set_value("volume", "sfx", 1.0)
-	settings.set_value("volume", "ambience", 1.0)
+	}
+}
+
+var difficultySave = {
+	"levelInitials" = 'SHR',
+	"levelID" = 0,
+	"lives" = 3,
+	"health" = 3,
+	"lira" = 0,
+	"level" = 1
+}
+var saveData = {
+	"unlocked": [],
+	"difficulties": {
+		
+	}
+}
+
+var cloudSave;
+
+func saveSave() -> void:
+	var saveDefine = {
+		"options": optionsData,
+		"save": saveData,
+		"achievements": achievementData 
+	}
+
+	await NG.cloudsave_set_data(1, var_to_str(saveDefine))
 	
-	settings.set_value("video", "passion", false)
+func loadSave():
+	var data = str_to_var(cloudSave);
 	
-	settings.set_value("gameplay", "autofire", false)
-	
-	save()
+	saveData = data.save
+	optionsData = data.options
+	achievementData = data.achievements
 
 func applyImmediateSettings() -> void:
-	for sec in settings.get_sections():
-		for nam in settings.get_section_keys(sec):
-			applySetting(nam, settings.get_value(sec, nam))
+	for a in optionsData.keys():
+		applySetting(a, optionsData[a])
 
 func applySetting(type, valuemysanityplease): #this shit has no switch cases :sob:
-	if type == 'resolution':
+	if type == 'video_resolution':
 		if not OS.has_feature("web"): DisplayServer.window_set_size(valuemysanityplease)
-	elif type == 'fullscreen':
+	elif type == 'video_fullscreen':
 		if not OS.has_feature("web"): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if valuemysanityplease else DisplayServer.WINDOW_MODE_WINDOWED)
-	
-	elif type == 'master':
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(valuemysanityplease))
-	elif type == 'music':
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(valuemysanityplease))
-	elif type == 'sfx':
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(valuemysanityplease))
-	elif type == 'ambience':
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(valuemysanityplease))
-		
-	elif type == 'passion':
+	elif type == 'video_passion':
 		Passion.visibility(valuemysanityplease)
-
-func save():
-	settings.save(SETTING_FILE_PATH)
-
-func resetSave() -> void:
-	makeSave()
-	applyImmediateSettings()
+	
+	elif type == 'volume_master':
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(valuemysanityplease))
+	elif type == 'volume_music':
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(valuemysanityplease))
+	elif type == 'volume_sfx':
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(valuemysanityplease))
+	elif type == 'volume_ambience':
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(valuemysanityplease))
 
 func _ready() -> void:
-	var _error := settings.load(SETTING_FILE_PATH)
+	cloudSave = await NG.cloudsave_get_data(1)
 	
-	#if _error != OK:
-	makeSave()
+	if len(cloudSave) < 1:
+	#if true: #DEV THINGY
+		saveSave()
+	else:
+		loadSave()
 		
 	applyImmediateSettings()

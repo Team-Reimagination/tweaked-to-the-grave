@@ -10,7 +10,7 @@ var buttonScales = [0.0,0.0,0.0]
 var selectedButton = 0
 var mouseBtn = -1
 
-var antiterios = PlayGlobals.difficulty
+static var antiterios = PlayGlobals.difficulty
 
 func imfreeingfromthisshit():
 	PlayGlobals.areWeFNFFreeDownload = !PlayGlobals.areWeFNFFreeDownload

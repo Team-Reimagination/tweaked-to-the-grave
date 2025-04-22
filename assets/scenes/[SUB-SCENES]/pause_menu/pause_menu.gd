@@ -58,17 +58,17 @@ func instantBoxMove():
 		boxer.self_modulate.a = boxAlpha
 
 func setting_change(value, obj):
-	SaveSystem.settings.set_value(obj.optionCategory, obj.optionValue, value)
+	SaveSystem.optionsData[obj.optionValue] = value
 	SaveSystem.applySetting(obj.optionValue, value)
 	get_meta('parent').applySetting(obj.optionValue, value)
 	
 func prepareOptions():
 	for ob in optionSliders:
-		ob.value = SaveSystem.settings.get_value(ob.optionCategory, ob.optionValue)
+		ob.value = SaveSystem.optionsData[ob.optionValue]
 		ob.value_changed.connect(tickSound.bind(ob))
 		ob.mouse_entered.connect(mouse_button.bind(ob))
 	
-	optionCheckbox.set_pressed(SaveSystem.settings.get_value(optionCheckbox.optionCategory, optionCheckbox.optionValue))
+	optionCheckbox.set_pressed(SaveSystem.optionsData[optionCheckbox.optionValue])
 	optionCheckbox.toggled.connect(checkboxMovement.bind(optionCheckbox))
 	optionCheckbox.mouse_entered.connect(mouse_button.bind(optionCheckbox))
 
@@ -134,7 +134,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("Back_UI") or Input.is_action_just_pressed("Accept_UI"):
 			isSliding = false
 			canInput = true
-			SaveSystem.save()
+			SaveSystem.saveSave()
 			
 			optionCheckbox.disabled = false
 			for a in optionSliders:
@@ -184,7 +184,7 @@ func process_button():
 	if canInput:
 		if selectedButton < 3: 
 			leave(selectedButton == 0)
-			SaveSystem.save()
+			SaveSystem.saveSave()
 		
 			if selectedButton == 1:
 				PlayGlobals.youarenolongermyfriendsoundnowgoaway()
