@@ -64,6 +64,7 @@ func wellithinkitstimetomoveonok(): #hand materaliza
 		get_tree().create_tween().tween_property($Shaders/Pixelation.material, "shader_parameter/pixel_size", 100.0, 5.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		
 		await get_tree().create_timer(2.0).timeout
+		canSkip = false
 		TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn")
 	else:
 		MenuSounds.playMenuSound("select")
