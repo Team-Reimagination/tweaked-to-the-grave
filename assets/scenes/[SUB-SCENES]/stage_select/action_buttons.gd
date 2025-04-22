@@ -72,8 +72,15 @@ func setUpRows():
 			saveComplete = curSave.levelInitials == "complete"
 		else:
 			saveComplete = false
+			curSave = {}
 		
 		$Save/Buttons/Resume.texture_normal = load("res://assets/images/menu/stageselect/save_resume_complete.png") if saveComplete else load("res://assets/images/menu/stageselect/save_resume.png")
+		
+		$Save/LivesLabel.text = "x"+str(curSave.lives) if curSave != {} else "x??"
+		$Save/HealthLabel.text = "x"+str(curSave.health) if curSave != {} else "x?"
+		$Save/LiraLabel.text = str(curSave.lira) if curSave != {} else "??"
+		$Save/LevelLabel.text = "LV "+str(curSave.level) if curSave != {} else "LV ?"
+		$Save/LevelText.text = curSave.levelName if curSave != {} else "NOT STARTED"
 		
 	updateButtonSelection()
 	updateScale()
@@ -128,11 +135,15 @@ func process_button():
 			else:
 				if curSelected == 0:
 					if !saveStarted: substate.moveOn(false)
-					else: areyouSure() if !saveComplete else confirmNew()
+					else: 
+						if !saveComplete: areyouSure() 
+						else: confirmNew()
 				elif curSelected == 1: 
 					if !saveComplete: substate.moveOn(false)
 					else: MenuSounds.playMenuSound("error")
-				else: areyouSure() if !saveComplete else confirmNew()
+				else: 
+					if !saveComplete: areyouSure()
+					else: confirmNew()
 
 func areyouSure():
 	substate.process_mode = Node.PROCESS_MODE_DISABLED

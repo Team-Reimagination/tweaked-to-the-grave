@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dv4g7mohlhiwc"]
+[gd_scene load_steps=25 format=3 uid="uid://dv4g7mohlhiwc"]
 
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="1_hs2lo"]
 [ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/backgrounds/grave-rect.png" id="2_hphh6"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bmci7mii6gdtc" path="res://assets/images/menu/stageselect/save_new.png" id="12_m4eru"]
 [ext_resource type="Texture2D" uid="uid://dqe823yjfkep" path="res://assets/images/menu/stageselect/save_resume.png" id="13_cugsy"]
 [ext_resource type="Texture2D" uid="uid://s3ri3y3pxmco" path="res://assets/images/menu/stageselect/save_trash.png" id="14_sgut8"]
+[ext_resource type="Texture2D" uid="uid://cjo5lcjjishu8" path="res://assets/images/menu/stageselect/stats.png" id="15_cugsy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
 resource_local_to_scene = true
@@ -75,6 +76,12 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_cugsy"]
 font = ExtResource("11_m4eru")
 font_size = 12
+outline_size = 8
+outline_color = Color(0.156863, 0.184314, 0.309804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sgut8"]
+font = ExtResource("11_m4eru")
+font_size = 18
 outline_size = 8
 outline_color = Color(0.156863, 0.184314, 0.309804, 1)
 
@@ -324,5 +331,57 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("14_sgut8")
 stretch_mode = 0
 metadata/ID = 2
+
+[node name="StatsPics" type="Sprite2D" parent="Inside/ActionButtons/Save"]
+position = Vector2(115, 134)
+texture = ExtResource("15_cugsy")
+
+[node name="LevelText" type="Label" parent="Inside/ActionButtons/Save"]
+offset_left = 176.0
+offset_top = 119.0
+offset_right = 409.0
+offset_bottom = 163.0
+text = "The Saharaland"
+label_settings = SubResource("LabelSettings_sgut8")
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="LivesLabel" type="Label" parent="Inside/ActionButtons/Save"]
+offset_left = -179.0
+offset_top = 119.0
+offset_right = -93.0
+offset_bottom = 163.0
+text = "x99"
+label_settings = SubResource("LabelSettings_sgut8")
+vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="Inside/ActionButtons/Save"]
+offset_left = -91.0
+offset_top = 119.0
+offset_right = 6.0
+offset_bottom = 163.0
+text = "x3"
+label_settings = SubResource("LabelSettings_sgut8")
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="Inside/ActionButtons/Save"]
+offset_left = -15.0
+offset_top = 119.0
+offset_right = 82.0
+offset_bottom = 163.0
+text = "LV 10"
+label_settings = SubResource("LabelSettings_sgut8")
+vertical_alignment = 1
+
+[node name="LiraLabel" type="Label" parent="Inside/ActionButtons/Save"]
+offset_left = 93.0
+offset_top = 119.0
+offset_right = 273.0
+offset_bottom = 163.0
+text = "00000"
+label_settings = SubResource("LabelSettings_sgut8")
+vertical_alignment = 1
 
 [editable path="Base"]

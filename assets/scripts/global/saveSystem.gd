@@ -31,6 +31,7 @@ var curDifficultySave = {
 }
 var difficultySave = {
 	"levelInitials" = 'SHR',
+	"levelName" = 'The Saharaland',
 	"lives" = 3,
 	"health" = 3,
 	"lira" = 0,

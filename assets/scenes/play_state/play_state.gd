@@ -317,7 +317,15 @@ func setCurrentSave():
 	SaveSystem.curDifficultySave.lira = TRUElira
 	SaveSystem.curDifficultySave.lives = lives
 	SaveSystem.curDifficultySave.health = player_health
+	
 	SaveSystem.curDifficultySave.levelInitials = levelDefs.nextLevel
+	if levelDefs.nextLevel == 'complete': SaveSystem.curDifficultySave.levelName = "SAVE COMPLETE"
+	else:
+		if FileAccess.file_exists(PATH_LEVELS+'level_'+levelDefs.nextLevel+'.json'):
+			var tempLook = JSON.parse_string(FileAccess.open(PATH_LEVELS+'level_'+levelDefs.nextLevel+'.json', FileAccess.READ).get_as_text())
+			SaveSystem.curDifficultySave.levelName = tempLook.name
+		else :
+			print("Could Not Find LEVEL For "+levelDefs.nextLevel+'!')
 	
 	SaveSystem.saveGame()
 
