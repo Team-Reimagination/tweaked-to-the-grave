@@ -1,0 +1,26 @@
+{
+	"hasPanels": "true",
+	"events": [
+		{
+			"char": "seezee",
+			"text": "this is a test of dialogue with voice acting and timeout time that lasts all this voice clip, with some additional time",
+			"voice": "test_1",
+			"nextAccess": "both"
+		},
+		{
+			"char": "seezee",
+			"text": "And this is without a voice, but only processed with timeout",
+			"nextAccess": "timeout"
+		},
+		{
+			"char": "tweak",
+			"text": "And now I'm a different character (+ only key presses to skip)",
+			"nextAccess": "keys"
+		},
+		{
+			"char": "tweak_final",
+			"text": "Back to both, but this time no voice to back it up",
+			"nextAccess": "both"
+		}
+	]
+}
