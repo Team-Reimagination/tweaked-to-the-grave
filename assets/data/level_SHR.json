@@ -1,7 +1,7 @@
 {
 	"name": "The Saharaland",
 	"id": 0,
-	"nextLevel": "complete",
+	"nextLevel": "SNH",
 	"boss": {
 		"type": "tweak",
 		"distance": 300,

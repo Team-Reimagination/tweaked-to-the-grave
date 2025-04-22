@@ -323,3 +323,4 @@ func setCurrentSave():
 
 func nextLevel():
 	PlayGlobals.prepareGame()
+	PlayGlobals.levelID = levelDefs.nextLevel

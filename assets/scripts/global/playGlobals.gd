@@ -38,6 +38,8 @@ func prepareGame():
 			SaveSystem.curDifficultySave = SaveSystem.difficultySave
 			setDefaults(diffy)
 			
+			levelID = "SHR"
+			
 			SaveSystem.saveGame()
 		else:
 			SaveSystem.curDifficultySave = SaveSystem.saveData.difficulties[difficulty]
@@ -47,6 +49,7 @@ func prepareGame():
 			ownedLira = SaveSystem.curDifficultySave.lira
 			ownedLiraProgress = SaveSystem.curDifficultySave.lirsProgress
 			liraLevel = SaveSystem.curDifficultySave.level
+			levelID = SaveSystem.curDifficultySave.levelInitials
 
 func setDefaults(diffy):
 	bulletPower = diffy[0]
@@ -58,9 +61,9 @@ func setDefaults(diffy):
 	LiraGainSpeed = diffy[6]
 	doColelctibles = diffy[7]
 	
-	ownedLira = 0;
-	ownedLiraProgress = 0;
-	liraLevel = 1;
+	ownedLira = 0
+	ownedLiraProgress = 0
+	liraLevel = 1
 
 #SUBSTATE SHIT
 var substates = []
