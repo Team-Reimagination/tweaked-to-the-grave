@@ -36,12 +36,13 @@ func _process(delta: float) -> void:
 	
 	if willDisappear and $Model.get_child(0).is_playing() == false: queue_free()
 	
-	if startSucking:
+	if startSucking and !scene.hasBitchWon:
 		ole += delta/2;
 		self.global_position.x = lerpf(self.global_position.x, scene.player.global_position.x, ole)
 		self.global_position.y = lerpf(self.global_position.y, scene.player.global_position.y, ole)
 		self.global_position.z = lerpf(self.global_position.z, scene.player.global_position.z, ole)
 
 func detectCollission(_areID, are, _arSID, _loSID):
-	if are.type == 'player' and _loSID == 0 and !startSucking: startSucking = true
-	elif are.type == 'player_collector' and _loSID == 1 and !willDisappear: suicide()
+	if !scene.hasBitchWon:
+		if are.type == 'player' and _loSID == 0 and !startSucking: startSucking = true
+		elif are.type == 'player_collector' and _loSID == 1 and !willDisappear: suicide()

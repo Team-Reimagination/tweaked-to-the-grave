@@ -183,13 +183,15 @@ func mouse_button(button):
 func process_button():
 	if canInput:
 		if selectedButton < 3: 
-			leave(selectedButton != 2)
+			leave(selectedButton == 0)
 			SaveSystem.save()
 		
 			if selectedButton == 1:
 				PlayGlobals.youarenolongermyfriendsoundnowgoaway()
-				TransFuncs.switchScenes(get_meta("parent"), "reset", false, false)
+				MenuSounds.playMenuSound('select')
+				TransFuncs.switchScenes(get_meta("parent"), "reset", true, true, true)
 			elif selectedButton == 2:
+				PlayGlobals.youarenolongermyfriendsoundnowgoaway()
 				MenuSounds.playMenuSound('select')
 				TransFuncs.switchScenes(get_meta("parent"), "res://assets/scenes/main_menu/main_menu.tscn", true, true, true)
 		elif selectedButton == 3:

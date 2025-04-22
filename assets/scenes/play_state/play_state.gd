@@ -7,6 +7,7 @@ extends Node3D
 @onready var countHand = $HUD/Countdown
 @onready var music = $Audio/Music
 @onready var chunkLoader = $Objects
+@onready var victroy = $Victory
 var player
 var boss
 
@@ -21,7 +22,7 @@ var canInput = false
 var canPause = true
 var hasBitchWon = false
 
-#BOUND VARIABLES
+#BOUND VARIABLES@onready var buttons = [$"New Tries", $Return]
 var rotateBound = 13;
 var maxBoundMod = 20;
 var vertOffset = rotateBound;
@@ -303,3 +304,5 @@ func completeLevel():
 	get_tree().create_tween().tween_property(camera, "posi:y", 4.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 	
 	get_tree().create_tween().tween_property(player, "position", Vector3(0.0,0.0,-20.0), 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+
+	victroy.start()

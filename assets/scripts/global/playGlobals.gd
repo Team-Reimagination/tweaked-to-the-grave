@@ -62,8 +62,9 @@ func removeAllSubstates():
 func getDistance():
 	return levelDefs.fog.distance.end * 2
 
-func youarenolongermyfriendsoundnowgoaway():
+func youarenolongermyfriendsoundnowgoaway(doMusicToo = true):
 	get_parent().get_tree().call_group('Sound', 'stop')
+	if doMusicToo: get_parent().get_tree().call_group('Music', 'stop')
 
 func get_tscn_resources_in_directory(path: String) -> Array[String]:
 	var tscn_files: Array[String] = []

@@ -216,7 +216,7 @@ size = Vector3(11.359, 6.30129, 11.508)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bff7c"]
 size = Vector3(11.359, 3.5061, 5.61621)
 
-[node name="ship" type="CharacterBody3D" groups=["Entity"]]
+[node name="ship" type="CharacterBody3D"]
 script = ExtResource("1_ntkcy")
 
 [node name="Model" type="Node3D" parent="."]

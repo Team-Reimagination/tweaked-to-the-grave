@@ -28,7 +28,7 @@ func postLevelBuild():
 	
 	#LIVE TEXT SETUP
 	$HealthGroup/IconSeezee/Lives/Label.text = str(scene.lives)
-	$HealthGroup/IconTweak/Lives/Label.text = str(int(8 - scene.levelNum))
+	$HealthGroup/IconTweak/Lives/Label.text = str(int(8 - scene.levelNum)) if !PlayGlobals.areWeFNFFreeDownload else "1"
 	
 	#choose health icon
 	seezeeIcon.play("Heat_"+str(scene.player_health))

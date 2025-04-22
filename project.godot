@@ -51,11 +51,9 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 
 [global_group]
 
-Entity="Gameplay Objects that can fade in and out with distance"
-Enemy="This will damage the player if touching them"
-Ally="This will damage any enemy if touching them"
 Sound="Sounds"
 CloudSave="Newgrounds Cloudsave"
+Music="Music"
 
 [input]
 

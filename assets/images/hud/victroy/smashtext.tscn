@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0mmd2bco6rdt"]
+
+[ext_resource type="Script" uid="uid://cfbgbqfh4jru2" path="res://assets/scripts/classes/smashText.gd" id="1_0rdsc"]
+[ext_resource type="Texture2D" uid="uid://be5w8eivou70p" path="res://assets/images/buttons/floating/newtries.png" id="1_0uggl"]
+[ext_resource type="AudioStream" uid="uid://ddmcrc72gvr81" path="res://assets/sounds/menu/xploshi.ogg" id="3_ho2m3"]
+
+[node name="Smashtext" type="Sprite2D"]
+texture = ExtResource("1_0uggl")
+script = ExtResource("1_0rdsc")
+metadata/_custom_type_script = "uid://cfbgbqfh4jru2"
+
+[node name="Smash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ho2m3")
+bus = &"SFX"
