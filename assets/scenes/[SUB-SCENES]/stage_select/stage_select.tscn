@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv4g7mohlhiwc"]
+[gd_scene load_steps=19 format=3 uid="uid://dv4g7mohlhiwc"]
 
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="1_hs2lo"]
 [ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/backgrounds/grave-rect.png" id="2_hphh6"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://cjpv5gnp0fncx" path="res://assets/scenes/[SUB-SCENES]/stage_select/difficulty.gd" id="4_t6dtf"]
 [ext_resource type="Texture2D" uid="uid://n0s15pletk1w" path="res://assets/images/menu/stageselect/diff_label.png" id="5_2q7je"]
 [ext_resource type="Texture2D" uid="uid://ch3rdb11om0r4" path="res://assets/images/buttons/general/arrow.png" id="5_rj44l"]
+[ext_resource type="Texture2D" uid="uid://d1v1yw8v2sii4" path="res://assets/images/buttons/general/checkbox1.png" id="8_hrg28"]
+[ext_resource type="Texture2D" uid="uid://bav0b2ubq8ynd" path="res://assets/images/buttons/general/checkbox2.png" id="9_skxqp"]
+[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="11_m4eru"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
 resource_local_to_scene = true
@@ -65,6 +68,12 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_cugsy"]
+font = ExtResource("11_m4eru")
+font_size = 12
+outline_size = 8
+outline_color = Color(0.156863, 0.184314, 0.309804, 1)
+
 [node name="StageSelect" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -111,12 +120,12 @@ position = Vector2(-242, -153)
 script = ExtResource("4_t6dtf")
 
 [node name="Text" type="Sprite2D" parent="Inside/Difficulty"]
-position = Vector2(-119, 22)
+position = Vector2(-119, 18)
 texture = ExtResource("5_2q7je")
 
 [node name="Images" type="AnimatedSprite2D" parent="Inside/Difficulty"]
 texture_filter = 1
-position = Vector2(-122, 174)
+position = Vector2(-122, 153)
 sprite_frames = SubResource("SpriteFrames_diba5")
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
@@ -152,9 +161,10 @@ anchor_top = 1.8
 anchor_right = -3.15
 anchor_bottom = 1.8
 offset_left = -45.0
-offset_top = -22.0
+offset_top = -35.0
 offset_right = 45.0
-offset_bottom = 22.0
+offset_bottom = 9.0
+scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(45, 22)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_rj44l")
@@ -165,20 +175,61 @@ metadata/ID = 0
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -3.075
-anchor_top = 7.05
+anchor_top = 6.2
 anchor_right = -3.075
-anchor_bottom = 7.05
+anchor_bottom = 6.2
 offset_left = -45.0
 offset_top = -22.0
 offset_right = 45.0
 offset_bottom = 22.0
 rotation = -3.14159
+scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(45, 22)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_rj44l")
 stretch_mode = 0
 metadata/ID = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Freeplay" type="TextureButton" parent="Inside/Difficulty/Buttons"]
+texture_filter = 1
+offset_left = -67.0
+offset_top = 257.0
+offset_right = -20.0
+offset_bottom = 311.0
+pivot_offset = Vector2(23.5, 33.63)
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("8_hrg28")
+texture_pressed = ExtResource("9_skxqp")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://assets/images/menu/buttons",
+"o_name": "checkbox",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "D:/GODOT/projectFiles - TTTG/2d/checkbox.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "2dec9fc98fae370b0d12ee481cadc85f"
+metadata/ID = 2
+
+[node name="FreeplayLabel" type="Label" parent="Inside/Difficulty/Buttons"]
+offset_left = -225.0
+offset_top = 277.0
+offset_right = -76.0
+offset_bottom = 314.0
+text = "EXTRA TO SWITCH TO
+FREE PLAY"
+label_settings = SubResource("LabelSettings_cugsy")
+horizontal_alignment = 1
+vertical_alignment = 3
 
 [node name="Levels" type="CanvasGroup" parent="Inside"]
 position = Vector2(-242, -153)

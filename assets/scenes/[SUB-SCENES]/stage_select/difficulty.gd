@@ -1,18 +1,29 @@
 extends CanvasGroup
 
-@onready var buttons = [$Buttons/Up, $Buttons/Down]
+@onready var buttons = [$Buttons/Up, $Buttons/Down, $Buttons/Freeplay]
+@onready var freeplay = $Buttons/Freeplay
 @onready var fuckassSOVL = $Images
 @onready var substate = $"../.."
 
-var buttonScales = [0.0,0.0]
+var buttonScales = [0.0,0.0,0.0]
 
 var selectedButton = 0
 var mouseBtn = -1
 
 var antiterios = PlayGlobals.difficulty
 
+func imfreeingfromthisshit():
+	PlayGlobals.areWeFNFFreeDownload = !PlayGlobals.areWeFNFFreeDownload
+	setFreeplay(PlayGlobals.areWeFNFFreeDownload)
+
+func setFreeplay(toFreeplay):
+	freeplay.set_pressed(toFreeplay)
+	$Buttons/FreeplayLabel.text = "EXTRA TO SWITCH TO\n"+("FREE PLAY" if !toFreeplay else "THE STORY")
+
 func _ready() -> void:
 	fuckassSOVL.frame = antiterios
+	
+	setFreeplay(PlayGlobals.areWeFNFFreeDownload)
 	
 	updateButtonSelection(false)
 	instantScale()
@@ -29,10 +40,10 @@ func instantScale():
 func greyButtons(fromMouse):
 	for i in range(buttons.size()):
 		buttons[i].self_modulate = Color(0.4,0.4,0.4) if fromMouse else Color(1.0,1.0,1.0)
-		buttonScales[i] = 0.9 if fromMouse else 1.0;
+		buttonScales[i] = (0.8*0.9 if fromMouse else 0.8) if i != 2 else (0.9 if fromMouse else 1.0);
 
 func updateScale():
-	buttonScales[selectedButton] = 1.0
+	buttonScales[selectedButton] = 0.8 if selectedButton != 2 else 1.0
 
 func updateButtonSelection(fromMouse):
 	greyButtons(fromMouse)
@@ -51,6 +62,7 @@ func _process(_delta: float) -> void:
 			mouseBtn = -1
 			
 			updatemyhardness(-1)
+			scalar()
 			updateButtonSelection(false)
 			MenuSounds.playMenuSound('small_select')
 		elif Input.is_action_just_pressed("Down_UI"):
@@ -60,8 +72,17 @@ func _process(_delta: float) -> void:
 			mouseBtn = -1
 			
 			updatemyhardness(1)
+			scalar()
 			updateButtonSelection(false)
 			MenuSounds.playMenuSound('small_select')
+		elif Input.is_action_just_pressed("Extra_UI"):
+			selectedButton = 2
+			mouseBtn = -1
+			
+			scalar()
+			updateButtonSelection(false)
+			MenuSounds.playMenuSound('small_select')
+			imfreeingfromthisshit()
 
 func movement(proposition):
 	if proposition == -1:
@@ -81,15 +102,21 @@ func mouse_button(button):
 func process_button():
 	if mouseBtn >= 0: MenuSounds.playMenuSound('small_select')
 	
-	movement(-1 if selectedButton == 0 else 1)
-	updatemyhardness(-1 if selectedButton == 0 else 1)
+	if selectedButton != 2:
+		movement(-1 if selectedButton == 0 else 1)
+		updatemyhardness(-1 if selectedButton == 0 else 1)
+	else:
+		imfreeingfromthisshit()
+		
+	scalar()
+
+func scalar():
+	buttons[selectedButton].scale *= 0.7
 
 var swipethatshitclean;
 func updatemyhardness(mymovementdirection):
 	if swipethatshitclean != null:
 		swipethatshitclean.kill()
-		
-	buttons[selectedButton].scale = Vector2(0.7,0.7)
 	
 	swipethatshitclean = get_tree().create_tween()
 	swipethatshitclean.tween_property(fuckassSOVL, "offset:y", 50 * mymovementdirection, 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
