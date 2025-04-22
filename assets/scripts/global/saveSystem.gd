@@ -19,19 +19,23 @@ var achievementData = {
 	}
 }
 
-var difficultySave = {
-	"levelInitials" = 'SHR',
-	"levelID" = 0,
-	"lives" = 3,
-	"health" = 3,
-	"lira" = 0,
-	"level" = 1
-}
 var saveData = {
 	"unlocked": [],
 	"difficulties": {
 		
 	}
+}
+
+var curDifficultySave = {
+	
+}
+var difficultySave = {
+	"levelInitials" = 'SHR',
+	"lives" = 3,
+	"health" = 3,
+	"lira" = 0,
+	"lirsProgress" = 0,
+	"level" = 1
 }
 
 var cloudSave;
@@ -44,6 +48,14 @@ func saveSave() -> void:
 	}
 
 	await NG.cloudsave_set_data(1, var_to_str(saveDefine))
+
+func saveGame():
+	saveData.difficulties[PlayGlobals.difficulty] = curDifficultySave
+	saveSave()
+
+func eraseDifficultySave(diff):
+	saveData.difficulties.erase(diff)
+	saveSave()
 	
 func loadSave():
 	var data = str_to_var(cloudSave);
@@ -51,6 +63,11 @@ func loadSave():
 	saveData = data.save
 	optionsData = data.options
 	achievementData = data.achievements
+
+func eraseCurrentGameplaySave(curDiff = null):
+	curDifficultySave = {}
+	if curDiff: eraseDifficultySave(curDiff)
+	
 
 func applyImmediateSettings() -> void:
 	for a in optionsData.keys():

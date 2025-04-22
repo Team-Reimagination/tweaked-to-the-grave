@@ -24,6 +24,7 @@ func postLevelBuild():
 	bossIcon.sprite_frames = load("res://assets/images/hud/icons/"+scene.bossDEF.type+".tres")
 	bossIcon.play("Idle")
 	
+	lira = scene.TRUElira
 	powerText.text = str(lira)
 	
 	#LIVE TEXT SETUP
@@ -46,18 +47,27 @@ func postLevelBuild():
 	
 func _on_tree_entered() -> void: #some preparation because you never know
 	liraGroup.material.set("shader_parameter/multipliers", [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
-	
-func levelUpLira():
-	#if at max level, make it look like there is no more room
+
+func liraBarSet():
 	if scene.liraLevel < PlayGlobals.maxLiraLevel:
 		liraBar.max_value = scene.liraMax
 	else:
 		liraBar.max_value = 0
+		
+	#set level
+	$LiraGroup/LevelText.text = "LV "+str(scene.liraLevel)
+
+func instantLiraLevel():
+	liraBarSet()
+	
+	$LiraGroup/LiraParticles.restart()
+
+func levelUpLira():
+	#if at max level, make it look like there is no more room
+	liraBarSet()
 	
 	#one more particleshot
 	$LiraGroup/LiraParticles.restart()
-	#set level
-	$LiraGroup/LevelText.text = "LV "+str(scene.liraLevel)
 	
 	if scene.liraLevel > 1:
 		#of course do that because by default it is invisible

@@ -4,7 +4,8 @@ extends Node
 @onready var select = AudioStreamPlayer.new()
 @onready var small_select = AudioStreamPlayer.new()
 @onready var slider_tick = AudioStreamPlayer.new()
-var list = ["switch", "select", "small_select", "slider_tick"]
+@onready var error = AudioStreamPlayer.new()
+var list = ["switch", "select", "small_select", "slider_tick", "error"]
 
 func _ready() -> void:
 	for a in list:

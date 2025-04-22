@@ -32,10 +32,10 @@ const PATH_LEVELS : String = 'res://assets/data/'
 static var levelDefs;
 
 #POWERS
-var TRUElira:int = 0;
-var liraPGR:int = 0;
+var TRUElira:int = PlayGlobals.ownedLira;
+var liraPGR:int = PlayGlobals.ownedLiraProgress;
 var liraMax:int = 0;
-var liraLevel:int = 0;
+var liraLevel:int = PlayGlobals.liraLevel;
 
 #HEALTH
 var levelNum:int = 0;
@@ -62,10 +62,7 @@ func _ready() -> void:
 		buildLevel();
 		
 	#LIRA FORMULA
-	if liraLevel == 0: levelUpLira()
-	else:
-		hud.levelUpLira()
-		player.levelUpLira()
+	instantLiraLevel()
 		
 	startLevel()
 	player.startLevel()
@@ -116,6 +113,11 @@ func levelUpLira():
 	liraMax = levelUpLiraFormula(liraLevel)
 	
 	hud.levelUpLira()
+	player.levelUpLira()
+
+func instantLiraLevel():
+	liraMax = levelUpLiraFormula(liraLevel)
+	hud.instantLiraLevel()
 	player.levelUpLira()
 	
 func restartHealth():
@@ -308,3 +310,16 @@ func completeLevel():
 	get_tree().create_tween().tween_property(player, "position", Vector3(0.0,0.0,-20.0), 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 
 	victroy.start()
+
+func setCurrentSave():
+	SaveSystem.curDifficultySave.level = liraLevel
+	SaveSystem.curDifficultySave.lirsProgress = liraPGR
+	SaveSystem.curDifficultySave.lira = TRUElira
+	SaveSystem.curDifficultySave.lives = lives
+	SaveSystem.curDifficultySave.health = player_health
+	SaveSystem.curDifficultySave.levelInitials = levelDefs.nextLevel
+	
+	SaveSystem.saveGame()
+
+func nextLevel():
+	PlayGlobals.prepareGame()

@@ -1897,7 +1897,7 @@ pivot_offset = Vector2(233, 47)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("47_lpcyh")
 stretch_mode = 0
-metadata/ID = 0
+metadata/ID = 1
 
 [node name="Return" type="TextureButton" parent="Victory/Buttons"]
 layout_mode = 0
@@ -1909,4 +1909,4 @@ pivot_offset = Vector2(226, 50)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("48_o6cht")
 stretch_mode = 0
-metadata/ID = 1
+metadata/ID = 2

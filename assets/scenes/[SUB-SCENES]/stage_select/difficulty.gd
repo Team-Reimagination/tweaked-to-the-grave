@@ -15,6 +15,8 @@ static var antiterios = PlayGlobals.difficulty
 func imfreeingfromthisshit():
 	PlayGlobals.areWeFNFFreeDownload = !PlayGlobals.areWeFNFFreeDownload
 	setFreeplay(PlayGlobals.areWeFNFFreeDownload)
+	
+	$"../ActionButtons".updateActions()
 
 func setFreeplay(toFreeplay):
 	freeplay.set_pressed(toFreeplay)
@@ -65,6 +67,7 @@ func _process(_delta: float) -> void:
 			scalar()
 			updateButtonSelection(false)
 			MenuSounds.playMenuSound('small_select')
+			$"../ActionButtons".updateActions(-1)
 		elif Input.is_action_just_pressed("Down_UI"):
 			movement(1)
 			
@@ -75,6 +78,7 @@ func _process(_delta: float) -> void:
 			scalar()
 			updateButtonSelection(false)
 			MenuSounds.playMenuSound('small_select')
+			$"../ActionButtons".updateActions()
 		elif Input.is_action_just_pressed("Extra_UI"):
 			selectedButton = 2
 			mouseBtn = -1
@@ -92,12 +96,13 @@ func movement(proposition):
 		antiterios = (antiterios + 1) % 5
 
 func mouse_button(button):
-	if mouseBtn < 0 or mouseBtn != button.get_meta("ID", 0): MenuSounds.playMenuSound('switch')
-		
-	mouseBtn = button.get_meta("ID", 0)
-	selectedButton = mouseBtn
-	updateButtonSelection(true)
-	updateScale()
+	if substate.process_mode != Node.PROCESS_MODE_DISABLED:
+		if mouseBtn < 0 or mouseBtn != button.get_meta("ID", 0): MenuSounds.playMenuSound('switch')
+			
+		mouseBtn = button.get_meta("ID", 0)
+		selectedButton = mouseBtn
+		updateButtonSelection(true)
+		updateScale()
 	
 func process_button():
 	if mouseBtn >= 0: MenuSounds.playMenuSound('small_select')
@@ -109,7 +114,7 @@ func process_button():
 		imfreeingfromthisshit()
 		
 	scalar()
-
+	
 func scalar():
 	buttons[selectedButton].scale *= 0.7
 

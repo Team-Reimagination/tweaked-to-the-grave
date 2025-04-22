@@ -38,15 +38,15 @@ func _ready() -> void:
 	
 	#startDialogue("freindly")
 
-func startDialogue(path):
+func startDialogue(path,doOpen = true):
 	if FileAccess.file_exists(PATH_DIALOGUE+path+'.json'):
 		dialogue = JSON.parse_string(FileAccess.open(PATH_DIALOGUE+path+'.json', FileAccess.READ).get_as_text())
 		
-		beginning()
+		if doOpen: beginning()
 	else :
 		print("Could Not Find DIALOGUE For "+path+'!')
 
-func beginning():
+func beginning(doCheck = true):
 	portrait.play("inter")
 	
 	var comTween = get_tree().create_tween()
@@ -56,9 +56,9 @@ func beginning():
 	$Audio/TransIn.play()
 	
 	await $Audio/TransIn.finished
-	checkDialogue()
+	if doCheck: checkDialogue()
 
-func ending():
+func ending(doExit = true):
 	portrait.play("inter")
 	
 	dialName.visible = false
@@ -71,7 +71,7 @@ func ending():
 	$Audio/TransOut.play()
 	
 	await $Audio/TransOut.finished
-	exitThisWay()
+	if doExit: exitThisWay()
 
 func exitThisWay():
 	queue_free()

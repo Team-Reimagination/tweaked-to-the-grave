@@ -24,9 +24,31 @@ var maxLiraLevel = 10
 var LiraGainSpeed = 1
 var doColelctibles = true
 
-func applyDifficulty():
+var ownedLira = 0;
+var ownedLiraProgress = 0;
+var liraLevel = 1;
+
+func prepareGame():
 	var diffy = diffMod[difficulty]
 	
+	if areWeFNFFreeDownload:
+		setDefaults(diffy)
+	else:
+		if !SaveSystem.saveData.difficulties.has(difficulty): 
+			SaveSystem.curDifficultySave = SaveSystem.difficultySave
+			setDefaults(diffy)
+			
+			SaveSystem.saveGame()
+		else:
+			SaveSystem.curDifficultySave = SaveSystem.saveData.difficulties[difficulty]
+			setDefaults(diffy)
+			
+			lifeCount = [SaveSystem.curDifficultySave.lives,SaveSystem.curDifficultySave.health]
+			ownedLira = SaveSystem.curDifficultySave.lira
+			ownedLiraProgress = SaveSystem.curDifficultySave.lirsProgress
+			liraLevel = SaveSystem.curDifficultySave.level
+
+func setDefaults(diffy):
 	bulletPower = diffy[0]
 	canBarrelRoll = diffy[1]
 	canBarrelShoot = diffy[2]
@@ -35,6 +57,10 @@ func applyDifficulty():
 	maxLiraLevel = diffy[5]
 	LiraGainSpeed = diffy[6]
 	doColelctibles = diffy[7]
+	
+	ownedLira = 0;
+	ownedLiraProgress = 0;
+	liraLevel = 1;
 
 #SUBSTATE SHIT
 var substates = []

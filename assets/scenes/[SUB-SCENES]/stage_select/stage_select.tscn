@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dv4g7mohlhiwc"]
+[gd_scene load_steps=23 format=3 uid="uid://dv4g7mohlhiwc"]
 
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="1_hs2lo"]
 [ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/backgrounds/grave-rect.png" id="2_hphh6"]
@@ -9,7 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://ch3rdb11om0r4" path="res://assets/images/buttons/general/arrow.png" id="5_rj44l"]
 [ext_resource type="Texture2D" uid="uid://d1v1yw8v2sii4" path="res://assets/images/buttons/general/checkbox1.png" id="8_hrg28"]
 [ext_resource type="Texture2D" uid="uid://bav0b2ubq8ynd" path="res://assets/images/buttons/general/checkbox2.png" id="9_skxqp"]
+[ext_resource type="Script" uid="uid://yaeb7e61l3pm" path="res://assets/scenes/[SUB-SCENES]/stage_select/action_buttons.gd" id="11_hrg28"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="11_m4eru"]
+[ext_resource type="Texture2D" uid="uid://bmci7mii6gdtc" path="res://assets/images/menu/stageselect/save_new.png" id="12_m4eru"]
+[ext_resource type="Texture2D" uid="uid://dqe823yjfkep" path="res://assets/images/menu/stageselect/save_resume.png" id="13_cugsy"]
+[ext_resource type="Texture2D" uid="uid://s3ri3y3pxmco" path="res://assets/images/menu/stageselect/save_trash.png" id="14_sgut8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
 resource_local_to_scene = true
@@ -109,7 +113,7 @@ offset = Vector2(640, 480)
 transform = Transform2D(1, 0, 0, 1, 640, 480)
 
 [node name="Separator" type="Line2D" parent="Inside"]
-position = Vector2(-242, -153)
+position = Vector2(-236, -153)
 points = PackedVector2Array(0, 0, 0, 310)
 width = 2.0
 begin_cap_mode = 2
@@ -193,6 +197,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Freeplay" type="TextureButton" parent="Inside/Difficulty/Buttons"]
 texture_filter = 1
+layout_mode = 0
 offset_left = -67.0
 offset_top = 257.0
 offset_right = -20.0
@@ -221,6 +226,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "2dec9fc98fae370b0d12ee481cadc85f"
 metadata/ID = 2
 
 [node name="FreeplayLabel" type="Label" parent="Inside/Difficulty/Buttons"]
+layout_mode = 0
 offset_left = -225.0
 offset_top = 277.0
 offset_right = -76.0
@@ -231,23 +237,92 @@ label_settings = SubResource("LabelSettings_cugsy")
 horizontal_alignment = 1
 vertical_alignment = 3
 
-[node name="Levels" type="CanvasGroup" parent="Inside"]
-position = Vector2(-242, -153)
+[node name="ActionButtons" type="Node" parent="Inside"]
+script = ExtResource("11_hrg28")
 
-[node name="Renderer" type="ColorRect" parent="Inside/Levels"]
+[node name="Levels" type="CanvasGroup" parent="Inside/ActionButtons"]
+
+[node name="Renderer" type="ColorRect" parent="Inside/ActionButtons/Levels"]
 clip_contents = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 226.0
-offset_top = -1.0
-offset_right = 905.0
-offset_bottom = 335.0
+offset_left = -205.0
+offset_top = -167.0
+offset_right = 474.0
+offset_bottom = 169.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="Save" type="CanvasGroup" parent="Inside/ActionButtons"]
+
+[node name="Buttons" type="Control" parent="Inside/ActionButtons/Save"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="New" type="TextureButton" parent="Inside/ActionButtons/Save/Buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = -174.0
+offset_right = -21.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(108, 126)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("12_m4eru")
+stretch_mode = 0
+metadata/ID = 0
+
+[node name="Resume" type="TextureButton" parent="Inside/ActionButtons/Save/Buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.9977
+offset_top = -174.0
+offset_right = 205.002
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -6.28318
+pivot_offset = Vector2(108, 126)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_cugsy")
+stretch_mode = 0
+metadata/ID = 1
+
+[node name="Delete" type="TextureButton" parent="Inside/ActionButtons/Save/Buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 214.0
+offset_top = -174.0
+offset_right = 431.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -6.28318
+pivot_offset = Vector2(108, 126)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("14_sgut8")
+stretch_mode = 0
+metadata/ID = 2
 
 [editable path="Base"]

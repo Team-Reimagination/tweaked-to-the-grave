@@ -15,19 +15,22 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	scalemyfuck()
 	
-	if canInput and (Input.is_action_just_pressed("Accept_UI") or Input.is_action_just_pressed("Back_UI")):
-		canInput = false;
-		$ScaleRef.size = Vector2(0.0,0.0)
-		get_tree().create_tween().tween_property($Base/Background, "scale", Vector2.ZERO, 0.1).set_ease(Tween.EASE_IN)
-		
-		if Input.is_action_just_pressed("Accept_UI"):
-			$Inside/Difficulty.mouseBtn = -1
-			PlayGlobals.difficulty = $Inside/Difficulty.antiterios
-			PlayGlobals.applyDifficulty()
-			
-			PlayGlobals.subCallings(self, "wellithinkitstimetomoveonok")
-		else:
-			get_meta("parent").canInput = true
+	if canInput and (Input.is_action_just_pressed("Back_UI") or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
+		moveOn(true)
 		
 	if not canInput and $Base/Background.scale <= Vector2(0.05, 0.05):
 		PlayGlobals.removeSubstate(self);
+
+func moveOn(justQuitting):
+	canInput = false;
+	$ScaleRef.size = Vector2(0.0,0.0)
+	get_tree().create_tween().tween_property($Base/Background, "scale", Vector2.ZERO, 0.1).set_ease(Tween.EASE_IN)
+		
+	if !justQuitting:
+		$Inside/Difficulty.mouseBtn = -1
+		PlayGlobals.difficulty = $Inside/Difficulty.antiterios
+		PlayGlobals.prepareGame()
+			
+		PlayGlobals.subCallings(self, "wellithinkitstimetomoveonok")
+	else:
+		get_meta("parent").canInput = true

@@ -14,6 +14,8 @@ func _ready() -> void:
 		buttons = [$"Buttons/New Tries", $Buttons/Return]
 		
 	for a in range(buttons.size()):
+		buttons[a].set_meta("ID", a)
+		
 		if !PlayGlobals.areWeFNFFreeDownload: buttons[a].position.x = 50.0 + 1080.0 / buttons.size() * a
 		else: buttons[a].position.x = 230.0 + 750.0 / buttons.size() * a
 		
@@ -90,10 +92,15 @@ func process_button():
 		PlayGlobals.youarenolongermyfriendsoundnowgoaway((selectedButton != 0 and !PlayGlobals.areWeFNFFreeDownload) or PlayGlobals.areWeFNFFreeDownload)
 		MenuSounds.playMenuSound('select')
 		
+		if !PlayGlobals.areWeFNFFreeDownload and selectedButton != 1:
+			get_parent().setCurrentSave()
+		
 		canInput = false
 		if (selectedButton != 0 and !PlayGlobals.areWeFNFFreeDownload) or PlayGlobals.areWeFNFFreeDownload:
 			TransFuncs.switchScenes(get_parent(), "reset" if buttons[selectedButton] != $Buttons/Return else "res://assets/scenes/main_menu/main_menu.tscn")
 		else:
+			get_parent().nextLevel()
+			
 			get_tree().create_tween().tween_property($Color, "color:a", 0.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 			get_tree().create_tween().tween_property(self, "scale", Vector2(2,2), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 			get_tree().create_tween().tween_property(self, "offset", Vector2(-640.0,-480.0), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
