@@ -3,6 +3,7 @@ extends Node2D
 @onready var cam = $Camera
 var canInput = true;
 var isTransitioning = false
+var canSkip = true
 
 var zoomMod = 1.0
 var posMod = Vector2.ZERO
@@ -39,25 +40,31 @@ func _process(delta: float) -> void:
 		cam.zoom.y = cam.zoom.x
 		cam.set_position(Vector2(lerpf(cam.position.x, 640.0 + posMod.x, 0.3), lerpf(cam.position.y, 920.0 + posMod.y, 0.3)))
 		cam.rotation_degrees = rotMod
+		
+		if Input.is_action_just_pressed("Accept_UI") and canSkip: TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn", false, true)
 
 func wellithinkitstimetomoveonok(): #hand materaliza
-	$ParallaxBackground/Grave.wellithinkitstimetomoveonok()
-	isTransitioning = true
-	
 	PlayGlobals.youarenolongermyfriendsoundnowgoaway()
-	
 	$Music/Loop.stop()
-	$Music/End.play()
 	
-	$Shaders.visible = true
-	$Shaders/Flash.color.a = 1.0
-	$Shaders/Pixelation.material["shader_parameter/pixel_size"] = 0.1;
-	get_tree().create_tween().tween_property($Shaders/Flash, "color:a", 0.0, 0.5).set_ease(Tween.EASE_OUT)
-	
-	get_tree().create_tween().tween_property($ParallaxBackground/Logo, "modulate:a", 0.0, 0.1).set_ease(Tween.EASE_OUT)
-	
-	await get_tree().create_timer(1.5).timeout
-	get_tree().create_tween().tween_property($Shaders/Pixelation.material, "shader_parameter/pixel_size", 100.0, 5.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	
-	await get_tree().create_timer(2.0).timeout
-	TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn")
+	if !PlayGlobals.areWeFNFFreeDownload:
+		isTransitioning = true
+		
+		$ParallaxBackground/Grave.wellithinkitstimetomoveonok()
+		$Music/End.play()
+		
+		$Shaders.visible = true
+		$Shaders/Flash.color.a = 1.0
+		$Shaders/Pixelation.material["shader_parameter/pixel_size"] = 0.1;
+		get_tree().create_tween().tween_property($Shaders/Flash, "color:a", 0.0, 0.5).set_ease(Tween.EASE_OUT)
+		
+		get_tree().create_tween().tween_property($ParallaxBackground/Logo, "modulate:a", 0.0, 0.1).set_ease(Tween.EASE_OUT)
+		
+		await get_tree().create_timer(1.5).timeout
+		get_tree().create_tween().tween_property($Shaders/Pixelation.material, "shader_parameter/pixel_size", 100.0, 5.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		
+		await get_tree().create_timer(2.0).timeout
+		TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn")
+	else:
+		MenuSounds.playMenuSound("select")
+		TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn")
