@@ -19,7 +19,7 @@ var gama;
 var pauseState = preload("res://assets/scenes/[SUB-SCENES]/pause_menu/pause_menu.tscn")
 
 var canInput = false
-var canPause = true
+var canPause = false
 var hasBitchWon = false
 
 #BOUND VARIABLES@onready var buttons = [$"New Tries", $Return]
@@ -74,6 +74,8 @@ func _ready() -> void:
 	chunkLoader.makeBGChunk()
 	
 func initiateCountdown():
+	canPause = true
+	
 	var county = ["three", "two", "one", "start"]
 	countHand.visible = true;
 	for i in county.size():
@@ -101,7 +103,7 @@ func initiateCountdown():
 	music.volume_db = -10.0
 
 func startLevel():
-	await get_tree().create_timer(0.75,false).timeout #arbitrary thing but works with transitions in mind so i don't care
+	await get_tree().create_timer(0.9,false).timeout #arbitrary thing but works with transitions in mind so i don't care
 	
 	initiateCountdown()
 

@@ -87,11 +87,11 @@ func mouse_button(button):
 
 func process_button():
 	if canInput:
-		PlayGlobals.youarenolongermyfriendsoundnowgoaway(buttons[selectedButton] != $Buttons/Proceed)
+		PlayGlobals.youarenolongermyfriendsoundnowgoaway((selectedButton != 0 and !PlayGlobals.areWeFNFFreeDownload) or PlayGlobals.areWeFNFFreeDownload)
 		MenuSounds.playMenuSound('select')
 		
 		canInput = false
-		if buttons[selectedButton] != $Buttons/Proceed:
+		if (selectedButton != 0 and !PlayGlobals.areWeFNFFreeDownload) or PlayGlobals.areWeFNFFreeDownload:
 			TransFuncs.switchScenes(get_parent(), "reset" if buttons[selectedButton] != $Buttons/Return else "res://assets/scenes/main_menu/main_menu.tscn")
 		else:
 			get_tree().create_tween().tween_property($Color, "color:a", 0.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
