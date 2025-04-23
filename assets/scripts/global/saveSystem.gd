@@ -51,11 +51,13 @@ func saveSave() -> void:
 	await NG.cloudsave_set_data(1, var_to_str(saveDefine))
 
 func saveGame():
-	saveData.difficulties[PlayGlobals.difficulty] = curDifficultySave
+	saveData.difficulties[str(PlayGlobals.difficulty)] = curDifficultySave.duplicate(true)
 	saveSave()
 
-func eraseDifficultySave(diff):
-	saveData.difficulties.erase(diff)
+func eraseDifficultySave(diff = null):
+	if diff == null: diff = PlayGlobals.difficulty
+	
+	saveData.difficulties.erase(str(diff))
 	saveSave()
 	
 func loadSave():
@@ -67,8 +69,7 @@ func loadSave():
 
 func eraseCurrentGameplaySave(curDiff = null):
 	curDifficultySave = {}
-	if curDiff: eraseDifficultySave(curDiff)
-	
+	if curDiff != null: eraseDifficultySave(curDiff)
 
 func applyImmediateSettings() -> void:
 	for a in optionsData.keys():

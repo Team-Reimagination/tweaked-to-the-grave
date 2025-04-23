@@ -64,10 +64,10 @@ func setUpRows():
 	if PlayGlobals.areWeFNFFreeDownload: #LEVEL ACTIONS
 		pass
 	else: #SAVE ACTIONS
-		saveStarted = SaveSystem.saveData.difficulties.has(difficulty.antiterios)
+		saveStarted = SaveSystem.saveData.difficulties.has(str(difficulty.antiterios))
 		
 		if saveStarted:
-			SaveSystem.curDifficultySave = SaveSystem.saveData.difficulties[difficulty.antiterios]
+			SaveSystem.curDifficultySave = SaveSystem.saveData.difficulties[str(difficulty.antiterios)]
 			curSave = SaveSystem.curDifficultySave
 			saveComplete = curSave.levelInitials == "complete"
 		else:

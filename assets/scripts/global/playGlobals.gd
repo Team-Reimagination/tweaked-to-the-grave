@@ -34,7 +34,7 @@ func prepareGame():
 	if areWeFNFFreeDownload:
 		setDefaults(diffy)
 	else:
-		if !SaveSystem.saveData.difficulties.has(difficulty): 
+		if !SaveSystem.saveData.difficulties.has(str(difficulty)): 
 			SaveSystem.curDifficultySave = SaveSystem.difficultySave
 			setDefaults(diffy)
 			
@@ -42,7 +42,7 @@ func prepareGame():
 			
 			SaveSystem.saveGame()
 		else:
-			SaveSystem.curDifficultySave = SaveSystem.saveData.difficulties[difficulty]
+			SaveSystem.curDifficultySave = SaveSystem.saveData.difficulties[str(difficulty)]
 			setDefaults(diffy)
 			
 			lifeCount = [SaveSystem.curDifficultySave.lives,SaveSystem.curDifficultySave.health]
@@ -78,7 +78,6 @@ func subCallings(node, functionate):
 	
 func removeSubstate(sub):
 	var ind = substates.find(sub)
-	print(ind);
 	if ind != -1:
 		substates[ind].queue_free()
 		substates.remove_at(ind)
