@@ -18,13 +18,15 @@ func _ready() -> void:
 		
 		if !PlayGlobals.areWeFNFFreeDownload: buttons[a].position.x = 50.0 + 1080.0 / buttons.size() * a
 		else: buttons[a].position.x = 230.0 + 750.0 / buttons.size() * a
-		
+	
 	updateButtonSelection()
 	instantScale()
 
 	for butt in buttons:
 		butt.mouse_entered.connect(mouse_button.bind(butt))
 		butt.pressed.connect(process_button.bind())
+		
+	$Unlocked.scale *= 0.0
 
 func instantScale():
 	for i in range(buttons.size()):
@@ -52,6 +54,10 @@ func start():
 		a.descend(0.25,40.0 + 5.0 * looper,0.3)
 		await a.is_done_exploding
 		looper += 1;
+	
+	if get_parent().unlockedLevel:
+		MenuSounds.playMenuSound("small_select")
+		get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND).tween_property($Unlocked, "scale", Vector2(1.0,1.0),0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	
 	canInput = true
 	updateButtonSelection()
