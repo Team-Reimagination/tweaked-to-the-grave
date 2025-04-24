@@ -95,9 +95,19 @@ func initiateCountdown():
 		countTween.parallel().tween_property(countHand, "self_modulate:a", 0.0 , 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set_delay(0.35)
 		
 		await get_tree().create_timer(0.5,false).timeout #i like how this delays everything in the function
+	
+	postCount()
+
+func postCount():
 	canInput = true;
 	music.play()
 	music.volume_db = -10.0
+	
+	if SaveSystem.hasNotFirstTImeLevel(PlayGlobals.levelID) and !PlayGlobals.areWeFNFFreeDownload:
+		$HUD/LevelName.text = "LEVEL "+str(int(levelDefs.id)+1)+": "+str(levelDefs.name)
+		get_tree().create_tween().tween_property($HUD/LevelName, "position:y", $HUD/LevelName.position.y - 70, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+		get_tree().create_tween().tween_property($HUD/LevelName, "position:y", $HUD/LevelName.position.y + 70, 0.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CIRC).set_delay(5)
+		SaveSystem.firstTimeLevelForMe(PlayGlobals.levelID)
 
 func startLevel():
 	await get_tree().create_timer(0.9,false).timeout #arbitrary thing but works with transitions in mind so i don't care
@@ -298,9 +308,16 @@ func applySetting(type, value):
 func spawnOBJ(obj): #spawn to the right group
 	$Objects.add_child(obj)
 
+var unlockedLevel = false
+var firstTimeLevel = false
+
 func completeLevel():
 	$Audio/Victory.play()
 	$Audio/Victory.volume_db = 0.0;
+	
+	if SaveSystem.hasNotUnlockedLevel(PlayGlobals.levelID):
+		SaveSystem.unlockLevelForFree(PlayGlobals.levelID)
+		unlockedLevel = true
 	
 	hud.abracadabrahocuspocusnowyouwilldisappear()
 	

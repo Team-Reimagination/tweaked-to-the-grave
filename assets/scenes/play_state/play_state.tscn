@@ -1,4 +1,4 @@
-[gd_scene load_steps=224 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=225 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="AudioStream" uid="uid://c3a1fmviekmje" path="res://assets/sounds/ambience/warning.ogg" id="2_ngmgm"]
@@ -1445,6 +1445,12 @@ font_size = 24
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_lpcyh"]
+font = ExtResource("14_yewxg")
+font_size = 20
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
 [node name="PlayState" type="Node3D"]
 process_mode = 1
 script = ExtResource("1_edc5a")
@@ -1566,6 +1572,10 @@ material = SubResource("ShaderMaterial_qnhqf")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -4.0
+offset_right = -17.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1847,6 +1857,24 @@ allow_lesser = true
 texture_under = ExtResource("28_3g363")
 texture_progress = ExtResource("29_f74kq")
 
+[node name="LevelName" type="Label" parent="HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -629.0
+offset_top = 18.0
+offset_right = 630.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "LEVEL UNLOCKED FOR FREEPLAY!"
+label_settings = SubResource("LabelSettings_lpcyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [node name="Victory" type="CanvasLayer" parent="."]
 layer = 3
 script = ExtResource("40_0fg0f")
@@ -1910,3 +1938,21 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("48_o6cht")
 stretch_mode = 0
 metadata/ID = 2
+
+[node name="Unlocked" type="Label" parent="Victory"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -191.0
+offset_top = -54.0
+offset_right = 192.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(191, 23.96)
+text = "LEVEL UNLOCKED FOR FREEPLAY!"
+label_settings = SubResource("LabelSettings_lpcyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

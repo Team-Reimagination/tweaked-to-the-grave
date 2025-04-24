@@ -21,6 +21,7 @@ var achievementData = {
 
 var saveData = {
 	"unlocked": [],
+	"firstTime": [],
 	"difficulties": {
 		
 	}
@@ -49,6 +50,20 @@ func saveSave() -> void:
 	}
 
 	await NG.cloudsave_set_data(1, var_to_str(saveDefine))
+
+func hasNotUnlockedLevel(levID): return saveData.unlocked.find(levID) == -1
+
+func unlockLevelForFree(levID) :
+	if hasNotUnlockedLevel(levID):
+		saveData.unlocked.append(levID)
+		saveSave()
+		
+func hasNotFirstTImeLevel(levID): return saveData.firstTime.find(levID) == -1
+
+func firstTimeLevelForMe(levID) :
+	if hasNotFirstTImeLevel(levID):
+		saveData.firstTime.append(levID)
+		saveSave()
 
 func saveGame():
 	saveData.difficulties[str(PlayGlobals.difficulty)] = curDifficultySave.duplicate(true)
