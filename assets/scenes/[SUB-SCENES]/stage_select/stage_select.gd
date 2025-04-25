@@ -15,7 +15,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	scalemyfuck()
 	
-	if canInput and (Input.is_action_just_pressed("Back_UI") or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
+	if canInput and (Input.is_action_just_pressed("Back_UI") or CustomCursor.isMouseJustPressed("right")):
 		moveOn(true)
 		
 	if not canInput and $Base/Background.scale <= Vector2(0.05, 0.05):
