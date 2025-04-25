@@ -182,5 +182,4 @@ func _process(_delta: float) -> void:
 	
 	#DEBUG FUNCS
 	if Input.is_key_pressed(KEY_EQUAL): 
-		scene.TRUElira += 60;
-		scene.liraPGR += 60;
+		scene.addLira(60)

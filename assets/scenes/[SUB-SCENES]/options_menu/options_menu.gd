@@ -15,7 +15,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	scalemyfuck()
 	
-	if canInput and (Input.is_action_just_pressed("Back_UI") or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
+	if canInput and (Input.is_action_just_pressed("Back_UI") or CustomCursor.isMouseJustPressed("right")):
 		canInput = false;
 		$ScaleRef.size = Vector2(0.0,0.0)
 		get_tree().create_tween().tween_property($Base/Background, "scale", Vector2.ZERO, 0.1).set_ease(Tween.EASE_IN)

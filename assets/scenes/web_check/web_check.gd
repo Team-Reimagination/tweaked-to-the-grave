@@ -9,5 +9,5 @@ func _process(_delta: float) -> void:
 	if $Sprite2D.offset.y > 0:
 		get_tree().change_scene_to_file("res://assets/scenes/sbb_splash/sbb_splash.tscn")
 		
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
+	if CustomCursor.isMouseJustPressed("left"): 
 		$Sprite2D.offset.y += 20

@@ -16,8 +16,7 @@ func _ready() -> void:
 
 func suicide():
 	if objType == 'lira':
-		scene.TRUElira += value;
-		scene.liraPGR += value;
+		scene.addLira(value)
 		
 		willDisappear = true
 		startSucking = false

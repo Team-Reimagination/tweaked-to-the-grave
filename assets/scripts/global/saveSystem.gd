@@ -24,6 +24,9 @@ var achievementData = {
 var saveData = {
 	"unlocked": [],
 	"firstTime": [],
+	"highscores": {
+		
+	},
 	"difficulties": {
 		
 	}
@@ -66,6 +69,31 @@ func firstTimeLevelForMe(levID) :
 	if hasNotFirstTImeLevel(levID):
 		saveData.firstTime.append(levID)
 		saveSave()
+
+func isNewHighScore(levID, diff, score):
+	diff = str(diff)
+	
+	if diff not in saveData.highscores: return true
+	else: return levID not in saveData.highscores[diff] or (levID in saveData.highscores[diff] and saveData.highscores[diff][levID] < score)
+
+func setLevelHighScore(levID, diff, score):
+	diff = str(diff)
+	
+	var gottaSave = false
+	if diff not in saveData.highscores:
+		saveData.highscores[diff] = {}
+		gottaSave = true
+	
+	if isNewHighScore(levID, diff, score):
+		saveData.highscores[diff][levID] = score
+		gottaSave = true
+	
+	if gottaSave: saveSave()
+	
+func getHighScore(levID, diff):
+	diff = str(diff)
+	
+	return 0 if diff not in saveData.highscores or levID not in saveData.highscores[diff] else saveData.highscores[diff][levID]
 
 func saveGame():
 	saveData.difficulties[str(PlayGlobals.difficulty)] = curDifficultySave.duplicate(true)

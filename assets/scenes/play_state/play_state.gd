@@ -34,6 +34,7 @@ static var levelDefs;
 #POWERS
 var TRUElira:int = PlayGlobals.ownedLira;
 var liraPGR:int = PlayGlobals.ownedLiraProgress;
+var currentLevelLira:int = 0
 var liraMax:int = 0;
 var liraLevel:int = PlayGlobals.liraLevel;
 
@@ -310,14 +311,19 @@ func spawnOBJ(obj): #spawn to the right group
 
 var unlockedLevel = false
 var firstTimeLevel = false
+var newHighScore = false
 
 func completeLevel():
 	$Audio/Victory.play()
-	$Audio/Victory.volume_db = 0.0;
+	$Audio/Victory.volume_db = -5.0;
 	
 	if SaveSystem.hasNotUnlockedLevel(PlayGlobals.levelID):
 		SaveSystem.unlockLevelForFree(PlayGlobals.levelID)
 		unlockedLevel = true
+	
+	if SaveSystem.isNewHighScore(PlayGlobals.levelID, PlayGlobals.difficulty, currentLevelLira):
+		newHighScore = true
+		SaveSystem.setLevelHighScore(PlayGlobals.levelID, PlayGlobals.difficulty, currentLevelLira)
 	
 	hud.abracadabrahocuspocusnowyouwilldisappear()
 	
@@ -349,3 +355,8 @@ func setCurrentSave():
 func nextLevel():
 	PlayGlobals.prepareGame()
 	PlayGlobals.levelID = levelDefs.nextLevel
+
+func addLira(lira):
+	TRUElira += lira
+	liraPGR += lira
+	currentLevelLira += lira

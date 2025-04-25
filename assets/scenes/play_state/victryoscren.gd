@@ -21,6 +21,8 @@ func _ready() -> void:
 	
 	updateButtonSelection()
 	instantScale()
+	
+	$Higher.scale *= 0.0
 
 	for butt in buttons:
 		butt.mouse_entered.connect(mouse_button.bind(butt))
@@ -59,6 +61,18 @@ func start():
 		MenuSounds.playMenuSound("small_select")
 		get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND).tween_property($Unlocked, "scale", Vector2(1.0,1.0),0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	
+	if get_parent().newHighScore:
+		$"../Audio/Highscore".play()
+		
+		var scaler = get_tree().create_tween()
+		scaler.tween_property($Higher, "scale", Vector2(0.75,0.75), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+		
+		await scaler.finished
+		SometimesIWishThisOneSeriesWasToBePopularizedAcrossTheGlobe_ItsCalledPrzygodyReksia_ItsAPolishFranchiseButItIsGreat_IfOnlyThisHadEnglishLocalization_ButIKnowAYoutubeChannelThatOffersSubtitlesToGames_GoCheckKretKretesRecordsToSeeThat()
+	else:
+		SometimesIWishThisOneSeriesWasToBePopularizedAcrossTheGlobe_ItsCalledPrzygodyReksia_ItsAPolishFranchiseButItIsGreat_IfOnlyThisHadEnglishLocalization_ButIKnowAYoutubeChannelThatOffersSubtitlesToGames_GoCheckKretKretesRecordsToSeeThat()
+
+func SometimesIWishThisOneSeriesWasToBePopularizedAcrossTheGlobe_ItsCalledPrzygodyReksia_ItsAPolishFranchiseButItIsGreat_IfOnlyThisHadEnglishLocalization_ButIKnowAYoutubeChannelThatOffersSubtitlesToGames_GoCheckKretKretesRecordsToSeeThat():
 	canInput = true
 	updateButtonSelection()
 	updateScale()

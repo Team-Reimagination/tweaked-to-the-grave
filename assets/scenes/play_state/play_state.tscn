@@ -1,4 +1,4 @@
-[gd_scene load_steps=225 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=227 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="AudioStream" uid="uid://c3a1fmviekmje" path="res://assets/sounds/ambience/warning.ogg" id="2_ngmgm"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://crlf2306tx65u" path="res://assets/images/hud/powersicon.png" id="5_km3m7"]
 [ext_resource type="AudioStream" uid="uid://4ifxh8y2ipbb" path="res://assets/sounds/gameplay/hyperdrive.ogg" id="5_lpcyh"]
 [ext_resource type="FontFile" uid="uid://7m4vhh4738ar" path="res://assets/images/hud/powerscounter.png" id="6_c2p2b"]
+[ext_resource type="AudioStream" uid="uid://1jn2kavexv13" path="res://assets/sounds/gameplay/highscore.ogg" id="6_vowp5"]
 [ext_resource type="Shader" uid="uid://dgvljiek78nnk" path="res://assets/shaders/object/UVScroll.gdshader" id="7_4namv"]
 [ext_resource type="Shader" uid="uid://8rcyn51imi8r" path="res://assets/shaders/screen/colorMod.gdshader" id="7_l10d1"]
 [ext_resource type="Texture2D" uid="uid://bvnaovxwoc6a8" path="res://assets/images/hud/lira_empty.png" id="7_uuhey"]
@@ -49,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://clo76qhh5fjcf" path="res://assets/images/buttons/floating/proceed.png" id="46_oiu8i"]
 [ext_resource type="Texture2D" uid="uid://be5w8eivou70p" path="res://assets/images/buttons/floating/newtries.png" id="47_lpcyh"]
 [ext_resource type="Texture2D" uid="uid://c7h0obqcrb6a0" path="res://assets/images/buttons/floating/return.png" id="48_o6cht"]
+[ext_resource type="Texture2D" uid="uid://5anv15lc1pku" path="res://assets/images/hud/victroy/new.png" id="50_o6cht"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7wmb"]
 sky_top_color = Color(0.382845, 0.629386, 1, 1)
@@ -1483,6 +1485,10 @@ bus = &"SFX"
 stream = ExtResource("5_lpcyh")
 bus = &"SFX"
 
+[node name="Highscore" type="AudioStreamPlayer" parent="Audio" groups=["Sound"]]
+stream = ExtResource("6_vowp5")
+bus = &"SFX"
+
 [node name="Background" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oi2qx")
 camera_attributes = SubResource("CameraAttributesPractical_edc5a")
@@ -1869,7 +1875,7 @@ offset_right = 630.0
 offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "LEVEL UNLOCKED FOR FREEPLAY!"
+text = "If you have seen this, congratulations on digging through this game! Now enjoy my OCs, or at least a height reference of them: res://assets/images/entities/wishmakers/wishmakers height reference.png        The designs may be made on Feb 23 2023, but they still hold up well                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 Congratulations for digging through this game. Look to your left                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   "
 label_settings = SubResource("LabelSettings_lpcyh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1882,20 +1888,31 @@ script = ExtResource("40_0fg0f")
 [node name="Color" type="CanvasModulate" parent="Victory"]
 
 [node name="Seezee" parent="Victory" instance=ExtResource("41_0fg0f")]
-position = Vector2(435, 182)
+position = Vector2(299, 145)
+scale = Vector2(0.758906, 0.758906)
 texture = ExtResource("40_fnjxo")
 
 [node name="Has" parent="Victory" instance=ExtResource("41_0fg0f")]
-position = Vector2(914, 149)
+position = Vector2(657, 93)
+rotation = -0.196023
+scale = Vector2(0.757845, 0.757845)
 texture = ExtResource("42_1wqxm")
 
 [node name="Passed" parent="Victory" instance=ExtResource("41_0fg0f")]
-position = Vector2(866, 280)
+position = Vector2(981, 162)
+rotation = 0.278084
+scale = Vector2(0.710199, 0.710199)
 texture = ExtResource("43_j6ssd")
 
 [node name="TitleCard" parent="Victory" instance=ExtResource("41_0fg0f")]
-position = Vector2(640, 449)
+position = Vector2(640, 290)
+scale = Vector2(0.899329, 0.899329)
 texture = ExtResource("45_1wqxm")
+
+[node name="Higher" type="Sprite2D" parent="Victory"]
+position = Vector2(977, 359)
+scale = Vector2(0.758064, 0.758065)
+texture = ExtResource("50_o6cht")
 
 [node name="Buttons" type="Control" parent="Victory"]
 layout_mode = 3
