@@ -10,7 +10,7 @@ var optionsData = {
 	"audio_sfx" = 1.0,
 	"audio_ambience" = 1.0,
 	"audio_voicelines" = 1.0,
-	"audio_subtitles" = 1.0,
+	"audio_subtitles" = true,
 	
 	"gameplay_autofire" = false
 }
