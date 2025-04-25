@@ -130,7 +130,7 @@ max_value = 1.0
 step = 0.01
 ticks_on_borders = true
 script = ExtResource("8_4fpqp")
-optionValue = "volume_master"
+optionValue = "audio_master"
 metadata/ID = 4
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Master"]
@@ -169,7 +169,7 @@ max_value = 1.0
 step = 0.01
 ticks_on_borders = true
 script = ExtResource("8_4fpqp")
-optionValue = "volume_music"
+optionValue = "audio_music"
 metadata/ID = 6
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Music"]
@@ -208,7 +208,7 @@ max_value = 1.0
 step = 0.01
 ticks_on_borders = true
 script = ExtResource("8_4fpqp")
-optionValue = "volume_sfx"
+optionValue = "audio_sfx"
 metadata/ID = 5
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/SFX"]
@@ -247,7 +247,7 @@ max_value = 1.0
 step = 0.01
 ticks_on_borders = true
 script = ExtResource("8_4fpqp")
-optionValue = "volume_ambience"
+optionValue = "audio_ambience"
 metadata/ID = 7
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Ambience"]
