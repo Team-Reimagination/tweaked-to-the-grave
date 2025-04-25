@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o5jy1glyd1vs"
-path.s3tc="res://.godot/imported/lira-2.png-74c390d146923d70720e50ecd9e4177e.s3tc.ctex"
-path.etc2="res://.godot/imported/lira-2.png-74c390d146923d70720e50ecd9e4177e.etc2.ctex"
+uid="uid://c6yf02ppkloon"
+path.s3tc="res://.godot/imported/lira-5.png-513e903c6b33d3f0677e949f983b66ec.s3tc.ctex"
+path.etc2="res://.godot/imported/lira-5.png-513e903c6b33d3f0677e949f983b66ec.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/entities/lira/lira-2.png"
-dest_files=["res://.godot/imported/lira-2.png-74c390d146923d70720e50ecd9e4177e.s3tc.ctex", "res://.godot/imported/lira-2.png-74c390d146923d70720e50ecd9e4177e.etc2.ctex"]
+source_file="res://assets/images/entities/lira/lira-5.png"
+dest_files=["res://.godot/imported/lira-5.png-513e903c6b33d3f0677e949f983b66ec.s3tc.ctex", "res://.godot/imported/lira-5.png-513e903c6b33d3f0677e949f983b66ec.etc2.ctex"]
 
 [params]
 

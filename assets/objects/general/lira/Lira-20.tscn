@@ -1,0 +1,173 @@
+[gd_scene load_steps=21 format=3 uid="uid://ca5b8g1bqu2ci"]
+
+[ext_resource type="Script" uid="uid://q27yxrhr8aeh" path="res://assets/scripts/classes/collectible_class.gd" id="1_287jf"]
+[ext_resource type="Texture2D" uid="uid://dr0jovf6bn73t" path="res://assets/images/fx/sparkle.png" id="2_r6qmj"]
+[ext_resource type="Texture2D" uid="uid://dh7bscmahhkdt" path="res://assets/images/entities/lira/lira-20.png" id="3_287jf"]
+[ext_resource type="AudioStream" uid="uid://6md88sogh8ue" path="res://assets/sounds/entities/lira_get.ogg" id="4_nsepr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1fsy"]
+atlas = ExtResource("2_r6qmj")
+region = Rect2(0, 0, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajw8j"]
+atlas = ExtResource("2_r6qmj")
+region = Rect2(58, 0, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmgww"]
+atlas = ExtResource("2_r6qmj")
+region = Rect2(0, 64, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryva0"]
+atlas = ExtResource("2_r6qmj")
+region = Rect2(58, 64, 58, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mshe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1fsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajw8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmgww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryva0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6qmj"]
+atlas = ExtResource("3_287jf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8roef"]
+atlas = ExtResource("3_287jf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsepr"]
+atlas = ExtResource("3_287jf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyqgc"]
+atlas = ExtResource("3_287jf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veuy1"]
+atlas = ExtResource("3_287jf")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ahk2"]
+atlas = ExtResource("3_287jf")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6nfp"]
+atlas = ExtResource("3_287jf")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyke8"]
+atlas = ExtResource("3_287jf")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j1fsy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6qmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8roef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsepr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyqgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veuy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ahk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6nfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyke8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ajw8j"]
+height = 2.08463
+radius = 1.53076
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xmgww"]
+radius = 0.394674
+
+[node name="Lira-20" type="Area3D"]
+script = ExtResource("1_287jf")
+objType = "lira"
+value = 200
+type = "collectible"
+doProcessDistanceFade = false
+metadata/_custom_type_script = "uid://q27yxrhr8aeh"
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(3.8, 0, 0, 0, 3.8, 0, 0, 0, 3.8, 0, 0, 0)
+
+[node name="Sparkle" type="AnimatedSprite3D" parent="Model"]
+visible = false
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_mshe7")
+frame_progress = 0.0463738
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://assets/images/fx",
+"o_name": "sparkle",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "D:/GODOT/projectFiles - TTTG/2d/sparkles.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "8f45139677176a5dd5f57fbfeed1cf00"
+
+[node name="Coin" type="AnimatedSprite3D" parent="Model"]
+billboard = 1
+alpha_cut = 1
+sprite_frames = SubResource("SpriteFrames_j1fsy")
+frame_progress = 0.910623
+
+[node name="Magnet" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, -7.46095e-08, 1.70687)
+shape = SubResource("CylinderShape3D_ajw8j")
+debug_color = Color(0.996, 0, 0.201, 0.768)
+metadata/type = ""
+
+[node name="Collect" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("SphereShape3D_xmgww")
+debug_color = Color(0, 0.6, 0.7, 0.812)
+
+[node name="CollectAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_nsepr")
+attenuation_model = 3
+volume_db = -2.0
+unit_size = 100.0
+max_db = 0.0
+bus = &"SFX"
