@@ -109,7 +109,7 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 	elif type == 'audio_ambience':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(valuemysanityplease))
 	elif type == 'audio_voicelines':
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(valuemysanityplease))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Voicelines"), linear_to_db(valuemysanityplease))
 	elif type == 'audio_subtitles':
 		return
 		##to be implemented
