@@ -54,7 +54,7 @@ bus = &"Music"
 [node name="Stroked" type="AudioStreamPlayer" parent="NewLayer" groups=["Sound"]]
 stream = ExtResource("3_tgttw")
 volume_db = 5.0
-bus = &"SFX"
+bus = &"Voicelines"
 
 [node name="BG" type="ColorRect" parent="NewLayer"]
 anchors_preset = 15

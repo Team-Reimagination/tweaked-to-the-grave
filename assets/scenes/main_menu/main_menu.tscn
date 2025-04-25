@@ -315,7 +315,7 @@ position = Vector2(409, 470)
 volume_db = 10.0
 attenuation = 0.241484
 panning_strength = 0.0
-bus = &"SFX"
+bus = &"Voicelines"
 
 [node name="Buttons" type="Control" parent="ParallaxBackground/Grave"]
 layout_mode = 3
