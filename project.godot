@@ -40,6 +40,8 @@ CustomCursor="*res://assets/scripts/global/customCursor.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=960
 window/size/sharp_corners=true
+window/size/window_width_override=960
+window/size/window_height_override=720
 window/stretch/mode="viewport"
 
 [editor]
