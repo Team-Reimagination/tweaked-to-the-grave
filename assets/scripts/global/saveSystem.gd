@@ -5,10 +5,12 @@ var optionsData = {
 	"video_fullscreen" = false, ##PC ONLY
 	"video_passion" = false,
 	
-	"volume_master" = 1.0,
-	"volume_music" = 1.0,
-	"volume_sfx" = 1.0,
-	"volume_ambience" = 1.0,
+	"audio_master" = 1.0,
+	"audio_music" = 1.0,
+	"audio_sfx" = 1.0,
+	"audio_ambience" = 1.0,
+	"audio_voicelines" = 1.0,
+	"audio_subtitles" = 1.0,
 	
 	"gameplay_autofire" = false
 }
@@ -98,14 +100,19 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 	elif type == 'video_passion':
 		Passion.visibility(valuemysanityplease)
 	
-	elif type == 'volume_master':
+	elif type == 'audio_master':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(valuemysanityplease))
-	elif type == 'volume_music':
+	elif type == 'audio_music':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(valuemysanityplease))
-	elif type == 'volume_sfx':
+	elif type == 'audio_sfx':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(valuemysanityplease))
-	elif type == 'volume_ambience':
+	elif type == 'audio_ambience':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(valuemysanityplease))
+	elif type == 'audio_voicelines':
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(valuemysanityplease))
+	elif type == 'audio_subtitles':
+		return
+		##to be implemented
 
 func _ready() -> void:
 	cloudSave = await NG.cloudsave_get_data(1)
