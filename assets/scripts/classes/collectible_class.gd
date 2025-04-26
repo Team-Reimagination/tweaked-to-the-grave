@@ -15,7 +15,15 @@ func _ready() -> void:
 	self.area_shape_entered.connect(detectCollission.bind())
 
 func suicide():
+	if scene.lives == 0:
+		queue_free()
+		return
+	
 	if objType == 'lira' or objType == 'health' or objType == '1up':
+		if objType == 'health' and scene.player_health == 0:
+			queue_free()
+			return
+		
 		willDisappear = true
 		startSucking = false
 		
@@ -68,7 +76,8 @@ func _process(delta: float) -> void:
 		self.global_position.y = lerpf(self.global_position.y, scene.player.global_position.y, ole)
 		self.global_position.z = lerpf(self.global_position.z, scene.player.global_position.z, ole)
 
+
 func detectCollission(_areID, are, _arSID, _loSID):
-	if !scene.hasBitchWon and scene.player.action != 'hurt' and scene.player.action != 'explode':
-		if are.type == 'player' and _loSID == 0 and !startSucking and !willDisappear: startSucking = true
+	if !scene.hasBitchWon:
+		if are.type == 'player' and _loSID == 0 and !startSucking and !willDisappear and scene.player.action != 'hurt' and scene.player.action != 'explode': startSucking = true
 		elif are.type == 'player_collector' and _loSID == 1 and !willDisappear: suicide()

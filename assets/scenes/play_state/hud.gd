@@ -91,7 +91,7 @@ func healthLoss(): #go away you got a minor heatstroke
 	healer1.set_parallel().tween_property(heal, "modulate", Color(1.0,1.0,1.0,0.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 
 func updateIcon():
-	seezeeIcon.play("Heat_"+str(scene.player_health if scene.lives != 1 else 1))
+	seezeeIcon.play("Heat_"+str(max(1, scene.player_health) if scene.lives != 1 else 1))
 
 func hurtPlayer(): #minor heatstroke
 	healthLoss()
