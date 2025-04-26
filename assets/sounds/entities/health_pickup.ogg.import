@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/health_pickup.ogg-221706ddd36571470ace83d1dc6
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

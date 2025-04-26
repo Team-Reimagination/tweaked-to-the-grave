@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 			$Model.get_child(0).pixel_size += 0.01 * delta
 			$Model.get_child(0).modulate.a -= 2 * delta
 			
-			if $Model.get_child(0).modulate.a <= 0.01: queue_free()
+			if $CollectAudio.playing == false: queue_free()
 	
 	if startSucking and !scene.hasBitchWon:
 		ole += delta/2;
