@@ -133,6 +133,7 @@ func instantLiraLevel():
 	
 func heal(health):
 	player_health = min(3, player_health + health)
+	if lives > 1 and player_health > 1: isWarning = false;
 	
 func hurtPlayer():
 	player_health -= 1
@@ -365,3 +366,4 @@ func giveMeLife():
 	lives += 1
 	$"Audio/1up".play()
 	hud.giveMeLife()
+	isWarning = false;

@@ -91,7 +91,7 @@ func healthLoss(): #go away you got a minor heatstroke
 	healer1.set_parallel().tween_property(heal, "modulate", Color(1.0,1.0,1.0,0.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 
 func updateIcon():
-	seezeeIcon.play("Heat_"+str(scene.player_health))
+	seezeeIcon.play("Heat_"+str(scene.player_health if scene.lives != 1 else 1))
 
 func hurtPlayer(): #minor heatstroke
 	healthLoss()
@@ -157,6 +157,8 @@ func healMe(healer):
 		var healer1 = get_tree().create_tween()
 		healer1.tween_property(i, "scale", Vector2(1,1), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		healer1.set_parallel().tween_property(i, "modulate", Color(1.0,1.0,1.0,1.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+		
+	updateIcon()
 
 func gameOver(): #ow
 	await get_tree().create_timer(2, false).timeout
@@ -193,3 +195,5 @@ func giveMeLife():
 	lifeShakeTween.tween_property(canyougivemelife, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		
 	$HealthGroup/IconSeezee/Lives/Label.text = str(scene.lives)
+	
+	updateIcon()
