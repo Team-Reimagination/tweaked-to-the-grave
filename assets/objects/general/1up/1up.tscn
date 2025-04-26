@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3x5qru1vqw2l"]
+
+[ext_resource type="Script" uid="uid://q27yxrhr8aeh" path="res://assets/scripts/classes/collectible_class.gd" id="1_nd3hy"]
+[ext_resource type="Texture2D" uid="uid://dokao6ksl5e5h" path="res://assets/images/entities/1up/1up-broken.png" id="2_k20gu"]
+[ext_resource type="Texture2D" uid="uid://qfccfe7g2j1m" path="res://assets/images/entities/1up/1up.png" id="3_3hcem"]
+[ext_resource type="AudioStream" uid="uid://cufh7t663ivba" path="res://assets/sounds/entities/1up_break.ogg" id="4_f6x56"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ajw8j"]
+height = 2.08463
+radius = 1.00146
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xmgww"]
+radius = 0.291174
+
+[node name="1up" type="Area3D"]
+script = ExtResource("1_nd3hy")
+objType = "1up"
+value = 1
+type = "collectible"
+doProcessDistanceFade = false
+metadata/_custom_type_script = "uid://q27yxrhr8aeh"
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+
+[node name="Sparkle" type="Sprite3D" parent="Model"]
+visible = false
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("2_k20gu")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {
+"i_mode": 0,
+"keep_anim_length": false,
+"player": ""
+}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://assets/images/fx",
+"o_name": "sparkle",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "D:/GODOT/projectFiles - TTTG/2d/sparkles.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "8f45139677176a5dd5f57fbfeed1cf00"
+
+[node name="Coin" type="Sprite3D" parent="Model"]
+billboard = 1
+alpha_cut = 1
+texture = ExtResource("3_3hcem")
+
+[node name="Magnet" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, -7.46095e-08, 1.70687)
+shape = SubResource("CylinderShape3D_ajw8j")
+debug_color = Color(0.996, 0, 0.201, 0.768)
+metadata/type = ""
+
+[node name="Collect" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("SphereShape3D_xmgww")
+debug_color = Color(0, 0.6, 0.7, 0.812)
+
+[node name="CollectAudio" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
+stream = ExtResource("4_f6x56")
+attenuation_model = 3
+volume_db = -2.0
+unit_size = 100.0
+max_db = 0.0
+bus = &"SFX"

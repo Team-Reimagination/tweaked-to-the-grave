@@ -1,7 +1,8 @@
-[gd_scene load_steps=233 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=235 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="AudioStream" uid="uid://c3a1fmviekmje" path="res://assets/sounds/ambience/warning.ogg" id="2_ngmgm"]
+[ext_resource type="AudioStream" uid="uid://uh3wjmcgghvv" path="res://assets/sounds/entities/1up_get.ogg" id="2_pmsn5"]
 [ext_resource type="AudioStream" uid="uid://dgt04vyagnmlb" path="res://assets/sounds/gameplay/burning.ogg" id="2_qnhqf"]
 [ext_resource type="AudioStream" uid="uid://cbsryncc2dcpf" path="res://assets/music/victory.ogg" id="2_vn6he"]
 [ext_resource type="Script" uid="uid://dnlq4crl6dlsb" path="res://assets/scripts/funcs/3DCamFuncs.gd" id="3_4namv"]
@@ -37,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://csd105n0fxfp7" path="res://assets/objects/general/health/Health.tscn" id="19_pc1ia"]
 [ext_resource type="Texture2D" uid="uid://b30waadie4s7l" path="res://assets/images/hud/lifesphere.png" id="19_pqvw0"]
 [ext_resource type="FontFile" uid="uid://bfrysyfaih6em" path="res://assets/images/hud/lifecounter.png" id="20_ih15a"]
+[ext_resource type="PackedScene" uid="uid://b3x5qru1vqw2l" path="res://assets/objects/general/1up/1up.tscn" id="20_nb4mu"]
 [ext_resource type="Texture2D" uid="uid://qwkyxw2s82vp" path="res://assets/images/hud/myhandyfuckinghands.png" id="21_8500i"]
 [ext_resource type="Texture2D" uid="uid://buq0edx5hfsj" path="res://assets/images/hud/seezee_healthempty.png" id="22_ih15a"]
 [ext_resource type="Texture2D" uid="uid://7hb4ugearqf1" path="res://assets/images/hud/seezee_health3.png" id="23_usenx"]
@@ -1474,6 +1476,11 @@ stream = ExtResource("2_vn6he")
 volume_db = -80.0
 bus = &"Music"
 
+[node name="1up" type="AudioStreamPlayer" parent="Audio" groups=["Sound"]]
+stream = ExtResource("2_pmsn5")
+volume_db = -2.0
+bus = &"Music"
+
 [node name="HeatStroke" type="AudioStreamPlayer" parent="Audio" groups=["Sound"]]
 stream = ExtResource("2_qnhqf")
 bus = &"Music"
@@ -1562,6 +1569,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26276, 15.2688, -19.9327)
 
 [node name="Health" parent="Objects" instance=ExtResource("19_pc1ia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4352, 14.9614, -20.7108)
+
+[node name="Health2" parent="Objects" instance=ExtResource("20_nb4mu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8624, 6.00848, -20.2303)
 
 [node name="Chunk References For Future" type="Node3D" parent="."]
 transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -48)

@@ -360,3 +360,8 @@ func addLira(lira):
 	TRUElira += lira
 	liraPGR += lira
 	currentLevelLira += lira
+
+func giveMeLife():
+	lives += 1
+	$"Audio/1up".play()
+	hud.giveMeLife()

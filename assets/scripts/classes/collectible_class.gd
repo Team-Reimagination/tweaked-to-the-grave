@@ -10,12 +10,12 @@ var willDisappear = false
 func _ready() -> void:
 	super._ready()
 	
-	$Model.get_child(1).play('default')
+	if $Model.get_child(1) is AnimatedSprite3D: $Model.get_child(1).play('default')
 	
 	self.area_shape_entered.connect(detectCollission.bind())
 
 func suicide():
-	if objType == 'lira' or objType == 'health':
+	if objType == 'lira' or objType == 'health' or objType == '1up':
 		willDisappear = true
 		startSucking = false
 		
@@ -31,10 +31,14 @@ func suicide():
 		elif objType == 'health':
 			scene.heal(1)
 			scene.hud.healMe(1)
+		elif objType == '1up':
+			ole = 0.0
+			scene.giveMeLife()
 	else:
 		queue_free()
 
 var ole = 0.0;
+var county = 0
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -47,6 +51,16 @@ func _process(delta: float) -> void:
 			$Model.get_child(0).modulate.a -= 2 * delta
 			
 			if $CollectAudio.playing == false: queue_free()
+		elif objType == '1up':
+			ole += delta
+			
+			if ole > (1.0 if county == 0 else 0.05):
+				ole = 0.0
+				self.visible = !self.visible
+				county += 1
+			
+			if county > 10:
+				queue_free()
 	
 	if startSucking and !scene.hasBitchWon:
 		ole += delta/2;
@@ -55,6 +69,6 @@ func _process(delta: float) -> void:
 		self.global_position.z = lerpf(self.global_position.z, scene.player.global_position.z, ole)
 
 func detectCollission(_areID, are, _arSID, _loSID):
-	if !scene.hasBitchWon:
+	if !scene.hasBitchWon and scene.player.action != 'hurt' and scene.player.action != 'explode':
 		if are.type == 'player' and _loSID == 0 and !startSucking and !willDisappear: startSucking = true
 		elif are.type == 'player_collector' and _loSID == 1 and !willDisappear: suicide()

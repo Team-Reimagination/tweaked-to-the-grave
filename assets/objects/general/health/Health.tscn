@@ -169,7 +169,7 @@ animations = [{
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ajw8j"]
 height = 2.08463
-radius = 1.53076
+radius = 1.25195
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xmgww"]
 radius = 0.414414
@@ -225,7 +225,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_xmgww")
 debug_color = Color(0, 0.6, 0.7, 0.812)
 
-[node name="CollectAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="CollectAudio" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
 stream = ExtResource("3_l1vtc")
 attenuation_model = 3
 volume_db = -2.0

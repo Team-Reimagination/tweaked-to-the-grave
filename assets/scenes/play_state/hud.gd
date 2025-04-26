@@ -116,12 +116,6 @@ func loseLife():
 	lifeShakeTween = get_tree().create_tween()
 	lifeShakeTween.tween_property(canyougivemelife, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		
-	canyougivemelife.material.set("shader_parameter/multipliers", [1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0])
-	lifeShakeTween.set_parallel().tween_property(canyougivemelife.material, "shader_parameter/multipliers", [1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0], 0.2).set_trans(Tween.TRANS_QUART)
-	
-	canyougivemelife.material.set("shader_parameter/offsets", Vector4(1.0, 0.0, 0.0, 0.0))
-	lifeShakeTween.set_parallel().tween_property(canyougivemelife.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
-	
 	$HealthGroup/IconSeezee/Lives/Label.text = str(scene.lives)
 	
 	#random chance
@@ -189,3 +183,13 @@ func _process(_delta: float) -> void:
 	#DEBUG FUNCS
 	if Input.is_key_pressed(KEY_EQUAL): 
 		scene.addLira(60)
+
+func giveMeLife():
+	var canyougivemelife = $HealthGroup/IconSeezee/Lives
+	canyougivemelife.position.y = 20.0;
+	if lifeShakeTween:
+		lifeShakeTween.kill()
+	lifeShakeTween = get_tree().create_tween()
+	lifeShakeTween.tween_property(canyougivemelife, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+		
+	$HealthGroup/IconSeezee/Lives/Label.text = str(scene.lives)
