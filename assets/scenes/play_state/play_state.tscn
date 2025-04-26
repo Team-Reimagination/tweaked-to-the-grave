@@ -1,4 +1,4 @@
-[gd_scene load_steps=232 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=233 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="AudioStream" uid="uid://c3a1fmviekmje" path="res://assets/sounds/ambience/warning.ogg" id="2_ngmgm"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://ca5b8g1bqu2ci" path="res://assets/objects/general/lira/Lira-20.tscn" id="17_pc1ia"]
 [ext_resource type="Texture2D" uid="uid://1mskbbtw4pdm" path="res://assets/images/hud/icons/seezee.png" id="18_j3klm"]
 [ext_resource type="PackedScene" uid="uid://crmwu2dbmygjj" path="res://assets/objects/general/lira/Lira-50.tscn" id="18_nb4mu"]
+[ext_resource type="PackedScene" uid="uid://csd105n0fxfp7" path="res://assets/objects/general/health/Health.tscn" id="19_pc1ia"]
 [ext_resource type="Texture2D" uid="uid://b30waadie4s7l" path="res://assets/images/hud/lifesphere.png" id="19_pqvw0"]
 [ext_resource type="FontFile" uid="uid://bfrysyfaih6em" path="res://assets/images/hud/lifecounter.png" id="20_ih15a"]
 [ext_resource type="Texture2D" uid="uid://qwkyxw2s82vp" path="res://assets/images/hud/myhandyfuckinghands.png" id="21_8500i"]
@@ -1558,6 +1559,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3235, 16.5242, -19.9327)
 
 [node name="Lira-50" parent="Objects" instance=ExtResource("18_nb4mu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26276, 15.2688, -19.9327)
+
+[node name="Health" parent="Objects" instance=ExtResource("19_pc1ia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4352, 14.9614, -20.7108)
 
 [node name="Chunk References For Future" type="Node3D" parent="."]
 transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -48)

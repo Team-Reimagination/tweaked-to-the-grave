@@ -96,6 +96,7 @@ func getHighScore(levID, diff):
 	return 0 if diff not in saveData.highscores or levID not in saveData.highscores[diff] else saveData.highscores[diff][levID]
 
 func saveGame():
+	print(curDifficultySave, PlayGlobals.difficulty)
 	saveData.difficulties[str(PlayGlobals.difficulty)] = curDifficultySave.duplicate(true)
 	saveSave()
 

@@ -240,8 +240,8 @@ func loseLife():
 		await get_tree().create_timer(1.5, false).timeout
 		action = "fly"
 		
-		scene.restartHealth()
-		$"../../HUD".restartHealth()
+		scene.heal(3)
+		$"../../HUD".healMe(3)
 		
 		$Ambience.play()
 		invincibilityFrames()

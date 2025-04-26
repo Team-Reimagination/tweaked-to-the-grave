@@ -15,9 +15,7 @@ func _ready() -> void:
 	self.area_shape_entered.connect(detectCollission.bind())
 
 func suicide():
-	if objType == 'lira':
-		scene.addLira(value)
-		
+	if objType == 'lira' or objType == 'health':
 		willDisappear = true
 		startSucking = false
 		
@@ -26,14 +24,29 @@ func suicide():
 		overridePos = global_position
 		$Model.get_child(1).visible = false
 		$Model.get_child(0).visible = true
-		$Model.get_child(0).play('default')
+		
+		if objType == 'lira':
+			scene.addLira(value)
+			$Model.get_child(0).play('default')
+		elif objType == 'health':
+			scene.heal(1)
+			scene.hud.healMe(1)
+	else:
+		queue_free()
 
 var ole = 0.0;
 
 func _process(delta: float) -> void:
 	super._process(delta)
 	
-	if willDisappear and $Model.get_child(0).is_playing() == false: queue_free()
+	if willDisappear: 
+		if objType == 'lira':
+			if $Model.get_child(0).is_playing() == false: queue_free()
+		elif objType == 'health':
+			$Model.get_child(0).pixel_size += 0.01 * delta
+			$Model.get_child(0).modulate.a -= 2 * delta
+			
+			if $Model.get_child(0).modulate.a <= 0.01: queue_free()
 	
 	if startSucking and !scene.hasBitchWon:
 		ole += delta/2;
@@ -43,5 +56,5 @@ func _process(delta: float) -> void:
 
 func detectCollission(_areID, are, _arSID, _loSID):
 	if !scene.hasBitchWon:
-		if are.type == 'player' and _loSID == 0 and !startSucking: startSucking = true
+		if are.type == 'player' and _loSID == 0 and !startSucking and !willDisappear: startSucking = true
 		elif are.type == 'player_collector' and _loSID == 1 and !willDisappear: suicide()

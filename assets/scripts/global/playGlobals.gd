@@ -30,20 +30,30 @@ var liraLevel = 1;
 
 func prepareGame():
 	var diffy = diffMod[difficulty]
+	print(diffy)
 	
 	if areWeFNFFreeDownload:
 		setDefaults(diffy)
 	else:
 		if !SaveSystem.saveData.difficulties.has(str(difficulty)): 
-			SaveSystem.curDifficultySave = SaveSystem.difficultySave
+			SaveSystem.curDifficultySave = SaveSystem.difficultySave.duplicate(true)
 			setDefaults(diffy)
 			
 			levelID = "SHR"
 			
+			SaveSystem.curDifficultySave.lives = lifeCount[0]
+			SaveSystem.curDifficultySave.health = lifeCount[1]
+			SaveSystem.curDifficultySave.lira = ownedLira
+			SaveSystem.curDifficultySave.lirsProgress = ownedLiraProgress
+			SaveSystem.curDifficultySave.level = liraLevel
+			SaveSystem.curDifficultySave.levelInitials = levelID
+			
 			SaveSystem.saveGame()
 		else:
-			SaveSystem.curDifficultySave = SaveSystem.saveData.difficulties[str(difficulty)]
+			SaveSystem.curDifficultySave = SaveSystem.saveData.difficulties[str(difficulty)].duplicate(true)
 			setDefaults(diffy)
+			
+			print("FREE PLAY ", difficulty, "\n", SaveSystem.curDifficultySave)
 			
 			lifeCount = [SaveSystem.curDifficultySave.lives,SaveSystem.curDifficultySave.health]
 			ownedLira = SaveSystem.curDifficultySave.lira
@@ -87,8 +97,8 @@ func removeAllSubstates():
 		a.queue_free()
 	substates = []
 
-func getDistance():
-	return levelDefs.fog.distance.end * 2
+func getDistance(isBackgroundObject):
+	return (levelDefs.fog.distance.end * 2) if isBackgroundObject else (levelDefs.boss.distance - 50)
 
 func youarenolongermyfriendsoundnowgoaway(doMusicToo = true):
 	get_parent().get_tree().call_group('Sound', 'stop')

@@ -39,7 +39,7 @@ func postLevelBuild():
 	$HealthGroup/HealthTweak/HealthBar.value = scene.boss.health
 	
 	for i in $HealthGroup/HealthSeezee/HealthSteps.get_children(true):
-		if int(i.name) > scene.player_health: i.visible = false
+		if int(i.name) > scene.player_health: i.modulate.a = 0.0
 	
 	#lira, only visible if you're not willing to go kill yourself
 	$LiraGroup/LiraBar.visible = PlayGlobals.maxLiraLevel > 1
@@ -152,8 +152,14 @@ func loseLife():
 		liraGroup.material.set("shader_parameter/offsets", Vector4(1.0, -1.0, -1.0, 0.0))
 		lifeShakeTween.set_parallel().tween_property(liraGroup.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
 
-func restartHealth(): #go back to no heatstrokes but you already suffered major strokes
-	for i in $HealthGroup/HealthSeezee/HealthSteps.get_children():
+func healMe(healer):
+	var healthyNeed = $HealthGroup/HealthSeezee/HealthSteps.get_children().filter(func(x): return x.modulate.a < 0.1)
+	
+	if healer > healthyNeed.size(): healer = healthyNeed.size()
+	
+	while healthyNeed.size() > healer: healthyNeed.pop_front()
+	
+	for i in healthyNeed:
 		var healer1 = get_tree().create_tween()
 		healer1.tween_property(i, "scale", Vector2(1,1), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		healer1.set_parallel().tween_property(i, "modulate", Color(1.0,1.0,1.0,1.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)

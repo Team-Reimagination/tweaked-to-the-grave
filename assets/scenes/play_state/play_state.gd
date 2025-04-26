@@ -131,8 +131,8 @@ func instantLiraLevel():
 	hud.instantLiraLevel()
 	player.levelUpLira()
 	
-func restartHealth():
-	player_health = 3
+func heal(health):
+	player_health = min(3, player_health + health)
 	
 func hurtPlayer():
 	player_health -= 1

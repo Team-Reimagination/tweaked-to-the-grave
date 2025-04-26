@@ -8,6 +8,7 @@ var model;
 @export var doProcessDistanceFade = true
 @export var hasModel = true
 @export var overridePos : Vector3 = Vector3(-INF,-INF,-INF)
+@export var shortRenderDistance = true
 
 var distanceFadePhase = 0;
 var isReady : bool = false
@@ -24,12 +25,12 @@ func _ready() -> void:
 		meshesWithOverlay = model.find_children("*", "MeshInstance3D", true, true)
 	
 		for a in meshesWithOverlay:
-			a.material_overlay.set("shader_parameter/fade_start", PlayGlobals.getDistance())
-			a.material_overlay.set("shader_parameter/fade_end", PlayGlobals.getDistance() - 100)
+			a.material_overlay.set("shader_parameter/fade_start", PlayGlobals.getDistance(shortRenderDistance))
+			a.material_overlay.set("shader_parameter/fade_end", PlayGlobals.getDistance(shortRenderDistance) - 100)
 					
 		for a in meshInstances:
-			a.mesh.surface_get_material(0).distance_fade_min_distance = PlayGlobals.getDistance()
-			a.mesh.surface_get_material(0).distance_fade_max_distance = PlayGlobals.getDistance() - 100
+			a.mesh.surface_get_material(0).distance_fade_min_distance = PlayGlobals.getDistance(shortRenderDistance)
+			a.mesh.surface_get_material(0).distance_fade_max_distance = PlayGlobals.getDistance(shortRenderDistance) - 100
 
 func _process(_delta: float) -> void:
 	if overridePos != Vector3(-INF,-INF,-INF):
