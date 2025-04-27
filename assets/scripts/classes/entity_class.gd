@@ -8,7 +8,7 @@ var model;
 @export var doProcessDistanceFade = true
 @export var hasModel = true
 @export var overridePos : Vector3 = Vector3(-INF,-INF,-INF)
-@export var shortRenderDistance = true
+@export var shortRenderDistance = false
 
 var distanceFadePhase = 0;
 var isReady : bool = false
@@ -29,8 +29,9 @@ func _ready() -> void:
 			a.material_overlay.set("shader_parameter/fade_end", PlayGlobals.getDistance(shortRenderDistance) - 100)
 					
 		for a in meshInstances:
-			a.mesh.surface_get_material(0).distance_fade_min_distance = PlayGlobals.getDistance(shortRenderDistance)
-			a.mesh.surface_get_material(0).distance_fade_max_distance = PlayGlobals.getDistance(shortRenderDistance) - 100
+			if a.mesh.surface_get_material(0) != null:
+				a.mesh.surface_get_material(0).distance_fade_min_distance = PlayGlobals.getDistance(shortRenderDistance)
+				a.mesh.surface_get_material(0).distance_fade_max_distance = PlayGlobals.getDistance(shortRenderDistance) - 100
 
 func _process(_delta: float) -> void:
 	if overridePos != Vector3(-INF,-INF,-INF):
@@ -43,10 +44,12 @@ func _process(_delta: float) -> void:
 		if doProcessDistanceFade and PlayGlobals.levelDefs != null:
 			if distanceFadePhase == 0 and self.global_position.z > -100:
 				for a in meshesWithOverlay:
-					a.material_overlay.set("shader_parameter/fade_start", 10)
-					a.material_overlay.set("shader_parameter/fade_end", 20)
+					a.material_overlay.set("shader_parameter/fade_start", 15)
+					a.material_overlay.set("shader_parameter/fade_end", 25)
 					
 				for a in meshInstances:
-					a.mesh.surface_get_material(0).distance_fade_min_distance = 10
-					a.mesh.surface_get_material(0).distance_fade_max_distance = 20
+					if a.mesh.surface_get_material(0) != null:
+						a.mesh.surface_get_material(0).distance_fade_min_distance = 150
+						a.mesh.surface_get_material(0).distance_fade_max_distance = 250
+					
 				distanceFadePhase = 1

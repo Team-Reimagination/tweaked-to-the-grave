@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://btka7cyd8ek7c"]
+
+[ext_resource type="Script" uid="uid://8fviwb4leujf" path="res://assets/scripts/classes/chunk_class.gd" id="1_ay21j"]
+
+[node name="ShrBackground" type="Node3D"]
+
+[node name="0" type="Node3D" parent="."]
+script = ExtResource("1_ay21j")
+isSubChunk = true
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -55.7535)
+
+[node name="StartPos" type="Marker3D" parent="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.368)

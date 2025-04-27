@@ -12,6 +12,7 @@
 visible = false
 script = ExtResource("1_lc0n7")
 nextChunk = NodePath("../0_1")
+chanceWeight = 0.8
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="0_0"]
@@ -81,6 +82,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 191.759, 0, -528.387)
 visible = false
 script = ExtResource("1_lc0n7")
 nextChunk = NodePath("../1_1")
+chanceWeight = 0.9
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="1_0"]
@@ -176,6 +178,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -266.303, 0, -297.724)
 visible = false
 script = ExtResource("1_lc0n7")
 nextChunk = NodePath("../3_1")
+chanceWeight = 0.8
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="3_0"]
@@ -264,6 +267,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 320.591, 0, -57.2337)
 [node name="5" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_lc0n7")
+chanceWeight = 0.6
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="5"]
@@ -300,6 +304,7 @@ transform = Transform3D(53.8844, -26.3907, 0, 26.3907, 53.8844, 0, 0, 0, 60, 420
 visible = false
 script = ExtResource("1_lc0n7")
 nextChunk = NodePath("../6_1")
+chanceWeight = 0.9
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="6_0"]
@@ -362,6 +367,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -155.389, 0, -85.3445)
 [node name="7" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_lc0n7")
+chanceWeight = 0.8
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="7"]
@@ -389,6 +395,7 @@ transform = Transform3D(10.3923, 0, -6, 0, 12, 0, 6, 0, 10.3923, -355.907, 0, -6
 visible = false
 script = ExtResource("1_lc0n7")
 nextChunk = NodePath("../8_1")
+chanceWeight = 0.9
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="8_0"]
@@ -449,8 +456,10 @@ transform = Transform3D(-4.82963, 0, 1.2941, 0, 5, 0, -1.2941, 0, -4.82963, -323
 transform = Transform3D(-4.82963, 0, 1.2941, 0, 5, 0, -1.2941, 0, -4.82963, -168.312, 0, -256.537)
 
 [node name="9_Pyramids" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
 script = ExtResource("1_lc0n7")
 nextChunk = NodePath("../9_Obelisks")
+chanceWeight = 0.8
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="9_Pyramids"]
@@ -484,6 +493,7 @@ transform = Transform3D(5.75319, 0, -8.17929, 0, 10, 0, 8.17929, 0, 5.75319, -15
 transform = Transform3D(8.76668, 0, -4.81096, 0, 10, 0, 4.81096, 0, 8.76668, 173.098, 3.05176e-05, -208.399)
 
 [node name="9_Obelisks" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
 script = ExtResource("1_lc0n7")
 nextChunk = NodePath("../9_Cacti")
 isSubChunk = true
@@ -514,6 +524,7 @@ transform = Transform3D(5.90433, 0, 3.76017, 0, 7, 0, -3.76017, 0, 5.90433, 270.
 transform = Transform3D(5.90433, 0, 3.76017, 0, 7, 0, -3.76017, 0, 5.90433, 288.816, -7.62939e-06, -75.5989)
 
 [node name="9_Cacti" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
 script = ExtResource("1_lc0n7")
 nextChunk = NodePath("../9_Cacti2")
 isSubChunk = true
@@ -553,6 +564,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -453.587, 0, -676.566)
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -307.605, 0, -344.193)
 
 [node name="9_Cacti2" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_lc0n7")
 isSubChunk = true
 metadata/_custom_type_script = "uid://8fviwb4leujf"

@@ -98,7 +98,7 @@ func removeAllSubstates():
 	substates = []
 
 func getDistance(isBackgroundObject):
-	return (levelDefs.fog.distance.end * 2) if isBackgroundObject else (levelDefs.boss.distance - 50)
+	return (levelDefs.fog.distance.end * 2) if !isBackgroundObject else (levelDefs.boss.distance - 50)
 
 func youarenolongermyfriendsoundnowgoaway(doMusicToo = true):
 	get_parent().get_tree().call_group('Sound', 'stop')

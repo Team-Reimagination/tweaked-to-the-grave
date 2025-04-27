@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://c6ol6d6app12c" path="res://assets/objects/decoration/SHR_Pyramid/Obelisk.tres" id="6_78hs2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j834e"]
+resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("2_78hs2")
 shader_parameter/albedo_texture = ExtResource("3_im6a4")
@@ -31,6 +32,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2370o"]
+resource_local_to_scene = true
 resource_name = "obelisk_Plane_008"
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 4.6234, 2),

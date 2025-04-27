@@ -3,6 +3,7 @@ extends Node3D
 
 @export var nextChunk : TTTG_Chunk
 @export var isSubChunk : bool
+@export var chanceWeight: float = 1.0
 
 @onready var scene = get_parent().get_parent()
 
@@ -16,5 +17,5 @@ func _process(delta: float) -> void:
 		self.queue_free()
 
 func passReady():
-	for a in self.find_children("*", "MeshInstance3D", true, true):
-		a.isReady = true
+	for a in self.get_children():
+		if a is not Marker3D: a.isReady = true

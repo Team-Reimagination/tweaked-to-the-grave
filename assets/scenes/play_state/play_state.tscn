@@ -1,4 +1,4 @@
-[gd_scene load_steps=235 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=227 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="AudioStream" uid="uid://c3a1fmviekmje" path="res://assets/sounds/ambience/warning.ogg" id="2_ngmgm"]
@@ -19,26 +19,18 @@
 [ext_resource type="Texture2D" uid="uid://rjshy7aio3h3" path="res://assets/images/levels/SHR/sky.png" id="8_agdm6"]
 [ext_resource type="Texture2D" uid="uid://dsuf8fdy3wmbv" path="res://assets/images/hud/lira_prog.png" id="8_qg2ls"]
 [ext_resource type="Script" uid="uid://cm14hj53uhsns" path="res://assets/scenes/play_state/chunk_generator.gd" id="9_w87tq"]
-[ext_resource type="PackedScene" uid="uid://cpl52ivjh1axx" path="res://assets/objects/general/lira/Lira-1.tscn" id="11_agdm6"]
 [ext_resource type="Texture2D" uid="uid://qgtd8wp8g74u" path="res://assets/images/fx/hurt.png" id="11_f74kq"]
 [ext_resource type="AudioStream" uid="uid://bnpvn00oye0bc" path="res://assets/sounds/ui/levelup.ogg" id="12_u4v7s"]
 [ext_resource type="Texture2D" uid="uid://hno6dj4x2yxl" path="res://assets/images/hud/lira.png" id="13_15aj6"]
 [ext_resource type="Shader" uid="uid://4rnqmo5fqx73" path="res://assets/shaders/object/vignette.gdshader" id="13_vn6he"]
 [ext_resource type="Script" uid="uid://dp010ic0bq3lx" path="res://assets/scenes/play_state/shaders.gd" id="13_w87tq"]
-[ext_resource type="PackedScene" uid="uid://dj1xnceb8dd6e" path="res://assets/objects/general/lira/Lira-2.tscn" id="14_0752p"]
 [ext_resource type="Texture2D" uid="uid://bekrp7111ygmi" path="res://assets/images/fx/explosion.png" id="14_sskn8"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="14_yewxg"]
-[ext_resource type="PackedScene" uid="uid://cb5ao7vxoxcxs" path="res://assets/objects/general/lira/Lira-5.tscn" id="15_d075b"]
 [ext_resource type="Shader" uid="uid://doihid8bwsqxt" path="res://assets/shaders/screen/burn.gdshader" id="16_agdm6"]
-[ext_resource type="PackedScene" uid="uid://br4v6celfxiyp" path="res://assets/objects/general/lira/Lira-10.tscn" id="16_aliq0"]
 [ext_resource type="Texture2D" uid="uid://dq2b5hsgwxuxe" path="res://assets/images/hud/icon_layout.png" id="17_60fkw"]
-[ext_resource type="PackedScene" uid="uid://ca5b8g1bqu2ci" path="res://assets/objects/general/lira/Lira-20.tscn" id="17_pc1ia"]
 [ext_resource type="Texture2D" uid="uid://1mskbbtw4pdm" path="res://assets/images/hud/icons/seezee.png" id="18_j3klm"]
-[ext_resource type="PackedScene" uid="uid://crmwu2dbmygjj" path="res://assets/objects/general/lira/Lira-50.tscn" id="18_nb4mu"]
-[ext_resource type="PackedScene" uid="uid://csd105n0fxfp7" path="res://assets/objects/general/health/Health.tscn" id="19_pc1ia"]
 [ext_resource type="Texture2D" uid="uid://b30waadie4s7l" path="res://assets/images/hud/lifesphere.png" id="19_pqvw0"]
 [ext_resource type="FontFile" uid="uid://bfrysyfaih6em" path="res://assets/images/hud/lifecounter.png" id="20_ih15a"]
-[ext_resource type="PackedScene" uid="uid://b3x5qru1vqw2l" path="res://assets/objects/general/1up/1up.tscn" id="20_nb4mu"]
 [ext_resource type="Texture2D" uid="uid://qwkyxw2s82vp" path="res://assets/images/hud/myhandyfuckinghands.png" id="21_8500i"]
 [ext_resource type="Texture2D" uid="uid://buq0edx5hfsj" path="res://assets/images/hud/seezee_healthempty.png" id="22_ih15a"]
 [ext_resource type="Texture2D" uid="uid://7hb4ugearqf1" path="res://assets/images/hud/seezee_health3.png" id="23_usenx"]
@@ -1548,30 +1540,6 @@ skeleton = NodePath("")
 
 [node name="Objects" type="Node3D" parent="."]
 script = ExtResource("9_w87tq")
-
-[node name="Lira-1" parent="Objects" instance=ExtResource("11_agdm6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3689, 0, -20.0091)
-
-[node name="Lira-2" parent="Objects" instance=ExtResource("14_0752p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7263, 6.46274, -19.8177)
-
-[node name="Lira-5" parent="Objects" instance=ExtResource("15_d075b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9904, 1.84601, -19.8177)
-
-[node name="Lira-10" parent="Objects" instance=ExtResource("16_aliq0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6289, 12.3925, -19.9327)
-
-[node name="Lira-20" parent="Objects" instance=ExtResource("17_pc1ia")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3235, 16.5242, -19.9327)
-
-[node name="Lira-50" parent="Objects" instance=ExtResource("18_nb4mu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26276, 15.2688, -19.9327)
-
-[node name="Health" parent="Objects" instance=ExtResource("19_pc1ia")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4352, 14.9614, -20.7108)
-
-[node name="Health2" parent="Objects" instance=ExtResource("20_nb4mu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8624, 6.00848, -20.2303)
 
 [node name="Chunk References For Future" type="Node3D" parent="."]
 transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, -30.095, -48)

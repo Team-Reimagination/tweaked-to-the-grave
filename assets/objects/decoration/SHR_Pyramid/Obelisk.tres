@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c6sl4idelmbwv" path="res://assets/objects/decoration/SHR_Pyramid/obelisk_obelisk.png" id="1_xh7ty"]
 
 [resource]
+resource_local_to_scene = true
 resource_name = "Obelisk"
 cull_mode = 2
 albedo_texture = ExtResource("1_xh7ty")

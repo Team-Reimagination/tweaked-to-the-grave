@@ -1,3 +1,244 @@
-[gd_scene format=3 uid="uid://qi02yng5req0"]
+[gd_scene load_steps=29 format=3 uid="uid://qi02yng5req0"]
+
+[ext_resource type="Shader" uid="uid://bdumn7a8f7xqq" path="res://assets/shaders/object/ditheredGradient.gdshader" id="1_1ym0b"]
+[ext_resource type="Script" uid="uid://bvwnajs6almd7" path="res://assets/scenes/cutscene/cutscene.gd" id="1_q3gqd"]
+[ext_resource type="Texture2D" uid="uid://bljmusjc2rhm2" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/verwex.png" id="3_q3gqd"]
+[ext_resource type="Texture2D" uid="uid://c1a0wxvuwjmiv" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/seezee.png" id="4_s4mvh"]
+[ext_resource type="Texture2D" uid="uid://djvkah8yn42m2" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/glitch.smh.png" id="5_jxldi"]
+[ext_resource type="Texture2D" uid="uid://bwpumkvuycm7d" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/phoney.png" id="6_3weui"]
+[ext_resource type="Texture2D" uid="uid://dyri1p3evyq7m" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/bitto.png" id="7_qlokk"]
+[ext_resource type="Texture2D" uid="uid://cwc088irao7r4" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/gumbalino.png" id="8_8o1o2"]
+[ext_resource type="Texture2D" uid="uid://cj361rxrq0362" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/douyhe.png" id="9_tu738"]
+[ext_resource type="Texture2D" uid="uid://cruvqo2kh10j4" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/terios.png" id="10_c2g00"]
+[ext_resource type="Texture2D" uid="uid://be41sg3y1m30d" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/scruffy.png" id="11_vre2c"]
+[ext_resource type="Texture2D" uid="uid://joup7cxq4ut2" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/r2.png" id="12_c2g00"]
+[ext_resource type="Texture2D" uid="uid://borp2k1p5yvkg" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/suzuku.png" id="13_vre2c"]
+[ext_resource type="Texture2D" uid="uid://bs5xvwuxeh25e" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/bobby.png" id="14_sgfwd"]
+[ext_resource type="Texture2D" uid="uid://c3jpcqjpvsnk5" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/eyad.png" id="15_bdb6r"]
+[ext_resource type="Texture2D" uid="uid://b3n023iai6ug8" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/spectra.png" id="16_bdb6r"]
+[ext_resource type="Texture2D" uid="uid://crnv0oojvq264" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/blacknide.png" id="17_qkhgo"]
+[ext_resource type="Texture2D" uid="uid://dbk136l27l0ub" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/starshy.png" id="18_xwwji"]
+[ext_resource type="Texture2D" uid="uid://8fk1m5fii083" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/bashy bush.png" id="19_eulfn"]
+[ext_resource type="Texture2D" uid="uid://br8ppbk3p455t" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/mario.png" id="20_xwwji"]
+[ext_resource type="Texture2D" uid="uid://tvpitohfamvy" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/hipix.png" id="21_eulfn"]
+[ext_resource type="Texture2D" uid="uid://gktj0na0dwl" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/vibingleaf.png" id="22_7txrm"]
+[ext_resource type="Texture2D" uid="uid://ljess83ygg3e" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/subwayron.png" id="23_tyk2t"]
+[ext_resource type="Texture2D" uid="uid://do4qtovy6s7st" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/usbport2.png" id="24_21ks5"]
+[ext_resource type="Texture2D" uid="uid://c1qter800wx2t" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/harcvuk.png" id="25_1452d"]
+[ext_resource type="Texture2D" uid="uid://x1wx6tunb17p" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/vgf.png" id="25_ixq2u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3gqd"]
+shader = ExtResource("1_1ym0b")
+shader_parameter/Color1 = Vector3(0, 0, 0)
+shader_parameter/Color1Alpha = 1.0
+shader_parameter/Color2 = Vector3(0, 0, 0)
+shader_parameter/Color2Alpha = 1.0
+shader_parameter/Dither = 64.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q3gqd"]
+blend_mode = 1
 
 [node name="Cutscene" type="Node2D"]
+script = ExtResource("1_q3gqd")
+
+[node name="BackgroundColor" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Gradient" type="ColorRect" parent="BackgroundColor"]
+material = SubResource("ShaderMaterial_q3gqd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="FriendGroupHeads" type="Parallax2D" parent="."]
+material = SubResource("CanvasItemMaterial_q3gqd")
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(4000, 0)
+autoscroll = Vector2(-80, 0)
+
+[node name="Verwex" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(2648, 188)
+scale = Vector2(3.33019, 3.33019)
+texture = ExtResource("3_q3gqd")
+centered = false
+
+[node name="Seezee" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(997, -83)
+rotation = 0.090838
+scale = Vector2(3.09935, 3.09935)
+texture = ExtResource("4_s4mvh")
+centered = false
+
+[node name="Glitch_smh" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(2908, -125)
+scale = Vector2(3.05372, 3.05372)
+texture = ExtResource("5_jxldi")
+centered = false
+
+[node name="Phoney" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(-197, 686)
+rotation = 0.221275
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_3weui")
+centered = false
+
+[node name="Bitto" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(1082, 462)
+rotation = -0.0551136
+scale = Vector2(2.74616, 2.74616)
+texture = ExtResource("7_qlokk")
+centered = false
+
+[node name="Gumbalino" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(3062, 282)
+scale = Vector2(2.95795, 2.95795)
+texture = ExtResource("8_8o1o2")
+centered = false
+
+[node name="Douyhe" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(3472, 374)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("9_tu738")
+centered = false
+
+[node name="Terionic" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(3435, -42)
+rotation = 0.193399
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("10_c2g00")
+centered = false
+
+[node name="Scruffy" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(671, 267)
+rotation = 0.128778
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("11_vre2c")
+centered = false
+
+[node name="R2" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(2324, 538)
+scale = Vector2(2.92064, 2.92064)
+texture = ExtResource("12_c2g00")
+centered = false
+
+[node name="Suzuku" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(1408, 664)
+rotation = -0.141338
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("13_vre2c")
+centered = false
+
+[node name="Bobby" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(312, 82)
+rotation = 0.295913
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("14_sgfwd")
+centered = false
+
+[node name="Eyad" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(1878, 772)
+rotation = -0.174833
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("15_bdb6r")
+centered = false
+
+[node name="Spectra" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(1476, 73)
+rotation = 0.263649
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("16_bdb6r")
+centered = false
+
+[node name="Blacknide" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(280, 632)
+rotation = -0.239827
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("17_qkhgo")
+centered = false
+
+[node name="Starshy" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(-111, -47)
+rotation = 0.0605551
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("18_xwwji")
+centered = false
+
+[node name="Bashy Bush" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(3140, 641)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("19_eulfn")
+centered = false
+
+[node name="Mario" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(-163, 410)
+rotation = -0.277004
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("20_xwwji")
+centered = false
+
+[node name="Hipix" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(2664, 698)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("21_eulfn")
+centered = false
+
+[node name="Vibingleaf" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(2261, 114)
+rotation = -0.194579
+scale = Vector2(2.88333, 2.88333)
+texture = ExtResource("22_7txrm")
+centered = false
+
+[node name="Subwayron" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(483, -77)
+scale = Vector2(3.48421, 3.48421)
+texture = ExtResource("23_tyk2t")
+centered = false
+
+[node name="USBPort2" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(784, 665)
+rotation = -0.107368
+scale = Vector2(2.88734, 2.88734)
+texture = ExtResource("24_21ks5")
+centered = false
+
+[node name="Techy!Harcvuk" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(1818.18, 354.811)
+rotation = -0.153114
+scale = Vector2(2.84661, 2.84661)
+texture = ExtResource("25_1452d")
+centered = false
+
+[node name="Vgf" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(1781, -5.99996)
+rotation = -0.194976
+scale = Vector2(3.13867, 3.13867)
+texture = ExtResource("25_ixq2u")
+centered = false

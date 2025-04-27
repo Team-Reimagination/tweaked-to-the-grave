@@ -95,6 +95,9 @@ func initiateCountdown():
 		countHand.self_modulate.a  = 1.0
 		countTween.parallel().tween_property(countHand, "self_modulate:a", 0.0 , 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set_delay(0.35)
 		
+		if i == 2:
+			chunkLoader.makeLVChunk()
+		
 		await get_tree().create_timer(0.5,false).timeout #i like how this delays everything in the function
 	
 	postCount()
