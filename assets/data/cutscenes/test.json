@@ -5,6 +5,21 @@
 			"nextAccess": "both",
 			"events": [
 				{
+					"type": "load_music",
+					"music": "menu"	
+				},
+				{
+					"type": "music_volume",
+					"volume": 0.0	
+				},
+				{
+					"type": "music_volume",
+					"volume": 1.0,
+					"time": 2.0,
+					"ease": "inout",
+					"trans": "circ"	
+				},
+				{
 					"type": "fade",
 					"transRightsAreHumanRights": "in",
 					"time": 1.0,
@@ -62,6 +77,13 @@
 					"ease": "inout",
 					"trans": "quart"
 				},
+				{
+					"type": "music_pitch",
+					"pitch": 0.666,
+					"time": 1.0,
+					"ease": "inout",
+					"trans": "sine"	
+				}
 			]
 		},
 		{
@@ -74,6 +96,22 @@
 					"time": 0.3,
 					"ease": "out",
 					"trans": "quart"
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "music_switch_play"
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "music_switch_play"
 				}
 			]
 		}

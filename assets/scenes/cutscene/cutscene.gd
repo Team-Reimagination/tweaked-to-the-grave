@@ -4,7 +4,7 @@ extends Node2D
 @onready var friendGroupHeads = $FriendGroupHeads
 @onready var panel = $PanelBorder
 @onready var timeout = $Timeout
-@onready var music = $Music
+@onready var Mmusic = $Music
 
 var cutscene = {}
 const PATH_CUTSCENE = "res://assets/data/cutscenes/"
@@ -110,20 +110,29 @@ func processEvent(event):
 	if event.type == 'bg_color':
 		if event.has('color1'): setBGColor(event.color1[0], event.color1[1], event.color1[2], 'top', timey, easy, transy)
 		if event.has('color2'): setBGColor(event.color2[0], event.color2[1], event.color2[2], 'bottom', timey, easy, transy)
-	if event.type == 'fade':
+	elif event.type == 'fade':
 		fadeBackground(event.time, event.transRightsAreHumanRights, easy, transy)
-	if event.type == 'panel_size':
+	elif event.type == 'panel_size':
 		setPanelSize(event.width, event.height, event.doScale if event.has('doScale') else false, timey, easy, transy)
-	if event.type == 'panel_position':
-		movePanel(event.x, event.y, event.time if event.has('time') else null, easy, transy)
-	if event.type == 'background_speed':
-		myHeadScrolls(event.speed, event.time if event.has('time') else null, easy, transy)
+	elif event.type == 'panel_position':
+		movePanel(event.x, event.y, timey, easy, transy)
+	elif event.type == 'background_speed':
+		myHeadScrolls(event.speed, timey, easy, transy)
+	elif event.type == 'load_music':
+		loadMusic(event.music)
+	elif event.type == 'music_volume':
+		musicVolume(event.volume, timey, easy, transy)
+	elif event.type == 'music_pitch':
+		musicPitch(event.pitch, timey, easy, transy)
+	elif event.type == 'music_switch_play':
+		Mmusic.playing = !Mmusic.playing
 
 func ending():
 	fadeBackground(1.0, 'out', 'in', 'quint')
 	myHeadScrolls(-1000, 1.0, 'in', 'quint')
 	movePanel(panelPosition.x, 1000, 1.0, 'in', 'quint')
 	setPanelSize(0,0)
+	musicVolume(0.0, 1.0, 'in', 'quint')
 	
 	canInput = false
 	
@@ -138,14 +147,20 @@ func skipTweens():
 
 #EVENTS
 func getTweenList():
-	return [bgFadeTween, bgColor1Tween, bgColor2Tween, bgScrollTween, panelMoveTween, panelSizeTween]
+	return [bgFadeTween, bgColor1Tween, bgColor2Tween, bgScrollTween, panelMoveTween, panelSizeTween, musicVolumeTween, musicPitchTween]
 	
 var bgFadeTween
+var musicVolumeTween
+var musicPitchTween
 var panelSizeTween
 var bgColor1Tween
 var bgColor2Tween
 var bgScrollTween
 var panelMoveTween
+
+func loadMusic(music):
+	Mmusic.stream = load("res://assets/music/cutscene/"+music+".ogg")
+	Mmusic.play()
 
 func setPanelSize(width, height, doScale = false, time = null, Tease = 'inout', Ttrans = 'linear'):
 	$ScaleRef.size = Vector2(width, height)
@@ -200,3 +215,19 @@ func movePanel(xPos, yPos, time = null, Tease = 'inout', Ttrans = 'linear'):
 		if panelMoveTween: panelMoveTween.kill()
 		panelMoveTween = get_tree().create_tween()
 		panelMoveTween.tween_property(self, "panelPosition", Vector2(xPos, yPos), time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
+		
+func musicVolume(vol, time = null, Tease = 'inout', Ttrans = 'linear'):
+	if time == null:
+		Mmusic.volume_linear = vol
+	else:
+		if musicVolumeTween: musicVolumeTween.kill()
+		musicVolumeTween = get_tree().create_tween()
+		musicVolumeTween.tween_property(Mmusic, "volume_linear", vol, time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
+		
+func musicPitch(pitch, time = null, Tease = 'inout', Ttrans = 'linear'):
+	if time == null:
+		Mmusic.pitch_scale = pitch
+	else:
+		if musicPitchTween: musicPitchTween.kill()
+		musicPitchTween = get_tree().create_tween()
+		musicPitchTween.tween_property(Mmusic, "pitch_scale", pitch, time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))

@@ -304,4 +304,4 @@ color = Color(0, 0, 0, 1)
 one_shot = true
 
 [node name="Music" type="AudioStreamPlayer" parent="." groups=["Music"]]
-bus = &"SFX"
+bus = &"Music"
