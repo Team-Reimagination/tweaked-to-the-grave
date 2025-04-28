@@ -1,0 +1,81 @@
+{
+	"shots": [
+		{
+			"timeout": 3.0,
+			"nextAccess": "both",
+			"events": [
+				{
+					"type": "fade",
+					"transRightsAreHumanRights": "in",
+					"time": 1.0,
+					"ease": "out",
+					"trans": "quint"
+				},
+				{
+					"type": "bg_color",
+					"color1": [150, 30, 0],
+					"color2": [200, 120, 60],
+					"time": 2.0,
+					"ease": "out",
+					"trans": "quint"
+				},
+				{
+					"type": "panel_size",
+					"width": 950,
+					"height": 500
+				},
+				{
+					"type": "panel_position",
+					"x": 640,
+					"y": 300
+				},
+				{
+					"type": "background_speed",
+					"speed": 0
+				},
+				{
+					"type": "background_speed",
+					"speed": -80,
+					"time": 1.0,
+					"ease": "out",
+					"trans": "quint"
+				},
+			]
+		},
+		{
+			"timeout": 0.3,
+			"nextAccess": "timeout",
+			"events": [
+				{
+					"type": "panel_size",
+					"width": 0,
+					"height": 0,
+					"time": 0.3,
+					"ease": "in",
+					"trans": "quart"
+				},
+				{
+					"type": "panel_position",
+					"x": 300,
+					"y": 480,
+					"time": 0.6,
+					"ease": "inout",
+					"trans": "quart"
+				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "panel_size",
+					"width": 500,
+					"height": 1000,
+					"time": 0.3,
+					"ease": "out",
+					"trans": "quart"
+				}
+			]
+		}
+	]
+}

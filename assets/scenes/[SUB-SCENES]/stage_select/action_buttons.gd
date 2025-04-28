@@ -209,12 +209,12 @@ func process_button():
 			if curSelected != 0 and !saveStarted: MenuSounds.playMenuSound("error")
 			else:
 				if curSelected == 0:
-					if !saveStarted: substate.moveOn(false)
+					if !saveStarted: substate.moveOn(false, true)
 					else: 
 						if !saveComplete: areyouSure() 
 						else: confirmNew()
 				elif curSelected == 1: 
-					if !saveComplete: substate.moveOn(false)
+					if !saveComplete: substate.moveOn(false, false)
 					else: MenuSounds.playMenuSound("error")
 				else: 
 					if !saveComplete: areyouSure()
@@ -225,7 +225,7 @@ func process_button():
 func propose():
 	if levelRow[curSelected].get_meta("locked"): MenuSounds.playMenuSound("error")
 	else:
-		substate.moveOn(false)
+		substate.moveOn(false, false)
 		PlayGlobals.levelID = levelRow[curSelected].get_meta("level")
 
 func areyouSure():
@@ -240,7 +240,7 @@ func confirmNew():
 	if !PlayGlobals.areWeFNFFreeDownload:
 		if curSelected == 0 and saveStarted:
 			SaveSystem.eraseCurrentGameplaySave(difficulty.antiterios)
-			substate.moveOn(false)
+			substate.moveOn(false, true)
 		elif curSelected == 2:
 			SaveSystem.eraseCurrentGameplaySave(difficulty.antiterios)
 			updateActions()

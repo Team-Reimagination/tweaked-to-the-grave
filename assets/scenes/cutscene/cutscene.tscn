@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://qi02yng5req0"]
+[gd_scene load_steps=32 format=3 uid="uid://qi02yng5req0"]
 
 [ext_resource type="Shader" uid="uid://bdumn7a8f7xqq" path="res://assets/shaders/object/ditheredGradient.gdshader" id="1_1ym0b"]
 [ext_resource type="Script" uid="uid://bvwnajs6almd7" path="res://assets/scenes/cutscene/cutscene.gd" id="1_q3gqd"]
@@ -19,13 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://crnv0oojvq264" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/blacknide.png" id="17_qkhgo"]
 [ext_resource type="Texture2D" uid="uid://dbk136l27l0ub" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/starshy.png" id="18_xwwji"]
 [ext_resource type="Texture2D" uid="uid://8fk1m5fii083" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/bashy bush.png" id="19_eulfn"]
-[ext_resource type="Texture2D" uid="uid://br8ppbk3p455t" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/mario.png" id="20_xwwji"]
+[ext_resource type="Texture2D" uid="uid://br8ppbk3p455t" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/mariofy.png" id="20_1452d"]
 [ext_resource type="Texture2D" uid="uid://tvpitohfamvy" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/hipix.png" id="21_eulfn"]
 [ext_resource type="Texture2D" uid="uid://gktj0na0dwl" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/vibingleaf.png" id="22_7txrm"]
 [ext_resource type="Texture2D" uid="uid://ljess83ygg3e" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/subwayron.png" id="23_tyk2t"]
 [ext_resource type="Texture2D" uid="uid://do4qtovy6s7st" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/usbport2.png" id="24_21ks5"]
 [ext_resource type="Texture2D" uid="uid://c1qter800wx2t" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/harcvuk.png" id="25_1452d"]
 [ext_resource type="Texture2D" uid="uid://x1wx6tunb17p" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/vgf.png" id="25_ixq2u"]
+[ext_resource type="PackedScene" uid="uid://dyoywgkh1v7w0" path="res://assets/scenes/[SUB-SCENES]/dialogue/dialogue.tscn" id="27_g7obx"]
+[ext_resource type="Texture2D" uid="uid://dik5quuvvgarf" path="res://assets/images/menu/cutscene/border-9.png" id="28_2748t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3gqd"]
 shader = ExtResource("1_1ym0b")
@@ -37,6 +39,20 @@ shader_parameter/Dither = 64.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q3gqd"]
 blend_mode = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pwc5p"]
+resource_local_to_scene = true
+content_margin_left = 9.0
+content_margin_top = 9.0
+content_margin_right = 9.0
+content_margin_bottom = 9.0
+texture = ExtResource("28_2748t")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Cutscene" type="Node2D"]
 script = ExtResource("1_q3gqd")
@@ -83,7 +99,7 @@ centered = false
 
 [node name="Phoney" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(-197, 686)
+position = Vector2(-94, 721)
 rotation = 0.221275
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_3weui")
@@ -106,14 +122,14 @@ centered = false
 
 [node name="Douyhe" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(3472, 374)
+position = Vector2(3499, 446)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("9_tu738")
 centered = false
 
 [node name="Terionic" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(3435, -42)
+position = Vector2(3472, 15)
 rotation = 0.193399
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("10_c2g00")
@@ -168,7 +184,7 @@ centered = false
 
 [node name="Blacknide" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(280, 632)
+position = Vector2(266, 629)
 rotation = -0.239827
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("17_qkhgo")
@@ -189,12 +205,12 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("19_eulfn")
 centered = false
 
-[node name="Mario" type="Sprite2D" parent="FriendGroupHeads"]
+[node name="Mariofy" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(-163, 410)
+position = Vector2(-171, 410)
 rotation = -0.277004
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("20_xwwji")
+texture = ExtResource("20_1452d")
 centered = false
 
 [node name="Hipix" type="Sprite2D" parent="FriendGroupHeads"]
@@ -221,7 +237,7 @@ centered = false
 
 [node name="USBPort2" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(784, 665)
+position = Vector2(767, 665)
 rotation = -0.107368
 scale = Vector2(2.88734, 2.88734)
 texture = ExtResource("24_21ks5")
@@ -242,3 +258,50 @@ rotation = -0.194976
 scale = Vector2(3.13867, 3.13867)
 texture = ExtResource("25_ixq2u")
 centered = false
+
+[node name="Dialogue" parent="." instance=ExtResource("27_g7obx")]
+offset_left = 602.0
+offset_top = 776.0
+offset_right = 602.0
+offset_bottom = 776.0
+
+[node name="ScaleRef" type="ReferenceRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 650.0
+offset_top = 357.0
+offset_right = 650.0
+offset_bottom = 357.0
+grow_horizontal = 2
+grow_vertical = 2
+border_width = 2.0
+
+[node name="PanelBorder" type="PanelContainer" parent="."]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 641.0
+offset_top = 347.0
+offset_right = 659.0
+offset_bottom = 365.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -6.28319
+pivot_offset = Vector2(9.02814, 8.98834)
+theme_override_styles/panel = SubResource("StyleBoxTexture_pwc5p")
+
+[node name="ColorRect" type="ColorRect" parent="PanelBorder"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Timeout" type="Timer" parent="."]
+one_shot = true
+
+[node name="Music" type="AudioStreamPlayer" parent="." groups=["Music"]]
+bus = &"SFX"

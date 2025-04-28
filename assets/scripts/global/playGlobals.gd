@@ -2,6 +2,7 @@ extends Node
 
 var levelID = "SHR"
 var levelDefs;
+var cutsceneID = 'test'
 
 #DIFFICULTY STUFF
 var difficulty = 2
@@ -113,3 +114,29 @@ func get_tscn_resources_in_directory(path: String) -> Array[String]:
 			tscn_files.append(path.path_join(file))
 	
 	return tscn_files
+
+func getCutsceneDestination():
+	if cutsceneID == 'beginning': return "res://assets/scenes/play_state/play_state.tscn"
+	elif cutsceneID == 'end': return "res://assets/scenes/main_menu/main_menu.tscn"
+	elif cutsceneID == 'test': return "res://assets/scenes/play_state/play_state.tscn"
+	else: return "res://assets/scenes/main_menu/main_menu.tscn"
+
+func getEaseType(Twease):
+	if Twease == 'inout': return Tween.EASE_IN_OUT
+	elif Twease == 'in': return Tween.EASE_IN
+	elif Twease == 'outin': return Tween.EASE_OUT_IN
+	else: return Tween.EASE_OUT
+
+func getTransType(twans):
+	if twans == 'back': return Tween.TRANS_BACK
+	elif twans == 'bounce': return Tween.TRANS_BOUNCE
+	elif twans == 'circ': return Tween.TRANS_CIRC
+	elif twans == 'cubic': return Tween.TRANS_CUBIC
+	elif twans == 'elastic': return Tween.TRANS_ELASTIC
+	elif twans == 'expo': return Tween.TRANS_EXPO
+	elif twans == 'quad': return Tween.TRANS_QUAD
+	elif twans == 'quart': return Tween.TRANS_QUART
+	elif twans == 'quint': return Tween.TRANS_QUINT
+	elif twans == 'sine': return Tween.TRANS_SINE
+	elif twans == 'spring': return Tween.TRANS_SPRING
+	else: return Tween.TRANS_LINEAR
