@@ -56,13 +56,18 @@ func beginning(doCheck = true):
 	$Audio/TransIn.play()
 	
 	await $Audio/TransIn.finished
-	if doCheck: checkDialogue()
+	if doCheck and dialogue != {}: checkDialogue()
 
 func ending(doExit = true):
 	portrait.play("inter")
 	
 	dialName.visible = false
 	dialText.visible = false
+	
+	dialogue = {}
+	$Audio/TransIn.stop()
+	$Audio/Static.stop()
+	$Audio/Voice.stop()
 	
 	var comTween = get_tree().create_tween()
 	comTween.tween_property(portrait, "scale:y", 0.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
@@ -134,6 +139,7 @@ func nextDialogue():
 	dialEventNum += 1
 	oldDialEvent = dialEvent
 	dialEvent = {}
+	if dialVoice.playing: dialVoice.stop()
 	
 	checkDialogue()
 

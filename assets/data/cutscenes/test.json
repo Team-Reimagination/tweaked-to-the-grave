@@ -40,11 +40,6 @@
 					"height": 500
 				},
 				{
-					"type": "panel_position",
-					"x": 640,
-					"y": 300
-				},
-				{
 					"type": "background_speed",
 					"speed": 0
 				},
@@ -55,6 +50,30 @@
 					"ease": "out",
 					"trans": "quint"
 				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "load_panel",
+					"image": "test_1",
+					"time": 1.0,
+					"ease": "out",
+					"trans": "quart"
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "load_panel",
+					"image": "test_2",
+					"time": 1.0,
+					"ease": "inout",
+					"trans": "quart"
+				}
 			]
 		},
 		{
@@ -90,6 +109,10 @@
 			"nextAccess": "keys",
 			"events": [
 				{
+					"type": "load_panel",
+					"image": "test_4"	
+				},
+				{
 					"type": "panel_size",
 					"width": 500,
 					"height": 1000,
@@ -112,6 +135,56 @@
 			"events": [
 				{
 					"type": "music_switch_play"
+				},
+				{
+					"type": "load_dialogue",
+					"name": "freindly"
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue"
+				},
+				{
+					"type": "bg_color",
+					"color1": [50, 50, 50],
+					"color2": [120, 120, 120],
+					"time": 2.0,
+					"ease": "inout",
+					"trans": "quart"
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "change_dialogue_scene",
+					"event": 0
+				},
+				{
+					"type": "dialogue_position",
+					"x": 930,
+					"y": 480,
+					"time": 0.6,
+					"ease": "inout",
+					"trans": "quart"
+				},
+				{
+					"type": "load_panel",
+					"image": "test_3"	
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "end_dialogue",
+					"event": 0
 				}
 			]
 		}

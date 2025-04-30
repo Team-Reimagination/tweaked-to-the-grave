@@ -6,6 +6,11 @@
 			"text": "i am a very freindly fellow",
 			"voice": "freindly",
 			"nextAccess": "none"
+		},
+		{
+			"char": "freindly",
+			"text": "i just am so freindly i don't see anything wrong here",
+			"nextAccess": "none"
 		}
 	]
 }

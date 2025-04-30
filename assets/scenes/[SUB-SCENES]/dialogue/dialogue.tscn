@@ -289,7 +289,7 @@ script = ExtResource("1_2uwk1")
 
 [node name="Portrait" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-180, 94)
+position = Vector2(-212, 94)
 sprite_frames = SubResource("SpriteFrames_is3m4")
 animation = &"inter"
 autoplay = "inter"
@@ -315,16 +315,16 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "0c8072b7f4201046ade8d003df91f829"
 
 [node name="Box" type="Sprite2D" parent="."]
-position = Vector2(129, 90.75)
+position = Vector2(97, 90.75)
 scale = Vector2(1, 0.930303)
 texture = ExtResource("3_14t8k")
 offset = Vector2(0, -80)
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
-offset_left = -69.0
+offset_left = -101.0
 offset_top = -93.0
-offset_right = 92.0
+offset_right = 60.0
 offset_bottom = -60.0
 text = "TEST_NAME"
 label_settings = SubResource("LabelSettings_io0cb")
@@ -332,10 +332,10 @@ uppercase = true
 
 [node name="Text" type="Label" parent="."]
 layout_mode = 0
-offset_left = -53.0
+offset_left = -85.0
 offset_top = -51.0
-offset_right = 317.0
-offset_bottom = 86.0
+offset_right = 285.0
+offset_bottom = 450.0
 text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 label_settings = SubResource("LabelSettings_uplpg")
 autowrap_mode = 3

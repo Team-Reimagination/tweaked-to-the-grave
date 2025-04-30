@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://qi02yng5req0"]
+[gd_scene load_steps=35 format=3 uid="uid://qi02yng5req0"]
 
 [ext_resource type="Shader" uid="uid://bdumn7a8f7xqq" path="res://assets/shaders/object/ditheredGradient.gdshader" id="1_1ym0b"]
 [ext_resource type="Script" uid="uid://bvwnajs6almd7" path="res://assets/scenes/cutscene/cutscene.gd" id="1_q3gqd"]
@@ -26,8 +26,10 @@
 [ext_resource type="Texture2D" uid="uid://do4qtovy6s7st" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/usbport2.png" id="24_21ks5"]
 [ext_resource type="Texture2D" uid="uid://c1qter800wx2t" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/harcvuk.png" id="25_1452d"]
 [ext_resource type="Texture2D" uid="uid://x1wx6tunb17p" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/vgf.png" id="25_ixq2u"]
+[ext_resource type="Texture2D" uid="uid://cn8s7mdwgw4rr" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/frakits.png" id="27_cuj8e"]
 [ext_resource type="PackedScene" uid="uid://dyoywgkh1v7w0" path="res://assets/scenes/[SUB-SCENES]/dialogue/dialogue.tscn" id="27_g7obx"]
 [ext_resource type="Texture2D" uid="uid://dik5quuvvgarf" path="res://assets/images/menu/cutscene/border-9.png" id="28_2748t"]
+[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="29_pwc5p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3gqd"]
 shader = ExtResource("1_1ym0b")
@@ -54,6 +56,11 @@ texture_margin_bottom = 9.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[sub_resource type="LabelSettings" id="LabelSettings_cuj8e"]
+font = ExtResource("29_pwc5p")
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Cutscene" type="Node2D"]
 script = ExtResource("1_q3gqd")
 
@@ -77,22 +84,22 @@ autoscroll = Vector2(-80, 0)
 
 [node name="Verwex" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(2648, 188)
-scale = Vector2(3.33019, 3.33019)
+position = Vector2(2699, 243)
+scale = Vector2(2.92453, 2.92453)
 texture = ExtResource("3_q3gqd")
 centered = false
 
 [node name="Seezee" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(997, -83)
-rotation = 0.090838
+position = Vector2(1087, -60)
+rotation = 0.244078
 scale = Vector2(3.09935, 3.09935)
 texture = ExtResource("4_s4mvh")
 centered = false
 
 [node name="Glitch_smh" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(2908, -125)
+position = Vector2(3014, -123)
 scale = Vector2(3.05372, 3.05372)
 texture = ExtResource("5_jxldi")
 centered = false
@@ -115,14 +122,15 @@ centered = false
 
 [node name="Gumbalino" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(3062, 282)
+position = Vector2(3078, 314)
 scale = Vector2(2.95795, 2.95795)
 texture = ExtResource("8_8o1o2")
 centered = false
 
 [node name="Douyhe" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(3499, 446)
+position = Vector2(3447, 545)
+rotation = -0.472497
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("9_tu738")
 centered = false
@@ -145,7 +153,7 @@ centered = false
 
 [node name="R2" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(2324, 538)
+position = Vector2(2324, 556)
 scale = Vector2(2.92064, 2.92064)
 texture = ExtResource("12_c2g00")
 centered = false
@@ -176,7 +184,7 @@ centered = false
 
 [node name="Spectra" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(1476, 73)
+position = Vector2(1440, 47)
 rotation = 0.263649
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("16_bdb6r")
@@ -192,9 +200,9 @@ centered = false
 
 [node name="Starshy" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(-111, -47)
+position = Vector2(-143, -50)
 rotation = 0.0605551
-scale = Vector2(2.5, 2.5)
+scale = Vector2(2.39969, 2.39969)
 texture = ExtResource("18_xwwji")
 centered = false
 
@@ -215,16 +223,17 @@ centered = false
 
 [node name="Hipix" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(2664, 698)
+position = Vector2(2715, -154)
+rotation = 0.746849
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("21_eulfn")
 centered = false
 
 [node name="Vibingleaf" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(2261, 114)
-rotation = -0.194579
-scale = Vector2(2.88333, 2.88333)
+position = Vector2(2690, 658)
+rotation = -0.159674
+scale = Vector2(2.6165, 2.6165)
 texture = ExtResource("22_7txrm")
 centered = false
 
@@ -245,7 +254,7 @@ centered = false
 
 [node name="Techy!Harcvuk" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(1818.18, 354.811)
+position = Vector2(1800, 347)
 rotation = -0.153114
 scale = Vector2(2.84661, 2.84661)
 texture = ExtResource("25_1452d")
@@ -259,11 +268,13 @@ scale = Vector2(3.13867, 3.13867)
 texture = ExtResource("25_ixq2u")
 centered = false
 
-[node name="Dialogue" parent="." instance=ExtResource("27_g7obx")]
-offset_left = 602.0
-offset_top = 776.0
-offset_right = 602.0
-offset_bottom = 776.0
+[node name="Frakits" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(2365, 78)
+rotation = 0.525598
+scale = Vector2(2.7119, 2.7119)
+texture = ExtResource("27_cuj8e")
+centered = false
 
 [node name="ScaleRef" type="ReferenceRect" parent="."]
 anchors_preset = 8
@@ -280,6 +291,7 @@ grow_vertical = 2
 border_width = 2.0
 
 [node name="PanelBorder" type="PanelContainer" parent="."]
+z_index = 1
 clip_contents = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -297,11 +309,37 @@ pivot_offset = Vector2(9.02814, 8.98834)
 theme_override_styles/panel = SubResource("StyleBoxTexture_pwc5p")
 
 [node name="ColorRect" type="ColorRect" parent="PanelBorder"]
+z_index = -1
 layout_mode = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Panel1" type="Sprite2D" parent="PanelBorder"]
+z_index = -1
+
+[node name="Panel2" type="Sprite2D" parent="PanelBorder"]
+z_index = -1
+
+[node name="Dialogue" parent="." instance=ExtResource("27_g7obx")]
+z_index = 2
+offset_left = 640.0
+offset_top = 776.0
+offset_right = 640.0
+offset_bottom = 776.0
 
 [node name="Timeout" type="Timer" parent="."]
 one_shot = true
 
 [node name="Music" type="AudioStreamPlayer" parent="." groups=["Music"]]
 bus = &"Music"
+
+[node name="Skippable" type="Label" parent="."]
+z_index = 6
+offset_left = 915.0
+offset_top = 930.0
+offset_right = 1267.0
+offset_bottom = 952.0
+text = "PRESS EXTRA / RIGHT CLICK TO SKIP"
+label_settings = SubResource("LabelSettings_cuj8e")
+horizontal_alignment = 2
+autowrap_mode = 3
+uppercase = true

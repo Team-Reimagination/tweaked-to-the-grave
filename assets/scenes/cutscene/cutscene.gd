@@ -3,8 +3,11 @@ extends Node2D
 @onready var backgroundGradient = $BackgroundColor/Gradient
 @onready var friendGroupHeads = $FriendGroupHeads
 @onready var panel = $PanelBorder
+@onready var dialogue = $Dialogue
 @onready var timeout = $Timeout
 @onready var Mmusic = $Music
+@onready var panel1 = $PanelBorder/Panel1
+@onready var panel2 = $PanelBorder/Panel2
 
 var cutscene = {}
 const PATH_CUTSCENE = "res://assets/data/cutscenes/"
@@ -14,9 +17,12 @@ var cutAccess = "keys"
 var timeoutInitialized = false
 var pressedToSkip = false
 var readyToMove = false
-var canInput = true
+var canInput = false
+var waitForDialoguetoFinish = false
+var Entirely2eaked = SaveSystem.hasWatchedCutscene()
+var panelSwitchy = true
 
-var panelPosition = Vector2(640,480)
+var panelPosition = Vector2(640,300)
 
 func _ready() -> void:
 	#INITIAL SETUP
@@ -27,22 +33,35 @@ func _ready() -> void:
 	
 	friendGroupHeads.modulate.a = 0.0
 	
+	panel1.modulate.a = 0.0
+	panel2.modulate.a = 0.0
+	
 	panel.visible = false
+	
+	$Skippable.visible = Entirely2eaked
 	
 	if FileAccess.file_exists(PATH_CUTSCENE+PlayGlobals.cutsceneID+'.json'):
 		cutscene = JSON.parse_string(FileAccess.open(PATH_CUTSCENE+PlayGlobals.cutsceneID+'.json', FileAccess.READ).get_as_text())
 		
 		await get_tree().create_timer(1.0).timeout
 		panel.visible = true
+		canInput = true
 		checkCutsceneEvent()
 	else :
 		print("Could Not Find CUTSCENE For "+PlayGlobals.cutsceneID+'!')
 	
-func _process(_delta: float) -> void:
+var sinTimer = 0.0
+	
+func _process(delta: float) -> void:
+	sinTimer += delta
+	
 	if panelSizeTween is not Tween or !panelSizeTween.is_valid() or !panelSizeTween.is_running(): 
 		panel.size = lerp(panel.size, $ScaleRef.size, 0.3)
 		panel.position.x = panelPosition.x - panel.size.x/2
 		panel.position.y = panelPosition.y - panel.size.y/2
+		
+	panel1.position = Vector2(panel.size.x/2.0, panel.size.y/2.0)
+	panel2.position = Vector2(panel.size.x/2.0, panel.size.y/2.0)
 	
 	if cutAccess != "keys" and timeoutInitialized and timeout.time_left <= 0 and !pressedToSkip: 
 		timeoutInitialized = false
@@ -57,11 +76,22 @@ func _process(_delta: float) -> void:
 			break;
 	if !hasMoved: readyToMove = true
 
+	if Entirely2eaked: $Skippable.modulate.a = 0.5 + sin(sinTimer - 1) * 0.5
+	
+	if !canInput and cutscene == {} and (Input.is_action_just_pressed("Accept_UI") or CustomCursor.isMouseJustPressed("left")):
+		TransFuncs.switchScenes(self, PlayGlobals.getCutsceneDestination(), false, true, true)
+
 	if cutAccess != "timeout" and canInput:
 		if Input.is_action_just_pressed("Accept_UI") or CustomCursor.isMouseJustPressed('left'):
-			if !readyToMove: skipEvent()
+			if !readyToMove or waitForDialoguetoFinish:
+				if waitForDialoguetoFinish:
+					if dialogue.dialogue != {} and dialogue.typing: skipEvent()
+					else:
+						if !dialogue.movingOn: moveOn()
+				else:
+					skipEvent()
 			else: moveOn()
-		if Input.is_action_just_pressed("Back_UI") or CustomCursor.isMouseJustPressed('right'):
+		if Entirely2eaked and (Input.is_action_just_pressed("Back_UI") or CustomCursor.isMouseJustPressed('right')):
 			cutEventNum += 2 << 10
 			checkCutsceneEvent()
 
@@ -75,6 +105,7 @@ func moveOn():
 	readyToMove = false
 	timeoutInitialized = false
 	pressedToSkip = false
+	waitForDialoguetoFinish = false
 	nextEvent()
 		
 func skipEvent():
@@ -84,6 +115,10 @@ func skipEvent():
 	timeoutInitialized = false
 	pressedToSkip = true
 	setPanelSize($ScaleRef.size.x, $ScaleRef.size.y, true)
+	
+	if waitForDialoguetoFinish: 
+		dialogue.skipText()
+		waitForDialoguetoFinish = false
 
 func checkCutsceneEvent():
 	if cutscene.shots.size()-1 < cutEventNum:
@@ -125,15 +160,41 @@ func processEvent(event):
 	elif event.type == 'music_pitch':
 		musicPitch(event.pitch, timey, easy, transy)
 	elif event.type == 'music_switch_play':
-		Mmusic.playing = !Mmusic.playing
+		Mmusic.stream_paused = !Mmusic.stream_paused
+	elif event.type == 'load_dialogue':
+		loadDialogue(event.name)
+	elif event.type == 'end_dialogue':
+		dialogue.ending(false)
+	elif event.type == 'next_dialogue':
+		waitForDialoguetoFinish = true
+		dialogue.nextDialogue()
+	elif event.type == 'change_dialogue_scene':
+		waitForDialoguetoFinish = true
+		dialogue.dialEventNum = event.event - 1
+		dialogue.nextDialogue()
+	elif event.type == 'dialogue_position':
+		moveDialogue(event.x, event.y, timey, easy, transy)
+	elif event.type == 'load_panel':
+		loadPanel(event.image, timey, easy, transy)
 
 func ending():
+	for twee in getTweenList():
+		if twee is Tween and twee.is_valid() and twee.is_running(): 
+			twee.kill()
+	
+	SaveSystem.watchedCutscene()
+	$Skippable.visible = false
+	
 	fadeBackground(1.0, 'out', 'in', 'quint')
-	myHeadScrolls(-1000, 1.0, 'in', 'quint')
+	myHeadScrolls(friendGroupHeads.autoscroll.x * 50, 1.0, 'in', 'quint')
 	movePanel(panelPosition.x, 1000, 1.0, 'in', 'quint')
 	setPanelSize(0,0)
 	musicVolume(0.0, 1.0, 'in', 'quint')
+	if dialogue.dialogue != {}:
+		dialogue.ending(true)
 	
+	cutscene = {}
+	waitForDialoguetoFinish = false
 	canInput = false
 	
 	await get_tree().create_timer(1.5).timeout
@@ -147,7 +208,7 @@ func skipTweens():
 
 #EVENTS
 func getTweenList():
-	return [bgFadeTween, bgColor1Tween, bgColor2Tween, bgScrollTween, panelMoveTween, panelSizeTween, musicVolumeTween, musicPitchTween]
+	return [bgFadeTween, bgColor1Tween, bgColor2Tween, bgScrollTween, panelMoveTween, panelSizeTween, musicVolumeTween, musicPitchTween, dialMoveTween, panelShowTween]
 	
 var bgFadeTween
 var musicVolumeTween
@@ -157,6 +218,8 @@ var bgColor1Tween
 var bgColor2Tween
 var bgScrollTween
 var panelMoveTween
+var dialMoveTween
+var panelShowTween
 
 func loadMusic(music):
 	Mmusic.stream = load("res://assets/music/cutscene/"+music+".ogg")
@@ -195,9 +258,14 @@ func setBGColor(red, green, blue, part, time = null, Tease = 'inout', Ttrans = '
 	if time == null:
 		backgroundGradient.material.set("shader_parameter/Color"+party,Vector3(red, green, blue))
 	else:
+		if part == 'top':
+			if bgColor1Tween: bgColor1Tween.kill()
+			bgColor1Tween = get_tree().create_tween()
+		else:
+			if bgColor2Tween: bgColor2Tween.kill()
+			bgColor2Tween = get_tree().create_tween()
+			
 		var tweeny = bgColor1Tween if part == 'top' else bgColor2Tween
-		if tweeny: tweeny.kill()
-		tweeny = get_tree().create_tween()
 		tweeny.tween_property(backgroundGradient.material, "shader_parameter/Color"+party, Vector3(red, green, blue), time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
 
 func myHeadScrolls(speed, time = null, Tease = 'inout', Ttrans = 'linear'):
@@ -215,6 +283,14 @@ func movePanel(xPos, yPos, time = null, Tease = 'inout', Ttrans = 'linear'):
 		if panelMoveTween: panelMoveTween.kill()
 		panelMoveTween = get_tree().create_tween()
 		panelMoveTween.tween_property(self, "panelPosition", Vector2(xPos, yPos), time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
+
+func moveDialogue(xPos, yPos, time = null, Tease = 'inout', Ttrans = 'linear'):
+	if time == null:
+		dialogue.position = Vector2(xPos, yPos)
+	else:
+		if dialMoveTween: dialMoveTween.kill()
+		dialMoveTween = get_tree().create_tween()
+		dialMoveTween.tween_property(dialogue, "position", Vector2(xPos, yPos), time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
 		
 func musicVolume(vol, time = null, Tease = 'inout', Ttrans = 'linear'):
 	if time == null:
@@ -231,3 +307,24 @@ func musicPitch(pitch, time = null, Tease = 'inout', Ttrans = 'linear'):
 		if musicPitchTween: musicPitchTween.kill()
 		musicPitchTween = get_tree().create_tween()
 		musicPitchTween.tween_property(Mmusic, "pitch_scale", pitch, time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
+
+func loadDialogue(dial):
+	waitForDialoguetoFinish = true
+	dialogue.startDialogue(dial, true)
+	
+func loadPanel(image, time = null, Tease = 'inout', Ttrans = 'linear'):
+	panelSwitchy = !panelSwitchy
+	
+	var pa1 = panel1 if !panelSwitchy else panel2
+	var pa2 = panel1 if panelSwitchy else panel2
+	
+	pa2.texture = load("res://assets/images/menu/cutscene/panels/"+image+".png")
+	
+	if time == null:
+		pa1.modulate.a = 0.0
+		pa2.modulate.a = 1.0
+	else:
+		if panelShowTween: panelShowTween.kill()
+		panelShowTween = get_tree().create_tween()
+		panelShowTween.tween_property(pa1, "modulate:a", 0.0, time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
+		panelShowTween.set_parallel(true).tween_property(pa2, "modulate:a", 1.0, time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))

@@ -24,6 +24,7 @@ var achievementData = {
 var saveData = {
 	"unlocked": [],
 	"firstTime": [],
+	"cutscenes": [],
 	"highscores": {
 		
 	},
@@ -95,8 +96,17 @@ func getHighScore(levID, diff):
 	
 	return 0 if diff not in saveData.highscores or levID not in saveData.highscores[diff] else saveData.highscores[diff][levID]
 
+func watchedCutscene():
+	if !saveData.has("cutscenes"): saveData.cutscenes = []
+	if saveData.cutscenes.find(PlayGlobals.cutsceneID) == -1: saveData.cutscenes.append(PlayGlobals.cutsceneID)
+	
+	saveSave()
+
+func hasWatchedCutscene():
+	print(PlayGlobals.cutsceneID)
+	return saveData.has("cutscenes") and saveData.cutscenes.find(PlayGlobals.cutsceneID) > -1
+
 func saveGame():
-	print(curDifficultySave, PlayGlobals.difficulty)
 	saveData.difficulties[str(PlayGlobals.difficulty)] = curDifficultySave.duplicate(true)
 	saveSave()
 
