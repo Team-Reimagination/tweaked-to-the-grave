@@ -8,6 +8,7 @@ extends Node2D
 @onready var Mmusic = $Music
 @onready var panel1 = $PanelBorder/Panel1
 @onready var panel2 = $PanelBorder/Panel2
+@onready var camera = $Camera
 
 var cutscene = {}
 const PATH_CUTSCENE = "res://assets/data/cutscenes/"
@@ -38,6 +39,9 @@ func _ready() -> void:
 	
 	panel.visible = false
 	
+	camera.zoom = Vector2(1.0,1.0)
+	camera.offset = Vector2(640, 480)
+	
 	$Skippable.visible = Entirely2eaked
 	
 	if FileAccess.file_exists(PATH_CUTSCENE+PlayGlobals.cutsceneID+'.json'):
@@ -59,7 +63,7 @@ func _process(delta: float) -> void:
 		panel.size = lerp(panel.size, $ScaleRef.size, 0.3)
 		panel.position.x = panelPosition.x - panel.size.x/2
 		panel.position.y = panelPosition.y - panel.size.y/2
-		
+	
 	panel1.position = Vector2(panel.size.x/2.0, panel.size.y/2.0)
 	panel2.position = Vector2(panel.size.x/2.0, panel.size.y/2.0)
 	
@@ -176,6 +180,10 @@ func processEvent(event):
 		moveDialogue(event.x, event.y, timey, easy, transy)
 	elif event.type == 'load_panel':
 		loadPanel(event.image, timey, easy, transy)
+	elif event.type == 'camera_zoom':
+		zoomCamera(event.x, event.y, timey, easy, transy)
+	elif event.type == 'camera_position':
+		positionCamera(event.x, event.y, timey, easy, transy)
 
 func ending():
 	for twee in getTweenList():
@@ -208,7 +216,9 @@ func skipTweens():
 
 #EVENTS
 func getTweenList():
-	return [bgFadeTween, bgColor1Tween, bgColor2Tween, bgScrollTween, panelMoveTween, panelSizeTween, musicVolumeTween, musicPitchTween, dialMoveTween, panelShowTween]
+	return [bgFadeTween, bgColor1Tween, bgColor2Tween, bgScrollTween, panelMoveTween,
+			panelSizeTween, musicVolumeTween, musicPitchTween, dialMoveTween, panelShowTween,
+			camZoomTween, camMoveTween]
 	
 var bgFadeTween
 var musicVolumeTween
@@ -220,6 +230,8 @@ var bgScrollTween
 var panelMoveTween
 var dialMoveTween
 var panelShowTween
+var camZoomTween
+var camMoveTween
 
 func loadMusic(music):
 	Mmusic.stream = load("res://assets/music/cutscene/"+music+".ogg")
@@ -328,3 +340,19 @@ func loadPanel(image, time = null, Tease = 'inout', Ttrans = 'linear'):
 		panelShowTween = get_tree().create_tween()
 		panelShowTween.tween_property(pa1, "modulate:a", 0.0, time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
 		panelShowTween.set_parallel(true).tween_property(pa2, "modulate:a", 1.0, time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
+
+func zoomCamera(xPos, yPos, time = null, Tease = 'inout', Ttrans = 'linear'):
+	if time == null:
+		camera.zoom = Vector2(xPos, yPos)
+	else:
+		if camZoomTween: camZoomTween.kill()
+		camZoomTween = get_tree().create_tween()
+		camZoomTween.tween_property(camera, "zoom", Vector2(xPos, yPos), time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
+		
+func positionCamera(xPos, yPos, time = null, Tease = 'inout', Ttrans = 'linear'):
+	if time == null:
+		camera.position = Vector2(xPos, yPos)
+	else:
+		if camMoveTween: camMoveTween.kill()
+		camMoveTween = get_tree().create_tween()
+		camMoveTween.tween_property(camera, "position", Vector2(xPos, yPos), time).set_ease(PlayGlobals.getEaseType(Tease)).set_trans(PlayGlobals.getTransType(Ttrans))
