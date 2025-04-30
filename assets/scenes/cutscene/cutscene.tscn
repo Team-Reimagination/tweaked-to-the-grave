@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://qi02yng5req0"]
+[gd_scene load_steps=40 format=3 uid="uid://qi02yng5req0"]
 
 [ext_resource type="Shader" uid="uid://bdumn7a8f7xqq" path="res://assets/shaders/object/ditheredGradient.gdshader" id="1_1ym0b"]
 [ext_resource type="Script" uid="uid://bvwnajs6almd7" path="res://assets/scenes/cutscene/cutscene.gd" id="1_q3gqd"]
@@ -29,7 +29,12 @@
 [ext_resource type="Texture2D" uid="uid://cn8s7mdwgw4rr" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/frakits.png" id="27_cuj8e"]
 [ext_resource type="PackedScene" uid="uid://dyoywgkh1v7w0" path="res://assets/scenes/[SUB-SCENES]/dialogue/dialogue.tscn" id="27_g7obx"]
 [ext_resource type="Texture2D" uid="uid://dik5quuvvgarf" path="res://assets/images/menu/cutscene/border-9.png" id="28_2748t"]
+[ext_resource type="Texture2D" uid="uid://d2gm7cc28lpoo" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/confidence.png" id="28_pw4an"]
+[ext_resource type="Texture2D" uid="uid://cuhel0knfuxk8" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/moonb3rries.png" id="29_nub3g"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="29_pwc5p"]
+[ext_resource type="Texture2D" uid="uid://cmssnh26isuiw" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/nex_isdumb.png" id="30_2uxsa"]
+[ext_resource type="Texture2D" uid="uid://bdyfa3vju8dm7" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/kittycass.png" id="31_ku4bi"]
+[ext_resource type="Texture2D" uid="uid://b44oknretjv2m" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/spectralflake.png" id="32_sqsmk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3gqd"]
 shader = ExtResource("1_1ym0b")
@@ -82,7 +87,7 @@ color = Color(1, 1, 1, 0)
 [node name="FriendGroupHeads" type="Parallax2D" parent="."]
 material = SubResource("CanvasItemMaterial_q3gqd")
 scroll_scale = Vector2(0, 0)
-repeat_size = Vector2(4000, 0)
+repeat_size = Vector2(4850, 0)
 autoscroll = Vector2(-80, 0)
 
 [node name="Verwex" type="Sprite2D" parent="FriendGroupHeads"]
@@ -109,7 +114,7 @@ centered = false
 
 [node name="Phoney" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(-94, 721)
+position = Vector2(-94, 716)
 rotation = 0.221275
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_3weui")
@@ -132,15 +137,15 @@ centered = false
 
 [node name="Douyhe" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(3447, 545)
+position = Vector2(3401.62, 531.927)
 rotation = -0.472497
-scale = Vector2(2.5, 2.5)
+scale = Vector2(2.66909, 2.66909)
 texture = ExtResource("9_tu738")
 centered = false
 
 [node name="Terionic" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(3472, 15)
+position = Vector2(3463, 34)
 rotation = 0.193399
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("10_c2g00")
@@ -211,14 +216,14 @@ centered = false
 
 [node name="Bashy Bush" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(3140, 641)
+position = Vector2(3124, 641)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("19_eulfn")
 centered = false
 
 [node name="Mariofy" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(-171, 410)
+position = Vector2(-220, 418)
 rotation = -0.277004
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("20_1452d")
@@ -277,6 +282,46 @@ position = Vector2(2365, 78)
 rotation = 0.525598
 scale = Vector2(2.7119, 2.7119)
 texture = ExtResource("27_cuj8e")
+centered = false
+
+[node name="Confidence" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(4245, 599)
+rotation = -0.253672
+scale = Vector2(2.7119, 2.7119)
+texture = ExtResource("28_pw4an")
+centered = false
+
+[node name="MoonB3rries" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(3781, -18)
+rotation = -0.422635
+scale = Vector2(2.65852, 2.65852)
+texture = ExtResource("29_nub3g")
+centered = false
+
+[node name="Nex_isdumb" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(4285, -14.9999)
+rotation = 0.283557
+scale = Vector2(2.47206, 2.47206)
+texture = ExtResource("30_2uxsa")
+centered = false
+
+[node name="Kittycass" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(3878, 610)
+rotation = 0.356755
+scale = Vector2(2.74288, 2.74288)
+texture = ExtResource("31_ku4bi")
+centered = false
+
+[node name="Spectralflake" type="Sprite2D" parent="FriendGroupHeads"]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(3960, 208)
+rotation = 0.356755
+scale = Vector2(2.26334, 2.26334)
+texture = ExtResource("32_sqsmk")
 centered = false
 
 [node name="ScaleRef" type="ReferenceRect" parent="."]
@@ -341,7 +386,7 @@ offset_left = 915.0
 offset_top = 930.0
 offset_right = 1267.0
 offset_bottom = 952.0
-text = "PRESS EXTRA / RIGHT CLICK TO SKIP"
+text = "BACK / RIGHT CLICK TO SKIP"
 label_settings = SubResource("LabelSettings_cuj8e")
 horizontal_alignment = 2
 autowrap_mode = 3
