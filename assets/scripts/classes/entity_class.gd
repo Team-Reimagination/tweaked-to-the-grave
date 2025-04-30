@@ -9,6 +9,7 @@ var model;
 @export var hasModel = true
 @export var overridePos : Vector3 = Vector3(-INF,-INF,-INF)
 @export var shortRenderDistance = false
+@export var isBackgroundObject = true
 
 var distanceFadePhase = 0;
 var isReady : bool = false
@@ -41,7 +42,7 @@ func _process(_delta: float) -> void:
 			self.queue_free()
 	
 	if isReady:
-		if doProcessDistanceFade and PlayGlobals.levelDefs != null:
+		if doProcessDistanceFade and PlayGlobals.levelDefs != null and !isBackgroundObject:
 			if distanceFadePhase == 0 and self.global_position.z > -100:
 				for a in meshesWithOverlay:
 					a.material_overlay.set("shader_parameter/fade_start", 15)

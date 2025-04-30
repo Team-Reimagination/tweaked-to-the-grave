@@ -114,12 +114,11 @@ func typeIt():
 	if dialEvent.has("voice"):
 		dialVoice.stream = load("res://assets/sounds/voice/dialogue/"+dialEvent.voice+".ogg")
 		dialVoice.play()
-		if dialAccess != "keys" and dialAccess != "none": processVoice()
 	
 	for character in range(len(dialText.text)):
 		if !typing: break
 		dialText.visible_characters += 1;
-		await get_tree().create_timer(dialTime).timeout
+		await get_tree().create_timer(dialTime, false).timeout
 	
 	if !dialEvent.has("voice") and dialAccess != "keys" and dialAccess != "none": wait()
 	
@@ -128,8 +127,7 @@ func typeIt():
 	typing = false
 
 func processVoice():
-	await dialVoice.finished
-	if !movingOn: wait()
+	if !movingOn and !typing and !dialVoice.playing and !timeoutInitialized: wait()
 
 func wait():
 	timeoutInitialized = true
@@ -164,6 +162,9 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("Accept_UI"):
 			if typing: skipText()
 			else: moveOn()
+			
+	if dialEvent.has("voice"):
+		if dialAccess != "keys" and dialAccess != "none": processVoice()
 
 func skipText():
 	typing = false;
