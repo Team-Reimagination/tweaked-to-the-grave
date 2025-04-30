@@ -17,6 +17,8 @@ var shadertime = 0.0
 var gameOverState = preload("res://assets/scenes/[SUB-SCENES]/game_over/game_over.tscn")
 var gama;
 var pauseState = preload("res://assets/scenes/[SUB-SCENES]/pause_menu/pause_menu.tscn")
+var dialState = preload("res://assets/scenes/[SUB-SCENES]/dialogue/dialogue.tscn")
+var dial
 
 var canInput = false
 var canPause = false
@@ -44,6 +46,7 @@ var levelNum:int = 0;
 var lives:int = PlayGlobals.lifeCount[0];
 var player_health:int = PlayGlobals.lifeCount[1];
 var bossDEF;
+var dialogues;
 
 var isWarning = false
 
@@ -61,6 +64,9 @@ func _ready() -> void:
 			print("Could Not Find LEVEL For "+PlayGlobals.levelID+'!')
 	else:
 		buildLevel();
+		
+	#DIALOGUES
+	if levelDefs.has("dialogue"): dialogues = levelDefs.dialogue.duplicate()
 		
 	#LIRA FORMULA
 	instantLiraLevel()
@@ -159,6 +165,8 @@ func hurtPlayer():
 		
 func gameOver():
 	canPause = false;
+	
+	if dial != null: dial.ending()
 
 	get_tree().create_tween().tween_property(music, "pitch_scale", 0.00000001, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
@@ -302,6 +310,15 @@ func _process(delta: float) -> void:
 	$Audio/Warning.volume_db = lerpf($Audio/Warning.volume_db, -10 if isWarning else -80, 0.3)
 	if (player_health == 1 or lives == 1) and not isWarning and not hasBitchWon:
 		isWarning = true
+		
+	#DIALOGUE
+	if canInput and canPause and dialogues != null:
+		if dialogues.size() > 0 and dialogues[0][0] >= boss.health / bossDEF.health * 100.0:
+			dial = dialState.instantiate()
+			hud.add_child(dial)
+			dial.startDialogue(dialogues[0][1])
+			dial.position = Vector2(335.0,835.0)
+			dialogues.pop_front()
 	
 func wellithinkitstimetomoveonok():
 	get_tree().paused = false

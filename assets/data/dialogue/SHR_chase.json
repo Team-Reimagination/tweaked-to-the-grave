@@ -1,0 +1,30 @@
+{
+	"hasPanels": "true",
+	"events": [
+		{
+			"char": "tweak",
+			"text": "Well, well, well... Going forward with your plan, isn't that right?",
+			"voice": "SHR_Tweak_Mockery",
+			"nextAccess": "timeout",
+			"textTime": 0.06,
+		},
+		{
+			"char": "seezee",
+			"text": "I can't beat the crap out of you if I don't do something!",
+			"voice": "SHR_Seezee_Threat",
+			"nextAccess": "timeout"
+		},
+		{
+			"char": "tweak",
+			"text": "Good Luck, or rather Bad Luck on that. You'll need a miracle to get through me.",
+			"voice": "SHR_Tweak_Miracle",
+			"nextAccess": "timeout"
+		},
+		{
+			"char": "seezee",
+			"text": "And I'll prove that I'm the miracle that will put you under!",
+			"voice": "SHR_Seezee_Proof",
+			"nextAccess": "timeout"
+		}
+	]
+}

@@ -133,7 +133,7 @@ func processVoice():
 
 func wait():
 	timeoutInitialized = true
-	timeout.start(1.0)
+	timeout.start(0.75 if !dialEvent.has("voiceTimeout") else dialEvent.voiceTimeout)
 
 func nextDialogue():
 	dialEventNum += 1

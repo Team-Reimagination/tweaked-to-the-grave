@@ -50,8 +50,9 @@ func imKillingMyself():
 	PlayGlobals.youarenolongermyfriendsoundnowgoaway()
 	finalHit.play()
 	death.play()
-	
+		  
 	scene.isWarning = false;
+	if scene.dial != null: scene.dial.ending()
 	
 	canDie = false
 	camBeHit = false

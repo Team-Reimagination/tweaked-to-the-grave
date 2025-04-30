@@ -54,5 +54,9 @@
 			"end": 500.0,
 			"curve": 0.970
 		}
-	}
+	},
+	"dialogue": [
+		[100.0, "SHR_chase"],
+		[20.0, "SHR_uncertainty"]
+	]
 }

@@ -1,0 +1,20 @@
+{
+	"hasPanels": "true",
+	"events": [
+		{
+			"char": "tweak",
+			"text": "I'll admit, that little toy you're piloting has some power to it.",
+			"nextAccess": "timeout",
+		},
+		{
+			"char": "tweak",
+			"text": "But think that it'll do much and soon regret will follow.",
+			"nextAccess": "timeout",
+		},
+		{
+			"char": "seezee",
+			"text": "Hmph. Don't get cocky.",
+			"nextAccess": "timeout",
+		}
+	]
+}
