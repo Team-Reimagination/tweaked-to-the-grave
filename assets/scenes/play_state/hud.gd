@@ -183,7 +183,7 @@ func _process(_delta: float) -> void:
 			a.play(a.animation + "_Loop")
 	
 	#DEBUG FUNCS
-	if Input.is_key_pressed(KEY_EQUAL): 
+	if Input.is_key_pressed(KEY_EQUAL) and OS.is_debug_build():
 		scene.addLira(60)
 
 func giveMeLife():

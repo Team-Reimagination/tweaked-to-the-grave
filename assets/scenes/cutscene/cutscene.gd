@@ -82,6 +82,9 @@ func _process(delta: float) -> void:
 
 	if Entirely2eaked: $Skippable.modulate.a = 0.5 + sin(sinTimer - 1) * 0.5
 	
+	if Input.is_key_pressed(KEY_R) and OS.is_debug_build():
+		get_tree().reload_current_scene()
+	
 	if !canInput and cutscene == {} and (Input.is_action_just_pressed("Accept_UI") or CustomCursor.isMouseJustPressed("left")):
 		TransFuncs.switchScenes(self, PlayGlobals.getCutsceneDestination(), false, true, true)
 
