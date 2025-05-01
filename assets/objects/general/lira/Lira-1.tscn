@@ -79,10 +79,10 @@ animations = [{
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ajw8j"]
 height = 2.08463
-radius = 1.53076
+radius = 3.20801
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xmgww"]
-radius = 0.259113
+radius = 0.646279
 
 [node name="Lira-1" type="Area3D"]
 script = ExtResource("1_nl4vy")
@@ -90,10 +90,11 @@ objType = "lira"
 value = 10
 type = "collectible"
 doProcessDistanceFade = false
+isGameplayObject = true
 metadata/_custom_type_script = "uid://q27yxrhr8aeh"
 
 [node name="Model" type="Node3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 
 [node name="Sparkle" type="AnimatedSprite3D" parent="Model"]
 visible = false

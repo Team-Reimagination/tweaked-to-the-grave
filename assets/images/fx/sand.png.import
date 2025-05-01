@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bekrp7111ygmi"
-path.s3tc="res://.godot/imported/explosion.png-2792e6855e1e3be79cbef5ecb59643dc.s3tc.ctex"
-path.etc2="res://.godot/imported/explosion.png-2792e6855e1e3be79cbef5ecb59643dc.etc2.ctex"
+uid="uid://bnslwmh43ax4l"
+path.s3tc="res://.godot/imported/sand.png-6d9c4027160b938db35379ac41e6c957.s3tc.ctex"
+path.etc2="res://.godot/imported/sand.png-6d9c4027160b938db35379ac41e6c957.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/fx/explosion.png"
-dest_files=["res://.godot/imported/explosion.png-2792e6855e1e3be79cbef5ecb59643dc.s3tc.ctex", "res://.godot/imported/explosion.png-2792e6855e1e3be79cbef5ecb59643dc.etc2.ctex"]
+source_file="res://assets/images/fx/sand.png"
+dest_files=["res://.godot/imported/sand.png-6d9c4027160b938db35379ac41e6c957.s3tc.ctex", "res://.godot/imported/sand.png-6d9c4027160b938db35379ac41e6c957.etc2.ctex"]
 
 [params]
 

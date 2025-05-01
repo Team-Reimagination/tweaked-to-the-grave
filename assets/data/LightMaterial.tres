@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bmj1nae6ql8pi"]
+
+[ext_resource type="Shader" uid="uid://bdrwiprw3hnm1" path="res://assets/shaders/object/colorMod3D.gdshader" id="1_vgvmv"]
+
+[sub_resource type="Gradient" id="Gradient_gkijb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rmr6j"]
+gradient = SubResource("Gradient_gkijb")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vgvmv")
+shader_parameter/tex = SubResource("GradientTexture1D_rmr6j")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/intensity = 0.0
+shader_parameter/doTransparency = true

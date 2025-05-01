@@ -11,6 +11,7 @@ extends Node3D
 var player
 var boss
 
+var callForMovement = false
 var shadertime = 0.0
 
 #preload
@@ -76,6 +77,7 @@ func _ready() -> void:
 	hud.postLevelBuild()
 	
 	chunkLoader.makeBGChunk()
+	chunkLoader.makeLVChunk()
 	
 func initiateCountdown():
 	canPause = true
@@ -102,7 +104,10 @@ func initiateCountdown():
 		countTween.parallel().tween_property(countHand, "self_modulate:a", 0.0 , 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set_delay(0.35)
 		
 		if i == 2:
-			chunkLoader.makeLVChunk()
+			callForMovement = true
+			for obj in chunkLoader.get_children():
+				if obj is TTTG_Chunk:
+					obj.doMove = true
 		
 		await get_tree().create_timer(0.5,false).timeout #i like how this delays everything in the function
 	
@@ -125,7 +130,7 @@ func startLevel():
 	initiateCountdown()
 
 func levelUpLiraFormula(lv): #my lira
-	return round((25*(pow(lv, 2) - lv + 2))/PlayGlobals.LiraGainSpeed)
+	return round((60*(pow(lv, 2) - lv + 2))/PlayGlobals.LiraGainSpeed)
 	
 func levelUpLira():
 	liraLevel += 1
@@ -314,6 +319,8 @@ func _process(delta: float) -> void:
 	#DIALOGUE
 	if canInput and canPause and dialogues != null:
 		if dialogues.size() > 0 and dialogues[0][0] >= boss.health / bossDEF.health * 100.0:
+			if dial != null: dial.queue_free()
+			
 			dial = dialState.instantiate()
 			hud.add_child(dial)
 			dial.startDialogue(dialogues[0][1])

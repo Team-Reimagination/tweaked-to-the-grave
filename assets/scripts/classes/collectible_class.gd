@@ -76,6 +76,8 @@ func _process(delta: float) -> void:
 		self.global_position.y = lerpf(self.global_position.y, scene.player.global_position.y, ole)
 		self.global_position.z = lerpf(self.global_position.z, scene.player.global_position.z, ole)
 
+func victory_screech():
+	queue_free()
 
 func detectCollission(_areID, are, _arSID, _loSID):
 	if !scene.hasBitchWon:

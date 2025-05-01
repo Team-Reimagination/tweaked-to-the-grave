@@ -7,7 +7,7 @@
 		"distance": 300,
 		"scale": 2.5,
 		"rotation": 180,
-		"health": 2000
+		"health": 5000
 	},
 	"speed": 0.035,
 	"floor": {
@@ -57,6 +57,6 @@
 	},
 	"dialogue": [
 		[100.0, "SHR_chase"],
-		[20.0, "SHR_uncertainty"]
+		[35.0, "SHR_uncertainty"]
 	]
 }

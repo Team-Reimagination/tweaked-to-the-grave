@@ -48,6 +48,9 @@ func makeBGChunk():
 	var newChunk = chunker.duplicate()
 	var ogPos = 0.0;
 	
+	for a in newChunk.get_children(true):
+		a = a.duplicate()
+	
 	scene.spawnOBJ(newChunk)
 	
 	if curBGChunk == null:
@@ -67,37 +70,44 @@ func makeBGChunk():
 	if newChunk.nextChunk != null: predictedBGChunk = newChunk.nextChunk
 	else: predictedBGChunk = null
 	
+	newChunk.doMove = true
+	
 	if newChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*2: makeBGChunk()
 
 func makeLVChunk():
-	var chunker = lvChunks[rng.rand_weighted(lvChunkWeights)] if predictedLVChunk == null else predictedLVChunk
-	var newChunk = chunker.duplicate()
-	var ogPos = -scene.levelDefs.fog.distance.end;
+	var chunker2 = lvChunks[rng.rand_weighted(lvChunkWeights)] if predictedLVChunk == null else predictedLVChunk
+	var newChunk2 = chunker2.duplicate()
+	var ogPos2 = -scene.levelDefs.fog.distance.end;
 	
-	scene.spawnOBJ(newChunk)
+	scene.spawnOBJ(newChunk2)
+	
+	for a in newChunk2.get_children(true):
+		a = a.duplicate()
 	
 	if curLVChunk == null:
-		curLVChunk = newChunk
+		curLVChunk = newChunk2
 	else:
-		ogPos = curLVChunk.endPos.global_position.z
+		ogPos2 = curLVChunk.endPos.global_position.z
 		prevLVChunk = curLVChunk
-		curLVChunk = newChunk
+		curLVChunk = newChunk2
 		
-	newChunk.position.x = 0.0 + (0.0 - newChunk.startPos.global_position.x)
-	newChunk.position.y = scene.levelDefs.floor.y
-	newChunk.position.z = ogPos
+	newChunk2.position.x = 0.0 + (0.0 - newChunk2.startPos.global_position.x)
+	newChunk2.position.y = scene.levelDefs.floor.y
+	newChunk2.position.z = ogPos2
 	
-	newChunk.passReady()
-	newChunk.visible = true
+	newChunk2.passReady()
+	newChunk2.visible = true
 	
-	if newChunk.nextChunk != null: predictedLVChunk = newChunk.nextChunk
+	newChunk2.doMove = scene.callForMovement
+	
+	if newChunk2.nextChunk != null: predictedLVChunk = newChunk2.nextChunk
 	else: predictedLVChunk = null
 	
-	if newChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*2: makeBGChunk()
+	if newChunk2.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*1.5: makeLVChunk()
 
 func _process(_delta: float) -> void:
 	if curBGChunk != null:
 		if curBGChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*2: makeBGChunk()
 		
 	if curLVChunk != null and !scene.hasBitchWon:
-		if curLVChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*2: makeLVChunk()
+		if curLVChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*1.5: makeLVChunk()

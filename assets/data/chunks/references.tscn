@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6ttbed3daqwm"]
+[gd_scene load_steps=4 format=3 uid="uid://c6ttbed3daqwm"]
+
+[ext_resource type="Script" uid="uid://8fviwb4leujf" path="res://assets/scripts/classes/chunk_class.gd" id="1_ofdbn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_waefi"]
 
@@ -7,6 +9,9 @@
 [node name="References" type="Node3D"]
 transform = Transform3D(800, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, 0, 32.7832)
 visible = false
+script = ExtResource("1_ofdbn")
+isSubChunk = true
+metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="BGChunkWidthRef" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.79642)

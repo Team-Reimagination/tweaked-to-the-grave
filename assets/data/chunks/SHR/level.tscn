@@ -1,16 +1,426 @@
-[gd_scene load_steps=2 format=3 uid="uid://btka7cyd8ek7c"]
+[gd_scene load_steps=13 format=4 uid="uid://btka7cyd8ek7c"]
 
 [ext_resource type="Script" uid="uid://8fviwb4leujf" path="res://assets/scripts/classes/chunk_class.gd" id="1_ay21j"]
+[ext_resource type="PackedScene" uid="uid://gebalqkua6p2" path="res://assets/data/chunks/references_lv.tscn" id="1_pm65a"]
+[ext_resource type="PackedScene" uid="uid://cdfpc8x1cjlhi" path="res://assets/objects/falling_obj/obelisk.tscn" id="3_kw5fw"]
+[ext_resource type="PackedScene" uid="uid://cpl52ivjh1axx" path="res://assets/objects/general/lira/Lira-1.tscn" id="4_6xtxo"]
+[ext_resource type="PackedScene" uid="uid://dj1xnceb8dd6e" path="res://assets/objects/general/lira/Lira-2.tscn" id="5_vxlka"]
+[ext_resource type="PackedScene" uid="uid://br4v6celfxiyp" path="res://assets/objects/general/lira/Lira-10.tscn" id="6_qndkb"]
+[ext_resource type="PackedScene" uid="uid://csd105n0fxfp7" path="res://assets/objects/general/health/Health.tscn" id="7_vxlka"]
+[ext_resource type="PackedScene" uid="uid://cb5ao7vxoxcxs" path="res://assets/objects/general/lira/Lira-5.tscn" id="8_qndkb"]
+
+[sub_resource type="Shader" id="Shader_pm65a"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform sampler2D tex:source_color,filter_linear_mipmap,repeat_disable;
+uniform vec3 flash_color:source_color = vec3(1.0);
+uniform float intensity:hint_range(0.0, 1.0, 0.1) = 0.0;
+uniform bool doTransparency = true;
+
+void fragment() {
+	vec4 tex_color = texture(tex, UV);
+	ALBEDO = mix(tex_color.rgb, flash_color, intensity);
+	if (doTransparency) tex_color.a *= intensity;
+	ALPHA = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kw5fw"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_pm65a")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/intensity = 0.0
+shader_parameter/doTransparency = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gshns"]
+_surfaces = [{
+"aabb": AABB(-1.10135, -0.198584, -1.10135, 2.20271, 7.56183, 2.20271),
+"format": 34359742465,
+"index_count": 282,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAgAFAAAABAAGAAEABwAEAAAAAQAGAAgAAQAIAAMABAAJAAYAAAAFAAoAAAAKAAcACwAKAAUABwAMAAQADAAJAAQABwAKAA0ADgAMAAcABwANAA4ADgADAAwAAgADAA4AAwAPAAwADAAPAAkAAwAIAA8ADgAQAAIADgANABAAAgAQAAUAEQAQAA0AEgAFABAAEQASABAAEgALAAUAEwARAA0AEgARABMAEgATAAsAEwANAAoACwATAAoAFAAPAAgAFQAPABQAFQAJAA8AFAAIABYAFgAIAAYAFwAGAAkAFgAGABcAFwAJABUAFgAYABQAFwAZABYAFgAZABgAFQAaABcAFwAaABkAFAAbABUAFAAYABsAFQAbABoAGQAcABgAGAAdABsAGAAcAB0AGwAeABoAGwAdAB4AGgAfABkAGQAfABwAGgAeAB8AIAAdABwAIQAeAB0AIQAdACAAIgAfAB4AIgAeACEAIwAcAB8AIwAfACIAIAAcACMAIQAkACIAIAAlACEAIQAlACQAIwAmACAAIAAmACUAIgAnACMAIgAkACcAIwAnACYAJQAoACQAJAApACcAJAAoACkAJwAqACYAJwApACoAJgArACUAJQArACgAJgAqACsAKAAsACkAKQAtACoAKQAsAC0AKgAuACsAKgAtAC4AKwAvACgAKAAvACwAKwAuAC8ALAAwAC0ALQAwAC4ALwAwACwALgAwAC8A"),
+"name": "Obelisk",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 49,
+"vertex_data": PackedByteArray("MilOP7pZSz4yKU6/Nqxmv6AXCD82rGa/MilOv7pZSz4yKU6/Nqxmv6AXCD82rGY/NqxmP6AXCD82rGa/AACAP7pZSz4AAIC/Nqxmv0jUXT82rGa/MilOP7pZSz4yKU4/Nqxmv0jUXT82rGY/NqxmP0jUXT82rGa/AACAP7pZSz4AAIA/MvmMP7pZS74y+Yy/NqxmP6AXCD82rGY/AACAv7pZSz4AAIA/MilOv7pZSz4yKU4/NqxmP0jUXT82rGY/AACAv7pZSz4AAIC/MvmMv7pZS74y+Yw/MvmMv7pZS74y+Yy/MvmMP7pZS74y+Yw/ikgyP0jUXT+KSDI/ikgyP0jUXT+KSDK/ikgyv0jUXT+KSDI/ikgyv0jUXT+KSDK/I9RBP/7xlT8j1EE/I9RBv/7xlT8j1EE/I9RBv/7xlT8j1EG/I9RBP/7xlT8j1EG/I9RBP57ouj8j1EE/I9RBP57ouj8j1EG/I9RBv57ouj8j1EG/I9RBv57ouj8j1EE/W6ETP57ouj9boRO/W6ETv57ouj9boRO/W6ETv57ouj9boRM/W6ETP57ouj9boRM/yr/MvgrmwUDKv8w+yr/MvgrmwUDKv8y+yr/MPgrmwUDKv8y+yr/MPgrmwUDKv8w+XVUWv0k+wkBdVRY/XVUWP0k+wkBdVRY/XVUWP0k+wkBdVRa/XVUWv0k+wkBdVRa/XVUWP8ynyUBdVRY/XVUWP8ynyUBdVRa/XVUWv8ynyUBdVRa/XVUWv8ynyUBdVRY/AAAAALmf60AAAACA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ay21j"]
+resource_local_to_scene = true
+resource_name = "obelisk_Cube"
+_surfaces = [{
+"aabb": AABB(-1.10135, -0.198584, -1.10135, 2.20271, 7.56183, 2.20271),
+"attribute_data": PackedByteArray("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"),
+"format": 34359742487,
+"index_count": 282,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZABlAGYAZABnAGUAaABpAGoAaABrAGkAbABtAG4AbABvAG0AcABxAHIAcABzAHEAdAB1AHYAdAB3AHUAeAB5AHoAeAB7AHkAfAB9AH4AfAB/AH0AgACBAIIAgACDAIEAhACFAIYAhACHAIUAiACJAIoAiACLAIkAjACNAI4AjACPAI0AkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkArACtAK4ArACvAK0AsACxALIAsACzALEAtAC1ALYAtwC4ALkAugC7ALwAvQC+AL8A"),
+"name": "Obelisk",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 192,
+"vertex_data": PackedByteArray("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yr/MPgrmwUDKv8y+XVUWP0k+wkBdVRY/XVUWP0k+wkBdVRY/XVUWP8ynyUBdVRa/XVUWP0k+wkBdVRa/XVUWP8ynyUBdVRY/XVUWP0k+wkBdVRa/XVUWv8ynyUBdVRa/XVUWv0k+wkBdVRa/XVUWP8ynyUBdVRa/XVUWv0k+wkBdVRa/XVUWv8ynyUBdVRY/XVUWv0k+wkBdVRY/XVUWv8ynyUBdVRa/W6ETP57ouj9boRO/yr/MvgrmwUDKv8y+W6ETv57ouj9boRO/yr/MPgrmwUDKv8y+W6ETv57ouj9boRM/yr/MPgrmwUDKv8w+W6ETP57ouj9boRM/yr/MvgrmwUDKv8w+W6ETv57ouj9boRO/yr/MvgrmwUDKv8w+W6ETv57ouj9boRM/yr/MvgrmwUDKv8y+XVUWv0k+wkBdVRY/XVUWP8ynyUBdVRY/XVUWP0k+wkBdVRY/XVUWv8ynyUBdVRY/XVUWP8ynyUBdVRY/AAAAALmf60AAAACAXVUWP8ynyUBdVRa/XVUWP8ynyUBdVRa/AAAAALmf60AAAACAXVUWv8ynyUBdVRa/XVUWv8ynyUBdVRa/AAAAALmf60AAAACAXVUWv8ynyUBdVRY/XVUWv8ynyUBdVRY/AAAAALmf60AAAACAXVUWP8ynyUBdVRY/aeMAAAAA/79p4wAAAAD/v2njAAAAAP+/aeMAAAAA/7//fwWa////v/9/BZr///+//38Fmv///7//fwWa////vwUaBZr/f/+/BRoFmv9//78FGgWa/3//vwUaBZr/f/+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7/55QWa//////nlBZr/////+eUFmv/////55QWa//////nl//8AAP+/+eX//wAA/7/55f//AAD/v/nl//8AAP+//3///////7//f////v//v/9////+//+//3///////7//f/////8AgP9//////wCA/3//////AID/f/////////9/////f/+//3////9//7//f////3//v/9/////f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v2njamP/////aeNqY/////9p42pj/////2njamP/////lRxqY/9//7+VHGpj/3//v5UcamP/f/+/lRxqY/9//7//f2pj////v/9/amP///+//39qY////7//f2pj////v/9/vWr///+//3+9av///7//f71q////v/9/vWr///+//3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//////AAD/v/////8AAP+//////wAA/7//////AAD/v////3/+/wCA////f/7/AID///9//v8AgP///3/+/wCA/3////7//7//f////v//v/9////+//+//3////7//7//f/7////+//9//v////7//3/+////////f/7////+//9//v//f/+//3/+//9//7//f/7//3//v/9//v//f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f/9/////v/9//3////+//3//f////7//f/9/////v73qAAAAAP+/veoAAAAA/7+96gAAAAD/v73qAAAAAP+/veq9av////+96r1q/////73qvWr/////veq9av////9BFb1q/3//v0EVvWr/f/+/QRW9av9//79BFb1q/3//vwl59QZr/BqfCXn1Bmv8Gp8JefUGa/wanwl59Qb///+//////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9//////wAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3////7//7//f////v//v/9////+//+//3////7//7//f//////+//9///////7//3///////v//f//////+//9/////f/+//3////9//7//f////3//v/9/////f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/79C+7yE/////0L7vIT/////Qvu8hP////9C+7yE//////9/9QZOAsuq/3/1Bk4Cy6r/f/UGNb41Pv9/9QZOAsuq9YYAAGv8Gh/1hgAAa/waH/WGAAD///+/9YYAAGv8Gh/1hvUGb8PvwfWG9QZW+3vX9Yb1Bmv85OD1hvUGNb7Jwf///3//f/+/////f/9//7////9//3//v////3//f/+///////7//7//////////v/////////+///////7//78AAP9//v8AgAAA/3///wCAAAD/f/////8AAP9//v8AgEL7//8AAP+/Qvv//wAA/79C+///AAD/v0L7//8AAP+//3+8hP7//7//f7yE////v/9/vIT+//+//3+8hP///7+8BLyE/3//v7wEvIT/f/+/vAS8hP9//7+8BLyE/3//v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+/aNKWrf7/AIBo0pat/v8AgGjSlq3+/wCAaNL//wAA/79o0v//AAD/v2jS//8AAP+/li2Wrf9//7+WLZat/3//v5Ytlq3/f/+//3+Wrf7//7//f5at/v//v/9/lq3+//+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_gshns")
 
 [node name="ShrBackground" type="Node3D"]
 
-[node name="0" type="Node3D" parent="."]
+[node name="References" parent="." instance=ExtResource("1_pm65a")]
+
+[node name="0_Obelisks" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
+script = ExtResource("1_ay21j")
+nextChunk = NodePath("../0_Coins")
+chanceWeight = 0.75
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="0_Obelisks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.6749)
+
+[node name="StartPos" type="Marker3D" parent="0_Obelisks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.0057)
+
+[node name="Obelisk" parent="0_Obelisks" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, -51.6935, 0, -19.2117)
+fallDistance = 200
+fallTime = 1.5
+shortRenderDistance = true
+isBackgroundObject = false
+
+[node name="Cube" parent="0_Obelisks/Obelisk/Model" index="0"]
+material_overlay = SubResource("ShaderMaterial_kw5fw")
+mesh = SubResource("ArrayMesh_ay21j")
+
+[node name="SpawnAngle" parent="0_Obelisks/Obelisk" index="4"]
+transform = Transform3D(0.741952, 0.131969, -0.657335, 0, 0.980436, 0.196836, 0.670452, -0.146043, 0.727437, -0.996683, -7.433, 1.55941)
+
+[node name="FallAngle" parent="0_Obelisks/Obelisk" index="5"]
+transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
+
+[node name="Obelisk2" parent="0_Obelisks" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 53.1416, 0, -112.218)
+spawnLerp = 0.25
+doFall = false
+shortRenderDistance = true
+isBackgroundObject = false
+
+[node name="Cube" parent="0_Obelisks/Obelisk2/Model" index="0"]
+material_overlay = SubResource("ShaderMaterial_kw5fw")
+mesh = SubResource("ArrayMesh_ay21j")
+
+[node name="SpawnAngle" parent="0_Obelisks/Obelisk2" index="4"]
+transform = Transform3D(0.555686, -0.229469, 0.799097, 1.0245e-09, 0.961155, 0.276006, -0.831392, -0.153373, 0.534101, 1.6936, -7.43299, 0.850248)
+
+[node name="FallAngle" parent="0_Obelisks/Obelisk2" index="5"]
+transform = Transform3D(0.543658, -0.338122, 0.768186, -1.42109e-15, 0.915262, 0.402859, -0.839307, -0.219017, 0.49759, 0, 0, 0)
+
+[node name="Obelisk3" parent="0_Obelisks" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 9.15246, 0, -249.275)
+doSpawn = false
+fallDistance = 300
+fallTime = 2.5
+shortRenderDistance = true
+isBackgroundObject = false
+
+[node name="Cube" parent="0_Obelisks/Obelisk3/Model" index="0"]
+material_overlay = SubResource("ShaderMaterial_kw5fw")
+mesh = SubResource("ArrayMesh_ay21j")
+
+[node name="SpawnAngle" parent="0_Obelisks/Obelisk3" index="4"]
+transform = Transform3D(0.965363, -0.260909, 0, 0.260909, 0.965363, 0, 0, 0, 0.999999, 1.94708, -7.43299, 0.0439024)
+
+[node name="FallAngle" parent="0_Obelisks/Obelisk3" index="5"]
+transform = Transform3D(0.681705, -0.731627, 0, 0.731627, 0.681705, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="0_Coins" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_ay21j")
 isSubChunk = true
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
-[node name="EndPos" type="Marker3D" parent="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -55.7535)
+[node name="EndPos" type="Marker3D" parent="0_Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -314.665)
 
-[node name="StartPos" type="Marker3D" parent="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.368)
+[node name="StartPos" type="Marker3D" parent="0_Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.5051)
+
+[node name="Lira-1" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.66123, 30.7009, -10.5597)
+
+[node name="Lira-2" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.674, 35.8179, -25.2104)
+
+[node name="Lira-3" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4233, 38.4993, -40.635)
+
+[node name="Lira-4" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2006, 39.493, -56.0194)
+
+[node name="Lira-5" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5628, 37.9556, -70.2747)
+
+[node name="Lira-6" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09458, 30.7009, -138.415)
+
+[node name="Lira-7" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33373, 25.8242, -153.842)
+
+[node name="Lira-8" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83716, 18.0723, -172.12)
+
+[node name="Lira-9" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.23446, 16.6731, -188.866)
+
+[node name="Lira-10" parent="0_Coins" instance=ExtResource("5_vxlka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0229, 20.0437, -201.999)
+
+[node name="Lira-11" parent="0_Coins" instance=ExtResource("6_qndkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5486, 25.8276, -248.378)
+
+[node name="1_Obelisks" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
+script = ExtResource("1_ay21j")
+nextChunk = NodePath("../1_Coins1")
+chanceWeight = 0.75
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="1_Obelisks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.6965)
+
+[node name="StartPos" type="Marker3D" parent="1_Obelisks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.0057)
+
+[node name="Obelisk" parent="1_Obelisks" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -21.5834, 0, -19.2117)
+doSpawn = false
+doFall = false
+shortRenderDistance = true
+isBackgroundObject = false
+
+[node name="Cube" parent="1_Obelisks/Obelisk/Model" index="0"]
+material_overlay = SubResource("ShaderMaterial_kw5fw")
+mesh = SubResource("ArrayMesh_ay21j")
+
+[node name="SpawnAngle" parent="1_Obelisks/Obelisk" index="4"]
+transform = Transform3D(0.989588, -0.143924, 0, 0.141276, 0.971377, -0.190963, 0.0274842, 0.188975, 0.981596, 0, 0, 0)
+
+[node name="FallAngle" parent="1_Obelisks/Obelisk" index="5"]
+transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
+
+[node name="Obelisk2" parent="1_Obelisks" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 41.3914, 0, -116.835)
+doSpawn = false
+doFall = false
+shortRenderDistance = true
+isBackgroundObject = false
+
+[node name="Cube" parent="1_Obelisks/Obelisk2/Model" index="0"]
+material_overlay = SubResource("ShaderMaterial_kw5fw")
+mesh = SubResource("ArrayMesh_ay21j")
+
+[node name="SpawnAngle" parent="1_Obelisks/Obelisk2" index="4"]
+transform = Transform3D(0.909199, -0.25684, -0.327702, 3.15797e-15, 0.787064, -0.616871, 0.41636, 0.560859, 0.715598, 0, 0, 0)
+
+[node name="FallAngle" parent="1_Obelisks/Obelisk2" index="5"]
+transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
+
+[node name="Obelisk3" parent="1_Obelisks" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -66.9467, 0, -208.391)
+doSpawn = false
+doFall = false
+shortRenderDistance = true
+isBackgroundObject = false
+
+[node name="Cube" parent="1_Obelisks/Obelisk3/Model" index="0"]
+material_overlay = SubResource("ShaderMaterial_kw5fw")
+mesh = SubResource("ArrayMesh_ay21j")
+
+[node name="SpawnAngle" parent="1_Obelisks/Obelisk3" index="4"]
+transform = Transform3D(0.447899, 0.894083, 0, -0.894084, 0.447899, 0, 0, 0, 0.999999, 0, 0, 0)
+
+[node name="FallAngle" parent="1_Obelisks/Obelisk3" index="5"]
+transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
+
+[node name="Obelisk4" parent="1_Obelisks" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0.404411, 0, -356.8)
+doSpawn = false
+doFall = false
+shortRenderDistance = true
+isBackgroundObject = false
+
+[node name="Cube" parent="1_Obelisks/Obelisk4/Model" index="0"]
+material_overlay = SubResource("ShaderMaterial_kw5fw")
+mesh = SubResource("ArrayMesh_ay21j")
+
+[node name="SpawnAngle" parent="1_Obelisks/Obelisk4" index="4"]
+transform = Transform3D(0.9655, -0.0787944, -0.248196, 0, 0.953121, -0.302586, 0.260403, 0.292147, 0.920238, 0, 0, 0)
+
+[node name="FallAngle" parent="1_Obelisks/Obelisk4" index="5"]
+transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
+
+[node name="1_Coins1" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
+script = ExtResource("1_ay21j")
+nextChunk = NodePath("../1_Coins2")
+isSubChunk = true
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="StartPos" type="Marker3D" parent="1_Coins1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.7618)
+
+[node name="EndPos" type="Marker3D" parent="1_Coins1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.6361)
+
+[node name="Lira-1" parent="1_Coins1" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6681, 28.9237, -62.8612)
+
+[node name="Lira-2" parent="1_Coins1" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06396, 34.1805, -81.8079)
+
+[node name="Lira-3" parent="1_Coins1" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04811, 34.3208, -101.344)
+
+[node name="Lira-4" parent="1_Coins1" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46899, 32.4235, -123.417)
+
+[node name="Lira-5" parent="1_Coins1" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97121, 27.1732, -144.508)
+
+[node name="Lira-6" parent="1_Coins1" instance=ExtResource("5_vxlka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999809, 26.2006, -164.469)
+
+[node name="1_Coins2" type="Node3D" parent="."]
+visible = false
+script = ExtResource("1_ay21j")
+isSubChunk = true
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="1_Coins2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -460.585)
+
+[node name="StartPos" type="Marker3D" parent="1_Coins2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.4568)
+
+[node name="Lira-2" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9424, 28.0489, -310.103)
+
+[node name="Lira-3" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1422, 32.691, -329.398)
+
+[node name="Lira-4" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8572, 36.8873, -349.153)
+
+[node name="Lira-5" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9122, 39.2038, -368.45)
+
+[node name="Lira-6" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5354, 27.9616, -311.481)
+
+[node name="Lira-7" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4464, 32.8108, -330.449)
+
+[node name="Lira-8" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2029, 36.4018, -350.34)
+
+[node name="Lira-9" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5801, 38.9296, -370.23)
+
+[node name="Lira-10" parent="1_Coins2" instance=ExtResource("5_vxlka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7862, 41.287, -389.581)
+
+[node name="Lira-11" parent="1_Coins2" instance=ExtResource("5_vxlka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9642, 41.0036, -389.581)
+
+[node name="Health" parent="1_Coins2" instance=ExtResource("7_vxlka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.2145, -378.804)
+
+[node name="2" type="Node3D" parent="."]
+script = ExtResource("1_ay21j")
+chanceWeight = 0.85
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -140.314)
+
+[node name="StartPos" type="Marker3D" parent="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.1702)
+
+[node name="Obelisk" parent="2" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -30.1458, 0, -19.2117)
+spawnLerp = 0.2
+doFall = false
+shortRenderDistance = true
+isBackgroundObject = false
+
+[node name="Cube" parent="2/Obelisk/Model" index="0"]
+material_overlay = SubResource("ShaderMaterial_kw5fw")
+mesh = SubResource("ArrayMesh_ay21j")
+
+[node name="SpawnAngle" parent="2/Obelisk" index="4"]
+transform = Transform3D(0.905235, 0.42491, 0, -0.42491, 0.905235, 0, 0, 0, 0.999999, -3.343, -7.07853, 0)
+
+[node name="FallAngle" parent="2/Obelisk" index="5"]
+transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
+
+[node name="Obelisk2" parent="2" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 41.3914, 0, -62.6446)
+spawnLerp = 0.2
+doFall = false
+shortRenderDistance = true
+isBackgroundObject = false
+
+[node name="Cube" parent="2/Obelisk2/Model" index="0"]
+material_overlay = SubResource("ShaderMaterial_kw5fw")
+mesh = SubResource("ArrayMesh_ay21j")
+
+[node name="SpawnAngle" parent="2/Obelisk2" index="4"]
+transform = Transform3D(0.841294, -0.540578, 0, 0.540578, 0.841293, 0, 0, 0, 0.999999, 3.89652, -5.89473, 0)
+
+[node name="FallAngle" parent="2/Obelisk2" index="5"]
+transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
+
+[node name="Lira-5" parent="2" instance=ExtResource("8_qndkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 57.0166, -47.0609)
+
+[node name="3" type="Node3D" parent="."]
+visible = false
+script = ExtResource("1_ay21j")
+chanceWeight = 0.8
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192.23)
+
+[node name="StartPos" type="Marker3D" parent="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64.3394)
+
+[node name="Obelisk2" parent="3" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0.152142, 0, -62.6446)
+spawnLerp = 0.5
+fallDistance = 200
+shortRenderDistance = true
+isBackgroundObject = false
+
+[node name="Cube" parent="3/Obelisk2/Model" index="0"]
+material_overlay = SubResource("ShaderMaterial_kw5fw")
+mesh = SubResource("ArrayMesh_ay21j")
+
+[node name="SpawnAngle" parent="3/Obelisk2" index="4"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -6.51518, 0)
+
+[node name="FallAngle" parent="3/Obelisk2" index="5"]
+transform = Transform3D(0.999998, 0.00091859, 0.0015737, 0.00155403, 0.0210465, -0.999777, -0.000951489, 0.999778, 0.021045, 0, 0, 0)
+
+[editable path="0_Obelisks/Obelisk"]
+[editable path="0_Obelisks/Obelisk2"]
+[editable path="0_Obelisks/Obelisk3"]
+[editable path="1_Obelisks/Obelisk"]
+[editable path="1_Obelisks/Obelisk2"]
+[editable path="1_Obelisks/Obelisk3"]
+[editable path="1_Obelisks/Obelisk4"]
+[editable path="2/Obelisk"]
+[editable path="2/Obelisk2"]
+[editable path="3/Obelisk2"]

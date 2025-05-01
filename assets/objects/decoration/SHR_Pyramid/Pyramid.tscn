@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://bivklgx5s2amu"]
+[gd_scene load_steps=10 format=4 uid="uid://bivklgx5s2amu"]
 
 [ext_resource type="Script" uid="uid://di2lyy6fws75b" path="res://assets/scripts/classes/entity_class.gd" id="1_na513"]
 [ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="2_pam1m"]
 [ext_resource type="Texture2D" uid="uid://bwmecdml3hngn" path="res://assets/objects/decoration/SHR_Pyramid/pyramid_pyramid.png" id="3_u8vyc"]
 [ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="4_26au0"]
 [ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="5_dr53h"]
-[ext_resource type="Material" uid="uid://h4t6qkyafnsm" path="res://assets/objects/decoration/SHR_Pyramid/Pyramid.tres" id="6_nw1se"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvymp"]
 resource_local_to_scene = true
@@ -40,7 +39,6 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkACgALAAwADQAOAA8A"),
-"material": ExtResource("6_nw1se"),
 "name": "Pyramid",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -64,7 +62,7 @@ metadata/_custom_type_script = "uid://di2lyy6fws75b"
 [node name="Model" type="Node3D" parent="."]
 
 [node name="Plane" type="MeshInstance3D" parent="Model"]
-material_overlay = SubResource("ShaderMaterial_hvymp")
+material_override = SubResource("ShaderMaterial_hvymp")
 mesh = SubResource("ArrayMesh_x1ufk")
 skeleton = NodePath("")
 

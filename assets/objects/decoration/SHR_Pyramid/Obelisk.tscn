@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://bds265foreo2v"]
+[gd_scene load_steps=10 format=4 uid="uid://bds265foreo2v"]
 
 [ext_resource type="Script" uid="uid://di2lyy6fws75b" path="res://assets/scripts/classes/entity_class.gd" id="1_im6a4"]
 [ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="2_78hs2"]
 [ext_resource type="Texture2D" uid="uid://c6sl4idelmbwv" path="res://assets/objects/decoration/SHR_Pyramid/obelisk_obelisk.png" id="3_im6a4"]
 [ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="4_utr2m"]
 [ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="5_ygicy"]
-[ext_resource type="Material" uid="uid://c6ol6d6app12c" path="res://assets/objects/decoration/SHR_Pyramid/Obelisk.tres" id="6_78hs2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j834e"]
 resource_local_to_scene = true
@@ -40,7 +39,6 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 90,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANwA4ADkAOgA7ADwAPQA+AD8A"),
-"material": ExtResource("6_78hs2"),
 "name": "Obelisk",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -64,7 +62,7 @@ metadata/_custom_type_script = "uid://di2lyy6fws75b"
 [node name="Model" type="Node3D" parent="."]
 
 [node name="Plane_006" type="MeshInstance3D" parent="Model"]
-material_overlay = SubResource("ShaderMaterial_j834e")
+material_override = SubResource("ShaderMaterial_j834e")
 mesh = SubResource("ArrayMesh_2370o")
 skeleton = NodePath("")
 

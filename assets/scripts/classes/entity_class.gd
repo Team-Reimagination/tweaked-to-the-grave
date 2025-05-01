@@ -10,47 +10,41 @@ var model;
 @export var overridePos : Vector3 = Vector3(-INF,-INF,-INF)
 @export var shortRenderDistance = false
 @export var isBackgroundObject = true
+@export var isGameplayObject = false
 
 var distanceFadePhase = 0;
 var isReady : bool = false
+var isDying = false
 
 var meshInstances = []
 var meshesWithOverlay = []
 
 func _ready() -> void:
+	while scene.name != "PlayState": scene = scene.get_parent()
+	
 	if hasModel:
 		model = $Model
 	
 	if doProcessDistanceFade and PlayGlobals.levelDefs != null:
-		meshInstances = model.find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_overlay != null)
-		meshesWithOverlay = model.find_children("*", "MeshInstance3D", true, true)
+		meshInstances = model.find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_override != null)
 	
-		for a in meshesWithOverlay:
-			a.material_overlay.set("shader_parameter/fade_start", PlayGlobals.getDistance(shortRenderDistance))
-			a.material_overlay.set("shader_parameter/fade_end", PlayGlobals.getDistance(shortRenderDistance) - 100)
-					
 		for a in meshInstances:
-			if a.mesh.surface_get_material(0) != null:
-				a.mesh.surface_get_material(0).distance_fade_min_distance = PlayGlobals.getDistance(shortRenderDistance)
-				a.mesh.surface_get_material(0).distance_fade_max_distance = PlayGlobals.getDistance(shortRenderDistance) - 100
+			a.material_override = a.material_override.duplicate()
+			a.material_override.set("shader_parameter/fade_start", PlayGlobals.getDistance(shortRenderDistance))
+			a.material_override.set("shader_parameter/fade_end", PlayGlobals.getDistance(shortRenderDistance) - 100)
 
 func _process(_delta: float) -> void:
 	if overridePos != Vector3(-INF,-INF,-INF):
 		self.global_position = overridePos
 	
-	if self.global_position.z > 100 and type != 'boss':
+	if self.global_position.z > 100 and type != 'boss' and !isDying:
 			self.queue_free()
 	
 	if isReady:
 		if doProcessDistanceFade and PlayGlobals.levelDefs != null and !isBackgroundObject:
 			if distanceFadePhase == 0 and self.global_position.z > -100:
-				for a in meshesWithOverlay:
-					a.material_overlay.set("shader_parameter/fade_start", 15)
-					a.material_overlay.set("shader_parameter/fade_end", 25)
-					
 				for a in meshInstances:
-					if a.mesh.surface_get_material(0) != null:
-						a.mesh.surface_get_material(0).distance_fade_min_distance = 150
-						a.mesh.surface_get_material(0).distance_fade_max_distance = 250
+					a.material_override.set("shader_parameter/fade_start", 15)
+					a.material_override.set("shader_parameter/fade_end", 30)
 					
 				distanceFadePhase = 1

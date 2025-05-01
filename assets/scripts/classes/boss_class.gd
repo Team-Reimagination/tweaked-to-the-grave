@@ -63,6 +63,10 @@ func imKillingMyself():
 	
 	scene.shaders.wybielenie(0.6)
 	
+	for obj in scene.chunkLoader.get_children():
+		if obj is TTTG_Chunk:
+			obj.victory_screech()
+	
 	scene.hud.bossIcon.play("Death")
 	self.get_node("Model/AnimationPlayer").play("Death")
 	

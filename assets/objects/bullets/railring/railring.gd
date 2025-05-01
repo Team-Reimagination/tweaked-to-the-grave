@@ -13,8 +13,6 @@ func _ready() -> void:
 	$Death.volume_db = -10.0 + 10.0 / get_meta("howMany");
 	$Death.max_db = $Death.volume_db
 	
-	self.area_shape_entered.connect(detectCollission.bind())
-	
 func _process(delta: float) -> void:
 	if scene.hasBitchWon:
 		$Death.volume_db = -80.0;
@@ -33,7 +31,3 @@ func killYourself():
 		isKillingYourself = true
 		$Death.play()
 		$Model.visible = false
-
-func detectCollission(_areID, are, _arSID, _loSID):
-	if are.type != 'player_bullet':
-		killYourself()

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://comtlbwwifqen"]
+
+[ext_resource type="Texture2D" uid="uid://kktn0d7mkj2g" path="res://assets/objects/falling_obj/obelisk_obelisk.png" id="1_wxotu"]
+
+[resource]
+resource_name = "Obelisk"
+cull_mode = 2
+albedo_texture = ExtResource("1_wxotu")
+roughness = 0.5
+distance_fade_mode = 2
+distance_fade_max_distance = 0.0

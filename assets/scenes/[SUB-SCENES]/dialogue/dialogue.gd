@@ -144,7 +144,7 @@ func nextDialogue():
 func checkDialogue():
 	movingOn = true
 	
-	if dialogue.events.size()-1 < dialEventNum:
+	if !dialogue.has("events") or dialogue.events == [] or dialogue.events.size()-1 < dialEventNum:
 		ending()
 	else:
 		proceedWithDialogue()
