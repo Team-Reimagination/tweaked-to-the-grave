@@ -201,6 +201,7 @@ func giveMeLife():
 
 func bonusing(type, lira):
 	scene.addLira(lira)
+	$"../Audio/Lira".play()
 	
 	var boner : Label = $BaseBonus.duplicate()
 	BonusGroup.add_child(boner)

@@ -70,5 +70,7 @@ func imKillingMyself():
 	scene.hud.bossIcon.play("Death")
 	self.get_node("Model/AnimationPlayer").play("Death")
 	
+	if !scene.hasBeenHurt: scene.hud.bonusing("Perfect Bonus!", 2000)
+	
 	scene.music.stop()
 	get_tree().create_tween().tween_property(scene.camera, "posi:z", self.position.z + 50 * self.scale.x, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)

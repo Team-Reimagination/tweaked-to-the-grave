@@ -21,6 +21,8 @@ var pauseState = preload("res://assets/scenes/[SUB-SCENES]/pause_menu/pause_menu
 var dialState = preload("res://assets/scenes/[SUB-SCENES]/dialogue/dialogue.tscn")
 var dial
 
+var hasBeenHurt = false
+
 var canInput = false
 var canPause = false
 var hasBitchWon = false
@@ -130,7 +132,7 @@ func startLevel():
 	initiateCountdown()
 
 func levelUpLiraFormula(lv): #my lira
-	return round((60*(pow(lv, 2) - lv + 2))/PlayGlobals.LiraGainSpeed)
+	return round((80*(pow(lv, 2) - lv + 2))/PlayGlobals.LiraGainSpeed)
 	
 func levelUpLira():
 	liraLevel += 1
@@ -150,6 +152,7 @@ func heal(health):
 	if lives > 1 and player_health > 1: isWarning = false;
 	
 func hurtPlayer():
+	hasBeenHurt = true
 	player_health -= 1
 	
 	if player_health > 0:
