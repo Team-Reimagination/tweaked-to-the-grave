@@ -4,7 +4,7 @@ extends Node
 @onready var difficulty = $"../Difficulty"
 @onready var saveRow = [$Save/Buttons/New, $Save/Buttons/Resume, $Save/Buttons/Delete]
 
-var levels = ['SHR','SHR','SHR','SHR','SHR','SHR','SHR','SHR','SHR','SHR']
+var levels = ['SHR','RCR','COS','DFS','CTC','STS','PHA','SNH']
 var levelRow = []
 
 var surely = preload("res://assets/scenes/[SUB-SCENES]/question_menu/question_menu.tscn")
