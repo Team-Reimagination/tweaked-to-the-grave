@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cujwljsijmm7d"]
+
+[ext_resource type="Texture2D" uid="uid://dqhuhqpd2r6w7" path="res://assets/objects/obstacles/shr/cactus_cactus.png" id="1_hgfai"]
+
+[resource]
+resource_name = "Cactus"
+cull_mode = 2
+albedo_texture = ExtResource("1_hgfai")
+roughness = 0.5

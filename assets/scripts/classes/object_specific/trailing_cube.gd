@@ -17,18 +17,3 @@ func movemental():
 		if !isDying:
 			$Thud.play()
 			movemental()
-
-func imKillingMyself():
-	isGhost = true
-	isDying = true
-	
-	$Explosion.visible = true
-	$Explosion.play("default")
-	
-	if !scene.hasBitchWon: $Explode.play()
-	
-	$Shadow.visible = false
-	$Model.visible = false
-	
-	await $Explosion.animation_finished
-	queue_free()

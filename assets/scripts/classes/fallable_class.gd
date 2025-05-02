@@ -6,6 +6,8 @@ extends TTTG_Obstacle
 @export var doFall = true
 @export var fallDistance = 500
 @export var fallTime = 1.0
+@export var chosenEase = "in"
+@export var chosenTrans = "quart"
 
 var isFalling = false
 var isSpawning = true
@@ -38,14 +40,14 @@ func _process(delta: float) -> void:
 			isGhost = false
 			isSpawning = true
 			$Shadow.visible = true
-			$Unearth.play()
+			if $Unearth.stream != null: $Unearth.play()
 	
 	if doFall and !isFalling and self.global_position.z > -fallDistance:
 		isFalling = true
 		var tweeny = get_tree().create_tween()
-		tweeny.tween_property($Model, "rotation_degrees", $FallAngle.rotation_degrees, fallTime).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
-		tweeny.set_parallel(true).tween_property($Hitbox, "rotation_degrees", $FallAngle.rotation_degrees, fallTime).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
-		tweeny.set_parallel(true).tween_property($Narrowbox, "rotation_degrees", $FallAngle.rotation_degrees, fallTime).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
+		tweeny.tween_property($Model, "rotation_degrees", $FallAngle.rotation_degrees, fallTime).set_ease(PlayGlobals.getEaseType(chosenEase)).set_trans(PlayGlobals.getTransType(chosenTrans))
+		tweeny.set_parallel(true).tween_property($Hitbox, "rotation_degrees", $FallAngle.rotation_degrees, fallTime).set_ease(PlayGlobals.getEaseType(chosenEase)).set_trans(PlayGlobals.getTransType(chosenTrans))
+		tweeny.set_parallel(true).tween_property($Narrowbox, "rotation_degrees", $FallAngle.rotation_degrees, fallTime).set_ease(PlayGlobals.getEaseType(chosenEase)).set_trans(PlayGlobals.getTransType(chosenTrans))
 
 func victory_screech():
 	queue_free()
@@ -54,7 +56,7 @@ func imKillingMyself():
 	isGhost = true
 	isDying = true
 	
-	$Unearth.stop()
+	if $Unearth.stream != null: $Unearth.stop()
 	$Explosion.visible = true
 	$Explosion.play("default")
 	

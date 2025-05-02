@@ -199,14 +199,14 @@ func giveMeLife():
 	
 	updateIcon()
 
-func bonusing(type, lira):
-	scene.addLira(lira)
+func bonusing(type, aslira):
+	scene.addLira(aslira)
 	$"../Audio/Lira".play()
 	
 	var boner : Label = $BaseBonus.duplicate()
 	BonusGroup.add_child(boner)
 	boner.visible = true
-	boner.text = str(type)+" +"+str(lira)+" lira"
+	boner.text = str(type)+" +"+str(aslira)+" lira"
 	
 	var fonty : Font = boner.label_settings.font
 	boner.size.x = fonty.get_string_size(boner.text, HORIZONTAL_ALIGNMENT_RIGHT, -1, boner.label_settings.font_size).x * 1.38
