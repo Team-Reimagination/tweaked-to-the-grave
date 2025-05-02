@@ -9,8 +9,8 @@ var difficulty = 2
 var areWeFNFFreeDownload = false
 
 var diffMod = {
-	0: [0.3, true, true, [10,3], 0.5, 10, 1.5, true],
-	1: [0.6, true, false, [5,3], 0.75, 10, 1.25, true],
+	0: [0.6, true, true, [10,3], 0.8, 10, 1.5, true],
+	1: [0.8, true, false, [5,3], 0.9, 10, 1.25, true],
 	2: [1.0, true, false, [3,3], 1, 10, 1, true],
 	3: [2.0, false, false, [1,3], 1, 5, 0.5, true],
 	4: [4.0, false, false, [1,1], 1, 1, 0.0, false]
@@ -70,7 +70,6 @@ func setDefaults(diffy):
 	bulletCooldown = diffy[4]
 	maxLiraLevel = diffy[5]
 	LiraGainSpeed = diffy[6]
-	doColelctibles = diffy[7]
 	
 	ownedLira = 0
 	ownedLiraProgress = 0
