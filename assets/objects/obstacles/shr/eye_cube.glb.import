@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b2jbe7c5jgbh6"
-path="res://.godot/imported/obelisk.glb-6e7740486f94b1fc531c73f64056ae79.scn"
+uid="uid://chlufv3eqi6ec"
+path="res://.godot/imported/eye_cube.glb-10a747de42c91f331374ac90282ba53c.scn"
 
 [deps]
 
-source_file="res://assets/objects/falling_obj/obelisk.glb"
-dest_files=["res://.godot/imported/obelisk.glb-6e7740486f94b1fc531c73f64056ae79.scn"]
+source_file="res://assets/objects/obstacles/shr/eye_cube.glb"
+dest_files=["res://.godot/imported/eye_cube.glb-10a747de42c91f331374ac90282ba53c.scn"]
 
 [params]
 
@@ -32,13 +32,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"Obelisk": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/objects/falling_obj/Obelisk.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

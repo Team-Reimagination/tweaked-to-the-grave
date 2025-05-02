@@ -1,36 +1,41 @@
-[gd_scene load_steps=39 format=4 uid="uid://cdfpc8x1cjlhi"]
+[gd_scene load_steps=40 format=4 uid="uid://cdfpc8x1cjlhi"]
 
-[ext_resource type="Script" uid="uid://dh584045bxl86" path="res://assets/scripts/classes/fallable_class.gd" id="1_ooejf"]
-[ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="2_36rt0"]
-[ext_resource type="Shader" uid="uid://bdrwiprw3hnm1" path="res://assets/shaders/object/colorMod3D.gdshader" id="2_ooejf"]
-[ext_resource type="Texture2D" uid="uid://kktn0d7mkj2g" path="res://assets/objects/falling_obj/obelisk_obelisk.png" id="3_fy3an"]
-[ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="4_iit3d"]
-[ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="5_fcx5a"]
-[ext_resource type="Texture2D" uid="uid://b6u1b3yxgifvg" path="res://assets/objects/general/ship/ship_Elephant_emission.png" id="5_k5gtn"]
-[ext_resource type="Texture2D" uid="uid://fvopa4yo5pm2" path="res://assets/images/fx/shadow.png" id="8_k5gtn"]
-[ext_resource type="AudioStream" uid="uid://v2tgwl75erpi" path="res://assets/sounds/gameplay/explode.ogg" id="9_0lvkx"]
-[ext_resource type="AudioStream" uid="uid://cuet2xupti671" path="res://assets/sounds/entities/unearth_sand.ogg" id="9_ooejf"]
-[ext_resource type="Texture2D" uid="uid://bekrp7111ygmi" path="res://assets/images/fx/explosion.png" id="11_wy7mn"]
+[ext_resource type="Script" uid="uid://dh584045bxl86" path="res://assets/scripts/classes/fallable_class.gd" id="1_ywt1d"]
+[ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="2_3rop1"]
+[ext_resource type="Texture2D" uid="uid://kktn0d7mkj2g" path="res://assets/objects/obstacles/shr/obelisk_obelisk.png" id="3_ywt1d"]
+[ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="4_suyfp"]
+[ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="6_jvvkv"]
+[ext_resource type="Shader" uid="uid://bdrwiprw3hnm1" path="res://assets/shaders/object/colorMod3D.gdshader" id="7_e2ne7"]
+[ext_resource type="Texture2D" uid="uid://fvopa4yo5pm2" path="res://assets/images/fx/shadow.png" id="8_h7sut"]
+[ext_resource type="AudioStream" uid="uid://v2tgwl75erpi" path="res://assets/sounds/gameplay/explode.ogg" id="9_v2y1e"]
+[ext_resource type="AudioStream" uid="uid://cuet2xupti671" path="res://assets/sounds/entities/unearth_sand.ogg" id="10_7imtx"]
+[ext_resource type="Texture2D" uid="uid://bekrp7111ygmi" path="res://assets/images/fx/explosion.png" id="11_to0in"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ooejf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt26h"]
 render_priority = 1
-shader = ExtResource("2_36rt0")
-shader_parameter/albedo_texture = ExtResource("3_fy3an")
-shader_parameter/diffuse_gradient = ExtResource("4_iit3d")
-shader_parameter/specular_gradient = ExtResource("5_fcx5a")
-shader_parameter/emissive_texture = ExtResource("5_k5gtn")
+shader = ExtResource("2_3rop1")
+shader_parameter/albedo_texture = ExtResource("3_ywt1d")
+shader_parameter/diffuse_gradient = ExtResource("4_suyfp")
+shader_parameter/specular_gradient = ExtResource("6_jvvkv")
 shader_parameter/fade_start = 0.0
 shader_parameter/fade_end = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0pcqn"]
-resource_local_to_scene = true
-render_priority = 1
-shader = ExtResource("2_ooejf")
+[sub_resource type="Gradient" id="Gradient_gkijb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rmr6j"]
+gradient = SubResource("Gradient_gkijb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywt1d"]
+render_priority = 0
+shader = ExtResource("7_e2ne7")
+shader_parameter/tex = SubResource("GradientTexture1D_rmr6j")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/intensity = 0.0
 shader_parameter/doTransparency = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_gshns"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ilcup"]
 _surfaces = [{
 "aabb": AABB(-1.10135, -0.198584, -1.10135, 2.20271, 7.56183, 2.20271),
 "format": 34359742465,
@@ -44,8 +49,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_merpy"]
-resource_local_to_scene = true
+[sub_resource type="ArrayMesh" id="ArrayMesh_qb7gc"]
 resource_name = "obelisk_Cube"
 _surfaces = [{
 "aabb": AABB(-1.10135, -0.198584, -1.10135, 2.20271, 7.56183, 2.20271),
@@ -60,7 +64,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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yr/MPgrmwUDKv8y+XVUWP0k+wkBdVRY/XVUWP0k+wkBdVRY/XVUWP8ynyUBdVRa/XVUWP0k+wkBdVRa/XVUWP8ynyUBdVRY/XVUWP0k+wkBdVRa/XVUWv8ynyUBdVRa/XVUWv0k+wkBdVRa/XVUWP8ynyUBdVRa/XVUWv0k+wkBdVRa/XVUWv8ynyUBdVRY/XVUWv0k+wkBdVRY/XVUWv8ynyUBdVRa/W6ETP57ouj9boRO/yr/MvgrmwUDKv8y+W6ETv57ouj9boRO/yr/MPgrmwUDKv8y+W6ETv57ouj9boRM/yr/MPgrmwUDKv8w+W6ETP57ouj9boRM/yr/MvgrmwUDKv8w+W6ETv57ouj9boRO/yr/MvgrmwUDKv8w+W6ETv57ouj9boRM/yr/MvgrmwUDKv8y+XVUWv0k+wkBdVRY/XVUWP8ynyUBdVRY/XVUWP0k+wkBdVRY/XVUWv8ynyUBdVRY/XVUWP8ynyUBdVRY/AAAAALmf60AAAACAXVUWP8ynyUBdVRa/XVUWP8ynyUBdVRa/AAAAALmf60AAAACAXVUWv8ynyUBdVRa/XVUWv8ynyUBdVRa/AAAAALmf60AAAACAXVUWv8ynyUBdVRY/XVUWv8ynyUBdVRY/AAAAALmf60AAAACAXVUWP8ynyUBdVRY/aeMAAAAA/79p4wAAAAD/v2njAAAAAP+/aeMAAAAA/7//fwWa////v/9/BZr///+//38Fmv///7//fwWa////vwUaBZr/f/+/BRoFmv9//78FGgWa/3//vwUaBZr/f/+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7/55QWa//////nlBZr/////+eUFmv/////55QWa//////nl//8AAP+/+eX//wAA/7/55f//AAD/v/nl//8AAP+//3///////7//f////v//v/9////+//+//3///////7//f/////8AgP9//////wCA/3//////AID/f/////////9/////f/+//3////9//7//f////3//v/9/////f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v2njamP/////aeNqY/////9p42pj/////2njamP/////lRxqY/9//7+VHGpj/3//v5UcamP/f/+/lRxqY/9//7//f2pj////v/9/amP///+//39qY////7//f2pj////v/9/vWr///+//3+9av///7//f71q////v/9/vWr///+//3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//////AAD/v/////8AAP+//////wAA/7//////AAD/v////3/+/wCA////f/7/AID///9//v8AgP///3/+/wCA/3////7//7//f////v//v/9////+//+//3////7//7//f/7////+//9//v////7//3/+////////f/7////+//9//v//f/+//3/+//9//7//f/7//3//v/9//v//f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f/9/////v/9//3////+//3//f////7//f/9/////v73qAAAAAP+/veoAAAAA/7+96gAAAAD/v73qAAAAAP+/veq9av////+96r1q/////73qvWr/////veq9av////9BFb1q/3//v0EVvWr/f/+/QRW9av9//79BFb1q/3//vwl59QZr/BqfCXn1Bmv8Gp8JefUGa/wanwl59Qb///+//////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9//////wAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3////7//7//f////v//v/9////+//+//3////7//7//f//////+//9///////7//3///////v//f//////+//9/////f/+//3////9//7//f////3//v/9/////f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/79C+7yE/////0L7vIT/////Qvu8hP////9C+7yE//////9/9QZOAsuq/3/1Bk4Cy6r/f/UGNb41Pv9/9QZOAsuq9YYAAGv8Gh/1hgAAa/waH/WGAAD///+/9YYAAGv8Gh/1hvUGb8PvwfWG9QZW+3vX9Yb1Bmv85OD1hvUGNb7Jwf///3//f/+/////f/9//7////9//3//v////3//f/+///////7//7//////////v/////////+///////7//78AAP9//v8AgAAA/3///wCAAAD/f/////8AAP9//v8AgEL7//8AAP+/Qvv//wAA/79C+///AAD/v0L7//8AAP+//3+8hP7//7//f7yE////v/9/vIT+//+//3+8hP///7+8BLyE/3//v7wEvIT/f/+/vAS8hP9//7+8BLyE/3//v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+/aNKWrf7/AIBo0pat/v8AgGjSlq3+/wCAaNL//wAA/79o0v//AAD/v2jS//8AAP+/li2Wrf9//7+WLZat/3//v5Ytlq3/f/+//3+Wrf7//7//f5at/v//v/9/lq3+//+/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_gshns")
+shadow_mesh = SubResource("ArrayMesh_ilcup")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0pcqn"]
 data = PackedVector3Array(0.8053, 0.1986, -0.8053, -0.9011, 0.5316, -0.9011, -0.8053, 0.1986, -0.8053, 0.8053, 0.1986, -0.8053, 0.9011, 0.5316, -0.9011, -0.9011, 0.5316, -0.9011, 1.1014, -0.1986, 1.1014, -1, 0.1986, 1, 1, 0.1986, 1, 1.1014, -0.1986, 1.1014, -1.1014, -0.1986, 1.1014, -1, 0.1986, 1, -1.1014, -0.1986, 1.1014, -1, 0.1986, -1, -1, 0.1986, 1, -1.1014, -0.1986, 1.1014, -1.1014, -0.1986, -1.1014, -1, 0.1986, -1, -1.1014, -0.1986, -1.1014, 1.1014, -0.1986, 1.1014, 1.1014, -0.1986, -1.1014, -1.1014, -0.1986, -1.1014, -1.1014, -0.1986, 1.1014, 1.1014, -0.1986, 1.1014, 1.1014, -0.1986, -1.1014, 1, 0.1986, 1, 1, 0.1986, -1, 1.1014, -0.1986, -1.1014, 1.1014, -0.1986, 1.1014, 1, 0.1986, 1, -1.1014, -0.1986, -1.1014, 1, 0.1986, -1, -1, 0.1986, -1, -1.1014, -0.1986, -1.1014, 1.1014, -0.1986, -1.1014, 1, 0.1986, -1, 0.8053, 0.1986, 0.8053, -1, 0.1986, 1, -0.8053, 0.1986, 0.8053, 0.8053, 0.1986, 0.8053, 1, 0.1986, 1, -1, 0.1986, 1, 0.8053, 0.1986, -0.8053, 1, 0.1986, 1, 0.8053, 0.1986, 0.8053, 0.8053, 0.1986, -0.8053, 1, 0.1986, -1, 1, 0.1986, 1, -0.8053, 0.1986, 0.8053, -1, 0.1986, -1, -0.8053, 0.1986, -0.8053, -0.8053, 0.1986, 0.8053, -1, 0.1986, 1, -1, 0.1986, -1, -0.8053, 0.1986, -0.8053, 1, 0.1986, -1, 0.8053, 0.1986, -0.8053, -0.8053, 0.1986, -0.8053, -1, 0.1986, -1, 1, 0.1986, -1, -0.9011, 0.5316, -0.9011, -0.9011, 0.8665, 0.9011, -0.9011, 0.5316, 0.9011, -0.9011, 0.5316, -0.9011, -0.9011, 0.8665, -0.9011, -0.9011, 0.8665, 0.9011, 0.8053, 0.1986, 0.8053, 0.9011, 0.5316, -0.9011, 0.8053, 0.1986, -0.8053, 0.8053, 0.1986, 0.8053, 0.9011, 0.5316, 0.9011, 0.9011, 0.5316, -0.9011, -0.8053, 0.1986, -0.8053, -0.9011, 0.5316, 0.9011, -0.8053, 0.1986, 0.8053, -0.8053, 0.1986, -0.8053, -0.9011, 0.5316, -0.9011, -0.9011, 0.5316, 0.9011, -0.8053, 0.1986, 0.8053, 0.9011, 0.5316, 0.9011, 0.8053, 0.1986, 0.8053, -0.8053, 0.1986, 0.8053, -0.9011, 0.5316, 0.9011, 0.9011, 0.5316, 0.9011, -0.6964, 0.8665, 0.6964, 0.7571, 1.1714, 0.7571, 0.6964, 0.8665, 0.6964, -0.6964, 0.8665, 0.6964, -0.7571, 1.1714, 0.7571, 0.7571, 1.1714, 0.7571, -0.9011, 0.5316, 0.9011, 0.9011, 0.8665, 0.9011, 0.9011, 0.5316, 0.9011, -0.9011, 0.5316, 0.9011, -0.9011, 0.8665, 0.9011, 0.9011, 0.8665, 0.9011, 0.9011, 0.5316, -0.9011, -0.9011, 0.8665, -0.9011, -0.9011, 0.5316, -0.9011, 0.9011, 0.5316, -0.9011, 0.9011, 0.8665, -0.9011, -0.9011, 0.8665, -0.9011, 0.9011, 0.5316, 0.9011, 0.9011, 0.8665, -0.9011, 0.9011, 0.5316, -0.9011, 0.9011, 0.5316, 0.9011, 0.9011, 0.8665, 0.9011, 0.9011, 0.8665, -0.9011, 0.6964, 0.8665, 0.6964, -0.9011, 0.8665, 0.9011, -0.6964, 0.8665, 0.6964, 0.6964, 0.8665, 0.6964, 0.9011, 0.8665, 0.9011, -0.9011, 0.8665, 0.9011, 0.6964, 0.8665, -0.6964, 0.9011, 0.8665, 0.9011, 0.6964, 0.8665, 0.6964, 0.6964, 0.8665, -0.6964, 0.9011, 0.8665, -0.9011, 0.9011, 0.8665, 0.9011, -0.6964, 0.8665, 0.6964, -0.9011, 0.8665, -0.9011, -0.6964, 0.8665, -0.6964, -0.6964, 0.8665, 0.6964, -0.9011, 0.8665, 0.9011, -0.9011, 0.8665, -0.9011, -0.6964, 0.8665, -0.6964, 0.9011, 0.8665, -0.9011, 0.6964, 0.8665, -0.6964, -0.6964, 0.8665, -0.6964, -0.9011, 0.8665, -0.9011, 0.9011, 0.8665, -0.9011, -0.7571, 1.1714, 0.7571, 0.7571, 1.4602, 0.7571, 0.7571, 1.1714, 0.7571, -0.7571, 1.1714, 0.7571, -0.7571, 1.4602, 0.7571, 0.7571, 1.4602, 0.7571, 0.6964, 0.8665, -0.6964, -0.7571, 1.1714, -0.7571, -0.6964, 0.8665, -0.6964, 0.6964, 0.8665, -0.6964, 0.7571, 1.1714, -0.7571, -0.7571, 1.1714, -0.7571, 0.6964, 0.8665, 0.6964, 0.7571, 1.1714, -0.7571, 0.6964, 0.8665, -0.6964, 0.6964, 0.8665, 0.6964, 0.7571, 1.1714, 0.7571, 0.7571, 1.1714, -0.7571, -0.6964, 0.8665, -0.6964, -0.7571, 1.1714, 0.7571, -0.6964, 0.8665, 0.6964, -0.6964, 0.8665, -0.6964, -0.7571, 1.1714, -0.7571, -0.7571, 1.1714, 0.7571, -0.3999, 6.0593, -0.3999, -0.5872, 6.0701, 0.5872, -0.3999, 6.0593, 0.3999, -0.3999, 6.0593, -0.3999, -0.5872, 6.0701, -0.5872, -0.5872, 6.0701, 0.5872, 0.7571, 1.1714, -0.7571, -0.7571, 1.4602, -0.7571, -0.7571, 1.1714, -0.7571, 0.7571, 1.1714, -0.7571, 0.7571, 1.4602, -0.7571, -0.7571, 1.4602, -0.7571, 0.7571, 1.1714, 0.7571, 0.7571, 1.4602, -0.7571, 0.7571, 1.1714, -0.7571, 0.7571, 1.1714, 0.7571, 0.7571, 1.4602, 0.7571, 0.7571, 1.4602, -0.7571, -0.7571, 1.1714, -0.7571, -0.7571, 1.4602, 0.7571, -0.7571, 1.1714, 0.7571, -0.7571, 1.1714, -0.7571, -0.7571, 1.4602, -0.7571, -0.7571, 1.4602, 0.7571, 0.5767, 1.4602, 0.5767, -0.7571, 1.4602, 0.7571, -0.5767, 1.4602, 0.5767, 0.5767, 1.4602, 0.5767, 0.7571, 1.4602, 0.7571, -0.7571, 1.4602, 0.7571, 0.5767, 1.4602, -0.5767, 0.7571, 1.4602, 0.7571, 0.5767, 1.4602, 0.5767, 0.5767, 1.4602, -0.5767, 0.7571, 1.4602, -0.7571, 0.7571, 1.4602, 0.7571, -0.5767, 1.4602, 0.5767, -0.7571, 1.4602, -0.7571, -0.5767, 1.4602, -0.5767, -0.5767, 1.4602, 0.5767, -0.7571, 1.4602, 0.7571, -0.7571, 1.4602, -0.7571, -0.5767, 1.4602, -0.5767, 0.7571, 1.4602, -0.7571, 0.5767, 1.4602, -0.5767, -0.5767, 1.4602, -0.5767, -0.7571, 1.4602, -0.7571, 0.7571, 1.4602, -0.7571, 0.5767, 1.4602, 0.5767, 0.3999, 6.0593, -0.3999, 0.5767, 1.4602, -0.5767, 0.5767, 1.4602, 0.5767, 0.3999, 6.0593, 0.3999, 0.3999, 6.0593, -0.3999, -0.3999, 6.0593, 0.3999, 0.5872, 6.0701, 0.5872, 0.3999, 6.0593, 0.3999, -0.3999, 6.0593, 0.3999, -0.5872, 6.0701, 0.5872, 0.5872, 6.0701, 0.5872, 0.3999, 6.0593, -0.3999, -0.5872, 6.0701, -0.5872, -0.3999, 6.0593, -0.3999, 0.3999, 6.0593, -0.3999, 0.5872, 6.0701, -0.5872, -0.5872, 6.0701, -0.5872, 0.3999, 6.0593, 0.3999, 0.5872, 6.0701, -0.5872, 0.3999, 6.0593, -0.3999, 0.3999, 6.0593, 0.3999, 0.5872, 6.0701, 0.5872, 0.5872, 6.0701, -0.5872, 0.5872, 6.0701, 0.5872, 0.5872, 6.3017, -0.5872, 0.5872, 6.0701, -0.5872, 0.5872, 6.0701, 0.5872, 0.5872, 6.3017, 0.5872, 0.5872, 6.3017, -0.5872, 0.5872, 6.0701, -0.5872, -0.5872, 6.3017, -0.5872, -0.5872, 6.0701, -0.5872, 0.5872, 6.0701, -0.5872, 0.5872, 6.3017, -0.5872, -0.5872, 6.3017, -0.5872, -0.5872, 6.0701, -0.5872, -0.5872, 6.3017, 0.5872, -0.5872, 6.0701, 0.5872, -0.5872, 6.0701, -0.5872, -0.5872, 6.3017, -0.5872, -0.5872, 6.3017, 0.5872, 0.5767, 1.4602, -0.5767, -0.3999, 6.0593, -0.3999, -0.5767, 1.4602, -0.5767, 0.5767, 1.4602, -0.5767, 0.3999, 6.0593, -0.3999, -0.3999, 6.0593, -0.3999, -0.5767, 1.4602, 0.5767, 0.3999, 6.0593, 0.3999, 0.5767, 1.4602, 0.5767, -0.5767, 1.4602, 0.5767, -0.3999, 6.0593, 0.3999, 0.3999, 6.0593, 0.3999, -0.5767, 1.4602, -0.5767, -0.3999, 6.0593, 0.3999, -0.5767, 1.4602, 0.5767, -0.5767, 1.4602, -0.5767, -0.3999, 6.0593, -0.3999, -0.3999, 6.0593, 0.3999, -0.5872, 6.0701, 0.5872, 0.5872, 6.3017, 0.5872, 0.5872, 6.0701, 0.5872, -0.5872, 6.0701, 0.5872, -0.5872, 6.3017, 0.5872, 0.5872, 6.3017, 0.5872, 0.5872, 6.3017, 0.5872, 0, 7.3632, 0, 0.5872, 6.3017, -0.5872, 0.5872, 6.3017, -0.5872, 0, 7.3632, 0, -0.5872, 6.3017, -0.5872, -0.5872, 6.3017, -0.5872, 0, 7.3632, 0, -0.5872, 6.3017, 0.5872, -0.5872, 6.3017, 0.5872, 0, 7.3632, 0, 0.5872, 6.3017, 0.5872)
@@ -69,83 +73,83 @@ data = PackedVector3Array(0.8053, 0.1986, -0.8053, -0.9011, 0.5316, -0.9011, -0.
 points = PackedVector3Array(-1.10135, -0.198584, -1.10135, 1.10135, -0.198584, -1.10135, -1.10135, -0.198584, 1.10135, -0.587332, 6.30107, -0.587332, 1.10135, -0.198584, 1.10135, 0.587116, 6.30107, -0.587332, -0.587332, 6.30107, 0.587116, 0, 7.36325, 0, 0.587116, 6.30107, 0.587116)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y37a"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(0, 0, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4yb1n"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(71, 0, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onolm"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(142, 0, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4wrw"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(213, 0, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_atbkl"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(284, 0, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v52s4"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(0, 100, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nifj1"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(71, 100, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7a8rk"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(142, 100, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oko8s"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(213, 100, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lm635"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(284, 100, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ap76o"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(0, 200, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nyid8"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(71, 200, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vntvu"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(142, 200, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwhu4"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(213, 200, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvcr8"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(284, 200, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1lu1c"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(0, 300, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onba7"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(71, 300, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_23ccb"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(142, 300, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3lmj"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(213, 300, 71, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a4f2o"]
-atlas = ExtResource("11_wy7mn")
+atlas = ExtResource("11_to0in")
 region = Rect2(284, 300, 71, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6rirn"]
@@ -218,7 +222,7 @@ animations = [{
 
 [node name="Obelisk" type="Area3D"]
 input_ray_pickable = false
-script = ExtResource("1_ooejf")
+script = ExtResource("1_ywt1d")
 health = 50
 type = "enemy"
 isGameplayObject = true
@@ -226,11 +230,10 @@ metadata/_custom_type_script = "uid://dh584045bxl86"
 
 [node name="Model" type="Node3D" parent="."]
 
-[node name="Cube" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213301, 0)
-material_override = SubResource("ShaderMaterial_ooejf")
-material_overlay = SubResource("ShaderMaterial_0pcqn")
-mesh = SubResource("ArrayMesh_merpy")
+[node name="Cube2" type="MeshInstance3D" parent="Model"]
+material_override = SubResource("ShaderMaterial_jt26h")
+material_overlay = SubResource("ShaderMaterial_ywt1d")
+mesh = SubResource("ArrayMesh_qb7gc")
 skeleton = NodePath("")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
@@ -245,28 +248,26 @@ shape = SubResource("ConvexPolygonShape3D_0lvkx")
 transform = Transform3D(0.0299458, 0, 0, 0, -1.3546e-09, -1, 0, 0.0309895, -4.37114e-08, 0, 0.01, 0)
 modulate = Color(1, 1, 1, 0.5)
 pixel_size = 1.0
-texture = ExtResource("8_k5gtn")
+texture = ExtResource("8_h7sut")
 
 [node name="SpawnAngle" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 enabled = false
 exclude_parent = false
 target_position = Vector3(0, 7.5, 0)
 
 [node name="FallAngle" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 enabled = false
 exclude_parent = false
 target_position = Vector3(0, 8, 0)
 
 [node name="Explode" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.91183, 0)
-stream = ExtResource("9_0lvkx")
+stream = ExtResource("9_v2y1e")
 unit_size = 100.0
 bus = &"SFX"
 
 [node name="Unearth" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
-stream = ExtResource("9_ooejf")
+stream = ExtResource("10_7imtx")
 unit_size = 100.0
 bus = &"SFX"
 

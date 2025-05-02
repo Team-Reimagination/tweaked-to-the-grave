@@ -13,7 +13,7 @@ var doMove = false
 @onready var endPos = $EndPos
 
 func _process(delta: float) -> void:
-	if doMove: position.z += scene.scrollSpeed * delta * scene.scrollModFLOOR[1] * (scene.btmF.scale.z*2.0)
+	if doMove: position.z += PlayGlobals.moveSpeed(delta, scene);
 	
 	if get_child_count() <= 2:
 		self.queue_free()

@@ -140,3 +140,6 @@ func getTransType(twans):
 	elif twans == 'sine': return Tween.TRANS_SINE
 	elif twans == 'spring': return Tween.TRANS_SPRING
 	else: return Tween.TRANS_LINEAR
+
+func moveSpeed(delta, scene):
+	return scene.scrollSpeed * delta * scene.scrollModFLOOR[1] * (scene.btmF.scale.z*2.0)
