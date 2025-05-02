@@ -320,6 +320,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -6.51518, 0)
 transform = Transform3D(0.999998, 0.00091859, 0.0015737, 0.00155403, 0.0210465, -0.999777, -0.000951489, 0.999778, 0.021045, 0, 0, 0)
 
 [node name="4" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_ay21j")
 chanceWeight = 0.85
 metadata/_custom_type_script = "uid://8fviwb4leujf"
@@ -336,6 +337,7 @@ speed = 0.65
 shortRenderDistance = true
 
 [node name="5" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_ay21j")
 chanceWeight = 0.8
 metadata/_custom_type_script = "uid://8fviwb4leujf"
@@ -352,6 +354,56 @@ speed = 1.0
 health = 150
 shortRenderDistance = true
 
+[node name="6" type="Node3D" parent="."]
+script = ExtResource("1_ay21j")
+chanceWeight = 0.8
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -193.641)
+
+[node name="StartPos" type="Marker3D" parent="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.918625)
+
+[node name="Eye Cube" parent="6" instance=ExtResource("9_skrh5")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 12.1, -164.998)
+speed = 0.4
+shortRenderDistance = true
+
+[node name="Obelisk" parent="6" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(8.75, 0, 0, 0, 8.75, 0, 0, 0, 8.75, -32.0721, 0, -37.2463)
+doFall = false
+fallDistance = 200
+
+[node name="SpawnAngle" parent="6/Obelisk" index="4"]
+transform = Transform3D(0.613348, -0.368553, 0.69855, 0, 0.884451, 0.466634, -0.789813, -0.286209, 0.542476, 2.59208, -6.70798, 2.09583)
+
+[node name="Obelisk2" parent="6" instance=ExtResource("3_kw5fw")]
+transform = Transform3D(8.75, 0, 0, 0, 8.75, 0, 0, 0, 8.75, 31.4757, 0, -37.2463)
+doFall = false
+fallDistance = 200
+
+[node name="SpawnAngle" parent="6/Obelisk2" index="4"]
+transform = Transform3D(0.570714, 0.382973, -0.726373, 0, 0.884581, 0.466387, 0.821149, -0.266173, 0.504842, -2.66421, -6.69651, 2.04761)
+
+[node name="Lira-1" parent="6" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.8328, -22.8665)
+
+[node name="Lira-2" parent="6" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.5132, -34.7311)
+
+[node name="Lira-3" parent="6" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 52.7605, -53.5124)
+
+[node name="Lira-4" parent="6" instance=ExtResource("4_6xtxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 54.4607, -67.1838)
+
+[node name="Lira-5" parent="6" instance=ExtResource("5_vxlka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 54.1742, -84.5833)
+
+[node name="Lira-6" parent="6" instance=ExtResource("8_qndkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00444794, 19.4667, -9.78016)
+
 [editable path="0_Obelisks/Obelisk"]
 [editable path="0_Obelisks/Obelisk2"]
 [editable path="0_Obelisks/Obelisk3"]
@@ -362,3 +414,5 @@ shortRenderDistance = true
 [editable path="2/Obelisk"]
 [editable path="2/Obelisk2"]
 [editable path="3/Obelisk2"]
+[editable path="6/Obelisk"]
+[editable path="6/Obelisk2"]
