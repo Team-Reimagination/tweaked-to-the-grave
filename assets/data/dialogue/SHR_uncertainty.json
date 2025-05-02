@@ -3,18 +3,22 @@
 	"events": [
 		{
 			"char": "tweak",
-			"text": "I'll admit, that little toy you're piloting has some power to it.",
+			"text": "Pff, that little toy may have some power to it, HOWEVER...",
 			"nextAccess": "timeout",
+			"voice": "SHR_Tweak_Toy",
+			"voiceTimeout": 0.4
 		},
 		{
 			"char": "tweak",
-			"text": "But think that it'll do much and soon regret will follow.",
+			"text": "Think that it'll do much and soon regret will follow.",
 			"nextAccess": "timeout",
+			"voice": "SHR_Tweak_Regret"
 		},
 		{
 			"char": "seezee",
 			"text": "Hmph. Don't get cocky.",
 			"nextAccess": "timeout",
+			"voice": "SHR_Seezee_Cocky"
 		}
 	]
 }
