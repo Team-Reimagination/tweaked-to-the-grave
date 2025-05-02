@@ -1,4 +1,4 @@
-[gd_scene load_steps=227 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=231 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="AudioStream" uid="uid://c3a1fmviekmje" path="res://assets/sounds/ambience/warning.ogg" id="2_ngmgm"]
@@ -44,7 +44,9 @@
 [ext_resource type="Script" uid="uid://di2hc41ng4wpy" path="res://assets/scenes/play_state/victryoscren.gd" id="40_0fg0f"]
 [ext_resource type="Texture2D" uid="uid://cm1embabod06s" path="res://assets/images/hud/victroy/ourbuddy.png" id="40_fnjxo"]
 [ext_resource type="PackedScene" uid="uid://d0mmd2bco6rdt" path="res://assets/images/hud/victroy/smashtext.tscn" id="41_0fg0f"]
+[ext_resource type="Texture2D" uid="uid://cw6f14yw11wfk" path="res://assets/images/hud/bonus-9.png" id="42_0uu6m"]
 [ext_resource type="Texture2D" uid="uid://b1rtrlroqpxcq" path="res://assets/images/hud/victroy/awesome.png" id="42_1wqxm"]
+[ext_resource type="Script" uid="uid://ctwkf3h4x5sor" path="res://assets/scenes/play_state/boner.gd" id="43_0752p"]
 [ext_resource type="Texture2D" uid="uid://bca1qpia2w2bb" path="res://assets/images/hud/victroy/justthankyou.png" id="43_j6ssd"]
 [ext_resource type="Texture2D" uid="uid://duh4vga6yaw8t" path="res://assets/images/levels/SHR/titlecard.png" id="45_1wqxm"]
 [ext_resource type="Texture2D" uid="uid://clo76qhh5fjcf" path="res://assets/images/buttons/floating/proceed.png" id="46_oiu8i"]
@@ -1453,6 +1455,19 @@ font_size = 20
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0752p"]
+texture = ExtResource("42_0uu6m")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_d075b"]
+line_spacing = 0.0
+font = ExtResource("14_yewxg")
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
 [node name="PlayState" type="Node3D"]
 process_mode = 1
 script = ExtResource("1_edc5a")
@@ -1878,6 +1893,24 @@ label_settings = SubResource("LabelSettings_lpcyh")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="BaseBonus" type="Label" parent="HUD"]
+visible = false
+offset_left = 1281.0
+offset_top = 437.0
+offset_right = 1577.0
+offset_bottom = 474.0
+size_flags_stretch_ratio = 0.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_0752p")
+text = "Am I a joke to you? +69 LIRA"
+label_settings = SubResource("LabelSettings_d075b")
+horizontal_alignment = 1
+vertical_alignment = 2
+clip_text = true
+uppercase = true
+script = ExtResource("43_0752p")
+
+[node name="BonusGroup" type="CanvasGroup" parent="HUD"]
 
 [node name="Victory" type="CanvasLayer" parent="."]
 layer = 3

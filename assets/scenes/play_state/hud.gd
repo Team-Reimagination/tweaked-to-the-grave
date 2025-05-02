@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var explosion = $Explosion
 @onready var seezeeIcon = $HealthGroup/IconSeezee
 @onready var bossIcon = $HealthGroup/IconTweak
+@onready var BonusGroup = $BonusGroup
 
 var lira:int = 0;
 var liraShakeTween;
@@ -197,3 +198,26 @@ func giveMeLife():
 	$HealthGroup/IconSeezee/Lives/Label.text = str(scene.lives)
 	
 	updateIcon()
+
+func bonusing(type, lira):
+	scene.addLira(lira)
+	
+	var boner : Label = $BaseBonus.duplicate()
+	BonusGroup.add_child(boner)
+	boner.visible = true
+	boner.text = str(type)+" +"+str(lira)+" lira"
+	
+	var fonty : Font = boner.label_settings.font
+	boner.size.x = fonty.get_string_size(boner.text, HORIZONTAL_ALIGNMENT_RIGHT, -1, boner.label_settings.font_size).x * 1.38
+	
+	for a in range(BonusGroup.get_children().size()-1):
+		var childer = BonusGroup.get_child(a)
+		childer.yPos -= childer.size.y
+		
+	var tweeny = get_tree().create_tween().tween_property(boner, "position:x", boner.position.x - boner.size.x, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	
+	await tweeny.finished
+	tweeny = get_tree().create_tween().tween_property(boner, "modulate:a", 0.0, 0.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set_delay(5.0)
+	
+	await tweeny.finished
+	boner.queue_free()

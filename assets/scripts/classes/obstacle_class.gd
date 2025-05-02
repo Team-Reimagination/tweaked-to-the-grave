@@ -5,7 +5,9 @@ extends TTTG_Entity
 @export var camBeHit = true
 @export var isGhost = false
 @export var health = 0;
+
 var hasBeenLirad = false
+var ouchie = false
 
 var toFlash = []
 
@@ -46,7 +48,10 @@ func detectCollission(_areID, are, _arSID, _loSID):
 	if !scene.hasBitchWon:
 		if are.type == "player" and scene.player.canBeHit and _loSID == 0:
 			scene.hurtPlayer()
+			ouchie = true
 			return
-		if are.type == "player" and scene.player.canBeHit and _loSID == 1 and !hasBeenLirad:
-			scene.addLira(10)
-			hasBeenLirad = true
+		if are.type == "player" and scene.player.canBeHit and _loSID == 1 and !hasBeenLirad and !ouchie:
+			await get_tree().create_timer(0.3).timeout
+			if !ouchie:
+				scene.hud.bonusing("Right into danger!", 25)
+				hasBeenLirad = true
