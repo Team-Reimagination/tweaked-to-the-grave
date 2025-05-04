@@ -1866,7 +1866,7 @@ texture = ExtResource("25_is55c")
 [node name="Name" type="Label" parent="HUD/HealthGroup/HealthTweak"]
 offset_left = 1025.0
 offset_top = 31.0
-offset_right = 1216.0
+offset_right = 1277.0
 offset_bottom = 75.0
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("14_yewxg")
@@ -1884,6 +1884,7 @@ texture_under = ExtResource("28_3g363")
 texture_progress = ExtResource("29_f74kq")
 
 [node name="LevelName" type="Label" parent="HUD"]
+z_index = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

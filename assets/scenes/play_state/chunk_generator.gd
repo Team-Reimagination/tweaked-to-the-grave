@@ -20,7 +20,11 @@ var rng = RandomNumberGenerator.new()
 
 func prepareChunks() -> void:
 	#BACKGROUND
-	bgChunkNode = load("res://assets/data/chunks/"+PlayGlobals.levelID+"/background.tscn").instantiate()
+	bgChunkNode = load("res://assets/data/chunks/"+PlayGlobals.levelID+"/background.tscn")
+	if not bgChunkNode:
+		return
+	
+	bgChunkNode = bgChunkNode.instantiate()
 	bgChunks = bgChunkNode.get_children()
 	
 	for a in bgChunks:
@@ -32,7 +36,11 @@ func prepareChunks() -> void:
 		bgChunkWeights.append(a.chanceWeight)
 	
 	#LEVEL
-	lvChunkNode = load("res://assets/data/chunks/"+PlayGlobals.levelID+"/level.tscn").instantiate()
+	lvChunkNode = load("res://assets/data/chunks/"+PlayGlobals.levelID+"/level.tscn")
+	if not lvChunkNode:
+		return
+	
+	lvChunkNode = lvChunkNode.instantiate()
 	lvChunks = lvChunkNode.get_children()
 	
 	for a in lvChunks:
@@ -44,6 +52,7 @@ func prepareChunks() -> void:
 		lvChunkWeights.append(a.chanceWeight)
 		
 func makeBGChunk():
+	if bgChunks.size() == 0: return;
 	var chunker = bgChunks[rng.rand_weighted(bgChunkWeights)] if predictedBGChunk == null else predictedBGChunk
 	var newChunk = chunker.duplicate()
 	var ogPos = 0.0;
@@ -75,6 +84,7 @@ func makeBGChunk():
 	if newChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*2: makeBGChunk()
 
 func makeLVChunk():
+	if lvChunks.size() == 0: return;
 	var chunker2 = lvChunks[rng.rand_weighted(lvChunkWeights)] if predictedLVChunk == null else predictedLVChunk
 	var newChunk2 = chunker2.duplicate()
 	var ogPos2 = -scene.levelDefs.fog.distance.end;

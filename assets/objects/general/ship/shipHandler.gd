@@ -32,15 +32,15 @@ var barrelMod = 1.0;
 #Weapon
 var levelTable = {
 	1: [0.5, 32.0, 1],
-	2: [0.5, 34.0, 1],
-	3: [0.45, 40.0, 1],
-	4: [0.45, 44.0, 1],
-	5: [0.4, 48.0, 2],
-	6: [0.4, 52.0, 2],
-	7: [0.35, 56.0, 2],
-	8: [0.33, 60.0, 2],
-	9: [0.3, 64.0, 2],
-	10: [0.2, 70.0, 3],
+	2: [0.5, 35.0, 1],
+	3: [0.45, 38.0, 1],
+	4: [0.45, 41.0, 1],
+	5: [0.4, 45.0, 2],
+	6: [0.4, 48.0, 2],
+	7: [0.35, 51.0, 2],
+	8: [0.33, 54.0, 2],
+	9: [0.3, 57.0, 2],
+	10: [0.2, 60.0, 3],
 }
 var bltCLD = 0.0;
 var bltPWR = 0.0
@@ -51,6 +51,10 @@ var canShoot = true;
 func _ready() -> void:
 	$Ambience.play()
 	$Model/AnimationPlayer.play("ArmatureAction")
+	
+	for a in find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_override != null):
+		a.material_override.set("shader_parameter/diffuse_gradient", scene.diffuse_pal)
+		a.material_override.set("shader_parameter/specular_gradient", scene.specular_pal)
 
 func levelUpLira(): #upgrade new powers bsaed on level
 	if levelTable[scene.liraLevel]:

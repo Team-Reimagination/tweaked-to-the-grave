@@ -757,7 +757,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5245, 41.3939, -90.7967)
 visible = false
 script = ExtResource("1_ay21j")
 nextChunk = NodePath("../14_Collect")
-chanceWeight = 0.65
+chanceWeight = 0.4
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="14_Obstacles"]
@@ -848,6 +848,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.446, 34.0284, -258.024)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4488, 57.0376, -70.4125)
 
 [node name="15_Boxes" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
 script = ExtResource("1_ay21j")
 nextChunk = NodePath("../15_Coins")
 chanceWeight = 0.8
@@ -884,6 +885,7 @@ distanceToMove = -200
 shortRenderDistance = true
 
 [node name="15_Coins" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_ay21j")
 isSubChunk = true
 chanceWeight = 0.8

@@ -24,14 +24,18 @@ func _ready() -> void:
 	
 	if hasModel:
 		model = $Model
-	
-	if doProcessDistanceFade and PlayGlobals.levelDefs != null:
 		meshInstances = model.find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_override != null)
 	
+	if PlayGlobals.levelDefs != null:
 		for a in meshInstances:
 			a.material_override = a.material_override.duplicate()
-			a.material_override.set("shader_parameter/fade_start", PlayGlobals.getDistance(shortRenderDistance))
-			a.material_override.set("shader_parameter/fade_end", PlayGlobals.getDistance(shortRenderDistance) - 100)
+			
+			if doProcessDistanceFade:
+				a.material_override.set("shader_parameter/fade_start", PlayGlobals.getDistance(shortRenderDistance))
+				a.material_override.set("shader_parameter/fade_end", PlayGlobals.getDistance(shortRenderDistance) - 100)
+			
+			a.material_override.set("shader_parameter/diffuse_gradient", scene.diffuse_pal)
+			a.material_override.set("shader_parameter/specular_gradient", scene.specular_pal)
 
 func _process(_delta: float) -> void:
 	if overridePos != Vector3(-INF,-INF,-INF):

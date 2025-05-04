@@ -1,0 +1,59 @@
+{
+	"name": "The Powers In The Air",
+	"id": 6,
+	"nextLevel": "SNH",
+	"boss": {
+		"type": "tweak",
+		"distance": 250,
+		"scale": 2.75,
+		"rotation": 180,
+		"health": 11600
+	},
+	"speed": 0.035,
+	"floor": {
+		"texture": "floor",
+		"y": -60,
+		"scale": [24,24],
+		"scrollMod": [0.0, 1.0]
+	},
+	"sky": {
+		"texture": "sky",
+		"y": -300,
+		"scale": [16,16],
+		"scrollMod": [0.35, -1.0],
+		"rotation": [180, 0, 0]
+	},
+	"sun": {
+		"showSun": "true",
+		"angle": [-0.2, -0.1, 0.0],
+		"color": [255,255,255],
+		"energy": 1.0,
+		"lie": 0.01,
+		"lad": 5,
+		"specular": 4.0,
+		"maxAng": 50.0,
+		"curve": 0.005
+	},
+	"background": {
+		"sky": {
+			"top": [197,85,11],
+			"bottom": [255,201,40],
+			"curve": 0.227
+		},
+		"ground": {
+			"top": [255,201,40],
+			"bottom": [255,255,160],
+			"curve": 0.2
+		}
+	},
+	"fog": {
+		"energy": 1.0,
+		"sunScatter": 0.0,
+		"density": 0.0,
+		"distance": {
+			"start": 120.0,
+			"end": 1900.0,
+			"curve": 0.35
+		}
+	}
+}

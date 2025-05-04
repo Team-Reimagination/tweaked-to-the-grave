@@ -1,0 +1,52 @@
+{
+	"name": "The Ra's Curse",
+	"id": 1,
+	"nextLevel": "COS",
+	"boss": {
+		"type": "tweak",
+		"distance": 330,
+		"scale": 2.5,
+		"rotation": 180,
+		"health": 6100
+	},
+	"speed": 0.04,
+	"floor": {
+		"texture": "floor",
+		"y": -40,
+		"scale": [167,167],
+		"scrollMod": [0, 1.0]
+	},
+	"sun": {
+		"showSun": "true",
+		"angle": [1.0, 0.0, 0.0],
+		"color": [197,190,193],
+		"energy": 1.0,
+		"lie": 0.01,
+		"lad": 0.25,
+		"specular": 3.0,
+		"maxAng": 60.0,
+		"curve": 0.1516
+	},
+	"background": {
+		"sky": {
+			"top": [20,0,0],
+			"bottom": [124,64,51],
+			"curve": 0.117
+		},
+		"ground": {
+			"top": [140,60,40],
+			"bottom": [150,50,40],
+			"curve": 0.0056
+		}
+	},
+	"fog": {
+		"energy": 1.0,
+		"sunScatter": 0.5,
+		"density": 1.0,
+		"distance": {
+			"start": 80.0,
+			"end": 700.0,
+			"curve": 0.470
+		}
+	}
+}

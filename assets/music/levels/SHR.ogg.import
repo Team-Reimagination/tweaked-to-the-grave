@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/SHR.ogg-30381c21f4a31d17264012b1c97c0eaf.oggv
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

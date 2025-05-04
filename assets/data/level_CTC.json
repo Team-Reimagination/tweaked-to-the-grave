@@ -1,0 +1,58 @@
+{
+	"name": "The Central City",
+	"id": 4,
+	"nextLevel": "STS",
+	"boss": {
+		"type": "tweak",
+		"distance": 300,
+		"scale": 2.3,
+		"rotation": 180,
+		"health": 9400
+	},
+	"speed": 0.051,
+	"floor": {
+		"texture": "floor",
+		"y": -47,
+		"scale": [24,24],
+		"scrollMod": [0.0, 1.0]
+	},
+	"sky": {
+		"texture": "sky",
+		"y": 410,
+		"scale": [7,7],
+		"scrollMod": [-0.35, -0.1]
+	},
+	"sun": {
+		"showSun": "true",
+		"angle": [0.15, -1.15, 0.0],
+		"color": [255,255,255],
+		"energy": 1.0,
+		"lie": 0.01,
+		"lad": 0.25,
+		"specular": 4.0,
+		"maxAng": 22.0,
+		"curve": 0.1716
+	},
+	"background": {
+		"sky": {
+			"top": [30,110,245],
+			"bottom": [200,230,240],
+			"curve": 0.327
+		},
+		"ground": {
+			"top": [210,240,250],
+			"bottom": [200,210,230],
+			"curve": 0.0026
+		}
+	},
+	"fog": {
+		"energy": 1.0,
+		"sunScatter": 0.0,
+		"density": 1.0,
+		"distance": {
+			"start": 120.0,
+			"end": 1900.0,
+			"curve": 0.35
+		}
+	}
+}

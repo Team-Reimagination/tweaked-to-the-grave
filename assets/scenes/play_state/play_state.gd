@@ -53,20 +53,21 @@ var dialogues;
 
 var isWarning = false
 
+var diffuse_pal
+var specular_pal
+
 func _ready() -> void:
 	#make sure you can pause to avoid anything fishy
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	
 	#PREPARE LEVEL
-	if !PlayGlobals.levelDefs:
-		if FileAccess.file_exists(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json'):
-			PlayGlobals.levelDefs = JSON.parse_string(FileAccess.open(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json', FileAccess.READ).get_as_text())
+	if FileAccess.file_exists(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json'):
+		PlayGlobals.levelDefs = JSON.parse_string(FileAccess.open(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json', FileAccess.READ).get_as_text())
 			
-			buildLevel();
-		else :
-			print("Could Not Find LEVEL For "+PlayGlobals.levelID+'!')
-	else:
 		buildLevel();
+	else :
+		print("Could Not Find LEVEL For "+PlayGlobals.levelID+'!')
+		return
 		
 	#DIALOGUES
 	if levelDefs.has("dialogue"): dialogues = levelDefs.dialogue.duplicate()
@@ -210,6 +211,8 @@ func buildLevel():
 	
 	if (btmF.visible):
 		btmF.position.y = levelDefs.floor.y
+		if levelDefs.floor.has("distance"): btmF.position.z -= levelDefs.floor.distance
+		if levelDefs.floor.has("rotation"): btmF.rotation_degrees += Vector3(levelDefs.floor.rotation[0],levelDefs.floor.rotation[1],levelDefs.floor.rotation[2])
 		btmF.mesh.material.set("shader_parameter/uv_scale",Vector2(levelDefs.floor.scale[0], levelDefs.floor.scale[1]))
 		btmF.mesh.material.set("shader_parameter/tex",load("res://assets/images/levels/"+PlayGlobals.levelID+"/"+levelDefs.floor.texture+".png"))
 		
@@ -217,6 +220,8 @@ func buildLevel():
 	
 	if (topF.visible):
 		topF.position.y = levelDefs.sky.y
+		if levelDefs.sky.has("distance"): topF.position.z -= levelDefs.sky.distance
+		if levelDefs.sky.has("rotation"): topF.rotation_degrees += Vector3(levelDefs.sky.rotation[0],levelDefs.sky.rotation[1],levelDefs.sky.rotation[2])
 		topF.mesh.material.set("shader_parameter/uv_scale",Vector2(levelDefs.sky.scale[0], levelDefs.sky.scale[1]))
 		topF.mesh.material.set("shader_parameter/tex",load("res://assets/images/levels/"+PlayGlobals.levelID+"/"+levelDefs.sky.texture+".png"))
 		
@@ -253,6 +258,9 @@ func buildLevel():
 	bg.environment.fog_depth_end = levelDefs.fog.distance.end
 	bg.environment.fog_depth_curve = levelDefs.fog.distance.curve
 	
+	diffuse_pal = load("res://assets/data/shade-gradient/"+PlayGlobals.levelID+"_diffuse.tres")
+	specular_pal = load("res://assets/data/shade-gradient/"+PlayGlobals.levelID+"_specular.tres")
+	
 	#PLAYER
 	player = load("res://assets/objects/general/ship/ship.tscn").instantiate()
 	spawnOBJ(player)
@@ -278,7 +286,9 @@ func buildLevel():
 func _process(delta: float) -> void:
 	#SCENE RESTART
 	if OS.is_debug_build():
-		if Input.is_key_pressed(KEY_R): get_tree().reload_current_scene()
+		if Input.is_key_pressed(KEY_R): 
+			if Input.is_key_pressed(KEY_SHIFT): PlayGlobals.levelDefs = JSON.parse_string(FileAccess.open(PATH_LEVELS+'level_'+PlayGlobals.levelID+'.json', FileAccess.READ).get_as_text())
+			get_tree().reload_current_scene()
 		if Input.is_key_pressed(KEY_MINUS): 
 			boss.damage(boss.health)
 	
@@ -291,8 +301,9 @@ func _process(delta: float) -> void:
 	#SCROLLING
 	shadertime += delta;
 	for a in [btmF, topF]:
-		a.mesh.material.set("shader_parameter/uv_offset_speed",Vector2(scrollSpeed, scrollSpeed) * (scrollModFLOOR if a.name == "Floor" else scrollModSKY))
-		a.mesh.material.set("shader_parameter/custom_time",shadertime)
+		if a.visible:
+			a.mesh.material.set("shader_parameter/uv_offset_speed",Vector2(scrollSpeed, scrollSpeed) * (scrollModFLOOR if a.name == "Floor" else scrollModSKY))
+			a.mesh.material.set("shader_parameter/custom_time",shadertime)
 	
 	#BOUND CAMERA CONTROL
 	vertOffset = (rotateBound - 8.0) if player.position.y < 0 else (rotateBound + 2.0)

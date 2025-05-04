@@ -4,6 +4,7 @@ extends TTTG_Obstacle
 var finalHit = AudioStreamPlayer.new()
 var death = AudioStreamPlayer.new()
 
+@export var bossName = "The Tweak"
 @export var hasAltDeath = false
 @export var altChance = 1.0
 var hasGotIt = false

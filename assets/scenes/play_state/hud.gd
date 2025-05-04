@@ -24,6 +24,7 @@ func damage():
 func postLevelBuild():
 	bossIcon.sprite_frames = load("res://assets/images/hud/icons/"+scene.bossDEF.type+".tres")
 	bossIcon.play("Idle")
+	$HealthGroup/IconTweak/Lives/Label.text = scene.boss.bossName
 	
 	lira = scene.TRUElira
 	powerText.text = str(lira)

@@ -7,9 +7,9 @@
 		"distance": 140,
 		"scale": 2.5,
 		"rotation": 180,
-		"health": 50000
+		"health": 12700
 	},
-	"speed": 5.5,
+	"speed": 0.05,
 	"floor": {
 		"texture": "floor",
 		"y": -50,

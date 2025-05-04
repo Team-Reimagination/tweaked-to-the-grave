@@ -1,0 +1,58 @@
+{
+	"name": "The Cacti Oasis",
+	"id": 2,
+	"nextLevel": "ODF",
+	"boss": {
+		"type": "tweak",
+		"distance": 370,
+		"scale": 3.1,
+		"rotation": 180,
+		"health": 7200
+	},
+	"speed": 0.047,
+	"floor": {
+		"texture": "floor",
+		"y": -50,
+		"scale": [15,15],
+		"scrollMod": [0, 1.0]
+	},
+	"sky": {
+		"texture": "sky",
+		"y": 500,
+		"scale": [5,5],
+		"scrollMod": [0.3, 0.06]
+	},
+	"sun": {
+		"showSun": "true",
+		"angle": [0.2, -0.5, 0.0],
+		"color": [255,255,200],
+		"energy": 1.0,
+		"lie": 0.01,
+		"lad": 0.25,
+		"specular": 2.0,
+		"maxAng": 30.0,
+		"curve": 0.2516
+	},
+	"background": {
+		"sky": {
+			"top": [0,186,255],
+			"bottom": [255,255,210],
+			"curve": 0.247
+		},
+		"ground": {
+			"top": [255,255,255],
+			"bottom": [255,239,193],
+			"curve": 0.0026
+		}
+	},
+	"fog": {
+		"energy": 1.0,
+		"sunScatter": 0.0,
+		"density": 1.0,
+		"distance": {
+			"start": 50.0,
+			"end": 700.0,
+			"curve": 0.3550
+		}
+	}
+}
