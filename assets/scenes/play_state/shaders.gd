@@ -11,8 +11,12 @@ var strengthWarn = 0;
 var moveStr = 0.5
 
 func wybielenie(time):
-	flash.color.a = 1.0;
+	flash.color = Color(1.0,1.0,1.0,1.0);
 	get_tree().create_tween().tween_property(flash, "color:a", 0.0, time).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	
+func wyczernienie(time):
+	flash.color = Color(0.0,0.0,0.0,0.0);
+	get_tree().create_tween().tween_property(flash, "color:a", 1.0, time).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 
 func _ready() -> void:
 	#prep

@@ -115,8 +115,8 @@ func get_tscn_resources_in_directory(path: String) -> Array[String]:
 	return tscn_files
 
 func getCutsceneDestination():
-	if cutsceneID == 'beginning': return "res://assets/scenes/play_state/play_state.tscn"
-	elif cutsceneID == 'end': return "res://assets/scenes/main_menu/main_menu.tscn"
+	if cutsceneID == 'anstart': return "res://assets/scenes/play_state/play_state.tscn"
+	elif cutsceneID == 'aend': return "res://assets/scenes/main_menu/main_menu.tscn"
 	elif cutsceneID == 'test': return "res://assets/scenes/play_state/play_state.tscn"
 	else: return "res://assets/scenes/main_menu/main_menu.tscn"
 

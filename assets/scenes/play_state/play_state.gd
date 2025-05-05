@@ -357,9 +357,6 @@ var firstTimeLevel = false
 var newHighScore = false
 
 func completeLevel():
-	$Audio/Victory.play()
-	$Audio/Victory.volume_db = -5.0;
-	
 	if SaveSystem.hasNotUnlockedLevel(PlayGlobals.levelID):
 		SaveSystem.unlockLevelForFree(PlayGlobals.levelID)
 		unlockedLevel = true
@@ -370,12 +367,26 @@ func completeLevel():
 	
 	hud.abracadabrahocuspocusnowyouwilldisappear()
 	
-	get_tree().create_tween().tween_property(camera, "posi:z", 0.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
-	get_tree().create_tween().tween_property(camera, "posi:y", 4.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
-	
-	get_tree().create_tween().tween_property(player, "position", Vector3(0.0,0.0,-20.0), 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+	if levelDefs.nextLevel == 'complete':
+		shaders.wyczernienie(2.0)
+	else:
+		get_tree().create_tween().tween_property(camera, "posi:z", 0.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+		get_tree().create_tween().tween_property(camera, "posi:y", 4.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+		
+		get_tree().create_tween().tween_property(player, "position", Vector3(0.0,0.0,-20.0), 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 
-	victroy.start()
+	if levelDefs.nextLevel == 'complete' and !PlayGlobals.areWeFNFFreeDownload:
+			await get_tree().create_timer(2.0).timeout
+			
+			PlayGlobals.cutsceneID = 'aend'
+			setCurrentSave()
+			
+			TransFuncs.switchScenes(self, "res://assets/scenes/cutscene/cutscene.tscn", false, false)
+	else:
+		$Audio/Victory.play()
+		$Audio/Victory.volume_db = -5.0;
+
+		victroy.start()
 
 func setCurrentSave():
 	SaveSystem.curDifficultySave.level = liraLevel

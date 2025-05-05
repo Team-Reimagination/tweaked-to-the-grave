@@ -47,6 +47,7 @@ var isNewGame = false
 
 func someNew():
 	isNewGame = true
+	PlayGlobals.cutsceneID = 'anstart'
 
 func wellithinkitstimetomoveonok(): #hand materaliza
 	PlayGlobals.youarenolongermyfriendsoundnowgoaway()
