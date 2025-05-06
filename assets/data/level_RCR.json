@@ -4,8 +4,8 @@
 	"nextLevel": "COS",
 	"boss": {
 		"type": "tweak",
-		"distance": 330,
-		"scale": 2.5,
+		"distance": 250,
+		"scale": 1.5,
 		"rotation": 180,
 		"health": 6100
 	},

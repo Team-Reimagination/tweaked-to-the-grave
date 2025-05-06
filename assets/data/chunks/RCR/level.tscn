@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://xmd4tygvtkdl"]
+
+[ext_resource type="PackedScene" uid="uid://gebalqkua6p2" path="res://assets/data/chunks/references_lv.tscn" id="1_oemb6"]
+
+[node name="RcrBackground" type="Node3D"]
+
+[node name="References" parent="." instance=ExtResource("1_oemb6")]

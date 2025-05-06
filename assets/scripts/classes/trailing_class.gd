@@ -3,7 +3,10 @@ extends TTTG_Obstacle
 
 @export var distanceToMove = 500
 @export var speed = 1.5
+@export var onlyOnce = false
+
 var timeToMove = false
+var hasMoved = false
 
 func _ready() -> void:
 	super._ready()
@@ -16,7 +19,9 @@ func _process(delta:float) -> void:
 		movemental()
 
 func movemental():
-	pass
+	if hasMoved: return
+	
+	if onlyOnce: hasMoved = true
 
 func victory_screech():
 	queue_free()

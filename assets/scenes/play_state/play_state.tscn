@@ -1,9 +1,10 @@
-[gd_scene load_steps=232 format=4 uid="uid://d3w5gwnffkggo"]
+[gd_scene load_steps=233 format=4 uid="uid://d3w5gwnffkggo"]
 
 [ext_resource type="Script" uid="uid://dtxmm6es2j3a1" path="res://assets/scenes/play_state/play_state.gd" id="1_edc5a"]
 [ext_resource type="AudioStream" uid="uid://c3a1fmviekmje" path="res://assets/sounds/ambience/warning.ogg" id="2_ngmgm"]
 [ext_resource type="AudioStream" uid="uid://uh3wjmcgghvv" path="res://assets/sounds/entities/1up_get.ogg" id="2_pmsn5"]
 [ext_resource type="AudioStream" uid="uid://dgt04vyagnmlb" path="res://assets/sounds/gameplay/burning.ogg" id="2_qnhqf"]
+[ext_resource type="Script" uid="uid://b5os4os7dvkxk" path="res://assets/scenes/play_state/script_handler.gd" id="2_uq750"]
 [ext_resource type="AudioStream" uid="uid://cbsryncc2dcpf" path="res://assets/music/victory.ogg" id="2_vn6he"]
 [ext_resource type="Script" uid="uid://dnlq4crl6dlsb" path="res://assets/scripts/funcs/3DCamFuncs.gd" id="3_4namv"]
 [ext_resource type="Material" uid="uid://b12nxbyimqnm3" path="res://assets/objects/bullets/railring/railring_red.tres" id="3_is55c"]
@@ -1472,6 +1473,9 @@ outline_color = Color(0, 0, 0, 1)
 [node name="PlayState" type="Node3D"]
 process_mode = 1
 script = ExtResource("1_edc5a")
+
+[node name="ScriptHandler" type="Node" parent="."]
+script = ExtResource("2_uq750")
 
 [node name="Audio" type="Node" parent="."]
 

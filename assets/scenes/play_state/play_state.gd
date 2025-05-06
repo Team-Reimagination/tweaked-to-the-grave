@@ -8,6 +8,8 @@ extends Node3D
 @onready var music = $Audio/Music
 @onready var chunkLoader = $Objects
 @onready var victroy = $Victory
+@onready var scripts = $ScriptHandler
+
 var player
 var boss
 
@@ -78,6 +80,7 @@ func _ready() -> void:
 	startLevel()
 	player.startLevel()
 	hud.postLevelBuild()
+	scripts.runFunction("postBuild")
 	
 	chunkLoader.makeBGChunk()
 	chunkLoader.makeLVChunk()
@@ -111,6 +114,8 @@ func initiateCountdown():
 			for obj in chunkLoader.get_children():
 				if obj is TTTG_Chunk:
 					obj.doMove = true
+				
+		scripts.runFunction("onCountdown", [i])
 		
 		await get_tree().create_timer(0.5,false).timeout #i like how this delays everything in the function
 	
@@ -120,6 +125,8 @@ func postCount():
 	canInput = true;
 	music.play()
 	music.volume_db = -10.0
+	
+	scripts.runFunction("levelStart")
 	
 	if SaveSystem.hasNotFirstTImeLevel(PlayGlobals.levelID) and !PlayGlobals.areWeFNFFreeDownload:
 		$HUD/LevelName.text = "LEVEL "+str(int(levelDefs.id)+1)+": "+str(levelDefs.name)
@@ -139,6 +146,8 @@ func levelUpLira():
 	liraLevel += 1
 	liraPGR = liraPGR - liraMax;
 	liraMax = levelUpLiraFormula(liraLevel)
+	
+	scripts.runFunction("onLevelUp")
 	
 	hud.levelUpLira()
 	player.levelUpLira()
@@ -160,6 +169,8 @@ func hurtPlayer():
 		camera.shake(5.0, 1.0)
 		hud.hurtPlayer()
 		player.hurtPlayer()
+		
+		scripts.runFunction("onHurt")
 	else:
 		isWarning = false
 		lives -= 1
@@ -167,10 +178,14 @@ func hurtPlayer():
 		hud.loseLife()
 		player.loseLife()
 		
+		scripts.runFunction("onLifeLoss")
+		
 	if lives <= 0:
 		gameOver()
 		hud.gameOver()
 		player.gameOver()
+		
+		scripts.runFunction("onGameOver")
 		
 func gameOver():
 	canPause = false;
@@ -297,6 +312,8 @@ func _process(delta: float) -> void:
 		var assback = pauseState.instantiate()
 		PlayGlobals.addSubstate(self, assback);
 		get_tree().paused = true
+		
+		scripts.runFunction("onPause")
 	
 	#SCROLLING
 	shadertime += delta;
@@ -343,6 +360,7 @@ func _process(delta: float) -> void:
 	
 func wellithinkitstimetomoveonok():
 	get_tree().paused = false
+	scripts.runFunction("onUnpause")
 	
 #setting application
 func applySetting(type, value):
@@ -357,6 +375,8 @@ var firstTimeLevel = false
 var newHighScore = false
 
 func completeLevel():
+	scripts.runFunction("onLevelComplete")
+	
 	if SaveSystem.hasNotUnlockedLevel(PlayGlobals.levelID):
 		SaveSystem.unlockLevelForFree(PlayGlobals.levelID)
 		unlockedLevel = true
@@ -416,6 +436,7 @@ func addLira(lira):
 	currentLevelLira += lira
 
 func giveMeLife():
+	scripts.runFunction("onExtraLife")
 	lives += 1
 	$"Audio/1up".play()
 	hud.giveMeLife()

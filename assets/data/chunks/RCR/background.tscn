@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://k1pfnlj1sipg"]
+
+[ext_resource type="PackedScene" uid="uid://gebalqkua6p2" path="res://assets/data/chunks/references_lv.tscn" id="1_djnqv"]
+[ext_resource type="Script" uid="uid://8fviwb4leujf" path="res://assets/scripts/classes/chunk_class.gd" id="2_jymr1"]
+[ext_resource type="PackedScene" uid="uid://cuxsc0ejjwym1" path="res://assets/objects/decoration/RCR/walling.tscn" id="3_wf14q"]
+
+[node name="RcrBackground" type="Node3D"]
+
+[node name="References" parent="." instance=ExtResource("1_djnqv")]
+
+[node name="0_0" type="Node3D" parent="."]
+script = ExtResource("2_jymr1")
+chanceWeight = 0.8
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="0_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387, -315.063)
+
+[node name="StartPos" type="Marker3D" parent="0_0"]
+
+[node name="Walling" parent="0_0" instance=ExtResource("3_wf14q")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.053, 0, -37.4855)
+
+[node name="Walling2" parent="0_0" instance=ExtResource("3_wf14q")]
+transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.068, 0, -37.4855)
+
+[node name="Walling3" parent="0_0" instance=ExtResource("3_wf14q")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.053, 0, -117.354)
+
+[node name="Walling4" parent="0_0" instance=ExtResource("3_wf14q")]
+transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.068, 0, -117.354)
+
+[node name="Walling5" parent="0_0" instance=ExtResource("3_wf14q")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.053, 0, -197.281)
+
+[node name="Walling6" parent="0_0" instance=ExtResource("3_wf14q")]
+transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.068, 0, -197.281)
+
+[node name="Walling7" parent="0_0" instance=ExtResource("3_wf14q")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.053, 0, -277.186)
+
+[node name="Walling8" parent="0_0" instance=ExtResource("3_wf14q")]
+transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.068, 0, -277.186)

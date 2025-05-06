@@ -5,6 +5,8 @@ var moveTween
 var switcherooni = false
 
 func movemental():
+	super.movemental()
+	
 	if !isDying:
 		var positional = $MEnd.global_position - $MStart.global_position
 		var anglature = $MEnd.global_rotation - $MStart.global_rotation
@@ -16,4 +18,4 @@ func movemental():
 		await moveTween.finished
 		if !isDying:
 			$Thud.play()
-			movemental()
+			if !hasMoved: movemental()
