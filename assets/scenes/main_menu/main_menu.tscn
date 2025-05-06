@@ -250,6 +250,7 @@ follow_viewport_enabled = true
 
 [node name="Sky" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(983, 0)
 
 [node name="Sky" type="Sprite2D" parent="Background/Sky"]
 position = Vector2(640, 480)
@@ -258,6 +259,7 @@ texture = SubResource("GradientTexture2D_spayh")
 
 [node name="Clouds" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(0, 83)
 repeat_size = Vector2(1320, 0)
 autoscroll = Vector2(15, 0)
 repeat_times = 2

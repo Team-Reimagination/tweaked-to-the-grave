@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var seezeeIcon = $HealthGroup/IconSeezee
 @onready var bossIcon = $HealthGroup/IconTweak
 @onready var BonusGroup = $BonusGroup
+@onready var lowLayer = $lowestLayer
 
 var lira:int = 0;
 var liraShakeTween;
