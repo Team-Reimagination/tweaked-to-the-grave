@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 		if scene.hasBitchWon or scene.lives <= 0: marker.position.y = lerp(marker.position.y, scene.levelDefs.floor.y, 0.07)
 	
 	surface.get_child(0).position.y = scene.camera.unproject_position(Vector3(scene.btmF.global_position.x, scene.btmF.global_position.y, -20)).y
-	sand.get_child(0).position.y = surface.get_child(0).position.y + surface.get_child(0).texture.get_height()/2 + sand.get_child(0).region_rect.size.y/2
+	sand.get_child(0).position.y = surface.get_child(0).position.y + surface.get_child(0).texture.get_height()/3 + sand.get_child(0).region_rect.size.y/2
 	
 	scene.btmF.position.y = marker.position.y
 	
