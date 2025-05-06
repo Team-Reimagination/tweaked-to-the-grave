@@ -48,6 +48,8 @@ func damage(healthTaken):
 	scene.find_child("HUD").damage()
 
 func imKillingMyself():
+	scene.scripts.runFunction("onBossDefeat")
+	
 	PlayGlobals.youarenolongermyfriendsoundnowgoaway()
 	finalHit.play()
 	death.play()
