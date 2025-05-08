@@ -49,5 +49,8 @@
 			"end": 700.0,
 			"curve": 0.470
 		}
-	}
+	},
+	"dialogue": [
+		[100.0, "RCR_Confrontation"],
+	]
 }

@@ -1,0 +1,47 @@
+{
+	"hasPanels": "true",
+	"events": [
+		{
+			"char": "seezee",
+			"text": "Eydoo!? I'm in the middle of something, what is your business here?",
+			"voice": "RCR_Seezee_Disbelief",
+			"nextAccess": "timeout"
+		},
+		{
+			"char": "eyad",
+			"text": "Do you think you can get away with stealing my stampede?",
+			"voice": "RCR_Eyad_Mad",
+			"nextAccess": "timeout"
+		},
+		{
+			"char": "eyad",
+			"text": "I know your plan and I'm all for dealing with... That. But how dare you, Seezee!?",
+			"voice": "RCR_Eyad_Wad",
+			"nextAccess": "timeout"
+		},
+		{
+			"char": "eyad",
+			"text": "Give it back and we'll think of another plan. I need my elephant!",
+			"voice": "RCR_Eyad_Wad",
+			"nextAccess": "timeout"
+		},
+		{
+			"char": "seezee",
+			"text": "You don't need it more than I do! This will work just fine.",
+			"voice": "RCR_Seezee_Need",
+			"nextAccess": "timeout"
+		},
+		{
+			"char": "eyad",
+			"text": "I see how it is. You leave me no choice...",
+			"voice": "RCR_Eyad_NoChoice",
+			"nextAccess": "timeout"
+		},
+		{
+			"char": "eyad",
+			"text": "Stand ready for my power, Seezee!",
+			"voice": "RCR_Eyad_Power",
+			"nextAccess": "timeout"
+		}
+	]
+}
