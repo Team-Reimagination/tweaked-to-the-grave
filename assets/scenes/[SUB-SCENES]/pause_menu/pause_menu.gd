@@ -3,7 +3,7 @@ extends Control
 var scaleFactor = Vector2(0.0,0.0)
 
 @onready var scaleLerp = $Base.scaleLerp 
-@onready var optionSliders = [$Inside/QuickOptions/Master, $Inside/QuickOptions/SFX, $Inside/QuickOptions/Music, $Inside/QuickOptions/Ambience]
+@onready var optionSliders = [$Inside/QuickOptions/Master, $Inside/QuickOptions/SFX, $Inside/QuickOptions/Music, $Inside/QuickOptions/Voice, $Inside/QuickOptions/Ambience]
 @onready var optionCheckbox = $Inside/QuickOptions/Autofire
 @onready var buttons = [$Inside/Buttons/Resume, $Inside/Buttons/Restart, $Inside/Buttons/Quit]
 
@@ -47,7 +47,8 @@ func instantScale():
 func boxerMove():
 	var whatToUse = $Inside/QuickOptions/Autofire/Rectangle
 	if selectedButton == 4: whatToUse = $Inside/QuickOptions/Master/Rectangle if selectedRow == 0 else $Inside/QuickOptions/SFX/Rectangle
-	elif selectedButton == 5: whatToUse = $Inside/QuickOptions/Music/Rectangle if selectedRow == 0 else $Inside/QuickOptions/Ambience/Rectangle
+	elif selectedButton == 5: whatToUse = $Inside/QuickOptions/Music/Rectangle if selectedRow == 0 else $Inside/QuickOptions/Voice/Rectangle
+	elif selectedButton == 6: whatToUse = $Inside/QuickOptions/Ambience/Rectangle
 	
 	boxSizes = whatToUse.size
 	boxPositions = whatToUse.global_position
@@ -126,10 +127,12 @@ func _process(delta: float) -> void:
 		else:
 			holdTimer = 0.0
 			
+		var slidery = ((0 if selectedButton == 4 else 2) + selectedRow) if selectedButton < 6 else selectedButton-2
+			
 		if (Input.is_action_pressed("Left_UI") and holdTimer > 0.6) or Input.is_action_just_pressed("Left_UI"):
-			optionSliders[(0 if selectedButton == 4 else 2) + selectedRow].value -= 0.01 * (10 if Input.is_action_pressed("Extra_UI") else 1)
+			optionSliders[slidery].value -= 0.01 * (10 if Input.is_action_pressed("Extra_UI") else 1)
 		elif (Input.is_action_pressed("Right_UI") and holdTimer > 0.6) or Input.is_action_just_pressed("Right_UI"):
-			optionSliders[(0 if selectedButton == 4 else 2) + selectedRow].value += 0.01 * (10 if Input.is_action_pressed("Extra_UI") else 1)
+			optionSliders[slidery].value += 0.01 * (10 if Input.is_action_pressed("Extra_UI") else 1)
 		
 		if Input.is_action_just_pressed("Back_UI") or Input.is_action_just_pressed("Accept_UI"):
 			isSliding = false
@@ -147,12 +150,12 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("Back_UI"): leave(true)
 		
 		if Input.is_action_just_pressed("Up_UI"): 
-			selectedButton = (selectedButton - 1) % 6
-			if selectedButton < 0: selectedButton = 5
+			selectedButton = (selectedButton - 1) % 7
+			if selectedButton < 0: selectedButton = 6
 			updateButtonSelection()
 			MenuSounds.playMenuSound('switch')
 		elif Input.is_action_just_pressed("Down_UI"):
-			selectedButton = (selectedButton + 1) % 6
+			selectedButton = (selectedButton + 1) % 7
 			updateButtonSelection()
 			MenuSounds.playMenuSound('switch')
 			
