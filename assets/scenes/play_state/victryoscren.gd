@@ -48,6 +48,9 @@ func updateButtonSelection():
 	buttons[selectedButton].self_modulate = Color(1.0,1.0,1.0)
 
 func start():
+	Subtitles.setPlacementY(750)
+	Subtitles.setPlacementX(null)
+	
 	await get_tree().create_timer(2.0).timeout
 	
 	$TitleCard.texture = load("res://assets/images/levels/"+PlayGlobals.levelID+"/titlecard.png")

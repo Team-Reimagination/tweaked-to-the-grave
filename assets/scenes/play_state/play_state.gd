@@ -59,7 +59,8 @@ var diffuse_pal
 var specular_pal
 
 func _ready() -> void:
-	Subtitles.setPlacementY(450 if PlayGlobals.difficulty < 4 else 750)
+	Subtitles.setPlacementY(800 if PlayGlobals.difficulty < 4 else 750)
+	Subtitles.setPlacementX(1160 if PlayGlobals.difficulty < 4 else null)
 	
 	#make sure you can pause to avoid anything fishy
 	process_mode = Node.PROCESS_MODE_PAUSABLE

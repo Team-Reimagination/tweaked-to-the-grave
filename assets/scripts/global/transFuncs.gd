@@ -45,6 +45,7 @@ func changeClothes():
 		if doUnpause: parentToChange.get_tree().paused = false
 		Subtitles.clearSubtitles()
 		Subtitles.setPlacementY()
+		Subtitles.setPlacementX()
 		
 		if intendedScene == "reset":
 			parentToChange.get_tree().reload_current_scene()

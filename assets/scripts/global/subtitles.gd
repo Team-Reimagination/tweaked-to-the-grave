@@ -11,6 +11,9 @@ var usualPlacement = Vector2(1280,850)
 func setPlacementY(num = null):
 	usualPlacement.y = num if num != null else 850
 	
+func setPlacementX(num = null):
+	usualPlacement.x = num if num != null else 1280
+	
 func _ready() -> void:
 	layer = 126
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -65,6 +68,7 @@ func _process(_delta: float) -> void:
 	for a in subtitularNodes.size():
 		if subtitularNodes[a] != null:
 			subtitularNodes[a].position.y = lerp(subtitularNodes[a].position.y, usualPlacement.y - subtitularNodes[a].size.y/2 + subtitularYs[a], 0.2)
+			subtitularNodes[a].position.x = lerp(subtitularNodes[a].position.x, usualPlacement.x - subtitularNodes[a].size.x, 0.2)
 			
 			if subtitularNodes[a].modulate.a <= 0.001:
 				subtitularNodes[a].queue_free()
