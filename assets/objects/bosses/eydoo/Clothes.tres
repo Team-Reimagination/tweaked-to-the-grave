@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b3smg84ov7vff"]
+
+[ext_resource type="Texture2D" uid="uid://bdpegi5tylxi8" path="res://assets/objects/bosses/eydoo/eydoo_eyad.png" id="1_ai0oe"]
+
+[resource]
+resource_name = "Clothes"
+cull_mode = 2
+albedo_texture = ExtResource("1_ai0oe")
+roughness = 0.5

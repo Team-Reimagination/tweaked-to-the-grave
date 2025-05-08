@@ -42,7 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://nykqkvm46il3" path="res://assets/images/hud/tweak_health_empty.png" id="28_3g363"]
 [ext_resource type="Texture2D" uid="uid://dwuspjgaqy5i5" path="res://assets/images/hud/tweak_health_full.png" id="29_f74kq"]
 [ext_resource type="AudioStream" uid="uid://0adjqms8ojjl" path="res://assets/sounds/ui/moneyloss.ogg" id="29_o5i65"]
-[ext_resource type="SpriteFrames" uid="uid://ce3eocwmrlwdt" path="res://assets/images/hud/icons/tweak.tres" id="36_fnjxo"]
+[ext_resource type="SpriteFrames" uid="uid://dm6k058ocpw0v" path="res://assets/images/hud/icons/eydoo.tres" id="37_uq750"]
 [ext_resource type="Script" uid="uid://di2hc41ng4wpy" path="res://assets/scenes/play_state/victryoscren.gd" id="40_0fg0f"]
 [ext_resource type="Texture2D" uid="uid://cm1embabod06s" path="res://assets/images/hud/victroy/ourbuddy.png" id="40_fnjxo"]
 [ext_resource type="PackedScene" uid="uid://d0mmd2bco6rdt" path="res://assets/images/hud/victroy/smashtext.tscn" id="41_0fg0f"]
@@ -1795,9 +1795,11 @@ vertical_alignment = 1
 [node name="IconTweak" type="AnimatedSprite2D" parent="HUD/HealthGroup"]
 texture_filter = 1
 position = Vector2(730, 82)
-sprite_frames = ExtResource("36_fnjxo")
-animation = &"Idle"
+sprite_frames = ExtResource("37_uq750")
+animation = &"Death"
 autoplay = "Idle"
+frame = 9
+frame_progress = 1.0
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": false,
@@ -1810,13 +1812,13 @@ metadata/_aseprite_wizard_config_ = {
 "layers": [],
 "o_ex_p": "",
 "o_folder": "res://assets/images/hud/icons",
-"o_name": "tweak-final",
+"o_name": "eydoo",
 "only_visible": false,
 "should_round_fps": true,
 "slice": "",
-"source": "D:/GODOT/projectFiles - TTTG/2d/icon_finaltweak.aseprite"
+"source": "D:/GODOT/projectFiles - TTTG/2d/icon_eydoo.aseprite"
 }
-metadata/_aseprite_wizard_source_file_hash_ = "dccdb85c83aca7b3334b7da97c23e783"
+metadata/_aseprite_wizard_source_file_hash_ = "245455db13ae25943f9f2eab2cdb3092"
 
 [node name="Lives" type="Node2D" parent="HUD/HealthGroup/IconTweak"]
 material = SubResource("ShaderMaterial_g0adn")

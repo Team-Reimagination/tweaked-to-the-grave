@@ -7,6 +7,7 @@ var death = AudioStreamPlayer.new()
 @export var bossName = "The Tweak"
 @export var hasAltDeath = false
 @export var altChance = 1.0
+@export var overrideDeath = false
 var hasGotIt = false
 
 func _ready() -> void:
@@ -35,7 +36,7 @@ func _ready() -> void:
 	death.bus = 'SFX';
 
 func ImDoneGoodbye(anim):
-	if anim == 'Death':
+	if anim == 'Death' and !overrideDeath:
 		scene.completeLevel()
 		self.queue_free()
 
@@ -76,4 +77,4 @@ func imKillingMyself():
 	if !scene.hasBeenHurt: scene.hud.bonusing("Perfect Bonus!", 2000)
 	
 	scene.music.stop()
-	get_tree().create_tween().tween_property(scene.camera, "posi:z", self.position.z + 50 * self.scale.x, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
+	if !overrideDeath: get_tree().create_tween().tween_property(scene.camera, "posi:z", self.position.z + 50 * self.scale.x, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)

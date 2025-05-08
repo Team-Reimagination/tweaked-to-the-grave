@@ -3,11 +3,12 @@
 	"id": 1,
 	"nextLevel": "COS",
 	"boss": {
-		"type": "tweak",
-		"distance": 250,
-		"scale": 1.5,
-		"rotation": 180,
-		"health": 6100
+		"type": "eydoo",
+		"distance": 200,
+		"scale": 10,
+		"rotation": 0,
+		"health": 6100,
+		"lifeCount": 1
 	},
 	"speed": 0.04,
 	"floor": {
