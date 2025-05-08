@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://csd105n0fxfp7"]
+[gd_scene load_steps=30 format=3 uid="uid://csd105n0fxfp7"]
 
 [ext_resource type="Script" uid="uid://q27yxrhr8aeh" path="res://assets/scripts/classes/collectible_class.gd" id="1_okx0m"]
 [ext_resource type="Texture2D" uid="uid://cr4sjm57jh4x1" path="res://assets/images/entities/health/health.png" id="2_l1vtc"]
 [ext_resource type="AudioStream" uid="uid://dxk83r5vkng32" path="res://assets/sounds/entities/health_pickup.ogg" id="3_l1vtc"]
+[ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="4_psbin"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_psbin"]
 atlas = ExtResource("2_l1vtc")
@@ -233,3 +234,6 @@ volume_db = -2.0
 unit_size = 100.0
 max_db = 0.0
 bus = &"SFX"
+script = ExtResource("4_psbin")
+subtitle = "Health Collected"
+metadata/_custom_type_script = "uid://dobpfy25irneh"

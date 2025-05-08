@@ -59,6 +59,8 @@ var diffuse_pal
 var specular_pal
 
 func _ready() -> void:
+	Subtitles.setPlacementY(450 if PlayGlobals.difficulty < 4 else 750)
+	
 	#make sure you can pause to avoid anything fishy
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	
@@ -92,7 +94,8 @@ func initiateCountdown():
 	countHand.visible = true;
 	for i in county.size():
 		countdown.stream = load("res://assets/sounds/voice/"+county[i]+".ogg")
-		countdown.play()
+		countdown.subtitle = '"'+county[i].substr(0,1).to_upper() + county[i].substr(1,999)+'"'
+		countdown.subtitle_play()
 		
 		countHand.frame = i
 		var countTween = get_tree().create_tween()
@@ -196,7 +199,7 @@ func gameOver():
 	
 	await get_tree().create_timer(0.5, false).timeout
 	shaders.gameOver()
-	$Audio/HeatStroke.play()
+	$Audio/HeatStroke.subtitle_play()
 	
 	await get_tree().create_timer(3.5, false).timeout
 	
@@ -346,6 +349,7 @@ func _process(delta: float) -> void:
 	$Audio/Warning.volume_db = lerpf($Audio/Warning.volume_db, -10 if isWarning else -80, 0.3)
 	if (player_health == 1 or lives == 1) and not isWarning and not hasBitchWon:
 		isWarning = true
+		$Audio/Warning.showSubtitles()
 		
 	#DIALOGUE
 	if canInput and canPause and dialogues != null:
@@ -439,6 +443,6 @@ func addLira(lira):
 func giveMeLife():
 	scripts.runFunction("onExtraLife")
 	lives += 1
-	$"Audio/1up".play()
+	$"Audio/1up".subtitle_play()
 	hud.giveMeLife()
 	isWarning = false;

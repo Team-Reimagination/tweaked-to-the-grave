@@ -17,5 +17,5 @@ func movemental():
 		
 		await moveTween.finished
 		if !isDying:
-			$Thud.play()
+			$Thud.subtitle_play()
 			if !hasMoved: movemental()

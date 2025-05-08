@@ -59,6 +59,12 @@ func mouse_button(button):
 		selectedButton = button.get_meta("ID", 0)
 		updateButtonSelection()
 
+var subtitles = [
+	"\"Adventure mode! You start your own adventure here!\"",
+	"\"Trophies! Show off your hard work!\"",
+	"\"Options! Select a feature you want to edit!\""
+]
+
 func process_button():
 	if scene.canInput:
 		scene.canInput = false
@@ -67,16 +73,19 @@ func process_button():
 		if selectedButton == 0:
 			var instance = stageSel.instantiate()
 			$Narration.stream = load("res://assets/sounds/voice/adventure_mode.ogg")
+			$Narration.subtitle = subtitles[selectedButton]
 			PlayGlobals.addSubstate(scene, instance);
 		elif selectedButton == 1:
 			$Narration.stream = load("res://assets/sounds/voice/trophies.ogg")
+			$Narration.subtitle = subtitles[selectedButton]
 		elif selectedButton == 2:
 			var instance = myfreindOptions.instantiate()
 			$Narration.stream = load("res://assets/sounds/voice/options.ogg")
+			$Narration.subtitle = subtitles[selectedButton]
 			PlayGlobals.addSubstate(scene, instance);
 			
 		await get_tree().create_timer(0.5).timeout
-		if not scene.isTransitioning: $Narration.play()
+		if not scene.isTransitioning: $Narration.subtitle_play()
 
 func wellithinkitstimetomoveonok():
 	graveHand.play("Appear")

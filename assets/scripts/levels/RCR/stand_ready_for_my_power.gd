@@ -2,7 +2,7 @@ extends Node
 
 @onready var scene = get_parent().get_parent()
 var readying = Sprite2D.new()
-var boom = AudioStreamPlayer.new()
+var boom = AudioSubtitlableGeneral.new()
 
 func onDialogue(vars):
 	if vars[0] == 6:
@@ -17,7 +17,8 @@ func onDialogue(vars):
 		boom.max_polyphony = 1;
 		boom.bus = 'SFX';
 		boom.volume_db = -3.0
-		boom.play()
+		boom.subtitle = "Vine Boom"
+		boom.subtitle_play()
 		
 		var twa = get_tree().create_tween().tween_property(readying, "modulate:a", 0.0, 1.0)
 		

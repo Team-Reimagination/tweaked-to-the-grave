@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ds181oh1yp62m"]
+[gd_scene load_steps=46 format=3 uid="uid://ds181oh1yp62m"]
 
 [ext_resource type="Texture2D" uid="uid://t55dtlxhtc6l" path="res://assets/images/menu/mainmenu/logo.png" id="1_6o0yw"]
 [ext_resource type="Shader" uid="uid://cs54tgle3j2j5" path="res://assets/shaders/screen/worldCurve.gdshader" id="1_8qhov"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://c13517oqq03a8" path="res://assets/scripts/funcs/hover.gd" id="7_trycp"]
 [ext_resource type="Texture2D" uid="uid://bsh370l44682p" path="res://assets/images/buttons/mainmenu/trophies.png" id="8_6qh68"]
 [ext_resource type="Texture2D" uid="uid://bv4i45hut2g4q" path="res://assets/images/buttons/mainmenu/options.png" id="9_x0mfv"]
+[ext_resource type="Script" uid="uid://d15jbqf4xkmbh" path="res://assets/scripts/classes/subtitle_sound_2D.gd" id="10_61kpw"]
 [ext_resource type="Texture2D" uid="uid://c4xro1wlloata" path="res://assets/images/menu/mainmenu/tweaked_hand.png" id="10_x0mfv"]
 [ext_resource type="Shader" uid="uid://bn0ot4jakjbs7" path="res://assets/shaders/screen/pixel.gdshader" id="16_43lun"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="17_f2eox"]
@@ -253,7 +254,7 @@ scroll_scale = Vector2(0, 0)
 scroll_offset = Vector2(983, 0)
 
 [node name="Sky" type="Sprite2D" parent="Background/Sky"]
-position = Vector2(640, 480)
+position = Vector2(-344, 480)
 scale = Vector2(21.0625, 15.7685)
 texture = SubResource("GradientTexture2D_spayh")
 
@@ -265,7 +266,7 @@ autoscroll = Vector2(15, 0)
 repeat_times = 2
 
 [node name="Clouds" type="Sprite2D" parent="Background/Clouds"]
-position = Vector2(-20.318, -20)
+position = Vector2(-20.318, -103)
 scale = Vector2(1.03175, 1.03175)
 texture = ExtResource("1_acsil")
 centered = false
@@ -318,6 +319,8 @@ volume_db = 10.0
 attenuation = 0.241484
 panning_strength = 0.0
 bus = &"Voicelines"
+script = ExtResource("10_61kpw")
+metadata/_custom_type_script = "uid://d15jbqf4xkmbh"
 
 [node name="Buttons" type="Control" parent="ParallaxBackground/Grave"]
 layout_mode = 3

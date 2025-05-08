@@ -37,6 +37,7 @@ PlayGlobals="*res://assets/scripts/global/playGlobals.gd"
 TransFuncs="*res://assets/scripts/global/transFuncs.gd"
 MenuSounds="*res://assets/scripts/global/menuSounds.gd"
 CustomCursor="*res://assets/scripts/global/customCursor.gd"
+Subtitles="*res://assets/scripts/global/subtitles.gd"
 
 [display]
 

@@ -1,13 +1,14 @@
 class_name TTTG_Boss
 extends TTTG_Obstacle
 
-var finalHit = AudioStreamPlayer.new()
-var death = AudioStreamPlayer.new()
+var finalHit = AudioSubtitlableGeneral.new()
+var death = AudioSubtitlableGeneral.new()
 
 @export var bossName = "The Tweak"
 @export var hasAltDeath = false
 @export var altChance = 1.0
 @export var overrideDeath = false
+@export var deathSubtitle = ""
 var hasGotIt = false
 
 func _ready() -> void:
@@ -24,6 +25,7 @@ func _ready() -> void:
 	finalHit.max_polyphony = 1;
 	finalHit.bus = 'SFX';
 	finalHit.volume_db = -3.0
+	finalHit.subtitle = "Final Hit"
 	
 	if hasAltDeath:
 		var rander = randf()
@@ -34,6 +36,7 @@ func _ready() -> void:
 	death.stream = load("res://assets/sounds/boss/"+scene.bossDEF.type+"_death"+("_alt" if (hasAltDeath and hasGotIt) else "")+".ogg")
 	death.max_polyphony = 1;
 	death.bus = 'SFX';
+	finalHit.subtitle = deathSubtitle
 
 func ImDoneGoodbye(anim):
 	if anim == 'Death' and !overrideDeath:
@@ -52,8 +55,8 @@ func imKillingMyself():
 	scene.scripts.runFunction("onBossDefeat")
 	
 	PlayGlobals.youarenolongermyfriendsoundnowgoaway()
-	finalHit.play()
-	death.play()
+	finalHit.subtitle_play()
+	death.subtitle_play()
 		  
 	scene.isWarning = false;
 	if scene.dial != null: scene.dial.ending()

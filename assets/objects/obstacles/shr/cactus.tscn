@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://s7x027sqclgb"]
+[gd_scene load_steps=40 format=4 uid="uid://s7x027sqclgb"]
 
 [ext_resource type="Script" uid="uid://dvtcv1dmjab1r" path="res://assets/scripts/classes/swaying_class.gd" id="1_vlg01"]
 [ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="2_tpoty"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://bdrwiprw3hnm1" path="res://assets/shaders/object/colorMod3D.gdshader" id="6_kx06v"]
 [ext_resource type="Texture2D" uid="uid://fvopa4yo5pm2" path="res://assets/images/fx/shadow.png" id="7_k5q73"]
 [ext_resource type="AudioStream" uid="uid://v2tgwl75erpi" path="res://assets/sounds/gameplay/explode.ogg" id="8_lr03p"]
+[ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="9_32n0h"]
 [ext_resource type="Texture2D" uid="uid://bekrp7111ygmi" path="res://assets/images/fx/explosion.png" id="10_80knq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_32n0h"]
@@ -272,10 +273,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.91183, 0)
 stream = ExtResource("8_lr03p")
 unit_size = 100.0
 bus = &"SFX"
+script = ExtResource("9_32n0h")
+subtitle = "Explosion"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="Unearth" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
 unit_size = 100.0
 bus = &"SFX"
+script = ExtResource("9_32n0h")
+subtitle = "Unearthing"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="Explosion" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(7.601, 0, 0, 0, 7.75, 0, 0, 0, 0.1, 0, 2.15952, 0)

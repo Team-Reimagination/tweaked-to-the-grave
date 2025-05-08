@@ -580,7 +580,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j1n4a"]
-size = Vector3(1.04495, 2.54229, 0.872312)
+size = Vector3(1.04495, 3.0051, 0.872312)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y37a"]
 atlas = ExtResource("10_8m6u8")
@@ -734,6 +734,7 @@ animations = [{
 script = ExtResource("1_56v5e")
 bossName = "The Hero"
 altChance = 0.1
+deathSubtitle = "\"Come on... CURSE YOUUUUU...\""
 type = "enemy"
 doProcessDistanceFade = false
 metadata/_custom_type_script = "uid://cbnyu4nbttghp"
@@ -889,7 +890,7 @@ libraries = {
 autoplay = "Idle"
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0104154, 4.00083, 0.19957)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0104154, 4.02512, 0.19957)
 shape = SubResource("BoxShape3D_j1n4a")
 
 [node name="Explosion" type="AnimatedSprite3D" parent="."]

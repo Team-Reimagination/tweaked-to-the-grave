@@ -14,4 +14,4 @@ func movemental():
 		moveTween.set_parallel(true).tween_property($Model, "position", $MEnd.position, speed).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CIRC)
 		
 		await moveTween.finished
-		if !isDying: $Thud.play()
+		if !isDying: $Thud.subtitle_play()

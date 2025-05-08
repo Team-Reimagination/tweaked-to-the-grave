@@ -25,7 +25,7 @@ func descend(time,power,release):
 	await tweener.finished
 	is_exploding.emit()
 	
-	$Smash.play()
+	$Smash.subtitle_play()
 	shaker = power
 	
 	tweener.kill()

@@ -37,7 +37,7 @@ func imKillingMyself():
 	await get_tree().create_timer(2.0).timeout
 	
 	scene.shaders.wybielenie(0.5)
-	finalHit.play()
+	finalHit.subtitle_play()
 	scene.camera.shake(25.0, 1.0)
 	
 	imdying = true

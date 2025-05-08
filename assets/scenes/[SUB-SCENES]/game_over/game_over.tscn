@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5y0yek0jbdjp"]
+[gd_scene load_steps=15 format=3 uid="uid://c5y0yek0jbdjp"]
 
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="1_l2xgx"]
 [ext_resource type="Script" uid="uid://cetnv02v714ge" path="res://assets/scenes/[SUB-SCENES]/game_over/game_over.gd" id="1_wdgj4"]
 [ext_resource type="AudioStream" uid="uid://cqysf106p30yy" path="res://assets/sounds/menu/itssoover.ogg" id="2_rewee"]
+[ext_resource type="Script" uid="uid://do3ib7cpvvinc" path="res://assets/scripts/classes/subtitle_sound_general.gd" id="3_ds4ew"]
 [ext_resource type="AudioStream" uid="uid://ynpqnn3o1luw" path="res://assets/music/game_over.ogg" id="3_od56e"]
 [ext_resource type="AudioStream" uid="uid://8nb2eam1hr8j" path="res://assets/sounds/voice/heat_stroke.wav" id="3_tgttw"]
 [ext_resource type="Script" uid="uid://bwwb20tj2ffaj" path="res://assets/scenes/[SUB-SCENES]/game_over/buttons.gd" id="5_40cmd"]
@@ -42,8 +43,10 @@ script = ExtResource("1_wdgj4")
 
 [node name="SoOver" type="AudioStreamPlayer" parent="NewLayer" groups=["Sound"]]
 stream = ExtResource("2_rewee")
-autoplay = true
 bus = &"Music"
+script = ExtResource("3_ds4ew")
+subtitle = "Piano Slamming"
+metadata/_custom_type_script = "uid://do3ib7cpvvinc"
 
 [node name="Music" type="AudioStreamPlayer" parent="NewLayer" groups=["Sound"]]
 stream = ExtResource("3_od56e")
@@ -55,6 +58,9 @@ bus = &"Music"
 stream = ExtResource("3_tgttw")
 volume_db = 5.0
 bus = &"Voicelines"
+script = ExtResource("3_ds4ew")
+subtitle = "\"Oh no. I got a heatstroke.\""
+metadata/_custom_type_script = "uid://do3ib7cpvvinc"
 
 [node name="BG" type="ColorRect" parent="NewLayer"]
 anchors_preset = 15

@@ -62,7 +62,7 @@ func start():
 		get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND).tween_property($Unlocked, "scale", Vector2(1.0,1.0),0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	
 	if get_parent().newHighScore:
-		$"../Audio/Highscore".play()
+		$"../Audio/Highscore".subtitle_play()
 		
 		var scaler = get_tree().create_tween()
 		scaler.tween_property($Higher, "scale", Vector2(0.75,0.75), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
@@ -125,7 +125,7 @@ func process_button():
 			get_tree().create_tween().tween_property(self, "scale", Vector2(2,2), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 			get_tree().create_tween().tween_property(self, "offset", Vector2(-640.0,-480.0), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 			
-			$"../Audio/Hyperdrive".play()
+			$"../Audio/Hyperdrive".subtitle_play()
 			get_parent().shaders.wybielenie(0.5)
 			get_tree().create_tween().tween_property(get_parent().player, "position:z", -500, 3.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 			get_parent().camera.shake(5.0,2.0);

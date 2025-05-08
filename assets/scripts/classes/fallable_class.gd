@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 			isGhost = false
 			isSpawning = true
 			$Shadow.visible = true
-			if $Unearth.stream != null: $Unearth.play()
+			if $Unearth.stream != null: $Unearth.subtitle_play()
 	
 	if doFall and !isFalling and self.global_position.z > -fallDistance:
 		isFalling = true
@@ -60,7 +60,7 @@ func imKillingMyself():
 	$Explosion.visible = true
 	$Explosion.play("default")
 	
-	if !scene.hasBitchWon: $Explode.play()
+	if !scene.hasBitchWon: $Explode.subtitle_play()
 	
 	$Shadow.visible = false
 	$Model.visible = false

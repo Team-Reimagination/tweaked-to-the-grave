@@ -10,7 +10,7 @@ var optionsData = {
 	"audio_sfx" = 1.0,
 	"audio_ambience" = 1.0,
 	"audio_voicelines" = 1.0,
-	"audio_subtitles" = true,
+	"audio_subtitles" = 0,
 	
 	"gameplay_autofire" = false
 }
@@ -151,7 +151,7 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Voicelines"), linear_to_db(valuemysanityplease))
 	elif type == 'audio_subtitles':
 		return
-		##to be implemented
+		## 0 - none, 1 - voicelines, 2 - closed captioning, 3 - all
 
 func _ready() -> void:
 	cloudSave = await NG.cloudsave_get_data(1)
@@ -161,5 +161,7 @@ func _ready() -> void:
 		saveSave()
 	else:
 		loadSave()
+		
+	optionsData['audio_subtitles'] = 3
 		
 	applyImmediateSettings()

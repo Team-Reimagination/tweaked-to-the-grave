@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dyoywgkh1v7w0"]
+[gd_scene load_steps=39 format=3 uid="uid://dyoywgkh1v7w0"]
 
 [ext_resource type="Script" uid="uid://ddsogm1aqrgtv" path="res://assets/scenes/[SUB-SCENES]/dialogue/dialogue.gd" id="1_2uwk1"]
 [ext_resource type="Texture2D" uid="uid://cuebrxp06o4f5" path="res://assets/images/hud/dialogue/box.png" id="3_14t8k"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="4_vdasa"]
 [ext_resource type="AudioStream" uid="uid://bm4c2if1cp6kl" path="res://assets/sounds/ui/transmission_static.ogg" id="5_14t8k"]
 [ext_resource type="FontFile" uid="uid://cvb36t3beutc0" path="res://assets/fonts/all-aircraft-report.ttf" id="5_vdasa"]
+[ext_resource type="Script" uid="uid://do3ib7cpvvinc" path="res://assets/scripts/classes/subtitle_sound_general.gd" id="6_vdasa"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_14t8k"]
 load_path = "res://.godot/imported/portraits.png-5037ee326dbc44dd200faf71dc8e58b3.ctex"
@@ -349,14 +350,23 @@ visible_ratio = 0.0
 [node name="TransIn" type="AudioStreamPlayer" parent="Audio" groups=["Sound"]]
 stream = ExtResource("3_t5uuo")
 bus = &"SFX"
+script = ExtResource("6_vdasa")
+subtitle = "Radio Transmission On"
+metadata/_custom_type_script = "uid://do3ib7cpvvinc"
 
 [node name="TransOut" type="AudioStreamPlayer" parent="Audio" groups=["Sound"]]
 stream = ExtResource("4_h1o2o")
 bus = &"SFX"
+script = ExtResource("6_vdasa")
+subtitle = "Radio Transmission Off"
+metadata/_custom_type_script = "uid://do3ib7cpvvinc"
 
 [node name="Static" type="AudioStreamPlayer" parent="Audio" groups=["Sound"]]
 stream = ExtResource("5_14t8k")
 bus = &"SFX"
+script = ExtResource("6_vdasa")
+subtitle = "Radio Static"
+metadata/_custom_type_script = "uid://do3ib7cpvvinc"
 
 [node name="Voice" type="AudioStreamPlayer" parent="Audio" groups=["Sound"]]
 bus = &"Voicelines"

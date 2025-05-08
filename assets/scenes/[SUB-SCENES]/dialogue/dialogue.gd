@@ -54,7 +54,7 @@ func beginning(doCheck = true):
 	comTween.tween_property(portrait, "scale:y", 1.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	comTween.set_parallel(true).tween_property(box, "scale:y", 0.93, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	
-	$Audio/TransIn.play()
+	$Audio/TransIn.subtitle_play()
 	
 	await $Audio/TransIn.finished
 	if doCheck and dialogue != {}: checkDialogue()
@@ -74,7 +74,7 @@ func ending(doExit = true):
 	comTween.tween_property(portrait, "scale:y", 0.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	comTween.set_parallel(true).tween_property(box, "scale:y", 0.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	
-	$Audio/TransOut.play()
+	$Audio/TransOut.subtitle_play()
 	
 	await $Audio/TransOut.finished
 	if doExit: exitThisWay()
@@ -90,7 +90,7 @@ func proceedWithDialogue():
 	
 	if oldDialEvent == {} or dialEvent.char == oldDialEvent.char: typeIt()
 	else:
-		$Audio/Static.play()
+		$Audio/Static.subtitle_play()
 		portrait.play("inter")
 		
 		dialName.visible = false

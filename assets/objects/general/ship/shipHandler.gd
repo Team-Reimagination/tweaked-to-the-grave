@@ -49,7 +49,7 @@ var canShoot = true;
 @onready var autofire = SaveSystem.optionsData.gameplay_autofire
 
 func _ready() -> void:
-	$Ambience.play()
+	$Ambience.subtitle_play()
 	$Model/AnimationPlayer.play("ArmatureAction")
 	
 	for a in find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_override != null):
@@ -95,7 +95,7 @@ func handleInput():
 				or
 				(upDown > 0 && boundForcefield[3] >= 1.0)
 			) and PlayGlobals.canBarrelRoll:
-				$Barrelroll.play()
+				$Barrelroll.subtitle_play()
 				$Barrelroll.pitch_scale = randf_range(0.75,1.25)
 				
 				action = "barrel" #do acts and immediately change speed
@@ -189,7 +189,7 @@ func shoot():
 	
 	#get places to shoot from depending on level and shoot from there
 	var shootFromWhere = $"ShootLines".get_children(true).filter(func(x): return x.get_meta("levelConstrain").has(bltCNT))
-	$Shot.play()
+	$Shot.subtitle_play()
 	$Shot.pitch_scale = randf_range(0.75,1.25)
 	
 	for spot in shootFromWhere:
@@ -211,7 +211,7 @@ func hurtPlayer():
 	hurtSpin = 0;
 	hurtSpinMod = 25;
 	
-	$Hurt.play()
+	$Hurt.subtitle_play()
 	$Hurt.pitch_scale = randf_range(0.85,1.15)
 	
 	velocity = -velocity
@@ -238,7 +238,7 @@ func loseLife():
 	self.rotation_degrees.x = 0
 	self.visible = false
 	
-	$Explode.play()
+	$Explode.subtitle_play()
 	
 	if (scene.lives > 0):
 		await get_tree().create_timer(1.5, false).timeout
@@ -247,7 +247,7 @@ func loseLife():
 		scene.heal(3)
 		$"../../HUD".healMe(3)
 		
-		$Ambience.play()
+		$Ambience.subtitle_play()
 		invincibilityFrames()
 
 func invincibilityFrames(isVisible = true): #custom flicker function

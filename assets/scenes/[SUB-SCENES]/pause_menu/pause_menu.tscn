@@ -273,6 +273,7 @@ horizontal_alignment = 1
 vertical_alignment = 3
 
 [node name="Ambience" type="HSlider" parent="Inside/QuickOptions"]
+layout_mode = 0
 offset_left = 191.0
 offset_top = 48.0
 offset_right = 296.0
@@ -300,6 +301,7 @@ offset_bottom = 41.0
 mouse_filter = 1
 
 [node name="AmbienceLabel" type="Label" parent="Inside/QuickOptions"]
+layout_mode = 0
 offset_left = 91.0
 offset_top = 58.0
 offset_right = 164.0

@@ -43,6 +43,8 @@ func changeClothes():
 		PlayGlobals.removeAllSubstates()
 		
 		if doUnpause: parentToChange.get_tree().paused = false
+		Subtitles.clearSubtitles()
+		Subtitles.setPlacementY()
 		
 		if intendedScene == "reset":
 			parentToChange.get_tree().reload_current_scene()

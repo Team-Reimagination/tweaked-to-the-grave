@@ -27,7 +27,7 @@ func suicide():
 		willDisappear = true
 		startSucking = false
 		
-		$CollectAudio.play()
+		$CollectAudio.subtitle_play()
 		
 		overridePos = global_position
 		$Model.get_child(1).visible = false

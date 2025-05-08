@@ -8,6 +8,9 @@ extends CanvasLayer
 var isItReady = false
 
 func start() -> void:
+	Subtitles.setPlacementY()
+	$SoOver.subtitle_play()
+	
 	#this is so jank but it works, just don't fucking do this
 	var gra = get_parent().create_tween()
 	gra.tween_property($BG, "color", Color(0.0,0.0,0.0,0.5), 0.2)
@@ -28,7 +31,7 @@ func start() -> void:
 	gradT3.tween_property(gamo, "position:y", gamo.position.y + 20, 0.6).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 	
 	await get_tree().create_timer(1.2).timeout
-	$Stroked.play()
+	$Stroked.subtitle_play()
 	
 	await get_tree().create_timer(1.0).timeout
 	buttons.canInput = true

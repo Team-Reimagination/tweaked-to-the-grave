@@ -77,7 +77,7 @@ func levelUpLira():
 	if scene.liraLevel > 1:
 		#of course do that because by default it is invisible
 		$LiraGroup/LiraParticles.self_modulate = Color(1.0,1.0,1.0,1.0)
-		$LiraGroup/LevelUp.play()
+		$LiraGroup/LevelUp.subtitle_play()
 		
 		liraGroup.position.y = 50.0;
 		if liraShakeTween:
@@ -140,7 +140,7 @@ func loseLife():
 		
 		$LiraGroup/LevelText.text = "LV "+str(scene.liraLevel)
 		
-		$LiraGroup/MoneyLoss.play()
+		$LiraGroup/MoneyLoss.subtitle_play()
 		
 		liraGroup.position.y = 50.0;
 		if liraShakeTween:
@@ -205,7 +205,7 @@ func giveMeLife():
 
 func bonusing(type, aslira):
 	scene.addLira(aslira)
-	$"../Audio/Lira".play()
+	$"../Audio/Lira".subtitle_play()
 	
 	var boner : Label = $BaseBonus.duplicate()
 	BonusGroup.add_child(boner)

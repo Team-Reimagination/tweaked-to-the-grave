@@ -29,5 +29,5 @@ func _process(delta: float) -> void:
 func killYourself():
 	if not isKillingYourself:
 		isKillingYourself = true
-		$Death.play()
+		$Death.subtitle_play()
 		$Model.visible = false

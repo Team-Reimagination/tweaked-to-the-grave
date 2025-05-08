@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://d1hgqyio7cgj2"]
+[gd_scene load_steps=11 format=4 uid="uid://d1hgqyio7cgj2"]
 
 [ext_resource type="Script" uid="uid://bi4bdomjgp1pp" path="res://assets/objects/bullets/railring/railring.gd" id="1_4evfx"]
 [ext_resource type="Material" uid="uid://b12nxbyimqnm3" path="res://assets/objects/bullets/railring/railring_red.tres" id="2_j18nb"]
 [ext_resource type="Material" uid="uid://bng5xy85cefdi" path="res://assets/objects/bullets/railring/railring_white.tres" id="3_ojr4h"]
 [ext_resource type="AudioStream" uid="uid://cxbilg75xfw1e" path="res://assets/sounds/gameplay/railring_land.ogg" id="4_ojr4h"]
+[ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="5_pvg0r"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_k4bet"]
 _surfaces = [{
@@ -106,3 +107,6 @@ max_db = -10.0
 max_distance = 500.0
 panning_strength = 0.48
 bus = &"SFX"
+script = ExtResource("5_pvg0r")
+subtitle = "Rail Ring Disappear"
+metadata/_custom_type_script = "uid://dobpfy25irneh"

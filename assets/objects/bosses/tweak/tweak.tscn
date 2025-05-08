@@ -4134,6 +4134,7 @@ size = Vector3(9.8, 11.665, 11.16)
 script = ExtResource("1_q3ouc")
 hasAltDeath = true
 altChance = 0.1
+deathSubtitle = "\"Uh, what? AHHHHHH!\""
 type = "enemy"
 doProcessDistanceFade = false
 metadata/_custom_type_script = "uid://cbnyu4nbttghp"
