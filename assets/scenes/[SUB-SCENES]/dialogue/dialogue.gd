@@ -19,6 +19,7 @@ var charAliases = {
 	"tweak": "the tweak",
 	"tweak_final": "the tweak",
 	"eyad_irl": "eyad",
+	"eyad": "eydoo",
 	"freindly": "freindly fellow",
 	"seezee": "seezee553"
 }
@@ -83,6 +84,9 @@ func exitThisWay():
 
 func proceedWithDialogue():
 	dialEvent = dialogue.events[dialEventNum]
+	
+	if get_meta("parent", null) != null:
+		get_meta("parent", null).scripts.runFunction("onDialogue", [dialEventNum])
 	
 	if oldDialEvent == {} or dialEvent.char == oldDialEvent.char: typeIt()
 	else:

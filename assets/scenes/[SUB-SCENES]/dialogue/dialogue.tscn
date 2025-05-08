@@ -286,6 +286,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_2uwk1")
+metadata/parent = NodePath("")
 
 [node name="Portrait" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

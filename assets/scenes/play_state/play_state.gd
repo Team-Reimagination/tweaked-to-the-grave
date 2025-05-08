@@ -357,6 +357,7 @@ func _process(delta: float) -> void:
 			dial.startDialogue(dialogues[0][1])
 			dial.position = Vector2(335.0,835.0)
 			dialogues.pop_front()
+			dial.set_meta("parent", self)
 	
 func wellithinkitstimetomoveonok():
 	get_tree().paused = false

@@ -1928,6 +1928,8 @@ script = ExtResource("43_0752p")
 
 [node name="BonusGroup" type="CanvasGroup" parent="HUD"]
 
+[node name="topLayer" type="CanvasGroup" parent="HUD"]
+
 [node name="Victory" type="CanvasLayer" parent="."]
 layer = 3
 script = ExtResource("40_0fg0f")
