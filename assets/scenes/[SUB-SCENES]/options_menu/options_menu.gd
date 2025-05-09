@@ -15,10 +15,13 @@ func _ready() -> void:
 		var settingNode = i.get_node("./Setting")
 		if (settingNode is HSlider):
 			settingNode.connect("value_changed", func(value): onvaluechange(i.get_name(), value));
+			settingNode.set_value_no_signal(SaveSystem.optionsData.get(i.get_name(), 0));
 		if (settingNode is ItemList):
+			settingNode.select(SaveSystem.optionsData.get(i.get_name(), 0))
 			settingNode.connect("item_selected", func(index): onvaluechange(i.get_name(), index));
 		if (settingNode is TextureButton):
 			settingNode.connect("toggled", func(value): onvaluechange(i.get_name(), value));
+			settingNode.set_pressed_no_signal(SaveSystem.optionsData.get(i.get_name(), false));
 	
 func _process(_delta: float) -> void:
 	scalemyfuck()
