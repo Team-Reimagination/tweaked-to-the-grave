@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgmqcnoctism4"]
+[gd_scene load_steps=14 format=3 uid="uid://bgmqcnoctism4"]
 
 [ext_resource type="Script" uid="uid://xcn1tduwunwp" path="res://assets/scenes/[SUB-SCENES]/options_menu/options_menu.gd" id="1_fgg3q"]
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="2_sqiki"]
@@ -39,6 +39,8 @@ texture_margin_right = 24.0
 expand_margin_top = 27.0
 expand_margin_bottom = 28.0
 axis_stretch_horizontal = 1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8ldte"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -366,5 +368,18 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "2dec9fc98fae370b0d12ee481cadc85f"
 metadata/ID = 2
+
+[node name="TextureButton" type="TextureButton" parent="Inside"]
+offset_left = -178.0
+offset_top = 109.0
+offset_right = 89.0
+offset_bottom = 195.0
+texture_normal = SubResource("PlaceholderTexture2D_8ldte")
+
+[node name="Label" type="Label" parent="Inside/TextureButton"]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 76.0
+text = "nuke the save"
 
 [editable path="Base"]

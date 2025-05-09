@@ -12,6 +12,8 @@ func scalemyfuck():
 func _ready() -> void:
 	scalemyfuck()
 	for i in $Inside.get_children():
+		if (i is not Node): return
+		
 		var settingNode = i.get_node("./Setting")
 		if (settingNode is HSlider):
 			settingNode.connect("value_changed", func(value): onvaluechange(i.get_name(), value));
