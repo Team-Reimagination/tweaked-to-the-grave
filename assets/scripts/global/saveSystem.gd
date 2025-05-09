@@ -4,6 +4,7 @@ var optionsData = {
 	"video_resolution" = Vector2(1280, 960), ##PC ONLY
 	"video_fullscreen" = false, ##PC ONLY
 	"video_passion" = false,
+	"video_reducedmotions" = false,
 	
 	"audio_master" = 1.0,
 	"audio_music" = 1.0,
@@ -134,24 +135,34 @@ func applyImmediateSettings() -> void:
 func applySetting(type, valuemysanityplease): #this shit has no switch cases :sob:
 	if type == 'video_resolution':
 		if not OS.has_feature("web"): DisplayServer.window_set_size(valuemysanityplease)
+		return
 	elif type == 'video_fullscreen':
 		if not OS.has_feature("web"): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if valuemysanityplease else DisplayServer.WINDOW_MODE_WINDOWED)
+		return
 	elif type == 'video_passion':
 		Passion.visibility(valuemysanityplease)
+		return
 	
 	elif type == 'audio_master':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(valuemysanityplease))
+		return
 	elif type == 'audio_music':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(valuemysanityplease))
+		return
 	elif type == 'audio_sfx':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(valuemysanityplease))
+		return
 	elif type == 'audio_ambience':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(valuemysanityplease))
+		return
 	elif type == 'audio_voicelines':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Voicelines"), linear_to_db(valuemysanityplease))
+		return
 	elif type == 'audio_subtitles':
 		return
-		## 0 - none, 1 - voicelines, 2 - closed captioning, 3 - all
+		## 0 - none, 1 - closed captioning, 2 - voicelines, 3 - all
+		
+	print("didn't do shit 😂")
 
 func _ready() -> void:
 	cloudSave = await NG.cloudsave_get_data(1)

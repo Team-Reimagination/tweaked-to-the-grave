@@ -11,16 +11,31 @@ func scalemyfuck():
 
 func _ready() -> void:
 	scalemyfuck()
+	for i in $Inside.get_children():
+		var settingNode = i.get_node("./Setting")
+		if (settingNode is HSlider):
+			settingNode.connect("value_changed", func(value): onvaluechange(i.get_name(), value));
+		if (settingNode is ItemList):
+			settingNode.connect("item_selected", func(index): onvaluechange(i.get_name(), index));
+		if (settingNode is TextureButton):
+			settingNode.connect("toggled", func(value): onvaluechange(i.get_name(), value));
 	
 func _process(_delta: float) -> void:
 	scalemyfuck()
 	
-	if canInput and (Input.is_action_just_pressed("Back_UI") or CustomCursor.isMouseJustPressed("right")):
-		canInput = false;
-		$ScaleRef.size = Vector2(0.0,0.0)
-		get_tree().create_tween().tween_property($Base/Background, "scale", Vector2.ZERO, 0.1).set_ease(Tween.EASE_IN)
+	if canInput:
+		if (Input.is_action_just_pressed("Back_UI") or CustomCursor.isMouseJustPressed("right")):
+			canInput = false;
+			$ScaleRef.size = Vector2(0.0,0.0)
+			get_tree().create_tween().tween_property($Base/Background, "scale", Vector2.ZERO, 0.1).set_ease(Tween.EASE_IN)
 		
-		get_meta("parent").canInput = true
+			get_meta("parent").canInput = true
 		
 	if not canInput and $Base/Background.scale <= Vector2(0.05, 0.05):
 		PlayGlobals.removeSubstate(self);
+
+func onvaluechange(setting:String, value):
+	print(setting)
+	var realLifeValue = SaveSystem.optionsData.set(setting, value)
+	SaveSystem.applySetting(setting, realLifeValue)
+		

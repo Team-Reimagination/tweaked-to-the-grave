@@ -65,7 +65,7 @@ func setting_change(value, obj):
 	
 func prepareOptions():
 	for ob in optionSliders:
-		ob.value = SaveSystem.optionsData[ob.optionValue]
+		ob.value = SaveSystem.optionsData.get(ob.optionValue)
 		ob.value_changed.connect(tickSound.bind(ob))
 		ob.mouse_entered.connect(mouse_button.bind(ob))
 	

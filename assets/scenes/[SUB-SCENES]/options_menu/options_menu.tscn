@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgmqcnoctism4"]
+[gd_scene load_steps=13 format=3 uid="uid://bgmqcnoctism4"]
 
 [ext_resource type="Script" uid="uid://xcn1tduwunwp" path="res://assets/scenes/[SUB-SCENES]/options_menu/options_menu.gd" id="1_fgg3q"]
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="2_sqiki"]
 [ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/backgrounds/grave-rect.png" id="3_8ldte"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="4_5al15"]
+[ext_resource type="Texture2D" uid="uid://km777imgrgpg" path="res://assets/images/buttons/general/scroll_grab.png" id="4_8ldte"]
 [ext_resource type="Texture2D" uid="uid://d1v1yw8v2sii4" path="res://assets/images/buttons/general/checkbox1.png" id="5_058qp"]
+[ext_resource type="Texture2D" uid="uid://bc6374bbi8tof" path="res://assets/images/buttons/general/scroll_bg.png" id="5_ugvmj"]
 [ext_resource type="Texture2D" uid="uid://bav0b2ubq8ynd" path="res://assets/images/buttons/general/checkbox2.png" id="6_5slg3"]
+[ext_resource type="Script" uid="uid://de0a4e14oxoiu" path="res://assets/scripts/funcs/optionMetadata.gd" id="6_b3jsy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
 resource_local_to_scene = true
@@ -23,9 +26,19 @@ axis_stretch_vertical = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_7vle8"]
 font = ExtResource("4_5al15")
-font_size = 32
+font_size = 48
 outline_size = 8
 outline_color = Color(0.156863, 0.184314, 0.309804, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oqvl8"]
+content_margin_left = 14.0
+content_margin_right = 14.0
+texture = ExtResource("5_ugvmj")
+texture_margin_left = 13.0
+texture_margin_right = 13.0
+expand_margin_top = 12.0
+expand_margin_bottom = 12.0
+axis_stretch_horizontal = 1
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -61,133 +74,199 @@ layer = 5
 offset = Vector2(640, 480)
 transform = Transform2D(1, 0, 0, 1, 640, 480)
 
-[node name="FreeplayLabel5" type="Label" parent="Inside"]
-offset_left = -479.0
-offset_top = -71.0
-offset_right = -211.0
-offset_bottom = -27.0
-text = "Subtitles"
-label_settings = SubResource("LabelSettings_7vle8")
-horizontal_alignment = 1
-vertical_alignment = 3
+[node name="audio_master" type="Node" parent="Inside"]
 
-[node name="FreeplayLabel" type="Label" parent="Inside"]
-offset_left = -460.0
-offset_top = -362.0
-offset_right = -228.0
-offset_bottom = -318.0
+[node name="SettingLabel" type="Label" parent="Inside/audio_master"]
+offset_left = -430.0
+offset_top = -359.0
+offset_right = -83.0
+offset_bottom = -293.0
 text = "Master Volume"
 label_settings = SubResource("LabelSettings_7vle8")
 horizontal_alignment = 1
 vertical_alignment = 3
 
-[node name="TabBar" type="TabBar" parent="Inside"]
-offset_left = 120.0
-offset_top = -363.0
-offset_right = 505.0
-offset_bottom = -323.0
-current_tab = 0
-tab_count = 11
-tab_0/title = "0"
-tab_1/title = "1"
-tab_2/title = "2"
-tab_3/title = "3"
-tab_4/title = "4"
-tab_5/title = "5"
-tab_6/title = "6"
-tab_7/title = "7"
-tab_8/title = "8"
-tab_9/title = "9"
-tab_10/title = "10"
+[node name="Setting" type="HSlider" parent="Inside/audio_master"]
+offset_left = 175.0
+offset_top = -358.0
+offset_right = 441.0
+offset_bottom = -322.0
+mouse_default_cursor_shape = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("4_8ldte")
+theme_override_icons/grabber_highlight = ExtResource("4_8ldte")
+theme_override_icons/grabber_disabled = ExtResource("4_8ldte")
+theme_override_styles/slider = SubResource("StyleBoxTexture_oqvl8")
+max_value = 1.0
+step = 0.01
+ticks_on_borders = true
+script = ExtResource("6_b3jsy")
+optionValue = "audio_master"
+metadata/ID = 4
 
-[node name="FreeplayLabel2" type="Label" parent="Inside"]
-offset_left = -461.0
-offset_top = -284.0
-offset_right = -229.0
-offset_bottom = -240.0
+[node name="Rectangle" type="ReferenceRect" parent="Inside/audio_master/Setting"]
+visible = false
+layout_mode = 0
+offset_left = -86.0
+offset_top = -3.0
+offset_right = 125.0
+offset_bottom = 41.0
+mouse_filter = 1
+
+[node name="audio_sfx" type="Node" parent="Inside"]
+
+[node name="SettingLabel" type="Label" parent="Inside/audio_sfx"]
+offset_left = -431.0
+offset_top = -281.0
+offset_right = -145.0
+offset_bottom = -215.0
 text = "SFX Volume"
 label_settings = SubResource("LabelSettings_7vle8")
 horizontal_alignment = 1
 vertical_alignment = 3
 
-[node name="TabBar2" type="TabBar" parent="Inside"]
-offset_left = 119.0
+[node name="Setting" type="HSlider" parent="Inside/audio_sfx"]
+offset_left = 173.0
 offset_top = -285.0
-offset_right = 504.0
-offset_bottom = -245.0
-current_tab = 0
-tab_count = 11
-tab_0/title = "0"
-tab_1/title = "1"
-tab_2/title = "2"
-tab_3/title = "3"
-tab_4/title = "4"
-tab_5/title = "5"
-tab_6/title = "6"
-tab_7/title = "7"
-tab_8/title = "8"
-tab_9/title = "9"
-tab_10/title = "10"
+offset_right = 439.0
+offset_bottom = -249.0
+mouse_default_cursor_shape = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("4_8ldte")
+theme_override_icons/grabber_highlight = ExtResource("4_8ldte")
+theme_override_icons/grabber_disabled = ExtResource("4_8ldte")
+theme_override_styles/slider = SubResource("StyleBoxTexture_oqvl8")
+max_value = 1.0
+step = 0.01
+ticks_on_borders = true
+script = ExtResource("6_b3jsy")
+optionValue = "audio_master"
+metadata/ID = 4
 
-[node name="FreeplayLabel3" type="Label" parent="Inside"]
-offset_left = -462.0
-offset_top = -210.0
-offset_right = -230.0
-offset_bottom = -166.0
+[node name="Rectangle" type="ReferenceRect" parent="Inside/audio_sfx/Setting"]
+visible = false
+layout_mode = 0
+offset_left = -86.0
+offset_top = -3.0
+offset_right = 125.0
+offset_bottom = 41.0
+mouse_filter = 1
+
+[node name="audio_music" type="Node" parent="Inside"]
+
+[node name="SettingLabel" type="Label" parent="Inside/audio_music"]
+offset_left = -432.0
+offset_top = -207.0
+offset_right = -124.0
+offset_bottom = -141.0
 text = "Music Volume"
 label_settings = SubResource("LabelSettings_7vle8")
 horizontal_alignment = 1
 vertical_alignment = 3
 
-[node name="TabBar3" type="TabBar" parent="Inside"]
-offset_left = 118.0
-offset_top = -211.0
-offset_right = 503.0
-offset_bottom = -171.0
-current_tab = 0
-tab_count = 11
-tab_0/title = "0"
-tab_1/title = "1"
-tab_2/title = "2"
-tab_3/title = "3"
-tab_4/title = "4"
-tab_5/title = "5"
-tab_6/title = "6"
-tab_7/title = "7"
-tab_8/title = "8"
-tab_9/title = "9"
-tab_10/title = "10"
+[node name="Setting" type="HSlider" parent="Inside/audio_music"]
+offset_left = 170.0
+offset_top = -213.0
+offset_right = 436.0
+offset_bottom = -177.0
+mouse_default_cursor_shape = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("4_8ldte")
+theme_override_icons/grabber_highlight = ExtResource("4_8ldte")
+theme_override_icons/grabber_disabled = ExtResource("4_8ldte")
+theme_override_styles/slider = SubResource("StyleBoxTexture_oqvl8")
+max_value = 1.0
+step = 0.01
+ticks_on_borders = true
+script = ExtResource("6_b3jsy")
+optionValue = "audio_master"
+metadata/ID = 4
 
-[node name="FreeplayLabel4" type="Label" parent="Inside"]
-offset_left = -475.0
-offset_top = -137.0
-offset_right = -207.0
-offset_bottom = -93.0
+[node name="Rectangle" type="ReferenceRect" parent="Inside/audio_music/Setting"]
+visible = false
+layout_mode = 0
+offset_left = -86.0
+offset_top = -3.0
+offset_right = 125.0
+offset_bottom = 41.0
+mouse_filter = 1
+
+[node name="audio_voicelines" type="Node" parent="Inside"]
+
+[node name="SettingLabel" type="Label" parent="Inside/audio_voicelines"]
+offset_left = -445.0
+offset_top = -134.0
+offset_right = -44.0
+offset_bottom = -68.0
 text = "Voicelines Volume"
 label_settings = SubResource("LabelSettings_7vle8")
 horizontal_alignment = 1
 vertical_alignment = 3
 
-[node name="TabBar4" type="TabBar" parent="Inside"]
-offset_left = 117.0
-offset_top = -137.0
-offset_right = 502.0
-offset_bottom = -97.0
-current_tab = 0
-tab_count = 11
-tab_0/title = "0"
-tab_1/title = "1"
-tab_2/title = "2"
-tab_3/title = "3"
-tab_4/title = "4"
-tab_5/title = "5"
-tab_6/title = "6"
-tab_7/title = "7"
-tab_8/title = "8"
-tab_9/title = "9"
-tab_10/title = "10"
+[node name="Setting" type="HSlider" parent="Inside/audio_voicelines"]
+offset_left = 165.0
+offset_top = -125.0
+offset_right = 431.0
+offset_bottom = -89.0
+mouse_default_cursor_shape = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("4_8ldte")
+theme_override_icons/grabber_highlight = ExtResource("4_8ldte")
+theme_override_icons/grabber_disabled = ExtResource("4_8ldte")
+theme_override_styles/slider = SubResource("StyleBoxTexture_oqvl8")
+max_value = 1.0
+step = 0.01
+ticks_on_borders = true
+script = ExtResource("6_b3jsy")
+optionValue = "audio_master"
+metadata/ID = 4
 
-[node name="Freeplay" type="TextureButton" parent="Inside"]
+[node name="Rectangle" type="ReferenceRect" parent="Inside/audio_voicelines/Setting"]
+visible = false
+layout_mode = 0
+offset_left = -86.0
+offset_top = -3.0
+offset_right = 125.0
+offset_bottom = 41.0
+mouse_filter = 1
+
+[node name="audio_subtitles" type="Node" parent="Inside"]
+
+[node name="SettingLabel" type="Label" parent="Inside/audio_subtitles"]
+offset_left = -449.0
+offset_top = -68.0
+offset_right = -181.0
+offset_bottom = -2.0
+text = "Subtitles"
+label_settings = SubResource("LabelSettings_7vle8")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Setting" type="ItemList" parent="Inside/audio_subtitles"]
+offset_left = 159.0
+offset_top = -60.0
+offset_right = 418.0
+offset_bottom = 60.0
+allow_reselect = true
+item_count = 4
+item_0/text = "Off"
+item_1/text = "Closed Captions"
+item_2/text = "Voicelines"
+item_3/text = "Everything"
+
+[node name="video_reducedmotions" type="Node" parent="Inside"]
+
+[node name="SettingLabel" type="Label" parent="Inside/video_reducedmotions"]
+offset_left = -433.0
+offset_top = 74.0
+offset_right = -63.0
+offset_bottom = 140.0
+text = "Reduced Motions"
+label_settings = SubResource("LabelSettings_7vle8")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Setting" type="TextureButton" parent="Inside/video_reducedmotions"]
 texture_filter = 1
 offset_left = 275.0
 offset_top = 69.0
@@ -216,22 +295,24 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "2dec9fc98fae370b0d12ee481cadc85f"
 metadata/ID = 2
 
-[node name="FreeplayLabel6" type="Label" parent="Inside"]
-offset_left = -463.0
-offset_top = 71.0
-offset_right = -195.0
-offset_bottom = 115.0
-text = "Reduced Motions"
+[node name="gameplay_autofire" type="Node" parent="Inside"]
+
+[node name="SettingLabel" type="Label" parent="Inside/gameplay_autofire"]
+offset_left = -431.0
+offset_top = 165.0
+offset_right = -163.0
+offset_bottom = 231.0
+text = "Auto-fire"
 label_settings = SubResource("LabelSettings_7vle8")
 horizontal_alignment = 1
 vertical_alignment = 3
 
-[node name="Freeplay2" type="TextureButton" parent="Inside"]
+[node name="Setting" type="TextureButton" parent="Inside/gameplay_autofire"]
 texture_filter = 1
-offset_left = 266.0
-offset_top = -60.0
-offset_right = 313.0
-offset_bottom = -6.0
+offset_left = 277.0
+offset_top = 160.0
+offset_right = 324.0
+offset_bottom = 214.0
 pivot_offset = Vector2(23.5, 33.63)
 mouse_default_cursor_shape = 2
 toggle_mode = true
