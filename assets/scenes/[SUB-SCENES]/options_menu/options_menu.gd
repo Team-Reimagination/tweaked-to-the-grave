@@ -35,7 +35,6 @@ func _process(_delta: float) -> void:
 		PlayGlobals.removeSubstate(self);
 
 func onvaluechange(setting:String, value):
-	print(setting)
 	var realLifeValue = SaveSystem.optionsData.set(setting, value)
-	SaveSystem.applySetting(setting, realLifeValue)
+	SaveSystem.applySetting(setting, value)
 		
