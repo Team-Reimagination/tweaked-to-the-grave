@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://ca5b8g1bqu2ci"]
+[gd_scene load_steps=23 format=3 uid="uid://ca5b8g1bqu2ci"]
 
 [ext_resource type="Script" uid="uid://q27yxrhr8aeh" path="res://assets/scripts/classes/collectible_class.gd" id="1_287jf"]
 [ext_resource type="Texture2D" uid="uid://dr0jovf6bn73t" path="res://assets/images/fx/sparkle.png" id="2_r6qmj"]
 [ext_resource type="Texture2D" uid="uid://dh7bscmahhkdt" path="res://assets/images/entities/lira/lira-20.png" id="3_287jf"]
 [ext_resource type="AudioStream" uid="uid://6md88sogh8ue" path="res://assets/sounds/entities/lira_get.ogg" id="4_nsepr"]
 [ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="5_r6qmj"]
+[ext_resource type="AudioStream" uid="uid://clg4lve0cj3m1" path="res://assets/sounds/entities/attraction.ogg" id="6_8roef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1fsy"]
 atlas = ExtResource("2_r6qmj")
@@ -175,4 +176,15 @@ max_db = 0.0
 bus = &"SFX"
 script = ExtResource("5_r6qmj")
 subtitle = "Lira Collected"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Attraction" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
+stream = ExtResource("6_8roef")
+attenuation_model = 3
+volume_db = -2.0
+unit_size = 100.0
+max_db = 0.0
+bus = &"SFX"
+script = ExtResource("5_r6qmj")
+subtitle = "Lira Attracted"
 metadata/_custom_type_script = "uid://dobpfy25irneh"

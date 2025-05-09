@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3x5qru1vqw2l"]
+[gd_scene load_steps=9 format=3 uid="uid://b3x5qru1vqw2l"]
 
 [ext_resource type="Script" uid="uid://q27yxrhr8aeh" path="res://assets/scripts/classes/collectible_class.gd" id="1_nd3hy"]
 [ext_resource type="Texture2D" uid="uid://dokao6ksl5e5h" path="res://assets/images/entities/1up/1up-broken.png" id="2_k20gu"]
 [ext_resource type="Texture2D" uid="uid://qfccfe7g2j1m" path="res://assets/images/entities/1up/1up.png" id="3_3hcem"]
 [ext_resource type="AudioStream" uid="uid://cufh7t663ivba" path="res://assets/sounds/entities/1up_break.ogg" id="4_f6x56"]
 [ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="5_3hcem"]
+[ext_resource type="AudioStream" uid="uid://clg4lve0cj3m1" path="res://assets/sounds/entities/attraction.ogg" id="6_f6x56"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ajw8j"]
 height = 2.08463
@@ -77,4 +78,15 @@ max_db = 0.0
 bus = &"SFX"
 script = ExtResource("5_3hcem")
 subtitle = "1-Up Broken"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Attraction" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
+stream = ExtResource("6_f6x56")
+attenuation_model = 3
+volume_db = -2.0
+unit_size = 100.0
+max_db = 0.0
+bus = &"SFX"
+script = ExtResource("5_3hcem")
+subtitle = "1-Up Attracted"
 metadata/_custom_type_script = "uid://dobpfy25irneh"

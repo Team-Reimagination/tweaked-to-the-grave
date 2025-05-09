@@ -81,5 +81,7 @@ func victory_screech():
 
 func detectCollission(_areID, are, _arSID, _loSID):
 	if !scene.hasBitchWon:
-		if are.type == 'player' and _loSID == 0 and !startSucking and !willDisappear and scene.player.action != 'hurt' and scene.player.action != 'explode': startSucking = true
+		if are.type == 'player' and _loSID == 0 and !startSucking and !willDisappear and scene.player.action != 'hurt' and scene.player.action != 'explode':
+			startSucking = true
+			$Attraction.subtitle_play()
 		elif are.type == 'player_collector' and _loSID == 1 and !willDisappear: suicide()
