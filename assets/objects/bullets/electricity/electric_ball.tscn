@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://djferswoc2aon"]
+
+[ext_resource type="Script" uid="uid://cc1euaoq4kdkf" path="res://assets/scripts/classes/bullet_class.gd" id="1_h5tcm"]
+[ext_resource type="Texture2D" uid="uid://d008yxds87x0l" path="res://assets/images/entities/electricity/ball.png" id="2_h5tcm"]
+[ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="3_xewk4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xewk4"]
+atlas = ExtResource("2_h5tcm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id5eg"]
+atlas = ExtResource("2_h5tcm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtuik"]
+atlas = ExtResource("2_h5tcm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp5cn"]
+atlas = ExtResource("2_h5tcm")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5aqwh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xewk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id5eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtuik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp5cn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j31iq"]
+radius = 2.57622
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8iher"]
+radius = 5.25886
+
+[node name="ElectricBall" type="Area3D"]
+script = ExtResource("1_h5tcm")
+offscreenCheck = true
+canDie = false
+camBeHit = false
+isGhost = true
+type = "bullet"
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://cc1euaoq4kdkf"
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite3D" parent="Model"]
+pixel_size = 0.1
+billboard = 1
+alpha_cut = 1
+alpha_scissor_threshold = 0.468
+sprite_frames = SubResource("SpriteFrames_5aqwh")
+autoplay = "default"
+frame_progress = 0.623092
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_j31iq")
+debug_color = Color(0.98928, 0, 0.293994, 0.42)
+
+[node name="Narrowbox" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8iher")
+
+[node name="Offscreen" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-4.59979, -3.78915, -4.525, 9.19958, 7.5783, 9.05)
+
+[node name="SeekTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AliveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ParryTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Parry" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+script = ExtResource("3_xewk4")
+subtitle = "Bullet Parried"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Direction" type="Marker3D" parent="."]
+gizmo_extents = 2.0

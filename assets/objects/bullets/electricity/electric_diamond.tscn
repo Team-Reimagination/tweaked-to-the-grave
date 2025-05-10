@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://yd5rye7xooms"]
+
+[ext_resource type="Script" uid="uid://byjjqai4rhhhr" path="res://assets/objects/bullets/electricity/electric_diamond.gd" id="1_ufhpu"]
+[ext_resource type="Texture2D" uid="uid://dehj8peuta48d" path="res://assets/images/entities/electricity/diamond.png" id="2_ufhpu"]
+[ext_resource type="AudioStream" uid="uid://jvjfs5js151n" path="res://assets/sounds/entities/hieroglyph_parry.ogg" id="3_rkhgg"]
+[ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="4_deuhp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaukh"]
+atlas = ExtResource("2_ufhpu")
+region = Rect2(0, 0, 49, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkhgg"]
+atlas = ExtResource("2_ufhpu")
+region = Rect2(49, 0, 49, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deuhp"]
+atlas = ExtResource("2_ufhpu")
+region = Rect2(98, 0, 49, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_352ki"]
+atlas = ExtResource("2_ufhpu")
+region = Rect2(147, 0, 49, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5aqwh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaukh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkhgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deuhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_352ki")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dq1c0"]
+size = Vector3(4.30444, 3.35938, 2.96313)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ngqq"]
+size = Vector3(6.21973, 5.18457, 4.61108)
+
+[node name="ElectricDiamond" type="Area3D"]
+script = ExtResource("1_ufhpu")
+gravityMod = 0.85
+offscreenCheck = true
+lifetime = 10.0
+canDie = false
+camBeHit = false
+isGhost = true
+type = "bullet"
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://cc1euaoq4kdkf"
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite3D" parent="Model"]
+pixel_size = 0.1
+alpha_cut = 1
+alpha_scissor_threshold = 0.468
+sprite_frames = SubResource("SpriteFrames_5aqwh")
+autoplay = "default"
+frame_progress = 0.877364
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dq1c0")
+debug_color = Color(0.98928, 0, 0.293994, 0.42)
+
+[node name="Narrowbox" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2ngqq")
+debug_color = Color(0, 0.550102, 0.92423, 0.42)
+
+[node name="Offscreen" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-3.51331, -3.16402, -2.63599, 7.02661, 6.32804, 5.27198)
+
+[node name="SeekTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AliveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ParryTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Parry" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_rkhgg")
+bus = &"SFX"
+script = ExtResource("4_deuhp")
+subtitle = "Hieroglyph Parried"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Direction" type="Marker3D" parent="."]
+gizmo_extents = 2.0

@@ -5,6 +5,7 @@ var moveTween
 var switcherooni = false
 
 func movemental():
+	if disabled: return
 	super.movemental()
 	
 	if !isDying:

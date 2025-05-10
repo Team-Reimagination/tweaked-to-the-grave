@@ -66,10 +66,10 @@ func wellithinkitstimetomoveonok(): #hand materaliza
 		
 		get_tree().create_tween().tween_property($ParallaxBackground/Logo, "modulate:a", 0.0, 0.1).set_ease(Tween.EASE_OUT)
 		
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1.5, false).timeout
 		get_tree().create_tween().tween_property($Shaders/Pixelation.material, "shader_parameter/pixel_size", 100.0, 5.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(2.0, false).timeout
 		canSkip = false
 		TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn" if !isNewGame else "res://assets/scenes/cutscene/cutscene.tscn", true, !isNewGame)
 	else:

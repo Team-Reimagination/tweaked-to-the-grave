@@ -47,7 +47,7 @@ func _ready() -> void:
 	if FileAccess.file_exists(PATH_CUTSCENE+PlayGlobals.cutsceneID+'.json'):
 		cutscene = JSON.parse_string(FileAccess.open(PATH_CUTSCENE+PlayGlobals.cutsceneID+'.json', FileAccess.READ).get_as_text())
 		
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(1.0, false).timeout
 		panel.visible = true
 		canInput = true
 		checkCutsceneEvent()
@@ -208,7 +208,7 @@ func ending():
 	waitForDialoguetoFinish = false
 	canInput = false
 	
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.5, false).timeout
 	TransFuncs.switchScenes(self, PlayGlobals.getCutsceneDestination(), false, true, true)
 	
 func skipTweens():

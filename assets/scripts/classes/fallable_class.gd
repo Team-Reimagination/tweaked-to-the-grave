@@ -13,6 +13,7 @@ var isFalling = false
 var isSpawning = true
 
 func _ready() -> void:
+	if disabled: return
 	super._ready()
 	
 	$Model.rotation_degrees = $SpawnAngle.rotation_degrees
@@ -29,6 +30,7 @@ func _ready() -> void:
 		$Narrowbox.position = $Hitbox.position
 	
 func _process(delta: float) -> void:
+	if disabled: return
 	super._process(delta)
 	
 	if doSpawn and self.global_position.z > -fallDistance:
@@ -50,9 +52,11 @@ func _process(delta: float) -> void:
 		tweeny.set_parallel(true).tween_property($Narrowbox, "rotation_degrees", $FallAngle.rotation_degrees, fallTime).set_ease(PlayGlobals.getEaseType(chosenEase)).set_trans(PlayGlobals.getTransType(chosenTrans))
 
 func victory_screech():
+	if disabled: return
 	queue_free()
 
 func imKillingMyself():
+	if disabled: return
 	isGhost = true
 	isDying = true
 	

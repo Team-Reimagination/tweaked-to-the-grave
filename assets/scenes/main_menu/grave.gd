@@ -84,7 +84,7 @@ func process_button():
 			$Narration.subtitle = subtitles[selectedButton]
 			PlayGlobals.addSubstate(scene, instance);
 			
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.5, false).timeout
 		if not scene.isTransitioning: $Narration.subtitle_play()
 
 func wellithinkitstimetomoveonok():

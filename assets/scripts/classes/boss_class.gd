@@ -12,6 +12,7 @@ var death = AudioSubtitlableGeneral.new()
 var hasGotIt = false
 
 func _ready() -> void:
+	if disabled: return
 	super._ready()
 	
 	type = 'boss'
@@ -39,19 +40,23 @@ func _ready() -> void:
 	finalHit.subtitle = deathSubtitle
 
 func ImDoneGoodbye(anim):
+	if disabled: return
 	if anim == 'Death' and !overrideDeath:
 		scene.completeLevel()
 		self.queue_free()
 
 func _process(delta: float) -> void:
+	if disabled: return
 	super._process(delta)
 
 func damage(healthTaken):
+	if disabled: return
 	super.damage(healthTaken)
 	
 	scene.find_child("HUD").damage()
 
 func imKillingMyself():
+	if disabled: return
 	scene.scripts.runFunction("onBossDefeat")
 	
 	PlayGlobals.youarenolongermyfriendsoundnowgoaway()
@@ -71,7 +76,7 @@ func imKillingMyself():
 	scene.shaders.wybielenie(0.6)
 	
 	for obj in scene.chunkLoader.get_children():
-		if obj is TTTG_Chunk:
+		if obj is TTTG_Chunk or ("isGameplayObject" in obj and obj.isGameplayObject and obj.has_method("victory_screech")):
 			obj.victory_screech()
 	
 	scene.hud.bossIcon.play("Death")

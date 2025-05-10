@@ -12,9 +12,11 @@ var ouchie = false
 var toFlash = []
 
 func _ready() -> void:
+	if disabled: return
 	super._ready()
 	
-	toFlash = find_child("Model").find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_overlay != null)
+	if hasModel:
+		toFlash = find_child("Model").find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_overlay != null)
 	
 	for a in toFlash:
 		a.material_overlay = a.material_overlay.duplicate(true)
@@ -22,9 +24,11 @@ func _ready() -> void:
 	self.area_shape_entered.connect(detectCollission.bind())
 
 func _process(delta: float) -> void:
+	if disabled: return
 	super._process(delta)
 	
 func damage(healthTaken):
+	if disabled: return
 	health -= healthTaken
 	
 	if health > 0:
@@ -37,9 +41,11 @@ func damage(healthTaken):
 		imKillingMyself()
 
 func imKillingMyself():
+	if disabled: return
 	self.queue_free()
 
 func detectCollission(_areID, are, _arSID, _loSID):
+	if disabled: return
 	if are.type == "player_bullet" and _loSID == 0:
 		if !isGhost:
 			if camBeHit: damage(are.get_meta("power"))
@@ -51,7 +57,7 @@ func detectCollission(_areID, are, _arSID, _loSID):
 			ouchie = true
 			return
 		if are.type == "player" and scene.player.canBeHit and _loSID == 1 and !hasBeenLirad and !ouchie:
-			await get_tree().create_timer(0.3).timeout
+			await get_tree().create_timer(0.3, false).timeout
 			if !ouchie:
 				scene.hud.bonusing("Right into danger!", 25)
 				hasBeenLirad = true

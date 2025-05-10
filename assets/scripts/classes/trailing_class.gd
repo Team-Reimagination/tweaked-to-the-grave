@@ -9,9 +9,11 @@ var timeToMove = false
 var hasMoved = false
 
 func _ready() -> void:
+	if disabled: return
 	super._ready()
 	
 func _process(delta:float) -> void:
+	if disabled: return
 	super._process(delta)
 	
 	if self.global_position.z > -distanceToMove and !isDying and !timeToMove:
@@ -19,14 +21,17 @@ func _process(delta:float) -> void:
 		movemental()
 
 func movemental():
+	if disabled: return
 	if hasMoved: return
 	
 	if onlyOnce: hasMoved = true
 
 func victory_screech():
+	if disabled: return
 	queue_free()
 
 func imKillingMyself():
+	if disabled: return
 	isGhost = true
 	isDying = true
 	

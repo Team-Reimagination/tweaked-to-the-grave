@@ -16,13 +16,16 @@ var distanceFadePhase = 0;
 var isReady : bool = false
 var isDying = false
 
+@export var disabled = false
+
 var meshInstances = []
 var meshesWithOverlay = []
 
 func _ready() -> void:
-	while scene.name != "PlayState": scene = scene.get_parent()
+	if disabled: return
 	
 	if hasModel:
+		while scene.name != "PlayState": scene = scene.get_parent()
 		model = $Model
 		meshInstances = model.find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_override != null)
 	
@@ -38,6 +41,8 @@ func _ready() -> void:
 			a.material_override.set("shader_parameter/specular_gradient", scene.specular_pal)
 
 func _process(_delta: float) -> void:
+	if disabled: return
+	
 	if overridePos != Vector3(-INF,-INF,-INF):
 		self.global_position = overridePos
 	

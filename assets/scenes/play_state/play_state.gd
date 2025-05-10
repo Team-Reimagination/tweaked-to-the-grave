@@ -402,7 +402,7 @@ func completeLevel():
 		get_tree().create_tween().tween_property(player, "position", Vector3(0.0,0.0,-20.0), 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 
 	if levelDefs.nextLevel == 'complete' and !PlayGlobals.areWeFNFFreeDownload:
-			await get_tree().create_timer(2.0).timeout
+			await get_tree().create_timer(2.0, false).timeout
 			
 			PlayGlobals.cutsceneID = 'aend'
 			setCurrentSave()

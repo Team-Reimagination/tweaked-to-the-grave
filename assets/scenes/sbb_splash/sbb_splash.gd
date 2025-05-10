@@ -27,7 +27,7 @@ func tweenHandler():
 		fadeTween.tween_property($Shaders/ColorMod.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.25).set_trans(Tween.TRANS_QUART)
 	elif (frameState == 3):
 		fadeTween.tween_property($Shaders/ColorMod.material, "shader_parameter/offsets", Vector4(-1.0, -1.0, -1.0, 0.0), 1)
-		await get_tree().create_timer(2.25).timeout
+		await get_tree().create_timer(2.25, false).timeout
 		switchScene();
 		
 func switchScene():

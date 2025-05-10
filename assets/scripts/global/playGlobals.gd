@@ -4,6 +4,8 @@ var levelID = "RCR"
 var levelDefs;
 var cutsceneID = 'test'
 
+var gravity = 38.4
+
 #DIFFICULTY STUFF
 var difficulty = 2
 var areWeFNFFreeDownload = false

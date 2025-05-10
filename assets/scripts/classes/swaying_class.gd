@@ -6,10 +6,12 @@ var timing = 0.0
 var rotato
 
 func _ready() -> void:
+	if disabled: return
 	super._ready()
 	rotato = $Model.rotation_degrees
 
 func _process(delta: float) -> void:
+	if disabled: return
 	super._process(delta)
 	
 	if !isDying:

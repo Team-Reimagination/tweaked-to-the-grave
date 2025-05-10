@@ -34,7 +34,7 @@ func imKillingMyself():
 	
 	get_tree().create_tween().tween_property(scene.camera, "posi:z", self.position.z + 5 * self.scale.x, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
 
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(2.0, false).timeout
 	
 	scene.shaders.wybielenie(0.5)
 	finalHit.subtitle_play()
@@ -42,7 +42,7 @@ func imKillingMyself():
 	
 	imdying = true
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(2.0, false).timeout
 	imdying = false
 	scene.completeLevel()
 	self.queue_free()

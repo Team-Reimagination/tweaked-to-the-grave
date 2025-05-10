@@ -8,6 +8,7 @@ var startSucking = false
 var willDisappear = false
 
 func _ready() -> void:
+	if disabled: return
 	super._ready()
 	
 	if $Model.get_child(1) is AnimatedSprite3D: $Model.get_child(1).play('default')
@@ -15,6 +16,7 @@ func _ready() -> void:
 	self.area_shape_entered.connect(detectCollission.bind())
 
 func suicide():
+	if disabled: return
 	if scene.lives == 0:
 		queue_free()
 		return
@@ -49,6 +51,7 @@ var ole = 0.0;
 var county = 0
 
 func _process(delta: float) -> void:
+	if disabled: return
 	super._process(delta)
 	
 	if willDisappear: 
@@ -77,9 +80,11 @@ func _process(delta: float) -> void:
 		self.global_position.z = lerpf(self.global_position.z, scene.player.global_position.z, ole)
 
 func victory_screech():
+	if disabled: return
 	queue_free()
 
 func detectCollission(_areID, are, _arSID, _loSID):
+	if disabled: return
 	if !scene.hasBitchWon:
 		if are.type == 'player' and _loSID == 0 and !startSucking and !willDisappear and scene.player.action != 'hurt' and scene.player.action != 'explode':
 			startSucking = true

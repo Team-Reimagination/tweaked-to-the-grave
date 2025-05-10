@@ -1,0 +1,385 @@
+[gd_scene load_steps=17 format=3 uid="uid://tmc3e1jqdkth"]
+
+[ext_resource type="Script" uid="uid://ca0avxwb3qy86" path="res://assets/scripts/classes/object_specific/hieroglyph_spawner.gd" id="1_j8bj0"]
+[ext_resource type="Texture2D" uid="uid://ds4d3xnxr50fm" path="res://assets/images/levels/RCR/hieroglyphs/e.png" id="2_t6d36"]
+[ext_resource type="PackedScene" uid="uid://djferswoc2aon" path="res://assets/objects/bullets/electricity/electric_ball.tscn" id="3_j8bj0"]
+[ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="4_ty766"]
+[ext_resource type="AudioStream" uid="uid://dlvux7mkbqyj2" path="res://assets/sounds/entities/hieroglyph_readying.ogg" id="4_w5sch"]
+[ext_resource type="AudioStream" uid="uid://c7jfqg04322wi" path="res://assets/sounds/entities/hieroglyph_launch.ogg" id="6_w5sch"]
+[ext_resource type="Texture2D" uid="uid://8nypqtsfnrkr" path="res://assets/images/levels/RCR/hieroglyphs/y.png" id="7_6nnq7"]
+[ext_resource type="PackedScene" uid="uid://chc2p8467mxl8" path="res://assets/objects/bullets/electricity/electric_feather.tscn" id="8_k6wgu"]
+[ext_resource type="Script" uid="uid://c7tgsbvu3gwm7" path="res://assets/objects/spawners/RCR/d.gd" id="9_0rnff"]
+[ext_resource type="Texture2D" uid="uid://burtjl661s3ag" path="res://assets/images/levels/RCR/hieroglyphs/d.png" id="9_cs6nu"]
+[ext_resource type="Texture2D" uid="uid://cpwhfv5rwj0lw" path="res://assets/images/levels/RCR/hieroglyphs/o.png" id="10_0rnff"]
+[ext_resource type="Script" uid="uid://bbr8davi432d2" path="res://assets/objects/spawners/RCR/o.gd" id="11_lg58l"]
+[ext_resource type="Texture2D" uid="uid://ds3wveyy7pw0t" path="res://assets/images/levels/RCR/hieroglyphs/t.png" id="11_pofxm"]
+[ext_resource type="Texture2D" uid="uid://dmblwfthkpfpi" path="res://assets/images/levels/RCR/hieroglyphs/h.png" id="12_lg58l"]
+[ext_resource type="PackedScene" uid="uid://yd5rye7xooms" path="res://assets/objects/bullets/electricity/electric_diamond.tscn" id="12_pofxm"]
+[ext_resource type="Texture2D" uid="uid://bedklxkrj4vky" path="res://assets/images/levels/RCR/hieroglyphs/r.png" id="13_c4ll4"]
+
+[node name="RcrHieroglyphs" type="Node3D"]
+
+[node name="e" type="Area3D" parent="."]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource("1_j8bj0")
+spawnTime = 2.25
+canDie = false
+camBeHit = false
+isGhost = true
+type = "spawner"
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://bxyarg230ioc7"
+
+[node name="Image" type="Sprite3D" parent="e"]
+pixel_size = 0.1
+billboard = 1
+no_depth_test = true
+texture = ExtResource("2_t6d36")
+region_enabled = true
+region_rect = Rect2(1, 1, 124, 86)
+
+[node name="Spawn" type="Node3D" parent="e"]
+visible = false
+
+[node name="ElectricBall" parent="e/Spawn" instance=ExtResource("3_j8bj0")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3.32105, -2.10979, 0)
+speed = 20.0
+lifetime = 10.0
+disabled = true
+
+[node name="Direction" parent="e/Spawn/ElectricBall" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4241, 0, 0)
+
+[node name="ElectricBall2" parent="e/Spawn" instance=ExtResource("3_j8bj0")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3.32105, -2.10979, 0)
+speed = 40.0
+lifetime = 10.0
+disabled = true
+
+[node name="Direction" parent="e/Spawn/ElectricBall2" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8389, 0, 0)
+
+[node name="ElectricBall3" parent="e/Spawn" instance=ExtResource("3_j8bj0")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3.32105, -2.10979, 0)
+speed = 60.0
+lifetime = 10.0
+disabled = true
+
+[node name="Direction" parent="e/Spawn/ElectricBall3" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7128, 0, 0)
+
+[node name="ElectricBall4" parent="e/Spawn" instance=ExtResource("3_j8bj0")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3.32105, -2.10979, 0)
+speed = 80.0
+lifetime = 10.0
+disabled = true
+
+[node name="Direction" parent="e/Spawn/ElectricBall4" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0803, 0, 0)
+
+[node name="Prep" type="AudioStreamPlayer3D" parent="e"]
+stream = ExtResource("4_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Hieroglyph Preparation"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Launch" type="AudioStreamPlayer3D" parent="e"]
+stream = ExtResource("6_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Power Of The Hieroglyph"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="y" type="Area3D" parent="."]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource("1_j8bj0")
+spawnTime = 2.25
+canDie = false
+camBeHit = false
+isGhost = true
+type = "spawner"
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://bxyarg230ioc7"
+
+[node name="Image" type="Sprite3D" parent="y"]
+transform = Transform3D(1.00107, 0, 0, 0, 1.00107, 0, 0, 0, 1.00107, 0, 0, 0)
+pixel_size = 0.1
+billboard = 1
+no_depth_test = true
+texture = ExtResource("7_6nnq7")
+region_enabled = true
+region_rect = Rect2(1, 1, 77, 123)
+
+[node name="Spawn" type="Node3D" parent="y"]
+visible = false
+
+[node name="ElectricFeather" parent="y/Spawn" instance=ExtResource("8_k6wgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0489, 0, 0)
+speed = 12.0
+lifetime = 5.0
+parrySpeed = 1.3
+steerPower = 0.85
+seekTime = 5.0
+disabled = true
+
+[node name="Direction" parent="y/Spawn/ElectricFeather" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -2, 0)
+
+[node name="ElectricFeather2" parent="y/Spawn" instance=ExtResource("8_k6wgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83863, 0, 0)
+speed = 12.0
+lifetime = 5.0
+parrySpeed = 1.3
+steerPower = 0.85
+seekTime = 5.0
+disabled = true
+
+[node name="Direction" parent="y/Spawn/ElectricFeather2" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, 0)
+
+[node name="Prep" type="AudioStreamPlayer3D" parent="y"]
+stream = ExtResource("4_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Hieroglyph Preparation"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Launch" type="AudioStreamPlayer3D" parent="y"]
+stream = ExtResource("6_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Power Of The Hieroglyph"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="d" type="Area3D" parent="."]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource("9_0rnff")
+spawnTime = 2.25
+canDie = false
+camBeHit = false
+isGhost = true
+type = "spawner"
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://bxyarg230ioc7"
+
+[node name="Image" type="Sprite3D" parent="d"]
+pixel_size = 0.1
+billboard = 1
+no_depth_test = true
+texture = ExtResource("9_cs6nu")
+region_enabled = true
+region_rect = Rect2(1, 1, 122, 78)
+
+[node name="Spawn" type="Node3D" parent="d"]
+visible = false
+
+[node name="ElectricBall" parent="d/Spawn" instance=ExtResource("3_j8bj0")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.19249, -0.706039, 0)
+speed = 20.0
+lifetime = 3.0
+disabled = true
+
+[node name="Direction" parent="d/Spawn/ElectricBall" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.85714, 0)
+
+[node name="Prep" type="AudioStreamPlayer3D" parent="d"]
+stream = ExtResource("4_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Hieroglyph Preparation"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Launch" type="AudioStreamPlayer3D" parent="d"]
+stream = ExtResource("6_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Power Of The Hieroglyph"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="o" type="Area3D" parent="."]
+monitoring = false
+monitorable = false
+script = ExtResource("11_lg58l")
+spawnTime = 2.25
+canDie = false
+camBeHit = false
+isGhost = true
+type = "spawner"
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://bxyarg230ioc7"
+
+[node name="Image" type="Sprite3D" parent="o"]
+transform = Transform3D(1.00107, 0, 0, 0, 1.00107, 0, 0, 0, 1.00107, 0, 0, 0)
+pixel_size = 0.1
+billboard = 1
+no_depth_test = true
+texture = ExtResource("10_0rnff")
+region_enabled = true
+region_rect = Rect2(1, 1, 99, 121)
+
+[node name="Spawn" type="Node3D" parent="o"]
+visible = false
+
+[node name="ElectricDiamond" parent="o/Spawn" instance=ExtResource("12_pofxm")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.92599, -3.71613, 0)
+disabled = true
+
+[node name="Direction" parent="o/Spawn/ElectricDiamond" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.04011, 0)
+
+[node name="Prep" type="AudioStreamPlayer3D" parent="o"]
+stream = ExtResource("4_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Hieroglyph Preparation"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Launch" type="AudioStreamPlayer3D" parent="o"]
+stream = ExtResource("6_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Power Of The Hieroglyph"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="t" type="Area3D" parent="."]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource("1_j8bj0")
+spawnTime = 2.25
+canDie = false
+camBeHit = false
+isGhost = true
+type = "spawner"
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://bxyarg230ioc7"
+
+[node name="Image" type="Sprite3D" parent="t"]
+transform = Transform3D(1.00107, 0, 0, 0, 1.00107, 0, 0, 0, 1.00107, 0, 0, 0)
+pixel_size = 0.1
+billboard = 1
+no_depth_test = true
+texture = ExtResource("11_pofxm")
+region_enabled = true
+region_rect = Rect2(1, 1, 116, 68)
+
+[node name="Spawn" type="Node3D" parent="t"]
+visible = false
+
+[node name="Prep" type="AudioStreamPlayer3D" parent="t"]
+stream = ExtResource("4_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Hieroglyph Preparation"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Launch" type="AudioStreamPlayer3D" parent="t"]
+stream = ExtResource("6_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Power Of The Hieroglyph"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="h" type="Area3D" parent="."]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource("1_j8bj0")
+spawnTime = 2.25
+canDie = false
+camBeHit = false
+isGhost = true
+type = "spawner"
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://bxyarg230ioc7"
+
+[node name="Image" type="Sprite3D" parent="h"]
+transform = Transform3D(1.00107, 0, 0, 0, 1.00107, 0, 0, 0, 1.00107, 0, 0, 0)
+pixel_size = 0.1
+billboard = 1
+no_depth_test = true
+texture = ExtResource("12_lg58l")
+region_enabled = true
+region_rect = Rect2(1, 1, 97, 80)
+
+[node name="Spawn" type="Node3D" parent="h"]
+visible = false
+
+[node name="Prep" type="AudioStreamPlayer3D" parent="h"]
+stream = ExtResource("4_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Hieroglyph Preparation"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Launch" type="AudioStreamPlayer3D" parent="h"]
+stream = ExtResource("6_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Power Of The Hieroglyph"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="r" type="Area3D" parent="."]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource("1_j8bj0")
+spawnTime = 2.25
+canDie = false
+camBeHit = false
+isGhost = true
+type = "spawner"
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://bxyarg230ioc7"
+
+[node name="Image" type="Sprite3D" parent="r"]
+transform = Transform3D(1.00107, 0, 0, 0, 1.00107, 0, 0, 0, 1.00107, 0, 0, 0)
+pixel_size = 0.1
+billboard = 1
+no_depth_test = true
+texture = ExtResource("13_c4ll4")
+region_enabled = true
+region_rect = Rect2(1, 1, 105, 60)
+
+[node name="Spawn" type="Node3D" parent="r"]
+visible = false
+
+[node name="Prep" type="AudioStreamPlayer3D" parent="r"]
+stream = ExtResource("4_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Hieroglyph Preparation"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Launch" type="AudioStreamPlayer3D" parent="r"]
+stream = ExtResource("6_w5sch")
+script = ExtResource("4_ty766")
+subtitle = "Power Of The Hieroglyph"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 0, 0, -20.1663)
+
+[editable path="e/Spawn/ElectricBall"]
+[editable path="e/Spawn/ElectricBall2"]
+[editable path="e/Spawn/ElectricBall3"]
+[editable path="e/Spawn/ElectricBall4"]
+[editable path="y/Spawn/ElectricFeather"]
+[editable path="y/Spawn/ElectricFeather2"]
+[editable path="d/Spawn/ElectricBall"]
+[editable path="o/Spawn/ElectricDiamond"]

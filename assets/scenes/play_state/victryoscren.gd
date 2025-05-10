@@ -51,7 +51,7 @@ func start():
 	Subtitles.setPlacementY(750)
 	Subtitles.setPlacementX(null)
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(2.0, false).timeout
 	
 	$TitleCard.texture = load("res://assets/images/levels/"+PlayGlobals.levelID+"/titlecard.png")
 	
@@ -134,5 +134,5 @@ func process_button():
 			get_parent().camera.shake(5.0,2.0);
 			get_tree().create_tween().tween_property($"../Audio/Victory", "pitch_scale", 0.001, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 			
-			await get_tree().create_timer(0.75).timeout
+			await get_tree().create_timer(0.75, false).timeout
 			TransFuncs.switchScenes(get_parent(), "reset")
