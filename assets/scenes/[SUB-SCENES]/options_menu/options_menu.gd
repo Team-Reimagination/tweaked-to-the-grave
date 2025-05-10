@@ -11,6 +11,7 @@ func scalemyfuck():
 
 func _ready() -> void:
 	scalemyfuck()
+	$Inside/TextureButton.connect("pressed", func(): SaveSystem.nukeSave())
 	for i in $Inside.get_children():
 		if (i is not Node): return
 		

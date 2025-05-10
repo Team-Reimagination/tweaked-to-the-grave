@@ -1,7 +1,21 @@
 extends Node
 
-var optionsData = {
-	"video_resolution" = Vector2(1280, 960), ##PC ONLY
+var resolutions = [ ## every popular 4:3 game resolutions in increasing order
+	Vector2(160, 120),
+	Vector2(320, 240),
+	Vector2(640, 480),
+	Vector2(800, 600),
+	Vector2(1024, 768),
+	Vector2(1152, 864),
+	Vector2(2048, 1536),
+	Vector2(3200, 2400),
+	Vector2(4096, 3072),
+	Vector2(6400, 4800)
+]
+
+var optionsData = {} ## will be automatically filled with values on loading save
+var _defaultOptionsData = { ## enter the options you want to add
+	"video_resolution" = 0, ##PC ONLY
 	"video_fullscreen" = false, ##PC ONLY
 	"video_passion" = false,
 	"video_reducedmotions" = false,
@@ -16,13 +30,14 @@ var optionsData = {
 	"gameplay_autofire" = false
 }
 
-var achievementData = {
+var achievementData = {}
+var _defaultAchievementData = {
 	"_data": {
 		
 	}
 }
-
-var saveData = {
+var saveData ={}
+var _defaultSaveData = {
 	"unlocked": [],
 	"firstTime": [],
 	"cutscenes": [],
@@ -57,6 +72,21 @@ func saveSave() -> void:
 	}
 
 	await NG.cloudsave_set_data(1, var_to_str(saveDefine))
+	
+func nukeSave() -> void: ## this can also serve as setting default vars
+	optionsData = {}
+	achievementData = {}
+	saveData = {}
+	
+	for i in _defaultOptionsData.keys():
+		optionsData.set(i, _defaultOptionsData.get(i))
+	for i in _defaultAchievementData.keys():
+		achievementData.set(i, _defaultAchievementData.get(i))
+	for i in _defaultSaveData.keys():
+		saveData.set(i, _defaultSaveData.get(i))
+		
+	saveSave()
+	applyImmediateSettings()
 
 func hasNotUnlockedLevel(levID): return saveData.unlocked.find(levID) == -1
 
@@ -123,6 +153,15 @@ func loadSave():
 	saveData = data.save
 	optionsData = data.options
 	achievementData = data.achievements
+	
+	for i in _defaultOptionsData.keys():
+		if not optionsData.has(i): optionsData.set(i, _defaultOptionsData.get(i))
+	for i in _defaultAchievementData.keys():
+		if not achievementData.has(i): achievementData.set(i, _defaultAchievementData.get(i))
+	for i in _defaultSaveData.keys():
+		if not saveData.has(i): saveData.set(i, _defaultSaveData.get(i))
+		
+	saveSave()
 
 func eraseCurrentGameplaySave(curDiff = null):
 	curDifficultySave = {}

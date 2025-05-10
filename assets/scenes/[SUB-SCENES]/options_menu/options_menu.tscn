@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgmqcnoctism4"]
+[gd_scene load_steps=18 format=3 uid="uid://bgmqcnoctism4"]
 
 [ext_resource type="Script" uid="uid://xcn1tduwunwp" path="res://assets/scenes/[SUB-SCENES]/options_menu/options_menu.gd" id="1_fgg3q"]
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="2_sqiki"]
@@ -41,6 +41,14 @@ expand_margin_bottom = 28.0
 axis_stretch_horizontal = 1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8ldte"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ugvmj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b3jsy"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oqvl8"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_eiikj"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -375,11 +383,18 @@ offset_top = 109.0
 offset_right = 89.0
 offset_bottom = 195.0
 texture_normal = SubResource("PlaceholderTexture2D_8ldte")
+texture_pressed = SubResource("PlaceholderTexture2D_ugvmj")
+texture_hover = SubResource("PlaceholderTexture2D_b3jsy")
+texture_disabled = SubResource("PlaceholderTexture2D_oqvl8")
+texture_focused = SubResource("PlaceholderTexture2D_eiikj")
 
 [node name="Label" type="Label" parent="Inside/TextureButton"]
-layout_mode = 0
-offset_right = 136.0
-offset_bottom = 76.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.509
+anchor_bottom = 0.884
+offset_right = 0.0970001
+offset_bottom = -0.0240021
 text = "nuke the save"
 
 [editable path="Base"]
