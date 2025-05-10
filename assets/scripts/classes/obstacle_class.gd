@@ -29,11 +29,12 @@ func _process(delta: float) -> void:
 	if disabled: return
 	super._process(delta)
 	
-func damage(healthTaken):
+func damage(healthTaken, isRecursive = false):
 	if disabled: return
 	
-	for a in healthLinks:
-		if "health" in a and a.has_method("damage") and !a.isGhost: a.damage(healthTaken)
+	if !isRecursive:
+		for a in healthLinks:
+			if "health" in a and a.has_method("damage") and !a.isGhost: a.damage(healthTaken, true)
 	
 	health -= healthTaken
 	

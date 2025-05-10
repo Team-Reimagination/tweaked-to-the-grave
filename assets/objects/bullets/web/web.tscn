@@ -18,6 +18,7 @@ parryable = true
 offscreenCheck = true
 power = 30.0
 lifetime = 10.0
+parryToParent = true
 parrySpeed = 1.0
 parryPower = 3.0
 camBeHit = false

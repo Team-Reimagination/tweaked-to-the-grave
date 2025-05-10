@@ -11,18 +11,21 @@ extends TTTG_Obstacle
 @export var parryToParent = false
 @export var parrySpeed = 1.5
 @export var parryPower = 1.5
+
+@export var doParryX = true
 @export var doParryY = false
+@export var doParryZ = true
 
 @export var doSteer = false
 @export var steerPower = 50.0
-@export var seekTime = 0.0
+@export var seekTime = 10.0
 
 var velocity = Vector3.ZERO
 var acceleration = Vector3.ZERO
 
 var beenParried
 var target
-var parent
+@export var parent : Node3D
 
 func _ready() -> void:
 	if disabled: return
@@ -38,7 +41,7 @@ func _ready() -> void:
 	$AliveTimer.start(lifetime)
 	
 func seek():
-	if disabled: return
+	if disabled or parent == null: return Vector2.ZERO
 	var steer = Vector2.ZERO
 	if target:
 		var desired = (target.global_position - global_position).normalized() * speed
@@ -96,11 +99,12 @@ func detectCollission(_areID, are, _arSID, _loSID):
 				speed *= parrySpeed
 				power *= parryPower
 				
+				if doParryX:
+					velocity.x *= -1 * speed
 				if doParryY:
-					velocity = (velocity * -1).normalized() * speed
-				else:
-					velocity.x = velocity.x * -1 * speed
-					velocity.z = velocity.z * -1 * speed
+					velocity.y *= -1 * speed
+				if doParryZ:
+					velocity.z *= -1 * speed
 					
 				velocity = velocity.clampf(-speed, speed)
 				
@@ -110,6 +114,9 @@ func detectCollission(_areID, are, _arSID, _loSID):
 				
 				if parryToParent:
 					target = parent
+					$SeekTimer.start(seekTime)
+					doSteer = true
+					
 			else:
 				scene.hurtPlayer()
 				ouchie = true

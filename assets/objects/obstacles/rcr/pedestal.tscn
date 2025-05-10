@@ -228,9 +228,9 @@ type = "enemy"
 isGameplayObject = true
 metadata/_custom_type_script = "uid://dh584045bxl86"
 
-[node name="pedestal" type="Node3D" parent="."]
+[node name="Model" type="Node3D" parent="."]
 
-[node name="Plane" type="MeshInstance3D" parent="pedestal"]
+[node name="Plane" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(-2.71232, 0, 0, 0, -2.71232, 0, 0, 0, -2.71232, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_idlnm")
 material_overlay = SubResource("ShaderMaterial_r5pyp")

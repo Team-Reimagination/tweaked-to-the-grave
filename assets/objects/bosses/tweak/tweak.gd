@@ -7,8 +7,8 @@ func _ready() -> void:
 	
 	toFlash += find_child("Model").find_children("*", "Sprite3D", true, true)
 
-func damage(healthTaken):
-	super.damage(healthTaken)
+func damage(healthTaken, isRecursive = false):
+	super.damage(healthTaken, isRecursive)
 
 func _process(delta: float) -> void:
 	super._process(delta)
