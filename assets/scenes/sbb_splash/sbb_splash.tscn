@@ -1,9 +1,11 @@
-[gd_scene load_steps=53 format=3 uid="uid://dqltw6h6e3tta"]
+[gd_scene load_steps=55 format=3 uid="uid://dqltw6h6e3tta"]
 
 [ext_resource type="Shader" uid="uid://8rcyn51imi8r" path="res://assets/shaders/screen/colorMod.gdshader" id="1_207sq"]
-[ext_resource type="Texture2D" uid="uid://b7vn3l5hout6v" path="res://assets/images/menu/ssb_splash.png" id="1_cykml"]
+[ext_resource type="Texture2D" uid="uid://b7vn3l5hout6v" path="res://assets/images/menu/splash/ssb_splash.png" id="1_cykml"]
 [ext_resource type="Script" uid="uid://b4ji8nmev168b" path="res://assets/scenes/sbb_splash/sbb_splash.gd" id="1_kqa8s"]
 [ext_resource type="AudioStream" uid="uid://rt6fubeg7n0k" path="res://assets/sounds/menu/sbb_splash.ogg" id="2_iw4xc"]
+[ext_resource type="Texture2D" uid="uid://blgmk0noefmlj" path="res://assets/images/menu/splash/publisher.png" id="5_ty8xg"]
+[ext_resource type="AudioStream" uid="uid://40eiodoempki" path="res://assets/sounds/menu/tr_short.ogg" id="6_2ppds"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_207sq"]
 shader = ExtResource("1_207sq")
@@ -867,6 +869,40 @@ metadata/_aseprite_wizard_source_file_hash_ = "ce9dcda503be6ed632884031caf8e2a5"
 
 [node name="Music" type="AudioStreamPlayer" parent="Splash"]
 stream = ExtResource("2_iw4xc")
+bus = &"Music"
+
+[node name="TR" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(642, 554)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("5_ty8xg")
+offset = Vector2(0, -63)
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": false,
+"pending_changes": {
+"i_mode": 0,
+"keep_anim_length": false,
+"player": ""
+},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://assets/images/menu",
+"o_name": "ssb_splash",
+"only_visible": true,
+"should_round_fps": true,
+"slice": "",
+"source": "D:/GODOT/projectFiles - TTTG/splash.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ce9dcda503be6ed632884031caf8e2a5"
+
+[node name="Music2" type="AudioStreamPlayer" parent="TR"]
+stream = ExtResource("6_2ppds")
 bus = &"Music"
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

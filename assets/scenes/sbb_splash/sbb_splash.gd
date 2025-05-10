@@ -3,6 +3,9 @@ extends Node2D
 var frameState = 0;
 var fadeTween;
 
+func _ready() -> void:
+	$TR.visible = false
+
 func _process(_delta: float) -> void:
 	#print($Splash.frame);
 	if (!$Splash/Music.playing && $Splash.frame >= 1): $Splash/Music.play()
@@ -11,7 +14,7 @@ func _process(_delta: float) -> void:
 	
 	if ((frameState == 0 && $Splash.frame >= 96)
 	|| (frameState == 1 && $Splash.frame >= 106)
-	|| (frameState == 2 && $Splash.frame >= 180)):
+	|| (frameState == 2 && $Splash.frame >= 170)):
 		tweenHandler();
 		
 
@@ -26,7 +29,20 @@ func tweenHandler():
 	elif (frameState == 2):
 		fadeTween.tween_property($Shaders/ColorMod.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.25).set_trans(Tween.TRANS_QUART)
 	elif (frameState == 3):
-		fadeTween.tween_property($Shaders/ColorMod.material, "shader_parameter/offsets", Vector4(-1.0, -1.0, -1.0, 0.0), 1)
+		fadeTween.tween_property($Shaders/ColorMod.material, "shader_parameter/offsets", Vector4(-1.0, -1.0, -1.0, 0.0), 0.5).set_trans(Tween.TRANS_QUART)
+		
+		await fadeTween.finished
+		tweenHandler()
+	elif (frameState == 4):
+		$Splash.visible = false
+		$TR.visible = true
+		fadeTween.tween_property($Shaders/ColorMod.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.5).set_trans(Tween.TRANS_QUART)
+		$TR/Music2.play()
+		
+		await get_tree().create_timer(3.0).timeout
+		tweenHandler()
+	elif (frameState == 5):
+		fadeTween.tween_property($Shaders/ColorMod.material, "shader_parameter/offsets", Vector4(-1.0, -1.0, -1.0, 0.0), 0.5)
 		await get_tree().create_timer(2.25, false).timeout
 		switchScene();
 		
