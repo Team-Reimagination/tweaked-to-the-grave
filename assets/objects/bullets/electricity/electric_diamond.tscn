@@ -70,7 +70,7 @@ alpha_cut = 1
 alpha_scissor_threshold = 0.468
 sprite_frames = SubResource("SpriteFrames_5aqwh")
 autoplay = "default"
-frame_progress = 0.877364
+frame_progress = 0.774131
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_dq1c0")
