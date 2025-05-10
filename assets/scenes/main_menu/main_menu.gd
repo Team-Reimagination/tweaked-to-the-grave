@@ -14,6 +14,9 @@ var rotForMod = 0.0
 var gloTimer = 0.0;
 var watimer = 0.0;
 
+func _ready() -> void:
+	$ParallaxBackground/Logo/Creator.text += "v. "+str(ProjectSettings['application/config/version'])
+
 func _process(delta: float) -> void:
 	if canInput: #parallax with mouse dependent on if it's the state's turn to use the mouse or not
 		cam.offset.x = lerp(cam.offset.x, clampf(get_global_mouse_position().x - 640.0, -640.0, 640.0) / 50, 0.3)
