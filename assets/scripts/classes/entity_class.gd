@@ -11,7 +11,9 @@ var model;
 @export var shortRenderDistance = false
 @export var isBackgroundObject = true
 @export var isGameplayObject = false
+
 @export var floorHeightAdjustment = false
+@export var yMOD = 0.0
 
 var distanceFadePhase = 0;
 var isReady : bool = false
@@ -25,11 +27,9 @@ var meshesWithOverlay = []
 func _ready() -> void:
 	if disabled: return
 	
+	while scene.name != "PlayState": scene = scene.get_parent()
+	
 	if hasModel:
-		while scene.name != "PlayState": scene = scene.get_parent()
-		
-		if floorHeightAdjustment: global_position.y = scene.btmF.global_position.y
-		
 		model = $Model
 		meshInstances = model.find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_override != null)
 	
@@ -47,8 +47,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if disabled: return
 	
-	if overridePos != Vector3(-INF,-INF,-INF):
-		self.global_position = overridePos
+	if floorHeightAdjustment: overridePos.y = scene.btmF.global_position.y + yMOD * scale.y
+	
+	for a in ["x","y","z"]:
+		if overridePos[a] != -INF: self.global_position[a] = overridePos[a]
 	
 	if self.global_position.z > 100 and type != 'boss' and !isDying:
 			self.queue_free()

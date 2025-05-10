@@ -1,7 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://xmd4tygvtkdl"]
+[gd_scene load_steps=4 format=3 uid="uid://xmd4tygvtkdl"]
 
 [ext_resource type="PackedScene" uid="uid://gebalqkua6p2" path="res://assets/data/chunks/references_lv.tscn" id="1_oemb6"]
+[ext_resource type="Script" uid="uid://8fviwb4leujf" path="res://assets/scripts/classes/chunk_class.gd" id="2_3uci2"]
+[ext_resource type="PackedScene" uid="uid://f0124jy672sw" path="res://assets/objects/obstacles/rcr/ankh_cube.tscn" id="3_06e22"]
 
 [node name="RcrBackground" type="Node3D"]
 
 [node name="References" parent="." instance=ExtResource("1_oemb6")]
+
+[node name="0" type="Node3D" parent="."]
+script = ExtResource("2_3uci2")
+chanceWeight = 0.8
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387, -155.861)
+
+[node name="StartPos" type="Marker3D" parent="0"]
+
+[node name="Ra Cube" parent="0" instance=ExtResource("3_06e22")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -20.9089, 10.1, -43.1984)
+waitTime = 0.5
+retractTime = 1.5
+distanceToMove = 150
+speed = 0.6
+
+[node name="MStart" parent="0/Ra Cube" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24301, 0)
+
+[node name="Ra Cube2" parent="0" instance=ExtResource("3_06e22")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 21.6064, 10.1, -43.1984)
+waitTime = 0.5
+retractTime = 1.5
+distanceToMove = 150
+speed = 0.6
+
+[node name="MStart" parent="0/Ra Cube2" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24301, 0)
+
+[editable path="0/Ra Cube"]
+[editable path="0/Ra Cube2"]
