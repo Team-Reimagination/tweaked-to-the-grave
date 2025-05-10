@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://clg4lve0cj3m1" path="res://assets/sounds/entities/attraction.ogg" id="6_f6x56"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ajw8j"]
-height = 2.08463
+height = 1.08577
 radius = 2.002
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xmgww"]
@@ -59,7 +59,7 @@ alpha_cut = 1
 texture = ExtResource("3_3hcem")
 
 [node name="Magnet" type="CollisionShape3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, -7.46095e-08, 1.70687)
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, -1.40102e-07, -1.93695)
 shape = SubResource("CylinderShape3D_ajw8j")
 debug_color = Color(0.996, 0, 0.201, 0.768)
 metadata/type = ""

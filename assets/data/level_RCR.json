@@ -4,7 +4,7 @@
 	"nextLevel": "COS",
 	"boss": {
 		"type": "eydoo",
-		"distance": 250,
+		"distance": 270,
 		"scale": 12,
 		"rotation": 0,
 		"health": 6100,

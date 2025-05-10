@@ -10,7 +10,7 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_gkijb")
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_vgvmv")
 shader_parameter/tex = SubResource("GradientTexture1D_rmr6j")
 shader_parameter/flash_color = Color(1, 1, 1, 1)

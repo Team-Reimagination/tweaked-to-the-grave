@@ -20,6 +20,6 @@ void fragment() {
     vec4 color = mix(vec4(Color1, Color1Alpha), vec4(Color2, Color2Alpha), sin(UV.y));
     vec4 colorDithered = color;
 	colorDithered.rgb = dithered(colorDithered.rgb, UV, Dither);
-    
+
     COLOR = colorDithered;
 }

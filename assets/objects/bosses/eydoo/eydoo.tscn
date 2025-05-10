@@ -20,7 +20,7 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_gkijb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cl32u"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("9_sep8k")
 shader_parameter/tex = SubResource("GradientTexture1D_rmr6j")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -106,7 +106,7 @@ bind/17/bone = -1
 bind/17/pose = Transform3D(0.552959, -1.68583, -2.26507e-07, -2.26507e-07, 1.64085e-07, -1.7742, 1.68583, 0.552959, -1.64085e-07, 8.27728, 4.39893e-07, -3.27402)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5774j"]
-render_priority = 1
+render_priority = 0
 shader = ExtResource("5_jrvip")
 shader_parameter/albedo_texture = ExtResource("5_56v5e")
 shader_parameter/diffuse_gradient = ExtResource("7_ok0x1")
@@ -115,7 +115,7 @@ shader_parameter/fade_start = 0.0
 shader_parameter/fade_end = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uwt4e"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("9_sep8k")
 shader_parameter/tex = SubResource("GradientTexture1D_rmr6j")
 shader_parameter/flash_color = Color(1, 1, 1, 1)

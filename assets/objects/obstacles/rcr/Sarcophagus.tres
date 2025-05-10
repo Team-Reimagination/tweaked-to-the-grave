@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bceo1xtc40tnb"]
+
+[ext_resource type="Texture2D" uid="uid://cr0biwd8486nh" path="res://assets/objects/obstacles/rcr/sarcophag_sarcophagus.png" id="1_0k4dk"]
+
+[resource]
+resource_name = "Sarcophagus"
+cull_mode = 2
+albedo_texture = ExtResource("1_0k4dk")
+roughness = 0.5

@@ -33,7 +33,7 @@ func damage(healthTaken):
 	if disabled: return
 	
 	for a in healthLinks:
-		if "health" in a and a.has_method("damage"): a.damage(healthTaken)
+		if "health" in a and a.has_method("damage") and !a.isGhost: a.damage(healthTaken)
 	
 	health -= healthTaken
 	
@@ -54,7 +54,7 @@ func detectCollission(_areID, are, _arSID, _loSID):
 	if disabled: return
 	if are.type == "player_bullet" and _loSID == 0:
 		if !isGhost:
-			if camBeHit: damage(are.get_meta("power"))
+			if camBeHit: damage(are.get_meta("power") if "power" not in are else are.power)
 			are.killYourself()
 		
 	if !scene.hasBitchWon:

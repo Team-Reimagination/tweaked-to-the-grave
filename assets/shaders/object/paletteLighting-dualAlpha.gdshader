@@ -14,6 +14,7 @@ uniform float fade_end = 0.0;   // Distance where object becomes fully transpare
 void fragment() {
     // Sample base albedo texture
     ALBEDO = texture(albedo_texture, UV).rgb;
+	ALPHA = texture(albedo_texture, UV).a;
 
 	float fade_distance = length(VERTEX.z);
 

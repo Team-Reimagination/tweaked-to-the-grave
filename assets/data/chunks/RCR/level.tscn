@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://gebalqkua6p2" path="res://assets/data/chunks/references_lv.tscn" id="1_oemb6"]
 [ext_resource type="Script" uid="uid://8fviwb4leujf" path="res://assets/scripts/classes/chunk_class.gd" id="2_3uci2"]
-[ext_resource type="PackedScene" uid="uid://f0124jy672sw" path="res://assets/objects/obstacles/rcr/ankh_cube.tscn" id="3_06e22"]
+[ext_resource type="PackedScene" uid="uid://dpn3govf4gbxp" path="res://assets/objects/obstacles/rcr/sarcophagus.tscn" id="3_3uci2"]
 
 [node name="RcrBackground" type="Node3D"]
 
@@ -14,29 +14,55 @@ chanceWeight = 0.8
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387, -155.861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387, -475.868)
 
 [node name="StartPos" type="Marker3D" parent="0"]
 
-[node name="Ra Cube" parent="0" instance=ExtResource("3_06e22")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -20.9089, 10.1, -43.1984)
-waitTime = 0.5
-retractTime = 1.5
-distanceToMove = 150
-speed = 0.6
+[node name="Sarcophagus" parent="0" instance=ExtResource("3_3uci2")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -39.2866, 30.3367, -19.4095)
+distanceToSpawn = 220.0
 
-[node name="MStart" parent="0/Ra Cube" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24301, 0)
+[node name="Model" parent="0/Sarcophagus" index="0"]
+transform = Transform3D(0.785814, 0, 0.618463, 0, 1, 0, -0.618463, 0, 0.785814, 0, 0.0245314, 0)
 
-[node name="Ra Cube2" parent="0" instance=ExtResource("3_06e22")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 21.6064, 10.1, -43.1984)
-waitTime = 0.5
-retractTime = 1.5
-distanceToMove = 150
-speed = 0.6
+[node name="Direction" parent="0/Sarcophagus/Spawn/Web" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4295, 0.556054, 27.1197)
 
-[node name="MStart" parent="0/Ra Cube2" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24301, 0)
+[node name="Sarcophagus2" parent="0" instance=ExtResource("3_3uci2")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 35.4254, 30.3367, -122.93)
+distanceToSpawn = 220.0
 
-[editable path="0/Ra Cube"]
-[editable path="0/Ra Cube2"]
+[node name="Model" parent="0/Sarcophagus2" index="0"]
+transform = Transform3D(0.443932, 0, -0.896061, 0, 1, 0, 0.896061, 0, 0.443932, 0, 0.0245314, 0)
+
+[node name="Direction" parent="0/Sarcophagus2/Spawn/Web" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7739, 0.556055, 17.4367)
+
+[node name="Sarcophagus3" parent="0" instance=ExtResource("3_3uci2")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -45.2751, 30.3367, -279.256)
+distanceToSpawn = 220.0
+
+[node name="Model" parent="0/Sarcophagus3" index="0"]
+transform = Transform3D(0.869176, 0, 0.494503, 0, 1, 0, -0.494503, 0, 0.869176, 0, 0.0245314, 0)
+
+[node name="Direction" parent="0/Sarcophagus3/Spawn/Web" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18905, 0.556054, 24.2446)
+
+[node name="Sarcophagus4" parent="0" instance=ExtResource("3_3uci2")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 48.7374, 30.3367, -400.145)
+distanceToSpawn = 220.0
+
+[node name="Model" parent="0/Sarcophagus4" index="0"]
+transform = Transform3D(0.888265, 0, -0.459332, 0, 1, 0, 0.459332, 0, 0.888265, 0, 0.0245314, 0)
+
+[node name="Direction" parent="0/Sarcophagus4/Spawn/Web" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1845, 0.556054, 23.3161)
+
+[editable path="0/Sarcophagus"]
+[editable path="0/Sarcophagus/Spawn/Web"]
+[editable path="0/Sarcophagus2"]
+[editable path="0/Sarcophagus2/Spawn/Web"]
+[editable path="0/Sarcophagus3"]
+[editable path="0/Sarcophagus3/Spawn/Web"]
+[editable path="0/Sarcophagus4"]
+[editable path="0/Sarcophagus4/Spawn/Web"]

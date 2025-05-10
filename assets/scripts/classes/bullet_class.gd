@@ -11,6 +11,7 @@ extends TTTG_Obstacle
 @export var parryToParent = false
 @export var parrySpeed = 1.5
 @export var parryPower = 1.5
+@export var doParryY = false
 
 @export var doSteer = false
 @export var steerPower = 50.0
@@ -27,7 +28,7 @@ func _ready() -> void:
 	if disabled: return
 	super._ready()
 	
-	velocity = ($Direction.position - $Model.position).normalized() * speed
+	velocity = ($Direction.global_position - $Model.global_position).normalized() * speed
 	velocity = velocity.clampf(-speed, speed)
 	
 	if doSteer:
@@ -95,12 +96,20 @@ func detectCollission(_areID, are, _arSID, _loSID):
 				speed *= parrySpeed
 				power *= parryPower
 				
-				velocity *= -1 * speed
+				if doParryY:
+					velocity = (velocity * -1).normalized() * speed
+				else:
+					velocity.x = velocity.x * -1 * speed
+					velocity.z = velocity.z * -1 * speed
+					
 				velocity = velocity.clampf(-speed, speed)
+				
+				type = "player_bullet"
+				scene.hud.bonusing("Parried!", 50)
+				hasBeenLirad = true
 				
 				if parryToParent:
 					target = parent
-					type = "player_bullet"
 			else:
 				scene.hurtPlayer()
 				ouchie = true
@@ -108,7 +117,7 @@ func detectCollission(_areID, are, _arSID, _loSID):
 			return
 		if are.type == "player" and scene.player.canBeHit and _loSID == 1 and !hasBeenLirad and !ouchie:
 			await get_tree().create_timer(0.3, false).timeout
-			if !ouchie:
+			if !ouchie and !hasBeenLirad:
 				scene.hud.bonusing("Right into danger!", 25)
 				hasBeenLirad = true
 
