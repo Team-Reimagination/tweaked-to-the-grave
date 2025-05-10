@@ -1,12 +1,13 @@
 extends Node
 
-var resolutions = [ ## every popular 4:3 game resolutions in increasing order
+var possibleResolutions = [ ## every popular 4:3 game resolutions in increasing order
 	Vector2(160, 120),
 	Vector2(320, 240),
 	Vector2(640, 480),
 	Vector2(800, 600),
 	Vector2(1024, 768),
 	Vector2(1152, 864),
+	Vector2(1280, 960),
 	Vector2(2048, 1536),
 	Vector2(3200, 2400),
 	Vector2(4096, 3072),
@@ -161,6 +162,15 @@ func loadSave():
 	for i in _defaultSaveData.keys():
 		if not saveData.has(i): saveData.set(i, _defaultSaveData.get(i))
 		
+	var minimumRes = DisplayServer.get_display_safe_area().size.x;
+	if minimumRes >= DisplayServer.get_display_safe_area().size.y:
+		minimumRes = DisplayServer.get_display_safe_area().size.y
+	
+	for i in len(possibleResolutions):
+		if possibleResolutions.get(i).y > minimumRes:
+			optionsData.set("video_resolution", clampi(i - 2, 0, 99))
+			break;
+	
 	saveSave()
 
 func eraseCurrentGameplaySave(curDiff = null):
@@ -173,7 +183,9 @@ func applyImmediateSettings() -> void:
 
 func applySetting(type, valuemysanityplease): #this shit has no switch cases :sob:
 	if type == 'video_resolution':
-		if not OS.has_feature("web"): DisplayServer.window_set_size(valuemysanityplease)
+		if not OS.has_feature("web"): 
+			DisplayServer.window_set_size(possibleResolutions.get(valuemysanityplease))
+			justCenterThisShitAlready()
 		return
 	elif type == 'video_fullscreen':
 		if not OS.has_feature("web"): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if valuemysanityplease else DisplayServer.WINDOW_MODE_WINDOWED)
@@ -202,6 +214,13 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 		## 0 - none, 1 - closed captioning, 2 - voicelines, 3 - all
 		
 	print("didn't do shit 😂")
+	
+func justCenterThisShitAlready() -> void:
+	await get_tree().process_frame 
+	var current_screen := DisplayServer.window_get_current_screen()
+	var new_position := (DisplayServer.screen_get_size(current_screen) - DisplayServer.window_get_size()) / 2
+	var screen_position := DisplayServer.screen_get_position(current_screen)
+	DisplayServer.window_set_position(screen_position + new_position)
 
 func _ready() -> void:
 	cloudSave = await NG.cloudsave_get_data(1)
