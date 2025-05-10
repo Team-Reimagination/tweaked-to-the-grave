@@ -6,6 +6,8 @@ extends TTTG_Entity
 @export var isGhost = false
 @export var health = 0;
 
+@export var healthLinks : Array[Node3D] = []
+
 var hasBeenLirad = false
 var ouchie = false
 
@@ -29,6 +31,10 @@ func _process(delta: float) -> void:
 	
 func damage(healthTaken):
 	if disabled: return
+	
+	for a in healthLinks:
+		if "health" in a and a.has_method("damage"): a.damage(healthTaken)
+	
 	health -= healthTaken
 	
 	if health > 0:

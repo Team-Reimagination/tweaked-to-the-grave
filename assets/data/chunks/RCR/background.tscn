@@ -41,3 +41,9 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.053, 0, -277.186)
 
 [node name="Walling8" parent="0_0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.068, 0, -277.186)
+
+[node name="Walling9" parent="0_0" instance=ExtResource("3_wf14q")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.1526, 0, -357.051)
+
+[node name="Walling10" parent="0_0" instance=ExtResource("3_wf14q")]
+transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.2554, 0, -357.051)

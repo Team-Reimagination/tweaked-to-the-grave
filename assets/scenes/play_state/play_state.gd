@@ -101,14 +101,17 @@ func initiateCountdown():
 		countHand.frame = i
 		var countTween = get_tree().create_tween()
 		
-		countHand.scale = Vector2(1.1 + 0.5*i, 1 + 0.4*i)
-		countTween.tween_property(countHand, "scale", Vector2(1 + 0.1*i, 1 + 0.1*i), 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		if !SaveSystem.optionsData.get("video_reducedmotions", false):
+			countHand.scale = Vector2(1.1 + 0.5*i, 1 + 0.4*i)
+			countTween.tween_property(countHand, "scale", Vector2(1 + 0.1*i, 1 + 0.1*i), 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		
-		countHand.rotation_degrees = -10 - 5 * i
-		countTween.parallel().tween_property(countHand, "rotation_degrees", 0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+			countHand.rotation_degrees = -10 - 5 * i
+			countTween.parallel().tween_property(countHand, "rotation_degrees", 0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		
-		countHand.position.y += 30 + 10 * i
-		countTween.parallel().tween_property(countHand, "position:y", countHand.position.y - (30 + 10 * i) , 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+			countHand.position.y += 30 + 10 * i
+			countTween.parallel().tween_property(countHand, "position:y", countHand.position.y - (30 + 10 * i) , 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		else:
+			countHand.scale = Vector2(1 + 0.1*i, 1 + 0.1*i)
 		
 		countHand.self_modulate.a  = 1.0
 		countTween.parallel().tween_property(countHand, "self_modulate:a", 0.0 , 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set_delay(0.35)
