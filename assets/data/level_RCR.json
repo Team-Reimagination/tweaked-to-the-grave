@@ -1,7 +1,7 @@
 {
 	"name": "The Ra's Curse",
 	"id": 1,
-	"nextLevel": "COS",
+	"nextLevel": "SNH",
 	"boss": {
 		"type": "eydoo",
 		"distance": 270,

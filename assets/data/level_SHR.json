@@ -8,7 +8,7 @@
 		"scale": 2.5,
 		"rotation": 180,
 		"health": 5000,
-		"lifeCount": 7
+		"lifeCount": 2
 	},
 	"speed": 0.035,
 	"floor": {
