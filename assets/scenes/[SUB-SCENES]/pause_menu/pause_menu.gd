@@ -59,7 +59,7 @@ func instantBoxMove():
 		boxer.self_modulate.a = boxAlpha
 
 func setting_change(value, obj):
-	SaveSystem.optionsData[obj.optionValue] = value
+	SaveSystem.optionsData.set(obj.optionValue, value)
 	SaveSystem.applySetting(obj.optionValue, value)
 	get_meta('parent').applySetting(obj.optionValue, value)
 	
@@ -69,7 +69,7 @@ func prepareOptions():
 		ob.value_changed.connect(tickSound.bind(ob))
 		ob.mouse_entered.connect(mouse_button.bind(ob))
 	
-	optionCheckbox.set_pressed(SaveSystem.optionsData[optionCheckbox.optionValue])
+	optionCheckbox.set_pressed(SaveSystem.optionsData.get(optionCheckbox.optionValue));
 	optionCheckbox.toggled.connect(checkboxMovement.bind(optionCheckbox))
 	optionCheckbox.mouse_entered.connect(mouse_button.bind(optionCheckbox))
 

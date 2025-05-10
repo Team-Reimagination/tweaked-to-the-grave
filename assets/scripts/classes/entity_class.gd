@@ -11,6 +11,7 @@ var model;
 @export var shortRenderDistance = false
 @export var isBackgroundObject = true
 @export var isGameplayObject = false
+@export var floorHeightAdjustment = false
 
 var distanceFadePhase = 0;
 var isReady : bool = false
@@ -26,6 +27,9 @@ func _ready() -> void:
 	
 	if hasModel:
 		while scene.name != "PlayState": scene = scene.get_parent()
+		
+		if floorHeightAdjustment: global_position.y = scene.btmF.global_position.y
+		
 		model = $Model
 		meshInstances = model.find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_override != null)
 	
