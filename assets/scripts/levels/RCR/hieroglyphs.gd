@@ -51,3 +51,6 @@ func spawnHiero():
 
 func onBossDefeat(_vars):
 	queue_free()
+
+func onGameOver(_vars):
+	queue_free()

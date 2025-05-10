@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=4 uid="uid://ckcgxf6slqvey"]
 
 [ext_resource type="Script" uid="uid://cylvsdkv8kq7n" path="res://assets/scripts/classes/obstacle_class.gd" id="1_m3dgb"]
-[ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="2_8ekhi"]
+[ext_resource type="Shader" uid="uid://fp6ahucaq0hh" path="res://assets/shaders/object/paletteLighting-dualAlpha.gdshader" id="2_1ai67"]
 [ext_resource type="Texture2D" uid="uid://daydxm2uu36ha" path="res://assets/objects/obstacles/rcr/grates.png" id="3_crdyg"]
 [ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="4_6u3re"]
 [ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="5_qdyt3"]
@@ -12,7 +12,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5aq4k"]
 render_priority = 1
-shader = ExtResource("2_8ekhi")
+shader = ExtResource("2_1ai67")
 shader_parameter/albedo_texture = ExtResource("3_crdyg")
 shader_parameter/diffuse_gradient = ExtResource("4_6u3re")
 shader_parameter/specular_gradient = ExtResource("5_qdyt3")

@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://ddgimdbx5u1tu" path="res://assets/objects/bullets/web/web.tscn" id="4_kfk3r"]
 [ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="5_0t7ct"]
 [ext_resource type="Shader" uid="uid://bdrwiprw3hnm1" path="res://assets/shaders/object/colorMod3D.gdshader" id="6_xtcix"]
-[ext_resource type="AudioStream" uid="uid://dlvux7mkbqyj2" path="res://assets/sounds/entities/hieroglyph_readying.ogg" id="7_1rfxl"]
 [ext_resource type="Texture2D" uid="uid://bekrp7111ygmi" path="res://assets/images/fx/explosion.png" id="7_pcbnc"]
 [ext_resource type="AudioStream" uid="uid://v2tgwl75erpi" path="res://assets/sounds/gameplay/explode.ogg" id="8_73pdc"]
-[ext_resource type="AudioStream" uid="uid://c7jfqg04322wi" path="res://assets/sounds/entities/hieroglyph_launch.ogg" id="8_nonpc"]
 [ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="9_lw0er"]
+[ext_resource type="AudioStream" uid="uid://shdd6shp88su" path="res://assets/sounds/entities/sarcophagus_open.ogg" id="11_b4ehl"]
+[ext_resource type="AudioStream" uid="uid://bv2iiot55cmeg" path="res://assets/sounds/entities/web_shot.ogg" id="12_0t7ct"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xtcix"]
 render_priority = 1
@@ -481,13 +481,15 @@ metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="Prep" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0347214, -0.0342507, 0.0111523)
-stream = ExtResource("7_1rfxl")
+stream = ExtResource("11_b4ehl")
+unit_size = 100.0
 script = ExtResource("9_lw0er")
 subtitle = "Sarcophagus Opening"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="Launch" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("8_nonpc")
+stream = ExtResource("12_0t7ct")
+unit_size = 100.0
 script = ExtResource("9_lw0er")
 subtitle = "Web Launched"
 metadata/_custom_type_script = "uid://dobpfy25irneh"

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dyo0p4p7pwkui"]
+
+[ext_resource type="Texture2D" uid="uid://c5yf3io1degw6" path="res://assets/objects/obstacles/rcr/pedestal_pedestal.png" id="1_41p1c"]
+
+[resource]
+resource_name = "Pedestal"
+cull_mode = 2
+albedo_texture = ExtResource("1_41p1c")
+roughness = 0.5
