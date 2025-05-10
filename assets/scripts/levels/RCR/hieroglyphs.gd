@@ -48,3 +48,6 @@ func spawnHiero():
 	
 	if !scene.hasBitchWon and scene.canInput:
 		start()
+
+func onBossDefeat(_vars):
+	queue_free()
