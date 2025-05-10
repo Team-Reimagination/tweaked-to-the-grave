@@ -1,10 +1,14 @@
-[gd_scene load_steps=22 format=4 uid="uid://b56b0d2gngc5i"]
+[gd_scene load_steps=28 format=4 uid="uid://b56b0d2gngc5i"]
 
 [ext_resource type="Script" uid="uid://b6b5akuiu5gms" path="res://assets/objects/general/ship/shipHandler.gd" id="1_ntkcy"]
 [ext_resource type="Animation" uid="uid://3c1fmvv5eomo" path="res://assets/objects/general/ship/anim/idle.res" id="2_1tqx3"]
 [ext_resource type="Material" uid="uid://dg2wng5wx0iuy" path="res://assets/data/shade-gradient/palette_material.tres" id="2_4hhuq"]
+[ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="3_mats1"]
+[ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="4_31sb5"]
 [ext_resource type="Script" uid="uid://di2lyy6fws75b" path="res://assets/scripts/classes/entity_class.gd" id="4_bff7c"]
+[ext_resource type="Texture2D" uid="uid://b6u1b3yxgifvg" path="res://assets/objects/general/ship/ship_Elephant_emission.png" id="5_hhh62"]
 [ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="6_gegs0"]
+[ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="6_xidln"]
 [ext_resource type="AudioStream" uid="uid://b0lq3d8lgrxpf" path="res://assets/sounds/ambience/stampede_amb.ogg" id="8_cq4vs"]
 [ext_resource type="Script" uid="uid://do3ib7cpvvinc" path="res://assets/scripts/classes/subtitle_sound_general.gd" id="8_ntkcy"]
 [ext_resource type="AudioStream" uid="uid://chmlr1hxcscp1" path="res://assets/sounds/gameplay/railring.ogg" id="9_2uiom"]
@@ -183,6 +187,19 @@ bind/27/pose = Transform3D(-0.349346, 0.465795, -0.268957, -0.51309, -0.384817, 
 bind/28/name = &"Bone.016"
 bind/28/bone = -1
 bind/28/pose = Transform3D(-0.0103956, 0.582151, -0.268957, -0.64126, -0.011451, 3.48898e-08, -0.00480203, 0.268914, 0.582244, 4.77651, -2.94865, 0.620162)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2g2um"]
+load_path = "res://.godot/imported/ship_Elephant.png-8063cb7d79524f6145b17eb30e6e4246.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tiauf"]
+render_priority = 1
+shader = ExtResource("3_mats1")
+shader_parameter/albedo_texture = SubResource("CompressedTexture2D_2g2um")
+shader_parameter/diffuse_gradient = ExtResource("4_31sb5")
+shader_parameter/specular_gradient = ExtResource("6_xidln")
+shader_parameter/emissive_texture = ExtResource("5_hhh62")
+shader_parameter/fade_start = 0.0
+shader_parameter/fade_end = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wtr8f"]
 resource_name = "ship_Plane"
@@ -446,7 +463,7 @@ mesh = SubResource("ArrayMesh_r1nt1")
 skin = SubResource("Skin_hesri")
 
 [node name="Elephant" type="MeshInstance3D" parent="Model/Armature/Skeleton3D"]
-material_override = ExtResource("2_4hhuq")
+material_override = SubResource("ShaderMaterial_tiauf")
 mesh = SubResource("ArrayMesh_wtr8f")
 skin = SubResource("Skin_hesri")
 

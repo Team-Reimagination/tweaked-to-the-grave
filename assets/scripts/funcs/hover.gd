@@ -5,6 +5,8 @@ var ySpeed
 var time = 0;
 
 func _process(delta: float) -> void:
+	if SaveSystem.optionsData.get("video_reducedmotions", false): return
+	
 	time += delta
 	self.position.y += sin(time * ySpeed) * yFloat
 

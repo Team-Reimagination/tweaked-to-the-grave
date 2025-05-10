@@ -197,7 +197,9 @@ func ending():
 	$Skippable.visible = false
 	
 	fadeBackground(1.0, 'out', 'in', 'quint')
-	myHeadScrolls(friendGroupHeads.autoscroll.x * 50, 1.0, 'in', 'quint')
+	
+	if !SaveSystem.optionsData.get("video_reducedmotions", false): myHeadScrolls(friendGroupHeads.autoscroll.x * 50, 1.0, 'in', 'quint')
+	
 	movePanel(panelPosition.x, 1000, 1.0, 'in', 'quint')
 	setPanelSize(0,0)
 	musicVolume(0.0, 1.0, 'in', 'quint')

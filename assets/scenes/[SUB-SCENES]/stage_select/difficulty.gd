@@ -40,9 +40,11 @@ func instantScale():
 		buttons[i].scale.y = buttons[i].scale.x
 		
 func greyButtons(fromMouse):
+	var checky = fromMouse and !SaveSystem.optionsData.get("video_reducedmotions", false)
+	
 	for i in range(buttons.size()):
 		buttons[i].self_modulate = Color(0.4,0.4,0.4) if fromMouse else Color(1.0,1.0,1.0)
-		buttonScales[i] = (0.8*0.9 if fromMouse else 0.8) if i != 2 else (0.9 if fromMouse else 1.0);
+		buttonScales[i] = (0.8*0.9 if checky else 0.8) if i != 2 else (0.9 if checky else 1.0);
 
 func updateScale():
 	buttonScales[selectedButton] = 0.8 if selectedButton != 2 else 1.0
@@ -110,13 +112,15 @@ func process_button():
 	if selectedButton != 2:
 		movement(-1 if selectedButton == 0 else 1)
 		updatemyhardness(-1 if selectedButton == 0 else 1)
+		$"../ActionButtons".updateActions(-1 if selectedButton == 0 else 1)
 	else:
 		imfreeingfromthisshit()
 		
 	scalar()
 	
 func scalar():
-	buttons[selectedButton].scale *= 0.7
+	if !SaveSystem.optionsData.get("video_reducedmotions", false):
+		buttons[selectedButton].scale *= 0.7
 
 var swipethatshitclean;
 func updatemyhardness(mymovementdirection):
@@ -124,10 +128,10 @@ func updatemyhardness(mymovementdirection):
 		swipethatshitclean.kill()
 	
 	swipethatshitclean = get_tree().create_tween()
-	swipethatshitclean.tween_property(fuckassSOVL, "offset:y", 50 * mymovementdirection, 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+	if !SaveSystem.optionsData.get("video_reducedmotions", false): swipethatshitclean.tween_property(fuckassSOVL, "offset:y", 50 * mymovementdirection, 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 	swipethatshitclean.parallel().tween_property(fuckassSOVL, "self_modulate:a", 0.0, 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 	
-	swipethatshitclean.tween_property(fuckassSOVL, "offset:y", -50 * mymovementdirection, 0.0)
+	if !SaveSystem.optionsData.get("video_reducedmotions", false): swipethatshitclean.tween_property(fuckassSOVL, "offset:y", -50 * mymovementdirection, 0.0)
 	swipethatshitclean.tween_property(fuckassSOVL, "frame", antiterios, 0.0)
 	
 	swipethatshitclean.tween_property(fuckassSOVL, "offset:y", 0, 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)

@@ -13,6 +13,8 @@ func start() -> void:
 	$SoOver.subtitle_play()
 	
 	#this is so jank but it works, just don't fucking do this
+	if SaveSystem.optionsData.get("video_reducedmotions", false): $BG.color = Color(0.0,0.0,0.0,0.5)
+	
 	var gra = get_parent().create_tween()
 	gra.tween_property($BG, "color", Color(0.0,0.0,0.0,0.5), 0.2)
 	
@@ -29,7 +31,7 @@ func start() -> void:
 	gradT4.tween_property(grad, "self_modulate", Color(1.0,1.0,1.0,0.0), 1.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 	
 	gradT.tween_property(gamo, "self_modulate", Color(1.0,1.0,1.0,1.0), 0.6).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT).set_delay(0.4)
-	gradT3.tween_property(gamo, "position:y", gamo.position.y + 20, 0.6).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	gradT3.tween_property(gamo, "position:y", gamo.position.y + 20, 0.6 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 0.0).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 	
 	await get_tree().create_timer(1.2).timeout
 	$Stroked.subtitle_play()
@@ -44,6 +46,6 @@ func _process(_delta: float) -> void:
 		isItReady = true
 		start()
 		
-	if buttons.canInput and $Stroked.playing == false and $Music.volume_db < 0.0:
+	if buttons.canInput and $Stroked.playing == false and $Music.volume_db < 0.0 and $Buttons.process_mode != PROCESS_MODE_DISABLED:
 		$Music.play()
 		$Music.volume_db = 0.0;

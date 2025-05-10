@@ -128,7 +128,7 @@ func initiateCountdown():
 func postCount():
 	canInput = true;
 	music.play()
-	music.volume_db = -10.0
+	music.volume_db = -15.0
 	
 	scripts.runFunction("levelStart")
 	

@@ -92,7 +92,7 @@ func tickSound(value, obj):
 func greyButtons():
 	for i in range(buttons.size()):
 		buttons[i].self_modulate = Color(0.4,0.4,0.4)
-		buttonScales[i] = 0.9;
+		buttonScales[i] = 0.9 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 1.0;
 
 func updateScale():
 	if selectedButton < 3: buttonScales[selectedButton] = 1.0
@@ -106,6 +106,8 @@ func updateButtonSelection():
 	else:
 		boxAlpha = 1.0
 		boxerMove()
+	
+	if SaveSystem.optionsData.get("video_reducedmotions", false): instantBoxMove()
 	
 var holdTimer = 0.0;
 	

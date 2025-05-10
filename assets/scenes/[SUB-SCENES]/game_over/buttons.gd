@@ -24,7 +24,7 @@ func instantScale():
 func greyButtons():
 	for i in range(buttons.size()):
 		buttons[i].self_modulate = Color(0.4,0.4,0.4)
-		if canInput: buttonScales[i] = 0.9;
+		if canInput: buttonScales[i] = 0.9 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 1.0;
 
 func updateScale():
 	buttonScales[selectedButton] = 1.0

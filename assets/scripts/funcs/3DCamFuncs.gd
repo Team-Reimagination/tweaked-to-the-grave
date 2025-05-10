@@ -20,9 +20,9 @@ func _process(_delta: float) -> void:
 		shakeMod = Vector3(randf_range(-1,1)*strength, randf_range(-1,1)*strength, 0.0)
 		rotiMod = randf_range(-1,1)*strength
 		
-		rotiPos = lerpf(rotiPos, rotiMod, 0.25)
+		rotiPos = lerpf(rotiPos, rotiMod, 0.25 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 0.125)
 		for i in ["x", "y", "z"]:
-			shakePos[i] = lerpf(shakePos[i], shakeMod[i], 0.5)
+			shakePos[i] = lerpf(shakePos[i], shakeMod[i], 0.5 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 0.25)
 	else:
 		if shakePos != Vector3.ZERO: shakePos = Vector3.ZERO
 		if rotiPos != 0.0: rotiPos = 0.0

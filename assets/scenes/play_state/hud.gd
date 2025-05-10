@@ -79,11 +79,13 @@ func levelUpLira():
 		$LiraGroup/LiraParticles.self_modulate = Color(1.0,1.0,1.0,1.0)
 		$LiraGroup/LevelUp.subtitle_play()
 		
-		liraGroup.position.y = 50.0;
 		if liraShakeTween:
 			liraShakeTween.kill()
 		liraShakeTween = get_tree().create_tween()
-		liraShakeTween.tween_property(liraGroup, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+		
+		if !SaveSystem.optionsData.get("video_reducedmotions", false):
+			liraGroup.position.y = 50.0;
+			liraShakeTween.tween_property(liraGroup, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		
 		liraGroup.material.set("shader_parameter/offsets", Vector4(1.0, 1.0, 1.0, 0.0))
 		liraShakeTween.set_parallel().tween_property(liraGroup.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
@@ -92,7 +94,7 @@ func healthLoss(): #go away you got a minor heatstroke
 	var heal = $HealthGroup/HealthSeezee/HealthSteps.get_child(3 - (scene.player_health+1))
 	
 	var healer1 = get_tree().create_tween()
-	healer1.tween_property(heal, "scale", Vector2(1.3,1.3), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	if !SaveSystem.optionsData.get("video_reducedmotions", false): healer1.tween_property(heal, "scale", Vector2(1.3,1.3), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 	healer1.set_parallel().tween_property(heal, "modulate", Color(1.0,1.0,1.0,0.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 
 func updateIcon():
@@ -115,11 +117,13 @@ func loseLife():
 	healthLoss()
 	
 	var canyougivemelife = $HealthGroup/IconSeezee/Lives
-	canyougivemelife.position.y = 20.0;
-	if lifeShakeTween:
-		lifeShakeTween.kill()
-	lifeShakeTween = get_tree().create_tween()
-	lifeShakeTween.tween_property(canyougivemelife, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	
+	if !SaveSystem.optionsData.get("video_reducedmotions", false):
+		canyougivemelife.position.y = 20.0;
+		if lifeShakeTween:
+			lifeShakeTween.kill()
+		lifeShakeTween = get_tree().create_tween()
+		lifeShakeTween.tween_property(canyougivemelife, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		
 	$HealthGroup/IconSeezee/Lives/Label.text = str(scene.lives)
 	
@@ -142,14 +146,16 @@ func loseLife():
 		
 		$LiraGroup/MoneyLoss.subtitle_play()
 		
-		liraGroup.position.y = 50.0;
 		if liraShakeTween:
 			liraShakeTween.kill()
 		liraShakeTween = get_tree().create_tween()
-		liraShakeTween.tween_property(liraGroup, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		
 		liraGroup.material.set("shader_parameter/offsets", Vector4(1.0, -1.0, -1.0, 0.0))
-		lifeShakeTween.set_parallel().tween_property(liraGroup.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
+		liraShakeTween.tween_property(liraGroup.material, "shader_parameter/offsets", Vector4(0.0, 0.0, 0.0, 0.0), 0.2).set_trans(Tween.TRANS_QUART)
+		
+		if !SaveSystem.optionsData.get("video_reducedmotions", false):
+			liraGroup.position.y = 50.0;
+			liraShakeTween.set_parallel(true).tween_property(liraGroup, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 
 func healMe(healer):
 	var healthyNeed = $HealthGroup/HealthSeezee/HealthSteps.get_children().filter(func(x): return x.modulate.a < 0.1)
@@ -160,7 +166,7 @@ func healMe(healer):
 	
 	for i in healthyNeed:
 		var healer1 = get_tree().create_tween()
-		healer1.tween_property(i, "scale", Vector2(1,1), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+		if !SaveSystem.optionsData.get("video_reducedmotions", false): healer1.tween_property(i, "scale", Vector2(1,1), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		healer1.set_parallel().tween_property(i, "modulate", Color(1.0,1.0,1.0,1.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		
 	updateIcon()
@@ -193,11 +199,12 @@ func _process(_delta: float) -> void:
 
 func giveMeLife():
 	var canyougivemelife = $HealthGroup/IconSeezee/Lives
-	canyougivemelife.position.y = 20.0;
-	if lifeShakeTween:
-		lifeShakeTween.kill()
-	lifeShakeTween = get_tree().create_tween()
-	lifeShakeTween.tween_property(canyougivemelife, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	if !SaveSystem.optionsData.get("video_reducedmotions", false):
+		canyougivemelife.position.y = 20.0;
+		if lifeShakeTween:
+			lifeShakeTween.kill()
+		lifeShakeTween = get_tree().create_tween()
+		lifeShakeTween.tween_property(canyougivemelife, "position:y", 0, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 		
 	$HealthGroup/IconSeezee/Lives/Label.text = str(scene.lives)
 	

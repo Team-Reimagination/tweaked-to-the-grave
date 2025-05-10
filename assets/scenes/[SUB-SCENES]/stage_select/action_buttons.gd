@@ -62,7 +62,7 @@ func instantScale():
 func greyButtons():
 	for i in range(currentRow.size()):
 		currentRow[i]["self_modulate" if !PlayGlobals.areWeFNFFreeDownload else "modulate"] = Color(0.4,0.4,0.4)
-		if substate.canInput: buttonScales[i] = 0.9 if !PlayGlobals.areWeFNFFreeDownload else 1.0;
+		if substate.canInput: buttonScales[i] = (0.9 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 1.0) if !PlayGlobals.areWeFNFFreeDownload else (1.0 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 1.15);
 
 func updateScale():
 	buttonScales[curSelected] = 1.0 if !PlayGlobals.areWeFNFFreeDownload else 1.15
@@ -75,7 +75,7 @@ func updateButtonSelection():
 func updateMiceButtons():
 	for i in range(mouseBTNS.size()):
 		mouseBTNS[i].self_modulate = Color(0.4,0.4,0.4) if mouseButton != -1 else Color(1.0,1.0,1.0)
-		if substate.canInput: mouseScales[i] = 0.9 if mouseButton != -1 else 1.0;
+		if substate.canInput: mouseScales[i] = 0.9 if mouseButton != -1 and !SaveSystem.optionsData.get("video_reducedmotions", false) else 1.0;
 	
 	if mouseButton != -1:
 		mouseBTNS[mouseButton].self_modulate = Color(1.0,1.0,1.0)
@@ -128,15 +128,16 @@ func setUpRows():
 func updateActions(movement = 1):
 	visiTween = get_tree().create_tween()
 	visiTween.tween_property(curGroup, "modulate:a", 0.0, 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
-	visiTween.set_parallel(true).tween_property(curGroup, "position:y", 50 * movement, 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
+	if !SaveSystem.optionsData.get("video_reducedmotions", false): visiTween.set_parallel(true).tween_property(curGroup, "position:y", 50 * movement, 0.1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
 	
 	await visiTween.finished
 	visiTween.stop()
 	visiTween = get_tree().create_tween()
 	setUpRows()
-	curGroup.position.y = -50 * movement
 	visiTween.tween_property(curGroup, "modulate:a", 1.0, 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	visiTween.set_parallel(true).tween_property(curGroup, "position:y", 0, 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	if !SaveSystem.optionsData.get("video_reducedmotions", false):
+		curGroup.position.y = -50 * movement
+		visiTween.set_parallel(true).tween_property(curGroup, "position:y", 0, 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 
 func moveLevelRow(doLerp):
 	var positionToLookFor = max(min(-levelRow[curSelected].position.x + $Levels/Renderer.size.x/2 - levelRow[curSelected].get_child(2).size.x / 2.0, levelRow[0].position.x + 30), -1 * (levelRow[levelRow.size()-1].position.x - $Levels/Renderer.size.x + levelRow[0].get_child(2).size.x + 30))
@@ -246,7 +247,7 @@ func confirmNew():
 			updateActions()
 
 func scalar(button):
-	button.scale *= 0.7
+	if !SaveSystem.optionsData.get("video_reducedmotions", false): button.scale *= 0.7
 
 func noToTheNew():
 	substate.process_mode = Node.PROCESS_MODE_ALWAYS

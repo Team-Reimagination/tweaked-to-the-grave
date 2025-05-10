@@ -43,4 +43,5 @@ func _process(_delta: float) -> void:
 func onvaluechange(setting:String, value):
 	var realLifeValue = SaveSystem.optionsData.set(setting, value)
 	SaveSystem.applySetting(setting, value)
-		
+	
+	get_meta('parent').applySetting(setting, value)

@@ -293,8 +293,8 @@ offset_bottom = 211.0
 allow_reselect = true
 item_count = 4
 item_0/text = "Off"
-item_1/text = "Closed Captions"
-item_2/text = "Voicelines"
+item_1/text = "Voicelines"
+item_2/text = "Closed Captions"
 item_3/text = "Everything"
 
 [node name="video_reducedmotions" type="Node" parent="Inside"]

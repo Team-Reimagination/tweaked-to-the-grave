@@ -67,8 +67,10 @@ func addSubtitle(subtitle):
 func _process(_delta: float) -> void:
 	for a in subtitularNodes.size():
 		if subtitularNodes[a] != null:
-			subtitularNodes[a].position.y = lerp(subtitularNodes[a].position.y, usualPlacement.y - subtitularNodes[a].size.y/2 + subtitularYs[a], 0.2)
-			subtitularNodes[a].position.x = lerp(subtitularNodes[a].position.x, usualPlacement.x - subtitularNodes[a].size.x, 0.2)
+			var lerpo = 0.2 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 1.0
+			
+			subtitularNodes[a].position.y = lerp(subtitularNodes[a].position.y, usualPlacement.y - subtitularNodes[a].size.y/2 + subtitularYs[a], lerpo)
+			subtitularNodes[a].position.x = lerp(subtitularNodes[a].position.x, usualPlacement.x - subtitularNodes[a].size.x, lerpo)
 			
 			if subtitularNodes[a].modulate.a <= 0.001:
 				subtitularNodes[a].queue_free()

@@ -25,16 +25,17 @@ func _process(delta: float) -> void:
 	if isTransitioning: #sweet camerashots when about to transition into gameplay
 		gloTimer += delta
 		watimer += delta
-		
-		zoomMod = 1 + sin(gloTimer*4.5)*0.10
-		
-		while watimer > 1.0/5:
-			watimer -= 1.0/5
-			posForMod = Vector2(randf_range(-500, 500),randf_range(-500, 500))
-			rotForMod = randf_range(-10, 10)
 			
-		posMod = Vector2(lerpf(posMod.x,posForMod.x, 0.002), lerpf(posMod.y,posForMod.y, 0.002))
-		rotMod = rotForMod
+		if !SaveSystem.optionsData.get("video_reducedmotions", false):
+			zoomMod = 1 + sin(gloTimer*4.5)*0.10
+			
+			while watimer > 1.0/5:
+				watimer -= 1.0/5
+				posForMod = Vector2(randf_range(-500, 500),randf_range(-500, 500))
+				rotForMod = randf_range(-10, 10)
+			
+			posMod = Vector2(lerpf(posMod.x,posForMod.x, 0.002), lerpf(posMod.y,posForMod.y, 0.002))
+			rotMod = rotForMod
 		
 		cam.zoom.x = lerpf(cam.zoom.x, 1.75 * zoomMod, 0.3)
 		cam.zoom.y = cam.zoom.x
@@ -75,3 +76,8 @@ func wellithinkitstimetomoveonok(): #hand materaliza
 	else:
 		MenuSounds.playMenuSound("select")
 		TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn")
+
+func applySetting(setting, value):
+	if setting == "video_reducedmotions":
+		$ParallaxBackground/Grave.updateButtonSelection()
+		$ParallaxBackground/Grave.instantScale()
