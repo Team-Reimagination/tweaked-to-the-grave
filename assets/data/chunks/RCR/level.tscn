@@ -656,21 +656,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -337.523)
 [node name="StartPos" type="Marker3D" parent="8"]
 
 [node name="Pedestal" parent="8" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_06e22")]
-transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, -29.339, 21.97, -65.3646)
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, -22.941, 21.97, -65.3646)
 doSpawn = false
 doFall = false
 healthLinks = [null, null, null, null]
 isBackgroundObject = false
 
 [node name="Pedestal2" parent="8" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_06e22")]
-transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, 39.933, 46.3162, -137.727)
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, 33.8238, 46.3162, -137.727)
 doSpawn = false
 doFall = false
 healthLinks = [null, null, null, null]
 isBackgroundObject = false
 
 [node name="Pedestal3" parent="8" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_06e22")]
-transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, -10.8662, 1.08432, -163.699)
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, -10.8662, 5.9061, -163.699)
 doSpawn = false
 doFall = false
 healthLinks = [null, null, null, null]
@@ -684,13 +684,13 @@ healthLinks = [null, null, null, null]
 isBackgroundObject = false
 
 [node name="Lira-5" parent="8" instance=ExtResource("15_1ss6o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.2201, 46.3438, -65.3048)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7348, 46.3438, -65.3048)
 
 [node name="Lira-6" parent="8" instance=ExtResource("15_1ss6o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0036, 68.466, -138.619)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3972, 68.466, -138.619)
 
 [node name="Lira-7" parent="8" instance=ExtResource("15_1ss6o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.822, 22.2752, -164.113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.822, 27.898, -164.113)
 
 [node name="Lira-8" parent="8" instance=ExtResource("15_1ss6o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38293, 50.6938, -257.513)
@@ -741,6 +741,7 @@ yMOD = 1.0
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 9.68324, 3.79937e-07)
 
 [node name="10" type="Node3D" parent="."]
+visible = false
 script = ExtResource("2_3uci2")
 chanceWeight = 0.78
 metadata/_custom_type_script = "uid://8fviwb4leujf"
