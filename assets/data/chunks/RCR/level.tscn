@@ -740,9 +740,8 @@ yMOD = 1.0
 [node name="MEnd" parent="9/Ra Cube2" index="6"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 9.68324, 3.79937e-07)
 
-[node name="10" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+[node name="10" type="Node3D" parent="."]
 script = ExtResource("2_3uci2")
-nextChunk = NodePath("../1_Lira")
 chanceWeight = 0.78
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
