@@ -1,6 +1,6 @@
 {
 	"name": "The Sunshine Hill",
-	"id": 3,
+	"id": 2,
 	"nextLevel": "complete",
 	"boss": {
 		"type": "tweak",
