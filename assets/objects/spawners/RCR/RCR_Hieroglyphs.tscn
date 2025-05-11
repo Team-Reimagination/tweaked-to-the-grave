@@ -36,6 +36,7 @@ isGameplayObject = true
 metadata/_custom_type_script = "uid://bxyarg230ioc7"
 
 [node name="Image" type="Sprite3D" parent="e"]
+layers = 2
 pixel_size = 0.1
 billboard = 1
 no_depth_test = true
@@ -112,6 +113,7 @@ metadata/_custom_type_script = "uid://bxyarg230ioc7"
 
 [node name="Image" type="Sprite3D" parent="y"]
 transform = Transform3D(1.00107, 0, 0, 0, 1.00107, 0, 0, 0, 1.00107, 0, 0, 0)
+layers = 2
 pixel_size = 0.1
 billboard = 1
 no_depth_test = true
@@ -175,6 +177,7 @@ isGameplayObject = true
 metadata/_custom_type_script = "uid://bxyarg230ioc7"
 
 [node name="Image" type="Sprite3D" parent="d"]
+layers = 2
 pixel_size = 0.1
 billboard = 1
 no_depth_test = true
@@ -223,6 +226,7 @@ metadata/_custom_type_script = "uid://bxyarg230ioc7"
 
 [node name="Image" type="Sprite3D" parent="o"]
 transform = Transform3D(1.00107, 0, 0, 0, 1.00107, 0, 0, 0, 1.00107, 0, 0, 0)
+layers = 2
 pixel_size = 0.1
 billboard = 1
 no_depth_test = true

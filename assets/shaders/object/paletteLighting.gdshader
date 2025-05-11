@@ -5,6 +5,7 @@ render_mode ambient_light_disabled;
 uniform sampler2D albedo_texture : hint_default_white;
 uniform sampler2D diffuse_gradient: hint_default_black;
 uniform sampler2D specular_gradient: hint_default_black;
+uniform sampler2D alpha_texture: hint_default_white;
 
 uniform sampler2D emissive_texture: hint_default_black;
 

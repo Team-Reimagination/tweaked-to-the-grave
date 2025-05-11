@@ -65,6 +65,6 @@ func detectCollission(_areID, are, _arSID, _loSID):
 			return
 		if are.type == "player" and scene.player.canBeHit and _loSID == 1 and !hasBeenLirad and !ouchie:
 			await get_tree().create_timer(0.3, false).timeout
-			if !ouchie:
+			if !ouchie and scene.player.canBeHit:
 				scene.hud.bonusing("Right into danger!", 25)
 				hasBeenLirad = true

@@ -1,6 +1,8 @@
 extends Node2D
 
 func _ready() -> void:
+	await get_tree().create_timer(3.0).timeout
+	
 	if not OS.has_feature("web"): get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/sbb_splash/sbb_splash.tscn") #call deferred prevents warning about it being busy adding children, bruh
 	else:
 		$Sprite2D.visible = true

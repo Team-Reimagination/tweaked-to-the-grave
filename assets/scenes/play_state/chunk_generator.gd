@@ -69,9 +69,9 @@ func makeBGChunk():
 		prevBGChunk = curBGChunk
 		curBGChunk = newChunk
 		
-	newChunk.position.x = 0.0 + (0.0 - newChunk.startPos.global_position.x)
-	newChunk.position.y = scene.levelDefs.floor.y
-	newChunk.position.z = ogPos
+	newChunk.global_position.x = 0.0 + (0.0 - newChunk.startPos.global_position.x)
+	newChunk.global_position.y = scene.levelDefs.floor.y
+	newChunk.global_position.z = ogPos
 	
 	newChunk.passReady()
 	newChunk.visible = true
@@ -97,13 +97,13 @@ func makeLVChunk():
 	if curLVChunk == null:
 		curLVChunk = newChunk2
 	else:
-		ogPos2 = curLVChunk.endPos.global_position.z
+		ogPos2 = curLVChunk.endPos.global_position.z - (scene.levelDefs.chunkSpace if (scene.levelDefs.has("chunkSpace") and !newChunk2.isSubChunk) else 0.0)
 		prevLVChunk = curLVChunk
 		curLVChunk = newChunk2
 		
-	newChunk2.position.x = 0.0 + (0.0 - newChunk2.startPos.global_position.x)
-	newChunk2.position.y = scene.levelDefs.floor.y
-	newChunk2.position.z = ogPos2
+	newChunk2.global_position.x = 0.0 + (0.0 - newChunk2.startPos.global_position.x)
+	newChunk2.global_position.y = scene.levelDefs.floor.y
+	newChunk2.global_position.z = ogPos2
 	
 	newChunk2.passReady()
 	newChunk2.visible = true

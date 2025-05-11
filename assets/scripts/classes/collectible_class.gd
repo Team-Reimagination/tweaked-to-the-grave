@@ -89,4 +89,4 @@ func detectCollission(_areID, are, _arSID, _loSID):
 		if are.type == 'player' and _loSID == 0 and !startSucking and !willDisappear and scene.player.action != 'hurt' and scene.player.action != 'explode':
 			startSucking = true
 			$Attraction.subtitle_play()
-		elif are.type == 'player_collector' and _loSID == 1 and !willDisappear: suicide()
+		elif are.type == 'player_collector' and _loSID == 1 and !willDisappear and (startSucking or (!startSucking and scene.player.action != 'hurt' and scene.player.action != 'explode')): suicide()

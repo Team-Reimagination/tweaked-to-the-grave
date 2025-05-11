@@ -2,15 +2,16 @@
 	"name": "The Ra's Curse",
 	"id": 1,
 	"nextLevel": "SNH",
+	"chunkSpace": 120,
 	"boss": {
 		"type": "eydoo",
 		"distance": 270,
 		"scale": 12,
 		"rotation": 0,
-		"health": 6100,
+		"health": 5700,
 		"lifeCount": 1
 	},
-	"speed": 0.04,
+	"speed": 0.038,
 	"floor": {
 		"texture": "floor",
 		"y": -40,

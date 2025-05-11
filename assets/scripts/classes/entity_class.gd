@@ -39,7 +39,7 @@ func _ready() -> void:
 			
 			if doProcessDistanceFade:
 				a.material_override.set("shader_parameter/fade_start", PlayGlobals.getDistance(shortRenderDistance))
-				a.material_override.set("shader_parameter/fade_end", PlayGlobals.getDistance(shortRenderDistance) - 100)
+				a.material_override.set("shader_parameter/fade_end", PlayGlobals.getDistance(shortRenderDistance) - (100 if !shortRenderDistance else 30))
 			
 			a.material_override.set("shader_parameter/diffuse_gradient", scene.diffuse_pal)
 			a.material_override.set("shader_parameter/specular_gradient", scene.specular_pal)

@@ -19,6 +19,8 @@ func _ready() -> void:
 	super._ready()
 	
 	$Model.position = $MStart.position
+	$Hitbox.position = $MStart.position
+	$NarrowBox.position = $MStart.position
 
 func movemental():
 	if disabled: return

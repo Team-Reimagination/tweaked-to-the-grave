@@ -5,6 +5,7 @@ render_mode ambient_light_disabled;
 uniform sampler2D albedo_texture : hint_default_white;
 uniform sampler2D diffuse_gradient: hint_default_black;
 uniform sampler2D specular_gradient: hint_default_black;
+uniform sampler2D alpha_texture: hint_default_white;
 
 uniform sampler2D emissive_texture: hint_default_black;
 
@@ -14,7 +15,7 @@ uniform float fade_end = 0.0;   // Distance where object becomes fully transpare
 void fragment() {
     // Sample base albedo texture
     ALBEDO = texture(albedo_texture, UV).rgb;
-	ALPHA = texture(albedo_texture, UV).a;
+	ALPHA = texture(alpha_texture, UV).a;
 
 	float fade_distance = length(VERTEX.z);
 
