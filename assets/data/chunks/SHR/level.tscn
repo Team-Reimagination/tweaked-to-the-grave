@@ -898,22 +898,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -132.648)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.248688)
 
 [node name="Lira-1" parent="15_Coins" instance=ExtResource("4_6xtxo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1015, 32.3553, -35.0971)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.71564, 32.3553, -35.0971)
 
 [node name="Lira-2" parent="15_Coins" instance=ExtResource("4_6xtxo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.022, 37.6759, -44.6331)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6361, 37.6759, -44.6331)
 
 [node name="Lira-3" parent="15_Coins" instance=ExtResource("4_6xtxo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3469, 39.9908, -57.8185)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.961, 39.9908, -57.8185)
 
 [node name="Lira-4" parent="15_Coins" instance=ExtResource("4_6xtxo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.6683, 39.9908, -73.8847)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2824, 39.9908, -73.8847)
 
 [node name="Lira-5" parent="15_Coins" instance=ExtResource("4_6xtxo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.6683, 37.5066, -88.9244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2824, 37.5066, -88.9244)
 
 [node name="Lira-6" parent="15_Coins" instance=ExtResource("5_vxlka")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5956, 34.2195, -104.674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2097, 34.2195, -104.674)
 
 [editable path="0_Obelisks/Obelisk"]
 [editable path="0_Obelisks/Obelisk2"]

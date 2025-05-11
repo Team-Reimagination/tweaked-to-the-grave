@@ -45,6 +45,9 @@ var currentLevelLira:int = 0
 var liraMax:int = 0;
 var liraLevel:int = PlayGlobals.liraLevel;
 
+var lifeThreshold = 5000
+var lifeLira = PlayGlobals.ownedLira % lifeThreshold
+
 #HEALTH
 var levelNum:int = 0;
 
@@ -348,6 +351,10 @@ func _process(delta: float) -> void:
 	#LIRA LEVEL
 	if liraPGR >= liraMax and liraLevel < PlayGlobals.maxLiraLevel:
 		levelUpLira()
+	
+	if lifeLira > lifeThreshold:
+		lifeLira -= 5000
+		giveMeLife()
 		
 	#WARNING
 	$Audio/Warning.volume_db = lerpf($Audio/Warning.volume_db, -10 if isWarning else -80, 0.3)
@@ -443,6 +450,7 @@ func addLira(lira):
 	TRUElira += lira
 	liraPGR += lira
 	currentLevelLira += lira
+	lifeLira += lira
 
 func giveMeLife():
 	scripts.runFunction("onExtraLife")
