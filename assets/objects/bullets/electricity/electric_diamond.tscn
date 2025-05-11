@@ -81,7 +81,7 @@ shape = SubResource("BoxShape3D_2ngqq")
 debug_color = Color(0, 0.550102, 0.92423, 0.42)
 
 [node name="Offscreen" type="VisibleOnScreenNotifier3D" parent="."]
-aabb = AABB(-3.51331, -3.16402, -2.63599, 7.02661, 6.32804, 5.27198)
+aabb = AABB(-6.68662, -8.49658, -2.63599, 13.3732, 16.9932, 5.27198)
 
 [node name="SeekTimer" type="Timer" parent="."]
 one_shot = true

@@ -41,8 +41,8 @@ func _ready() -> void:
 	$AliveTimer.start(lifetime)
 	
 func seek():
-	if disabled or parent == null: return Vector2.ZERO
-	var steer = Vector2.ZERO
+	if disabled or parent == null: return Vector3.ZERO
+	var steer = Vector3.ZERO
 	if target:
 		var desired = (target.global_position - global_position).normalized() * speed
 		steer = (desired - velocity).normalized() * steerPower

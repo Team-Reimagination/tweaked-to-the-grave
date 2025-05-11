@@ -207,7 +207,6 @@ subtitle = "Power Of The Hieroglyph"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="o" type="Area3D" parent="."]
-visible = false
 monitoring = false
 monitorable = false
 script = ExtResource("11_lg58l")
@@ -236,10 +235,13 @@ visible = false
 
 [node name="ElectricDiamond" parent="o/Spawn" instance=ExtResource("12_pofxm")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.92599, -3.71613, 0)
+speed = 200.0
+doParryX = false
+doParryZ = false
 disabled = true
 
 [node name="Direction" parent="o/Spawn/ElectricDiamond" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.04011, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.78697, 0)
 
 [node name="Prep" type="AudioStreamPlayer3D" parent="o"]
 stream = ExtResource("4_w5sch")
