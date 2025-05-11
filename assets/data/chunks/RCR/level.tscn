@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://xmd4tygvtkdl"]
+[gd_scene load_steps=17 format=3 uid="uid://xmd4tygvtkdl"]
 
 [ext_resource type="PackedScene" uid="uid://gebalqkua6p2" path="res://assets/data/chunks/references_lv.tscn" id="1_oemb6"]
 [ext_resource type="Script" uid="uid://8fviwb4leujf" path="res://assets/scripts/classes/chunk_class.gd" id="2_3uci2"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ckcgxf6slqvey" path="res://assets/objects/obstacles/rcr/grates1x1.tscn" id="13_xyhf3"]
 [ext_resource type="PackedScene" uid="uid://b3x5qru1vqw2l" path="res://assets/objects/general/1up/1up.tscn" id="14_n80gj"]
 [ext_resource type="PackedScene" uid="uid://cb5ao7vxoxcxs" path="res://assets/objects/general/lira/Lira-5.tscn" id="15_1ss6o"]
+[ext_resource type="PackedScene" uid="uid://crmwu2dbmygjj" path="res://assets/objects/general/lira/Lira-50.tscn" id="15_prf2k"]
 
 [node name="RcrBackground" type="Node3D"]
 
@@ -58,14 +59,14 @@ speed = 200.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06579, 0.556055, 14.5941)
 
 [node name="Pedestal2" parent="0_Pedestals" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_06e22")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 33.8715, 46.42, -118.58)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 33.8715, 46.42, -198.924)
 doSpawn = false
 doFall = false
 healthLinks = [NodePath("../Sarcophagus2")]
 isBackgroundObject = false
 
 [node name="Sarcophagus2" parent="0_Pedestals" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 33.6594, 57.9988, -118.419)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 33.6594, 57.9988, -198.763)
 distanceToSpawn = 275.0
 healthLinks = [NodePath("../Pedestal2")]
 
@@ -83,19 +84,19 @@ speed = 200.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88995, 0.556055, 15.3249)
 
 [node name="Pedestal3" parent="0_Pedestals" instance=ExtResource("3_06e22")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.6758, 40.1238, -209.182)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.6758, 40.1238, -288.513)
 doSpawn = false
 doFall = false
 isBackgroundObject = false
 
 [node name="Pedestal4" parent="0_Pedestals" instance=ExtResource("3_06e22")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.4579, 40.1238, -209.182)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.4579, 40.1238, -288.513)
 doSpawn = false
 doFall = false
 isBackgroundObject = false
 
 [node name="Ra Cube" parent="0_Pedestals" instance=ExtResource("5_oacij")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.5507, 52.0051, -209.162)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.5507, 52.0051, -288.493)
 distanceToMove = 300
 onlyOnce = true
 health = 25
@@ -108,7 +109,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5222, 0)
 
 [node name="Ra Cube2" parent="0_Pedestals" instance=ExtResource("5_oacij")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 17.8691, 52.0051, -209.162)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 17.8691, 52.0051, -288.493)
 distanceToMove = 300
 onlyOnce = true
 health = 25
@@ -131,39 +132,42 @@ chanceWeight = 0.8
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="0_Lira"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387, -269.846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387, -357.391)
 
 [node name="StartPos" type="Marker3D" parent="0_Lira"]
 
 [node name="Lira-1" parent="0_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2946, 38.5414, 8.8201)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2946, 38.5414, -24.1949)
 
 [node name="Lira-2" parent="0_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4967, 33.3493, -14.5629)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4967, 33.3493, -47.5779)
 
 [node name="Lira-3" parent="0_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4906, 30.935, -43.6535)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4906, 30.935, -76.6685)
 
 [node name="Lira-4" parent="0_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5688, 30.3032, -69.6665)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5688, 30.3032, -102.681)
+
+[node name="Lira-9" parent="0_Lira" instance=ExtResource("7_447cd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.10056, 31.7998, -121.415)
 
 [node name="Lira-5" parent="0_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.68921, 29.5653, -96.7077)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.68921, 29.5653, -184.068)
 
 [node name="Lira-6" parent="0_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24346, 32.0485, -118.608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24346, 32.0485, -205.968)
 
 [node name="Lira-7" parent="0_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.3653, -139.926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.3653, -227.286)
 
 [node name="Lira-8" parent="0_Lira" instance=ExtResource("7_447cd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.1573, -157.159)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.1573, -244.519)
 
 [node name="Lira-10" parent="0_Lira" instance=ExtResource("8_6bewm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0507, 56.9245, -217.915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0507, 56.9245, -297.246)
 
 [node name="Lira-11" parent="0_Lira" instance=ExtResource("8_6bewm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1483, 56.9245, -217.915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1483, 56.9245, -297.246)
 
 [node name="1_Grates1" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
 visible = false
@@ -179,7 +183,7 @@ metadata/_custom_type_script = "uid://8fviwb4leujf"
 [node name="Eye Cube" parent="1_Grates1" instance=ExtResource("9_qywd7")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 47.4942, 59.3983, -79.4505)
 distanceToMove = 300
-speed = 0.5
+speed = 0.48
 
 [node name="Shadow" parent="1_Grates1/Eye Cube" index="3"]
 visible = false
@@ -190,7 +194,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2, 0,
 [node name="Eye Cube2" parent="1_Grates1" instance=ExtResource("9_qywd7")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -50.5058, 38.3983, -79.4505)
 distanceToMove = 300
-speed = 0.5
+speed = 0.48
 
 [node name="Shadow" parent="1_Grates1/Eye Cube2" index="3"]
 visible = false
@@ -284,30 +288,25 @@ metadata/_custom_type_script = "uid://8fviwb4leujf"
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.338257, 13.9385, -25.6357)
 doSpawn = false
 doFall = false
-healthLinks = [NodePath("../Grate5"), NodePath("../Sarcophagus")]
+healthLinks = [NodePath(".")]
 isBackgroundObject = false
 
 [node name="Pedestal2" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_06e22")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 16.3614, 25.0749, -119.11)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 16.3614, 25.0749, -197.534)
 doSpawn = false
 doFall = false
 healthLinks = [NodePath("../Grate6"), NodePath("../Sarcophagus2")]
 isBackgroundObject = false
 
 [node name="Pedestal3" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_06e22")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13.1307, 36.3674, -146.839)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13.1307, 36.3674, -225.263)
 doSpawn = false
 doFall = false
 healthLinks = [NodePath("../Sarcophagus3")]
 isBackgroundObject = false
 
-[node name="Grate5" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("10_hj6v7")]
-transform = Transform3D(6.11541, -3.56282, -0.152632, 5.98221, -1.76473e-07, 8.50161, -44.7249, -0.487159, 1.11627, 11.7279, 30.9829, -70.2326)
-health = 125
-healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus")]
-
 [node name="Grate6" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("10_hj6v7")]
-transform = Transform3D(11.577, -1.07645, -2.1178, -6.12313, 0.019963, -6.69088, 9.82168, 1.28127, -1.675, 1.93696, 42.1591, -134.119)
+transform = Transform3D(11.577, -1.07645, -2.1178, -6.12313, 0.019963, -6.69088, 9.82168, 1.28127, -1.675, 1.93696, 42.1591, -211.981)
 health = 125
 healthLinks = [NodePath("../Pedestal2"), NodePath("../Sarcophagus2")]
 
@@ -315,15 +314,15 @@ healthLinks = [NodePath("../Pedestal2"), NodePath("../Sarcophagus2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.554579, 26.4124, -24.032)
 distanceToSpawn = 250.0
 health = 50
-healthLinks = [NodePath("../Pedestal"), NodePath("../Grate5")]
+healthLinks = [NodePath("../Pedestal")]
 
 [node name="Sarcophagus2" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 16.514, 36.2806, -117.586)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 16.514, 36.2806, -196.01)
 distanceToSpawn = 250.0
 healthLinks = [NodePath("../Pedestal2"), NodePath("../Grate6")]
 
 [node name="Sarcophagus3" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13.2503, 47.822, -145.246)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13.2503, 47.822, -223.67)
 distanceToSpawn = 250.0
 healthLinks = [NodePath("../Pedestal")]
 
@@ -335,7 +334,7 @@ chanceWeight = 0.65
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="2_Lira"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -199.646)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -247.781)
 
 [node name="StartPos" type="Marker3D" parent="2_Lira"]
 
@@ -343,25 +342,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -199.646)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.3422, -30.5089)
 
 [node name="Lira-1" parent="2_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.8512, -46.9383)
+transform = Transform3D(1, 0, 0, 0, 0.956381, 0.292121, 0, -0.292121, 0.956381, 0, 56.4614, -25.5242)
 
 [node name="Lira-2" parent="2_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 58.9002, -65.2148)
+transform = Transform3D(1, 0, 0, 0, 0.956381, 0.292121, 0, -0.292121, 0.956381, 0, 55.9513, -44.4784)
 
 [node name="Lira-3" parent="2_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.8871, -85.3113)
+transform = Transform3D(1, 0, 0, 0, 0.956381, 0.292121, 0, -0.292121, 0.956381, 0, 52.9373, -64.5709)
 
 [node name="Lira-4" parent="2_Lira" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64.1673, -103.614)
+transform = Transform3D(1, 0, 0, 0, 0.956381, 0.292121, 0, -0.292121, 0.956381, 0, 49.7714, -82.7413)
 
 [node name="Lira-5" parent="2_Lira" instance=ExtResource("7_447cd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64.1673, -127.115)
+transform = Transform3D(1, 0, 0, 0, 0.956381, 0.292121, 0, -0.292121, 0.956381, 0, 42.9062, -105.217)
 
 [node name="Lira-10" parent="2_Lira" instance=ExtResource("8_6bewm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.3081, -136.074)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.1074, -214.498)
 
 [node name="3" type="Node3D" parent="."]
-visible = false
 script = ExtResource("2_3uci2")
 chanceWeight = 0.7
 metadata/_custom_type_script = "uid://8fviwb4leujf"
@@ -393,28 +391,28 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9843, 0)
 
 [node name="Lira-1" parent="3" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9838, 42.5281, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0076, 42.5281, 0)
 
 [node name="Lira-4" parent="3" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7282, 42.5281, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5878, 42.5281, 0)
 
 [node name="Lira-5" parent="3" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1323, 46.6563, -13.6466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9919, 46.6563, -13.6466)
 
 [node name="Lira-6" parent="3" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.564, 50.9628, -28.5017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4236, 50.9628, -28.5017)
 
 [node name="Lira-2" parent="3" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.871, 46.6563, -13.3694)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8948, 46.6563, -13.3694)
 
 [node name="Lira-3" parent="3" instance=ExtResource("6_kdi1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7073, 50.9628, -27.9453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7311, 50.9628, -27.9453)
 
 [node name="Lira-7" parent="3" instance=ExtResource("7_447cd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0015, 55.0186, -43.1358)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0253, 55.0186, -43.1358)
 
 [node name="Lira-8" parent="3" instance=ExtResource("7_447cd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0621, 55.0186, -43.1358)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9217, 55.0186, -43.1358)
 
 [node name="Lira-20" parent="3" instance=ExtResource("12_oemb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.3734, -47.7382)
@@ -426,7 +424,7 @@ chanceWeight = 0.7
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -392.195)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -396.167)
 
 [node name="StartPos" type="Marker3D" parent="4"]
 
@@ -438,21 +436,21 @@ distanceToMove = 200
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.68794, 0)
 
 [node name="Ra Cube2" parent="4" instance=ExtResource("5_oacij")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 36.839, 0, -119.408)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 36.839, 0, -152.984)
 distanceToMove = 200
 
 [node name="MStart" parent="4/Ra Cube2" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0598, 0)
 
 [node name="Ra Cube3" parent="4" instance=ExtResource("5_oacij")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -15.6678, 0, -175.871)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -15.6678, 0, -199.934)
 distanceToMove = 225
 
 [node name="MStart" parent="4/Ra Cube3" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.52849, 0)
 
 [node name="Ra Cube4" parent="4" instance=ExtResource("5_oacij")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 10.5225, 0, -253.426)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 8.09646, 0, -279.529)
 distanceToMove = 250
 
 [node name="MStart" parent="4/Ra Cube4" index="5"]
@@ -484,6 +482,7 @@ floorHeightAdjustment = true
 yMOD = 1.0
 
 [node name="6_Grates" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
 script = ExtResource("2_3uci2")
 nextChunk = NodePath("../6_Sarcophagus")
 chanceWeight = 0.7
@@ -498,11 +497,15 @@ transform = Transform3D(8, 0, 0, 0, 16, 0, 0, 0, 8, -40, 1, -24)
 shortRenderDistance = false
 
 [node name="Grate3" parent="6_Grates" instance=ExtResource("13_xyhf3")]
-transform = Transform3D(8, 0, 0, 0, 16, 0, 0, 0, 8, -40, 1, -135.896)
+transform = Transform3D(8, 0, 0, 0, 23.4377, 0, 0, 0, 8, -40, -2.42327, -181.547)
 shortRenderDistance = false
 
-[node name="Grate2" parent="6_Grates" instance=ExtResource("13_xyhf3")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 48, -40, 17, -79.933)
+[node name="Grate5" parent="6_Grates" instance=ExtResource("13_xyhf3")]
+transform = Transform3D(8, 0, 0, 0, 23.4377, 0, 0, 0, 8, 38, -2.42327, -181.547)
+shortRenderDistance = false
+
+[node name="Grate6" parent="6_Grates" instance=ExtResource("13_xyhf3")]
+transform = Transform3D(8, 0, 0, 0, 23.4377, 0, 0, 0, 8, 0, -2.42327, -181.547)
 shortRenderDistance = false
 
 [node name="Grate9" parent="6_Grates" instance=ExtResource("13_xyhf3")]
@@ -514,17 +517,18 @@ transform = Transform3D(24, 0, 0, 0, -3.49691e-07, 8, 0, -8, -3.49691e-07, -8.23
 shortRenderDistance = false
 
 [node name="Grate8" parent="6_Grates" instance=ExtResource("10_hj6v7")]
-transform = Transform3D(72, 0, 0, 0, -3.49691e-07, 8, 0, -8, -3.49691e-07, 39.3607, 32.9128, -128)
+transform = Transform3D(32.5414, 0, 0, 0, -3.49691e-07, 8, 0, -8, -3.49691e-07, -1.6393, 44.4939, -173.651)
 shortRenderDistance = false
 
 [node name="6_Sarcophagus" type="Node3D" parent="."]
+visible = false
 script = ExtResource("2_3uci2")
 isSubChunk = true
 chanceWeight = 99.0
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="6_Sarcophagus"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -171.709)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -212.488)
 
 [node name="StartPos" type="Marker3D" parent="6_Sarcophagus"]
 
@@ -541,19 +545,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.43633, 44.0601, -64.4963)
 transform = Transform3D(0.999999, 0, 0.001309, 0, 1, 0, -0.001309, 0, 0.999999, 2.80388, 44.0601, -86.2675)
 
 [node name="Sarcophagus" parent="6_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -40.5231, 33.4768, -139.764)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -40.5231, 45.0578, -185.415)
 distanceToSpawn = 300.0
 health = 50
-healthLinks = [NodePath("../../2_Sarcophagus/Pedestal"), NodePath("../../2_Sarcophagus/Grate5")]
+healthLinks = [NodePath("../../2_Sarcophagus/Pedestal"), null]
 
 [node name="Model" parent="6_Sarcophagus/Sarcophagus" index="0"]
 transform = Transform3D(0.871633, 0, 0.490158, 0, 1, 0, -0.490158, 0, 0.871633, 0, 0.0245319, 0)
 
 [node name="Direction" parent="6_Sarcophagus/Sarcophagus/Spawn/Web" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06375, 1.96861, 15.7908)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06375, 1.23593, 15.7908)
 
 [node name="1up" parent="6_Sarcophagus" instance=ExtResource("14_n80gj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6069, 40.032, -23.936)
+
+[node name="Lira-50" parent="6_Sarcophagus" instance=ExtResource("15_prf2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.4665, -181.274)
 
 [node name="7" type="Node3D" parent="."]
 visible = false
@@ -562,19 +569,19 @@ chanceWeight = 0.75
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -208.637)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -244.825)
 
 [node name="StartPos" type="Marker3D" parent="7"]
 
 [node name="Pedestal" parent="7" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_06e22")]
-transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, 0.704676, 21.97, -84.2768)
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, 0.704676, 21.97, -120.465)
 doSpawn = false
 doFall = false
 healthLinks = [NodePath("../Sarcophagus"), NodePath("../Sarcophagus2"), NodePath("../Sarcophagus3"), NodePath("../Sarcophagus4")]
 isBackgroundObject = false
 
 [node name="Sarcophagus" parent="7" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.44542, 34.4439, -79.0847)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.44542, 34.4439, -115.273)
 distanceToSpawn = 200.0
 health = 50
 healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus2"), NodePath("../Sarcophagus3"), NodePath("../Sarcophagus4")]
@@ -586,7 +593,7 @@ transform = Transform3D(0.905332, 0, 0.424705, 0, 1, 0, -0.424705, 0, 0.905332, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22945, 0.556055, 20.012)
 
 [node name="Sarcophagus2" parent="7" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.55458, 34.4439, -79.0847)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.55458, 34.4439, -115.273)
 distanceToSpawn = 200.0
 health = 50
 healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus"), NodePath("../Sarcophagus3"), NodePath("../Sarcophagus4")]
@@ -598,7 +605,7 @@ transform = Transform3D(0.982251, 0, -0.18757, 0, 1, 0, 0.18757, 0, 0.982251, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93751, 0.556055, 24.3957)
 
 [node name="Sarcophagus3" parent="7" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.44542, 34.4439, -89.0847)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.44542, 34.4439, -125.273)
 distanceToSpawn = 50.0
 health = 50
 healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus"), NodePath("../Sarcophagus2"), NodePath("../Sarcophagus4")]
@@ -613,7 +620,7 @@ speed = 50.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67677, 0.556055, -6.53458)
 
 [node name="Sarcophagus4" parent="7" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.55458, 34.4439, -89.0847)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.55458, 34.4439, -125.273)
 distanceToSpawn = 50.0
 health = 50
 healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus"), NodePath("../Sarcophagus2"), NodePath("../Sarcophagus3")]
@@ -628,19 +635,19 @@ speed = 50.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58079, 0.556055, -8.32365)
 
 [node name="Lira-2" parent="7" instance=ExtResource("7_447cd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.9987, -83.7168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.9987, -119.905)
 
 [node name="Lira-3" parent="7" instance=ExtResource("7_447cd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 66.0905, -83.7168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 66.0905, -119.905)
 
 [node name="Lira-4" parent="7" instance=ExtResource("7_447cd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04959, 60.1329, -83.7168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04959, 60.1329, -119.905)
 
 [node name="Lira-5" parent="7" instance=ExtResource("7_447cd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.49672, 60.1329, -83.7168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.49672, 60.1329, -119.905)
 
 [node name="Lira-6" parent="7" instance=ExtResource("15_1ss6o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.6547, -122.458)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.6547, -158.646)
 
 [node name="8" type="Node3D" parent="."]
 visible = false
@@ -727,6 +734,9 @@ transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 24.5164, 0, -65.6261)
 speed = 4.0
 yMOD = 1.0
 
+[node name="MStart" parent="9/Ra Cube" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99128, 0)
+
 [node name="MEnd" parent="9/Ra Cube" index="6"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 9.68324, 3.79937e-07)
 
@@ -734,6 +744,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 9.6
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -17.8601, 0, -65.6261)
 speed = 4.0
 yMOD = 1.0
+
+[node name="MStart" parent="9/Ra Cube2" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99128, 0)
 
 [node name="MEnd" parent="9/Ra Cube2" index="6"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 9.68324, 3.79937e-07)
@@ -785,17 +798,6 @@ doParryY = true
 [node name="Direction" parent="10/Sarcophagus/Spawn/Web" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.23374, 11.1826)
 
-[node name="Sarcophagus2" parent="10" instance=ExtResource("3_3uci2")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 21.5944, 71.0694, -73.7677)
-distanceToSpawn = 170.0
-shortRenderDistance = true
-
-[node name="Web" parent="10/Sarcophagus2/Spawn" index="0"]
-doParryY = true
-
-[node name="Direction" parent="10/Sarcophagus2/Spawn/Web" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.23374, 11.1826)
-
 [node name="Sarcophagus3" parent="10" instance=ExtResource("3_3uci2")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 42.0264, 71.0694, -73.7677)
 distanceToSpawn = 140.0
@@ -805,17 +807,6 @@ shortRenderDistance = true
 doParryY = true
 
 [node name="Direction" parent="10/Sarcophagus3/Spawn/Web" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.23374, 11.1826)
-
-[node name="Sarcophagus4" parent="10" instance=ExtResource("3_3uci2")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -21.112, 71.0694, -73.7677)
-distanceToSpawn = 170.0
-shortRenderDistance = true
-
-[node name="Web" parent="10/Sarcophagus4/Spawn" index="0"]
-doParryY = true
-
-[node name="Direction" parent="10/Sarcophagus4/Spawn/Web" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.23374, 11.1826)
 
 [node name="Sarcophagus5" parent="10" instance=ExtResource("3_3uci2")]
@@ -867,11 +858,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44863, 42.7371, -53.0576)
 [editable path="9/Ra Cube2"]
 [editable path="10/Sarcophagus"]
 [editable path="10/Sarcophagus/Spawn/Web"]
-[editable path="10/Sarcophagus2"]
-[editable path="10/Sarcophagus2/Spawn/Web"]
 [editable path="10/Sarcophagus3"]
 [editable path="10/Sarcophagus3/Spawn/Web"]
-[editable path="10/Sarcophagus4"]
-[editable path="10/Sarcophagus4/Spawn/Web"]
 [editable path="10/Sarcophagus5"]
 [editable path="10/Sarcophagus5/Spawn/Web"]

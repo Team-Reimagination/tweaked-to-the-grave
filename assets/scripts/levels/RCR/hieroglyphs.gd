@@ -42,7 +42,7 @@ func spawnHiero():
 			chil.global_position.y = randf_range(15, 20);
 			chil.global_position.x = scene.player.global_position.x
 	
-	waitTime = randf_range(6.0,8.0)
+	waitTime = randf_range(6.0,10.0)
 	goIndex += 1
 	if goIndex >= len(goString): goIndex = 0
 	

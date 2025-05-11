@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csxma0t3lqlqx"
-path.s3tc="res://.godot/imported/flowerNoise.png-9bc861afe12fb8160fdf29548b17df6d.s3tc.ctex"
-path.etc2="res://.godot/imported/flowerNoise.png-9bc861afe12fb8160fdf29548b17df6d.etc2.ctex"
+uid="uid://b21lfnxhct6jb"
+path.s3tc="res://.godot/imported/flower_3.png-62db5f794ef365db445dc38f6ab476b9.s3tc.ctex"
+path.etc2="res://.godot/imported/flower_3.png-62db5f794ef365db445dc38f6ab476b9.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/levels/SNH/flowerNoise.png"
-dest_files=["res://.godot/imported/flowerNoise.png-9bc861afe12fb8160fdf29548b17df6d.s3tc.ctex", "res://.godot/imported/flowerNoise.png-9bc861afe12fb8160fdf29548b17df6d.etc2.ctex"]
+source_file="res://assets/images/levels/SNH/flower_3.png"
+dest_files=["res://.godot/imported/flower_3.png-62db5f794ef365db445dc38f6ab476b9.s3tc.ctex", "res://.godot/imported/flower_3.png-62db5f794ef365db445dc38f6ab476b9.etc2.ctex"]
 
 [params]
 

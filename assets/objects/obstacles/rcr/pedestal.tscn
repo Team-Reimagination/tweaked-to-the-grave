@@ -279,6 +279,7 @@ metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="Explosion" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(16.707, 0, 0, 0, 25.5978, 0, 0, 0, 0.54521, 0, -3.46567, 0)
+visible = false
 billboard = 1
 alpha_cut = 1
 sprite_frames = SubResource("SpriteFrames_6rirn")
