@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2w48d6k4iwq6"]
+[gd_scene load_steps=5 format=3 uid="uid://c2w48d6k4iwq6"]
 
 [ext_resource type="Script" uid="uid://8fviwb4leujf" path="res://assets/scripts/classes/chunk_class.gd" id="1_tmc54"]
 [ext_resource type="PackedScene" uid="uid://gebalqkua6p2" path="res://assets/data/chunks/references_lv.tscn" id="1_v8rcy"]
 [ext_resource type="PackedScene" uid="uid://bhc66tikbya06" path="res://assets/objects/decoration/SNH/flower_field.tscn" id="3_v8rcy"]
+[ext_resource type="PackedScene" uid="uid://dsev3tfu22be8" path="res://assets/objects/decoration/SNH/tree.tscn" id="4_je5ph"]
 
 [node name="snhBackground" type="Node3D"]
 
@@ -23,3 +24,12 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -176, 0.05, -128)
 
 [node name="FlowerField2" parent="0_0" instance=ExtResource("3_v8rcy")]
 transform = Transform3D(-4, 0, 3.49691e-07, 0, 4, 0, -3.49691e-07, 0, -4, 176, 0.05, -128)
+
+[node name="FlowerField3" parent="0_0" instance=ExtResource("4_je5ph")]
+transform = Transform3D(1.78379, 0, 2.41207, 0, 3, 0, -2.41207, 0, 1.78379, -96.0998, 0, -56.5683)
+
+[node name="FlowerField4" parent="0_0" instance=ExtResource("4_je5ph")]
+transform = Transform3D(1.94489, 0, -0.466246, 0, 2, 0, 0.466246, 0, 1.94489, -140.48, 0, -111.671)
+
+[node name="FlowerField5" parent="0_0" instance=ExtResource("4_je5ph")]
+transform = Transform3D(-3.14144, 0, -2.47616, 0, 4, 0, 2.47616, 0, -3.14144, 106.216, 0, -202.569)
