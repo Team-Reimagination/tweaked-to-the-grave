@@ -36,6 +36,10 @@ func _process(delta) :
 		scene.boss.get_node("Model/AnimationPlayer").play("Reeling")
 		scene.canInput = false
 		
+		if scene.dial != null:
+			scene.dial.dialEventNum = 999999
+			scene.dial.checkDialogue()
+		
 		var tweeny = get_tree().create_tween()
 		tweeny.set_parallel(true).tween_property(scene.camera, "posi:z", scene.boss.global_position.z + 100, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
 		tweeny.set_parallel(true).tween_property(scene.camera, "posi:y", scene.camera.posi.y + 10, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
