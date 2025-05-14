@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	#print($Splash.frame);
-	if (!$Splash/Music.playing && $Splash.frame >= 1): $Splash/Music.play()
+	if (!$Splash/Music.playing && $Splash.frame >= 1 && $Splash.frame < 10): $Splash/Music.play()
 	
 	if (Input.is_action_just_pressed("Accept_UI") or CustomCursor.isMouseJustPressed("left")): switchScene()
 	

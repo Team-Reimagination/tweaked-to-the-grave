@@ -16,9 +16,9 @@ var lira:int = 0;
 var liraShakeTween;
 var lifeShakeTween;
 
-func abracadabrahocuspocusnowyouwilldisappear():
+func abracadabrahocuspocusnowyouwilldisappear(time = 1.0):
 	var fuckingbegone = get_tree().create_tween()
-	fuckingbegone.tween_property($Color, "color", Color(1.0,1.0,1.0,0.0), 1.0)
+	fuckingbegone.tween_property($Color, "color", Color(1.0,1.0,1.0,0.0), time)
 
 func damage():
 	$HealthGroup/HealthTweak/HealthBar.value = scene.boss.health

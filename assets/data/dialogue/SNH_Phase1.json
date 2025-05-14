@@ -1,0 +1,36 @@
+{
+	"hasPanels": "true",
+	"events": [
+		{
+			"char": "seezee",
+			"text": "I'm mad. I'm really mad! How are you this persistent!?",
+			"nextAccess": "timeout",
+			"voice": "SNH_Seezee_Mad",
+		},
+		{
+			"char": "tweak-final",
+			"text": "I would say the same thing, you pest of a 'hero'! Is there no way to make you quit!?",
+			"nextAccess": "timeout",
+			"voice": "SNH_Tweak_Mad",
+		},
+		{
+			"char": "seezee",
+			"text": "Oh please. When you're the goal of the mission? I have come too far to quit now.",
+			"nextAccess": "timeout",
+			"voice": "SNH_Seezee_Mission",
+			"voiceTimeout": 0.2
+		},
+		{
+			"char": "seezee",
+			"text": "Just let me beat you...",
+			"nextAccess": "timeout",
+			"voice": "SNH_Seezee_Beat",
+		},
+		{
+			"char": "tweak-final",
+			"text": "If you want this so badly... You have to come closer.",
+			"nextAccess": "timeout",
+			"voice": "SNH_Tweak_Closer",
+		}
+	]
+}

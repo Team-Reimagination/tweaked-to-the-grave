@@ -17,7 +17,7 @@ const PATH_DIALOGUE = "res://assets/data/dialogue/"
 var charAliases = {
 	"bob": "bob tweaked",
 	"tweak": "the tweak",
-	"tweak_final": "the tweak",
+	"tweak-final": "the tweak",
 	"eyad_irl": "eyad",
 	"eyad": "eydoo",
 	"freindly": "freindly fellow",

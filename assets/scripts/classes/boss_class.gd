@@ -36,8 +36,8 @@ func _ready() -> void:
 	death.add_to_group('Sound')
 	death.stream = load("res://assets/sounds/boss/"+scene.bossDEF.type+"_death"+("_alt" if (hasAltDeath and hasGotIt) else "")+".ogg")
 	death.max_polyphony = 1;
-	death.bus = 'SFX';
-	finalHit.subtitle = deathSubtitle
+	death.bus = 'Voicelines';
+	death.subtitle = deathSubtitle
 
 func ImDoneGoodbye(anim):
 	if disabled: return

@@ -247,7 +247,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_kewhu")
 }],
 "loop": true,
-"name": &"tweak_final",
+"name": &"tweak-final",
 "speed": 12.0
 }, {
 "frames": [{
@@ -293,7 +293,7 @@ metadata/parent = NodePath("")
 texture_filter = 1
 position = Vector2(-212, 94)
 sprite_frames = SubResource("SpriteFrames_is3m4")
-animation = &"inter"
+animation = &"tweak-final"
 autoplay = "inter"
 offset = Vector2(0, -94)
 metadata/_aseprite_wizard_interface_config_ = {

@@ -3,11 +3,11 @@
 	"id": 2,
 	"nextLevel": "complete",
 	"boss": {
-		"type": "tweak",
-		"distance": 140,
+		"type": "tweak-final",
+		"distance": 300,
 		"scale": 2.5,
-		"rotation": 180,
-		"health": 6400,
+		"rotation": 0,
+		"health": 8000,
 		"lifeCount": 1
 	},
 	"speed": 0.05,
@@ -55,5 +55,8 @@
 			"end": 500.0,
 			"curve": 0.170
 		}
-	}
+	},
+	"dialogue": [
+		[100.0, "SNH_Phase1"],
+	]
 }

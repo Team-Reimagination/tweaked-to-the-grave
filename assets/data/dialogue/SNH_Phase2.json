@@ -1,0 +1,17 @@
+{
+	"hasPanels": "true",
+	"events": [
+		{
+			"char": "tweak-final",
+			"text": "That's it! No more holding back! I WILL MAKE YOU REGRET IT ALL!",
+			"nextAccess": "timeout",
+			"voice": "SNH_Tweak_Regret",
+		},
+		{
+			"char": "seezee",
+			"text": "I'LL MAKE YOU EAT THOSE WORDS!",
+			"nextAccess": "timeout",
+			"voice": "SNH_Seezee_Eat",
+		}
+	]
+}

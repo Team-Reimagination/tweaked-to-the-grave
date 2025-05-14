@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bgxb633a81ypo"]
 
-[ext_resource type="Texture2D" uid="uid://bvvxhxg83s28u" path="res://assets/objects/bosses/eydoo/eydoo_eyad_face.png" id="1_wuvsc"]
+[ext_resource type="Texture2D" uid="uid://bskbkjcleihaj" path="res://assets/objects/bosses/eydoo/eyad_face_dead.png" id="1_wuvsc"]
 
 [resource]
 resource_name = "Face"

@@ -365,14 +365,17 @@ func _process(delta: float) -> void:
 	#DIALOGUE
 	if canInput and canPause and dialogues != null:
 		if dialogues.size() > 0 and dialogues[0][0] >= boss.health / bossDEF.health * 100.0:
-			if dial != null: dial.queue_free()
+			loadDialogue()
 			
-			dial = dialState.instantiate()
-			hud.add_child(dial)
-			dial.startDialogue(dialogues[0][1])
-			dial.position = Vector2(335.0,835.0)
-			dialogues.pop_front()
-			dial.set_meta("parent", self)
+func loadDialogue(dially = dialogues[0][1]):
+	if dial != null: dial.queue_free()
+	
+	dial = dialState.instantiate()
+	hud.add_child(dial)
+	dial.startDialogue(dially)
+	dial.position = Vector2(335.0,835.0)
+	dialogues.pop_front()
+	dial.set_meta("parent", self)
 	
 func wellithinkitstimetomoveonok():
 	get_tree().paused = false
@@ -401,10 +404,10 @@ func completeLevel():
 		newHighScore = true
 		SaveSystem.setLevelHighScore(PlayGlobals.levelID, PlayGlobals.difficulty, currentLevelLira)
 	
-	hud.abracadabrahocuspocusnowyouwilldisappear()
+	hud.abracadabrahocuspocusnowyouwilldisappear(0.5)
 	
 	if levelDefs.nextLevel == 'complete':
-		shaders.wyczernienie(2.0)
+		shaders.wyczernienie(0.0)
 	else:
 		get_tree().create_tween().tween_property(camera, "posi:z", 0.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 		get_tree().create_tween().tween_property(camera, "posi:y", 4.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
@@ -412,7 +415,7 @@ func completeLevel():
 		get_tree().create_tween().tween_property(player, "position", Vector3(0.0,0.0,-20.0), 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 
 	if levelDefs.nextLevel == 'complete' and !PlayGlobals.areWeFNFFreeDownload:
-			await get_tree().create_timer(2.0, false).timeout
+			await get_tree().create_timer(0.5, false).timeout
 			
 			PlayGlobals.cutsceneID = 'aend'
 			setCurrentSave()
