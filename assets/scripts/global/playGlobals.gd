@@ -143,4 +143,4 @@ func getTransType(twans):
 	else: return Tween.TRANS_LINEAR
 
 func moveSpeed(delta, scene):
-	return scene.scrollSpeed * delta * scene.scrollModFLOOR[1] * (scene.btmF.scale.z*2.0)
+	return scene.scrollSpeed * delta * scene.scrollModFLOOR[1] * (scene.btmF.scale.z*2.0) * scene.scrollMod

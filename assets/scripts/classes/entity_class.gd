@@ -11,6 +11,7 @@ var model;
 @export var shortRenderDistance = false
 @export var isBackgroundObject = true
 @export var isGameplayObject = false
+@export var overrideKillDistance = -INF
 
 @export var floorHeightAdjustment = false
 @export var yMOD = 0.0
@@ -52,7 +53,7 @@ func _process(_delta: float) -> void:
 	for a in ["x","y","z"]:
 		if overridePos[a] != -INF: self.global_position[a] = overridePos[a]
 	
-	if self.global_position.z > 100 and type != 'boss' and !isDying:
+	if self.global_position.z > (100 if overrideKillDistance == -INF else overrideKillDistance) and type != 'boss' and !isDying:
 			self.queue_free()
 	
 	if isReady:

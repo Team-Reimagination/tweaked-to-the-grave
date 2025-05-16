@@ -1,0 +1,387 @@
+[gd_scene load_steps=12 format=3 uid="uid://vyaah6nf8kyt"]
+
+[ext_resource type="PackedScene" uid="uid://gebalqkua6p2" path="res://assets/data/chunks/references_lv.tscn" id="1_e6ga2"]
+[ext_resource type="Script" uid="uid://8fviwb4leujf" path="res://assets/scripts/classes/chunk_class.gd" id="2_xy0nt"]
+[ext_resource type="PackedScene" uid="uid://bdkw0ye8xytry" path="res://assets/objects/obstacles/snh/arm_semicircle.tscn" id="3_f6y4q"]
+[ext_resource type="PackedScene" uid="uid://jbxk7vostj05" path="res://assets/objects/obstacles/snh/arm_fist.tscn" id="4_e6ga2"]
+[ext_resource type="PackedScene" uid="uid://cggviv1rydpu3" path="res://assets/objects/obstacles/snh/arm_Stair.tscn" id="5_xy0nt"]
+[ext_resource type="PackedScene" uid="uid://cb5ao7vxoxcxs" path="res://assets/objects/general/lira/Lira-5.tscn" id="6_qhuug"]
+[ext_resource type="PackedScene" uid="uid://cpl52ivjh1axx" path="res://assets/objects/general/lira/Lira-1.tscn" id="7_ag0af"]
+[ext_resource type="PackedScene" uid="uid://dj1xnceb8dd6e" path="res://assets/objects/general/lira/Lira-2.tscn" id="8_eoycc"]
+[ext_resource type="PackedScene" uid="uid://ccjt1xcdqcvvi" path="res://assets/objects/obstacles/snh/arm_Hanger_seezee.tscn" id="9_ag0af"]
+[ext_resource type="PackedScene" uid="uid://ccluqcenn5lvf" path="res://assets/objects/obstacles/snh/arm_Hanger_douyhe.tscn" id="10_eoycc"]
+[ext_resource type="PackedScene" uid="uid://b7cny43a4qu6j" path="res://assets/objects/obstacles/snh/arm_Hanger_verwex.tscn" id="11_h7nmf"]
+
+[node name="level" type="Node3D"]
+
+[node name="References" parent="." instance=ExtResource("1_e6ga2")]
+transform = Transform3D(364.514, 0, 0, 0, 59.125, 0, 0, 0, 2.948, 0, 0, 32.7832)
+
+[node name="0_Arms" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
+script = ExtResource("2_xy0nt")
+nextChunk = NodePath("../0_Lira")
+chanceWeight = 0.8
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="0_Arms"]
+
+[node name="StartPos" type="Marker3D" parent="0_Arms"]
+
+[node name="Arm_Semicircle3" parent="0_Arms" instance=ExtResource("3_f6y4q")]
+transform = Transform3D(-1.64796, 0, 17.9244, 0, 18, 0, -17.9244, 0, -1.64796, -48.9398, 0, -38.5581)
+priority = -1
+spawnDistance = 250
+animSpeed = 2.0
+
+[node name="Arm_Semicircle5" parent="0_Arms" instance=ExtResource("3_f6y4q")]
+transform = Transform3D(1.28175, 0, -13.9412, 0, 14, 0, 13.9412, 0, 1.28175, 37.8707, 0, -360.641)
+priority = -1
+spawnDistance = 250
+
+[node name="Arm_Semicircle4" parent="0_Arms" instance=ExtResource("3_f6y4q")]
+transform = Transform3D(17.4367, 0, -4.4679, 0, 18, 0, 4.4679, 0, 17.4367, 30.1095, 0, -295.284)
+priority = -1
+spawnDistance = 250
+animSpeed = 0.5
+
+[node name="Arm_Fist" parent="0_Arms" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(6.95995, -1.76587, -6.95995, 1.24866, 9.84285, -1.24866, 7.07107, 0, 7.07107, 43, 0, -67.6935)
+spawnDistance = 250
+
+[node name="Arm_Fist2" parent="0_Arms" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(9.35078, 1.41039, 3.25171, -1.33215, 9.90004, -0.463251, -3.28455, 0, 9.4452, -31.9325, 0, -131.044)
+spawnDistance = 250
+animSpeed = 0.75
+
+[node name="Arm_Fist3" parent="0_Arms" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(7.25385, 6.40458, 2.52251, -6.04925, 7.67993, -2.10361, -3.28455, 3.68805e-08, 9.4452, -81.6663, -16.2298, -236.36)
+spawnDistance = 250
+animSpeed = 1.25
+
+[node name="Arm_Stair" parent="0_Arms" instance=ExtResource("5_xy0nt")]
+transform = Transform3D(5.58644, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, -431.219)
+spawnDistance = 250
+animSpeed = 1.5
+
+[node name="0_Lira" type="Node3D" parent="."]
+visible = false
+script = ExtResource("2_xy0nt")
+isSubChunk = true
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="0_Lira"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -459.858)
+
+[node name="StartPos" type="Marker3D" parent="0_Lira"]
+
+[node name="Lira-5" parent="0_Lira" instance=ExtResource("6_qhuug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25839, 69.4902, -45.7124)
+
+[node name="Lira-1" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16678, 39.5499, -83.3685)
+
+[node name="Lira-8" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.81087, -0.546568, 0.209175, 0.558932, 0.829213, 0, -0.173451, 0.116915, 0.977878, -12.1631, 40.7898, -339.112)
+
+[node name="Lira-9" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.81087, -0.546568, 0.209175, 0.558932, 0.829213, 0, -0.173451, 0.116915, 0.977878, -17.8305, 46.61, -346.852)
+
+[node name="Lira-10" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.81087, -0.546568, 0.209175, 0.558932, 0.829213, 0, -0.173451, 0.116915, 0.977878, -22.0313, 50.0946, -355.261)
+
+[node name="Lira-11" parent="0_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(0.81087, -0.546568, 0.209175, 0.558932, 0.829213, 0, -0.173451, 0.116915, 0.977878, -24.3545, 50.8891, -365.578)
+
+[node name="Lira-12" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.43476, 0.90003, -0.0304918, -0.883685, 0.419853, -0.20694, -0.173451, 0.116915, 0.977878, 17.4924, 41.1574, -339.112)
+
+[node name="Lira-13" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.43476, 0.90003, -0.0304918, -0.883685, 0.419853, -0.20694, -0.173451, 0.116915, 0.977878, 24.0766, 45.9159, -346.852)
+
+[node name="Lira-14" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.43476, 0.90003, -0.0304918, -0.883685, 0.419853, -0.20694, -0.173451, 0.116915, 0.977878, 28.1364, 49.5638, -355.261)
+
+[node name="Lira-15" parent="0_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(0.43476, 0.90003, -0.0304918, -0.883685, 0.419853, -0.20694, -0.173451, 0.116915, 0.977878, 29.2611, 51.7464, -365.578)
+
+[node name="Lira-2" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61819, 42.7764, -99.4999)
+
+[node name="Lira-3" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02482, 44.0253, -117.425)
+
+[node name="Lira-4" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53402, 44.0253, -135.988)
+
+[node name="Lira-6" parent="0_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.907467, 44.0253, -153.992)
+
+[node name="Lira-7" parent="0_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.33517, 44.0253, -172.543)
+
+[node name="1_Arms" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
+script = ExtResource("2_xy0nt")
+nextChunk = NodePath("../1_Lira")
+chanceWeight = 0.8
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="1_Arms"]
+
+[node name="StartPos" type="Marker3D" parent="1_Arms"]
+
+[node name="Arm_Fist" parent="1_Arms" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(5.85425, -4.60705, -6.67105, 0.335721, 8.35919, -5.47826, 8.10031, 2.98315, 5.04834, 43, -4.71868, -188.339)
+spawnDistance = 250
+
+[node name="Arm_Fist2" parent="1_Arms" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(12.8348, 3.88812, 6.71936, 0.503582, 12.5388, -8.21739, -7.74685, 7.25684, 10.5983, -55.572, -4.71868, -253.221)
+spawnDistance = 250
+
+[node name="Arm_Fist3" parent="1_Arms" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(14.8646, -2.01083, 0, 2.01083, 14.8646, 0, 0, 0, 15, -12.5444, -9.45443, -354.269)
+spawnDistance = 250
+
+[node name="Arm_Fist4" parent="1_Arms" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(14.8345, 2.22232, 0, -2.22232, 14.8345, 0, 0, 0, 15, 13.3922, -9.45443, -354.269)
+spawnDistance = 250
+
+[node name="Arm_Stair" parent="1_Arms" instance=ExtResource("5_xy0nt")]
+transform = Transform3D(-8.86578, 6.51137, 2.84621e-07, 0, -4.80825e-07, 11, 6.51137, 8.86578, 3.87536e-07, -63.4252, -8.69242, -102.858)
+spawnDistance = 250
+animSpeed = 1.5
+
+[node name="Arm_Stair3" parent="1_Arms" instance=ExtResource("5_xy0nt")]
+transform = Transform3D(12.9995, 0.0330176, -0.11243, -0.0771542, 11.7996, -5.45549, 0.0881925, 5.45594, 11.7994, -3.72572, -6.71942, -302.957)
+spawnDistance = 250
+animSpeed = 1.5
+
+[node name="Arm_Stair2" parent="1_Arms" instance=ExtResource("5_xy0nt")]
+transform = Transform3D(-11.8105, -5.43248, 2.37461e-07, -1.14241e-13, 5.68248e-07, 13, -5.43248, 11.8105, -5.16254e-07, 60.2775, -8.69242, -102.858)
+spawnDistance = 250
+animSpeed = 1.5
+
+[node name="Arm_Hanger" parent="1_Arms" instance=ExtResource("9_ag0af")]
+transform = Transform3D(7.37462, 0, -5.15897, 0, 9, 0, 5.15897, 0, 7.37462, -0.651272, -0.932816, -514.526)
+
+[node name="Seezee_Pinata" parent="1_Arms/Arm_Hanger" index="0"]
+transform = Transform3D(0.249607, 0, -0.0140294, 0, 0.25, 0, 0.0140294, 0, 0.249607, 0, 2.97039, 2.60067)
+
+[node name="Arm_Semicircle4" parent="1_Arms" instance=ExtResource("3_f6y4q")]
+transform = Transform3D(6.28342, 0, -16.8677, 0, 32.6783, 0, 16.8677, 0, 6.28342, 32.5805, 0, -445.127)
+priority = -1
+spawnDistance = 250
+animSpeed = 0.5
+
+[node name="1_Lira" type="Node3D" parent="."]
+visible = false
+script = ExtResource("2_xy0nt")
+isSubChunk = true
+chanceWeight = 0.8
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="1_Lira"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -541.168)
+
+[node name="StartPos" type="Marker3D" parent="1_Lira"]
+
+[node name="Lira-1" parent="1_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.977962, 0, 0.208782, 0, 1, 0, -0.208782, 0, 0.977962, 2.82803, 45.4623, -31.9339)
+
+[node name="Lira-2" parent="1_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.977962, 0, 0.208782, 0, 1, 0, -0.208782, 0, 0.977962, -0.702775, 48.4966, -44.3305)
+
+[node name="Lira-3" parent="1_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.977962, 0, 0.208782, 0, 1, 0, -0.208782, 0, 0.977962, -4.79928, 53.2942, -55.8232)
+
+[node name="Lira-4" parent="1_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.977962, 0, 0.208782, 0, 1, 0, -0.208782, 0, 0.977962, -8.44158, 58.8028, -67.2974)
+
+[node name="Lira-5" parent="1_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.977962, 0, 0.208782, 0, 1, 0, -0.208782, 0, 0.977962, -9.8874, 63.3728, -78.4332)
+
+[node name="Lira-7" parent="1_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.977962, 0, 0.208782, 0, 1, 0, -0.208782, 0, 0.977962, -16.4145, 65.7821, -106.272)
+
+[node name="Lira-8" parent="1_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(0.977962, 0, 0.208782, 0, 1, 0, -0.208782, 0, 0.977962, -17.3708, 66.2182, -121.169)
+
+[node name="Lira-6" parent="1_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(0.977962, 0, 0.208782, 0, 1, 0, -0.208782, 0, 0.977962, -13.1328, 65.066, -92.3198)
+
+[node name="Lira-9" parent="1_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.0795, -350.535)
+
+[node name="Lira-10" parent="1_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6384, 64.4475, -350.535)
+
+[node name="Lira-11" parent="1_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.98415, 64.4475, -350.535)
+
+[node name="Lira-12" parent="1_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206214, 74.0397, -350.535)
+
+[node name="2" type="Node3D" parent="."]
+visible = false
+script = ExtResource("2_xy0nt")
+chanceWeight = 0.75
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -467.917)
+
+[node name="StartPos" type="Marker3D" parent="2"]
+
+[node name="Arm_Fist" parent="2" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(9.93256, -1.15943, -0.00663225, 1.15943, 9.93256, 0, 0.00658752, -0.000768961, 10, 0, -4.82733, -17.5949)
+spawnDistance = 250
+
+[node name="Arm_Fist2" parent="2" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(8.91553, -4.52917, 0, 4.52917, 8.91553, 0, 0, 0, 10, 51.9568, -35.8281, -57.0257)
+spawnDistance = 250
+
+[node name="Arm_Fist3" parent="2" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -41.6655, 0, -76.0559)
+spawnDistance = 200
+
+[node name="Arm_Fist4" parent="2" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(9.52783, 3.03651, 0, -3.03651, 9.52784, 0, 0, 0, 10, -33.4891, -16.194, -145.336)
+spawnDistance = 200
+
+[node name="Arm_Fist5" parent="2" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(9.93932, 1.09995, 0, -1.09995, 9.93933, 0, 0, 0, 10, 17.37, -26.0624, -111.231)
+spawnDistance = 150
+
+[node name="Arm_Fist6" parent="2" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(9.88678, -1.50053, 0, 1.48016, 9.75258, 1.64204, -0.246393, -1.62345, 9.86426, -36.2074, 0, -264.469)
+spawnDistance = 250
+
+[node name="Arm_Fist7" parent="2" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(10, 0, 0, 0, 9.36489, -3.50698, 0, 3.50698, 9.36489, -8.9881, -10.3922, -220.107)
+spawnDistance = 250
+
+[node name="Arm_Fist8" parent="2" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(6.33907, -7.66986, -11.2245, 6.97395, 12.4657, -4.57941, 11.6696, -3.28333, 8.834, 37.5575, -10.4069, -288.651)
+spawnDistance = 150
+
+[node name="Arm_Hanger" parent="2" instance=ExtResource("9_ag0af")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, -404.285)
+
+[node name="3" type="Node3D" parent="."]
+visible = false
+script = ExtResource("2_xy0nt")
+chanceWeight = 0.6
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -361.924)
+
+[node name="StartPos" type="Marker3D" parent="3"]
+
+[node name="Arm_Hanger" parent="3" instance=ExtResource("9_ag0af")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, -298.875)
+
+[node name="Arm_Hanger2" parent="3" instance=ExtResource("10_eoycc")]
+transform = Transform3D(11.9123, 0, -10.6816, 0, 16, 0, 10.6816, 0, 11.9123, 51.3448, 0, -168.017)
+spawnDistance = 250
+
+[node name="Douyhe_Pinata" parent="3/Arm_Hanger2" index="0"]
+transform = Transform3D(0.249374, 0, 0.0176831, 0, 0.25, 0, -0.0176831, 0, 0.249374, 1.19209e-07, 3, 2.5)
+
+[node name="Arm_Hanger3" parent="3" instance=ExtResource("11_h7nmf")]
+transform = Transform3D(13.3927, 0, 6.75545, 0, 15, 0, -6.75545, 0, 13.3927, -41.3527, 0, -64.9377)
+
+[node name="4_Arms" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+script = ExtResource("2_xy0nt")
+nextChunk = NodePath("../4_Lira")
+chanceWeight = 0.8
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="4_Arms"]
+
+[node name="StartPos" type="Marker3D" parent="4_Arms"]
+
+[node name="Arm_Semicircle" parent="4_Arms" instance=ExtResource("3_f6y4q")]
+transform = Transform3D(3.30254, 0, 14.6319, 0, 15, 0, -14.6319, 0, 3.30254, -32.3727, 0, -50.117)
+spawnDistance = 250
+
+[node name="Arm_Semicircle2" parent="4_Arms" instance=ExtResource("3_f6y4q")]
+transform = Transform3D(-2.71311, 0, 33.1566, 0, 19.9579, 0, -5.38435, 0, -16.7072, -86.3795, 0, -248.793)
+spawnDistance = 250
+
+[node name="Arm_Stair" parent="4_Arms" instance=ExtResource("5_xy0nt")]
+transform = Transform3D(-12.0457, 0, 0.68904, 0, 20, 0, -0.4097, 0, -20.2586, 0, 0, -167.053)
+spawnDistance = 250
+
+[node name="Arm_Fist" parent="4_Arms" instance=ExtResource("4_e6ga2")]
+transform = Transform3D(5.51824, 10.3758, 0, -4.7471, 12.0612, 0, 0, 0, 10.0293, -46.0097, -12.3296, -407.234)
+spawnDistance = 250
+
+[node name="Arm_Hanger" parent="4_Arms" instance=ExtResource("10_eoycc")]
+transform = Transform3D(-4.33549, 0, -9.0113, 0, 10, 0, 9.0113, 0, -4.33549, 36.0281, 0, -480.192)
+
+[node name="Douyhe_Pinata" parent="4_Arms/Arm_Hanger" index="0"]
+transform = Transform3D(0.0026177, 0, 0.249986, 0, 0.25, 0, -0.249986, 0, 0.0026177, 0, 3, 2.5)
+
+[node name="4_Lira" type="Node3D" parent="."]
+script = ExtResource("2_xy0nt")
+isSubChunk = true
+chanceWeight = 0.8
+metadata/_custom_type_script = "uid://8fviwb4leujf"
+
+[node name="EndPos" type="Marker3D" parent="4_Lira"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -521.582)
+
+[node name="StartPos" type="Marker3D" parent="4_Lira"]
+
+[node name="Lira-1" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.1509, -16.3047)
+
+[node name="Lira-6" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4681, 37.6303, -142.086)
+
+[node name="Lira-7" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6252, 37.6303, -156.815)
+
+[node name="Lira-8" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9947, 37.6303, -173.239)
+
+[node name="Lira-9" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2374, 37.6303, -190.537)
+
+[node name="Lira-10" parent="4_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2374, 37.6303, -207.944)
+
+[node name="Lira-11" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 11.9465, 37.6303, -142.086)
+
+[node name="Lira-12" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 18.1036, 37.6303, -156.815)
+
+[node name="Lira-13" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 22.4731, 37.6303, -173.239)
+
+[node name="Lira-14" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 24.7158, 37.6303, -190.537)
+
+[node name="Lira-15" parent="4_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 24.7158, 37.6303, -207.944)
+
+[node name="Lira-2" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60.4075, -31.7929)
+
+[node name="Lira-3" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60.9135, -48.437)
+
+[node name="Lira-4" parent="4_Lira" instance=ExtResource("7_ag0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 56.3158, -65.7425)
+
+[node name="Lira-5" parent="4_Lira" instance=ExtResource("8_eoycc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.3066, -83.8076)
+
+[node name="Lira-16" parent="4_Lira" instance=ExtResource("8_eoycc")]
+
+[editable path="1_Arms/Arm_Hanger"]
+[editable path="3/Arm_Hanger2"]
+[editable path="4_Arms/Arm_Hanger"]

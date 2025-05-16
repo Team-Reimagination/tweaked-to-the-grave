@@ -30,8 +30,15 @@ func _process(delta) :
 	if haker:
 		scene.camera.strength += 1.0 * delta
 	
-	if (scene.boss.health / scene.bossDEF.health <= 2.0/3.0 and !startingPhase2) or (OS.is_debug_build() and Input.is_key_pressed(KEY_0) and !startingPhase2):
+	if (scene.boss.health / scene.bossDEF.health <= 0.8 and !startingPhase2) or (OS.is_debug_build() and Input.is_key_pressed(KEY_0) and !startingPhase2):
 		startingPhase2 = true
+		
+		scene.chunkLoader.lvChunks = []
+		scene.shaders.wybielenie(0.5)
+		
+		for obj in scene.chunkLoader.get_children():
+			if obj is TTTG_Chunk or ("isGameplayObject" in obj and obj.isGameplayObject and obj.has_method("victory_screech")):
+				obj.victory_screech()
 		
 		scene.boss.get_node("Model/AnimationPlayer").play("Reeling")
 		scene.canInput = false
@@ -41,9 +48,10 @@ func _process(delta) :
 			scene.dial.checkDialogue()
 		
 		var tweeny = get_tree().create_tween()
-		tweeny.set_parallel(true).tween_property(scene.camera, "posi:z", scene.boss.global_position.z + 100, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
+		tweeny.set_parallel(true).tween_property(scene.camera, "posi:z", scene.boss.global_position.z + 100, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		tweeny.set_parallel(true).tween_property(scene.camera, "posi:y", scene.camera.posi.y + 10, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
 		tweeny.set_parallel(true).tween_property(scene.music, "volume_linear", 0.0, 1.0)
+		tweeny.set_parallel(true).tween_property(scene, "scrollMod", 0.0, 1.0)
 		
 		await tweeny.finished
 		await get_tree().create_timer(1.0).timeout
@@ -64,17 +72,19 @@ func _process(delta) :
 		scene.camera.shake(50.0, 2.0)
 		scene.boss.get_node("Model/AnimationPlayer").play("Scream")
 		
+		
 		scene.music.stop();
 		scene.music.stream = load("res://assets/music/levels/SNH_Pinch.ogg")
 		
 		hell.subtitle_play()
 		
 		tweeny = get_tree().create_tween()
-		tweeny.tween_property(scene.camera, "posi:z", scene.boss.global_position.z + 150, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+		tweeny.tween_property(scene.camera, "posi:z", scene.boss.global_position.z + 150, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
+		tweeny.set_parallel(true).tween_property(scene.camera, "posi:y", scene.camera.posi.y - 10, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
 		
 		tweeny.tween_property(scene.camera, "posi:z", 0.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART).set_delay(0.5)
-		tweeny.set_parallel(true).tween_property(scene.camera, "posi:y", scene.camera.posi.y - 10, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART).set_delay(0.5)
-		tweeny.set_parallel(true).tween_property(scene.boss, "global_position:z", -200, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART).set_delay(0.5)
+		tweeny.set_parallel(true).tween_property(scene.boss, "global_position:z", -150, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART).set_delay(0.5)
+		tweeny.set_parallel(true).tween_property(scene, "scrollMod", 5.0, 1.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART).set_delay(0.5)
 		
 		await scene.boss.get_node("Model/AnimationPlayer").animation_finished
 		scene.canInput = true

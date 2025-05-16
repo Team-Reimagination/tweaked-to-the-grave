@@ -122,7 +122,7 @@ render_priority = 0
 shader = SubResource("Shader_o5i65")
 shader_parameter/tex = SubResource("CompressedTexture2D_8500i")
 shader_parameter/uv_scale = Vector2(100, 100)
-shader_parameter/uv_offset_speed = Vector2(0, 0)
+shader_parameter/uv_offset_speed = Vector2(0.1, 0)
 shader_parameter/custom_time = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_km3m7"]

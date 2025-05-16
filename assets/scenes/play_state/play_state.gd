@@ -220,6 +220,8 @@ func gameOver():
 @onready var sun = $Sun
 @onready var bg = $Background
 var scrollSpeed = 0;
+var scrollMod = 1.0
+
 var scrollModFLOOR
 var scrollModSKY
 
@@ -326,10 +328,10 @@ func _process(delta: float) -> void:
 		scripts.runFunction("onPause")
 	
 	#SCROLLING
-	shadertime += delta;
+	shadertime += delta * scrollMod;
 	for a in [btmF, topF]:
 		if a.visible:
-			a.mesh.material.set("shader_parameter/uv_offset_speed",Vector2(scrollSpeed, scrollSpeed) * (scrollModFLOOR if a.name == "Floor" else scrollModSKY))
+			a.mesh.material.set("shader_parameter/uv_offset_speed", Vector2(scrollSpeed, scrollSpeed) * (scrollModFLOOR if a.name == "Floor" else scrollModSKY))
 			a.mesh.material.set("shader_parameter/custom_time",shadertime)
 	
 	#BOUND CAMERA CONTROL

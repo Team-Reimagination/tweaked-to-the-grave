@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://b0p3dndbyy48o"]
+[gd_scene load_steps=48 format=4 uid="uid://b0p3dndbyy48o"]
 
 [ext_resource type="Texture2D" uid="uid://dkmnuxygkfioc" path="res://assets/objects/bosses/tweak/tweak_Tweak.png" id="1_j1n4a"]
 [ext_resource type="Script" uid="uid://b7uyb2dcueb5x" path="res://assets/objects/bosses/tweak/tweak.gd" id="1_q3ouc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" uid="uid://6s3hjtmaccmx" path="res://assets/shaders/object/paletteLighting.gdshader" id="3_f1ye2"]
 [ext_resource type="Texture2D" uid="uid://c0xo4v04kj0me" path="res://assets/data/shade-gradient/SHR_diffuse.tres" id="4_u0ke6"]
 [ext_resource type="Texture2D" uid="uid://dwjowmisrqydl" path="res://assets/data/shade-gradient/SHR_specular.tres" id="5_iv312"]
+[ext_resource type="Texture2D" uid="uid://3ir4ll48y38v" path="res://assets/objects/bosses/tweak/tweak_Tweak_a.png" id="8_rmr6j"]
 [ext_resource type="Material" uid="uid://bmj1nae6ql8pi" path="res://assets/data/LightMaterial.tres" id="10_gkijb"]
 [ext_resource type="Texture2D" uid="uid://bph6gewxnb6mk" path="res://assets/images/entities/tweak/gooey.png" id="10_qxfdj"]
 [ext_resource type="Script" uid="uid://cw0v2mcmidkn6" path="res://assets/objects/bosses/tweak/gooey.gd" id="11_h8j36"]
@@ -20,6 +21,7 @@ shader = ExtResource("3_f1ye2")
 shader_parameter/albedo_texture = ExtResource("1_j1n4a")
 shader_parameter/diffuse_gradient = ExtResource("4_u0ke6")
 shader_parameter/specular_gradient = ExtResource("5_iv312")
+shader_parameter/emissive_texture = ExtResource("8_rmr6j")
 shader_parameter/fade_start = 10000.0
 shader_parameter/fade_end = 9999.0
 

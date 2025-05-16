@@ -1,0 +1,226 @@
+[gd_scene load_steps=32 format=3 uid="uid://23iuqad5748j"]
+
+[ext_resource type="Script" uid="uid://dvd6wautoau6l" path="res://assets/scripts/classes/collectibleHolder_class.gd" id="1_fdbll"]
+[ext_resource type="Texture2D" uid="uid://bi2ve6f7jclww" path="res://assets/images/entities/seezee_pinata/pinata.png" id="2_no5r6"]
+[ext_resource type="PackedScene" uid="uid://br4v6celfxiyp" path="res://assets/objects/general/lira/Lira-10.tscn" id="4_fdbll"]
+[ext_resource type="Shader" uid="uid://bdrwiprw3hnm1" path="res://assets/shaders/object/colorMod3D.gdshader" id="6_7fsba"]
+[ext_resource type="Texture2D" uid="uid://bekrp7111ygmi" path="res://assets/images/fx/explosion.png" id="7_4qryj"]
+[ext_resource type="AudioStream" uid="uid://v2tgwl75erpi" path="res://assets/sounds/gameplay/explode.ogg" id="9_ns86g"]
+[ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="10_2hsc3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdbll"]
+render_priority = 1
+shader = ExtResource("6_7fsba")
+shader_parameter/tex = ExtResource("2_no5r6")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/intensity = 0.0
+shader_parameter/doTransparency = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cqxiy"]
+radius = 3.21725
+height = 13.1548
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w427h"]
+radius = 3.82247
+height = 13.8726
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y37a"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(0, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yb1n"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(71, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onolm"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(142, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4wrw"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(213, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atbkl"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(284, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v52s4"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(0, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nifj1"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(71, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a8rk"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(142, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oko8s"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(213, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm635"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(284, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap76o"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(0, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyid8"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(71, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vntvu"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(142, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwhu4"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(213, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvcr8"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(284, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lu1c"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(0, 300, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onba7"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(71, 300, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23ccb"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(142, 300, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3lmj"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(213, 300, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4f2o"]
+atlas = ExtResource("7_4qryj")
+region = Rect2(284, 300, 71, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rirn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y37a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yb1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onolm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4wrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atbkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v52s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nifj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a8rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oko8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm635")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap76o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyid8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vntvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwhu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvcr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lu1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onba7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23ccb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3lmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4f2o")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Seezee_Pinata" type="Area3D"]
+input_ray_pickable = false
+script = ExtResource("1_fdbll")
+health = 50
+type = "enemy"
+shortRenderDistance = true
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://dvd6wautoau6l"
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0245319, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Model"]
+material_overlay = SubResource("ShaderMaterial_fdbll")
+pixel_size = 0.1
+alpha_cut = 1
+alpha_scissor_threshold = 0.508
+texture = ExtResource("2_no5r6")
+region_enabled = true
+region_rect = Rect2(1, 0, 62, 128)
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0.0558873, 0)
+shape = SubResource("CapsuleShape3D_cqxiy")
+
+[node name="NarrowBox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_w427h")
+
+[node name="Explosion" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(9.2069, 0, 0, 0, 13.2557, 0, 0, 0, 0.0999999, 0, 0, 0)
+billboard = 1
+alpha_cut = 1
+sprite_frames = SubResource("SpriteFrames_6rirn")
+frame = 19
+frame_progress = 1.0
+
+[node name="Spawn" type="Node3D" parent="."]
+visible = false
+
+[node name="Lira-10" parent="Spawn" instance=ExtResource("4_fdbll")]
+disabled = true
+
+[node name="Explode" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.755953, 0)
+stream = ExtResource("9_ns86g")
+unit_size = 100.0
+bus = &"SFX"
+script = ExtResource("10_2hsc3")
+subtitle = "Explosion"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
