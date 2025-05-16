@@ -83,13 +83,13 @@ disabled = true
 [node name="Direction" parent="e/Spawn/ElectricBall4" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0803, 0, 0)
 
-[node name="Prep" type="AudioStreamPlayer3D" parent="e"]
+[node name="Prep" type="AudioStreamPlayer3D" parent="e" groups=["Sound"]]
 stream = ExtResource("4_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Hieroglyph Preparation"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
-[node name="Launch" type="AudioStreamPlayer3D" parent="e"]
+[node name="Launch" type="AudioStreamPlayer3D" parent="e" groups=["Sound"]]
 stream = ExtResource("6_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Power Of The Hieroglyph"
@@ -148,13 +148,13 @@ disabled = true
 [node name="Direction" parent="y/Spawn/ElectricFeather2" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, 0)
 
-[node name="Prep" type="AudioStreamPlayer3D" parent="y"]
+[node name="Prep" type="AudioStreamPlayer3D" parent="y" groups=["Sound"]]
 stream = ExtResource("4_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Hieroglyph Preparation"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
-[node name="Launch" type="AudioStreamPlayer3D" parent="y"]
+[node name="Launch" type="AudioStreamPlayer3D" parent="y" groups=["Sound"]]
 stream = ExtResource("6_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Power Of The Hieroglyph"
@@ -197,13 +197,13 @@ disabled = true
 [node name="Direction" parent="d/Spawn/ElectricBall" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.85714, 0)
 
-[node name="Prep" type="AudioStreamPlayer3D" parent="d"]
+[node name="Prep" type="AudioStreamPlayer3D" parent="d" groups=["Sound"]]
 stream = ExtResource("4_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Hieroglyph Preparation"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
-[node name="Launch" type="AudioStreamPlayer3D" parent="d"]
+[node name="Launch" type="AudioStreamPlayer3D" parent="d" groups=["Sound"]]
 stream = ExtResource("6_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Power Of The Hieroglyph"
@@ -247,13 +247,13 @@ disabled = true
 [node name="Direction" parent="o/Spawn/ElectricDiamond" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.78697, 0)
 
-[node name="Prep" type="AudioStreamPlayer3D" parent="o"]
+[node name="Prep" type="AudioStreamPlayer3D" parent="o" groups=["Sound"]]
 stream = ExtResource("4_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Hieroglyph Preparation"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
-[node name="Launch" type="AudioStreamPlayer3D" parent="o"]
+[node name="Launch" type="AudioStreamPlayer3D" parent="o" groups=["Sound"]]
 stream = ExtResource("6_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Power Of The Hieroglyph"
@@ -287,13 +287,13 @@ region_rect = Rect2(1, 1, 116, 68)
 [node name="Spawn" type="Node3D" parent="t"]
 visible = false
 
-[node name="Prep" type="AudioStreamPlayer3D" parent="t"]
+[node name="Prep" type="AudioStreamPlayer3D" parent="t" groups=["Sound"]]
 stream = ExtResource("4_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Hieroglyph Preparation"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
-[node name="Launch" type="AudioStreamPlayer3D" parent="t"]
+[node name="Launch" type="AudioStreamPlayer3D" parent="t" groups=["Sound"]]
 stream = ExtResource("6_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Power Of The Hieroglyph"
@@ -327,13 +327,13 @@ region_rect = Rect2(1, 1, 97, 80)
 [node name="Spawn" type="Node3D" parent="h"]
 visible = false
 
-[node name="Prep" type="AudioStreamPlayer3D" parent="h"]
+[node name="Prep" type="AudioStreamPlayer3D" parent="h" groups=["Sound"]]
 stream = ExtResource("4_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Hieroglyph Preparation"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
-[node name="Launch" type="AudioStreamPlayer3D" parent="h"]
+[node name="Launch" type="AudioStreamPlayer3D" parent="h" groups=["Sound"]]
 stream = ExtResource("6_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Power Of The Hieroglyph"
@@ -367,13 +367,13 @@ region_rect = Rect2(1, 1, 105, 60)
 [node name="Spawn" type="Node3D" parent="r"]
 visible = false
 
-[node name="Prep" type="AudioStreamPlayer3D" parent="r"]
+[node name="Prep" type="AudioStreamPlayer3D" parent="r" groups=["Sound"]]
 stream = ExtResource("4_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Hieroglyph Preparation"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
-[node name="Launch" type="AudioStreamPlayer3D" parent="r"]
+[node name="Launch" type="AudioStreamPlayer3D" parent="r" groups=["Sound"]]
 stream = ExtResource("6_w5sch")
 script = ExtResource("4_ty766")
 subtitle = "Power Of The Hieroglyph"

@@ -893,7 +893,7 @@ autoplay = "Idle"
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0104154, 4.02512, 0.19957)
 shape = SubResource("BoxShape3D_j1n4a")
 
-[node name="Explosion" type="AnimatedSprite3D" parent="."]
+[node name="Explosion" type="AnimatedSprite3D" parent="." groups=["Sound"]]
 transform = Transform3D(6.10532, 0, 0, 0, 4.27205, 0, 0, 0, 0.1, 0, 4.27408, 0)
 visible = false
 billboard = 1

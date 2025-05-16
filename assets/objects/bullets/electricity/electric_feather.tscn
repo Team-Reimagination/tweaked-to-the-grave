@@ -52,7 +52,6 @@ script = ExtResource("1_hqa1m")
 rotateBullet = true
 lifetime = 10.0
 doSteer = true
-seekTime = 10.0
 canDie = false
 camBeHit = false
 isGhost = true
@@ -93,7 +92,7 @@ one_shot = true
 [node name="ParryTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Parry" type="AudioStreamPlayer3D" parent="."]
+[node name="Parry" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
 stream = ExtResource("3_o73j8")
 bus = &"SFX"
 script = ExtResource("3_1aua7")

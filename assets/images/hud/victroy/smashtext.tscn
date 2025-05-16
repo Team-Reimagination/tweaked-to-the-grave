@@ -10,7 +10,7 @@ texture = ExtResource("1_0uggl")
 script = ExtResource("1_0rdsc")
 metadata/_custom_type_script = "uid://cfbgbqfh4jru2"
 
-[node name="Smash" type="AudioStreamPlayer" parent="."]
+[node name="Smash" type="AudioStreamPlayer" parent="." groups=["Sound"]]
 stream = ExtResource("3_ho2m3")
 volume_db = -10.0
 bus = &"SFX"

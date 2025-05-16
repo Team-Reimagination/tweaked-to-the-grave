@@ -511,7 +511,7 @@ transform = Transform3D(1, 0, 1.81188e-13, 0, 1, 0, -1.81188e-13, 0, 1, -0.14968
 shape = SubResource("BoxShape3D_mats1")
 debug_color = Color(0, 0.741176, 1, 1)
 
-[node name="Ambience" type="AudioStreamPlayer3D" parent="."]
+[node name="Ambience" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
 stream = ExtResource("8_cq4vs")
 volume_db = -10.0
 max_db = -10.0

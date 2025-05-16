@@ -480,7 +480,7 @@ script = ExtResource("9_lw0er")
 subtitle = "Explosion"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
-[node name="Prep" type="AudioStreamPlayer3D" parent="."]
+[node name="Prep" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0347214, -0.0342507, 0.0111523)
 stream = ExtResource("11_b4ehl")
 unit_size = 100.0
@@ -488,7 +488,7 @@ script = ExtResource("9_lw0er")
 subtitle = "Sarcophagus Opening"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
-[node name="Launch" type="AudioStreamPlayer3D" parent="."]
+[node name="Launch" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
 stream = ExtResource("12_0t7ct")
 unit_size = 100.0
 script = ExtResource("9_lw0er")

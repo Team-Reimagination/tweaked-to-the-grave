@@ -14,7 +14,7 @@ no_depth_test = true
 texture_filter = 2
 texture = ExtResource("2_08tpa")
 
-[node name="Warning" type="AudioStreamPlayer" parent="."]
+[node name="Warning" type="AudioStreamPlayer" parent="." groups=["Sound"]]
 script = ExtResource("4_u1w7c")
 subtitle = "Warning"
 metadata/_custom_type_script = "uid://do3ib7cpvvinc"

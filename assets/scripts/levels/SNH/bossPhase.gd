@@ -134,6 +134,8 @@ func onBossDefeat(_vars):
 	queue_free()
 
 func initiateAttack(charo):
+	scene.boss.get_node("Model/AnimationPlayer").stop(true)
+	
 	if charo == 'o':
 		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Grow")
 		scene.boss.get_node("./Audio/BreatheIn").subtitle_play()
