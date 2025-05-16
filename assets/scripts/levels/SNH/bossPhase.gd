@@ -158,9 +158,6 @@ func initiateAttack(charo):
 		await get_tree().create_timer(1.8, false).timeout
 		scene.boss.get_node("./Audio/Drop").subtitle_play()
 	
-	await scene.boss.get_node("Model/AnimationPlayer").animation_finished
-	scene.boss.get_node("Model/AnimationPlayer").play("Mad_Idle")
-	
 func prepForAnother():
 	attackingYourMom = false
 	waitTime = randf_range(0.15, 0.4) / max(0.001, enxtPhase / 

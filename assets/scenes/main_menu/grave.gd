@@ -60,7 +60,7 @@ func mouse_button(button):
 		updateButtonSelection()
 
 var subtitles = [
-	"\"Adventure mode! You start your own adventure here!\"",
+	"\"Adventure mode! You begin your adventure here!\"",
 	"\"Trophies! Show off your hard work!\"",
 	"\"Options! Select a feature you want to edit!\""
 ]

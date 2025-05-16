@@ -48,7 +48,7 @@ func boxerMove():
 	var whatToUse = $Inside/QuickOptions/Autofire/Rectangle
 	if selectedButton == 4: whatToUse = $Inside/QuickOptions/Master/Rectangle if selectedRow == 0 else $Inside/QuickOptions/SFX/Rectangle
 	elif selectedButton == 5: whatToUse = $Inside/QuickOptions/Music/Rectangle if selectedRow == 0 else $Inside/QuickOptions/Voice/Rectangle
-	elif selectedButton == 8: whatToUse = $Inside/QuickOptions/Ambience/Rectangle
+	elif selectedButton > 5: whatToUse = $Inside/QuickOptions/Ambience/Rectangle
 	
 	boxSizes = whatToUse.size
 	boxPositions = whatToUse.global_position
