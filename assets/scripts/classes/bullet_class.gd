@@ -70,7 +70,7 @@ func _physics_process(delta):
 	
 	velocity += acceleration * delta
 	velocity = velocity.clampf(-speed, speed)
-	look_at(velocity,Vector3.FORWARD)
+	if rotateBullet: look_at(velocity,Vector3.FORWARD)
 	position += velocity * delta
 
 func phasingOut():

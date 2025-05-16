@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bumqauva4u8cy"]
+[gd_scene load_steps=12 format=3 uid="uid://bumqauva4u8cy"]
 
 [ext_resource type="Script" uid="uid://fue06olngewr" path="res://assets/data/chunks/SNH/attack.gd" id="1_ertsj"]
 [ext_resource type="PackedScene" uid="uid://1qiky0qhi747" path="res://assets/objects/general/warning/warningZone.tscn" id="1_yl7gr"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://0b6rdmpnrvbo" path="res://assets/objects/general/warning/warningSignal.tscn" id="3_qggtw"]
 [ext_resource type="PackedScene" uid="uid://betd5v832nn0i" path="res://assets/objects/obstacles/snh/tweak_quill.tscn" id="4_qggtw"]
 [ext_resource type="Script" uid="uid://dg8hoji3s0dye" path="res://assets/data/chunks/SNH/o.gd" id="6_0acwl"]
+[ext_resource type="Script" uid="uid://bxyarg230ioc7" path="res://assets/scripts/classes/spawner_class.gd" id="6_bisty"]
 [ext_resource type="PackedScene" uid="uid://df6iku4hql6mp" path="res://assets/objects/bullets/tweak/blob.tscn" id="7_0acwl"]
 [ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="9_kepnt"]
 [ext_resource type="AudioStream" uid="uid://c1bsriuv4lndu" path="res://assets/sounds/entities/thud.ogg" id="10_j2ghv"]
+[ext_resource type="PackedScene" uid="uid://2j1l5qwo5tgm" path="res://assets/objects/obstacles/snh/arm_scroll.tscn" id="11_ladgq"]
 
 [node name="Boss" type="Node3D"]
 
@@ -145,8 +147,100 @@ metadata/_custom_type_script = "uid://dobpfy25irneh"
 wait_time = 2.5
 one_shot = true
 
+[node name="Scrolling" type="Node3D" parent="."]
+script = ExtResource("1_ertsj")
+warningTime = 1.5
+
+[node name="Warning" type="Node3D" parent="Scrolling"]
+
+[node name="WarningSignal2" parent="Scrolling/Warning" instance=ExtResource("1_yl7gr")]
+transform = Transform3D(471.283, -2.32933e-06, 0, 4.84903e-05, 37.0942, 0, 0, 0, 2, 0, 18.9379, -1.63401)
+
+[node name="WarningSignal4" parent="Scrolling/Warning" instance=ExtResource("1_yl7gr")]
+transform = Transform3D(471.283, -2.32933e-06, 0, 4.84903e-05, 37.0942, 0, 0, 0, 2, 0, -20.7679, -1.63401)
+
+[node name="WarningSignal3" parent="Scrolling/Warning" instance=ExtResource("2_piqvp")]
+transform = Transform3D(-6.55671e-07, -15, 0, 15, -6.55671e-07, 0, 0, 0, 15, -15.9509, 12.8633, 0.286571)
+
+[node name="WarningSignal5" parent="Scrolling/Warning" instance=ExtResource("2_piqvp")]
+transform = Transform3D(1.13247e-06, 15, 0, -15, 1.13247e-06, 0, 0, 0, 15, 15.4294, -13.1438, 0.286571)
+
+[node name="WarningSignal7" parent="Scrolling/Warning" instance=ExtResource("3_qggtw")]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 20, -8.27033, 12.4161, 0.17172)
+
+[node name="WarningSignal8" parent="Scrolling/Warning" instance=ExtResource("3_qggtw")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 12.9965, -12.9945, 0.17172)
+
+[node name="View" parent="Scrolling/Warning/WarningSignal8" index="0"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 1, -0.245071, -0.00559211, 0)
+
+[node name="Warning" parent="Scrolling/Warning/WarningSignal8" index="1"]
+stream = null
+
+[node name="Attack" type="Node3D" parent="Scrolling"]
+
+[node name="o" type="Area3D" parent="Scrolling/Attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.7478, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("6_bisty")
+spawnTime = 2.5
+canDie = false
+camBeHit = false
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://bxyarg230ioc7"
+
+[node name="Spawn" type="Node3D" parent="Scrolling/Attack/o"]
+
+[node name="Arm_Scroll" parent="Scrolling/Attack/o/Spawn" instance=ExtResource("11_ladgq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 6, 0)
+
+[node name="Direction" parent="Scrolling/Attack/o/Spawn/Arm_Scroll" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="Arm_Scroll2" parent="Scrolling/Attack/o/Spawn" instance=ExtResource("11_ladgq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 6, 0)
+
+[node name="Direction" parent="Scrolling/Attack/o/Spawn/Arm_Scroll2" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="Arm_Scroll5" parent="Scrolling/Attack/o/Spawn" instance=ExtResource("11_ladgq")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -40, 26, 0)
+
+[node name="Direction" parent="Scrolling/Attack/o/Spawn/Arm_Scroll5" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="Arm_Scroll6" parent="Scrolling/Attack/o/Spawn" instance=ExtResource("11_ladgq")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -75, 26, 0)
+
+[node name="Direction" parent="Scrolling/Attack/o/Spawn/Arm_Scroll6" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="Prep" type="AudioStreamPlayer3D" parent="Scrolling/Attack/o" groups=["Sound"]]
+script = ExtResource("9_kepnt")
+subtitle = "Hieroglyph Preparation"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Launch" type="AudioStreamPlayer3D" parent="Scrolling/Attack/o" groups=["Sound"]]
+unit_size = 100.0
+script = ExtResource("9_kepnt")
+subtitle = "Thud"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="AttackTimer" type="Timer" parent="Scrolling"]
+wait_time = 3.0
+one_shot = true
+
 [editable path="Stretch_Quills/Attack/Tweak_Quill"]
 [editable path="Stretch_Quills/Attack/Tweak_Quill2"]
 [editable path="Stretch_Quills/Attack/Tweak_Quill3"]
 [editable path="Stretch_Quills/Attack/Tweak_Quill4"]
 [editable path="Slam/Attack/o/Spawn/Blob"]
+[editable path="Scrolling/Warning/WarningSignal8"]
+[editable path="Scrolling/Attack/o/Spawn/Arm_Scroll"]
+[editable path="Scrolling/Attack/o/Spawn/Arm_Scroll2"]
+[editable path="Scrolling/Attack/o/Spawn/Arm_Scroll5"]
+[editable path="Scrolling/Attack/o/Spawn/Arm_Scroll6"]

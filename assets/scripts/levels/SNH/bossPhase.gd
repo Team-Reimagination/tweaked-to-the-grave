@@ -9,7 +9,7 @@ var myWoodJustGotLonger = false
 var attackingYourMom = false
 var enxtPhase = 0.8;
 
-var goString = "bob";
+var goString = "bobttott";
 var goIndex = 0;
 
 var madden = AudioSubtitlableGeneral.new()
@@ -51,7 +51,7 @@ func _process(delta) :
 	if scene.hasBitchWon:
 		return
 	
-	if ["Attack_Slam, Attack_Grow_Return"].find(scene.boss.get_node("Model/AnimationPlayer").current_animation) != -1 and !scene.boss.get_node("Model/AnimationPlayer").is_playing():
+	if ["Attack_Slam, Attack_Grow_Return", "Attack_Side_Return"].find(scene.boss.get_node("Model/AnimationPlayer").current_animation) != -1 and !scene.boss.get_node("Model/AnimationPlayer").is_playing():
 		scene.boss.get_node("Model/AnimationPlayer").play("Mad_Idle")
 		
 	if haker:
@@ -164,6 +164,13 @@ func initiateAttack(charo):
 		createAttack(1)
 		await get_tree().create_timer(1.8, false).timeout
 		scene.boss.get_node("./Audio/Drop").subtitle_play()
+	elif charo == 't':
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Side", -1, 0.7)
+		scene.boss.get_node("./Audio/TakeThis").subtitle_play()
+		createAttack(2)
+		
+		await get_tree().create_timer(3.0, false).timeout
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Side_Return")
 	
 func prepForAnother():
 	attackingYourMom = false

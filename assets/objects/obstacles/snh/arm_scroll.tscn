@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://2j1l5qwo5tgm"]
+
+[ext_resource type="Script" uid="uid://cc1euaoq4kdkf" path="res://assets/scripts/classes/bullet_class.gd" id="1_om3t1"]
+[ext_resource type="Texture2D" uid="uid://b1xvdv5im6x1h" path="res://assets/images/entities/tweak/arm.png" id="2_1456w"]
+[ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="3_g2hu1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5aqwh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1456w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yp3p7"]
+height = 22.626
+radius = 1.81299
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_aj8dd"]
+height = 24.7842
+radius = 2.4873
+
+[node name="Arm_Scroll" type="Area3D"]
+script = ExtResource("1_om3t1")
+speed = 20.0
+lifetime = 10.0
+doParryX = false
+doParryZ = false
+canDie = false
+camBeHit = false
+isGhost = true
+type = "bullet"
+doProcessDistanceFade = false
+hasModel = false
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://cc1euaoq4kdkf"
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1.39345, 0, 0, 0, 1, 0, -2, 0)
+pixel_size = 0.1
+alpha_cut = 1
+alpha_scissor_threshold = 0.468
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_5aqwh")
+autoplay = "default"
+frame_progress = 0.623092
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_yp3p7")
+debug_color = Color(0.98928, 0, 0.293994, 0.42)
+
+[node name="Narrowbox" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_aj8dd")
+
+[node name="Offscreen" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-4.59979, -11.4098, -4.525, 9.19958, 22.8197, 9.05)
+
+[node name="SeekTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AliveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ParryTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Parry" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
+bus = &"SFX"
+script = ExtResource("3_g2hu1")
+subtitle = "Bullet Parried"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Direction" type="Marker3D" parent="."]
+gizmo_extents = 2.0
