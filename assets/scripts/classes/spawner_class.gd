@@ -11,6 +11,8 @@ func _ready() -> void:
 	
 func spawnLogic():
 	if disabled: return
+	
+	await get_tree().create_timer(spawnTime, false).timeout
 	spawnBullets()
 	
 func spawnBullets():

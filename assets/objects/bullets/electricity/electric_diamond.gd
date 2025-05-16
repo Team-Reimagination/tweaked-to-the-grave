@@ -2,7 +2,6 @@ extends TTTG_FallingBullet
 
 var rotato = 0
 
-
 func _process(delta: float) -> void:
 	super._process(delta)
 	

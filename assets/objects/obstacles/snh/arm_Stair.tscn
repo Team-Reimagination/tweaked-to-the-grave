@@ -2205,11 +2205,11 @@ libraries = {
 }
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.642092, -0.766628, 0, 0.766628, 0.642092, 0, 1.48137, 0.78929)
+transform = Transform3D(1, 0, 0, 0, 0.642093, -0.766628, 0, 0.766628, 0.642093, 0, 1.48137, 0.78929)
 shape = SubResource("CylinderShape3D_dhcij")
 
 [node name="Hitbox3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999979, -0.00647504, 0, 0.00647504, 0.999979, 0.176512, -2.37233, 0.0138449)
+transform = Transform3D(1, 0, 0, 0, 0.999979, -0.00647503, 0, 0.00647503, 0.999979, 0.176512, -2.37233, 0.0138449)
 shape = SubResource("CylinderShape3D_0sxfk")
 
 [node name="Narrowbox" type="CollisionShape3D" parent="."]
@@ -2218,7 +2218,7 @@ shape = SubResource("CylinderShape3D_xuasn")
 debug_color = Color(2.79158e-06, 0.580588, 0.799988, 0.42)
 
 [node name="Narrowbox3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999979, -0.00647493, 0, 0.00647493, 0.999979, 0.176512, -2.37233, 0.013845)
+transform = Transform3D(1, 0, 0, 0, 0.999979, -0.00647492, 0, 0.00647492, 0.999979, 0.176512, -2.37233, 0.013845)
 shape = SubResource("CylinderShape3D_2uwvr")
 
 [node name="Shadow" type="Sprite3D" parent="."]
@@ -2239,7 +2239,9 @@ metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="Unearth" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
 stream = ExtResource("9_i34kw")
+volume_db = -10.0
 unit_size = 100.0
+max_db = -10.0
 bus = &"SFX"
 script = ExtResource("8_i705v")
 subtitle = "Unearthing"

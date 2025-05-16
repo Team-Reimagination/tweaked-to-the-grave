@@ -18,7 +18,7 @@ cast_shadow = 0
 texture_filter = 2
 texture = SubResource("GradientTexture2D_lfbcc")
 
-[node name="Warning" type="AudioStreamPlayer" parent="."]
+[node name="Warning" type="AudioStreamPlayer" parent="." groups=["Sound"]]
 script = ExtResource("3_b2ln2")
 subtitle = "Warning"
 metadata/_custom_type_script = "uid://do3ib7cpvvinc"

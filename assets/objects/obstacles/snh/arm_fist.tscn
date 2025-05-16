@@ -1267,7 +1267,9 @@ metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="Unearth" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
 stream = ExtResource("9_f1v0n")
+volume_db = -10.0
 unit_size = 100.0
+max_db = -10.0
 bus = &"SFX"
 script = ExtResource("8_hcmpy")
 subtitle = "Unearthing"

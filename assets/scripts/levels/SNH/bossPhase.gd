@@ -9,7 +9,7 @@ var myWoodJustGotLonger = false
 var attackingYourMom = false
 var enxtPhase = 0.8;
 
-var goString = "a";
+var goString = "bob";
 var goIndex = 0;
 
 var madden = AudioSubtitlableGeneral.new()
@@ -19,6 +19,7 @@ var bossy = load("res://assets/data/chunks/"+PlayGlobals.levelID+"/boss.tscn")
 var bossAttacks;
 var waitTime = 1.5
 var attackWait = Timer.new()
+var attacks = []
 
 func _ready() -> void:
 	add_child(madden)
@@ -129,34 +130,52 @@ func _process(delta) :
 		attackWait.start(waitTime)
 
 func onBossDefeat(_vars):
+	for atk in attacks: if atk != null: atk.queue_free()
 	queue_free()
 
 func initiateAttack(charo):
-	if charo == 'a':
+	if charo == 'o':
 		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Grow")
+		scene.boss.get_node("./Audio/BreatheIn").subtitle_play()
 		
 		await get_tree().create_timer(0.5, false).timeout
-		createAttack(0)
+		scene.boss.get_node("./Audio/Whistle").subtitle_play()
+		var att = createAttack(0)
+		
+		att.global_position.x = scene.player.global_position.x
+		att.global_position.y = scene.player.global_position.y
 		
 		await get_tree().create_timer(3.0, false).timeout
 		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Grow_Return")
+	elif charo == 'b':
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Slam", -1, 0.7)
+		
+		scene.boss.get_node("./Audio/Lift").subtitle_play()
+		
+		createAttack(1)
+		await get_tree().create_timer(1.8, false).timeout
+		scene.boss.get_node("./Audio/Drop").subtitle_play()
 	
 	await scene.boss.get_node("Model/AnimationPlayer").animation_finished
 	scene.boss.get_node("Model/AnimationPlayer").play("Mad_Idle")
 	
 func prepForAnother():
 	attackingYourMom = false
-	waitTime = randf_range(0.5, 1.0) / max(0.001, enxtPhase / 
+	waitTime = randf_range(0.15, 0.4) / max(0.001, enxtPhase / 
 	(scene.boss.health / scene.bossDEF.health))
 	attackWait.start(waitTime)
 	
 func createAttack(index):
-	var atk = bossAttacks[index].duplicate()
-	scene.spawnOBJ(atk)
-	for a in atk.get_children(true):
+	var attack = bossAttacks[index].duplicate()
+	scene.spawnOBJ(attack)
+	for a in attack.get_children(true):
 		a = a.duplicate()
 		
-	atk.global_position = Vector3(0.0, 4.0, -20.0)
-	atk.visible = true
+	attack.global_position = Vector3(0.0, 4.0, -20.0)
+	attack.visible = true
 	
-	atk.attack_complete.connect(prepForAnother.bind())
+	attacks.push_back(attack)
+	
+	attack.attack_complete.connect(prepForAnother.bind())
+	
+	return attack;

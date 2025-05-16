@@ -186,7 +186,7 @@ metadata/_custom_type_script = "uid://dueip1h027xvl"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.28692, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 2.9, 0, 0, 0, 1, 0, -3.34055, 0)
+transform = Transform3D(1, 0, 0, 0, 2.9, 0, 0, 0, 1, 0, -26.0969, 0)
 pixel_size = 0.1
 alpha_cut = 1
 texture_filter = 2
