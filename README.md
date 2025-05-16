@@ -1,12 +1,4 @@
-# tweaked to the grave
- im tweaking it ohhhh im tweaking it
+# Seezee 2025 Birthday Bash
+[Seezee 2025 Birthday Bash logo](.github/sbb_logo.webp)
 
-there will be a proper readme close to release, but for now, to play this you need Godot 4.4 or newer, preferably 4.4 because changing versions has a chance of breaking something.\
-Unlikely with upgrading but very much likely with downgrading
-
-also the codebase is a little messy lmfao
-
-FOR DEVS:
-Look into the TODO for now
-
-passion
+An event dedicated to one of friends, one we appreciate a lot.
