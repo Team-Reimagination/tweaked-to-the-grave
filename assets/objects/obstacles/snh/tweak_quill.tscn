@@ -7,11 +7,11 @@
 [ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="9_gwb4d"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1b4bi"]
-height = 33.1204
+height = 60.5164
 radius = 1.84912
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_chx0u"]
-height = 34.991
+height = 55.7455
 radius = 2.9209
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y37a"]
@@ -193,11 +193,10 @@ texture_filter = 2
 texture = ExtResource("2_1b4bi")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.27966, 0)
 shape = SubResource("CylinderShape3D_1b4bi")
 
 [node name="NarrowBox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, -0.0827436, 0)
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
 shape = SubResource("CylinderShape3D_chx0u")
 
 [node name="Shadow" type="Sprite3D" parent="."]

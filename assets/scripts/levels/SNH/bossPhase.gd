@@ -50,6 +50,9 @@ func _ready() -> void:
 func _process(delta) :
 	if scene.hasBitchWon:
 		return
+	
+	if ["Attack_Slam, Attack_Grow_Return"].find(scene.boss.get_node("Model/AnimationPlayer").current_animation) != -1 and !scene.boss.get_node("Model/AnimationPlayer").is_playing():
+		scene.boss.get_node("Model/AnimationPlayer").play("Mad_Idle")
 		
 	if haker:
 		scene.camera.strength += 1.0 * delta
@@ -128,6 +131,10 @@ func _process(delta) :
 		
 		myWoodJustGotLonger = true
 		attackWait.start(waitTime)
+
+func onGameOver(_vars):
+	for atk in attacks: if atk != null: atk.queue_free()
+	queue_free()
 
 func onBossDefeat(_vars):
 	for atk in attacks: if atk != null: atk.queue_free()
