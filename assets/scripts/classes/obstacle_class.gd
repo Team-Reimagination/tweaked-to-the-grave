@@ -14,16 +14,15 @@ var ouchie = false
 var toFlash = []
 
 func _ready() -> void:
-	if disabled: return
-	super._ready()
-	
+	self.area_shape_entered.connect(detectCollission.bind())
+
 	if hasModel:
 		toFlash = find_child("Model").find_children("*", "MeshInstance3D", true, true).filter(func(x): return x.material_overlay != null)
 	
 	for a in toFlash:
 		a.material_overlay = a.material_overlay.duplicate(true)
 	
-	self.area_shape_entered.connect(detectCollission.bind())
+	super._ready()
 
 func _process(delta: float) -> void:
 	if disabled: return
@@ -52,13 +51,12 @@ func imKillingMyself():
 	self.queue_free()
 
 func detectCollission(_areID, are, _arSID, _loSID):
-	if disabled: return
-	if are.type == "player_bullet" and _loSID == 0:
+	if are.type == "player_bullet" and _loSID == 0 and !disabled:
 		if !isGhost:
 			if camBeHit: damage(are.get_meta("power") if "power" not in are else are.power)
 			are.killYourself()
-		
-	if !scene.hasBitchWon:
+	
+	if !scene.hasBitchWon and !disabled:
 		if are.type == "player" and scene.player.canBeHit and _loSID == 0:
 			scene.hurtPlayer()
 			ouchie = true

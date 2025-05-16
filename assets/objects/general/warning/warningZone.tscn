@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://1qiky0qhi747"]
+
+[ext_resource type="Script" uid="uid://dnji6inda3wd8" path="res://assets/objects/general/warning/warning.gd" id="1_lfbcc"]
+[ext_resource type="Script" uid="uid://do3ib7cpvvinc" path="res://assets/scripts/classes/subtitle_sound_general.gd" id="3_b2ln2"]
+
+[sub_resource type="Gradient" id="Gradient_na5l5"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 0.501961)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lfbcc"]
+gradient = SubResource("Gradient_na5l5")
+
+[node name="WarningSignal" type="Node3D"]
+script = ExtResource("1_lfbcc")
+
+[node name="View" type="Sprite3D" parent="."]
+cast_shadow = 0
+texture_filter = 2
+texture = SubResource("GradientTexture2D_lfbcc")
+
+[node name="Warning" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_b2ln2")
+subtitle = "Warning"
+metadata/_custom_type_script = "uid://do3ib7cpvvinc"

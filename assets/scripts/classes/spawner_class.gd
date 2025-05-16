@@ -5,7 +5,6 @@ var spawned = false
 @export var spawnTime = 1.0
 
 func _ready() -> void:
-	if disabled: return
 	super._ready()
 	
 	spawnLogic()

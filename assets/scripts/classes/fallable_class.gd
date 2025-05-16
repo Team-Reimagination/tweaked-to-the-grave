@@ -13,7 +13,6 @@ var isFalling = false
 var isSpawning = true
 
 func _ready() -> void:
-	if disabled: return
 	super._ready()
 	
 	$Model.rotation_degrees = $SpawnAngle.rotation_degrees

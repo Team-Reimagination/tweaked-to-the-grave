@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://bumqauva4u8cy"]
+
+[ext_resource type="Script" uid="uid://fue06olngewr" path="res://assets/data/chunks/SNH/attack.gd" id="1_ertsj"]
+[ext_resource type="PackedScene" uid="uid://1qiky0qhi747" path="res://assets/objects/general/warning/warningZone.tscn" id="1_yl7gr"]
+[ext_resource type="PackedScene" uid="uid://mb2pnyq4mnng" path="res://assets/objects/general/warning/warningArrow.tscn" id="2_piqvp"]
+[ext_resource type="PackedScene" uid="uid://0b6rdmpnrvbo" path="res://assets/objects/general/warning/warningSignal.tscn" id="3_qggtw"]
+[ext_resource type="PackedScene" uid="uid://betd5v832nn0i" path="res://assets/objects/obstacles/snh/tweak_quill.tscn" id="4_qggtw"]
+
+[node name="Boss" type="Node3D"]
+
+[node name="Stretch_Quills" type="Node3D" parent="."]
+script = ExtResource("1_ertsj")
+warningTime = 1.15
+
+[node name="Warning" type="Node3D" parent="Stretch_Quills"]
+
+[node name="WarningSignal" parent="Stretch_Quills/Warning" instance=ExtResource("1_yl7gr")]
+transform = Transform3D(6.55406, 85.911, 0, -6.55406, 85.9111, 0, 0, 0, 2, 0, 0, -1.63401)
+
+[node name="WarningSignal2" parent="Stretch_Quills/Warning" instance=ExtResource("1_yl7gr")]
+transform = Transform3D(6.55406, -85.9111, 0, 6.55406, 85.911, 0, 0, 0, 2, 0, 0, -1.63401)
+
+[node name="WarningSignal3" parent="Stretch_Quills/Warning" instance=ExtResource("2_piqvp")]
+transform = Transform3D(9.19239, -9.19239, 0, 9.19239, 9.19239, 0, 0, 0, 13, -9, 9, 0.286571)
+
+[node name="WarningSignal4" parent="Stretch_Quills/Warning" instance=ExtResource("2_piqvp")]
+transform = Transform3D(9.19239, 9.19239, 0, -9.19239, 9.19239, 0, 0, 0, 13, 9, 9, 0.286571)
+
+[node name="WarningSignal5" parent="Stretch_Quills/Warning" instance=ExtResource("2_piqvp")]
+transform = Transform3D(-9.19239, 9.19239, 0, -9.19239, -9.19239, 0, 0, 0, 13, 9, -9, 0.286571)
+
+[node name="WarningSignal6" parent="Stretch_Quills/Warning" instance=ExtResource("2_piqvp")]
+transform = Transform3D(-9.19239, -9.19239, 0, 9.19239, -9.19239, 0, 0, 0, 13, -9, -9, 0.286571)
+
+[node name="WarningSignal7" parent="Stretch_Quills/Warning" instance=ExtResource("3_qggtw")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0.17172)
+
+[node name="Attack" type="Node3D" parent="Stretch_Quills"]
+
+[node name="Tweak_Quill" parent="Stretch_Quills/Attack" instance=ExtResource("4_qggtw")]
+transform = Transform3D(-0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0, 0, 1, -12, 12, 0)
+disabled = true
+
+[node name="MStart" parent="Stretch_Quills/Attack/Tweak_Quill" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+
+[node name="Tweak_Quill2" parent="Stretch_Quills/Attack" instance=ExtResource("4_qggtw")]
+transform = Transform3D(-0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, 12, 12, 0)
+disabled = true
+
+[node name="MStart" parent="Stretch_Quills/Attack/Tweak_Quill2" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+
+[node name="Tweak_Quill3" parent="Stretch_Quills/Attack" instance=ExtResource("4_qggtw")]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 12, -12, 0)
+disabled = true
+
+[node name="MStart" parent="Stretch_Quills/Attack/Tweak_Quill3" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+
+[node name="Tweak_Quill4" parent="Stretch_Quills/Attack" instance=ExtResource("4_qggtw")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -12, -12, 0)
+disabled = true
+
+[node name="MStart" parent="Stretch_Quills/Attack/Tweak_Quill4" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+
+[node name="AttackTimer" type="Timer" parent="Stretch_Quills"]
+wait_time = 4.0
+one_shot = true
+
+[editable path="Stretch_Quills/Attack/Tweak_Quill"]
+[editable path="Stretch_Quills/Attack/Tweak_Quill2"]
+[editable path="Stretch_Quills/Attack/Tweak_Quill3"]
+[editable path="Stretch_Quills/Attack/Tweak_Quill4"]

@@ -9,7 +9,6 @@ var timeToMove = false
 var hasMoved = false
 
 func _ready() -> void:
-	if disabled: return
 	super._ready()
 	
 func _process(delta:float) -> void:

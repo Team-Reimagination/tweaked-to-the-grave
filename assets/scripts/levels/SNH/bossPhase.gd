@@ -5,8 +5,20 @@ extends Node
 var startingPhase2 = false
 var haker = false
 
+var myWoodJustGotLonger = false
+var attackingYourMom = false
+var enxtPhase = 0.8;
+
+var goString = "a";
+var goIndex = 0;
+
 var madden = AudioSubtitlableGeneral.new()
 var hell = AudioSubtitlableGeneral.new()
+
+var bossy = load("res://assets/data/chunks/"+PlayGlobals.levelID+"/boss.tscn")
+var bossAttacks;
+var waitTime = 1.5
+var attackWait = Timer.new()
 
 func _ready() -> void:
 	add_child(madden)
@@ -22,6 +34,17 @@ func _ready() -> void:
 	hell.max_polyphony = 1;
 	hell.bus = 'Voicelines';
 	hell.subtitle = "Tweak's Screams Of Hell"
+	
+	# Attacks Node
+	bossy = bossy.instantiate()
+	bossAttacks = bossy.get_children()
+	
+	for a in bossAttacks:
+		a.owner = null
+		a.get_parent().remove_child(a)
+	
+	add_child(attackWait)
+	attackWait.one_shot = true
 
 func _process(delta) :
 	if scene.hasBitchWon:
@@ -29,8 +52,17 @@ func _process(delta) :
 		
 	if haker:
 		scene.camera.strength += 1.0 * delta
+		
+	if myWoodJustGotLonger and !attackingYourMom and attackWait.time_left <= 0.0001:
+		var chara = goString.substr(goIndex, 1)
+		
+		attackingYourMom = true
+		initiateAttack(chara)
+		
+		goIndex += 1
+		if goIndex >= len(goString): goIndex = 0
 	
-	if (scene.boss.health / scene.bossDEF.health <= 0.8 and !startingPhase2) or (OS.is_debug_build() and Input.is_key_pressed(KEY_0) and !startingPhase2):
+	if (scene.boss.health / scene.bossDEF.health <= enxtPhase and !startingPhase2) or (OS.is_debug_build() and Input.is_key_pressed(KEY_0) and !startingPhase2):
 		startingPhase2 = true
 		
 		scene.chunkLoader.lvChunks = []
@@ -54,7 +86,7 @@ func _process(delta) :
 		tweeny.set_parallel(true).tween_property(scene, "scrollMod", 0.0, 1.0)
 		
 		await tweeny.finished
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(1.0, false).timeout
 		
 		haker = true
 		
@@ -92,6 +124,39 @@ func _process(delta) :
 		scene.music.play()
 		scene.music.volume_db = -15.0
 		scene.loadDialogue("SNH_Phase2")
+		
+		myWoodJustGotLonger = true
+		attackWait.start(waitTime)
 
 func onBossDefeat(_vars):
 	queue_free()
+
+func initiateAttack(charo):
+	if charo == 'a':
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Grow")
+		
+		await get_tree().create_timer(0.5, false).timeout
+		createAttack(0)
+		
+		await get_tree().create_timer(3.0, false).timeout
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Grow_Return")
+	
+	await scene.boss.get_node("Model/AnimationPlayer").animation_finished
+	scene.boss.get_node("Model/AnimationPlayer").play("Mad_Idle")
+	
+func prepForAnother():
+	attackingYourMom = false
+	waitTime = randf_range(0.5, 1.0) / max(0.001, enxtPhase / 
+	(scene.boss.health / scene.bossDEF.health))
+	attackWait.start(waitTime)
+	
+func createAttack(index):
+	var atk = bossAttacks[index].duplicate()
+	scene.spawnOBJ(atk)
+	for a in atk.get_children(true):
+		a = a.duplicate()
+		
+	atk.global_position = Vector3(0.0, 4.0, -20.0)
+	atk.visible = true
+	
+	atk.attack_complete.connect(prepForAnother.bind())

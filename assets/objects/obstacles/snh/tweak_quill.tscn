@@ -1,0 +1,246 @@
+[gd_scene load_steps=29 format=3 uid="uid://betd5v832nn0i"]
+
+[ext_resource type="Script" uid="uid://dueip1h027xvl" path="res://assets/scripts/classes/object_specific/stomping.gd" id="1_x3nri"]
+[ext_resource type="Texture2D" uid="uid://b4pfyd21c4fja" path="res://assets/images/entities/tweak/quill.png" id="2_1b4bi"]
+[ext_resource type="Texture2D" uid="uid://fvopa4yo5pm2" path="res://assets/images/fx/shadow.png" id="7_n61u4"]
+[ext_resource type="Texture2D" uid="uid://bekrp7111ygmi" path="res://assets/images/fx/explosion.png" id="8_i1nto"]
+[ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="9_gwb4d"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1b4bi"]
+height = 33.1204
+radius = 1.84912
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_chx0u"]
+height = 34.991
+radius = 2.9209
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y37a"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(0, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yb1n"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(71, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onolm"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(142, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4wrw"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(213, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atbkl"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(284, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v52s4"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(0, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nifj1"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(71, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a8rk"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(142, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oko8s"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(213, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm635"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(284, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap76o"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(0, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyid8"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(71, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vntvu"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(142, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwhu4"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(213, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvcr8"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(284, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lu1c"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(0, 300, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onba7"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(71, 300, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23ccb"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(142, 300, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3lmj"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(213, 300, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4f2o"]
+atlas = ExtResource("8_i1nto")
+region = Rect2(284, 300, 71, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rirn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y37a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yb1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onolm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4wrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atbkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v52s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nifj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a8rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oko8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm635")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap76o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyid8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vntvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwhu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvcr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lu1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onba7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23ccb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3lmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4f2o")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Tweak_Quill" type="Area3D"]
+input_ray_pickable = false
+script = ExtResource("1_x3nri")
+canComeBack = true
+stompEase = "out"
+stompTrans = "quart"
+waitTime = 0.5
+retractTime = 0.75
+releaseTrans = "quart"
+speed = 0.75
+onlyOnce = true
+canDie = false
+camBeHit = false
+isGhost = true
+health = 100
+type = "enemy"
+isBackgroundObject = false
+isGameplayObject = true
+metadata/_custom_type_script = "uid://dueip1h027xvl"
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.28692, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 2.9, 0, 0, 0, 1, 0, -3.34055, 0)
+pixel_size = 0.1
+alpha_cut = 1
+texture_filter = 2
+texture = ExtResource("2_1b4bi")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.27966, 0)
+shape = SubResource("CylinderShape3D_1b4bi")
+
+[node name="NarrowBox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, -0.0827436, 0)
+shape = SubResource("CylinderShape3D_chx0u")
+
+[node name="Shadow" type="Sprite3D" parent="."]
+transform = Transform3D(0.0299458, 0, 0, 0, -1.3546e-09, -1, 0, 0.0309895, -4.37114e-08, 0, 0.00405079, 0)
+visible = false
+modulate = Color(1, 1, 1, 0.5)
+pixel_size = 1.0
+texture = ExtResource("7_n61u4")
+
+[node name="Explosion" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4.75354, 0, 0, 0, 3.32617, 0, 0, 0, 0.1, 0, 0.786796, 0)
+visible = false
+billboard = 1
+alpha_cut = 1
+sprite_frames = SubResource("SpriteFrames_6rirn")
+frame = 19
+frame_progress = 1.0
+
+[node name="MStart" type="Marker3D" parent="."]
+
+[node name="MEnd" type="Marker3D" parent="."]
+gizmo_extents = 1.97
+
+[node name="Unearth" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.991283, 1)
+unit_size = 100.0
+bus = &"SFX"
+script = ExtResource("9_gwb4d")
+subtitle = "Unearthing"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Explode" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.755953, 0)
+unit_size = 100.0
+bus = &"SFX"
+script = ExtResource("9_gwb4d")
+subtitle = "Explosion"
+metadata/_custom_type_script = "uid://dobpfy25irneh"
+
+[node name="Thud" type="AudioStreamPlayer3D" parent="." groups=["Sound"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.755953, 0)
+unit_size = 100.0
+bus = &"SFX"
+script = ExtResource("9_gwb4d")
+subtitle = "Thud"
+metadata/_custom_type_script = "uid://dobpfy25irneh"

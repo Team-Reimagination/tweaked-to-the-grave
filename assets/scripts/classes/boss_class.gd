@@ -12,7 +12,6 @@ var death = AudioSubtitlableGeneral.new()
 var hasGotIt = false
 
 func _ready() -> void:
-	if disabled: return
 	super._ready()
 	
 	type = 'boss'

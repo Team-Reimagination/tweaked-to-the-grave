@@ -26,8 +26,6 @@ var meshInstances = []
 var meshesWithOverlay = []
 
 func _ready() -> void:
-	if disabled: return
-	
 	while scene.name != "PlayState": scene = scene.get_parent()
 	
 	if hasModel:

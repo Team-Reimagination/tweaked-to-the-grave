@@ -14,8 +14,6 @@ var moveTween
 @export var releaseTrans = 'linear'
 
 func _ready() -> void:
-	if disabled: return
-	
 	super._ready()
 	
 	$Model.position = $MStart.position
@@ -34,21 +32,24 @@ func movemental():
 		
 		await moveTween.finished
 		if disabled: return
-		if !isDying: $Thud.subtitle_play()
+		if !isDying and $Thud.stream != null: $Thud.subtitle_play()
 	
-	if canComeBack:
+		if canComeBack:
+			returnFunc()
+	
+func returnFunc():
+	await get_tree().create_timer(waitTime, false).timeout
+		
+	if disabled: return
+		
+	moveTween = get_tree().create_tween()
+	moveTween.set_parallel(true).tween_property($Model, "position", $MStart.position, retractTime).set_ease(PlayGlobals.getEaseType(releaseEase)).set_trans(PlayGlobals.getTransType(releaseTrans))
+	moveTween.set_parallel(true).tween_property($Hitbox, "position", $MStart.position, retractTime).set_ease(PlayGlobals.getEaseType(releaseEase)).set_trans(PlayGlobals.getTransType(releaseTrans))
+	moveTween.set_parallel(true).tween_property($NarrowBox, "position", $MStart.position, retractTime).set_ease(PlayGlobals.getEaseType(releaseEase)).set_trans(PlayGlobals.getTransType(releaseTrans))
+		
+	if !onlyOnce:
 		await moveTween.finished
 		await get_tree().create_timer(waitTime, false).timeout
-		
-		if disabled: return
-		moveTween = get_tree().create_tween()
-		moveTween.set_parallel(true).tween_property($Model, "position", $Start.position, retractTime).set_ease(PlayGlobals.getEaseType(releaseEase)).set_trans(PlayGlobals.getTransType(releaseTrans))
-		moveTween.set_parallel(true).tween_property($Hitbox, "position", $Start.position, retractTime).set_ease(PlayGlobals.getEaseType(releaseEase)).set_trans(PlayGlobals.getTransType(releaseTrans))
-		moveTween.set_parallel(true).tween_property($NarrowBox, "position", $Start.position, retractTime).set_ease(PlayGlobals.getEaseType(releaseEase)).set_trans(PlayGlobals.getTransType(releaseTrans))
-		
-		if !onlyOnce:
-			await moveTween.finished
-			await get_tree().create_timer(waitTime, false).timeout
 			
-			if disabled: return
-			movemental()
+		if disabled: return
+		movemental()

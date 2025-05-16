@@ -8,7 +8,6 @@ var startSucking = false
 var willDisappear = false
 
 func _ready() -> void:
-	if disabled: return
 	super._ready()
 	
 	if $Model.get_child(1) is AnimatedSprite3D: $Model.get_child(1).play('default')

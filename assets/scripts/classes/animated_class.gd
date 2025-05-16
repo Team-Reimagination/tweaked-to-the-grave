@@ -10,7 +10,6 @@ extends TTTG_Obstacle
 var isSpawning = false
 
 func _ready() -> void:
-	if disabled: return
 	super._ready()
 	
 	$Model/AnimationPlayer.play(animName, -1, 0.0)

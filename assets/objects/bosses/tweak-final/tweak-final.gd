@@ -29,18 +29,18 @@ func imKillingMyself():
 	
 	get_tree().create_tween().tween_property(scene.camera, "posi:y", self.position.y + 20 * self.scale.x, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(2.0, false).timeout
 	haker = true
 	scene.player.position.z = -10000
 	scene.get_node("./Audio/Earthquake").volume_db = -10.0
 	scene.get_node("./Audio/Earthquake").subtitle_play()
 		
-	await get_tree().create_timer(2.2).timeout
+	await get_tree().create_timer(2.2, false).timeout
 	scene.camera.shake(scene.camera.strength, 1.0);
 	haker = false
 	
 	get_tree().create_tween().tween_property(scene.camera, "posi:z", scene.camera.posi.z + 100, 1.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
 	get_tree().create_tween().tween_property(scene.get_node("./Audio/Earthquake"), "volume_linear", 0.0, 1.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
 	
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(0.6, false).timeout
 	screamer.subtitle_play()

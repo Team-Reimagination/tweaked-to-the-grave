@@ -2,7 +2,6 @@ class_name TTTG_Collectible_Holder
 extends TTTG_Obstacle
 
 func _ready() -> void:
-	if disabled: return
 	super._ready()
 	
 	$Explosion.visible = false

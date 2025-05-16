@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://mb2pnyq4mnng"]
+
+[ext_resource type="Script" uid="uid://dnji6inda3wd8" path="res://assets/objects/general/warning/warning.gd" id="1_q247y"]
+[ext_resource type="Texture2D" uid="uid://bw0omfqos7a6x" path="res://assets/images/fx/warning_arrow.png" id="2_08tpa"]
+[ext_resource type="Script" uid="uid://do3ib7cpvvinc" path="res://assets/scripts/classes/subtitle_sound_general.gd" id="4_u1w7c"]
+
+[node name="WarningSignal" type="Node3D"]
+script = ExtResource("1_q247y")
+
+[node name="View" type="Sprite3D" parent="."]
+sorting_offset = 1.0
+cast_shadow = 0
+no_depth_test = true
+texture_filter = 2
+texture = ExtResource("2_08tpa")
+
+[node name="Warning" type="AudioStreamPlayer" parent="."]
+script = ExtResource("4_u1w7c")
+subtitle = "Warning"
+metadata/_custom_type_script = "uid://do3ib7cpvvinc"

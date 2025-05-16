@@ -6,7 +6,6 @@ extends TTTG_Obstacle
 var spawned = false
 
 func _ready() -> void:
-	if disabled: return
 	super._ready()
 	
 	$Explosion.visible = false
