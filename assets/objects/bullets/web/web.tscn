@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="4_gm6l6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dq1c0"]
-size = Vector3(6.20532, 6.27051, 2.96313)
+size = Vector3(3.4043, 3.20483, 2.96313)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ngqq"]
-size = Vector3(8.50757, 8.31543, 4.61108)
+size = Vector3(5.34668, 4.99609, 4.61108)
 
 [node name="Web" type="Area3D"]
 script = ExtResource("1_8pdyb")
