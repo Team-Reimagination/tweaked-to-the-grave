@@ -9,7 +9,7 @@ var myWoodJustGotLonger = false
 var attackingYourMom = false
 var enxtPhase = 0.8;
 
-var goString = "bobtee";
+var goString = "bobteake";
 var goIndex = 0;
 
 var madden = AudioSubtitlableGeneral.new()
@@ -173,7 +173,26 @@ func initiateAttack(charo):
 		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Side_Return")
 	elif charo == 'e':
 		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Punch")
+		scene.boss.get_node("./Audio/MouthOpen").subtitle_play()
 		createAttack(3)
+	elif charo == 'a':
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Teeth")
+		scene.boss.get_node("./Audio/MouthOpen").subtitle_play()
+		
+		scene.boss.flashIntensity = 0.5
+		
+		await scene.boss.get_node("Model/AnimationPlayer").animation_finished
+		createAttack(4)
+	elif charo == 'k':
+		var atk2 = createAttack(5)
+		atk2.global_position.x += randf_range(-10.0, 10.0)
+		atk2.global_position.y += randf_range(-10.0, 10.0)
+		
+		await get_tree().create_timer(3.75, false).timeout
+		scene.boss.get_node("./Audio/MouthClose").subtitle_play()
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Teeth_Return")
+		
+		scene.boss.flashIntensity = 1.0
 	
 func prepForAnother():
 	attackingYourMom = false

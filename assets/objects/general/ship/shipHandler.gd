@@ -211,6 +211,10 @@ func hurtPlayer():
 	hurtSpin = 0;
 	hurtSpinMod = 25;
 	
+	$Ar.monitoring = false
+	$Ar2.monitoring = false
+	$Ar3.monitoring = false
+	
 	$Hurt.subtitle_play()
 	$Hurt.pitch_scale = randf_range(0.85,1.15)
 	
@@ -240,6 +244,10 @@ func loseLife():
 	
 	$Explode.subtitle_play()
 	
+	$Ar.monitoring = false
+	$Ar2.monitoring = false
+	$Ar3.monitoring = false
+	
 	if (scene.lives > 0):
 		await get_tree().create_timer(1.5, false).timeout
 		action = "fly"
@@ -253,12 +261,16 @@ func loseLife():
 func invincibilityFrames(isVisible = true): #custom flicker function
 	$"../../HUD".updateIcon()
 	
+	$Ar2.monitoring = true
+	$Ar3.monitoring = true
+	
 	self.visible = not self.visible
 	for num in range(13):
 		await get_tree().create_timer(0.1, false).timeout
 		self.visible = not self.visible
 	
 	self.visible = isVisible
+	$Ar.monitoring = true
 
 	canBeHit = true
 

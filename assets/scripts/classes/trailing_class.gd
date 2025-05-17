@@ -3,7 +3,9 @@ extends TTTG_Obstacle
 
 @export var distanceToMove = 500
 @export var speed = 1.5
+
 @export var onlyOnce = false
+@export var killAfter = false
 
 var timeToMove = false
 var hasMoved = false
@@ -23,7 +25,8 @@ func movemental():
 	if disabled: return
 	if hasMoved: return
 	
-	if onlyOnce: hasMoved = true
+	if onlyOnce: 
+		hasMoved = true
 
 func victory_screech():
 	if disabled: return

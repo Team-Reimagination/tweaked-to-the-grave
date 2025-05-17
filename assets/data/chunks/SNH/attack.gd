@@ -8,7 +8,12 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(warningTime if $Warning else 0.0, false).timeout
 	for a in $Attack.get_children():
-		a.disabled = false
+		var wasDisabled = a.disabled
+		
+		if wasDisabled: 
+			a.disabled = false
+			if a.has_method("movemental"): a.movemental()
+			if a.has_method("spawnLogic"): a.spawnLogic()
 
 func _process(delta: float) -> void:
 	if $AttackTimer.time_left <= 0.001:

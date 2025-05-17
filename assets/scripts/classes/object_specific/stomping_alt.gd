@@ -47,3 +47,5 @@ func returnFunc():
 			
 		if disabled: return
 		movemental()
+	else:
+		if killAfter: queue_free()

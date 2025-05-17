@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bumqauva4u8cy"]
+[gd_scene load_steps=17 format=3 uid="uid://bumqauva4u8cy"]
 
 [ext_resource type="Script" uid="uid://fue06olngewr" path="res://assets/data/chunks/SNH/attack.gd" id="1_ertsj"]
 [ext_resource type="PackedScene" uid="uid://1qiky0qhi747" path="res://assets/objects/general/warning/warningZone.tscn" id="1_yl7gr"]
@@ -12,6 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://c1bsriuv4lndu" path="res://assets/sounds/entities/thud.ogg" id="10_j2ghv"]
 [ext_resource type="PackedScene" uid="uid://2j1l5qwo5tgm" path="res://assets/objects/obstacles/snh/arm_scroll.tscn" id="11_ladgq"]
 [ext_resource type="PackedScene" uid="uid://dlqjf677gfy7g" path="res://assets/objects/general/warning/warningCircle.tscn" id="12_rfvl2"]
+[ext_resource type="Script" uid="uid://spa6j3u3lu16" path="res://assets/data/chunks/SNH/teeth.gd" id="13_j2ghv"]
+[ext_resource type="PackedScene" uid="uid://cdn1qgf3g6eou" path="res://assets/objects/obstacles/snh/tweak_tooth.tscn" id="13_kepnt"]
+[ext_resource type="Script" uid="uid://b2tivsfrpcgn8" path="res://assets/data/chunks/SNH/bud.gd" id="15_11e8g"]
+[ext_resource type="PackedScene" uid="uid://chrs8acdiua5t" path="res://assets/objects/obstacles/snh/tweak_bud.tscn" id="15_ag7ls"]
 
 [node name="Boss" type="Node3D"]
 
@@ -237,6 +241,7 @@ wait_time = 3.5
 one_shot = true
 
 [node name="Punches" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_ertsj")
 warningTime = 1.5
 
@@ -263,6 +268,367 @@ stream = null
 wait_time = 2.6
 one_shot = true
 
+[node name="Teeth" type="Node3D" parent="."]
+visible = false
+script = ExtResource("13_j2ghv")
+warningTime = 0.75
+
+[node name="Warning" type="Node3D" parent="Teeth"]
+
+[node name="WarningSignal2" parent="Teeth/Warning" instance=ExtResource("1_yl7gr")]
+transform = Transform3D(471.283, -2.32933e-06, 0, 4.84903e-05, 37.0942, 0, 0, 0, 2, 0, 18.46, -1.63401)
+
+[node name="WarningSignal4" parent="Teeth/Warning" instance=ExtResource("1_yl7gr")]
+transform = Transform3D(471.283, -2.32933e-06, 0, 4.84903e-05, 37.0942, 0, 0, 0, 2, 0, -18.0416, -1.63401)
+
+[node name="WarningSignal7" parent="Teeth/Warning" instance=ExtResource("3_qggtw")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 14.286, 0, 10.0743, 0.172)
+
+[node name="WarningSignal8" parent="Teeth/Warning" instance=ExtResource("3_qggtw")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -9.82846, 0.172)
+
+[node name="Warning" parent="Teeth/Warning/WarningSignal8" index="1"]
+stream = null
+
+[node name="Attack" type="Node3D" parent="Teeth"]
+
+[node name="Tweak_Quill" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -7, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill2" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.22788, -7, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill2/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill2/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill3" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -7, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill3/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill3/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill4" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2279, -7, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill4/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill4/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill5" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -7, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill5/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill5/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill6" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.7721, -7, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill6/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill6/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill7" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -12.3692, 6, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill7/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill7/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill8" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -25.1708, 6, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill8/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill8/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill9" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -37.9663, 6, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill9/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill9/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill10" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 12.6204, 6, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill10/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill10/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill11" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 25.3167, 6, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill11/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill11/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="Tweak_Quill12" parent="Teeth/Attack" instance=ExtResource("13_kepnt")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 38.0129, 6, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "quart",
+"wait": 20.0
+}])
+disabled = true
+
+[node name="0" parent="Teeth/Attack/Tweak_Quill12/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.0047, 0)
+
+[node name="1" parent="Teeth/Attack/Tweak_Quill12/Paths" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.72592, 0)
+
+[node name="AttackTimer" type="Timer" parent="Teeth"]
+wait_time = 3.8
+one_shot = true
+
+[node name="Bud" type="Node3D" parent="."]
+script = ExtResource("15_11e8g")
+warningTime = 1.5
+
+[node name="Warning" type="Node3D" parent="Bud"]
+
+[node name="WarningSignal" parent="Bud/Warning" instance=ExtResource("12_rfvl2")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, -1.26645)
+
+[node name="WarningSignal7" parent="Bud/Warning" instance=ExtResource("3_qggtw")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 14.285, 0, 0, 0)
+
+[node name="Attack" type="Node3D" parent="Bud"]
+
+[node name="Arm_Scroll" parent="Bud/Attack" instance=ExtResource("15_ag7ls")]
+disabled = true
+
+[node name="AttackTimer" type="Timer" parent="Bud"]
+wait_time = 4.0
+one_shot = true
+
 [editable path="Stretch_Quills/Attack/Tweak_Quill"]
 [editable path="Stretch_Quills/Attack/Tweak_Quill2"]
 [editable path="Stretch_Quills/Attack/Tweak_Quill3"]
@@ -274,3 +640,16 @@ one_shot = true
 [editable path="Scrolling/Attack/o/Spawn/Arm_Scroll5"]
 [editable path="Scrolling/Attack/o/Spawn/Arm_Scroll6"]
 [editable path="Punches/Warning/WarningSignal8"]
+[editable path="Teeth/Warning/WarningSignal8"]
+[editable path="Teeth/Attack/Tweak_Quill"]
+[editable path="Teeth/Attack/Tweak_Quill2"]
+[editable path="Teeth/Attack/Tweak_Quill3"]
+[editable path="Teeth/Attack/Tweak_Quill4"]
+[editable path="Teeth/Attack/Tweak_Quill5"]
+[editable path="Teeth/Attack/Tweak_Quill6"]
+[editable path="Teeth/Attack/Tweak_Quill7"]
+[editable path="Teeth/Attack/Tweak_Quill8"]
+[editable path="Teeth/Attack/Tweak_Quill9"]
+[editable path="Teeth/Attack/Tweak_Quill10"]
+[editable path="Teeth/Attack/Tweak_Quill11"]
+[editable path="Teeth/Attack/Tweak_Quill12"]

@@ -20,6 +20,10 @@ extends TTTG_Obstacle
 @export var steerPower = 50.0
 @export var seekTime = 10.0
 
+@export var overrideXRot = -INF
+@export var overrideYRot = -INF
+@export var overrideZRot = -INF
+
 var velocity = Vector3.ZERO
 var acceleration = Vector3.ZERO
 
@@ -37,6 +41,9 @@ func _ready() -> void:
 	if doSteer:
 		$SeekTimer.start(seekTime)
 		target = scene.player
+	
+	if rotateBullet:
+		look_at(velocity,Vector3.FORWARD)
 
 	$AliveTimer.start(lifetime)
 	
@@ -66,12 +73,18 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta):
 	if disabled: return
+	
 	if doSteer: acceleration += seek()
 	
 	velocity += acceleration * delta
 	velocity = velocity.clampf(-speed, speed)
 	if rotateBullet: look_at(velocity,Vector3.FORWARD)
+	
 	position += velocity * delta
+
+	if overrideXRot != -INF: rotation_degrees.x = overrideXRot
+	if overrideYRot != -INF: rotation_degrees.y = overrideYRot
+	if overrideZRot != -INF: rotation_degrees.z = overrideZRot
 
 func phasingOut():
 	if disabled: return
@@ -84,7 +97,6 @@ func phasingOut():
 
 func killYourself():
 	if disabled: return
-	print(name, "touched")
 	imKillingMyself()
 
 func detectCollission(_areID, are, _arSID, _loSID):
