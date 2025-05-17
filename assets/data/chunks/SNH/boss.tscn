@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bumqauva4u8cy"]
+[gd_scene load_steps=13 format=3 uid="uid://bumqauva4u8cy"]
 
 [ext_resource type="Script" uid="uid://fue06olngewr" path="res://assets/data/chunks/SNH/attack.gd" id="1_ertsj"]
 [ext_resource type="PackedScene" uid="uid://1qiky0qhi747" path="res://assets/objects/general/warning/warningZone.tscn" id="1_yl7gr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dobpfy25irneh" path="res://assets/scripts/classes/subtitle_sound_3D.gd" id="9_kepnt"]
 [ext_resource type="AudioStream" uid="uid://c1bsriuv4lndu" path="res://assets/sounds/entities/thud.ogg" id="10_j2ghv"]
 [ext_resource type="PackedScene" uid="uid://2j1l5qwo5tgm" path="res://assets/objects/obstacles/snh/arm_scroll.tscn" id="11_ladgq"]
+[ext_resource type="PackedScene" uid="uid://dlqjf677gfy7g" path="res://assets/objects/general/warning/warningCircle.tscn" id="12_rfvl2"]
 
 [node name="Boss" type="Node3D"]
 
@@ -148,6 +149,7 @@ wait_time = 2.5
 one_shot = true
 
 [node name="Scrolling" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_ertsj")
 warningTime = 1.5
 
@@ -231,7 +233,34 @@ subtitle = "Thud"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="AttackTimer" type="Timer" parent="Scrolling"]
-wait_time = 3.0
+wait_time = 3.5
+one_shot = true
+
+[node name="Punches" type="Node3D" parent="."]
+script = ExtResource("1_ertsj")
+warningTime = 1.5
+
+[node name="Warning" type="Node3D" parent="Punches"]
+
+[node name="WarningSignal" parent="Punches/Warning" instance=ExtResource("12_rfvl2")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -13.2673, -10.0495, -0.5)
+
+[node name="WarningSignal2" parent="Punches/Warning" instance=ExtResource("12_rfvl2")]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 16.4257, 17.0495, -0.5)
+
+[node name="WarningSignal7" parent="Punches/Warning" instance=ExtResource("3_qggtw")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 42.856, -13.3906, -8.92705, 0)
+
+[node name="WarningSignal8" parent="Punches/Warning" instance=ExtResource("3_qggtw")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 42.856, 16.9614, 17.9533, 0)
+
+[node name="Warning" parent="Punches/Warning/WarningSignal8" index="1"]
+stream = null
+
+[node name="Attack" type="Node3D" parent="Punches"]
+
+[node name="AttackTimer" type="Timer" parent="Punches"]
+wait_time = 2.6
 one_shot = true
 
 [editable path="Stretch_Quills/Attack/Tweak_Quill"]
@@ -244,3 +273,4 @@ one_shot = true
 [editable path="Scrolling/Attack/o/Spawn/Arm_Scroll2"]
 [editable path="Scrolling/Attack/o/Spawn/Arm_Scroll5"]
 [editable path="Scrolling/Attack/o/Spawn/Arm_Scroll6"]
+[editable path="Punches/Warning/WarningSignal8"]

@@ -9,7 +9,7 @@ var myWoodJustGotLonger = false
 var attackingYourMom = false
 var enxtPhase = 0.8;
 
-var goString = "bobttott";
+var goString = "bobtee";
 var goIndex = 0;
 
 var madden = AudioSubtitlableGeneral.new()
@@ -165,12 +165,15 @@ func initiateAttack(charo):
 		await get_tree().create_timer(1.8, false).timeout
 		scene.boss.get_node("./Audio/Drop").subtitle_play()
 	elif charo == 't':
-		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Side", -1, 0.7)
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Side")
 		scene.boss.get_node("./Audio/TakeThis").subtitle_play()
 		createAttack(2)
 		
 		await get_tree().create_timer(3.0, false).timeout
 		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Side_Return")
+	elif charo == 'e':
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Punch")
+		createAttack(3)
 	
 func prepForAnother():
 	attackingYourMom = false
