@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://bw8b6eelsppom"]
+[gd_scene load_steps=80 format=4 uid="uid://bw8b6eelsppom"]
 
 [ext_resource type="Script" uid="uid://ds3tfs5jxwsov" path="res://assets/objects/bosses/tweak-final/tweak-final.gd" id="1_l0fvu"]
 [ext_resource type="Shader" uid="uid://pe5qsihfsc8k" path="res://assets/shaders/object/paletteLighting-noalpha.gdshader" id="2_nwbve"]
@@ -15,9 +15,11 @@
 [ext_resource type="Shader" uid="uid://bdrwiprw3hnm1" path="res://assets/shaders/object/colorMod3D.gdshader" id="9_wceop"]
 [ext_resource type="Animation" uid="uid://bmn376pl73jmk" path="res://assets/objects/bosses/tweak-final/anims/Attack_Grow.res" id="10_52oqv"]
 [ext_resource type="Animation" uid="uid://cqk5ra2krsa18" path="res://assets/objects/bosses/tweak-final/anims/Death_ref1.res" id="10_812rg"]
+[ext_resource type="Animation" uid="uid://cpap2u0o73hwn" path="res://assets/objects/bosses/tweak-final/anims/Attack_Fisticuffs.res" id="11_6n4af"]
 [ext_resource type="Texture2D" uid="uid://bph6gewxnb6mk" path="res://assets/images/entities/tweak/gooey.png" id="11_o31xg"]
 [ext_resource type="Animation" uid="uid://dkr3103cf2qte" path="res://assets/objects/bosses/tweak-final/anims/Attack_Grow_Return.res" id="11_wd7by"]
 [ext_resource type="Script" uid="uid://cw0v2mcmidkn6" path="res://assets/objects/bosses/tweak/gooey.gd" id="12_hnqx1"]
+[ext_resource type="Animation" uid="uid://cfgtf2koxtjps" path="res://assets/objects/bosses/tweak-final/anims/Attack_Arms.res" id="12_peakn"]
 [ext_resource type="Animation" uid="uid://dw3cfyc0y81pj" path="res://assets/objects/bosses/tweak-final/anims/Attack_Slam_ref1.res" id="12_syh3i"]
 [ext_resource type="Script" uid="uid://do3ib7cpvvinc" path="res://assets/scripts/classes/subtitle_sound_general.gd" id="13_3o5sn"]
 [ext_resource type="Texture2D" uid="uid://fvopa4yo5pm2" path="res://assets/images/fx/shadow.png" id="13_mta7s"]
@@ -30,6 +32,8 @@
 [ext_resource type="AudioStream" uid="uid://bfgg38ecckbox" path="res://assets/sounds/boss/tweak-final_punch.ogg" id="25_xdj0x"]
 [ext_resource type="AudioStream" uid="uid://b3l8owsm2lbfg" path="res://assets/sounds/boss/tweak-final_mouth-open.ogg" id="28_iywl6"]
 [ext_resource type="AudioStream" uid="uid://dakj1402ur4yg" path="res://assets/sounds/boss/tweak-final_mouth-close.ogg" id="29_812rg"]
+[ext_resource type="AudioStream" uid="uid://dnb4853lkgk3q" path="res://assets/sounds/boss/tweak-final_how-about-this.ogg" id="32_p0rpj"]
+[ext_resource type="AudioStream" uid="uid://camwsy3ov07i8" path="res://assets/sounds/misc/stretchiness.ogg" id="34_fa2in"]
 
 [sub_resource type="Animation" id="Animation_6164b"]
 resource_name = "Death_Body"
@@ -15845,6 +15849,8 @@ tracks/146/keys = PackedFloat32Array(0, 1, 1.35424e-07, 1.06568e-07, -0.704141, 
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oluqp"]
 _data = {
+&"Attack_Arms": ExtResource("12_peakn"),
+&"Attack_Fisticuffs": ExtResource("11_6n4af"),
 &"Attack_Grow": ExtResource("10_52oqv"),
 &"Attack_Grow_Return": ExtResource("11_wd7by"),
 &"Attack_Punch": ExtResource("7_jufjn"),
@@ -16458,7 +16464,7 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(1, -1.08848e-07, 1.19253e-07, 1.08848e-07, 1, -2.63633e-07, -1.19253e-07, 2.63633e-07, 1, 3.72529e-07, 2.99764, -7.45058e-07)
 bones/4/enabled = true
 bones/4/position = Vector3(3.72529e-07, 2.99764, -7.45058e-07)
-bones/4/rotation = Quaternion(-0.000562252, -0.100211, 0.00110104, 0.994966)
+bones/4/rotation = Quaternion(-0.000562252, -0.100211, 0.00110104, 0.994965)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Arm_5_R.R"
 bones/5/parent = 4
@@ -17025,7 +17031,7 @@ bones/85/parent = 54
 bones/85/rest = Transform3D(0.866122, -0.214817, -0.451315, -0.34872, 0.387173, -0.853517, 0.358087, 0.896633, 0.260428, -17.5597, 7.99219, 0.644209)
 bones/85/enabled = true
 bones/85/position = Vector3(-17.5597, 7.99219, 0.644207)
-bones/85/rotation = Quaternion(0.493277, -0.274644, -0.0192259, 0.825153)
+bones/85/rotation = Quaternion(0.493278, -0.274644, -0.0192259, 0.825153)
 bones/85/scale = Vector3(1, 1, 1)
 bones/86/name = "TopHair.001.L"
 bones/86/parent = 85
@@ -17285,7 +17291,7 @@ mesh = SubResource("ArrayMesh_n1b3q")
 skin = SubResource("Skin_wd7by")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.882513, 0.382898, 0.273057, -0.0745988, -0.459291, 0.885148, 0.464334, -0.801524, -0.376766, 2.86447, -5.44902, -22.2298)
+transform = Transform3D(0.882513, 0.382898, 0.273057, -0.0745989, -0.459291, 0.885148, 0.464334, -0.801525, -0.376766, 2.86447, -5.44902, -22.2298)
 bone_name = "Arm_8_R.R"
 bone_idx = 8
 
@@ -17307,7 +17313,7 @@ transform = Transform3D(1, 3.99357e-06, 2.10109e-06, -3.99357e-06, 1, -1.1325e-0
 shape = SubResource("BoxShape3D_q2bye")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.847831, 0.428687, -0.312104, 0.0174964, -0.610876, -0.791532, -0.529977, 0.665625, -0.525421, 2.46519, -6.09602, 21.7983)
+transform = Transform3D(0.847831, 0.428687, -0.312104, 0.0174966, -0.610876, -0.791532, -0.529977, 0.665625, -0.525421, 2.46519, -6.09602, 21.7983)
 bone_name = "Arm_8_R.L"
 bone_idx = 33
 
@@ -17330,7 +17336,7 @@ transform = Transform3D(1, 3.99357e-06, 2.10109e-06, -3.99357e-06, 1, -1.1325e-0
 shape = SubResource("BoxShape3D_qcvpr")
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.911235, 0.312046, 0.268845, -0.113889, -0.436382, 0.892525, 0.395828, -0.843918, -0.362108, 1.90509, -4.10738, -19.6352)
+transform = Transform3D(0.911235, 0.312046, 0.268845, -0.113889, -0.436382, 0.892525, 0.395828, -0.843918, -0.362109, 1.90509, -4.10738, -19.6352)
 bone_name = "Arm_7_R.R"
 bone_idx = 7
 
@@ -17353,7 +17359,7 @@ transform = Transform3D(1, 3.95643e-06, 1.90735e-06, -4.01437e-06, 1, -1.09528e-
 shape = SubResource("BoxShape3D_jufjn")
 
 [node name="BoneAttachment3D4" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.880474, 0.361238, -0.307039, -0.0347458, -0.596722, -0.801695, -0.472819, 0.71654, -0.512847, 1.35457, -4.26141, 19.5953)
+transform = Transform3D(0.880474, 0.361238, -0.307039, -0.0347456, -0.596722, -0.801695, -0.472819, 0.71654, -0.512847, 1.35457, -4.26141, 19.5953)
 bone_name = "Arm_7_R.L"
 bone_idx = 32
 
@@ -17376,7 +17382,7 @@ transform = Transform3D(1, 3.95643e-06, 1.90735e-06, -4.01437e-06, 1, -1.09528e-
 shape = SubResource("BoxShape3D_ujavf")
 
 [node name="BoneAttachment3D5" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.898917, 0.203888, -0.387785, -0.321336, -0.294831, -0.899898, -0.297809, 0.933544, -0.199512, 0.759289, -3.4006, 16.8696)
+transform = Transform3D(0.898917, 0.203888, -0.387785, -0.321336, -0.294831, -0.899899, -0.297809, 0.933544, -0.199512, 0.759289, -3.4006, 16.8696)
 bone_name = "Arm_6_R.L"
 bone_idx = 31
 
@@ -17399,7 +17405,7 @@ transform = Transform3D(1, 3.95643e-06, 1.90735e-06, -4.01437e-06, 1, -1.09528e-
 shape = SubResource("BoxShape3D_xdj0x")
 
 [node name="BoneAttachment3D6" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.611267, 0.0154389, -0.791273, -0.789387, -0.0597965, -0.610977, -0.0567482, 0.998091, -0.0243645, 0.711159, -3.21419, 13.7581)
+transform = Transform3D(0.611267, 0.0154388, -0.791273, -0.789387, -0.0597964, -0.610977, -0.0567481, 0.998091, -0.0243644, 0.711158, -3.21418, 13.7581)
 bone_name = "Arm_5_R.L"
 bone_idx = 30
 
@@ -17422,7 +17428,7 @@ transform = Transform3D(1, 3.95643e-06, 1.90735e-06, -4.01437e-06, 1, -1.09528e-
 shape = SubResource("BoxShape3D_43v1w")
 
 [node name="BoneAttachment3D7" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.908958, 0.151242, 0.388486, -0.371505, -0.128959, 0.919431, 0.189155, -0.980049, -0.0610316, 1.46352, -3.73086, -16.7738)
+transform = Transform3D(0.908958, 0.151242, 0.388486, -0.371505, -0.128959, 0.919432, 0.189155, -0.980049, -0.0610316, 1.46352, -3.73086, -16.7738)
 bone_name = "Arm_6_R.R"
 bone_idx = 6
 
@@ -17445,7 +17451,7 @@ transform = Transform3D(1, 3.95643e-06, 1.90735e-06, -4.01437e-06, 1, -1.09528e-
 shape = SubResource("BoxShape3D_812rg")
 
 [node name="BoneAttachment3D8" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.572283, 0.161702, 0.803956, -0.770465, -0.229729, 0.59465, 0.280848, -0.959728, -0.00688433, 0.959403, -3.01467, -13.7818)
+transform = Transform3D(0.572283, 0.161702, 0.803956, -0.770465, -0.229729, 0.59465, 0.280848, -0.959728, -0.00688435, 0.959404, -3.01467, -13.7818)
 bone_name = "Arm_5_R.R"
 bone_idx = 5
 
@@ -17552,4 +17558,18 @@ stream = ExtResource("29_812rg")
 bus = &"Voicelines"
 script = ExtResource("13_3o5sn")
 subtitle = "Tweak Closing Mouth"
+metadata/_custom_type_script = "uid://do3ib7cpvvinc"
+
+[node name="HowAboutThis" type="AudioStreamPlayer" parent="Audio" groups=["Sound"]]
+stream = ExtResource("32_p0rpj")
+bus = &"Voicelines"
+script = ExtResource("13_3o5sn")
+subtitle = "\"How About This?\""
+metadata/_custom_type_script = "uid://do3ib7cpvvinc"
+
+[node name="Stretch" type="AudioStreamPlayer" parent="Audio" groups=["Sound"]]
+stream = ExtResource("34_fa2in")
+bus = &"SFX"
+script = ExtResource("13_3o5sn")
+subtitle = "Stretch"
 metadata/_custom_type_script = "uid://do3ib7cpvvinc"

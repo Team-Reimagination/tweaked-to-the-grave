@@ -7,9 +7,9 @@ var haker = false
 
 var myWoodJustGotLonger = false
 var attackingYourMom = false
-var enxtPhase = 0.8;
+var enxtPhase = 2.0/3.0;
 
-var goString = "bobteake";
+var goString = "bobtweaked";
 var goIndex = 0;
 
 var madden = AudioSubtitlableGeneral.new()
@@ -51,7 +51,7 @@ func _process(delta) :
 	if scene.hasBitchWon:
 		return
 	
-	if ["Attack_Slam, Attack_Grow_Return", "Attack_Side_Return"].find(scene.boss.get_node("Model/AnimationPlayer").current_animation) != -1 and !scene.boss.get_node("Model/AnimationPlayer").is_playing():
+	if ["Attack_Slam, Attack_Grow_Return", "Attack_Side_Return", "Attack_Punch", "Attack_Teeth_Return", "Attack_Fisticuffs", "Attack_Arms"].find(scene.boss.get_node("Model/AnimationPlayer").current_animation) != -1 and !scene.boss.get_node("Model/AnimationPlayer").is_playing():
 		scene.boss.get_node("Model/AnimationPlayer").play("Mad_Idle")
 		
 	if haker:
@@ -193,6 +193,15 @@ func initiateAttack(charo):
 		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Teeth_Return")
 		
 		scene.boss.flashIntensity = 1.0
+	elif charo == 'w':
+		createAttack(6)
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Fisticuffs")
+		scene.boss.get_node("./Audio/HowAboutThis").subtitle_play()
+	elif charo == 'd':
+		var atk3 = createAttack(7)
+		scene.boss.get_node("Model/AnimationPlayer").play("Attack_Arms")
+		
+		atk3.followY(scene.player)
 	
 func prepForAnother():
 	attackingYourMom = false

@@ -3,6 +3,7 @@ extends TTTG_Entity
 
 @export var canDie = true
 @export var camBeHit = true
+@export var doDamagePlayer = true
 @export var isGhost = false
 @export var health = 0;
 
@@ -58,7 +59,7 @@ func detectCollission(_areID, are, _arSID, _loSID):
 			if camBeHit: damage(are.get_meta("power") if "power" not in are else are.power)
 			are.killYourself()
 	
-	if !scene.hasBitchWon and !disabled:
+	if !scene.hasBitchWon and !disabled and doDamagePlayer:
 		if are.type == "player" and scene.player.canBeHit and _loSID == 0:
 			scene.hurtPlayer()
 			ouchie = true

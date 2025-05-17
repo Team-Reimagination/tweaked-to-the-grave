@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bumqauva4u8cy"]
+[gd_scene load_steps=20 format=3 uid="uid://bumqauva4u8cy"]
 
 [ext_resource type="Script" uid="uid://fue06olngewr" path="res://assets/data/chunks/SNH/attack.gd" id="1_ertsj"]
 [ext_resource type="PackedScene" uid="uid://1qiky0qhi747" path="res://assets/objects/general/warning/warningZone.tscn" id="1_yl7gr"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://cdn1qgf3g6eou" path="res://assets/objects/obstacles/snh/tweak_tooth.tscn" id="13_kepnt"]
 [ext_resource type="Script" uid="uid://b2tivsfrpcgn8" path="res://assets/data/chunks/SNH/bud.gd" id="15_11e8g"]
 [ext_resource type="PackedScene" uid="uid://chrs8acdiua5t" path="res://assets/objects/obstacles/snh/tweak_bud.tscn" id="15_ag7ls"]
+[ext_resource type="PackedScene" uid="uid://bi3h8aetat33x" path="res://assets/objects/obstacles/snh/tweak_goo.tscn" id="17_25kru"]
+[ext_resource type="Script" uid="uid://bgk8l7w4deid7" path="res://assets/data/chunks/SNH/arms.gd" id="18_lyfq5"]
+[ext_resource type="PackedScene" uid="uid://i35lpi0egs7g" path="res://assets/objects/obstacles/snh/tweak_arm.tscn" id="19_darl8"]
 
 [node name="Boss" type="Node3D"]
 
@@ -609,6 +612,7 @@ wait_time = 3.8
 one_shot = true
 
 [node name="Bud" type="Node3D" parent="."]
+visible = false
 script = ExtResource("15_11e8g")
 warningTime = 1.5
 
@@ -627,6 +631,106 @@ disabled = true
 
 [node name="AttackTimer" type="Timer" parent="Bud"]
 wait_time = 4.0
+one_shot = true
+
+[node name="Fisticuffs" type="Node3D" parent="."]
+visible = false
+script = ExtResource("1_ertsj")
+warningTime = 0.9
+
+[node name="Warning" type="Node3D" parent="Fisticuffs"]
+
+[node name="WarningSignal2" parent="Fisticuffs/Warning" instance=ExtResource("1_yl7gr")]
+transform = Transform3D(74.2187, -276.901, 0, 74.2187, 276.901, 0, 0, 0, 2, 0, -47.2571, -1.63401)
+
+[node name="WarningSignal3" parent="Fisticuffs/Warning" instance=ExtResource("2_piqvp")]
+transform = Transform3D(-17.6777, -17.6777, 0, 17.6777, -17.6777, 0, 0, 0, 25, -13, -12.369, 0.286571)
+
+[node name="WarningSignal7" parent="Fisticuffs/Warning" instance=ExtResource("3_qggtw")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -4, -4, 0.17172)
+
+[node name="Attack" type="Node3D" parent="Fisticuffs"]
+
+[node name="Tweak_Quill" parent="Fisticuffs/Attack" instance=ExtResource("17_25kru")]
+transform = Transform3D(3.74767, 0.880348, 0, -3.74767, 0.880348, 0, 0, 0, 1, -15.2683, -6.55591, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 0.75,
+"trans": "quart",
+"wait": 1.0
+}, {
+"ease": "in",
+"time": 0.25,
+"trans": "quart",
+"wait": 200.0
+}])
+disabled = true
+
+[node name="0" parent="Fisticuffs/Attack/Tweak_Quill/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+
+[node name="AttackTimer" type="Timer" parent="Fisticuffs"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Arms" type="Node3D" parent="."]
+script = ExtResource("18_lyfq5")
+warningTime = 1.5
+
+[node name="Warning" type="Node3D" parent="Arms"]
+
+[node name="WarningSignal" parent="Arms/Warning" instance=ExtResource("1_yl7gr")]
+transform = Transform3D(0, 456.549, 0, -14.6225, 0, 0, 0, 0, 2, 0, 0, -1.63401)
+
+[node name="WarningSignal3" parent="Arms/Warning" instance=ExtResource("2_piqvp")]
+transform = Transform3D(-1.09278e-06, -25, 0, 25, -1.09278e-06, 0, 0, 0, 25, -9, 0, 0.286571)
+
+[node name="WarningSignal4" parent="Arms/Warning" instance=ExtResource("2_piqvp")]
+transform = Transform3D(-1.09278e-06, 25, 0, -25, -1.09278e-06, 0, 0, 0, 25, 9, 0, 0.286571)
+
+[node name="WarningSignal7" parent="Arms/Warning" instance=ExtResource("3_qggtw")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0.17172)
+
+[node name="Attack" type="Node3D" parent="Arms"]
+
+[node name="Tweak_Quill" parent="Arms/Attack" instance=ExtResource("19_darl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -3, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 200.0
+}])
+disabled = true
+
+[node name="0" parent="Arms/Attack/Tweak_Quill/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 0, 0)
+
+[node name="Tweak_Quill2" parent="Arms/Attack" instance=ExtResource("19_darl8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 26, -3, 0)
+paths = Array[Dictionary]([{
+"ease": "out",
+"time": 1.0,
+"trans": "quart",
+"wait": 0.5
+}, {
+"ease": "in",
+"time": 0.5,
+"trans": "circ",
+"wait": 200.0
+}])
+disabled = true
+
+[node name="0" parent="Arms/Attack/Tweak_Quill2/Paths" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 0, 0)
+
+[node name="AttackTimer" type="Timer" parent="Arms"]
+wait_time = 3.9
 one_shot = true
 
 [editable path="Stretch_Quills/Attack/Tweak_Quill"]
@@ -653,3 +757,6 @@ one_shot = true
 [editable path="Teeth/Attack/Tweak_Quill10"]
 [editable path="Teeth/Attack/Tweak_Quill11"]
 [editable path="Teeth/Attack/Tweak_Quill12"]
+[editable path="Fisticuffs/Attack/Tweak_Quill"]
+[editable path="Arms/Attack/Tweak_Quill"]
+[editable path="Arms/Attack/Tweak_Quill2"]

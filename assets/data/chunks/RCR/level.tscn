@@ -207,26 +207,31 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2, 0, 
 
 [node name="Grate" parent="1_Grates1" node_paths=PackedStringArray("healthLinks") instance=ExtResource("10_hj6v7")]
 transform = Transform3D(30, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 49, -90.0757)
+doDamagePlayer = false
 health = 125
 healthLinks = [NodePath("../Grate2"), NodePath("../Grate3"), NodePath("../Grate4"), NodePath("../Grate5")]
 
 [node name="Grate2" parent="1_Grates1" node_paths=PackedStringArray("healthLinks") instance=ExtResource("10_hj6v7")]
 transform = Transform3D(30, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, -60, 49, -90.0757)
+doDamagePlayer = false
 health = 125
 healthLinks = [NodePath("../Grate"), NodePath("../Grate3"), NodePath("../Grate4"), NodePath("../Grate5")]
 
 [node name="Grate3" parent="1_Grates1" node_paths=PackedStringArray("healthLinks") instance=ExtResource("10_hj6v7")]
 transform = Transform3D(30, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, -120, 49, -90.0757)
+doDamagePlayer = false
 health = 125
 healthLinks = [NodePath("../Grate"), NodePath("../Grate2"), NodePath("../Grate4"), NodePath("../Grate5")]
 
 [node name="Grate4" parent="1_Grates1" node_paths=PackedStringArray("healthLinks") instance=ExtResource("10_hj6v7")]
 transform = Transform3D(30, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 59, 49, -90.0757)
+doDamagePlayer = false
 health = 125
 healthLinks = [NodePath("../Grate"), NodePath("../Grate2"), NodePath("../Grate3"), NodePath("../Grate5")]
 
 [node name="Grate5" parent="1_Grates1" node_paths=PackedStringArray("healthLinks") instance=ExtResource("10_hj6v7")]
 transform = Transform3D(30, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 119, 49, -90.0757)
+doDamagePlayer = false
 health = 125
 healthLinks = [NodePath("../Grate"), NodePath("../Grate2"), NodePath("../Grate3"), NodePath("../Grate4")]
 
@@ -360,6 +365,7 @@ transform = Transform3D(1, 0, 0, 0, 0.956381, 0.292121, 0, -0.292121, 0.956381, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.1074, -214.498)
 
 [node name="3" type="Node3D" parent="."]
+visible = false
 script = ExtResource("2_3uci2")
 chanceWeight = 0.7
 metadata/_custom_type_script = "uid://8fviwb4leujf"
@@ -482,7 +488,6 @@ floorHeightAdjustment = true
 yMOD = 1.0
 
 [node name="6_Grates" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
-visible = false
 script = ExtResource("2_3uci2")
 nextChunk = NodePath("../6_Sarcophagus")
 chanceWeight = 0.7
@@ -518,6 +523,7 @@ shortRenderDistance = false
 
 [node name="Grate8" parent="6_Grates" instance=ExtResource("10_hj6v7")]
 transform = Transform3D(32.5414, 0, 0, 0, -3.49691e-07, 8, 0, -8, -3.49691e-07, -1.6393, 44.4939, -173.651)
+doDamagePlayer = false
 shortRenderDistance = false
 
 [node name="6_Sarcophagus" type="Node3D" parent="."]
