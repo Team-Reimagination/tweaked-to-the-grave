@@ -33,9 +33,10 @@ var _defaultOptionsData = { ## enter the options you want to add
 
 var achievementData = {}
 var _defaultAchievementData = {
-	"_data": {
+	"vars": {
 		
-	}
+	},
+	"gotten": []
 }
 var saveData ={}
 var _defaultSaveData = {

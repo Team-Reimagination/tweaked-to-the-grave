@@ -64,6 +64,7 @@ var specular_pal
 func _ready() -> void:
 	Subtitles.setPlacementY(800 if PlayGlobals.difficulty < 4 else 750)
 	Subtitles.setPlacementX(1160 if PlayGlobals.difficulty < 4 else null)
+	AchievementFuncs.setPlacementY(100)
 	
 	#make sure you can pause to avoid anything fishy
 	process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -146,6 +147,8 @@ func postCount():
 
 func startLevel():
 	await get_tree().create_timer(0.9,false).timeout #arbitrary thing but works with transitions in mind so i don't care
+	
+	AchievementFuncs.checkAchievement("SetSail")
 	
 	initiateCountdown()
 

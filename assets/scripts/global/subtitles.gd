@@ -15,7 +15,7 @@ func setPlacementX(num = null):
 	usualPlacement.x = num if num != null else 1280
 	
 func _ready() -> void:
-	layer = 126
+	layer = 124
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func addSubtitle(subtitle):

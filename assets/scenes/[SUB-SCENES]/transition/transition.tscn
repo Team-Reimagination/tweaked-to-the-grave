@@ -15,7 +15,7 @@ anchors_preset = 0
 script = ExtResource("1_51v8m")
 
 [node name="Shaders" type="CanvasLayer" parent="."]
-layer = 127
+layer = 125
 follow_viewport_scale = 0.001
 
 [node name="Transition" type="ColorRect" parent="Shaders"]

@@ -10,6 +10,7 @@ var isItReady = false
 func start() -> void:
 	Subtitles.setPlacementY()
 	Subtitles.setPlacementX()
+	AchievementFuncs.setPlacementY()
 	$SoOver.subtitle_play()
 	
 	#this is so jank but it works, just don't fucking do this

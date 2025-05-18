@@ -50,6 +50,7 @@ func updateButtonSelection():
 func start():
 	Subtitles.setPlacementY(750)
 	Subtitles.setPlacementX(null)
+	AchievementFuncs.setPlacementY()
 	
 	await get_tree().create_timer(2.0, false).timeout
 	

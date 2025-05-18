@@ -46,6 +46,7 @@ func changeClothes():
 		Subtitles.clearSubtitles()
 		Subtitles.setPlacementY()
 		Subtitles.setPlacementX()
+		AchievementFuncs.setPlacementY()
 		
 		if intendedScene == "reset":
 			parentToChange.get_tree().reload_current_scene()
