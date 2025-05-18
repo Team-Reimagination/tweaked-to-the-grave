@@ -148,7 +148,8 @@ func postCount():
 func startLevel():
 	await get_tree().create_timer(0.9,false).timeout #arbitrary thing but works with transitions in mind so i don't care
 	
-	AchievementFuncs.checkAchievement("SetSail")
+	if !PlayGlobals.areWeFNFFreeDownload and PlayGlobals.levelID == 'SHR':
+		AchievementFuncs.unlockAchievement("SetSail")
 	
 	initiateCountdown()
 

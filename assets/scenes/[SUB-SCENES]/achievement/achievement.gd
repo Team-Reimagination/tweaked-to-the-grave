@@ -1,6 +1,7 @@
 extends Node2D
 
 var achievement;
+var a;
 signal achievementShown;
 
 func start():
@@ -12,6 +13,7 @@ func start():
 	position.x -= $ColorRect.size.x;
 	
 	MenuSounds.playMenuSound("achievement_tier"+str(achievement.tier))
+	$Trophy.texture = load("res://assets/images/achievements/"+a+".png")
 	
 	get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).tween_property(self, "position:x", 0.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
 	
