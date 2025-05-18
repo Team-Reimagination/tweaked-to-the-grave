@@ -6,6 +6,7 @@ extends Parallax2D
 
 var stageSel = load("res://assets/scenes/[SUB-SCENES]/stage_select/stage_select.tscn")
 var myfreindOptions = load("res://assets/scenes/[SUB-SCENES]/options_menu/options_menu.tscn")
+var beautifulgallery = load("res://assets/scenes/[SUB-SCENES]/trophies_menu/trophies_menu.tscn")
 
 var buttonScales = [1.0,1.0,1.0]
 var selectedButton = 0;
@@ -76,8 +77,10 @@ func process_button():
 			$Narration.subtitle = subtitles[selectedButton]
 			PlayGlobals.addSubstate(scene, instance);
 		elif selectedButton == 1:
+			var instance = beautifulgallery.instantiate()
 			$Narration.stream = load("res://assets/sounds/voice/trophies.ogg")
 			$Narration.subtitle = subtitles[selectedButton]
+			PlayGlobals.addSubstate(scene, instance);
 		elif selectedButton == 2:
 			var instance = myfreindOptions.instantiate()
 			$Narration.stream = load("res://assets/sounds/voice/options.ogg")

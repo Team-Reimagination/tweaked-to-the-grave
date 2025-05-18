@@ -5,7 +5,7 @@ var achievementTable = {
 		"ngID": null,
 		"tier": 1,
 		"name": "Setting Sail",
-		"description": "Start the story on any difficulty."
+		"desc": "Start the story on any difficulty."
 	}
 }
 
@@ -67,3 +67,6 @@ func showAchievementSequence():
 	if achievementsToShow.size() != 0:
 		achievementPopup(achievementsToShow[0])
 		achievementsToShow.remove_at(0)
+
+func hasItUnlocked(ach):
+	return SaveSystem.achievementData.gotten.find(ach) != -1
