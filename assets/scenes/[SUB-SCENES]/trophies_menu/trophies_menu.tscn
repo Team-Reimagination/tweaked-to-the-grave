@@ -31,8 +31,8 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_q0kxj"]
 font = ExtResource("4_7wi3y")
-font_size = 24
-outline_size = 12
+font_size = 20
+outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [node name="TrophiesMenu" type="Control"]

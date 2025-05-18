@@ -165,6 +165,9 @@ func levelUpLira():
 	
 	hud.levelUpLira()
 	player.levelUpLira()
+	
+	if liraLevel == PlayGlobals.maxLiraLevel:
+		AchievementFuncs.unlockAchievement("FullPower")
 
 func instantLiraLevel():
 	liraMax = levelUpLiraFormula(liraLevel)

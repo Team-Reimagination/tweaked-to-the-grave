@@ -12,6 +12,12 @@ var achievementTable = {
 		"tier": 2,
 		"name": "Make No Mistake",
 		"desc": "Beat a level without taking any damage."
+	},
+	"FullPower": {
+		"ngID": null,
+		"tier": 3,
+		"name": "Full Of Powers",
+		"desc": "Reach the maximum weapon level on any difficulty that lets you level up."
 	}
 }
 
