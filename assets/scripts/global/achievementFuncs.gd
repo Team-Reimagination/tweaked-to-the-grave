@@ -18,6 +18,42 @@ var achievementTable = {
 		"tier": 3,
 		"name": "Full Of Powers",
 		"desc": "Reach the maximum weapon level on any difficulty that lets you level up."
+	},
+	"CompleteGame1": {
+		"ngID": null,
+		"tier": 3,
+		"name": "The One-Off Hero",
+		"desc": "Finish the story on the \"Terios Mode\" difficulty."
+	},
+	"CompleteGame2": {
+		"ngID": null,
+		"tier": 3,
+		"name": "The Local Hero",
+		"desc": "Finish the story on the \"Cn Y Give Me Life\" difficulty."
+	},
+	"CompleteGame3": {
+		"ngID": null,
+		"tier": 4,
+		"name": "The Great Hero",
+		"desc": "Finish the story on the \"A Meaty Surprise\" difficulty."
+	},
+	"CompleteGame4": {
+		"ngID": null,
+		"tier": 4,
+		"name": "The Valiant Hero",
+		"desc": "Finish the story on the \"Bloodshed\" difficulty."
+	},
+	"CompleteGame5": {
+		"ngID": null,
+		"tier": 5,
+		"name": "The Unstoppable Hero",
+		"desc": "Finish the story on the \"Ultimate Heatstruction\" difficulty."
+	},
+	"AllAchievements": {
+		"ngID": null,
+		"tier": 5,
+		"name": "Truly Six Feet Under",
+		"desc": "Get all achievements."
 	}
 }
 
@@ -47,12 +83,12 @@ func unlockAchievement(ach):
 		var oldAch = achievementsToShow.duplicate()
 		achievementsToShow.push_back(ach)
 		
-		print(achievementsToShow)
-		print(oldAch)
 		if oldAch.size() == 0:
 			achievementPopup(achievementsToShow[0])
 
 	if hadChange: SaveSystem.saveSave()
+	
+	if SaveSystem.achievementData.gotten.size() == achievementTable.keys().size() - 1: unlockAchievement("AllAchievements")
 
 func achievementPopup(ach):
 	var shit = acho.duplicate()

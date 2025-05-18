@@ -118,7 +118,9 @@ func get_tscn_resources_in_directory(path: String) -> Array[String]:
 
 func getCutsceneDestination():
 	if cutsceneID == 'anstart': return "res://assets/scenes/play_state/play_state.tscn"
-	elif cutsceneID == 'aend': return "res://assets/scenes/main_menu/main_menu.tscn"
+	elif cutsceneID == 'aend': 
+		AchievementFuncs.unlockAchievement("CompleteGame"+str(difficulty+1))
+		return "res://assets/scenes/main_menu/main_menu.tscn"
 	elif cutsceneID == 'test': return "res://assets/scenes/play_state/play_state.tscn"
 	else: return "res://assets/scenes/main_menu/main_menu.tscn"
 
