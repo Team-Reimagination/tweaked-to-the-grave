@@ -20,6 +20,7 @@
 [node name="RcrHieroglyphs" type="Node3D"]
 
 [node name="e" type="Area3D" parent="."]
+visible = false
 monitoring = false
 monitorable = false
 script = ExtResource("1_j8bj0")
@@ -48,6 +49,7 @@ visible = false
 
 [node name="ElectricBall" parent="e/Spawn" instance=ExtResource("3_j8bj0")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3.32105, -2.10979, 0)
+speed = 20.0
 lifetime = 10.0
 disabled = true
 
@@ -159,7 +161,6 @@ subtitle = "Power Of The Hieroglyph"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="d" type="Area3D" parent="."]
-visible = false
 monitoring = false
 monitorable = false
 script = ExtResource("9_0rnff")
@@ -188,6 +189,7 @@ visible = false
 
 [node name="ElectricBall" parent="d/Spawn" instance=ExtResource("3_j8bj0")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.19249, -0.706039, 0)
+speed = 20.0
 lifetime = 3.0
 disabled = true
 

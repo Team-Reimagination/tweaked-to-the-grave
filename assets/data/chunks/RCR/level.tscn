@@ -297,23 +297,18 @@ healthLinks = [NodePath(".")]
 isBackgroundObject = false
 
 [node name="Pedestal2" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_06e22")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 16.3614, 25.0749, -197.534)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.9341, 25.0749, -197.534)
 doSpawn = false
 doFall = false
-healthLinks = [NodePath("../Grate6"), NodePath("../Sarcophagus2")]
+healthLinks = [NodePath(""), NodePath("../Sarcophagus2")]
 isBackgroundObject = false
 
 [node name="Pedestal3" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_06e22")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13.1307, 36.3674, -225.263)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -15.0777, 36.3674, -225.263)
 doSpawn = false
 doFall = false
 healthLinks = [NodePath("../Sarcophagus3")]
 isBackgroundObject = false
-
-[node name="Grate6" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("10_hj6v7")]
-transform = Transform3D(11.577, -1.07645, -2.1178, -6.12313, 0.019963, -6.69088, 9.82168, 1.28127, -1.675, 1.93696, 42.1591, -211.981)
-health = 125
-healthLinks = [NodePath("../Pedestal2"), NodePath("../Sarcophagus2")]
 
 [node name="Sarcophagus" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.554579, 26.4124, -24.032)
@@ -322,12 +317,12 @@ health = 50
 healthLinks = [NodePath("../Pedestal")]
 
 [node name="Sarcophagus2" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 16.514, 36.2806, -196.01)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18.0867, 36.2806, -196.01)
 distanceToSpawn = 250.0
-healthLinks = [NodePath("../Pedestal2"), NodePath("../Grate6")]
+healthLinks = [NodePath("../Pedestal2"), NodePath("")]
 
 [node name="Sarcophagus3" parent="2_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13.2503, 47.822, -223.67)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -15.1973, 47.822, -223.67)
 distanceToSpawn = 250.0
 healthLinks = [NodePath("../Pedestal")]
 
@@ -488,6 +483,7 @@ floorHeightAdjustment = true
 yMOD = 1.0
 
 [node name="6_Grates" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+visible = false
 script = ExtResource("2_3uci2")
 nextChunk = NodePath("../6_Sarcophagus")
 chanceWeight = 0.7
@@ -550,18 +546,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.43633, 44.0601, -64.4963)
 [node name="Lira-4" parent="6_Sarcophagus" instance=ExtResource("7_447cd")]
 transform = Transform3D(0.999999, 0, 0.001309, 0, 1, 0, -0.001309, 0, 0.999999, 2.80388, 44.0601, -86.2675)
 
-[node name="Sarcophagus" parent="6_Sarcophagus" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -40.5231, 45.0578, -185.415)
-distanceToSpawn = 300.0
-health = 50
-healthLinks = [NodePath("../../2_Sarcophagus/Pedestal"), null]
-
-[node name="Model" parent="6_Sarcophagus/Sarcophagus" index="0"]
-transform = Transform3D(0.871633, 0, 0.490158, 0, 1, 0, -0.490158, 0, 0.871633, 0, 0.0245319, 0)
-
-[node name="Direction" parent="6_Sarcophagus/Sarcophagus/Spawn/Web" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06375, 1.23593, 15.7908)
-
 [node name="1up" parent="6_Sarcophagus" instance=ExtResource("14_n80gj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6069, 40.032, -23.936)
 
@@ -583,14 +567,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -244.825)
 transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, 0.704676, 21.97, -120.465)
 doSpawn = false
 doFall = false
-healthLinks = [NodePath("../Sarcophagus"), NodePath("../Sarcophagus2"), NodePath("../Sarcophagus3"), NodePath("../Sarcophagus4")]
+healthLinks = [NodePath("../Sarcophagus"), NodePath("../Sarcophagus2"), NodePath(""), NodePath("")]
 isBackgroundObject = false
 
 [node name="Sarcophagus" parent="7" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.44542, 34.4439, -115.273)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.44542, 34.4439, -120.746)
 distanceToSpawn = 200.0
 health = 50
-healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus2"), NodePath("../Sarcophagus3"), NodePath("../Sarcophagus4")]
+healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus2"), NodePath(""), NodePath("")]
 
 [node name="Model" parent="7/Sarcophagus" index="0"]
 transform = Transform3D(0.905332, 0, 0.424705, 0, 1, 0, -0.424705, 0, 0.905332, 0, 0.0245319, 0)
@@ -599,46 +583,16 @@ transform = Transform3D(0.905332, 0, 0.424705, 0, 1, 0, -0.424705, 0, 0.905332, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22945, 0.556055, 20.012)
 
 [node name="Sarcophagus2" parent="7" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.55458, 34.4439, -115.273)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.55458, 34.4439, -120.746)
 distanceToSpawn = 200.0
 health = 50
-healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus"), NodePath("../Sarcophagus3"), NodePath("../Sarcophagus4")]
+healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus"), NodePath(""), NodePath("")]
 
 [node name="Model" parent="7/Sarcophagus2" index="0"]
 transform = Transform3D(0.982251, 0, -0.18757, 0, 1, 0, 0.18757, 0, 0.982251, 0, 0.0245319, 0)
 
 [node name="Direction" parent="7/Sarcophagus2/Spawn/Web" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93751, 0.556055, 24.3957)
-
-[node name="Sarcophagus3" parent="7" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.44542, 34.4439, -125.273)
-distanceToSpawn = 50.0
-health = 50
-healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus"), NodePath("../Sarcophagus2"), NodePath("../Sarcophagus4")]
-
-[node name="Model" parent="7/Sarcophagus3" index="0"]
-transform = Transform3D(-0.986723, 0, 0.162413, 0, 1, 0, -0.162413, 0, -0.986723, 0, 0.0245319, 0)
-
-[node name="Web" parent="7/Sarcophagus3/Spawn" index="0"]
-speed = 50.0
-
-[node name="Direction" parent="7/Sarcophagus3/Spawn/Web" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67677, 0.556055, -6.53458)
-
-[node name="Sarcophagus4" parent="7" node_paths=PackedStringArray("healthLinks") instance=ExtResource("3_3uci2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.55458, 34.4439, -125.273)
-distanceToSpawn = 50.0
-health = 50
-healthLinks = [NodePath("../Pedestal"), NodePath("../Sarcophagus"), NodePath("../Sarcophagus2"), NodePath("../Sarcophagus3")]
-
-[node name="Model" parent="7/Sarcophagus4" index="0"]
-transform = Transform3D(-0.851489, 0, -0.524372, 0, 1, 0, 0.524372, 0, -0.851489, 0, 0.0245319, 0)
-
-[node name="Web" parent="7/Sarcophagus4/Spawn" index="0"]
-speed = 50.0
-
-[node name="Direction" parent="7/Sarcophagus4/Spawn/Web" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58079, 0.556055, -8.32365)
 
 [node name="Lira-2" parent="7" instance=ExtResource("7_447cd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.9987, -119.905)
@@ -850,16 +804,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44863, 42.7371, -53.0576)
 [editable path="4/Ra Cube4"]
 [editable path="4/Ra Cube5"]
 [editable path="5/Eye Cube"]
-[editable path="6_Sarcophagus/Sarcophagus"]
-[editable path="6_Sarcophagus/Sarcophagus/Spawn/Web"]
 [editable path="7/Sarcophagus"]
 [editable path="7/Sarcophagus/Spawn/Web"]
 [editable path="7/Sarcophagus2"]
 [editable path="7/Sarcophagus2/Spawn/Web"]
-[editable path="7/Sarcophagus3"]
-[editable path="7/Sarcophagus3/Spawn/Web"]
-[editable path="7/Sarcophagus4"]
-[editable path="7/Sarcophagus4/Spawn/Web"]
 [editable path="9/Ra Cube"]
 [editable path="9/Ra Cube2"]
 [editable path="10/Sarcophagus"]
