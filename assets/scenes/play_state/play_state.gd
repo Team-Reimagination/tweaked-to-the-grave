@@ -367,7 +367,7 @@ func _process(delta: float) -> void:
 		
 	#WARNING
 	$Audio/Warning.volume_db = lerpf($Audio/Warning.volume_db, -10 if isWarning else -80, 0.3)
-	if (player_health == 1 or lives == 1) and not isWarning and not hasBitchWon:
+	if (player_health == 1 or lives == 1) and not isWarning and not hasBitchWon and SaveSystem.optionsData.get("gameplay_warningalarm", true):
 		isWarning = true
 		$Audio/Warning.showSubtitles()
 		

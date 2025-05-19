@@ -1,19 +1,5 @@
 extends Node
 
-var possibleResolutions = [ ## every popular 4:3 game resolutions in increasing order
-	Vector2(160, 120),
-	Vector2(320, 240),
-	Vector2(640, 480),
-	Vector2(800, 600),
-	Vector2(1024, 768),
-	Vector2(1152, 864),
-	Vector2(1280, 960),
-	Vector2(2048, 1536),
-	Vector2(3200, 2400),
-	Vector2(4096, 3072),
-	Vector2(6400, 4800)
-]
-
 var optionsData = {} ## will be automatically filled with values on loading save
 var _defaultOptionsData = { ## enter the options you want to add
 	"video_resolution" = 0, ##PC ONLY
@@ -28,7 +14,112 @@ var _defaultOptionsData = { ## enter the options you want to add
 	"audio_voicelines" = 1.0,
 	"audio_subtitles" = 0,
 	
-	"gameplay_autofire" = false
+	"gameplay_autofire" = false,
+	"gameplay_warningalarm" = true,
+	"gameplay_lirabonus" = true
+}
+
+var possibleResolutions = [ ## every popular 4:3 game resolutions in increasing order
+	Vector2(160, 120),
+	Vector2(320, 240),
+	Vector2(640, 480),
+	Vector2(800, 600),
+	Vector2(1024, 768),
+	Vector2(1152, 864),
+	Vector2(1280, 960),
+	Vector2(2048, 1536),
+	Vector2(3200, 2400),
+	Vector2(4096, 3072),
+	Vector2(6400, 4800)
+]
+
+var optionDefines = {
+	"video_resolution": {
+		"name": "Resolution",
+		"type": 2,
+		"pc": true,
+		"options": ["160x120",
+					"320x240",
+					"640x480",
+					"800x600",
+					"1024x768",
+					"1152x864",
+					"1280x960",
+					"2048x1536",
+					"3200x2400",
+					"4096x3072",
+					"6400x4800"]
+	},
+	"video_fullscreen": {
+		"name": "Fullscreen",
+		"type": 1,
+		"pc": true
+	},
+	"video_passion": {
+		"name": "Passion Effects",
+		"type": 1
+	},
+	"video_reducedmotions": {
+		"name": "Reduced Motions",
+		"type": 1
+	},
+	"audio_master": {
+		"name": "Master Volume",
+		"type": 0,
+		"min": 0.0,
+		"max": 1.0,
+		"step": 0.01,
+		"label": '%'
+	},
+	"audio_ambience": {
+		"name": "Ambience Volume",
+		"type": 0,
+		"min": 0.0,
+		"max": 1.0,
+		"step": 0.01,
+		"label": '%'
+	},
+	"audio_music": {
+		"name": "Music Volume",
+		"type": 0,
+		"min": 0.0,
+		"max": 1.0,
+		"step": 0.01,
+		"label": '%'
+	},
+	"audio_sfx": {
+		"name": "SFX Volume",
+		"type": 0,
+		"min": 0.0,
+		"max": 1.0,
+		"step": 0.01,
+		"label": '%'
+	},
+	"audio_voicelines": {
+		"name": "Voiceline Volume",
+		"type": 0,
+		"min": 0.0,
+		"max": 1.0,
+		"step": 0.01,
+		"label": '%'
+	},
+	"audio_subtitles": {
+		"name": "Subtitles",
+		"type": 2,
+		"options": ["Off", "Voicelines", "SFX", "All"]
+	},
+	"gameplay_autofire": {
+		"name": "Auto-Fire",
+		"type": 1
+	},
+	"gameplay_warningalarm": {
+		"name": "Low Health Warning",
+		"type": 1
+	},
+	"gameplay_lirabonus": {
+		"name": "Lira Bonus Prompt",
+		"type": 1
+	}
 }
 
 var achievementData = {}

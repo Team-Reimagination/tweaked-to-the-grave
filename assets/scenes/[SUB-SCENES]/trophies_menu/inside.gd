@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-var selectedColumn = 0
-var selectedRow = 0
+static var selectedColumn = 0
+static var selectedRow = 0
 
 @onready var substate = $".."
 

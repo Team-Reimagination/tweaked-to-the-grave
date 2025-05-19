@@ -11,4 +11,5 @@ func showSubtitles():
 	if (subtitle != "" 
 	and (int(SaveSystem.optionsData.get("audio_subtitles", 0)) == 3 
 	or (int(SaveSystem.optionsData.get("audio_subtitles", 0)) == 2) and bus == "SFX"
-	or (int(SaveSystem.optionsData.get("audio_subtitles", 0)) == 1 and bus == "Voicelines"))): Subtitles.addSubtitle(subtitle)
+	or (int(SaveSystem.optionsData.get("audio_subtitles", 0)) == 1 and bus == "Voicelines"))):
+		Subtitles.addSubtitle(subtitle)

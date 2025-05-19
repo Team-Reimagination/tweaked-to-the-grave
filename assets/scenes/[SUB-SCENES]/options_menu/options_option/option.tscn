@@ -1,0 +1,201 @@
+[gd_scene load_steps=13 format=3 uid="uid://bnlbyu2f3diod"]
+
+[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="1_crpyo"]
+[ext_resource type="Script" uid="uid://cowa6fuxc6j02" path="res://assets/scenes/[SUB-SCENES]/options_menu/options_option/option.gd" id="1_h5ylm"]
+[ext_resource type="Texture2D" uid="uid://km777imgrgpg" path="res://assets/images/buttons/general/scroll_grab.png" id="3_bwfib"]
+[ext_resource type="Texture2D" uid="uid://bc6374bbi8tof" path="res://assets/images/buttons/general/scroll_bg.png" id="4_johql"]
+[ext_resource type="Script" uid="uid://de0a4e14oxoiu" path="res://assets/scripts/funcs/optionMetadata.gd" id="5_johql"]
+[ext_resource type="Texture2D" uid="uid://d1v1yw8v2sii4" path="res://assets/images/buttons/general/checkbox1.png" id="6_bwfib"]
+[ext_resource type="Texture2D" uid="uid://bav0b2ubq8ynd" path="res://assets/images/buttons/general/checkbox2.png" id="7_johql"]
+[ext_resource type="Texture2D" uid="uid://ch3rdb11om0r4" path="res://assets/images/buttons/general/arrow.png" id="8_bwfib"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5ylm"]
+font = ExtResource("1_crpyo")
+font_size = 32
+outline_size = 16
+outline_color = Color(0.156863, 0.184314, 0.309804, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jich8"]
+content_margin_left = 14.0
+content_margin_right = 14.0
+texture = ExtResource("4_johql")
+texture_margin_left = 13.0
+texture_margin_right = 13.0
+expand_margin_top = 12.0
+expand_margin_bottom = 12.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_johql"]
+font = ExtResource("1_crpyo")
+font_size = 24
+outline_size = 12
+outline_color = Color(0.156863, 0.184314, 0.309804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jich8"]
+font = ExtResource("1_crpyo")
+font_size = 32
+outline_size = 16
+outline_color = Color(0.156863, 0.184314, 0.309804, 1)
+
+[node name="Option" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h5ylm")
+
+[node name="Size" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -511.0
+offset_top = -36.0
+offset_right = 511.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+border_width = 2.0
+
+[node name="Rectangle" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -459.0
+offset_top = -36.0
+offset_right = 459.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+border_width = 2.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -443.0
+offset_top = -30.0
+offset_right = 111.0
+offset_bottom = 36.0
+text = "Skibidi Toilet"
+label_settings = SubResource("LabelSettings_h5ylm")
+vertical_alignment = 1
+
+[node name="Tech" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="Tech"]
+
+[node name="Setting" type="HSlider" parent="Tech/0"]
+offset_left = 111.0
+offset_top = -18.0
+offset_right = 441.0
+offset_bottom = 18.0
+mouse_default_cursor_shape = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("3_bwfib")
+theme_override_icons/grabber_highlight = ExtResource("3_bwfib")
+theme_override_icons/grabber_disabled = ExtResource("3_bwfib")
+theme_override_styles/slider = SubResource("StyleBoxTexture_jich8")
+max_value = 1.0
+step = 0.01
+ticks_on_borders = true
+script = ExtResource("5_johql")
+optionValue = "audio_sfx"
+metadata/ID = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Number" type="Label" parent="Tech/0"]
+offset_left = -143.0
+offset_top = -31.0
+offset_right = 81.0
+offset_bottom = 35.0
+text = "100%"
+label_settings = SubResource("LabelSettings_johql")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="1" type="Node2D" parent="Tech"]
+
+[node name="Setting" type="TextureButton" parent="Tech/1"]
+texture_filter = 1
+offset_left = 404.0
+offset_top = -34.0
+offset_right = 451.0
+offset_bottom = 20.0
+pivot_offset = Vector2(23.5, 33.63)
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("6_bwfib")
+texture_pressed = ExtResource("7_johql")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://assets/images/menu/buttons",
+"o_name": "checkbox",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "D:/GODOT/projectFiles - TTTG/2d/checkbox.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "2dec9fc98fae370b0d12ee481cadc85f"
+metadata/ID = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="2" type="Node2D" parent="Tech"]
+
+[node name="Left" type="TextureButton" parent="Tech/2"]
+anchors_preset = -1
+anchor_left = -3.15
+anchor_top = 1.8
+anchor_right = -3.15
+anchor_bottom = 1.8
+offset_left = -19.0
+offset_top = -22.0
+offset_right = 71.0
+offset_bottom = 22.0
+rotation = -1.57079
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(45, 22)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_bwfib")
+stretch_mode = 0
+metadata/ID = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Right" type="TextureButton" parent="Tech/2"]
+anchors_preset = -1
+anchor_left = -3.15
+anchor_top = 1.8
+anchor_right = -3.15
+anchor_bottom = 1.8
+offset_left = 387.0
+offset_top = -23.0
+offset_right = 477.0
+offset_bottom = 21.0
+rotation = 1.57079
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(45, 22)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_bwfib")
+stretch_mode = 0
+metadata/ID = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Number" type="Label" parent="Tech/2"]
+offset_left = 5.0
+offset_top = -31.0
+offset_right = 453.0
+offset_bottom = 35.0
+text = "100%"
+label_settings = SubResource("LabelSettings_jich8")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="Size" to="." method="_on_size_mouse_entered"]

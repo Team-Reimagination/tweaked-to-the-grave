@@ -214,6 +214,8 @@ func bonusing(type, aslira):
 	scene.addLira(aslira)
 	$"../Audio/Lira".subtitle_play()
 	
+	if !SaveSystem.optionsData.get("gameplay_lirabonus", true): return
+	
 	var boner : Label = $BaseBonus.duplicate()
 	BonusGroup.add_child(boner)
 	boner.visible = true

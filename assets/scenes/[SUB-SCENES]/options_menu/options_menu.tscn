@@ -1,14 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bgmqcnoctism4"]
+[gd_scene load_steps=9 format=3 uid="uid://bgmqcnoctism4"]
 
 [ext_resource type="Script" uid="uid://xcn1tduwunwp" path="res://assets/scenes/[SUB-SCENES]/options_menu/options_menu.gd" id="1_fgg3q"]
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="2_sqiki"]
 [ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/backgrounds/grave-rect.png" id="3_8ldte"]
-[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="4_5al15"]
-[ext_resource type="Texture2D" uid="uid://dir40m6t0oavr" path="res://assets/images/buttons/general/scroll_grab-big.png" id="5_8ldte"]
-[ext_resource type="Script" uid="uid://de0a4e14oxoiu" path="res://assets/scripts/funcs/optionMetadata.gd" id="6_b3jsy"]
-[ext_resource type="Texture2D" uid="uid://docief6txqj7w" path="res://assets/images/buttons/general/scroll_bg-big.png" id="6_ugvmj"]
-[ext_resource type="Texture2D" uid="uid://bw52fajw54wpc" path="res://assets/images/buttons/general/checkbox-big1.png" id="8_b3jsy"]
-[ext_resource type="Texture2D" uid="uid://gbckdfaltpqp" path="res://assets/images/buttons/general/checkbox-big2.png" id="9_oqvl8"]
+[ext_resource type="Script" uid="uid://bs5gir1jklj8y" path="res://assets/scenes/[SUB-SCENES]/options_menu/categories.gd" id="4_oqvl8"]
+[ext_resource type="Texture2D" uid="uid://ch3rdb11om0r4" path="res://assets/images/buttons/general/arrow.png" id="5_eiikj"]
+[ext_resource type="Texture2D" uid="uid://dpurenv558o3h" path="res://assets/images/menu/stageselect/fade.png" id="6_owhe3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
 resource_local_to_scene = true
@@ -24,31 +21,8 @@ texture_margin_bottom = 80.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="LabelSettings" id="LabelSettings_7vle8"]
-font = ExtResource("4_5al15")
-font_size = 48
-outline_size = 8
-outline_color = Color(0.156863, 0.184314, 0.309804, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oqvl8"]
-content_margin_left = 14.0
-content_margin_right = 14.0
-texture = ExtResource("6_ugvmj")
-texture_margin_left = 24.0
-texture_margin_right = 24.0
-expand_margin_top = 27.0
-expand_margin_bottom = 28.0
-axis_stretch_horizontal = 1
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8ldte"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ugvmj"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b3jsy"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oqvl8"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_eiikj"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_058qp"]
+blend_mode = 1
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -83,318 +57,111 @@ border_width = 2.0
 layer = 5
 offset = Vector2(640, 480)
 transform = Transform2D(1, 0, 0, 1, 640, 480)
+script = ExtResource("4_oqvl8")
 
-[node name="audio_master" type="Node" parent="Inside"]
+[node name="Categories" type="Control" parent="Inside"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -356.0
+offset_top = -357.0
+offset_right = 371.0
+offset_bottom = -243.0
+pivot_offset = Vector2(363, 57)
 
-[node name="SettingLabel" type="Label" parent="Inside/audio_master"]
-offset_left = -465.0
-offset_top = -433.0
-offset_right = -118.0
-offset_bottom = -367.0
-text = "Master Volume"
-label_settings = SubResource("LabelSettings_7vle8")
-vertical_alignment = 3
+[node name="Group" type="Node2D" parent="Inside/Categories"]
 
-[node name="Setting" type="HSlider" parent="Inside/audio_master"]
-offset_left = 152.0
-offset_top = -446.0
-offset_right = 462.0
-offset_bottom = -359.0
-mouse_default_cursor_shape = 2
-theme_override_constants/center_grabber = 1
-theme_override_icons/grabber = ExtResource("5_8ldte")
-theme_override_icons/grabber_highlight = ExtResource("5_8ldte")
-theme_override_icons/grabber_disabled = ExtResource("5_8ldte")
-theme_override_styles/slider = SubResource("StyleBoxTexture_oqvl8")
-max_value = 1.0
-step = 0.01
-ticks_on_borders = true
-script = ExtResource("6_b3jsy")
-optionValue = "audio_master"
-metadata/ID = 4
+[node name="CategoryButtons" type="Node2D" parent="Inside"]
+position = Vector2(0, 32)
 
-[node name="Rectangle" type="ReferenceRect" parent="Inside/audio_master/Setting"]
-visible = false
-layout_mode = 0
-offset_left = -86.0
-offset_top = -3.0
-offset_right = 125.0
-offset_bottom = 41.0
-mouse_filter = 1
-
-[node name="audio_sfx" type="Node" parent="Inside"]
-
-[node name="SettingLabel" type="Label" parent="Inside/audio_sfx"]
-offset_left = -465.0
-offset_top = -326.0
-offset_right = -179.0
-offset_bottom = -260.0
-text = "SFX Volume"
-label_settings = SubResource("LabelSettings_7vle8")
-vertical_alignment = 3
-
-[node name="Setting" type="HSlider" parent="Inside/audio_sfx"]
-offset_left = 152.0
-offset_top = -340.0
-offset_right = 462.0
-offset_bottom = -253.0
-mouse_default_cursor_shape = 2
-theme_override_constants/center_grabber = 1
-theme_override_icons/grabber = ExtResource("5_8ldte")
-theme_override_icons/grabber_highlight = ExtResource("5_8ldte")
-theme_override_icons/grabber_disabled = ExtResource("5_8ldte")
-theme_override_styles/slider = SubResource("StyleBoxTexture_oqvl8")
-max_value = 1.0
-step = 0.01
-ticks_on_borders = true
-script = ExtResource("6_b3jsy")
-optionValue = "audio_master"
-metadata/ID = 4
-
-[node name="Rectangle" type="ReferenceRect" parent="Inside/audio_sfx/Setting"]
-visible = false
-layout_mode = 0
-offset_left = -86.0
-offset_top = -3.0
-offset_right = 125.0
-offset_bottom = 41.0
-mouse_filter = 1
-
-[node name="audio_music" type="Node" parent="Inside"]
-
-[node name="SettingLabel" type="Label" parent="Inside/audio_music"]
-offset_left = -465.0
-offset_top = -222.0
-offset_right = -157.0
-offset_bottom = -156.0
-text = "Music Volume"
-label_settings = SubResource("LabelSettings_7vle8")
-vertical_alignment = 3
-
-[node name="Setting" type="HSlider" parent="Inside/audio_music"]
-offset_left = 152.0
-offset_top = -235.0
-offset_right = 462.0
-offset_bottom = -148.0
-mouse_default_cursor_shape = 2
-theme_override_constants/center_grabber = 1
-theme_override_icons/grabber = ExtResource("5_8ldte")
-theme_override_icons/grabber_highlight = ExtResource("5_8ldte")
-theme_override_icons/grabber_disabled = ExtResource("5_8ldte")
-theme_override_styles/slider = SubResource("StyleBoxTexture_oqvl8")
-max_value = 1.0
-step = 0.01
-ticks_on_borders = true
-script = ExtResource("6_b3jsy")
-optionValue = "audio_master"
-metadata/ID = 4
-
-[node name="Rectangle" type="ReferenceRect" parent="Inside/audio_music/Setting"]
-visible = false
-layout_mode = 0
-offset_left = -86.0
-offset_top = -3.0
-offset_right = 125.0
-offset_bottom = 41.0
-mouse_filter = 1
-
-[node name="audio_voicelines" type="Node" parent="Inside"]
-
-[node name="SettingLabel" type="Label" parent="Inside/audio_voicelines"]
-offset_left = -465.0
-offset_top = -115.0
-offset_right = -64.0
-offset_bottom = -49.0
-text = "Voicelines Volume"
-label_settings = SubResource("LabelSettings_7vle8")
-vertical_alignment = 3
-
-[node name="Setting" type="HSlider" parent="Inside/audio_voicelines"]
-offset_left = 152.0
-offset_top = -127.0
-offset_right = 462.0
-offset_bottom = -40.0
-mouse_default_cursor_shape = 2
-theme_override_constants/center_grabber = 1
-theme_override_icons/grabber = ExtResource("5_8ldte")
-theme_override_icons/grabber_highlight = ExtResource("5_8ldte")
-theme_override_icons/grabber_disabled = ExtResource("5_8ldte")
-theme_override_styles/slider = SubResource("StyleBoxTexture_oqvl8")
-max_value = 1.0
-step = 0.01
-ticks_on_borders = true
-script = ExtResource("6_b3jsy")
-optionValue = "audio_master"
-metadata/ID = 4
-
-[node name="Rectangle" type="ReferenceRect" parent="Inside/audio_voicelines/Setting"]
-visible = false
-layout_mode = 0
-offset_left = -86.0
-offset_top = -3.0
-offset_right = 125.0
-offset_bottom = 41.0
-mouse_filter = 1
-
-[node name="audio_ambience" type="Node" parent="Inside"]
-
-[node name="SettingLabel" type="Label" parent="Inside/audio_ambience"]
-offset_left = -465.0
-offset_top = -13.0
-offset_right = -64.0
-offset_bottom = 53.0
-text = "Ambience Volume"
-label_settings = SubResource("LabelSettings_7vle8")
-vertical_alignment = 3
-
-[node name="Setting" type="HSlider" parent="Inside/audio_ambience"]
-offset_left = 152.0
-offset_top = -25.0
-offset_right = 462.0
-offset_bottom = 62.0
-mouse_default_cursor_shape = 2
-theme_override_constants/center_grabber = 1
-theme_override_icons/grabber = ExtResource("5_8ldte")
-theme_override_icons/grabber_highlight = ExtResource("5_8ldte")
-theme_override_icons/grabber_disabled = ExtResource("5_8ldte")
-theme_override_styles/slider = SubResource("StyleBoxTexture_oqvl8")
-max_value = 1.0
-step = 0.01
-ticks_on_borders = true
-script = ExtResource("6_b3jsy")
-optionValue = "audio_ambience"
-metadata/ID = 4
-
-[node name="Rectangle" type="ReferenceRect" parent="Inside/audio_ambience/Setting"]
-visible = false
-layout_mode = 0
-offset_left = -86.0
-offset_top = -3.0
-offset_right = 125.0
-offset_bottom = 41.0
-mouse_filter = 1
-
-[node name="audio_subtitles" type="Node" parent="Inside"]
-
-[node name="SettingLabel" type="Label" parent="Inside/audio_subtitles"]
-offset_left = -465.0
-offset_top = 120.0
-offset_right = -197.0
-offset_bottom = 186.0
-text = "Subtitles"
-label_settings = SubResource("LabelSettings_7vle8")
-vertical_alignment = 3
-
-[node name="Setting" type="ItemList" parent="Inside/audio_subtitles"]
-offset_left = 166.0
-offset_top = 91.0
-offset_right = 425.0
-offset_bottom = 211.0
-allow_reselect = true
-item_count = 4
-item_0/text = "Off"
-item_1/text = "Voicelines"
-item_2/text = "Closed Captions"
-item_3/text = "Everything"
-
-[node name="video_reducedmotions" type="Node" parent="Inside"]
-
-[node name="SettingLabel" type="Label" parent="Inside/video_reducedmotions"]
-offset_left = -465.0
-offset_top = 265.0
-offset_right = -95.0
-offset_bottom = 331.0
-text = "Reduced Motions"
-label_settings = SubResource("LabelSettings_7vle8")
-vertical_alignment = 3
-
-[node name="Setting" type="TextureButton" parent="Inside/video_reducedmotions"]
-texture_filter = 1
-offset_left = 257.0
-offset_top = 229.0
-offset_right = 347.0
-offset_bottom = 337.0
-pivot_offset = Vector2(23.5, 33.63)
-mouse_default_cursor_shape = 2
-toggle_mode = true
-texture_normal = ExtResource("8_b3jsy")
-texture_pressed = ExtResource("9_oqvl8")
-metadata/_aseprite_wizard_interface_config_ = {
-"output_section": true,
-"pending_changes": {}
-}
-metadata/_aseprite_wizard_config_ = {
-"embed_tex": false,
-"layers": [],
-"o_ex_p": "",
-"o_folder": "res://assets/images/menu/buttons",
-"o_name": "checkbox",
-"only_visible": false,
-"should_round_fps": true,
-"slice": "",
-"source": "D:/GODOT/projectFiles - TTTG/2d/checkbox.aseprite"
-}
-metadata/_aseprite_wizard_source_file_hash_ = "2dec9fc98fae370b0d12ee481cadc85f"
-metadata/ID = 2
-
-[node name="gameplay_autofire" type="Node" parent="Inside"]
-
-[node name="SettingLabel" type="Label" parent="Inside/gameplay_autofire"]
-offset_left = -465.0
-offset_top = 387.0
-offset_right = -197.0
-offset_bottom = 453.0
-text = "Auto-fire"
-label_settings = SubResource("LabelSettings_7vle8")
-vertical_alignment = 3
-
-[node name="Setting" type="TextureButton" parent="Inside/gameplay_autofire"]
-texture_filter = 1
-offset_left = 259.0
-offset_top = 357.0
-offset_right = 349.0
-offset_bottom = 465.0
-pivot_offset = Vector2(23.5, 33.63)
-mouse_default_cursor_shape = 2
-toggle_mode = true
-texture_normal = ExtResource("8_b3jsy")
-texture_pressed = ExtResource("9_oqvl8")
-metadata/_aseprite_wizard_interface_config_ = {
-"output_section": true,
-"pending_changes": {}
-}
-metadata/_aseprite_wizard_config_ = {
-"embed_tex": false,
-"layers": [],
-"o_ex_p": "",
-"o_folder": "res://assets/images/menu/buttons",
-"o_name": "checkbox",
-"only_visible": false,
-"should_round_fps": true,
-"slice": "",
-"source": "D:/GODOT/projectFiles - TTTG/2d/checkbox.aseprite"
-}
-metadata/_aseprite_wizard_source_file_hash_ = "2dec9fc98fae370b0d12ee481cadc85f"
-metadata/ID = 2
-
-[node name="TextureButton" type="TextureButton" parent="Inside"]
-offset_left = -178.0
-offset_top = 109.0
-offset_right = 89.0
-offset_bottom = 195.0
-texture_normal = SubResource("PlaceholderTexture2D_8ldte")
-texture_pressed = SubResource("PlaceholderTexture2D_ugvmj")
-texture_hover = SubResource("PlaceholderTexture2D_b3jsy")
-texture_disabled = SubResource("PlaceholderTexture2D_oqvl8")
-texture_focused = SubResource("PlaceholderTexture2D_eiikj")
-
-[node name="Label" type="Label" parent="Inside/TextureButton"]
-layout_mode = 1
+[node name="Left" type="TextureButton" parent="Inside/CategoryButtons"]
 anchors_preset = -1
-anchor_right = 0.509
-anchor_bottom = 0.884
-offset_right = 0.0970001
-offset_bottom = -0.0240021
-text = "nuke the save"
+anchor_left = -3.15
+anchor_top = 1.8
+anchor_right = -3.15
+anchor_bottom = 1.8
+offset_left = -439.0
+offset_top = -356.0
+offset_right = -349.0
+offset_bottom = -312.0
+rotation = -1.57079
+pivot_offset = Vector2(45, 22)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_eiikj")
+stretch_mode = 0
+metadata/ID = 0
+
+[node name="Right" type="TextureButton" parent="Inside/CategoryButtons"]
+anchors_preset = -1
+anchor_left = -3.15
+anchor_top = 1.8
+anchor_right = -3.15
+anchor_bottom = 1.8
+offset_left = 366.0
+offset_top = -356.0
+offset_right = 456.0
+offset_bottom = -312.0
+rotation = 1.57079
+pivot_offset = Vector2(45, 22)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_eiikj")
+stretch_mode = 0
+metadata/ID = 1
+
+[node name="Fade" type="Sprite2D" parent="Inside"]
+position = Vector2(-349, -298)
+scale = Vector2(1, 0.446735)
+texture = ExtResource("6_owhe3")
+
+[node name="Fade2" type="Sprite2D" parent="Inside"]
+position = Vector2(364, -299.815)
+rotation = -3.14159
+scale = Vector2(1, 0.40567)
+texture = ExtResource("6_owhe3")
+
+[node name="Separator" type="Line2D" parent="Inside"]
+position = Vector2(-425.315, -220)
+rotation = -1.57079
+scale = Vector2(-0.25, 0.952341)
+points = PackedVector2Array(0, 0, 0, 910)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="OptionColor" type="ColorRect" parent="Inside"]
+material = SubResource("CanvasItemMaterial_058qp")
+offset_top = -300.0
+offset_bottom = -300.0
+color = Color(0.97, 0.759833, 0, 0.258824)
+
+[node name="Options" type="Control" parent="Inside"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -510.0
+offset_top = -195.0
+offset_right = 510.0
+offset_bottom = 345.0
+
+[node name="video" type="Node2D" parent="Inside/Options"]
+
+[node name="audio" type="Node2D" parent="Inside/Options"]
+
+[node name="gameplay" type="Node2D" parent="Inside/Options"]
+
+[node name="controls" type="Node2D" parent="Inside/Options"]
+
+[node name="misc" type="Node2D" parent="Inside/Options"]
+
+[node name="Fade3" type="Sprite2D" parent="Inside"]
+position = Vector2(-1, -189)
+rotation = 1.57079
+scale = Vector2(1.03592, 3.33643)
+texture = ExtResource("6_owhe3")
+
+[node name="Fade4" type="Sprite2D" parent="Inside"]
+position = Vector2(-1, 338)
+rotation = -1.57079
+scale = Vector2(1.03592, 3.33643)
+texture = ExtResource("6_owhe3")
 
 [editable path="Base"]
