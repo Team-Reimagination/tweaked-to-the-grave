@@ -75,25 +75,29 @@ func tickSound(value, _obj):
 
 
 func scalerue_selector(b):
-	_on_size_mouse_entered()
-	scalar[0 if b == $"Tech/2/Left" else 1] = 0.9 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 0.7
-	
-	selectorButtons[0 if b == $"Tech/2/Left" else 1].modulate = Color(1.0,1.0,1.0)
-	selectorButtons[1 if b == $"Tech/2/Left" else 0].modulate = Color(0.4,0.4,0.4)
+	if substate.canInput:
+		_on_size_mouse_entered()
+		scalar[0 if b == $"Tech/2/Left" else 1] = 0.9 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 0.7
+		
+		selectorButtons[0 if b == $"Tech/2/Left" else 1].modulate = Color(1.0,1.0,1.0)
+		selectorButtons[1 if b == $"Tech/2/Left" else 0].modulate = Color(0.4,0.4,0.4)
 
 func unscalerue_selector(b):
-	b.modulate = Color(1.0,1.0,1.0)
-	
-	for a in scalar.size():
-		scalar[a] = 0.7
-		selectorButtons[a].modulate = Color(1.0,1.0,1.0)
+	if substate.canInput:
+		b.modulate = Color(1.0,1.0,1.0)
+		
+		for a in scalar.size():
+			scalar[a] = 0.7
+			selectorButtons[a].modulate = Color(1.0,1.0,1.0)
 
 func scalerue(b):
-	_on_size_mouse_entered()
-	scalar[0] = 1.3 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 1.0
+	if substate.canInput:
+		_on_size_mouse_entered()
+		scalar[0] = 1.3 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 1.0
 
 func unscalerue(b):
-	scalar[0] = 1.0
+	if substate.canInput:
+		scalar[0] = 1.0
 	
 func areWeEvenSelected(): return selection == parenter.curSelected and category == parenter.curCategory
 
@@ -127,7 +131,8 @@ func _process(delta):
 				selectorMovement(-1 if Input.is_action_just_pressed("Left_UI") else 1)
 
 func mouse_button(button):
-	selectorMovement(-1 if button == $"Tech/2/Left" else 1)
+	if substate.canInput:
+		selectorMovement(-1 if button == $"Tech/2/Left" else 1)
 
 func selectorMovement(dir):
 	selectorSetting += dir
@@ -169,11 +174,12 @@ func onvaluechange(setting:String, value):
 	substate.onvaluechange(setting, value)
 
 func _on_size_mouse_entered() -> void:
-	parenter.mouseBtn = -1
-	parenter.updateCatButtonSelection()
-			
-	if parenter.curSelected != selection:
-		parenter.curSelected = selection
-		parenter.boxAlpha = 1.0
+	if substate.canInput:
+		parenter.mouseBtn = -1
+		parenter.updateCatButtonSelection()
 				
-		MenuSounds.playMenuSound("switch")
+		if parenter.curSelected != selection:
+			parenter.curSelected = selection
+			parenter.boxAlpha = 1.0
+					
+			MenuSounds.playMenuSound("switch")

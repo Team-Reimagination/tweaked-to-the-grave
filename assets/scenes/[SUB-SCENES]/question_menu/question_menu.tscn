@@ -66,8 +66,7 @@ offset_left = -215.0
 offset_top = -74.0
 offset_right = 214.0
 offset_bottom = 70.0
-text = "Are you sure about this? You won't be
-able to come back to this save.
+text = "Are you sure about this? There's no coming back after this.
 
 ACCEPT/Left click to continue
 BACK/Right click to deny"

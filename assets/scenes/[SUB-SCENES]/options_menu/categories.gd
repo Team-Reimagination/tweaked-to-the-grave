@@ -46,14 +46,16 @@ func _ready() -> void:
 		
 		var categoro : Node2D = catToCat.get(a.split("_")[0])
 		
-		opti.substate = substate
 		opti.optionToLookInto = a
-		opti.selection = categoro.get_children().size()+1
-		opti.category = $Options.get_children().find(categoro)
 		
-		categoro.add_child(opti)
-		opti.position.x += opti.get_node("./Size").size.x / 2.0
-		opti.position.y += opti.get_node("./Size").size.y / 2.0 + (opti.get_node("./Size").size.y + 10) * (categoro.get_children().size() - 1) + 20
+		addOption(opti, categoro)
+	
+	for ass in 4:
+		var opti = load("res://assets/scenes/[SUB-SCENES]/options_menu/options_option/option_button.tscn").instantiate()
+		
+		var categoro : Node2D = $Options/misc
+		
+		addOption(opti, categoro)
 	
 	moveCategoryRow(false)
 
@@ -67,6 +69,15 @@ func _ready() -> void:
 	optionMovement(0)
 	boxerMove()
 	instantBoxMove()
+
+func addOption(child, cat):
+	child.substate = substate
+	child.selection = cat.get_children().size()+1
+	child.category = $Options.get_children().find(cat)
+		
+	cat.add_child(child)
+	child.position.x += child.get_node("./Size").size.x / 2.0
+	child.position.y += child.get_node("./Size").size.y / 2.0 + (child.get_node("./Size").size.y + 10) * (cat.get_children().size() - 1) + 20
 
 func boxerMove():
 	var whatToUse = ($Options.get_child(curCategory).get_child(0) if $Options.get_child(curCategory).get_children().size() > 0 else $Categories/Group.get_child(curCategory)) if curSelected == 0 else $Options.get_child(curCategory).get_child(curSelected-1)
@@ -86,7 +97,7 @@ func instantBoxMove():
 		boxer.self_modulate.a = boxAlpha
 
 func catMouseHover(button):
-	if substate.process_mode != Node.PROCESS_MODE_DISABLED:
+	if substate.process_mode != Node.PROCESS_MODE_DISABLED and substate.canInput:
 		if mouseBtn < 0 or mouseBtn != button.get_meta("ID", 0): MenuSounds.playMenuSound('switch')
 		
 		mouseBtn = button.get_meta("ID", 0)
@@ -103,9 +114,10 @@ func updateCatButtonSelection():
 		catButtons[mouseBtn].modulate = Color(1.0,1.0,1.0)
 
 func catMousePress():
-	if mouseBtn >= -1: MenuSounds.playMenuSound('small_select')
-	
-	catMovement(-1 if mouseBtn == 0 else 1)
+	if substate.canInput:
+		if mouseBtn >= -1: MenuSounds.playMenuSound('small_select')
+		
+		catMovement(-1 if mouseBtn == 0 else 1)
 
 func moveCategoryRow(doLerp):
 	var positionToLookFor = -categoryLabels[curCategory].position.x + $Categories.size.x/2

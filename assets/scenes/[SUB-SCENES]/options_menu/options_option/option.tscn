@@ -70,10 +70,10 @@ offset_right = 459.0
 offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 border_width = 2.0
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = -443.0
 offset_top = -30.0
 offset_right = 111.0
@@ -198,4 +198,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[connection signal="mouse_entered" from="Size" to="." method="_on_size_mouse_entered"]
+[connection signal="mouse_entered" from="Rectangle" to="." method="_on_size_mouse_entered"]

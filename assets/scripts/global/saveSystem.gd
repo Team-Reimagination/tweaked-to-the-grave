@@ -171,15 +171,35 @@ func nukeSave() -> void: ## this can also serve as setting default vars
 	achievementData = {}
 	saveData = {}
 	
-	for i in _defaultOptionsData.keys():
-		optionsData.set(i, _defaultOptionsData.get(i))
-	for i in _defaultAchievementData.keys():
-		achievementData.set(i, _defaultAchievementData.get(i))
-	for i in _defaultSaveData.keys():
-		saveData.set(i, _defaultSaveData.get(i))
+	setOptionDefaults(false)
+	setAchievementDefaults(false)
+	setSaveDefaults(false)
 		
 	saveSave()
 	applyImmediateSettings()
+
+func setOptionDefaults(checkExistence) :
+	for i in _defaultOptionsData.keys():
+		if (checkExistence and not optionsData.has(i)) or !checkExistence: 
+			if i == "video_resolution":
+				var minimumRes = DisplayServer.get_display_safe_area().size.x;
+				if minimumRes >= DisplayServer.get_display_safe_area().size.y:
+					minimumRes = DisplayServer.get_display_safe_area().size.y
+				
+				for s in len(possibleResolutions):
+					if possibleResolutions.get(s).y > minimumRes:
+						optionsData.set("video_resolution", clampi(s - 2, 0, 99))
+						break;
+			else:
+				optionsData.set(i, _defaultOptionsData.get(i))
+	
+func setAchievementDefaults(checkExistence) :
+	for i in _defaultAchievementData.keys():
+		if (checkExistence and not achievementData.has(i)) or !checkExistence: achievementData.set(i, _defaultAchievementData.get(i))
+	
+func setSaveDefaults(checkExistence) :
+	for i in _defaultSaveData.keys():
+		if (checkExistence and not saveData.has(i)) or !checkExistence: saveData.set(i, _defaultSaveData.get(i))
 
 func hasNotUnlockedLevel(levID): return saveData.unlocked.find(levID) == -1
 
@@ -227,7 +247,6 @@ func watchedCutscene():
 	saveSave()
 
 func hasWatchedCutscene():
-	print(PlayGlobals.cutsceneID)
 	return saveData.has("cutscenes") and saveData.cutscenes.find(PlayGlobals.cutsceneID) > -1
 
 func saveGame():
@@ -247,21 +266,9 @@ func loadSave():
 	optionsData = data.options
 	achievementData = data.achievements
 	
-	for i in _defaultOptionsData.keys():
-		if not optionsData.has(i): optionsData.set(i, _defaultOptionsData.get(i))
-	for i in _defaultAchievementData.keys():
-		if not achievementData.has(i): achievementData.set(i, _defaultAchievementData.get(i))
-	for i in _defaultSaveData.keys():
-		if not saveData.has(i): saveData.set(i, _defaultSaveData.get(i))
-		
-	var minimumRes = DisplayServer.get_display_safe_area().size.x;
-	if minimumRes >= DisplayServer.get_display_safe_area().size.y:
-		minimumRes = DisplayServer.get_display_safe_area().size.y
-	
-	for i in len(possibleResolutions):
-		if possibleResolutions.get(i).y > minimumRes:
-			optionsData.set("video_resolution", clampi(i - 2, 0, 99))
-			break;
+	setOptionDefaults(true)
+	setAchievementDefaults(true)
+	setSaveDefaults(true)
 	
 	saveSave()
 
@@ -319,10 +326,33 @@ func _ready() -> void:
 	
 	if len(cloudSave) < 1:
 	#if true: #DEV THINGY
+		setOptionDefaults(false)
+		setAchievementDefaults(false)
+		setSaveDefaults(false)
 		saveSave()
 	else:
 		loadSave()
 		
-	optionsData['audio_subtitles'] = 3
-		
 	applyImmediateSettings()
+
+func resetOptions():
+	optionsData.clear()
+	setOptionDefaults(false)
+	
+	applyImmediateSettings()
+	saveSave()
+
+func resetAchievements():
+	achievementData.clear()
+	setAchievementDefaults(false)
+	
+	saveSave()
+
+func resetSaves():
+	for i in 5:
+		eraseDifficultySave(i)
+	
+	saveData.clear()
+	setSaveDefaults(false)
+	
+	saveSave()
