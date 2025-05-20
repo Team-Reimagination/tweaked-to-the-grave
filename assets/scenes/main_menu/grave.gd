@@ -1,14 +1,15 @@
 extends Parallax2D
 
-@onready var buttons = [$Buttons/Adventure, $Buttons/Trophies, $Buttons/Options]
+@onready var buttons = [$Buttons/Adventure, $Buttons/Trophies, $Buttons/Options, $Buttons/Credits]
 @onready var graveHand = $Hand
 @onready var scene = get_tree().current_scene
 
 var stageSel = load("res://assets/scenes/[SUB-SCENES]/stage_select/stage_select.tscn")
 var myfreindOptions = load("res://assets/scenes/[SUB-SCENES]/options_menu/options_menu.tscn")
 var beautifulgallery = load("res://assets/scenes/[SUB-SCENES]/trophies_menu/trophies_menu.tscn")
+var allThesePeople = load("res://assets/scenes/[SUB-SCENES]/credits_menu/credits_menu.tscn")
 
-var buttonScales = [1.0,1.0,1.0]
+var buttonScales = [1.0,1.0,1.0,1.0]
 var selectedButton = 0;
 
 func _ready() -> void:
@@ -41,12 +42,12 @@ func _process(_delta: float) -> void:
 		
 	if scene.canInput:
 		if Input.is_action_just_pressed("Up_UI"): 
-			selectedButton = (selectedButton - 1) % 3
-			if selectedButton < 0: selectedButton = 2
+			selectedButton = (selectedButton - 1) % 4
+			if selectedButton < 0: selectedButton = 3
 			updateButtonSelection()
 			MenuSounds.playMenuSound('switch')
 		elif Input.is_action_just_pressed("Down_UI"):
-			selectedButton = (selectedButton + 1) % 3
+			selectedButton = (selectedButton + 1) % 4
 			updateButtonSelection()
 			MenuSounds.playMenuSound('switch')
 		
@@ -63,7 +64,8 @@ func mouse_button(button):
 var subtitles = [
 	"\"Adventure mode! You begin your adventure here!\"",
 	"\"Trophies! Show off your hard work!\"",
-	"\"Options! Select a feature you want to edit!\""
+	"\"Options! Select a feature you want to edit!\"",
+	"\"Credits! Appreciate all the people here!\"",
 ]
 
 func process_button():
@@ -84,6 +86,11 @@ func process_button():
 		elif selectedButton == 2:
 			var instance = myfreindOptions.instantiate()
 			$Narration.stream = load("res://assets/sounds/voice/options.ogg")
+			$Narration.subtitle = subtitles[selectedButton]
+			PlayGlobals.addSubstate(scene, instance);
+		elif selectedButton == 3:
+			var instance = allThesePeople.instantiate()
+			$Narration.stream = load("res://assets/sounds/voice/credits.ogg")
 			$Narration.subtitle = subtitles[selectedButton]
 			PlayGlobals.addSubstate(scene, instance);
 			

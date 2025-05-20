@@ -148,8 +148,6 @@ offset_bottom = 345.0
 
 [node name="gameplay" type="Node2D" parent="Inside/Options"]
 
-[node name="controls" type="Node2D" parent="Inside/Options"]
-
 [node name="misc" type="Node2D" parent="Inside/Options"]
 
 [node name="Fade3" type="Sprite2D" parent="Inside"]

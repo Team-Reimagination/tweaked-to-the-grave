@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var substate = $".."
 
-var categories = ["video", "audio", "gameplay", "controls", "misc"]
+var categories = ["video", "audio", "gameplay", "misc"]
 var categoryLabels = []
 var categoryScales = []
 

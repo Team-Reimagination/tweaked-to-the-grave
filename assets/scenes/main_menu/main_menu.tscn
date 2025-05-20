@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ds181oh1yp62m"]
+[gd_scene load_steps=47 format=3 uid="uid://ds181oh1yp62m"]
 
 [ext_resource type="Texture2D" uid="uid://t55dtlxhtc6l" path="res://assets/images/menu/mainmenu/logo.png" id="1_6o0yw"]
 [ext_resource type="Shader" uid="uid://cs54tgle3j2j5" path="res://assets/shaders/screen/worldCurve.gdshader" id="1_8qhov"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bv4i45hut2g4q" path="res://assets/images/buttons/mainmenu/options.png" id="9_x0mfv"]
 [ext_resource type="Script" uid="uid://d15jbqf4xkmbh" path="res://assets/scripts/classes/subtitle_sound_2D.gd" id="10_61kpw"]
 [ext_resource type="Texture2D" uid="uid://c4xro1wlloata" path="res://assets/images/menu/mainmenu/tweaked_hand.png" id="10_x0mfv"]
+[ext_resource type="Texture2D" uid="uid://de6ncryjjrna3" path="res://assets/images/buttons/mainmenu/credits.png" id="14_dhpin"]
 [ext_resource type="Shader" uid="uid://bn0ot4jakjbs7" path="res://assets/shaders/screen/pixel.gdshader" id="16_43lun"]
 [ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="17_f2eox"]
 
@@ -364,6 +365,18 @@ texture_normal = ExtResource("9_x0mfv")
 stretch_mode = 0
 metadata/ID = 2
 
+[node name="Credits" type="TextureButton" parent="ParallaxBackground/Grave/Buttons"]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 749.0
+offset_right = 985.0
+offset_bottom = 911.0
+pivot_offset = Vector2(80.5, 81)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("14_dhpin")
+stretch_mode = 0
+metadata/ID = 3
+
 [node name="Hand" type="AnimatedSprite2D" parent="ParallaxBackground/Grave"]
 texture_filter = 1
 position = Vector2(614, 714)
@@ -411,7 +424,7 @@ offset_bottom = 960.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-text = "Created by Verwex, Frakits, Terionic, HeroEyad & GlitchDotSmh | 2025 | "
+text = "Team Reimagination | 2025 | "
 label_settings = SubResource("LabelSettings_61kpw")
 horizontal_alignment = 1
 vertical_alignment = 1
