@@ -107,8 +107,8 @@ centered = false
 
 [node name="Glitch_smh" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(3014, -123)
-scale = Vector2(3.05372, 3.05372)
+position = Vector2(3057, 14)
+scale = Vector2(3.22766, 3.22766)
 texture = ExtResource("5_jxldi")
 centered = false
 
@@ -130,7 +130,7 @@ centered = false
 
 [node name="Gumbalino" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(3078, 314)
+position = Vector2(3072, 350)
 scale = Vector2(2.95795, 2.95795)
 texture = ExtResource("8_8o1o2")
 centered = false
@@ -145,9 +145,9 @@ centered = false
 
 [node name="Terionic" type="Sprite2D" parent="FriendGroupHeads"]
 modulate = Color(1, 1, 1, 0.3)
-position = Vector2(3463, 34)
-rotation = 0.193399
-scale = Vector2(2.5, 2.5)
+position = Vector2(3442, 61)
+rotation = -0.107924
+scale = Vector2(2.94257, 2.94257)
 texture = ExtResource("10_c2g00")
 centered = false
 
