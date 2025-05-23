@@ -1,3 +1,388 @@
 {
-	"shots": []
+	"shots": [
+		{
+			"timeout": 1.0,
+			"nextAccess": "both",
+			"events": [
+				{
+					"type": "fade",
+					"transRightsAreHumanRights": "in",
+					"time": 1.0,
+					"ease": "out",
+					"trans": "quint"
+				},
+				{
+					"type": "bg_color",
+					"color1": [53, 61, 92],
+					"color2": [115, 128, 136],
+					"time": 2.0,
+					"ease": "out",
+					"trans": "quint"
+				},
+				{
+					"type": "panel_size",
+					"width": 1040,
+					"height": 440
+				},
+				{
+					"type": "background_speed",
+					"speed": 0
+				},
+				{
+					"type": "background_speed",
+					"speed": -80,
+					"time": 1.0,
+					"ease": "out",
+					"trans": "quint"
+				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "load_dialogue",
+					"name": "ENDING"
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"timeout": 1.0,
+			"nextAccess": "both",
+			"events": [
+				{
+					"type": "end_dialogue",
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "load_dialogue",
+					"name": "ENDING"
+				},
+				{
+					"type": "set_dialogue_scene",
+					"event": 2
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"timeout": 1.0,
+			"nextAccess": "both",
+			"events": [
+				{
+					"type": "end_dialogue",
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "load_dialogue",
+					"name": "ENDING"
+				},
+				{
+					"type": "set_dialogue_scene",
+					"event": 5
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"timeout": 2.0,
+			"nextAccess": "both",
+			"events": [
+				{
+					"type": "end_dialogue",
+				},
+				{
+					"type": "bg_color",
+					"color1": [255, 255, 255],
+					"color2": [255, 255, 255],
+					"time": 2.0,
+					"ease": "in",
+					"trans": "quint"
+				},
+			]
+		},
+		{
+			"timeout": 3.0,
+			"nextAccess": "both",
+			"events": [
+				{
+					"type": "fade",
+					"transRightsAreHumanRights": "out",
+					"time": 0.0,
+					"ease": "out",
+					"trans": "quint"
+				},
+			]
+		},
+		{
+			"timeout": 3.0,
+			"nextAccess": "both",
+			"events": [
+				{
+					"type": "fade",
+					"transRightsAreHumanRights": "in",
+					"time": 2.0,
+					"ease": "out",
+					"trans": "quint"
+				},
+				{
+					"type": "bg_color",
+					"color1": [53, 61, 92],
+					"color2": [115, 128, 136],
+					"time": 0.0,
+					"ease": "out",
+					"trans": "quint"
+				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "load_dialogue",
+					"name": "ENDING"
+				},
+				{
+					"type": "set_dialogue_scene",
+					"event": 7
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"timeout": 2.0,
+			"nextAccess": "both",
+			"events": [
+				{
+					"type": "end_dialogue",
+				},
+				{
+					"type": "bg_color",
+					"color1": [0, 0, 0],
+					"color2": [0, 0, 0],
+					"time": 2.0,
+					"ease": "in",
+					"trans": "quint"
+				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "load_dialogue",
+					"name": "ENDING"
+				},
+				{
+					"type": "set_dialogue_scene",
+					"event": 10
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				},
+				{
+					"type": "bg_color",
+					"color1": [60, 0, 0],
+					"color2": [210, 0, 0],
+					"time": 10.0,
+					"ease": "inout",
+					"trans": "quart"
+				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				},
+				{
+					"type": "bg_color",
+					"color1": [0, 0, 0],
+					"color2": [0, 0, 0],
+					"time": 0.0,
+					"ease": "inout",
+					"trans": "quart"
+				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				},
+				{
+					"type": "bg_color",
+					"color1": [53, 61, 92],
+					"color2": [115, 128, 136],
+					"time": 2.0,
+					"ease": "out",
+					"trans": "quint"
+				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				}
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				},
+				{
+					"type": "bg_color",
+					"color1": [30, 0, 0],
+					"color2": [80, 0, 0],
+					"time": 3.0,
+					"ease": "out",
+					"trans": "quart"
+				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				},
+				{
+					"type": "bg_color",
+					"color1": [60, 0, 0],
+					"color2": [160, 0, 0],
+					"time": 3.0,
+					"ease": "out",
+					"trans": "quart"
+				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "next_dialogue",
+				},
+				{
+					"type": "bg_color",
+					"color1": [90, 0, 0],
+					"color2": [240, 0, 0],
+					"time": 3.0,
+					"ease": "out",
+					"trans": "quart"
+				},
+			]
+		},
+		{
+			"nextAccess": "keys",
+			"events": [
+				{
+					"type": "bg_color",
+					"color1": [0, 0, 0],
+					"color2": [0, 0, 0],
+					"time": 0.0,
+					"ease": "out",
+					"trans": "quart"
+				},
+				{
+					"type": "end_dialogue",
+				}
+			]
+		},
+	]
 }

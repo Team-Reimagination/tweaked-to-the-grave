@@ -14,6 +14,8 @@ var pressedToSkip = false
 var dialogue = {}
 const PATH_DIALOGUE = "res://assets/data/dialogue/"
 
+signal voice_finished
+
 var charAliases = {
 	"bob": "bob tweaked",
 	"tweak": "the tweak",
@@ -30,6 +32,8 @@ var dialEvent = {}
 
 var dialTime = 0.4
 var dialAccess = "keys"
+
+var doScripts = true
 
 func _ready() -> void:
 	portrait.scale.y = 0.0;
@@ -49,6 +53,14 @@ func startDialogue(path,doOpen = true):
 
 func beginning(doCheck = true):
 	portrait.play("inter")
+	
+	timeoutInitialized = false
+	typing = false
+	movingOn = true
+	pressedToSkip = false
+	dialEventNum = 0;
+	oldDialEvent = {}
+	dialEvent = {}
 	
 	var comTween = get_tree().create_tween()
 	comTween.tween_property(portrait, "scale:y", 1.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
@@ -85,7 +97,7 @@ func exitThisWay():
 func proceedWithDialogue():
 	dialEvent = dialogue.events[dialEventNum]
 	
-	if get_meta("parent", null) != null:
+	if get_meta("parent", null) != null and doScripts:
 		get_meta("parent", null).scripts.runFunction("onDialogue", [dialEventNum])
 	
 	if oldDialEvent == {} or dialEvent.char == oldDialEvent.char: typeIt()
@@ -160,9 +172,10 @@ func _process(_delta: float) -> void:
 	if timeoutInitialized and timeout.time_left <= 0 and !movingOn and !pressedToSkip: 
 		timeoutInitialized = false
 		pressedToSkip = false
-		nextDialogue()
+		if dialAccess != 'timewait': nextDialogue()
+		else: voice_finished.emit()
 
-	if dialAccess != "timeout" and dialAccess != "none":
+	if dialAccess != "timeout" and dialAccess != "none" and dialAccess != "timewait":
 		if Input.is_action_just_pressed("Accept_UI"):
 			if typing: skipText()
 			else: moveOn()

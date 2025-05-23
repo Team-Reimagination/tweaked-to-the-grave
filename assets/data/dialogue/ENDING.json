@@ -1,0 +1,141 @@
+{
+	"hasPanels": "true",
+	"events": [
+		{
+			"char": "tweak-final",
+			"text": "RAAAH! I've had enough of you and your nonsense! Now perish within my hands!",
+			"nextAccess": "timewait",
+			"voice": "END/Tweak_Perish",
+		},
+		{
+			"char": "seezee",
+			"text": "Come on, come on, t-think of something... Think! This can't be the end for me-",
+			"nextAccess": "timewait",
+			"voiceTimeout": 0.0,
+			"voice": "END/Seezee_Think",
+		},
+		{
+			"char": "seezee",
+			"text": "AHA! Finally! My madness reached its peak condition! Time to finish this.",
+			"nextAccess": "timewait",
+			"voice": "END/Seezee_Finally",
+		},
+		{
+			"char": "seezee",
+			"text": "Hey you! You think I'm in for a losing battle!? There's one more trick up my sleeve!",
+			"nextAccess": "timewait",
+			"voiceTimeout": 0.0,
+			"voice": "END/Seezee_Tease",
+		},
+		{
+			"char": "seezee",
+			"text": "EAT THIS!",
+			"nextAccess": "timewait",
+			"voice": "END/Seezee_Blast",
+		},
+		{
+			"char": "tweak-final",
+			"text": "H-hey stop that! What is this!?",
+			"nextAccess": "timewait",
+			"voice": "END/Tweak_Panic",
+		},
+		{
+			"char": "tweak-final",
+			"text": "It hurts! RAAAAAAAA-",
+			"nextAccess": "timewait",
+			"voiceTimeout": 0.0,
+			"voice": "END/Tweak_Pain",
+		},
+		{
+			"char": "seezee",
+			"text": "And it looks like the cat got the mouse... What do you have to say for yourself?",
+			"nextAccess": "timewait",
+			"voice": "END/Seezee_Cat",
+		},
+		{
+			"char": "bob",
+			"text": "H-hey don't even think about it, y-you! Y-you! You idiot!",
+			"nextAccess": "timewait",
+			"voice": "END/Bob_Panic",
+		},
+		{
+			"char": "seezee",
+			"text": "And to think I was thinking about you and was willing to give you another chance.",
+			"nextAccess": "timewait",
+			"voice": "END/Seezee_Chance",
+		},
+		{
+			"char": "bob",
+			"text": "C-chance? What are you talking about?",
+			"nextAccess": "timewait",
+			"voice": "END/Bob_Chance",
+		},
+		{
+			"char": "seezee",
+			"text": "I still remember the time I had with you before you were dealt with.",
+			"nextAccess": "timewait",
+			"voice": "END/Seezee_Remember",
+		},
+		{
+			"char": "seezee",
+			"text": "You were a nuisance, a headache, and I had to get rid of you for my safety.",
+			"nextAccess": "timewait",
+			"voice": "END/Seezee_Nuisance",
+		},
+		{
+			"char": "bob",
+			"text": "But was burying me in my own grave necessary!? I laid there for years!",
+			"nextAccess": "timewait",
+			"voice": "END/Bob_Rage",
+		},
+		{
+			"char": "bob",
+			"text": "I felt rage energy coming inside me! Why do you think I was driven to do all this!?",
+			"nextAccess": "timewait",
+			"voice": "END/Bob_Drive",
+		},
+		{
+			"char": "seezee",
+			"text": "...No matter now. I have thought of trying again, trying again with you eventually. Reconnecting.",
+			"nextAccess": "timewait",
+			"voice": "END/Seezee_Try_Again",
+		},
+		{
+			"char": "seezee",
+			"text": "But you just proved to me that you're not worth it. Unforgivable.",
+			"nextAccess": "timewait",
+			"voice": "END/Seezee_Worth_It",
+		},
+		{
+			"char": "bob",
+			"text": "...Unforgivable, of course you say it.",
+			"nextAccess": "timewait",
+			"voice": "END/Bob_Doubt",
+		},
+		{
+			"char": "seezee",
+			"text": "You destroyed my home! How could I forgive you!? You may be my son, but I denounce you from the title!",
+			"nextAccess": "timewait",
+			"voice": "END/Seezee_Worth_It",
+		},
+		{
+			"char": "bob",
+			"text": "N-now now... D-don't murder me with hatchets and whatnot-",
+			"nextAccess": "timewait",
+			"voiceTimeout": 0.0,
+			"voice": "END/Bob_Doubt",
+		},
+		{
+			"char": "seezee",
+			"text": "I already did it once! And I'll do it again!",
+			"nextAccess": "timewait",
+		},
+		{
+			"char": "bob",
+			"text": "W-WAIT WAIT STOP NO-",
+			"nextAccess": "timewait",
+			"voiceTimeout": 0.0,
+			"voice": "END/Bob_Doubt",
+		}
+	]
+}

@@ -44,6 +44,8 @@ func _ready() -> void:
 	
 	$Skippable.visible = Entirely2eaked
 	
+	dialogue.voice_finished.connect(newEvent.bind())
+	
 	if FileAccess.file_exists(PATH_CUTSCENE+PlayGlobals.cutsceneID+'.json'):
 		cutscene = JSON.parse_string(FileAccess.open(PATH_CUTSCENE+PlayGlobals.cutsceneID+'.json', FileAccess.READ).get_as_text())
 		
@@ -68,10 +70,7 @@ func _process(delta: float) -> void:
 	panel2.position = Vector2(panel.size.x/2.0, panel.size.y/2.0)
 	
 	if cutAccess != "keys" and timeoutInitialized and timeout.time_left <= 0 and !pressedToSkip: 
-		timeoutInitialized = false
-		pressedToSkip = false
-		readyToMove = true
-		nextEvent()
+		newEvent()
 		
 	var hasMoved = false
 	for twee in getTweenList():
@@ -88,7 +87,7 @@ func _process(delta: float) -> void:
 	if !canInput and cutscene == {} and (Input.is_action_just_pressed("Accept_UI") or CustomCursor.isMouseJustPressed("left")):
 		TransFuncs.switchScenes(self, PlayGlobals.getCutsceneDestination(), false, true, true)
 
-	if cutAccess != "timeout" and canInput:
+	if cutAccess != "timeout" and cutAccess != "dialogue" and canInput:
 		if Input.is_action_just_pressed("Accept_UI") or CustomCursor.isMouseJustPressed('left'):
 			if !readyToMove or waitForDialoguetoFinish:
 				if waitForDialoguetoFinish:
@@ -128,6 +127,8 @@ func skipEvent():
 		waitForDialoguetoFinish = false
 
 func checkCutsceneEvent():
+	if !cutscene.get("shots"): return
+	
 	if cutscene.shots.size()-1 < cutEventNum:
 		ending()
 	else:
@@ -175,6 +176,8 @@ func processEvent(event):
 	elif event.type == 'next_dialogue':
 		waitForDialoguetoFinish = true
 		dialogue.nextDialogue()
+	elif event.type == 'set_dialogue_scene':
+		dialogue.dialEventNum = event.event
 	elif event.type == 'change_dialogue_scene':
 		waitForDialoguetoFinish = true
 		dialogue.dialEventNum = event.event - 1
@@ -187,6 +190,12 @@ func processEvent(event):
 		zoomCamera(event.x, event.y, timey, easy, transy)
 	elif event.type == 'camera_position':
 		positionCamera(event.x, event.y, timey, easy, transy)
+
+func newEvent():
+	timeoutInitialized = false
+	pressedToSkip = false
+	readyToMove = true
+	nextEvent()
 
 func ending():
 	for twee in getTweenList():
@@ -327,6 +336,7 @@ func musicPitch(pitch, time = null, Tease = 'inout', Ttrans = 'linear'):
 
 func loadDialogue(dial):
 	waitForDialoguetoFinish = true
+	dialogue.doScripts = false
 	dialogue.startDialogue(dial, true)
 	
 func loadPanel(image, time = null, Tease = 'inout', Ttrans = 'linear'):
