@@ -13,6 +13,9 @@ extends Node2D
 var cutscene = {}
 const PATH_CUTSCENE = "res://assets/data/cutscenes/"
 
+var boomTexts = []
+var boomer = load("res://assets/images/hud/victroy/smashtext.tscn")
+
 var cutEventNum = 0;
 var cutAccess = "keys"
 var timeoutInitialized = false
@@ -190,6 +193,23 @@ func processEvent(event):
 		zoomCamera(event.x, event.y, timey, easy, transy)
 	elif event.type == 'camera_position':
 		positionCamera(event.x, event.y, timey, easy, transy)
+	elif event.type == 'boomtext':
+		var texto = boomer.duplicate().instantiate()
+		
+		texto.position = Vector2(event.x, event.y)
+		texto.texture = load("res://assets/images/menu/cutscene/boomtexts/"+event.name+".png")
+		$BoomTexts.add_child(texto)
+		boomTexts.push_back(texto)
+		
+		texto.descend(event.time if event.has('time') else 1.0, event.power if event.has('power') else 20, event.fade if event.has('fase') else 1.0)
+	elif event.type == 'clear_boomtext':
+		clearBoomTexts(event.time if event.has('time') else 1.0)
+
+func clearBoomTexts(timey):
+	for a in boomTexts:
+			a.ascend(timey)
+		
+	boomTexts.clear()
 
 func newEvent():
 	timeoutInitialized = false
@@ -204,6 +224,8 @@ func ending():
 	
 	SaveSystem.watchedCutscene()
 	$Skippable.visible = false
+	
+	clearBoomTexts(0.5)
 	
 	fadeBackground(1.0, 'out', 'in', 'quint')
 	

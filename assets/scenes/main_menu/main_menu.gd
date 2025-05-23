@@ -45,7 +45,9 @@ func _process(delta: float) -> void:
 		cam.set_position(Vector2(lerpf(cam.position.x, 640.0 + posMod.x, 0.3), lerpf(cam.position.y, 920.0 + posMod.y, 0.3)))
 		cam.rotation_degrees = rotMod
 		
-		if (Input.is_action_just_pressed("Accept_UI") or CustomCursor.isMouseJustPressed("left")) and canSkip: TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn" if !isNewGame else "res://assets/scenes/cutscene/cutscene.tscn", false, !isNewGame)
+		if (Input.is_action_just_pressed("Accept_UI") or CustomCursor.isMouseJustPressed("left")) and canSkip: 
+			#TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn" if !isNewGame else "res://assets/scenes/cutscene/cutscene.tscn", true, !isNewGame)
+			TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn", false)
 
 var isNewGame = false
 
@@ -75,7 +77,8 @@ func wellithinkitstimetomoveonok(): #hand materaliza
 		
 		await get_tree().create_timer(2.0, false).timeout
 		canSkip = false
-		TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn" if !isNewGame else "res://assets/scenes/cutscene/cutscene.tscn", true, !isNewGame)
+		#TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn" if !isNewGame else "res://assets/scenes/cutscene/cutscene.tscn", true, !isNewGame)
+		TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn", true)
 	else:
 		MenuSounds.playMenuSound("select")
 		TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn")

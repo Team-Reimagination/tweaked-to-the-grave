@@ -367,6 +367,9 @@ z_index = -1
 [node name="Panel2" type="Sprite2D" parent="PanelBorder"]
 z_index = -1
 
+[node name="BoomTexts" type="Node2D" parent="."]
+position = Vector2(641, 347)
+
 [node name="Dialogue" parent="." instance=ExtResource("27_g7obx")]
 z_index = 2
 offset_left = 640.0

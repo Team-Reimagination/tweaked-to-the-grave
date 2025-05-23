@@ -34,3 +34,8 @@ func descend(time,power,release):
 	
 	await tweener.finished
 	is_done_exploding.emit()
+
+func ascend(time):
+	tweener = get_tree().create_tween()
+	tweener.set_parallel(true).tween_property(self, "self_modulate:a", 0.0, time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	tweener.set_parallel(true).tween_property(self, "scale", self.scale*1.5, time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
