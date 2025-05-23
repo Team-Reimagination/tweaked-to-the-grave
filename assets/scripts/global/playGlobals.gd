@@ -106,16 +106,6 @@ func youarenolongermyfriendsoundnowgoaway(doMusicToo = true):
 	get_parent().get_tree().call_group('Sound', 'stop')
 	if doMusicToo: get_parent().get_tree().call_group('Music', 'stop')
 
-func get_tscn_resources_in_directory(path: String) -> Array[String]:
-	var tscn_files: Array[String] = []
-	var files := DirAccess.get_files_at(path)
-	
-	for file in files:
-		if file.ends_with(".tscn"):
-			tscn_files.append(path.path_join(file))
-	
-	return tscn_files
-
 func getCutsceneDestination():
 	if cutsceneID == 'anstart': return "res://assets/scenes/play_state/play_state.tscn"
 	elif cutsceneID == 'aend': 

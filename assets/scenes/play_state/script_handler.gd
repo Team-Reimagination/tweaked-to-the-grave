@@ -1,20 +1,22 @@
 extends Node
 
-const PATH_SCRIPTS = "res://assets/scripts/levels/"
+const LEVEL_SCRIPTS = {
+	"RCR": [
+		preload("res://assets/scripts/levels/RCR/hieroglyphs.gd"),
+		preload("res://assets/scripts/levels/RCR/sandman.gd"),
+		preload("res://assets/scripts/levels/RCR/stand_ready_for_my_power.gd")
+	],
+	"SNH": [
+		preload("res://assets/scripts/levels/SNH/bossPhase.gd")
+	]
+}
 
 func _ready() -> void:
-	if not DirAccess.open(PATH_SCRIPTS+PlayGlobals.levelID+"/"): return
-	var scriptDirectory : Array = DirAccess.get_files_at(PATH_SCRIPTS+PlayGlobals.levelID+"/")
-	
-	if scriptDirectory.size() == 0: return
-	else:
-		scriptDirectory = scriptDirectory.filter(func(x:String): return x.ends_with(".gd"))
-		
-		for a in scriptDirectory:
-			var casual = Node.new()
-			var scripty = load(PATH_SCRIPTS+PlayGlobals.levelID+"/"+a)
-			casual.set_script(scripty)
-			self.add_child(casual)
+	var scripts = LEVEL_SCRIPTS.get(PlayGlobals.levelID, [])
+	for script in scripts:
+		var node = Node.new()
+		node.set_script(script)
+		add_child(node)
 
 func runFunction(ass, vars = []):
 	for a in get_children():
