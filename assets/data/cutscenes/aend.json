@@ -43,6 +43,13 @@
 				{
 					"type": "load_dialogue",
 					"name": "ENDING"
+				},
+				{
+					"type": "load_panel",
+					"image": "END/Aggravation",
+					"time": 1.0,
+					"ease": "out",
+					"trans": "quart"
 				}
 			]
 		},

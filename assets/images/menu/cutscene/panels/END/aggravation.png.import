@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bssgg1a6ogj1t"
-path="res://.godot/imported/aggravation.png-8caff5a08b91f41aef27f9d7fffc2b25.ctex"
+path="res://.godot/imported/aggravation.png-702cf44cac435db485d6be8bd41e6a67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/menu/cutscene/panels/SNH/aggravation.png"
-dest_files=["res://.godot/imported/aggravation.png-8caff5a08b91f41aef27f9d7fffc2b25.ctex"]
+source_file="res://assets/images/menu/cutscene/panels/END/aggravation.png"
+dest_files=["res://.godot/imported/aggravation.png-702cf44cac435db485d6be8bd41e6a67.ctex"]
 
 [params]
 

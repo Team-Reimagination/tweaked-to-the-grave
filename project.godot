@@ -56,7 +56,7 @@ movie_writer/movie_file="D:/Videos/tttg.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/newgrounds/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/newgrounds/plugin.cfg")
 
 [global_group]
 

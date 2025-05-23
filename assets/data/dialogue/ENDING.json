@@ -37,6 +37,7 @@
 			"char": "tweak-final",
 			"text": "H-hey stop that! What is this!?",
 			"nextAccess": "timewait",
+			"voiceTimeout": 0.0,
 			"voice": "END/Tweak_Panic",
 		},
 		{
@@ -60,13 +61,13 @@
 		},
 		{
 			"char": "seezee",
-			"text": "And to think I was thinking about you and was willing to give you another chance.",
+			"text": "And to think I was thinking and willing to give you another chance.",
 			"nextAccess": "timewait",
 			"voice": "END/Seezee_Chance",
 		},
 		{
 			"char": "bob",
-			"text": "C-chance? What are you talking about?",
+			"text": "Chance? What are you talking about?",
 			"nextAccess": "timewait",
 			"voice": "END/Bob_Chance",
 		},
@@ -123,19 +124,20 @@
 			"text": "N-now now... D-don't murder me with hatchets and whatnot-",
 			"nextAccess": "timewait",
 			"voiceTimeout": 0.0,
-			"voice": "END/Bob_Doubt",
+			"voice": "END/Bob_Murder",
 		},
 		{
 			"char": "seezee",
 			"text": "I already did it once! And I'll do it again!",
 			"nextAccess": "timewait",
+			"voice": "END/Seezee_Again",
 		},
 		{
 			"char": "bob",
 			"text": "W-WAIT WAIT STOP NO-",
 			"nextAccess": "timewait",
 			"voiceTimeout": 0.0,
-			"voice": "END/Bob_Doubt",
+			"voice": "END/Bob_Scream",
 		}
 	]
 }
