@@ -15,7 +15,6 @@
 </p>
 
 <br>
-<p>
   <h2>Description</h2>
   <b>Tweaked To The Grave</b> is a <b>3D Fixed Camera Shooter</b> where the goal is to chase down the boss of each level and shoot them down as you dodge infinitely generating obstales, with variety in layouts and types of obstacles in question.<br>You play as <b>Seezee553</b>, and a creation of yours, <b>Bob Tweaked</b> has risen from the dead, looking for revenge on you for being left for years. And you must stop it on this (so far) short journey.
   <h2>Inspiration:</h2>
@@ -44,10 +43,10 @@
   <br>Phlox & Wildythomas - Bob Owners (Bob Tweaked's Inspiration)
   <br>Tomoya Ohtani, Kenichi Tokoi, Mick Gordon, Laura Shigihara, Amellifera - Placeholder Music
   <br>FNF Sound Team - Placeholder Main Menu Theme Ending
-</p>
-<h1>Reasons For Open Sourcing</h1>
+<h2>Reasons For Open Sourcing</h2>
 For The Cutting Room Floor potential and pull requests from the community, because the codebase is not the best.
 
+<br>
 <br>
 <h1>Made with Godot Engine</h1>
 
@@ -55,7 +54,6 @@ For The Cutting Room Floor potential and pull requests from the community, becau
   <img src="https://godotengine.org/assets/press/logo_small_color_light.png" alt="Team Reimagination Logo" width="300"/>
 </p>
 
-<br>
 <h1>Brought to you by Team Reimagination</h1>
 
 <p>
