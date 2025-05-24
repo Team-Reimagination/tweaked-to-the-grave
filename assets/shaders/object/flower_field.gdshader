@@ -11,15 +11,15 @@ uniform sampler2D flower_three: hint_default_black;
 void fragment() {
 	vec4 noise_sample = texture(noise_texture, UV);
     float noise_value = noise_sample.r;
-	
+
 	const float black_threshold = 81.0/255.0;
     const float color1_threshold = 169.0/255.0;  // ~525252 / FFFFFF
     const float color2_threshold = 238.0/255.0;  // ~a9a9a9 / FFFFFF
     const float color3_threshold = 255.0/255.0;  // ~eeeeee / FFFFFF
-	
+
 	vec2 tiled_uv = UV * noise_size;
 	vec4 flower;
-	
+
 	if (noise_value <= black_threshold) {
         ALPHA = 0.0;
     } else if (noise_value <= color1_threshold) {
