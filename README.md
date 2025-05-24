@@ -1,4 +1,4 @@
-<center>
+<div align="center">
 <h1>Made for the "Seezee 2025 Birthday Bash" Event</h1>
 
 <p>
@@ -63,4 +63,4 @@ For The Cutting Room Floor potential and pull requests from the community, becau
 <p>
   <img src=".github/tr_logo.gif" alt="Team Reimagination Logo" width="300"/>
 </p>
-</center>
+</div>
