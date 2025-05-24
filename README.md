@@ -45,8 +45,6 @@
   <br>Tomoya Ohtani, Kenichi Tokoi, Mick Gordon, Laura Shigihara, Amellifera - Placeholder Music
   <br>FNF Sound Team - Placeholder Main Menu Theme Ending
 </p>
-
-<br>
 <h1>Reasons For Open Sourcing</h1>
 For The Cutting Room Floor potential and pull requests from the community, because the codebase is not the best.
 
