@@ -3,7 +3,7 @@ extends Node
 var optionsData = {} ## will be automatically filled with values on loading save
 var _defaultOptionsData = { ## enter the options you want to add
 	"video_resolution" = 0, ##PC ONLY
-	"video_fullscreen" = false, ##PC ONLY
+	"video_fullscreen" = 0, ##PC ONLY
 	"video_passion" = false,
 	"video_reducedmotions" = false,
 	
@@ -32,8 +32,13 @@ var possibleResolutions = [ ## every popular 4:3 game resolutions in increasing 
 	Vector2(4096, 3072),
 	Vector2(6400, 4800)
 ]
-
-var optionDefines = {
+# people might be confused by this so i'm gonna document this here
+	# name is self explanatory
+	# type defines the type of value it saves
+	# type: 0 is float (slider); type: 1 is bool (checkbox); type: 2 is array (selector)
+	# pc is for pc exclusivity (lowk we need to change it to an array to contain supported platforms)
+	# other vars just take a look at the other defines
+var optionDefines = { 
 	"video_resolution": {
 		"name": "Resolution",
 		"type": 2,
@@ -52,8 +57,11 @@ var optionDefines = {
 	},
 	"video_fullscreen": {
 		"name": "Fullscreen",
-		"type": 1,
-		"pc": true
+		"type": 2,
+		"pc": true,
+		"options": ["Windowed",
+					"Borderless",
+					"Fullscreen"]
 	},
 	"video_passion": {
 		"name": "Passion Effects",
@@ -281,13 +289,33 @@ func applyImmediateSettings() -> void:
 		applySetting(a, optionsData[a])
 
 func applySetting(type, valuemysanityplease): #this shit has no switch cases :sob:
+	# check if the setting is the correct type, otherwise consider the settings save is corrupted
+	var succeededInCheckingType = false;
+	if optionDefines.get(type).type == 0 && valuemysanityplease is float:
+		succeededInCheckingType = true;
+	if optionDefines.get(type).type == 1 && valuemysanityplease is bool:
+		succeededInCheckingType = true;
+	if optionDefines.get(type).type == 2 && valuemysanityplease is int:
+		succeededInCheckingType = true;
+		
+	if !succeededInCheckingType: 
+		resetOptions();
+		return;
+	
 	if type == 'video_resolution':
-		if not OS.has_feature("web"): 
+		if not OS.has_feature("web"):
+			get_tree().root.content_scale_factor = 1;
 			DisplayServer.window_set_size(possibleResolutions.get(valuemysanityplease))
 			justCenterThisShitAlready()
 		return
 	elif type == 'video_fullscreen':
-		if not OS.has_feature("web"): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if valuemysanityplease else DisplayServer.WINDOW_MODE_WINDOWED)
+		if not OS.has_feature("web"): # sumimasen deshita minaide kutedasai onegai.
+			var displayModeThing;
+			if valuemysanityplease == 0: displayModeThing = DisplayServer.WINDOW_MODE_WINDOWED;
+			if valuemysanityplease == 1: displayModeThing = DisplayServer.WINDOW_MODE_FULLSCREEN;
+			if valuemysanityplease == 2: displayModeThing = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN;
+			
+			DisplayServer.window_set_mode(displayModeThing);
 		return
 	elif type == 'video_passion':
 		Passion.visibility(valuemysanityplease)
