@@ -2,8 +2,9 @@ extends Node
 
 var optionsData = {} ## will be automatically filled with values on loading save
 var _defaultOptionsData = { ## enter the options you want to add
-	"video_resolution" = 0, ##PC ONLY
-	"video_fullscreen" = 0, ##PC ONLY
+	"video_windowsize" = 0, ##PC ONLY
+	"video_windowmode" = 0, ##PC ONLY
+	"video_resolution" = 1.0, ##PC ONLY
 	"video_passion" = false,
 	"video_reducedmotions" = false,
 	
@@ -39,7 +40,7 @@ var possibleResolutions = [ ## every popular 4:3 game resolutions in increasing 
 	# pc is for pc exclusivity (lowk we need to change it to an array to contain supported platforms)
 	# other vars just take a look at the other defines
 var optionDefines = { 
-	"video_resolution": {
+	"video_windowsize": {
 		"name": "Resolution",
 		"type": 2,
 		"pc": true,
@@ -55,13 +56,21 @@ var optionDefines = {
 					"4096x3072",
 					"6400x4800"]
 	},
-	"video_fullscreen": {
+	"video_windowmode": {
 		"name": "Fullscreen",
 		"type": 2,
 		"pc": true,
 		"options": ["Windowed",
 					"Borderless",
 					"Fullscreen"]
+	},
+	"video_resolution": {
+		"name": "3D Resolution Scale",
+		"type": 0,
+		"min": 0.0,
+		"max": 1.0,
+		"step": 0.01,
+		"label": 'how do i change this to show the actual float'
 	},
 	"video_passion": {
 		"name": "Passion Effects",
@@ -189,14 +198,14 @@ func nukeSave() -> void: ## this can also serve as setting default vars
 func setOptionDefaults(checkExistence) :
 	for i in _defaultOptionsData.keys():
 		if (checkExistence and not optionsData.has(i)) or !checkExistence: 
-			if i == "video_resolution":
+			if i == "video_windowsize":
 				var minimumRes = DisplayServer.get_display_safe_area().size.x;
 				if minimumRes >= DisplayServer.get_display_safe_area().size.y:
 					minimumRes = DisplayServer.get_display_safe_area().size.y
 				
 				for s in len(possibleResolutions):
 					if possibleResolutions.get(s).y > minimumRes:
-						optionsData.set("video_resolution", clampi(s - 2, 0, 99))
+						optionsData.set("video_windowsize", clampi(s - 2, 0, 99))
 						break;
 			else:
 				optionsData.set(i, _defaultOptionsData.get(i))
@@ -291,24 +300,25 @@ func applyImmediateSettings() -> void:
 func applySetting(type, valuemysanityplease): #this shit has no switch cases :sob:
 	# check if the setting is the correct type, otherwise consider the settings save is corrupted
 	var succeededInCheckingType = false;
-	if optionDefines.get(type).type == 0 && valuemysanityplease is float:
-		succeededInCheckingType = true;
-	if optionDefines.get(type).type == 1 && valuemysanityplease is bool:
-		succeededInCheckingType = true;
-	if optionDefines.get(type).type == 2 && valuemysanityplease is int:
-		succeededInCheckingType = true;
+	if (optionDefines.has(type)):
+		if optionDefines.get(type).type == 0 && valuemysanityplease is float:
+			succeededInCheckingType = true;
+		if optionDefines.get(type).type == 1 && valuemysanityplease is bool:
+			succeededInCheckingType = true;
+		if optionDefines.get(type).type == 2 && valuemysanityplease is int:
+			succeededInCheckingType = true;
 		
 	if !succeededInCheckingType: 
 		resetOptions();
 		return;
 	
-	if type == 'video_resolution':
+	if type == 'video_windowsize':
 		if not OS.has_feature("web"):
 			get_tree().root.content_scale_factor = 1;
 			DisplayServer.window_set_size(possibleResolutions.get(valuemysanityplease))
 			justCenterThisShitAlready()
 		return
-	elif type == 'video_fullscreen':
+	elif type == 'video_windowmode':
 		if not OS.has_feature("web"): # sumimasen deshita minaide kutedasai onegai.
 			var displayModeThing;
 			if valuemysanityplease == 0: displayModeThing = DisplayServer.WINDOW_MODE_WINDOWED;
@@ -316,6 +326,10 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 			if valuemysanityplease == 2: displayModeThing = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN;
 			
 			DisplayServer.window_set_mode(displayModeThing);
+		return
+	elif type == 'video_resolution':
+		if not OS.has_feature("web"): # sumimasen deshita minaide kutedasai onegai.
+			get_viewport().scaling_3d_scale = valuemysanityplease;
 		return
 	elif type == 'video_passion':
 		Passion.visibility(valuemysanityplease)
