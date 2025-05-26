@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgmqcnoctism4"]
+[gd_scene load_steps=12 format=3 uid="uid://bgmqcnoctism4"]
 
 [ext_resource type="Script" uid="uid://xcn1tduwunwp" path="res://assets/scenes/[SUB-SCENES]/options_menu/options_menu.gd" id="1_fgg3q"]
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="2_sqiki"]
 [ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/backgrounds/grave-rect.png" id="3_8ldte"]
 [ext_resource type="Script" uid="uid://bs5gir1jklj8y" path="res://assets/scenes/[SUB-SCENES]/options_menu/categories.gd" id="4_oqvl8"]
+[ext_resource type="Script" uid="uid://bchehn5bpudmu" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="5_5slg3"]
 [ext_resource type="Texture2D" uid="uid://ch3rdb11om0r4" path="res://assets/images/buttons/general/arrow.png" id="5_eiikj"]
 [ext_resource type="Texture2D" uid="uid://dpurenv558o3h" path="res://assets/images/menu/stageselect/fade.png" id="6_owhe3"]
 
@@ -20,6 +21,24 @@ texture_margin_right = 80.0
 texture_margin_bottom = 80.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[sub_resource type="Texture2D" id="Texture2D_sqiki"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("5_5slg3")
+path = "LShoulder_UI"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://bchehn5bpudmu"
+
+[sub_resource type="Texture2D" id="Texture2D_8ldte"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("5_5slg3")
+path = "RShoulder_UI"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://bchehn5bpudmu"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_058qp"]
 blend_mode = 1
@@ -58,6 +77,14 @@ layer = 5
 offset = Vector2(640, 480)
 transform = Transform2D(1, 0, 0, 1, 640, 480)
 script = ExtResource("4_oqvl8")
+
+[node name="ControlllerHint_LShoulder" type="Sprite2D" parent="Inside"]
+position = Vector2(-465, -299)
+texture = SubResource("Texture2D_sqiki")
+
+[node name="ControlllerHint_RShoulder2" type="Sprite2D" parent="Inside"]
+position = Vector2(470, -300)
+texture = SubResource("Texture2D_8ldte")
 
 [node name="Categories" type="Control" parent="Inside"]
 clip_contents = true
