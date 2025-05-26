@@ -137,18 +137,10 @@ func _process(delta: float) -> void:
 	moveCategoryRow(true)
 	
 	if substate.canInput:
-		if Input.is_action_just_pressed("Left_GP") and curSelected == 0:
-			mouseBtn = -1
-			catMovement(-1)
-			updateCatButtonSelection()
-			
-			MenuSounds.playMenuSound("small_select")
-		elif Input.is_action_just_pressed("Right_GP") and curSelected == 0:
-			mouseBtn = -1
-			catMovement(1)
-			updateCatButtonSelection()
-			
-			MenuSounds.playMenuSound("small_select")
+		if (Input.is_action_just_pressed("Left_GP") and curSelected == 0) or Input.is_action_just_pressed("LShoulder_UI"):
+			catSwitch(-1)
+		elif (Input.is_action_just_pressed("Right_GP") and curSelected == 0) or Input.is_action_just_pressed("RShoulder_UI"):
+			catSwitch(1)
 		elif Input.is_action_just_pressed("Up_GP"):
 			mouseBtn = -1
 			updateCatButtonSelection()
@@ -165,6 +157,13 @@ func _process(delta: float) -> void:
 			MenuSounds.playMenuSound("switch")
 
 var catMovements
+
+func catSwitch(dir):
+	mouseBtn = -1
+	catMovement(dir)
+	updateCatButtonSelection()
+			
+	MenuSounds.playMenuSound("small_select")
 
 func catMovement(dir):
 	var oldCat = $Options.get_child(curCategory)
