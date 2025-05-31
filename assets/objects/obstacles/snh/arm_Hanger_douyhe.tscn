@@ -2093,6 +2093,7 @@ metadata/_custom_type_script = "uid://diwym4rde642"
 
 [node name="Douyhe_Pinata" parent="." node_paths=PackedStringArray("healthLinks") instance=ExtResource("2_f1227")]
 transform = Transform3D(0.174916, 0, -0.178618, 0, 0.25, 0, 0.178618, 0, 0.174916, 0, 3, 2.5)
+health = 80
 healthLinks = [NodePath("..")]
 
 [node name="Model" type="Node3D" parent="."]

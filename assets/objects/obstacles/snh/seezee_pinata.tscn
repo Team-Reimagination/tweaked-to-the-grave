@@ -17,11 +17,11 @@ shader_parameter/intensity = 0.0
 shader_parameter/doTransparency = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cqxiy"]
-radius = 3.21725
+radius = 3.6
 height = 13.1548
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w427h"]
-radius = 3.82247
+radius = 4.5
 height = 13.8726
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y37a"]

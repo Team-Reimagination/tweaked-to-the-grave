@@ -171,7 +171,7 @@ animations = [{
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ajw8j"]
 height = 1.10075
-radius = 2.504
+radius = 3.1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xmgww"]
 radius = 0.828

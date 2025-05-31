@@ -2093,6 +2093,7 @@ metadata/_custom_type_script = "uid://diwym4rde642"
 
 [node name="Seezee_Pinata" parent="." node_paths=PackedStringArray("healthLinks") instance=ExtResource("2_dsbe0")]
 transform = Transform3D(0.174829, 0, -0.178704, 0, 0.25, 0, 0.178704, 0, 0.174829, 0, 2.97039, 2.60067)
+health = 80
 healthLinks = [NodePath("..")]
 
 [node name="Model" type="Node3D" parent="."]
