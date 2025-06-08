@@ -70,7 +70,7 @@ var optionDefines = {
 		"min": 0.0,
 		"max": 1.0,
 		"step": 0.01,
-		"label": 'how do i change this to show the actual float'
+		"label": 'float'
 	},
 	"video_passion": {
 		"name": "Passion Effects",
@@ -86,7 +86,7 @@ var optionDefines = {
 		"min": 0.0,
 		"max": 1.0,
 		"step": 0.01,
-		"label": '%'
+		"label": 'percent'
 	},
 	"audio_ambience": {
 		"name": "Ambience Volume",
@@ -94,7 +94,7 @@ var optionDefines = {
 		"min": 0.0,
 		"max": 1.0,
 		"step": 0.01,
-		"label": '%'
+		"label": 'percent'
 	},
 	"audio_music": {
 		"name": "Music Volume",
@@ -102,7 +102,7 @@ var optionDefines = {
 		"min": 0.0,
 		"max": 1.0,
 		"step": 0.01,
-		"label": '%'
+		"label": 'percent'
 	},
 	"audio_sfx": {
 		"name": "SFX Volume",
@@ -110,7 +110,7 @@ var optionDefines = {
 		"min": 0.0,
 		"max": 1.0,
 		"step": 0.01,
-		"label": '%'
+		"label": 'percent'
 	},
 	"audio_voicelines": {
 		"name": "Voiceline Volume",
@@ -118,7 +118,7 @@ var optionDefines = {
 		"min": 0.0,
 		"max": 1.0,
 		"step": 0.01,
-		"label": '%'
+		"label": 'percent'
 	},
 	"audio_subtitles": {
 		"name": "Subtitles",
