@@ -13,6 +13,7 @@ var _defaultOptionsData = { ## enter the options you want to add
 	"audio_sfx" = 1.0,
 	"audio_ambience" = 1.0,
 	"audio_voicelines" = 1.0,
+	"audio_dialogueattenuation" = 10,
 	"audio_subtitles" = 0,
 	
 	"gameplay_autofire" = false,
@@ -120,6 +121,14 @@ var optionDefines = {
 		"step": 0.01,
 		"label": 'percent'
 	},
+	"audio_dialogueattenuation": {
+		"name": "Dialogue Attenuation",
+		"type": 0,
+		"min": 0,
+		"max": 50,
+		"step": 1,
+		"label": 'db'
+	},
 	"audio_subtitles": {
 		"name": "Subtitles",
 		"type": 2,
@@ -195,20 +204,23 @@ func nukeSave() -> void: ## this can also serve as setting default vars
 	saveSave()
 	applyImmediateSettings()
 
+func setOptionAsDefault(i) :
+	if i == "video_windowsize":
+		var minimumRes = DisplayServer.get_display_safe_area().size.x;
+		if minimumRes >= DisplayServer.get_display_safe_area().size.y:
+			minimumRes = DisplayServer.get_display_safe_area().size.y
+				
+		for s in len(possibleResolutions):
+			if possibleResolutions.get(s).y > minimumRes:
+				optionsData.set("video_windowsize", clampi(s - 2, 0, 99))
+				break;
+	else:
+		optionsData.set(i, _defaultOptionsData.get(i))
+
 func setOptionDefaults(checkExistence) :
 	for i in _defaultOptionsData.keys():
 		if (checkExistence and not optionsData.has(i)) or !checkExistence: 
-			if i == "video_windowsize":
-				var minimumRes = DisplayServer.get_display_safe_area().size.x;
-				if minimumRes >= DisplayServer.get_display_safe_area().size.y:
-					minimumRes = DisplayServer.get_display_safe_area().size.y
-				
-				for s in len(possibleResolutions):
-					if possibleResolutions.get(s).y > minimumRes:
-						optionsData.set("video_windowsize", clampi(s - 2, 0, 99))
-						break;
-			else:
-				optionsData.set(i, _defaultOptionsData.get(i))
+			setOptionAsDefault(i)
 	
 func setAchievementDefaults(checkExistence) :
 	for i in _defaultAchievementData.keys():
@@ -309,8 +321,7 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 			succeededInCheckingType = true;
 		
 	if !succeededInCheckingType: 
-		resetOptions();
-		return;
+		setOptionAsDefault(type)
 	
 	if type == 'video_windowsize':
 		if not OS.has_feature("web"):
@@ -349,6 +360,7 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 		return
 	elif type == 'audio_voicelines':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Voicelines"), linear_to_db(valuemysanityplease))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Dialogue"), linear_to_db(valuemysanityplease))
 		return
 	elif type == 'audio_subtitles':
 		return
