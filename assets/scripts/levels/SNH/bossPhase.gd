@@ -126,7 +126,7 @@ func _process(delta) :
 		scene.canInput = true
 		scene.boss.get_node("Model/AnimationPlayer").play("Mad_Idle")
 		scene.music.play()
-		scene.music.volume_db = -15.0
+		scene.music.volume_db = PlayGlobals.musicLevel
 		scene.loadDialogue("SNH_Phase2")
 		
 		myWoodJustGotLonger = true

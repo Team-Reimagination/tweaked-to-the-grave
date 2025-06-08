@@ -1,10 +1,11 @@
 extends Node
 
-var levelID = "SNH"
+var levelID = "SHR"
 var levelDefs;
 var cutsceneID = 'aend'
 
 var gravity = 38.4
+var musicLevel = -5.0
 
 #DIFFICULTY STUFF
 var difficulty = 2
