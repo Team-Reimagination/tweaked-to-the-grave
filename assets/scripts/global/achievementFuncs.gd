@@ -70,7 +70,7 @@ var achievementsToShow = []
 func setPlacementY(num = null):
 	achoY = num if num != null else 0.0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if curAcho: curAcho.position.y = lerpf(curAcho.position.y, achoY, 0.5)
 
 func unlockAchievement(ach):

@@ -13,6 +13,15 @@ var moveTween
 @export var releaseEase = 'in'
 @export var releaseTrans = 'linear'
 
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+
+	if moveTween: moveTween.kill()
+	
+	$Model.position = $MStart.position
+	$Hitbox.position = $MStart.position
+	$NarrowBox.position = $MStart.position
+
 func _ready() -> void:
 	super._ready()
 	
@@ -54,4 +63,4 @@ func returnFunc():
 		if disabled: return
 		movemental()
 	else:
-		if killAfter: queue_free()
+		if killAfter: disabled = true

@@ -428,7 +428,7 @@ metadata/_custom_type_script = "uid://bmyxgbpgjh55y"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0245319, 0)
 
 [node name="Coffing" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1.00062, 0, 0, 0, 0.999712, 0, 0, 0, 1, -1.19209e-07, 0.0313554, 0)
+transform = Transform3D(1.00062, 0, 0, 0, 0.999712, 0, 0, 0, 1, 0, 0.0313554, 0)
 material_override = SubResource("ShaderMaterial_xtcix")
 material_overlay = SubResource("ShaderMaterial_pcbnc")
 mesh = SubResource("ArrayMesh_a0w75")

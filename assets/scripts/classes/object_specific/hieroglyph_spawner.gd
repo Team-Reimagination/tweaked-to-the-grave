@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	super._process(delta)
 	
 	if spawned and !$Launch.playing:
-		imKillingMyself()
+		queue_free()
 
 func imDone():
 	if disabled: return

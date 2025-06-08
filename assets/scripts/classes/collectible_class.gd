@@ -4,8 +4,15 @@ extends TTTG_Entity
 @export var objType : String
 @export var value : int
 
+var awaitCollection = true
 var startSucking = false
 var willDisappear = false
+
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+	
+	awaitCollection = true
+	$Model.visible = true
 
 func _ready() -> void:
 	super._ready()
@@ -50,6 +57,9 @@ var ole = 0.0;
 var county = 0
 
 func _process(delta: float) -> void:
+	if $Model.visible and !awaitCollection:
+		position.z += PlayGlobals.moveSpeed(delta, scene);
+	
 	if disabled: return
 	super._process(delta)
 	
@@ -79,13 +89,28 @@ func _process(delta: float) -> void:
 		self.global_position.z = lerpf(self.global_position.z, scene.player.global_position.z, ole)
 
 func victory_screech():
-	if disabled: return
 	queue_free()
 
 func detectCollission(_areID, are, _arSID, _loSID):
 	if disabled: return
 	if !scene.hasBitchWon:
 		if are.type == 'player' and _loSID == 0 and !startSucking and !willDisappear and scene.player.action != 'hurt' and scene.player.action != 'explode':
-			startSucking = true
-			$Attraction.subtitle_play()
-		elif are.type == 'player_collector' and _loSID == 1 and !willDisappear and (startSucking or (!startSucking and scene.player.action != 'hurt' and scene.player.action != 'explode')): suicide()
+			if awaitCollection: summonActualCollectible(true)
+		elif are.type == 'player_collector' and _loSID == 1 and !willDisappear and (startSucking or (!startSucking and scene.player.action != 'hurt' and scene.player.action != 'explode')):
+			if $Model.visible: suicide()
+
+func summonActualCollectible(toSuck):
+	awaitCollection = false
+	
+	var coll2 = self.duplicate()
+	
+	coll2.awaitCollection = false
+	scene.spawnOBJ(coll2)
+	
+	coll2.global_position = global_position
+	
+	if toSuck:
+		coll2.startSucking = true
+		$Attraction.subtitle_play()
+	
+	$Model.visible = false

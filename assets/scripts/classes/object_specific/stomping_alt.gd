@@ -13,6 +13,13 @@ var moveTween
 @export var releaseEase = 'in'
 @export var releaseTrans = 'linear'
 
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+
+	if moveTween: moveTween.kill()
+	
+	global_position = $MStart.position
+
 func _ready() -> void:
 	super._ready()
 	

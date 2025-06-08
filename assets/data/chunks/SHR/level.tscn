@@ -16,47 +16,48 @@
 [node name="ShrBackground" type="Node3D"]
 
 [node name="References" parent="." instance=ExtResource("1_pm65a")]
+cloneCount = 0
 
-[node name="0_Obelisks" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+[node name="0" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_ay21j")
-nextChunk = NodePath("../0_Coins")
 chanceWeight = 0.75
+cloneCount = 2
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
-[node name="EndPos" type="Marker3D" parent="0_Obelisks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.6749)
-
-[node name="StartPos" type="Marker3D" parent="0_Obelisks"]
+[node name="StartPos" type="Marker3D" parent="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.0057)
 
-[node name="Obelisk" parent="0_Obelisks" instance=ExtResource("3_kw5fw")]
+[node name="EndPos" type="Marker3D" parent="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -314.665)
+
+[node name="Obelisk" parent="0" instance=ExtResource("3_kw5fw")]
 transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, -51.6935, 0, -19.2117)
 fallDistance = 200
 fallTime = 1.5
 shortRenderDistance = true
 isBackgroundObject = false
 
-[node name="SpawnAngle" parent="0_Obelisks/Obelisk" index="4"]
+[node name="SpawnAngle" parent="0/Obelisk" index="4"]
 transform = Transform3D(0.741952, 0.131969, -0.657335, 0, 0.980436, 0.196836, 0.670452, -0.146043, 0.727437, -0.996683, -7.433, 1.55941)
 
-[node name="FallAngle" parent="0_Obelisks/Obelisk" index="5"]
+[node name="FallAngle" parent="0/Obelisk" index="5"]
 transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
 
-[node name="Obelisk2" parent="0_Obelisks" instance=ExtResource("3_kw5fw")]
+[node name="Obelisk2" parent="0" instance=ExtResource("3_kw5fw")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 53.1416, 0, -112.218)
 spawnLerp = 0.25
 doFall = false
 shortRenderDistance = true
 isBackgroundObject = false
 
-[node name="SpawnAngle" parent="0_Obelisks/Obelisk2" index="4"]
+[node name="SpawnAngle" parent="0/Obelisk2" index="4"]
 transform = Transform3D(0.555686, -0.229469, 0.799097, 1.0245e-09, 0.961155, 0.276006, -0.831392, -0.153373, 0.534101, 1.6936, -7.43299, 0.850248)
 
-[node name="FallAngle" parent="0_Obelisks/Obelisk2" index="5"]
+[node name="FallAngle" parent="0/Obelisk2" index="5"]
 transform = Transform3D(0.543658, -0.338122, 0.768186, -1.42109e-15, 0.915262, 0.402859, -0.839307, -0.219017, 0.49759, 0, 0, 0)
 
-[node name="Obelisk3" parent="0_Obelisks" instance=ExtResource("3_kw5fw")]
+[node name="Obelisk3" parent="0" instance=ExtResource("3_kw5fw")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 9.15246, 0, -249.275)
 doSpawn = false
 fallDistance = 300
@@ -64,202 +65,166 @@ fallTime = 2.5
 shortRenderDistance = true
 isBackgroundObject = false
 
-[node name="SpawnAngle" parent="0_Obelisks/Obelisk3" index="4"]
+[node name="SpawnAngle" parent="0/Obelisk3" index="4"]
 transform = Transform3D(0.965363, -0.260909, 0, 0.260909, 0.965363, 0, 0, 0, 0.999999, 1.94708, -7.43299, 0.0439024)
 
-[node name="FallAngle" parent="0_Obelisks/Obelisk3" index="5"]
+[node name="FallAngle" parent="0/Obelisk3" index="5"]
 transform = Transform3D(0.681705, -0.731627, 0, 0.731627, 0.681705, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="0_Coins" type="Node3D" parent="."]
-visible = false
-script = ExtResource("1_ay21j")
-isSubChunk = true
-metadata/_custom_type_script = "uid://8fviwb4leujf"
-
-[node name="EndPos" type="Marker3D" parent="0_Coins"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -314.665)
-
-[node name="StartPos" type="Marker3D" parent="0_Coins"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.5051)
-
-[node name="Lira-1" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-1" parent="0" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.66123, 30.7009, -10.5597)
 
-[node name="Lira-2" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-2" parent="0" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.674, 35.8179, -25.2104)
 
-[node name="Lira-3" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-3" parent="0" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4233, 38.4993, -40.635)
 
-[node name="Lira-4" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-4" parent="0" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2006, 39.493, -56.0194)
 
-[node name="Lira-5" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-5" parent="0" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5628, 37.9556, -70.2747)
 
-[node name="Lira-6" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-6" parent="0" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09458, 30.7009, -138.415)
 
-[node name="Lira-7" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-7" parent="0" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33373, 25.8242, -153.842)
 
-[node name="Lira-8" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-8" parent="0" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83716, 18.0723, -172.12)
 
-[node name="Lira-9" parent="0_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-9" parent="0" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.23446, 16.6731, -188.866)
 
-[node name="Lira-10" parent="0_Coins" instance=ExtResource("5_vxlka")]
+[node name="Lira-10" parent="0" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0229, 20.0437, -201.999)
 
-[node name="Lira-11" parent="0_Coins" instance=ExtResource("6_qndkb")]
+[node name="Lira-11" parent="0" instance=ExtResource("6_qndkb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5486, 25.8276, -248.378)
 
-[node name="1_Obelisks" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+[node name="1" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_ay21j")
-nextChunk = NodePath("../1_Coins1")
 chanceWeight = 0.75
+cloneCount = 2
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
-[node name="EndPos" type="Marker3D" parent="1_Obelisks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.6965)
+[node name="EndPos" type="Marker3D" parent="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -460.585)
 
-[node name="StartPos" type="Marker3D" parent="1_Obelisks"]
+[node name="StartPos" type="Marker3D" parent="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.0057)
 
-[node name="Obelisk" parent="1_Obelisks" instance=ExtResource("3_kw5fw")]
+[node name="Obelisk" parent="1" instance=ExtResource("3_kw5fw")]
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -21.5834, 0, -19.2117)
 doSpawn = false
 doFall = false
 shortRenderDistance = true
 isBackgroundObject = false
 
-[node name="SpawnAngle" parent="1_Obelisks/Obelisk" index="4"]
+[node name="SpawnAngle" parent="1/Obelisk" index="4"]
 transform = Transform3D(0.989588, -0.143924, 0, 0.141276, 0.971377, -0.190963, 0.0274842, 0.188975, 0.981596, 0, 0, 0)
 
-[node name="FallAngle" parent="1_Obelisks/Obelisk" index="5"]
+[node name="FallAngle" parent="1/Obelisk" index="5"]
 transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
 
-[node name="Obelisk2" parent="1_Obelisks" instance=ExtResource("3_kw5fw")]
+[node name="Obelisk2" parent="1" instance=ExtResource("3_kw5fw")]
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 41.3914, 0, -116.835)
 doSpawn = false
 doFall = false
 shortRenderDistance = true
 isBackgroundObject = false
 
-[node name="SpawnAngle" parent="1_Obelisks/Obelisk2" index="4"]
+[node name="SpawnAngle" parent="1/Obelisk2" index="4"]
 transform = Transform3D(0.909199, -0.25684, -0.327702, 3.15797e-15, 0.787064, -0.616871, 0.41636, 0.560859, 0.715598, 0, 0, 0)
 
-[node name="FallAngle" parent="1_Obelisks/Obelisk2" index="5"]
+[node name="FallAngle" parent="1/Obelisk2" index="5"]
 transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
 
-[node name="Obelisk3" parent="1_Obelisks" instance=ExtResource("3_kw5fw")]
+[node name="Obelisk3" parent="1" instance=ExtResource("3_kw5fw")]
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -66.9467, 0, -208.391)
 doSpawn = false
 doFall = false
 shortRenderDistance = true
 isBackgroundObject = false
 
-[node name="SpawnAngle" parent="1_Obelisks/Obelisk3" index="4"]
+[node name="SpawnAngle" parent="1/Obelisk3" index="4"]
 transform = Transform3D(0.447899, 0.894083, 0, -0.894084, 0.447899, 0, 0, 0, 0.999999, 0, 0, 0)
 
-[node name="FallAngle" parent="1_Obelisks/Obelisk3" index="5"]
+[node name="FallAngle" parent="1/Obelisk3" index="5"]
 transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
 
-[node name="Obelisk4" parent="1_Obelisks" instance=ExtResource("3_kw5fw")]
+[node name="Obelisk4" parent="1" instance=ExtResource("3_kw5fw")]
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0.404411, 0, -356.8)
 doSpawn = false
 doFall = false
 shortRenderDistance = true
 isBackgroundObject = false
 
-[node name="SpawnAngle" parent="1_Obelisks/Obelisk4" index="4"]
+[node name="SpawnAngle" parent="1/Obelisk4" index="4"]
 transform = Transform3D(0.9655, -0.0787944, -0.248196, 0, 0.953121, -0.302586, 0.260403, 0.292147, 0.920238, 0, 0, 0)
 
-[node name="FallAngle" parent="1_Obelisks/Obelisk4" index="5"]
+[node name="FallAngle" parent="1/Obelisk4" index="5"]
 transform = Transform3D(0.723558, 0.518419, -0.455747, 0.352492, 0.290164, 0.889693, 0.593475, -0.804392, 0.0272119, 0, 0, 0)
 
-[node name="1_Coins1" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
-visible = false
-script = ExtResource("1_ay21j")
-nextChunk = NodePath("../1_Coins2")
-isSubChunk = true
-metadata/_custom_type_script = "uid://8fviwb4leujf"
-
-[node name="StartPos" type="Marker3D" parent="1_Coins1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.7618)
-
-[node name="EndPos" type="Marker3D" parent="1_Coins1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.6361)
-
-[node name="Lira-1" parent="1_Coins1" instance=ExtResource("4_6xtxo")]
+[node name="Lira-1" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6681, 28.9237, -62.8612)
 
-[node name="Lira-2" parent="1_Coins1" instance=ExtResource("4_6xtxo")]
+[node name="Lira-2" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06396, 34.1805, -81.8079)
 
-[node name="Lira-3" parent="1_Coins1" instance=ExtResource("4_6xtxo")]
+[node name="Lira-3" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04811, 34.3208, -101.344)
 
-[node name="Lira-4" parent="1_Coins1" instance=ExtResource("4_6xtxo")]
+[node name="Lira-4" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46899, 32.4235, -123.417)
 
-[node name="Lira-5" parent="1_Coins1" instance=ExtResource("4_6xtxo")]
+[node name="Lira-5" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97121, 27.1732, -144.508)
 
-[node name="Lira-6" parent="1_Coins1" instance=ExtResource("5_vxlka")]
+[node name="Lira-6" parent="1" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999809, 26.2006, -164.469)
 
-[node name="1_Coins2" type="Node3D" parent="."]
-visible = false
-script = ExtResource("1_ay21j")
-isSubChunk = true
-metadata/_custom_type_script = "uid://8fviwb4leujf"
-
-[node name="EndPos" type="Marker3D" parent="1_Coins2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -460.585)
-
-[node name="StartPos" type="Marker3D" parent="1_Coins2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.4568)
-
-[node name="Lira-2" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+[node name="Lira-7" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9424, 28.0489, -310.103)
 
-[node name="Lira-3" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+[node name="Lira-8" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1422, 32.691, -329.398)
 
-[node name="Lira-4" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+[node name="Lira-9" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8572, 36.8873, -349.153)
 
-[node name="Lira-5" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+[node name="Lira-10" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9122, 39.2038, -368.45)
 
-[node name="Lira-6" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+[node name="Lira-11" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5354, 27.9616, -311.481)
 
-[node name="Lira-7" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+[node name="Lira-12" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4464, 32.8108, -330.449)
 
-[node name="Lira-8" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+[node name="Lira-13" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2029, 36.4018, -350.34)
 
-[node name="Lira-9" parent="1_Coins2" instance=ExtResource("4_6xtxo")]
+[node name="Lira-14" parent="1" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5801, 38.9296, -370.23)
 
-[node name="Lira-10" parent="1_Coins2" instance=ExtResource("5_vxlka")]
+[node name="Lira-15" parent="1" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7862, 41.287, -389.581)
 
-[node name="Lira-11" parent="1_Coins2" instance=ExtResource("5_vxlka")]
+[node name="Lira-16" parent="1" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9642, 41.0036, -389.581)
 
-[node name="Health" parent="1_Coins2" instance=ExtResource("7_vxlka")]
+[node name="Health" parent="1" instance=ExtResource("7_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.2145, -378.804)
 
 [node name="2" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_ay21j")
 chanceWeight = 0.85
+cloneCount = 2
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="2"]
@@ -338,6 +303,7 @@ transform = Transform3D(0.0833333, 0, 0, 0, 0.0833333, 0, 0, 0, 0.0833333, 0, 3.
 visible = false
 script = ExtResource("1_ay21j")
 chanceWeight = 0.85
+cloneCount = 2
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="4"]
@@ -352,9 +318,9 @@ speed = 0.65
 shortRenderDistance = true
 
 [node name="5" type="Node3D" parent="."]
-visible = false
 script = ExtResource("1_ay21j")
 chanceWeight = 0.8
+cloneCount = 2
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="5"]
@@ -373,6 +339,7 @@ shortRenderDistance = true
 visible = false
 script = ExtResource("1_ay21j")
 chanceWeight = 0.8
+cloneCount = 1
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="6"]
@@ -420,78 +387,68 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 54.1742, -84.5833)
 [node name="Lira-6" parent="6" instance=ExtResource("8_qndkb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00444794, 19.4667, -9.78016)
 
-[node name="7_Cacti" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+[node name="7" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_ay21j")
-nextChunk = NodePath("../7_Lira")
 chanceWeight = 0.85
+cloneCount = 2
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
-[node name="EndPos" type="Marker3D" parent="7_Cacti"]
-
-[node name="StartPos" type="Marker3D" parent="7_Cacti"]
+[node name="StartPos" type="Marker3D" parent="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.918625)
 
-[node name="Cactus" parent="7_Cacti" instance=ExtResource("10_ys7r5")]
-transform = Transform3D(-3.73178, 0, 5.32201, 0, 6.5, 0, -5.32201, 0, -3.73178, -17.0066, 0, -32.4338)
-
-[node name="Cactus2" parent="7_Cacti" instance=ExtResource("10_ys7r5")]
-transform = Transform3D(3.51624, 0, 5.46681, 0, 6.5, 0, -5.46681, 0, 3.51624, 14.426, 0, -121.049)
-
-[node name="7_Lira" type="Node3D" parent="."]
-visible = false
-script = ExtResource("1_ay21j")
-isSubChunk = true
-chanceWeight = 85.0
-metadata/_custom_type_script = "uid://8fviwb4leujf"
-
-[node name="EndPos" type="Marker3D" parent="7_Lira"]
+[node name="EndPos" type="Marker3D" parent="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -184.572)
 
-[node name="StartPos" type="Marker3D" parent="7_Lira"]
+[node name="Cactus" parent="7" instance=ExtResource("10_ys7r5")]
+transform = Transform3D(-3.73178, 0, 5.32201, 0, 6.5, 0, -5.32201, 0, -3.73178, -17.0066, 0, -32.4338)
 
-[node name="Lira-10" parent="7_Lira" instance=ExtResource("6_qndkb")]
+[node name="Cactus2" parent="7" instance=ExtResource("10_ys7r5")]
+transform = Transform3D(3.51624, 0, 5.46681, 0, 6.5, 0, -5.46681, 0, 3.51624, 14.426, 0, -121.049)
+
+[node name="Lira-10" parent="7" instance=ExtResource("6_qndkb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4626, 24.3549, -60.5932)
 
-[node name="Lira-11" parent="7_Lira" instance=ExtResource("6_qndkb")]
+[node name="Lira-11" parent="7" instance=ExtResource("6_qndkb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.458, 24.3549, -150.76)
 
-[node name="Lira-1" parent="7_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-1" parent="7" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.991319, -0.0474031, -0.122637, 0.0149007, 0.967241, -0.253422, 0.130633, 0.249394, 0.959551, 11.309, 22.0163, -22.351)
 
-[node name="Lira-2" parent="7_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-2" parent="7" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.991319, -0.0474031, -0.122637, 0.0149007, 0.967241, -0.253422, 0.130633, 0.249394, 0.959551, 9.66784, 26.6824, -40.7601)
 
-[node name="Lira-3" parent="7_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-3" parent="7" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.991319, -0.0474031, -0.122637, 0.0149007, 0.967241, -0.253422, 0.130633, 0.249394, 0.959551, 2.84103, 31.0467, -58.984)
 
-[node name="Lira-4" parent="7_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-4" parent="7" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.991319, -0.0474031, -0.122637, 0.0149007, 0.967241, -0.253422, 0.130633, 0.249394, 0.959551, -4.5391, 35.3374, -77.0275)
 
-[node name="Lira-5" parent="7_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-5" parent="7" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.991319, -0.0474031, -0.122637, 0.0149007, 0.967241, -0.253422, 0.130633, 0.249394, 0.959551, -10.5235, 39.5811, -94.6237)
 
-[node name="Lira-6" parent="7_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-6" parent="7" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.991319, -0.0474031, -0.122637, 0.0149007, 0.967241, -0.253422, 0.130633, 0.249394, 0.959551, -14.3787, 43.9533, -112.313)
 
-[node name="Lira-7" parent="7_Lira" instance=ExtResource("5_vxlka")]
+[node name="Lira-7" parent="7" instance=ExtResource("5_vxlka")]
 transform = Transform3D(0.991319, -0.0474031, -0.122637, 0.0149007, 0.967241, -0.253422, 0.130633, 0.249394, 0.959551, -16.3795, 48.6562, -130.933)
 
-[node name="8_Obstacles" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+[node name="8" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_ay21j")
-nextChunk = NodePath("../8_Lira")
 chanceWeight = 0.65
+cloneCount = 1
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
-[node name="EndPos" type="Marker3D" parent="8_Obstacles"]
+[node name="StartPos" type="Marker3D" parent="8"]
 
-[node name="StartPos" type="Marker3D" parent="8_Obstacles"]
+[node name="EndPos" type="Marker3D" parent="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -173.188)
 
-[node name="Cactus" parent="8_Obstacles" instance=ExtResource("10_ys7r5")]
+[node name="Cactus" parent="8" instance=ExtResource("10_ys7r5")]
 transform = Transform3D(0.091168, 0, 3.99896, 0, 4, 0, -3.99896, 0, 0.091168, 0.0916653, 0, -32.3889)
 
-[node name="Obelisk" parent="8_Obstacles" instance=ExtResource("3_kw5fw")]
+[node name="Obelisk" parent="8" instance=ExtResource("3_kw5fw")]
 transform = Transform3D(11, 0, 0, 0, 17, 0, 0, 0, 11, -32.9111, 0, -100.9)
 doSpawn = false
 fallDistance = 200
@@ -500,13 +457,13 @@ chosenTrans = "linear"
 shortRenderDistance = true
 isBackgroundObject = false
 
-[node name="SpawnAngle" parent="8_Obstacles/Obelisk" index="4"]
+[node name="SpawnAngle" parent="8/Obelisk" index="4"]
 transform = Transform3D(0.909265, 0.357688, -0.212828, 0.117233, 0.270546, 0.955542, 0.399366, -0.893792, 0.204065, 0, 0, 0)
 
-[node name="FallAngle" parent="8_Obstacles/Obelisk" index="5"]
+[node name="FallAngle" parent="8/Obelisk" index="5"]
 transform = Transform3D(0.899923, 0.322955, -0.292981, 0, 0.671901, 0.74064, 0.436048, -0.66652, 0.60466, 0, 0, 0)
 
-[node name="Obelisk2" parent="8_Obstacles" instance=ExtResource("3_kw5fw")]
+[node name="Obelisk2" parent="8" instance=ExtResource("3_kw5fw")]
 transform = Transform3D(11, 0, 0, 0, 17, 0, 0, 0, 11, 32.5395, 0, -100.9)
 doSpawn = false
 fallDistance = 200
@@ -515,136 +472,113 @@ chosenTrans = "linear"
 shortRenderDistance = true
 isBackgroundObject = false
 
-[node name="SpawnAngle" parent="8_Obstacles/Obelisk2" index="4"]
+[node name="SpawnAngle" parent="8/Obelisk2" index="4"]
 transform = Transform3D(0.942089, -0.260144, 0.21164, -0.144013, 0.256109, 0.955859, -0.302864, -0.930984, 0.203814, 0, 0, 0)
 
-[node name="FallAngle" parent="8_Obstacles/Obelisk2" index="5"]
+[node name="FallAngle" parent="8/Obelisk2" index="5"]
 transform = Transform3D(0.898794, -0.324747, 0.294463, 0, 0.67172, 0.740804, -0.438371, -0.665831, 0.603738, 0, 0, 0)
 
-[node name="Lira-2" parent="8_Obstacles" instance=ExtResource("5_vxlka")]
+[node name="Lira-2" parent="8" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.7569, -33.6776)
 
-[node name="Lira-20" parent="8_Obstacles" instance=ExtResource("11_8iyur")]
+[node name="Lira-20" parent="8" instance=ExtResource("11_8iyur")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.9564, -158.399)
 
-[node name="8_Lira" type="Node3D" parent="."]
-visible = false
-script = ExtResource("1_ay21j")
-isSubChunk = true
-chanceWeight = 85.0
-metadata/_custom_type_script = "uid://8fviwb4leujf"
-
-[node name="EndPos" type="Marker3D" parent="8_Lira"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -173.188)
-
-[node name="StartPos" type="Marker3D" parent="8_Lira"]
-
-[node name="Lira-4" parent="8_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-4" parent="8" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.976889, -0.0951795, -0.191386, 0.028591, 0.945526, -0.32429, 0.211826, 0.311324, 0.926395, -19.4193, 29.739, -101.534)
 
-[node name="Lira-5" parent="8_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-5" parent="8" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.976889, -0.0951795, -0.191386, 0.028591, 0.945526, -0.32429, 0.211826, 0.311324, 0.926395, -17.4709, 33.0404, -110.965)
 
-[node name="Lira-6" parent="8_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-6" parent="8" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.976889, -0.0951795, -0.191386, 0.028591, 0.945526, -0.32429, 0.211826, 0.311324, 0.926395, -15.6031, 36.2053, -120.006)
 
-[node name="Lira-7" parent="8_Lira" instance=ExtResource("5_vxlka")]
+[node name="Lira-7" parent="8" instance=ExtResource("5_vxlka")]
 transform = Transform3D(0.976889, -0.0951795, -0.191386, 0.028591, 0.945526, -0.32429, 0.211826, 0.311324, 0.926395, -13.1257, 39.1865, -129.513)
 
-[node name="Lira-8" parent="8_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-8" parent="8" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.971158, 0.0505525, 0.233017, 0.028591, 0.945526, -0.32429, -0.236717, 0.321599, 0.916809, 19.9021, 29.739, -101.622)
 
-[node name="Lira-9" parent="8_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-9" parent="8" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.971158, 0.0505525, 0.233017, 0.028591, 0.945526, -0.32429, -0.236717, 0.321599, 0.916809, 17.5299, 33.0404, -110.956)
 
-[node name="Lira-10" parent="8_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-10" parent="8" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(0.971158, 0.0505525, 0.233017, 0.028591, 0.945526, -0.32429, -0.236717, 0.321599, 0.916809, 15.2558, 36.2053, -119.903)
 
-[node name="Lira-11" parent="8_Lira" instance=ExtResource("5_vxlka")]
+[node name="Lira-11" parent="8" instance=ExtResource("5_vxlka")]
 transform = Transform3D(0.971158, 0.0505525, 0.233017, 0.028591, 0.945526, -0.32429, -0.236717, 0.321599, 0.916809, 13.3261, 39.1865, -129.537)
 
-[node name="9_Cacti" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+[node name="9" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_ay21j")
-nextChunk = NodePath("../9_Lira")
 chanceWeight = 0.8
+cloneCount = 2
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
-[node name="EndPos" type="Marker3D" parent="9_Cacti"]
+[node name="StartPos" type="Marker3D" parent="9"]
 
-[node name="StartPos" type="Marker3D" parent="9_Cacti"]
-
-[node name="Cactus" parent="9_Cacti" instance=ExtResource("10_ys7r5")]
-transform = Transform3D(5.62805, 0, 4.3284, 0, 7.1, 0, -4.3284, 0, 5.62805, 24.5549, 0, -24.9697)
-
-[node name="Cactus2" parent="9_Cacti" instance=ExtResource("10_ys7r5")]
-transform = Transform3D(-4.11732, 0, 5.41181, 0, 6.8, 0, -5.41181, 0, -4.11732, -26.6628, 0, -57.0341)
-
-[node name="Cactus3" parent="9_Cacti" instance=ExtResource("10_ys7r5")]
-transform = Transform3D(-2.02694, 0, 4.89709, 0, 5.3, 0, -4.89709, 0, -2.02694, 11.2481, 0, -150.232)
-
-[node name="Cactus4" parent="9_Cacti" instance=ExtResource("10_ys7r5")]
-transform = Transform3D(2.06009, 0, -5.7416, 0, 6.1, 0, 5.7416, 0, 2.06009, 38.3684, 0, -194.038)
-
-[node name="Cactus5" parent="9_Cacti" instance=ExtResource("10_ys7r5")]
-transform = Transform3D(-1.03204, 0, -7.02459, 0, 7.1, 0, 7.02459, 0, -1.03204, -35.1045, 0, -273.645)
-
-[node name="Cactus6" parent="9_Cacti" instance=ExtResource("10_ys7r5")]
-transform = Transform3D(4.47256, 0, 7.22815, 0, 8.5, 0, -7.22815, 0, 4.47256, -2.11672, 0, -309.111)
-
-[node name="9_Lira" type="Node3D" parent="."]
-visible = false
-script = ExtResource("1_ay21j")
-isSubChunk = true
-chanceWeight = 85.0
-metadata/_custom_type_script = "uid://8fviwb4leujf"
-
-[node name="EndPos" type="Marker3D" parent="9_Lira"]
+[node name="EndPos" type="Marker3D" parent="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -360.836)
 
-[node name="StartPos" type="Marker3D" parent="9_Lira"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.04666)
+[node name="Cactus" parent="9" instance=ExtResource("10_ys7r5")]
+transform = Transform3D(5.62805, 0, 4.3284, 0, 7.1, 0, -4.3284, 0, 5.62805, 24.5549, 0, -24.9697)
 
-[node name="Lira-1" parent="9_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Cactus2" parent="9" instance=ExtResource("10_ys7r5")]
+transform = Transform3D(-4.11732, 0, 5.41181, 0, 6.8, 0, -5.41181, 0, -4.11732, -26.6628, 0, -57.0341)
+
+[node name="Cactus3" parent="9" instance=ExtResource("10_ys7r5")]
+transform = Transform3D(-2.02694, 0, 4.89709, 0, 5.3, 0, -4.89709, 0, -2.02694, 11.2481, 0, -150.232)
+
+[node name="Cactus4" parent="9" instance=ExtResource("10_ys7r5")]
+transform = Transform3D(2.06009, 0, -5.7416, 0, 6.1, 0, 5.7416, 0, 2.06009, 38.3684, 0, -194.038)
+
+[node name="Cactus5" parent="9" instance=ExtResource("10_ys7r5")]
+transform = Transform3D(-1.03204, 0, -7.02459, 0, 7.1, 0, 7.02459, 0, -1.03204, -35.1045, 0, -273.645)
+
+[node name="Cactus6" parent="9" instance=ExtResource("10_ys7r5")]
+transform = Transform3D(4.47256, 0, 7.22815, 0, 8.5, 0, -7.22815, 0, 4.47256, -2.11672, 0, -309.111)
+
+[node name="Lira-1" parent="9" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 0.97782, -0.209448, 0, 0.209448, 0.97782, -3.94554, 31.439, -23.8013)
 
-[node name="Lira-6" parent="9_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-6" parent="9" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.83863, 19.8267, -203.319)
 
-[node name="Lira-7" parent="9_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-7" parent="9" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.614181, 17.5444, -223.968)
 
-[node name="Lira-8" parent="9_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-8" parent="9" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.67728, 18.1882, -243.641)
 
-[node name="Lira-9" parent="9_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-9" parent="9" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3149, 20.2706, -263.087)
 
-[node name="Lira-2" parent="9_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-2" parent="9" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 0.97782, -0.209448, 0, 0.209448, 0.97782, 3.01202, 29.4258, -41.5116)
 
-[node name="Lira-3" parent="9_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-3" parent="9" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 0.97782, -0.209448, 0, 0.209448, 0.97782, 5.29497, 22.9537, -63.2621)
 
-[node name="Lira-4" parent="9_Lira" instance=ExtResource("4_6xtxo")]
+[node name="Lira-4" parent="9" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 0.97782, -0.209448, 0, 0.209448, 0.97782, 3.76658, 16.9694, -87.2499)
 
-[node name="Lira-5" parent="9_Lira" instance=ExtResource("5_vxlka")]
+[node name="Lira-5" parent="9" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 0.97782, -0.209448, 0, 0.209448, 0.97782, -4.61453, 18.7746, -106.557)
 
-[node name="Lira-10" parent="9_Lira" instance=ExtResource("5_vxlka")]
+[node name="Lira-10" parent="9" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9382, 26.7341, -281.448)
 
-[node name="Lira-11" parent="9_Lira" instance=ExtResource("8_qndkb")]
+[node name="Lira-11" parent="9" instance=ExtResource("8_qndkb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3341, 29.7895, -172.89)
 
-[node name="Lira-12" parent="9_Lira" instance=ExtResource("8_qndkb")]
+[node name="Lira-12" parent="9" instance=ExtResource("8_qndkb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5311, 14.5014, -288.659)
 
 [node name="10" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_ay21j")
 chanceWeight = 0.75
+cloneCount = 2
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="10"]
@@ -697,6 +631,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4573, 43.5633, -70.3053)
 visible = false
 script = ExtResource("1_ay21j")
 chanceWeight = 0.8
+cloneCount = 2
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="12"]
@@ -720,6 +655,7 @@ shortRenderDistance = true
 visible = false
 script = ExtResource("1_ay21j")
 chanceWeight = 0.8
+cloneCount = 2
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
 [node name="EndPos" type="Marker3D" parent="13"]
@@ -753,181 +689,157 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.914, 41.3939, -61.7286)
 [node name="Lira-4" parent="13" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5245, 41.3939, -90.7967)
 
-[node name="14_Obstacles" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+[node name="14" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_ay21j")
-nextChunk = NodePath("../14_Collect")
 chanceWeight = 0.4
+cloneCount = 1
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
-[node name="EndPos" type="Marker3D" parent="14_Obstacles"]
-
-[node name="StartPos" type="Marker3D" parent="14_Obstacles"]
+[node name="StartPos" type="Marker3D" parent="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.248688)
 
-[node name="Eye Cube" parent="14_Obstacles" instance=ExtResource("9_skrh5")]
+[node name="EndPos" type="Marker3D" parent="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -302.934)
+
+[node name="Eye Cube" parent="14" instance=ExtResource("9_skrh5")]
 transform = Transform3D(7.26198, 0, 10.7826, 0, 13, 0, -10.7826, 0, 7.26198, -44.7605, 13.1, -70.0377)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="Eye Cube5" parent="14_Obstacles" instance=ExtResource("9_skrh5")]
+[node name="Eye Cube5" parent="14" instance=ExtResource("9_skrh5")]
 transform = Transform3D(9.0454, 0, 11.9658, 0, 15, 0, -11.9658, 0, 9.0454, 54.814, 15.1, -235.785)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="Eye Cube6" parent="14_Obstacles" instance=ExtResource("9_skrh5")]
+[node name="Eye Cube6" parent="14" instance=ExtResource("9_skrh5")]
 transform = Transform3D(-4.06463, 0, 19.5826, 0, 20, 0, -19.5826, 0, -4.06463, 79.298, 20.1, -33.2142)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="Eye Cube2" parent="14_Obstacles" instance=ExtResource("9_skrh5")]
+[node name="Eye Cube2" parent="14" instance=ExtResource("9_skrh5")]
 transform = Transform3D(-2.31818, 0, 12.7916, 0, 13, 0, -12.7916, 0, -2.31818, 3.60177, 13.1, -81.2516)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="Eye Cube3" parent="14_Obstacles" instance=ExtResource("9_skrh5")]
+[node name="Eye Cube3" parent="14" instance=ExtResource("9_skrh5")]
 transform = Transform3D(-7.127, 0, 7.01469, 0, 10, 0, -7.01469, 0, -7.127, -33.4775, 10.1, -208.127)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="Eye Cube4" parent="14_Obstacles" instance=ExtResource("9_skrh5")]
+[node name="Eye Cube4" parent="14" instance=ExtResource("9_skrh5")]
 transform = Transform3D(-9.22241, 0, 3.86614, 0, 10, 0, -3.86614, 0, -9.22241, -18.0921, 36.2318, -71.0026)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="Cactus" parent="14_Obstacles" instance=ExtResource("10_ys7r5")]
+[node name="Cactus" parent="14" instance=ExtResource("10_ys7r5")]
 transform = Transform3D(4.99649, 0, 6.24781, 0, 8, 0, -6.24781, 0, 4.99649, 56.4495, 0, -140.727)
 
-[node name="14_Collect" type="Node3D" parent="."]
-visible = false
-script = ExtResource("1_ay21j")
-isSubChunk = true
-chanceWeight = 85.0
-metadata/_custom_type_script = "uid://8fviwb4leujf"
-
-[node name="EndPos" type="Marker3D" parent="14_Collect"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -302.934)
-
-[node name="StartPos" type="Marker3D" parent="14_Collect"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.248688)
-
-[node name="1up" parent="14_Collect" instance=ExtResource("12_jewde")]
+[node name="1up" parent="14" instance=ExtResource("12_jewde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7687, 13.5806, -79.5708)
 
-[node name="Lira-1" parent="14_Collect" instance=ExtResource("4_6xtxo")]
+[node name="Lira-1" parent="14" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.076, 36.0724, -8.65523)
 
-[node name="Lira-2" parent="14_Collect" instance=ExtResource("4_6xtxo")]
+[node name="Lira-2" parent="14" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0423, 41.3443, -32.085)
 
-[node name="Lira-3" parent="14_Collect" instance=ExtResource("4_6xtxo")]
+[node name="Lira-3" parent="14" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8555, 44.7491, -56.4285)
 
-[node name="Lira-4" parent="14_Collect" instance=ExtResource("4_6xtxo")]
+[node name="Lira-4" parent="14" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4512, 44.4845, -80.3502)
 
-[node name="Lira-5" parent="14_Collect" instance=ExtResource("5_vxlka")]
+[node name="Lira-5" parent="14" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3447, 42.3169, -100.463)
 
-[node name="Lira-6" parent="14_Collect" instance=ExtResource("4_6xtxo")]
+[node name="Lira-6" parent="14" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30083, 26.8287, -175.009)
 
-[node name="Lira-7" parent="14_Collect" instance=ExtResource("4_6xtxo")]
+[node name="Lira-7" parent="14" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72827, 23.0591, -193.974)
 
-[node name="Lira-8" parent="14_Collect" instance=ExtResource("4_6xtxo")]
+[node name="Lira-8" parent="14" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.89434, 24.0277, -214.283)
 
-[node name="Lira-9" parent="14_Collect" instance=ExtResource("4_6xtxo")]
+[node name="Lira-9" parent="14" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8947, 28.0334, -236.381)
 
-[node name="Lira-10" parent="14_Collect" instance=ExtResource("5_vxlka")]
+[node name="Lira-10" parent="14" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.446, 34.0284, -258.024)
 
-[node name="Health" parent="14_Collect" instance=ExtResource("7_vxlka")]
+[node name="Health" parent="14" instance=ExtResource("7_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4488, 57.0376, -70.4125)
 
-[node name="15_Boxes" type="Node3D" parent="." node_paths=PackedStringArray("nextChunk")]
+[node name="15" type="Node3D" parent="."]
 visible = false
 script = ExtResource("1_ay21j")
-nextChunk = NodePath("../15_Coins")
 chanceWeight = 0.8
+cloneCount = 1
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
-[node name="EndPos" type="Marker3D" parent="15_Boxes"]
+[node name="EndPos" type="Marker3D" parent="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -132.648)
 
-[node name="StartPos" type="Marker3D" parent="15_Boxes"]
+[node name="StartPos" type="Marker3D" parent="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.248688)
 
-[node name="Eye Cube" parent="15_Boxes" instance=ExtResource("9_skrh5")]
+[node name="Eye Cube" parent="15" instance=ExtResource("9_skrh5")]
 transform = Transform3D(9.45867, 0, 1.56317, 0, 9.18956, 0, -1.71024, 0, 8.64532, -2.85526, 8.97092, -64.0712)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="Eye Cube2" parent="15_Boxes" instance=ExtResource("9_skrh5")]
+[node name="Eye Cube2" parent="15" instance=ExtResource("9_skrh5")]
 transform = Transform3D(7.49366, 0, -4.87963, 0, 9.18955, 0, 3.96685, 0, 9.21797, -23.436, 8.97092, -74.3081)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="Eye Cube3" parent="15_Boxes" instance=ExtResource("9_skrh5")]
+[node name="Eye Cube3" parent="15" instance=ExtResource("9_skrh5")]
 transform = Transform3D(14.4118, 0, 1.37619, 0, 14.1378, 0, -1.45347, 0, 13.6454, 4.19574, 13.9191, -90.2564)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="Eye Cube4" parent="15_Boxes" instance=ExtResource("9_skrh5")]
+[node name="Eye Cube4" parent="15" instance=ExtResource("9_skrh5")]
 transform = Transform3D(5.04412, 0, 0.481665, 0, 4.94822, 0, -0.508716, 0, 4.7759, -11.3964, 23.2139, -69.9407)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="Eye Cube5" parent="15_Boxes" instance=ExtResource("9_skrh5")]
+[node name="Eye Cube5" parent="15" instance=ExtResource("9_skrh5")]
 transform = Transform3D(5.04412, 0, 0.481665, 0, 4.94822, 0, -0.508716, 0, 4.7759, 4.15252, 33.3255, -92.369)
 distanceToMove = -200
 shortRenderDistance = true
 
-[node name="15_Coins" type="Node3D" parent="."]
-visible = false
-script = ExtResource("1_ay21j")
-isSubChunk = true
-chanceWeight = 0.8
-metadata/_custom_type_script = "uid://8fviwb4leujf"
-
-[node name="EndPos" type="Marker3D" parent="15_Coins"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -132.648)
-
-[node name="StartPos" type="Marker3D" parent="15_Coins"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.248688)
-
-[node name="Lira-1" parent="15_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-1" parent="15" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.71564, 32.3553, -35.0971)
 
-[node name="Lira-2" parent="15_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-2" parent="15" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6361, 37.6759, -44.6331)
 
-[node name="Lira-3" parent="15_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-3" parent="15" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.961, 39.9908, -57.8185)
 
-[node name="Lira-4" parent="15_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-4" parent="15" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2824, 39.9908, -73.8847)
 
-[node name="Lira-5" parent="15_Coins" instance=ExtResource("4_6xtxo")]
+[node name="Lira-5" parent="15" instance=ExtResource("4_6xtxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2824, 37.5066, -88.9244)
 
-[node name="Lira-6" parent="15_Coins" instance=ExtResource("5_vxlka")]
+[node name="Lira-6" parent="15" instance=ExtResource("5_vxlka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2097, 34.2195, -104.674)
 
-[editable path="0_Obelisks/Obelisk"]
-[editable path="0_Obelisks/Obelisk2"]
-[editable path="0_Obelisks/Obelisk3"]
-[editable path="1_Obelisks/Obelisk"]
-[editable path="1_Obelisks/Obelisk2"]
-[editable path="1_Obelisks/Obelisk3"]
-[editable path="1_Obelisks/Obelisk4"]
+[editable path="0/Obelisk"]
+[editable path="0/Obelisk2"]
+[editable path="0/Obelisk3"]
+[editable path="1/Obelisk"]
+[editable path="1/Obelisk2"]
+[editable path="1/Obelisk3"]
+[editable path="1/Obelisk4"]
 [editable path="2/Obelisk"]
 [editable path="2/Obelisk2"]
 [editable path="3/Obelisk2"]
 [editable path="6/Obelisk"]
 [editable path="6/Obelisk2"]
-[editable path="8_Obstacles/Obelisk"]
-[editable path="8_Obstacles/Obelisk2"]
+[editable path="8/Obelisk"]
+[editable path="8/Obelisk2"]
 [editable path="11/Obelisk"]
 [editable path="13/Obelisk2"]

@@ -2,7 +2,21 @@ class_name TTTG_TrailingCube
 extends TTTG_Trailing
 var moveTween
 
-var switcherooni = false
+var initTransform;
+
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+
+	if moveTween: moveTween.kill()
+	
+	self.position = initPos;
+	self.rotation = initRot;
+	$Model.global_transform.basis = initTransform;
+
+func _ready() -> void:
+	super._ready()
+	
+	initTransform = $Model.global_transform.basis
 
 func movemental():
 	if disabled: return

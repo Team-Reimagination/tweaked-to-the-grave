@@ -5,7 +5,14 @@ extends TTTG_Entity
 @export var camBeHit = true
 @export var doDamagePlayer = true
 @export var isGhost = false
+
 @export var health = 0;
+
+var inithealth;
+var initGhost;
+var initDamage;
+var initCanBeHit;
+var initCanDie;
 
 @export var flashIntensity = 1.0
 
@@ -16,7 +23,32 @@ var ouchie = false
 
 var toFlash = []
 
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+	
+	if !isRecursive:
+		for a in healthLinks:
+			if a != null and a.has_method("reset"): a.reset(true)
+	
+	hasBeenLirad = false
+	ouchie = false
+	
+	health = inithealth
+	isGhost = initGhost
+	doDamagePlayer = initDamage
+	camBeHit = initCanBeHit
+	canDie = initCanDie
+	
+	if !self.area_shape_entered.is_connected(detectCollission.bind()):
+		self.area_shape_entered.connect(detectCollission.bind())
+
 func _ready() -> void:
+	inithealth = health
+	initGhost = isGhost
+	initDamage = doDamagePlayer
+	initCanBeHit = camBeHit
+	initCanDie = canDie
+	
 	self.area_shape_entered.connect(detectCollission.bind())
 
 	if hasModel:
@@ -30,13 +62,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if disabled: return
 	super._process(delta)
-	
+
+var flashTween;
+
 func damage(healthTaken, isRecursive = false):
 	if disabled: return
 	
 	if !isRecursive:
 		for a in healthLinks:
-			if "health" in a and a.has_method("damage") and !a.isGhost: a.damage(healthTaken, true)
+			if a != null and "health" in a and a.has_method("damage") and !a.isGhost: a.damage(healthTaken, true)
 	
 	health -= healthTaken
 	
@@ -50,8 +84,7 @@ func damage(healthTaken, isRecursive = false):
 		imKillingMyself()
 
 func imKillingMyself():
-	if disabled: return
-	self.queue_free()
+	disabled = true
 
 func detectCollission(_areID, are, _arSID, _loSID):
 	if are.type == "player_bullet" and _loSID == 0 and !disabled:

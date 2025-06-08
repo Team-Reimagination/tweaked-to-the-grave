@@ -7,43 +7,45 @@
 [node name="RcrBackground" type="Node3D"]
 
 [node name="References" parent="." instance=ExtResource("1_djnqv")]
+cloneCount = 0
 
-[node name="0_0" type="Node3D" parent="."]
+[node name="0" type="Node3D" parent="."]
 script = ExtResource("2_jymr1")
 chanceWeight = 0.8
+cloneCount = 6
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
-[node name="EndPos" type="Marker3D" parent="0_0"]
+[node name="EndPos" type="Marker3D" parent="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387, -315.063)
 
-[node name="StartPos" type="Marker3D" parent="0_0"]
+[node name="StartPos" type="Marker3D" parent="0"]
 
-[node name="Walling" parent="0_0" instance=ExtResource("3_wf14q")]
+[node name="Walling" parent="0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.053, 0, -37.4855)
 
-[node name="Walling2" parent="0_0" instance=ExtResource("3_wf14q")]
+[node name="Walling2" parent="0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.068, 0, -37.4855)
 
-[node name="Walling3" parent="0_0" instance=ExtResource("3_wf14q")]
+[node name="Walling3" parent="0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.053, 0, -117.354)
 
-[node name="Walling4" parent="0_0" instance=ExtResource("3_wf14q")]
+[node name="Walling4" parent="0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.068, 0, -117.354)
 
-[node name="Walling5" parent="0_0" instance=ExtResource("3_wf14q")]
+[node name="Walling5" parent="0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.053, 0, -197.281)
 
-[node name="Walling6" parent="0_0" instance=ExtResource("3_wf14q")]
+[node name="Walling6" parent="0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.068, 0, -197.281)
 
-[node name="Walling7" parent="0_0" instance=ExtResource("3_wf14q")]
+[node name="Walling7" parent="0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.053, 0, -277.186)
 
-[node name="Walling8" parent="0_0" instance=ExtResource("3_wf14q")]
+[node name="Walling8" parent="0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.068, 0, -277.186)
 
-[node name="Walling9" parent="0_0" instance=ExtResource("3_wf14q")]
+[node name="Walling9" parent="0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -74.1526, 0, -357.051)
 
-[node name="Walling10" parent="0_0" instance=ExtResource("3_wf14q")]
+[node name="Walling10" parent="0" instance=ExtResource("3_wf14q")]
 transform = Transform3D(-4, 0, 0, 0, 4, -6.03983e-07, 0, 6.03983e-07, 4, 74.2554, 0, -357.051)

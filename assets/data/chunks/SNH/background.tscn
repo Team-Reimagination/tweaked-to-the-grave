@@ -8,28 +8,30 @@
 [node name="snhBackground" type="Node3D"]
 
 [node name="References" parent="." instance=ExtResource("1_v8rcy")]
+cloneCount = 0
 
-[node name="0_0" type="Node3D" parent="."]
+[node name="0" type="Node3D" parent="."]
 script = ExtResource("1_tmc54")
 chanceWeight = 0.8
+cloneCount = 6
 metadata/_custom_type_script = "uid://8fviwb4leujf"
 
-[node name="EndPos" type="Marker3D" parent="0_0"]
+[node name="EndPos" type="Marker3D" parent="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="StartPos" type="Marker3D" parent="0_0"]
+[node name="StartPos" type="Marker3D" parent="0"]
 
-[node name="FlowerField" parent="0_0" instance=ExtResource("3_v8rcy")]
+[node name="FlowerField" parent="0" instance=ExtResource("3_v8rcy")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -176, 0.05, -128)
 
-[node name="FlowerField2" parent="0_0" instance=ExtResource("3_v8rcy")]
+[node name="FlowerField2" parent="0" instance=ExtResource("3_v8rcy")]
 transform = Transform3D(-4, 0, 3.49691e-07, 0, 4, 0, -3.49691e-07, 0, -4, 176, 0.05, -128)
 
-[node name="FlowerField3" parent="0_0" instance=ExtResource("4_je5ph")]
+[node name="FlowerField3" parent="0" instance=ExtResource("4_je5ph")]
 transform = Transform3D(1.78379, 0, 2.41207, 0, 3, 0, -2.41207, 0, 1.78379, -96.0998, 0, -56.5683)
 
-[node name="FlowerField4" parent="0_0" instance=ExtResource("4_je5ph")]
+[node name="FlowerField4" parent="0" instance=ExtResource("4_je5ph")]
 transform = Transform3D(1.94489, 0, -0.466246, 0, 2, 0, 0.466246, 0, 1.94489, -140.48, 0, -111.671)
 
-[node name="FlowerField5" parent="0_0" instance=ExtResource("4_je5ph")]
+[node name="FlowerField5" parent="0" instance=ExtResource("4_je5ph")]
 transform = Transform3D(-3.14144, 0, -2.47616, 0, 4, 0, 2.47616, 0, -3.14144, 106.216, 0, -202.569)

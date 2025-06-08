@@ -6,6 +6,13 @@ func _ready() -> void:
 	
 	$Explosion.visible = false
 	
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+	
+	$Explosion.visible = false
+	$Model.visible = true
+	disabled = false
+	
 func spawnCollectible():
 	if disabled: return
 	for a in $Spawn.get_children():
@@ -34,9 +41,8 @@ func imKillingMyself():
 	
 	$Model.visible = false
 	
+	disabled = true
 	await $Explosion.animation_finished
-	queue_free()
 
 func victory_screech():
-	if disabled: return
 	queue_free()

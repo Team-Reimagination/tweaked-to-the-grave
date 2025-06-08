@@ -96,7 +96,6 @@ subtitle = "Power Of The Hieroglyph"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="y" type="Area3D" parent="."]
-visible = false
 monitoring = false
 monitorable = false
 script = ExtResource("1_j8bj0")
@@ -161,6 +160,7 @@ subtitle = "Power Of The Hieroglyph"
 metadata/_custom_type_script = "uid://dobpfy25irneh"
 
 [node name="d" type="Area3D" parent="."]
+visible = false
 monitoring = false
 monitorable = false
 script = ExtResource("9_0rnff")

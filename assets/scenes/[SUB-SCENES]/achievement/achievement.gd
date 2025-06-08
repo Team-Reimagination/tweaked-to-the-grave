@@ -7,8 +7,8 @@ signal achievementShown;
 func start():
 	$Name.text = achievement.name
 	
-	for a in $Diffi.get_children().size():
-		if int($Diffi.get_child(a).name) > achievement.tier: $Diffi.get_child(a).modulate = Color(0.0,0.0,0.0)
+	for am in $Diffi.get_children().size():
+		if int($Diffi.get_child(am).name) > achievement.tier: $Diffi.get_child(am).modulate = Color(0.0,0.0,0.0)
 	
 	position.x -= $ColorRect.size.x;
 	

@@ -3,6 +3,11 @@ extends TTTG_Obstacle
 
 var spawned = false
 
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+	
+	spawned = false
+
 func _ready() -> void:
 	super._ready()
 	spawnLogic()
@@ -31,5 +36,4 @@ func imDone():
 	imKillingMyself()
 
 func victory_screech():
-	if disabled: return
 	queue_free()

@@ -10,8 +10,28 @@ extends TTTG_Obstacle
 var timeToMove = false
 var hasMoved = false
 
+var initPos;
+var initRot;
+var initShadow;
+
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+	
+	timeToMove = false
+	hasMoved = false
+	
+	if $Unearth.stream != null: $Unearth.stop()
+	$Explosion.visible = false
+	
+	$Model.visible = true
+	$Shadow.visible = initShadow
+
 func _ready() -> void:
 	super._ready()
+	
+	initPos = position;
+	initRot = rotation
+	initShadow = $Shadow.visible
 	
 func _process(delta:float) -> void:
 	if disabled: return
@@ -29,7 +49,6 @@ func movemental():
 		hasMoved = true
 
 func victory_screech():
-	if disabled: return
 	queue_free()
 
 func imKillingMyself():
@@ -37,7 +56,7 @@ func imKillingMyself():
 	isGhost = true
 	isDying = true
 	
-	$Unearth.stop()
+	if $Unearth.stream != null: $Unearth.stop()
 	$Explosion.visible = true
 	$Explosion.play("default")
 	
@@ -46,5 +65,5 @@ func imKillingMyself():
 	$Shadow.visible = false
 	$Model.visible = false
 	
+	disabled = true
 	await $Explosion.animation_finished
-	queue_free()

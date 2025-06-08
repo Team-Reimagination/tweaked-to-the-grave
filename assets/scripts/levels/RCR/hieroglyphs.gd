@@ -10,7 +10,7 @@ var waitTime = 0.5
 var started = false
 
 func onDialogue(vars):
-	if vars[0] == 6:
+	if vars[0] == 0:
 		started = true
 		start()
 

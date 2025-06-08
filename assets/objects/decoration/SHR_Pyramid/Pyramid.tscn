@@ -13,7 +13,7 @@ shader = ExtResource("2_pam1m")
 shader_parameter/albedo_texture = ExtResource("3_u8vyc")
 shader_parameter/diffuse_gradient = ExtResource("4_26au0")
 shader_parameter/specular_gradient = ExtResource("5_dr53h")
-shader_parameter/fade_start = 30.0
+shader_parameter/fade_start = 0.0
 shader_parameter/fade_end = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_eguhk"]

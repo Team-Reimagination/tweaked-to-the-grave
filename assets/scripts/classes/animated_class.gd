@@ -9,6 +9,20 @@ extends TTTG_Obstacle
 @export var narrowboxID = 1
 var isSpawning = false
 
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+	
+	isSpawning = false
+	
+	isGhost = true
+	$Model/AnimationPlayer.play(animName, -1, 0.0)
+	
+	$Explosion.visible = false
+	$Shadow.visible = true
+	$Model.visible = true
+	
+	isDying = false
+
 func _ready() -> void:
 	super._ready()
 	
@@ -31,7 +45,6 @@ func _process(delta: float) -> void:
 		if loopName != "": $Model/AnimationPlayer.play(loopName, -1, loopSpeed)
 	
 func victory_screech():
-	if disabled: return
 	queue_free()
 
 func imKillingMyself():
@@ -48,8 +61,8 @@ func imKillingMyself():
 	$Shadow.visible = false
 	$Model.visible = false
 	
+	disabled = true
 	await $Explosion.animation_finished
-	queue_free()
 
 func detectCollission(_areID, are, _arSID, _loSID):
 	if disabled: return

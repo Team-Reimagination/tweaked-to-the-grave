@@ -122,9 +122,9 @@ func initiateCountdown():
 		
 		if i == 1:
 			callForMovement = true
-			for obj in chunkLoader.get_children():
-				if obj is TTTG_Chunk:
-					obj.doMove = true
+			#for obj in chunkLoader.get_children():
+				#if obj is TTTG_Chunk:
+					#obj.doMove = true
 				
 		scripts.runFunction("onCountdown", [i])
 		

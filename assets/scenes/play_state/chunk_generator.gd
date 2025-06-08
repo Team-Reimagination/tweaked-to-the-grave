@@ -4,15 +4,19 @@ extends Node3D
 
 var bgChunks = []
 var bgChunkWeights = []
+var usedChunks = []
+
 var bgChunkNode;
-var predictedBGChunk
+
 var curBGChunk
 var prevBGChunk
 
 var lvChunks = []
 var lvChunkWeights = []
+var lvUsedChunks = []
+
 var lvChunkNode;
-var predictedLVChunk
+
 var curLVChunk
 var prevLVChunk
 
@@ -25,15 +29,21 @@ func prepareChunks() -> void:
 		return
 	
 	bgChunkNode = bgChunkNode.instantiate()
-	bgChunks = bgChunkNode.get_children()
 	
-	for a in bgChunks:
-		a.owner = null
-		a.get_parent().remove_child(a)
+	for chunk in bgChunkNode.get_children():
+		for count in range(chunk.cloneCount):
+			var chu = chunk.duplicate()
+			chu.visible = true
+			
+			for a in chu.get_children(true):
+				a = a.duplicate()
 		
-	bgChunks = bgChunks.filter(func(x): return !x.isSubChunk)
-	for a in bgChunks:
-		bgChunkWeights.append(a.chanceWeight)
+			scene.spawnOBJ(chu)
+			
+			bgChunks.append(chu)
+			bgChunkWeights.append(chu.chanceWeight)
+			
+			chu.global_position.z = -(2 << 11)
 	
 	#LEVEL
 	lvChunkNode = load("res://assets/data/chunks/"+PlayGlobals.levelID+"/level.tscn")
@@ -41,26 +51,27 @@ func prepareChunks() -> void:
 		return
 	
 	lvChunkNode = lvChunkNode.instantiate()
-	lvChunks = lvChunkNode.get_children()
 	
-	for a in lvChunks:
-		a.owner = null
-		a.get_parent().remove_child(a)
+	for chunk in lvChunkNode.get_children():
+		for count in range(chunk.cloneCount):
+			var chu = chunk.duplicate()
+			chu.visible = true
+			
+			for a in chu.get_children(true):
+				a = a.duplicate()
 		
-	lvChunks = lvChunks.filter(func(x): return !x.isSubChunk)
-	for a in lvChunks:
-		lvChunkWeights.append(a.chanceWeight)
+			scene.spawnOBJ(chu)
+			
+			lvChunks.append(chu)
+			lvChunkWeights.append(chu.chanceWeight)
+			
+			chu.global_position.z = -(2 << 11)
 		
 func makeBGChunk():
 	if bgChunks.size() == 0: return;
-	var chunker = bgChunks[rng.rand_weighted(bgChunkWeights)] if predictedBGChunk == null else predictedBGChunk
-	var newChunk = chunker.duplicate()
+	var newChunk = bgChunks[rng.rand_weighted(bgChunkWeights)]
+	
 	var ogPos = 0.0;
-	
-	for a in newChunk.get_children(true):
-		a = a.duplicate()
-	
-	scene.spawnOBJ(newChunk)
 	
 	if curBGChunk == null:
 		curBGChunk = newChunk
@@ -74,50 +85,61 @@ func makeBGChunk():
 	newChunk.global_position.z = ogPos
 	
 	newChunk.passReady()
-	newChunk.visible = true
 	
-	if newChunk.nextChunk != null: predictedBGChunk = newChunk.nextChunk
-	else: predictedBGChunk = null
-	
-	newChunk.doMove = true
+	usedChunks.push_back(newChunk)
+	var indexy = bgChunks.find(newChunk)
+	bgChunks.remove_at(indexy)
+	bgChunkWeights.remove_at(indexy)
 	
 	if newChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*2: makeBGChunk()
 
 func makeLVChunk():
 	if lvChunks.size() == 0: return;
-	var chunker2 = lvChunks[rng.rand_weighted(lvChunkWeights)] if predictedLVChunk == null else predictedLVChunk
-	var newChunk2 = chunker2.duplicate()
-	var ogPos2 = -scene.levelDefs.fog.distance.end;
+	var newChunk = lvChunks[rng.rand_weighted(lvChunkWeights)]
 	
-	scene.spawnOBJ(newChunk2)
-	
-	for a in newChunk2.get_children(true):
-		a = a.duplicate()
+	var ogPos = -scene.levelDefs.fog.distance.end;
 	
 	if curLVChunk == null:
-		curLVChunk = newChunk2
+		curLVChunk = newChunk
 	else:
-		ogPos2 = curLVChunk.endPos.global_position.z - (scene.levelDefs.chunkSpace if (scene.levelDefs.has("chunkSpace") and !newChunk2.isSubChunk) else 0.0)
+		ogPos = curLVChunk.endPos.global_position.z - (scene.levelDefs.chunkSpace if (scene.levelDefs.has("chunkSpace")) else 0.0)
 		prevLVChunk = curLVChunk
-		curLVChunk = newChunk2
-		
-	newChunk2.global_position.x = 0.0 + (0.0 - newChunk2.startPos.global_position.x)
-	newChunk2.global_position.y = scene.levelDefs.floor.y
-	newChunk2.global_position.z = ogPos2
+		curLVChunk = newChunk
 	
-	newChunk2.passReady()
-	newChunk2.visible = true
+	newChunk.global_position.x = 0.0 + (0.0 - newChunk.startPos.global_position.x)
+	newChunk.global_position.y = scene.levelDefs.floor.y
+	newChunk.global_position.z = ogPos
 	
-	newChunk2.doMove = scene.callForMovement
+	newChunk.passReady()
 	
-	if newChunk2.nextChunk != null: predictedLVChunk = newChunk2.nextChunk
-	else: predictedLVChunk = null
+	lvUsedChunks.push_back(newChunk)
+	var indexy = lvChunks.find(newChunk)
+	lvChunks.remove_at(indexy)
+	lvChunkWeights.remove_at(indexy)
 	
-	if newChunk2.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*1.5: makeLVChunk()
+	if newChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*1.5: makeLVChunk()
 
 func _process(_delta: float) -> void:
 	if curBGChunk != null:
 		if curBGChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*2: makeBGChunk()
-		
+	
+		if usedChunks.size() != 0:
+			if usedChunks[0].endPos.global_position.z > 100:
+				usedChunks[0].reset()
+				usedChunks[0].global_position.z = -(2 << 11)
+				
+				bgChunks.push_back(usedChunks[0])
+				bgChunkWeights.push_back(usedChunks[0].chanceWeight)
+				usedChunks.erase(usedChunks[0])
+	
 	if curLVChunk != null and !scene.hasBitchWon:
 		if curLVChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*1.5: makeLVChunk()
+		
+		if lvUsedChunks.size() != 0:
+			if lvUsedChunks[0].endPos.global_position.z > 100:
+				lvUsedChunks[0].reset()
+				lvUsedChunks[0].global_position.z = -(2 << 11)
+				
+				lvChunks.push_back(lvUsedChunks[0])
+				lvChunkWeights.push_back(lvUsedChunks[0].chanceWeight)
+				lvUsedChunks.erase(lvUsedChunks[0])

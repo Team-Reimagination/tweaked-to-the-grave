@@ -16,14 +16,16 @@ var model;
 @export var floorHeightAdjustment = false
 @export var yMOD = 0.0
 
-var distanceFadePhase = 0;
-var isReady : bool = false
+var distanceFadePhase = -1;
 var isDying = false
 
 @export var disabled = false
 
 var meshInstances = []
 var meshesWithOverlay = []
+
+func reset(isRecursive = false):
+	isDying = false
 
 func _ready() -> void:
 	while scene.name != "PlayState": scene = scene.get_parent()
@@ -36,10 +38,6 @@ func _ready() -> void:
 		for a in meshInstances:
 			a.material_override = a.material_override.duplicate()
 			
-			if doProcessDistanceFade:
-				a.material_override.set("shader_parameter/fade_start", PlayGlobals.getDistance(shortRenderDistance))
-				a.material_override.set("shader_parameter/fade_end", PlayGlobals.getDistance(shortRenderDistance) - (100 if !shortRenderDistance else 30))
-			
 			a.material_override.set("shader_parameter/diffuse_gradient", scene.diffuse_pal)
 			a.material_override.set("shader_parameter/specular_gradient", scene.specular_pal)
 
@@ -51,14 +49,16 @@ func _process(_delta: float) -> void:
 	for a in ["x","y","z"]:
 		if overridePos[a] != -INF: self.global_position[a] = overridePos[a]
 	
-	if self.global_position.z > (100 if overrideKillDistance == -INF else overrideKillDistance) and type != 'boss' and !isDying:
-			self.queue_free()
-	
-	if isReady:
-		if doProcessDistanceFade and PlayGlobals.levelDefs != null and !isBackgroundObject:
-			if distanceFadePhase == 0 and self.global_position.z > -100:
-				for a in meshInstances:
-					a.material_override.set("shader_parameter/fade_start", 15)
-					a.material_override.set("shader_parameter/fade_end", 30)
+	if doProcessDistanceFade and PlayGlobals.levelDefs != null:
+		if distanceFadePhase == 0 and self.global_position.z > -100:
+			for a in meshInstances:
+				a.material_override.set("shader_parameter/fade_start", 15)
+				a.material_override.set("shader_parameter/fade_end", 30)
 					
-				distanceFadePhase = 1
+			distanceFadePhase = 1
+		elif distanceFadePhase != 0 and self.global_position.z < -100:
+			for a in meshInstances:
+				a.material_override.set("shader_parameter/fade_start", PlayGlobals.getDistance(shortRenderDistance))
+				a.material_override.set("shader_parameter/fade_end", PlayGlobals.getDistance(shortRenderDistance) - (100 if !shortRenderDistance else 30))
+					
+			distanceFadePhase = 0

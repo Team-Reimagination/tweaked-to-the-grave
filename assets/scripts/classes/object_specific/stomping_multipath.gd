@@ -26,6 +26,17 @@ var moveTween
 var points = []
 var curPoint = 0
 
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+
+	if moveTween: moveTween.kill()
+	
+	curPoint = 0
+	
+	$Model.position = points[curPoint].position
+	$Hitbox.position = points[curPoint].position
+	$NarrowBox.position = points[curPoint].position
+
 func _ready() -> void:
 	super._ready()
 	

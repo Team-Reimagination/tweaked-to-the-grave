@@ -5,6 +5,11 @@ extends TTTG_Fallable
 var timing = 0.0
 var rotato
 
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+	
+	timing = 0.0
+
 func _ready() -> void:
 	super._ready()
 	rotato = $Model.rotation_degrees

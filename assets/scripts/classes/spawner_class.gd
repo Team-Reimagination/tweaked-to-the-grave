@@ -32,8 +32,7 @@ func spawnBullets():
 	
 func imDone():
 	if disabled: return
-	imKillingMyself()
+	queue_free()
 
 func victory_screech():
-	if disabled: return
 	queue_free()

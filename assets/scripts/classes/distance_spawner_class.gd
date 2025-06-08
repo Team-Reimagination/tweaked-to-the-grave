@@ -5,6 +5,15 @@ extends TTTG_Obstacle
 
 var spawned = false
 
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+	
+	spawned = false
+	
+	if $Prep.stream != null: $Prep.stop()
+	$Explosion.visible = false
+	$Model.visible = true
+
 func _ready() -> void:
 	super._ready()
 	
@@ -53,9 +62,8 @@ func imKillingMyself():
 	
 	$Model.visible = false
 	
+	disabled = true
 	await $Explosion.animation_finished
-	queue_free()
 
 func victory_screech():
-	if disabled: return
 	queue_free()

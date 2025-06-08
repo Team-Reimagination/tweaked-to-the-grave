@@ -16412,7 +16412,6 @@ size = Vector3(9.8, 11.665, 11.16)
 
 [node name="Tweak-Final" type="Area3D"]
 script = ExtResource("1_l0fvu")
-hasAltDeath = true
 altChance = 0.1
 deathSubtitle = "\"Urgh...\""
 type = "enemy"
@@ -17291,7 +17290,7 @@ mesh = SubResource("ArrayMesh_n1b3q")
 skin = SubResource("Skin_wd7by")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.882513, 0.382898, 0.273057, -0.0745989, -0.459291, 0.885148, 0.464334, -0.801525, -0.376766, 2.86447, -5.44902, -22.2298)
+transform = Transform3D(0.882513, 0.382898, 0.273056, -0.0745969, -0.459291, 0.885148, 0.464334, -0.801524, -0.376767, 2.86448, -5.44903, -22.2298)
 bone_name = "Arm_8_R.R"
 bone_idx = 8
 
@@ -17313,7 +17312,7 @@ transform = Transform3D(1, 3.99357e-06, 2.10109e-06, -3.99357e-06, 1, -1.1325e-0
 shape = SubResource("BoxShape3D_q2bye")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.847831, 0.428687, -0.312104, 0.0174966, -0.610876, -0.791532, -0.529977, 0.665625, -0.525421, 2.46519, -6.09602, 21.7983)
+transform = Transform3D(0.847832, 0.428685, -0.312105, 0.017496, -0.610878, -0.791531, -0.529976, 0.665625, -0.525422, 2.46517, -6.09604, 21.7983)
 bone_name = "Arm_8_R.L"
 bone_idx = 33
 
@@ -17336,7 +17335,7 @@ transform = Transform3D(1, 3.99357e-06, 2.10109e-06, -3.99357e-06, 1, -1.1325e-0
 shape = SubResource("BoxShape3D_qcvpr")
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.911235, 0.312046, 0.268845, -0.113889, -0.436382, 0.892525, 0.395828, -0.843918, -0.362109, 1.90509, -4.10738, -19.6352)
+transform = Transform3D(0.911236, 0.312046, 0.268844, -0.113887, -0.436383, 0.892524, 0.395828, -0.843918, -0.36211, 1.9051, -4.10738, -19.6352)
 bone_name = "Arm_7_R.R"
 bone_idx = 7
 
@@ -17359,7 +17358,7 @@ transform = Transform3D(1, 3.95643e-06, 1.90735e-06, -4.01437e-06, 1, -1.09528e-
 shape = SubResource("BoxShape3D_jufjn")
 
 [node name="BoneAttachment3D4" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.880474, 0.361238, -0.307039, -0.0347456, -0.596722, -0.801695, -0.472819, 0.71654, -0.512847, 1.35457, -4.26141, 19.5953)
+transform = Transform3D(0.880474, 0.361236, -0.307039, -0.0347464, -0.596724, -0.801694, -0.472819, 0.71654, -0.512848, 1.35456, -4.26143, 19.5953)
 bone_name = "Arm_7_R.L"
 bone_idx = 32
 
@@ -17382,7 +17381,7 @@ transform = Transform3D(1, 3.95643e-06, 1.90735e-06, -4.01437e-06, 1, -1.09528e-
 shape = SubResource("BoxShape3D_ujavf")
 
 [node name="BoneAttachment3D5" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.898917, 0.203888, -0.387785, -0.321336, -0.294831, -0.899899, -0.297809, 0.933544, -0.199512, 0.759289, -3.4006, 16.8696)
+transform = Transform3D(0.898918, 0.203886, -0.387786, -0.321337, -0.294832, -0.899898, -0.297809, 0.933544, -0.199514, 0.759277, -3.40062, 16.8696)
 bone_name = "Arm_6_R.L"
 bone_idx = 31
 
@@ -17405,7 +17404,7 @@ transform = Transform3D(1, 3.95643e-06, 1.90735e-06, -4.01437e-06, 1, -1.09528e-
 shape = SubResource("BoxShape3D_xdj0x")
 
 [node name="BoneAttachment3D6" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.611267, 0.0154388, -0.791273, -0.789387, -0.0597964, -0.610977, -0.0567481, 0.998091, -0.0243644, 0.711158, -3.21418, 13.7581)
+transform = Transform3D(0.611266, 0.0154378, -0.791275, -0.789388, -0.0597976, -0.610976, -0.0567484, 0.998091, -0.0243658, 0.71115, -3.21419, 13.758)
 bone_name = "Arm_5_R.L"
 bone_idx = 30
 
@@ -17428,7 +17427,7 @@ transform = Transform3D(1, 3.95643e-06, 1.90735e-06, -4.01437e-06, 1, -1.09528e-
 shape = SubResource("BoxShape3D_43v1w")
 
 [node name="BoneAttachment3D7" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.908958, 0.151242, 0.388486, -0.371505, -0.128959, 0.919432, 0.189155, -0.980049, -0.0610316, 1.46352, -3.73086, -16.7738)
+transform = Transform3D(0.908959, 0.151242, 0.388485, -0.371503, -0.12896, 0.919432, 0.189155, -0.980049, -0.0610322, 1.46352, -3.73086, -16.7738)
 bone_name = "Arm_6_R.R"
 bone_idx = 6
 
@@ -17451,7 +17450,7 @@ transform = Transform3D(1, 3.95643e-06, 1.90735e-06, -4.01437e-06, 1, -1.09528e-
 shape = SubResource("BoxShape3D_812rg")
 
 [node name="BoneAttachment3D8" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0.572283, 0.161702, 0.803956, -0.770465, -0.229729, 0.59465, 0.280848, -0.959728, -0.00688435, 0.959404, -3.01467, -13.7818)
+transform = Transform3D(0.572285, 0.161702, 0.803954, -0.770464, -0.229729, 0.594651, 0.280848, -0.959728, -0.00688493, 0.959407, -3.01467, -13.7818)
 bone_name = "Arm_5_R.R"
 bone_idx = 5
 

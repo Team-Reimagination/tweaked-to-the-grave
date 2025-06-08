@@ -1,5 +1,10 @@
 extends TTTG_DistanceSpawner
 
+func reset(isRecursive = false):
+	super.reset(isRecursive)
+	
+	$AnimationPlayer.play("Rest")
+
 func spawnLogic():
 	if disabled: return
 	

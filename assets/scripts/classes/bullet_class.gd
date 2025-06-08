@@ -99,6 +99,9 @@ func killYourself():
 	if disabled: return
 	imKillingMyself()
 
+func imKillingMyself():
+	queue_free()
+
 func detectCollission(_areID, are, _arSID, _loSID):
 	if disabled: return
 	if !scene.hasBitchWon:
@@ -141,5 +144,4 @@ func detectCollission(_areID, are, _arSID, _loSID):
 				hasBeenLirad = true
 
 func victory_screech():
-	if disabled: return
 	queue_free()

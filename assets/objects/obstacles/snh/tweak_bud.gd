@@ -50,5 +50,4 @@ func imDone():
 	pass
 
 func victory_screech():
-	if disabled: return
 	queue_free()
