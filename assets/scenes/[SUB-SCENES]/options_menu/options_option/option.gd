@@ -44,7 +44,7 @@ func sliderValue():
 	if definition.label == 'percent':
 		$"Tech/0/Number".text = str(int($"Tech/0/Setting".value * 100))+'%'
 	elif definition.label == 'float':
-		$"Tech/0/Number".text = str("%0.2f" % (floor($"Tech/0/Setting".value*100)/100))
+		$"Tech/0/Number".text = "%0.2f" % (floor($"Tech/0/Setting".value*100)/100)
 
 func setupSetting():
 	if definition.type == 1:
