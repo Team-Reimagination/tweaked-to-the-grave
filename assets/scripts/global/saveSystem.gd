@@ -322,6 +322,7 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 		
 	if !succeededInCheckingType: 
 		setOptionAsDefault(type)
+		valuemysanityplease = _defaultOptionsData[type]
 	
 	if type == 'video_windowsize':
 		if not OS.has_feature("web"):
