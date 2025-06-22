@@ -16,6 +16,15 @@ var watimer = 0.0;
 
 func _ready() -> void:
 	$ParallaxBackground/Logo/Creator.text += "v. "+str(ProjectSettings['application/config/version'])
+	DiscordRPC.app_id = 1386468400733093888 
+	DiscordRPC.details = "Tweaking to the Grave"
+	DiscordRPC.state = "Tweaking"
+	DiscordRPC.large_image = "Sigh"
+	DiscordRPC.large_image_text = "Try it now!"
+
+	DiscordRPC.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"
+
+	DiscordRPC.refresh()
 
 func _process(delta: float) -> void:
 	if canInput: #parallax with mouse dependent on if it's the state's turn to use the mouse or not

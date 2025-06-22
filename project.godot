@@ -40,6 +40,7 @@ MenuSounds="*res://assets/scripts/global/menuSounds.gd"
 CustomCursor="*res://assets/scripts/global/customCursor.gd"
 Subtitles="*res://assets/scripts/global/subtitles.gd"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
+DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 
 [display]
 
@@ -57,7 +58,7 @@ movie_writer/movie_file="D:/Videos/tttg.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/newgrounds/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/discord-rpc-gd/plugin.cfg", "res://addons/newgrounds/plugin.cfg")
 
 [global_group]
 
