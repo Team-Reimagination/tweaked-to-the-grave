@@ -44,13 +44,13 @@ axis_stretch_horizontal = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_5k6y7"]
 font = ExtResource("8_xrgvl")
-font_size = 12
+font_size = 18
 outline_size = 8
 outline_color = Color(0.156863, 0.184314, 0.309804, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4fpqp"]
 font = ExtResource("8_xrgvl")
-font_size = 12
+font_size = 18
 outline_size = 8
 outline_color = Color(0.156863, 0.184314, 0.309804, 1)
 
@@ -79,9 +79,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -243.74
+offset_left = -285.74
 offset_top = -282.0
-offset_right = 244.26
+offset_right = 286.26
 offset_bottom = 282.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -102,7 +102,7 @@ texture = ExtResource("5_qtn8h")
 
 [node name="QuickColor" type="ColorRect" parent="Inside"]
 material = SubResource("CanvasItemMaterial_ksnrs")
-offset_left = -83.0
+offset_left = -96.0
 offset_top = 63.0
 offset_right = 77.0
 offset_bottom = 117.0
@@ -118,9 +118,9 @@ offset_bottom = 159.0
 
 [node name="Master" type="HSlider" parent="Inside/QuickOptions"]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 53.0
 offset_top = -39.0
-offset_right = 169.0
+offset_right = 158.0
 offset_bottom = -3.0
 mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
@@ -136,20 +136,19 @@ optionValue = "audio_master"
 metadata/ID = 4
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Master"]
-visible = false
 layout_mode = 0
-offset_left = -86.0
+offset_left = -117.0
 offset_top = -3.0
-offset_right = 125.0
+offset_right = 129.0
 offset_bottom = 41.0
 mouse_filter = 1
 
-[node name="MasterLabel" type="Label" parent="Inside/QuickOptions"]
+[node name="MasterLabel" type="Label" parent="Inside/QuickOptions/Master"]
 layout_mode = 0
-offset_left = -15.0
-offset_top = -29.0
-offset_right = 39.0
-offset_bottom = -6.0
+offset_left = -102.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = 33.0
 text = "MASTER"
 label_settings = SubResource("LabelSettings_5k6y7")
 horizontal_alignment = 1
@@ -157,9 +156,9 @@ vertical_alignment = 3
 
 [node name="Music" type="HSlider" parent="Inside/QuickOptions"]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 53.0
 offset_top = 7.0
-offset_right = 169.0
+offset_right = 158.0
 offset_bottom = 43.0
 mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
@@ -175,20 +174,19 @@ optionValue = "audio_music"
 metadata/ID = 6
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Music"]
-visible = false
 layout_mode = 0
-offset_left = -79.0
+offset_left = -117.0
 offset_top = -3.0
-offset_right = 125.0
+offset_right = 129.0
 offset_bottom = 41.0
 mouse_filter = 1
 
-[node name="MusicLabel" type="Label" parent="Inside/QuickOptions"]
+[node name="MusicLabel" type="Label" parent="Inside/QuickOptions/Music"]
 layout_mode = 0
-offset_left = -6.0
-offset_top = 17.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -93.0
+offset_top = 8.0
+offset_right = -24.0
+offset_bottom = 33.0
 text = "MUSIC"
 label_settings = SubResource("LabelSettings_5k6y7")
 horizontal_alignment = 1
@@ -196,9 +194,9 @@ vertical_alignment = 3
 
 [node name="SFX" type="HSlider" parent="Inside/QuickOptions"]
 layout_mode = 0
-offset_left = 280.0
+offset_left = 306.0
 offset_top = -39.0
-offset_right = 385.0
+offset_right = 411.0
 offset_bottom = -3.0
 mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
@@ -214,20 +212,19 @@ optionValue = "audio_sfx"
 metadata/ID = 5
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/SFX"]
-visible = false
 layout_mode = 0
-offset_left = -61.0
+offset_left = -110.0
 offset_top = -3.0
-offset_right = 129.0
+offset_right = 128.0
 offset_bottom = 41.0
 mouse_filter = 1
 
-[node name="SFXLabel" type="Label" parent="Inside/QuickOptions"]
+[node name="SFXLabel" type="Label" parent="Inside/QuickOptions/SFX"]
 layout_mode = 0
-offset_left = 229.0
-offset_top = -29.0
-offset_right = 255.0
-offset_bottom = -6.0
+offset_left = -61.0
+offset_top = 8.0
+offset_right = -22.0
+offset_bottom = 33.0
 text = "SFX"
 label_settings = SubResource("LabelSettings_5k6y7")
 horizontal_alignment = 1
@@ -235,9 +232,9 @@ vertical_alignment = 3
 
 [node name="Voice" type="HSlider" parent="Inside/QuickOptions"]
 layout_mode = 0
-offset_left = 280.0
+offset_left = 306.0
 offset_top = 7.0
-offset_right = 385.0
+offset_right = 411.0
 offset_bottom = 43.0
 mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
@@ -253,20 +250,19 @@ optionValue = "audio_voicelines"
 metadata/ID = 7
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Voice"]
-visible = false
 layout_mode = 0
-offset_left = -80.0
+offset_left = -110.0
 offset_top = -3.0
-offset_right = 129.0
+offset_right = 128.0
 offset_bottom = 41.0
 mouse_filter = 1
 
-[node name="VoiceLabel" type="Label" parent="Inside/QuickOptions"]
+[node name="VoiceLabel" type="Label" parent="Inside/QuickOptions/Voice"]
 layout_mode = 0
-offset_left = 210.0
-offset_top = 17.0
-offset_right = 255.0
-offset_bottom = 40.0
+offset_left = -92.0
+offset_top = 8.0
+offset_right = -24.0
+offset_bottom = 33.0
 text = "VOICE"
 label_settings = SubResource("LabelSettings_5k6y7")
 horizontal_alignment = 1
@@ -274,9 +270,9 @@ vertical_alignment = 3
 
 [node name="Ambience" type="HSlider" parent="Inside/QuickOptions"]
 layout_mode = 0
-offset_left = 191.0
+offset_left = 196.0
 offset_top = 53.0
-offset_right = 296.0
+offset_right = 301.0
 offset_bottom = 89.0
 mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
@@ -292,20 +288,19 @@ optionValue = "audio_ambience"
 metadata/ID = 8
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Ambience"]
-visible = false
 layout_mode = 0
-offset_left = -119.0
+offset_left = -152.0
 offset_top = -3.0
-offset_right = 129.0
+offset_right = 128.0
 offset_bottom = 41.0
 mouse_filter = 1
 
-[node name="AmbienceLabel" type="Label" parent="Inside/QuickOptions"]
+[node name="AmbienceLabel" type="Label" parent="Inside/QuickOptions/Ambience"]
 layout_mode = 0
-offset_left = 91.0
-offset_top = 63.0
-offset_right = 164.0
-offset_bottom = 86.0
+offset_left = -134.0
+offset_top = 8.0
+offset_right = -25.0
+offset_bottom = 33.0
 text = "AMBIENCE"
 label_settings = SubResource("LabelSettings_5k6y7")
 horizontal_alignment = 1
@@ -314,9 +309,9 @@ vertical_alignment = 3
 [node name="Autofire" type="TextureButton" parent="Inside/QuickOptions"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 212.0
+offset_left = 216.0
 offset_top = -103.0
-offset_right = 259.0
+offset_right = 263.0
 offset_bottom = -49.0
 pivot_offset = Vector2(23.5, 33.63)
 mouse_default_cursor_shape = 2
@@ -344,20 +339,19 @@ metadata/_aseprite_wizard_source_file_hash_ = "2dec9fc98fae370b0d12ee481cadc85f"
 metadata/ID = 3
 
 [node name="Rectangle" type="ReferenceRect" parent="Inside/QuickOptions/Autofire"]
-visible = false
 layout_mode = 0
-offset_left = -87.0
+offset_left = -120.0
 offset_top = 9.0
-offset_right = 49.0
+offset_right = 51.0
 offset_bottom = 57.0
 mouse_filter = 1
 
-[node name="AutofireLabel" type="Label" parent="Inside/QuickOptions"]
+[node name="AutofireLabel" type="Label" parent="Inside/QuickOptions/Autofire"]
 layout_mode = 0
-offset_left = 132.0
-offset_top = -74.0
-offset_right = 201.0
-offset_bottom = -51.0
+offset_left = -111.0
+offset_top = 23.0
+offset_right = -7.0
+offset_bottom = 48.0
 text = "AUTOFIRE"
 label_settings = SubResource("LabelSettings_4fpqp")
 horizontal_alignment = 1
