@@ -1,14 +1,4 @@
 <div align="center">
-<h1>Made for the "Seezee 2025 Birthday Bash" Event</h1>
-
-<p>
-  <img src=".github/sbb_logo.png" alt="Seezee 2025 Birthday Bash logo" width="400"/>
-</p>
-
-<h6>Hosted by: Verwex & Terionic</h6>
-<h3>Happy Birthday, Seezee!</h3>
-<br>
-
 <h1>"Tweaked To The Grave"</h1>
 <p>
   <img src=".github/tttg_logo.png" alt="Team Reimagination Logo" width="500"/>
@@ -18,7 +8,7 @@
   <h2>Description</h2>
   <b>Tweaked To The Grave</b> is a <b>3D Fixed Camera Shooter</b> where the goal is to chase down the boss of each level and shoot them down as you dodge infinitely generating obstales, with variety in layouts and types of obstacles in question.<br>You play as <b>Seezee553</b>, and a creation of yours, <b>Bob Tweaked</b> has risen from the dead, looking for revenge on you for being left for years. And you must stop it on this (so far) short journey.
   <h2>Inspiration:</h2>
-  The game was inspired by Starfox 64, Sonic Advance 1's bosses where you have to run constantly to get close and other things that the team can't remember, but those two are the most prevalent.
+  The game was inspired by Starfox 64, Sonic Advance 2's chase-down bosses and other things that the team can't remember, but those two are the most prevalent.
   <h2>Time of Development & Its Future:</h2>
   This game started development in late February / early March, right after <a href="https://gamejolt.com/games/yege-the-game/976332">"Yege the Game"</a> dropped, so it took a couple months to develop. But it's not the end for this game, as it will eventually be developed into a full release, with a potential kickstarter depending on how things will go in order to possibly get this on Steam. It has tons of potential after all.
   <h2>Notes & Extras:</h2>
@@ -45,6 +35,11 @@
   <br>FNF Sound Team - Placeholder Main Menu Theme Ending
 <h2>Reasons For Open Sourcing</h2>
 For The Cutting Room Floor potential and pull requests from the community, because the codebase is not the best.
+<h2>Available on:</h2>
+SEEZEE BIRTHDAY BASH 2025 DEMO:<br>
+Itch.io: <a href="https://verwex.itch.io/tweaked-grave">https://verwex.itch.io/tweaked-grave</a><br><br>
+PROPER DEMO:<br>
+Steam: [SOON]
 
 <br>
 <br>
