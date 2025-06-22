@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tweaked To The Grave"
-config/version="SBB2025"
+config/version="2025STEAM"
 config/tags=PackedStringArray("seezee_2025_birthday_bash")
 run/main_scene="uid://dohoiocrvynyh"
 config/features=PackedStringArray("4.4", "Forward Plus")
@@ -57,7 +57,7 @@ movie_writer/movie_file="D:/Videos/tttg.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/newgrounds/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/newgrounds/plugin.cfg")
 
 [global_group]
 
