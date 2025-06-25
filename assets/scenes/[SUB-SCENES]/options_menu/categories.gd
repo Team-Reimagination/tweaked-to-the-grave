@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var substate = $".."
+@onready var scrolly = $Scroll
 
 var categories = ["video", "audio", "gameplay", "misc"]
 var categoryLabels = []
@@ -21,7 +22,7 @@ var catButtonScales = [1.0,1.0]
 	"misc": $Options/misc,
 }
 
-@onready var boxer = $OptionColor
+@onready var boxer = $ColorClip/OptionColor
 var boxPositions = Vector2(0.0,0.0)
 var boxSizes = Vector2(0.0,0.0)
 var boxAlpha = 0.0
@@ -57,7 +58,11 @@ func _ready() -> void:
 		
 		addOption(opti, categoro)
 	
+	scrolly.connect("value_changed", func(value): moveOptionsColumn(value));
+	
+	updateScrollBar(true)
 	moveCategoryRow(false)
+	moveOptionsColumn(0)
 
 	for a : TextureButton in catButtons:
 		a.mouse_entered.connect(catMouseHover.bind(a))
@@ -86,14 +91,14 @@ func boxerMove():
 	boxPositions = whatToUse.global_position
 	
 	boxer.self_modulate.a = lerpf(boxer.self_modulate.a, boxAlpha, 0.7 if whatToUse is Sprite2D else 0.2)
-	boxer.position.x = boxPositions.x - (boxer.size.x/2.0)
-	boxer.position.y = lerpf(boxer.position.y, boxPositions.y - (boxer.size.y/2.0), 0.3)
+	boxer.global_position.x = boxPositions.x - (boxer.size.x/2.0)
+	boxer.global_position.y = lerpf(boxer.global_position.y, boxPositions.y - (boxer.size.y/2.0), 0.3)
 	boxer.size.x = lerpf(boxer.size.x, boxSizes.x, 0.3)
 	boxer.size.y = lerpf(boxer.size.y, boxSizes.y, 0.3)
 
 func instantBoxMove():
 		boxer.size = boxSizes
-		boxer.position = boxPositions
+		boxer.global_position = boxPositions
 		boxer.self_modulate.a = boxAlpha
 
 func catMouseHover(button):
@@ -122,6 +127,25 @@ func catMousePress():
 func moveCategoryRow(doLerp):
 	var positionToLookFor = -categoryLabels[curCategory].position.x + $Categories.size.x/2
 	$Categories/Group.position.x = lerp($Categories/Group.position.x, positionToLookFor, 0.2) if doLerp else positionToLookFor
+
+func calculateScrollBar(forceInstant = false):
+	print(scrolly.max_value)
+	if scrolly.max_value == 0 or scrolly.modulate.a < 0.01: return;
+	
+	var valueToExpect = 0;
+	
+	if curSelected < 3: scrolly.value = 0
+	elif curSelected > $Options.get_child(curCategory).get_child_count()-2: valueToExpect = scrolly.max_value
+	else:
+		var exponenty = scrolly.max_value / ($Options.get_child(curCategory).get_child_count() - 4)
+		valueToExpect = exponenty * (curSelected - 2)
+	
+	if SaveSystem.optionsData.get("video_reducedmotions", false) and !forceInstant: scrolly.value = valueToExpect;
+	else:
+		get_tree().create_tween().tween_property(scrolly, "value", valueToExpect, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+
+func moveOptionsColumn(value):
+	$Options.get_child(curCategory).position.y = -value
 
 func _process(delta: float) -> void:
 	boxerMove()
@@ -157,6 +181,7 @@ func _process(delta: float) -> void:
 			MenuSounds.playMenuSound("switch")
 
 var catMovements
+var scrolloing
 
 func catSwitch(dir):
 	mouseBtn = -1
@@ -196,6 +221,10 @@ func catMovement(dir):
 	
 	await catMovements.finished
 	
+	updateScrollBar()
+	calculateScrollBar(true)
+	moveOptionsColumn(scrolly.value)
+	
 	oldCat.position.x = 2 << 10
 	newCat.position.x = 50 * dir if !SaveSystem.optionsData.get("video_reducedmotions", false) else 0.0
 	newCat.modulate.a = 0.0
@@ -204,9 +233,24 @@ func catMovement(dir):
 	catMovements.tween_property(newCat, "modulate:a", 1.0, 0.125).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
 	if !SaveSystem.optionsData.get("video_reducedmotions", false): catMovements.set_parallel(true).tween_property(newCat, "position:x", 0.0, 0.125).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
 
+func updateScrollBar(instant = false):
+	var newCat = $Options.get_child(curCategory)
+	var firstToLast = (newCat.get_child(-1).global_position.y - newCat.get_child(-1).get_node("./Size").size.y) - newCat.get_child(0).global_position.y
+	var valueToCheck = max(0, firstToLast - ($Options.global_position.y + $Options.size.y))
+	
+	scrolly.max_value = valueToCheck
+	scrolly.value = min(scrolly.value, valueToCheck)
+		
+	if scrolloing: scrolloing.kill()
+	
+	scrolloing = get_tree().create_tween()
+	scrolloing.tween_property(scrolly, "modulate:a", 1.0 if valueToCheck != 0 else 0.0, 0.05 if !instant else 0.0)
+
 func optionMovement(dir):
 	curSelected += dir
 	if curSelected < 0: curSelected = $Options.get_child(curCategory).get_children().size()
 	elif curSelected > $Options.get_child(curCategory).get_children().size(): curSelected = 0
+	
+	calculateScrollBar()
 	
 	boxAlpha = min(curSelected, 1)

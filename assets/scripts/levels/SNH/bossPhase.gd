@@ -70,6 +70,7 @@ func _process(delta) :
 		startingPhase2 = true
 		
 		scene.chunkLoader.lvChunks = []
+		scene.chunkLoader.lvChunkWeights = []
 		scene.shaders.wybielenie(0.5)
 		
 		for obj in scene.chunkLoader.get_children():

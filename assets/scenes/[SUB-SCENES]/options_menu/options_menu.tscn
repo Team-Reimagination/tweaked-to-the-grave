@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgmqcnoctism4"]
+[gd_scene load_steps=16 format=3 uid="uid://bgmqcnoctism4"]
 
 [ext_resource type="Script" uid="uid://xcn1tduwunwp" path="res://assets/scenes/[SUB-SCENES]/options_menu/options_menu.gd" id="1_fgg3q"]
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="2_sqiki"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://bchehn5bpudmu" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="5_5slg3"]
 [ext_resource type="Texture2D" uid="uid://ch3rdb11om0r4" path="res://assets/images/buttons/general/arrow.png" id="5_eiikj"]
 [ext_resource type="Texture2D" uid="uid://dpurenv558o3h" path="res://assets/images/menu/stageselect/fade.png" id="6_owhe3"]
+[ext_resource type="Texture2D" uid="uid://km777imgrgpg" path="res://assets/images/buttons/general/scroll_grab.png" id="8_sqiki"]
+[ext_resource type="Texture2D" uid="uid://bc6374bbi8tof" path="res://assets/images/buttons/general/scroll_bg.png" id="9_ugvmj"]
+[ext_resource type="Script" uid="uid://de0a4e14oxoiu" path="res://assets/scripts/funcs/optionMetadata.gd" id="10_ugvmj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
 resource_local_to_scene = true
@@ -42,6 +45,16 @@ metadata/_custom_type_script = "uid://bchehn5bpudmu"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_058qp"]
 blend_mode = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b3jsy"]
+content_margin_left = 14.0
+content_margin_right = 14.0
+texture = ExtResource("9_ugvmj")
+texture_margin_left = 13.0
+texture_margin_right = 13.0
+expand_margin_top = 12.0
+expand_margin_bottom = 12.0
+axis_stretch_horizontal = 1
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -154,10 +167,17 @@ points = PackedVector2Array(0, 0, 0, 910)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="OptionColor" type="ColorRect" parent="Inside"]
+[node name="ColorClip" type="Control" parent="Inside"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -510.0
+offset_top = -195.0
+offset_right = 510.0
+offset_bottom = 345.0
+
+[node name="OptionColor" type="ColorRect" parent="Inside/ColorClip"]
 material = SubResource("CanvasItemMaterial_058qp")
-offset_top = -300.0
-offset_bottom = -300.0
 color = Color(0.97, 0.759833, 0, 0.258824)
 
 [node name="Options" type="Control" parent="Inside"]
@@ -170,12 +190,16 @@ offset_right = 510.0
 offset_bottom = 345.0
 
 [node name="video" type="Node2D" parent="Inside/Options"]
+clip_children = 2
 
 [node name="audio" type="Node2D" parent="Inside/Options"]
+clip_children = 2
 
 [node name="gameplay" type="Node2D" parent="Inside/Options"]
+clip_children = 2
 
 [node name="misc" type="Node2D" parent="Inside/Options"]
+clip_children = 2
 
 [node name="Fade3" type="Sprite2D" parent="Inside"]
 position = Vector2(-1, -189)
@@ -188,5 +212,26 @@ position = Vector2(-1, 338)
 rotation = -1.57079
 scale = Vector2(1.03592, 3.33643)
 texture = ExtResource("6_owhe3")
+
+[node name="Scroll" type="HSlider" parent="Inside"]
+anchors_preset = -1
+anchor_right = 0.163281
+offset_left = 480.0
+offset_top = -194.0
+offset_right = 810.0
+offset_bottom = -158.0
+rotation = 1.57079
+mouse_default_cursor_shape = 2
+theme_override_icons/grabber = ExtResource("8_sqiki")
+theme_override_icons/grabber_highlight = ExtResource("8_sqiki")
+theme_override_icons/grabber_disabled = ExtResource("8_sqiki")
+theme_override_styles/slider = SubResource("StyleBoxTexture_b3jsy")
+max_value = 0.0
+step = 0.01
+ticks_on_borders = true
+script = ExtResource("10_ugvmj")
+optionValue = "audio_sfx"
+metadata/ID = 5
+metadata/_edit_use_anchors_ = true
 
 [editable path="Base"]

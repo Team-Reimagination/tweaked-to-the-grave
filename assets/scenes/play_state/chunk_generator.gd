@@ -94,7 +94,7 @@ func makeBGChunk():
 	if newChunk.startPos.global_position.z >= -scene.levelDefs.fog.distance.end*2: makeBGChunk()
 
 func makeLVChunk():
-	if lvChunks.size() == 0: return;
+	if lvChunks.size() < 1: return;
 	var newChunk = lvChunks[rng.rand_weighted(lvChunkWeights)]
 	
 	var ogPos = -scene.levelDefs.fog.distance.end;

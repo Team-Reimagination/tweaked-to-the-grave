@@ -3,27 +3,27 @@ extends TTTG_Boss
 var toFlash2
 
 func _ready() -> void:
-    super._ready()
-    
-    DiscordRPC.app_id = 1386468400733093888 
-    DiscordRPC.details = "Fighting: Tweak in The Saharian Lands"
-    DiscordRPC.state = "not having a heatstroke"
-    DiscordRPC.large_image = "tweak"
-    DiscordRPC.large_image_text = "Try it now!"
-    DiscordRPC.small_image = "seezee"
-    DiscordRPC.small_image_text = "Trying his best!"
-    
-    toFlash += find_child("Model").find_children("*", "Sprite3D", true, true)
+	super._ready()
+	
+	DiscordRPC.app_id = 1386468400733093888 
+	DiscordRPC.details = "Fighting: Tweak in The Saharian Lands"
+	DiscordRPC.state = "not having a heatstroke"
+	DiscordRPC.large_image = "tweak"
+	DiscordRPC.large_image_text = "Try it now!"
+	DiscordRPC.small_image = "seezee"
+	DiscordRPC.small_image_text = "Trying his best!"
+	
+	toFlash += find_child("Model").find_children("*", "Sprite3D", true, true)
 
 func damage(healthTaken, isRecursive = false):
-    super.damage(healthTaken, isRecursive)
+	super.damage(healthTaken, isRecursive)
 
 func _process(delta: float) -> void:
-    super._process(delta)
+	super._process(delta)
 
 func imKillingMyself():
-    super.imKillingMyself()
-    
-    get_tree().create_tween().tween_property(scene.camera, "posi:y", self.position.y + 30 * self.scale.x, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
-    
-    get_tree().create_tween().tween_property(self, "position", Vector3(self.position.x, self.position.y - 20, self.position.z + 70), 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CIRC).set_delay(3.0)
+	super.imKillingMyself()
+	
+	get_tree().create_tween().tween_property(scene.camera, "posi:y", self.position.y + 30 * self.scale.x, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
+	
+	get_tree().create_tween().tween_property(self, "position", Vector3(self.position.x, self.position.y - 20, self.position.z + 70), 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CIRC).set_delay(3.0)

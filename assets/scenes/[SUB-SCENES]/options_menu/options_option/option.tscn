@@ -64,9 +64,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -459.0
+offset_left = -444.0
 offset_top = -36.0
-offset_right = 459.0
+offset_right = 444.0
 offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -74,9 +74,9 @@ border_width = 2.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -443.0
+offset_left = -427.0
 offset_top = -30.0
-offset_right = 111.0
+offset_right = 127.0
 offset_bottom = 36.0
 text = "Skibidi Toilet"
 label_settings = SubResource("LabelSettings_h5ylm")
@@ -85,6 +85,7 @@ vertical_alignment = 1
 [node name="Tech" type="Node2D" parent="."]
 
 [node name="0" type="Node2D" parent="Tech"]
+position = Vector2(-16, 0)
 
 [node name="Setting" type="HSlider" parent="Tech/0"]
 offset_left = 111.0
@@ -116,6 +117,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="1" type="Node2D" parent="Tech"]
+position = Vector2(-16, 0)
 
 [node name="Setting" type="TextureButton" parent="Tech/1"]
 texture_filter = 1
@@ -148,6 +150,7 @@ metadata/ID = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="2" type="Node2D" parent="Tech"]
+position = Vector2(-16, 0)
 
 [node name="Left" type="TextureButton" parent="Tech/2"]
 anchors_preset = -1
