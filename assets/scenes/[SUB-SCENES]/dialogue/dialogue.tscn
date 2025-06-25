@@ -369,7 +369,7 @@ subtitle = "Radio Static"
 metadata/_custom_type_script = "uid://do3ib7cpvvinc"
 
 [node name="Voice" type="AudioStreamPlayer" parent="Audio" groups=["Sound"]]
-bus = &"Voicelines"
+bus = &"Dialogue"
 
 [node name="Timeout" type="Timer" parent="."]
 one_shot = true
