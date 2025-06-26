@@ -42,6 +42,7 @@ CustomCursor="*res://assets/scripts/global/customCursor.gd"
 Subtitles="*res://assets/scripts/global/subtitles.gd"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
+Framerate="*res://assets/scripts/global/framerate.gd"
 
 [display]
 
