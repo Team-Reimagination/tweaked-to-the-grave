@@ -53,6 +53,7 @@ window/size/sharp_corners=true
 window/size/window_width_override=960
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [editor]
 

@@ -76,7 +76,7 @@ func damage(healthTaken, isRecursive = false):
 	
 	if health > 0:
 		for a in toFlash:
-			a.material_overlay.set("shader_parameter/intensity", flashIntensity);
+			a.material_overlay.set("shader_parameter/intensity", max(flashIntensity * SaveSystem.optionsData.get("gameplay_hitflash", 1), 0.5));
 			get_tree().create_tween().tween_property(a.material_overlay, "shader_parameter/intensity", 0.0, 0.15).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
 	
 	if health <= 0 and canDie:

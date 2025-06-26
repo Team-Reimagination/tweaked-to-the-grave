@@ -22,7 +22,8 @@ var _defaultOptionsData = { ## enter the options you want to add
 	
 	"gameplay_autofire" = false,
 	"gameplay_warningalarm" = true,
-	"gameplay_lirabonus" = true
+	"gameplay_lirabonus" = true,
+	"gameplay_hitflash" = 1,
 }
 
 var possibleResolutions = [ ## every popular 4:3 game resolutions in increasing order
@@ -182,6 +183,14 @@ var optionDefines = {
 	"gameplay_lirabonus": {
 		"name": "Lira Bonus Prompt",
 		"type": 1
+	},
+	"gameplay_hitflash": {
+		"name": "Hit Flash Intensity",
+		"type": 0,
+		"min": 0.5,
+		"max": 1,
+		"step": 0.01,
+		"label": 'percent',
 	}
 }
 
