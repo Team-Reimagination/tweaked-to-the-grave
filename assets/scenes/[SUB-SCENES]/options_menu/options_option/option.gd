@@ -150,6 +150,8 @@ func mouse_button(button):
 	if substate.canInput:
 		selectorMovement(-1 if button == $"Tech/2/Left" else 1)
 
+var recordPosition;
+
 func selectorMovement(dir):
 	selectorSetting += dir
 	
@@ -161,7 +163,7 @@ func selectorMovement(dir):
 	
 	if !SaveSystem.optionsData.get("video_reducedmotions", false): selectorButtons[0 if dir == -1 else 1].scale *= 0.7
 	
-	var recordPosition = $"Tech/2/Number".position.x
+	if recordPosition == null: recordPosition = $"Tech/2/Number".position.x
 	
 	if selTween: selTween.kill()
 	selTween = get_tree().create_tween()
