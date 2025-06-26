@@ -40,6 +40,11 @@ func getSetting():
 func selectorValue():
 	$"Tech/2/Number".text = definition.options[selectorSetting]
 
+var extraLabels = {
+	'db': 'DB',
+	'fps': 'FPS'
+}
+
 func sliderValue():
 	if definition.label == 'percent':
 		var value = int($"Tech/0/Setting".value * 100)
@@ -53,12 +58,12 @@ func sliderValue():
 			$"Tech/0/Number".text = definition.override[str(value)]
 		else:
 			$"Tech/0/Number".text = "%0.2f" % (value)
-	elif definition.label == 'db':
+	elif definition.label == 'db' || definition.label == 'fps':
 		var value = int($"Tech/0/Setting".value)
 		if definition.has("override") and definition.override.get(str(value), false):
 			$"Tech/0/Number".text = definition.override[str(value)]
 		else:
-			$"Tech/0/Number".text = str(value)+' DB'
+			$"Tech/0/Number".text = str(value)+' '+extraLabels[definition.label]
 
 func setupSetting():
 	if definition.type == 1:
@@ -72,12 +77,13 @@ func setupSetting():
 		a.mouse_exited.connect(unscalerue.bind(a))
 	elif definition.type == 0:
 		var a : HSlider = $"Tech/0/Setting"
-		a.connect("value_changed", func(value): onvaluechange(optionToLookInto, value));
-		a.mouse_entered.connect(_on_size_mouse_entered.bind())
-		a.value_changed.connect(tickSound.bind(a))
 		a.min_value = definition.min
 		a.max_value = definition.max
 		a.step = definition.step
+		a.value = min(max(a.min_value, SaveSystem.optionsData.get(optionToLookInto)), a.max_value)
+		a.connect("value_changed", func(value): onvaluechange(optionToLookInto, value));
+		a.mouse_entered.connect(_on_size_mouse_entered.bind())
+		a.value_changed.connect(tickSound.bind(a))
 	elif definition.type == 2:
 		scalar = [0.7, 0.7]
 		for a in selectorButtons:

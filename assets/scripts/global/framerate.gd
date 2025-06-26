@@ -4,6 +4,7 @@ var framerate: Label = Label.new()
 
 func _ready() -> void:
 	self.layer = 128
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	framerate.top_level = true
 	framerate.label_settings = LabelSettings.new()

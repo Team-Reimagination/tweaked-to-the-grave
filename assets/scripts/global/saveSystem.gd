@@ -4,8 +4,10 @@ var optionsData = {} ## will be automatically filled with values on loading save
 var _defaultOptionsData = { ## enter the options you want to add
 	"video_windowsize" = 0, ##PC ONLY
 	"video_windowmode" = 0, ##PC ONLY
-	"video_vsync" = 1,
 	"video_resolution" = 1.0,
+	"video_framecount" = true,
+	"video_vsync" = 1,
+	"video_frameratemax" = 1,
 	"video_reducedmotions" = false,
 	"video_passion" = false,
 	
@@ -72,6 +74,21 @@ var optionDefines = {
 		"options": ["Disabled",
 					"Adaptive",
 					"Enabled"]
+	},
+	"video_framecount": {
+		"name": "Framerate Counter",
+		"type": 1
+	},
+	"video_frameratemax": {
+		"name": "Max Framerate",
+		"type": 0,
+		"min": 60,
+		"max": 360,
+		"step": 1,
+		"label": 'fps',
+		"override": {
+			"360": "UNLIMITED"
+		}
 	},
 	"video_resolution": {
 		"name": "3D Resolution Scale",
@@ -361,6 +378,14 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 		return
 	elif type == 'video_passion':
 		Passion.visibility(valuemysanityplease)
+		return
+	elif type == 'video_framecount':
+		Framerate.visible = valuemysanityplease
+		Framerate.process_mode = Node.PROCESS_MODE_ALWAYS if valuemysanityplease else Node.PROCESS_MODE_DISABLED
+		return
+	elif type == "video_frameratemax":
+		Engine.max_fps = valuemysanityplease if valuemysanityplease < 360 else 0
+		
 		return
 	
 	elif type == 'audio_master':
