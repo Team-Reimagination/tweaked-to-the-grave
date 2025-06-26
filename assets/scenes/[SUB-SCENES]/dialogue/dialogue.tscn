@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ddsogm1aqrgtv" path="res://assets/scenes/[SUB-SCENES]/dialogue/dialogue.gd" id="1_2uwk1"]
 [ext_resource type="Texture2D" uid="uid://cuebrxp06o4f5" path="res://assets/images/hud/dialogue/box.png" id="3_14t8k"]
 [ext_resource type="AudioStream" uid="uid://rmhg15lfbaxg" path="res://assets/sounds/ui/transmission_in.ogg" id="3_t5uuo"]
+[ext_resource type="FontFile" uid="uid://dio52vrpxnxrp" path="res://assets/fonts/CrookedLogs-Bold.ttf" id="3_vdasa"]
 [ext_resource type="AudioStream" uid="uid://10hoy2pjipi0" path="res://assets/sounds/ui/transmission_out.ogg" id="4_h1o2o"]
-[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="4_vdasa"]
 [ext_resource type="AudioStream" uid="uid://bm4c2if1cp6kl" path="res://assets/sounds/ui/transmission_static.ogg" id="5_14t8k"]
 [ext_resource type="FontFile" uid="uid://cvb36t3beutc0" path="res://assets/fonts/all-aircraft-report.ttf" id="5_vdasa"]
 [ext_resource type="Script" uid="uid://do3ib7cpvvinc" path="res://assets/scripts/classes/subtitle_sound_general.gd" id="6_vdasa"]
@@ -263,7 +263,7 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_io0cb"]
-font = ExtResource("4_vdasa")
+font = ExtResource("3_vdasa")
 font_size = 24
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)

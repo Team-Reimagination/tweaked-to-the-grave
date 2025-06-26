@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c4xro1wlloata" path="res://assets/images/menu/mainmenu/tweaked_hand.png" id="10_x0mfv"]
 [ext_resource type="Texture2D" uid="uid://de6ncryjjrna3" path="res://assets/images/buttons/mainmenu/credits.png" id="14_dhpin"]
 [ext_resource type="Shader" uid="uid://bn0ot4jakjbs7" path="res://assets/shaders/screen/pixel.gdshader" id="16_43lun"]
-[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="17_f2eox"]
+[ext_resource type="FontFile" uid="uid://sysah2n0iba7" path="res://assets/fonts/CrookedLogs-Normal.ttf" id="18_dhpin"]
 
 [sub_resource type="Gradient" id="Gradient_8qhov"]
 offsets = PackedFloat32Array(0, 0.690141)
@@ -214,7 +214,7 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_61kpw"]
-font = ExtResource("17_f2eox")
+font = ExtResource("18_dhpin")
 font_size = 24
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)

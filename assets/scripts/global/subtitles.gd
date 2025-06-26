@@ -30,7 +30,7 @@ func addSubtitle(subtitle):
 		subLabel.text = "- ["+subtitle+"]"
 		
 		subLabel.label_settings = LabelSettings.new()
-		subLabel.label_settings.font = load("res://assets/fonts/CrookedLogs.ttf")
+		subLabel.label_settings.font = load("res://assets/fonts/CrookedLogs-Normal.ttf")
 		subLabel.label_settings.font_size = 16
 		subLabel.label_settings.font_color = Color(1.0,1.0,1.0,1.0)
 		subLabel.label_settings.outline_size = 8

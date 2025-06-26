@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dv4g7mohlhiwc"]
+[gd_scene load_steps=29 format=3 uid="uid://dv4g7mohlhiwc"]
 
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="1_hs2lo"]
 [ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/backgrounds/grave-rect.png" id="2_hphh6"]
@@ -9,13 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://ch3rdb11om0r4" path="res://assets/images/buttons/general/arrow.png" id="5_rj44l"]
 [ext_resource type="Texture2D" uid="uid://d1v1yw8v2sii4" path="res://assets/images/buttons/general/checkbox1.png" id="8_hrg28"]
 [ext_resource type="Texture2D" uid="uid://bav0b2ubq8ynd" path="res://assets/images/buttons/general/checkbox2.png" id="9_skxqp"]
+[ext_resource type="FontFile" uid="uid://dio52vrpxnxrp" path="res://assets/fonts/CrookedLogs-Bold.ttf" id="10_j2lk7"]
 [ext_resource type="Script" uid="uid://yaeb7e61l3pm" path="res://assets/scenes/[SUB-SCENES]/stage_select/action_buttons.gd" id="11_hrg28"]
-[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="11_m4eru"]
 [ext_resource type="Texture2D" uid="uid://bmci7mii6gdtc" path="res://assets/images/menu/stageselect/save_new.png" id="12_m4eru"]
 [ext_resource type="Texture2D" uid="uid://dqe823yjfkep" path="res://assets/images/menu/stageselect/save_resume.png" id="13_cugsy"]
 [ext_resource type="Texture2D" uid="uid://s3ri3y3pxmco" path="res://assets/images/menu/stageselect/save_trash.png" id="14_sgut8"]
 [ext_resource type="Texture2D" uid="uid://cjo5lcjjishu8" path="res://assets/images/menu/stageselect/stats.png" id="15_cugsy"]
 [ext_resource type="Texture2D" uid="uid://dpurenv558o3h" path="res://assets/images/menu/stageselect/fade.png" id="16_sgut8"]
+[ext_resource type="FontFile" uid="uid://sysah2n0iba7" path="res://assets/fonts/CrookedLogs-Normal.ttf" id="16_vj3bq"]
 [ext_resource type="Texture2D" uid="uid://dpxj32g00qp3g" path="res://assets/images/menu/stageselect/playmygame.png" id="17_kn2ak"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
@@ -76,13 +77,19 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cugsy"]
-font = ExtResource("11_m4eru")
+font = ExtResource("10_j2lk7")
 font_size = 12
 outline_size = 8
 outline_color = Color(0.156863, 0.184314, 0.309804, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ofqyv"]
+font = ExtResource("10_j2lk7")
+font_size = 18
+outline_size = 8
+outline_color = Color(0.156863, 0.184314, 0.309804, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_sgut8"]
-font = ExtResource("11_m4eru")
+font = ExtResource("16_vj3bq")
 font_size = 18
 outline_size = 8
 outline_color = Color(0.156863, 0.184314, 0.309804, 1)
@@ -326,7 +333,7 @@ offset_top = 119.0
 offset_right = 409.0
 offset_bottom = 163.0
 text = "The Saharaland"
-label_settings = SubResource("LabelSettings_sgut8")
+label_settings = SubResource("LabelSettings_ofqyv")
 horizontal_alignment = 2
 vertical_alignment = 1
 autowrap_mode = 3

@@ -31,10 +31,10 @@
 [ext_resource type="Texture2D" uid="uid://dik5quuvvgarf" path="res://assets/images/menu/cutscene/border-9.png" id="28_2748t"]
 [ext_resource type="Texture2D" uid="uid://d2gm7cc28lpoo" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/confidence.png" id="28_pw4an"]
 [ext_resource type="Texture2D" uid="uid://cuhel0knfuxk8" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/moonb3rries.png" id="29_nub3g"]
-[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="29_pwc5p"]
 [ext_resource type="Texture2D" uid="uid://cmssnh26isuiw" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/nex_isdumb.png" id="30_2uxsa"]
 [ext_resource type="Texture2D" uid="uid://bdyfa3vju8dm7" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/kittycass.png" id="31_ku4bi"]
 [ext_resource type="Texture2D" uid="uid://b44oknretjv2m" path="res://assets/images/menu/cutscene/allofthesebeautifulpeople/spectralflake.png" id="32_sqsmk"]
+[ext_resource type="FontFile" uid="uid://sysah2n0iba7" path="res://assets/fonts/CrookedLogs-Normal.ttf" id="35_pw4an"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3gqd"]
 shader = ExtResource("1_1ym0b")
@@ -62,8 +62,9 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_cuj8e"]
-font = ExtResource("29_pwc5p")
-outline_size = 8
+font = ExtResource("35_pw4an")
+font_size = 20
+outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Cutscene" type="Node2D"]
@@ -386,9 +387,9 @@ bus = &"Music"
 [node name="Skippable" type="Label" parent="."]
 z_index = 6
 offset_left = 915.0
-offset_top = 930.0
+offset_top = 919.0
 offset_right = 1267.0
-offset_bottom = 952.0
+offset_bottom = 947.0
 text = "BACK / RIGHT CLICK TO SKIP"
 label_settings = SubResource("LabelSettings_cuj8e")
 horizontal_alignment = 2

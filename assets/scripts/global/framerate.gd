@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 	framerate.top_level = true
 	framerate.label_settings = LabelSettings.new()
-	framerate.label_settings.font = load("res://assets/fonts/CrookedLogs.ttf")
+	framerate.label_settings.font = load("res://assets/fonts/CrookedLogs-Normal.ttf")
 	framerate.label_settings.font_size = 16
 	
 	framerate.position = Vector2(10, 10)

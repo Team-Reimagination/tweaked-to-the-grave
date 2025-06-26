@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnlbyu2f3diod"]
+[gd_scene load_steps=14 format=3 uid="uid://bnlbyu2f3diod"]
 
-[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="1_crpyo"]
 [ext_resource type="Script" uid="uid://cowa6fuxc6j02" path="res://assets/scenes/[SUB-SCENES]/options_menu/options_option/option.gd" id="1_h5ylm"]
+[ext_resource type="FontFile" uid="uid://dio52vrpxnxrp" path="res://assets/fonts/CrookedLogs-Bold.ttf" id="2_johql"]
 [ext_resource type="Texture2D" uid="uid://km777imgrgpg" path="res://assets/images/buttons/general/scroll_grab.png" id="3_bwfib"]
 [ext_resource type="Texture2D" uid="uid://bc6374bbi8tof" path="res://assets/images/buttons/general/scroll_bg.png" id="4_johql"]
 [ext_resource type="Script" uid="uid://de0a4e14oxoiu" path="res://assets/scripts/funcs/optionMetadata.gd" id="5_johql"]
 [ext_resource type="Texture2D" uid="uid://d1v1yw8v2sii4" path="res://assets/images/buttons/general/checkbox1.png" id="6_bwfib"]
+[ext_resource type="FontFile" uid="uid://sysah2n0iba7" path="res://assets/fonts/CrookedLogs-Normal.ttf" id="6_jich8"]
 [ext_resource type="Texture2D" uid="uid://bav0b2ubq8ynd" path="res://assets/images/buttons/general/checkbox2.png" id="7_johql"]
 [ext_resource type="Texture2D" uid="uid://ch3rdb11om0r4" path="res://assets/images/buttons/general/arrow.png" id="8_bwfib"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h5ylm"]
-font = ExtResource("1_crpyo")
+font = ExtResource("2_johql")
 font_size = 32
 outline_size = 16
 outline_color = Color(0.156863, 0.184314, 0.309804, 1)
@@ -26,13 +27,13 @@ expand_margin_bottom = 12.0
 axis_stretch_horizontal = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_johql"]
-font = ExtResource("1_crpyo")
+font = ExtResource("6_jich8")
 font_size = 24
 outline_size = 12
 outline_color = Color(0.156863, 0.184314, 0.309804, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jich8"]
-font = ExtResource("1_crpyo")
+font = ExtResource("6_jich8")
 font_size = 32
 outline_size = 16
 outline_color = Color(0.156863, 0.184314, 0.309804, 1)

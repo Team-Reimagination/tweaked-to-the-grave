@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b3bjpkoqv15l" path="res://assets/scenes/[SUB-SCENES]/trophies_menu/trophies_menu.gd" id="1_8g4bb"]
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="2_snsbq"]
 [ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/backgrounds/grave-rect.png" id="3_cj3mo"]
-[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="5_snsbq"]
+[ext_resource type="FontFile" uid="uid://sysah2n0iba7" path="res://assets/fonts/CrookedLogs-Normal.ttf" id="4_8g4bb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
 resource_local_to_scene = true
@@ -20,8 +20,8 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_0awl3"]
-font = ExtResource("5_snsbq")
-font_size = 24
+font = ExtResource("4_8g4bb")
+font_size = 25
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 

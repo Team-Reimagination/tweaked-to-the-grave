@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if doMove: position.z += PlayGlobals.moveSpeed(delta, scene);
 
-func reset(isRecursive = false):
+func reset(_isRecursive = false):
 	passNotReady()
 	for a in self.get_children():
 		if a is not Marker3D:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bdud5m8jhitw1" path="res://assets/scenes/[SUB-SCENES]/question_menu/question_menu.gd" id="1_6y0na"]
 [ext_resource type="PackedScene" uid="uid://bcls6xbluhbj1" path="res://assets/scenes/[SUB-SCENES]/subscene_base/subscene_base.tscn" id="2_avp3j"]
 [ext_resource type="Texture2D" uid="uid://dw1d2ygimw7ca" path="res://assets/images/menu/backgrounds/grave-rect.png" id="3_6dyhl"]
-[ext_resource type="FontFile" uid="uid://cxeyh34ry08up" path="res://assets/fonts/CrookedLogs.ttf" id="4_6y0na"]
+[ext_resource type="FontFile" uid="uid://sysah2n0iba7" path="res://assets/fonts/CrookedLogs-Normal.ttf" id="4_6y0na"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oi2w2"]
 resource_local_to_scene = true
@@ -21,8 +21,8 @@ axis_stretch_vertical = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_wof78"]
 font = ExtResource("4_6y0na")
-font_size = 14
-outline_size = 8
+font_size = 18
+outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
 [node name="questionMenu" type="Control"]

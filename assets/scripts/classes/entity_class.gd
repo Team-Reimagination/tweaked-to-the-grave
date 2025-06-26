@@ -24,7 +24,7 @@ var isDying = false
 var meshInstances = []
 var meshesWithOverlay = []
 
-func reset(isRecursive = false):
+func reset(_isRecursive = false):
 	isDying = false
 
 func _ready() -> void:

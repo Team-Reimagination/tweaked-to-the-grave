@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cxeyh34ry08up"
-path="res://.godot/imported/CrookedLogs.ttf-392b23c100d496242451fb7691f75d5a.fontdata"
+uid="uid://dio52vrpxnxrp"
+path="res://.godot/imported/CrookedLogs-Bold.ttf-c5f507a114bd191a2ade9d3aace8b69f.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/CrookedLogs.ttf"
-dest_files=["res://.godot/imported/CrookedLogs.ttf-392b23c100d496242451fb7691f75d5a.fontdata"]
+source_file="res://assets/fonts/CrookedLogs-Bold.ttf"
+dest_files=["res://.godot/imported/CrookedLogs-Bold.ttf-c5f507a114bd191a2ade9d3aace8b69f.fontdata"]
 
 [params]
 
@@ -29,7 +29,12 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
 language_support={}
 script_support={}
 opentype_features={}
