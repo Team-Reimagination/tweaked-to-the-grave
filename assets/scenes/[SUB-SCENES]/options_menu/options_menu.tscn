@@ -178,6 +178,7 @@ offset_bottom = 345.0
 
 [node name="OptionColor" type="ColorRect" parent="Inside/ColorClip"]
 material = SubResource("CanvasItemMaterial_058qp")
+layout_mode = 0
 color = Color(0.97, 0.759833, 0, 0.258824)
 
 [node name="Options" type="Control" parent="Inside"]

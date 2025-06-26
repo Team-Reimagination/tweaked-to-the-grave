@@ -18,7 +18,6 @@ var catButtonScales = [1.0,1.0]
 	"video": $Options/video,
 	"audio": $Options/audio,
 	"gameplay": $Options/gameplay,
-	"controls": $Options/controls,
 	"misc": $Options/misc,
 }
 
@@ -129,7 +128,6 @@ func moveCategoryRow(doLerp):
 	$Categories/Group.position.x = lerp($Categories/Group.position.x, positionToLookFor, 0.2) if doLerp else positionToLookFor
 
 func calculateScrollBar(forceInstant = false):
-	print(scrolly.max_value)
 	if scrolly.max_value == 0 or scrolly.modulate.a < 0.01: return;
 	
 	var valueToExpect = 0;
@@ -147,7 +145,7 @@ func calculateScrollBar(forceInstant = false):
 func moveOptionsColumn(value):
 	$Options.get_child(curCategory).position.y = -value
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	boxerMove()
 	
 	for i in catButtons.size():

@@ -42,11 +42,23 @@ func selectorValue():
 
 func sliderValue():
 	if definition.label == 'percent':
-		$"Tech/0/Number".text = str(int($"Tech/0/Setting".value * 100))+'%'
+		var value = int($"Tech/0/Setting".value * 100)
+		if definition.has("override") and definition.override.get(str(value), false):
+			$"Tech/0/Number".text = definition.override[str(value)]
+		else:
+			$"Tech/0/Number".text = str(value)+'%'
 	elif definition.label == 'float':
-		$"Tech/0/Number".text = "%0.2f" % (floor($"Tech/0/Setting".value*100)/100)
+		var value = floor($"Tech/0/Setting".value*100)/100
+		if definition.has("override") and definition.override.get(str(value), false):
+			$"Tech/0/Number".text = definition.override[str(value)]
+		else:
+			$"Tech/0/Number".text = "%0.2f" % (value)
 	elif definition.label == 'db':
-		$"Tech/0/Number".text = str($"Tech/0/Setting".value)+' DB'
+		var value = int($"Tech/0/Setting".value)
+		if definition.has("override") and definition.override.get(str(value), false):
+			$"Tech/0/Number".text = definition.override[str(value)]
+		else:
+			$"Tech/0/Number".text = str(value)+' DB'
 
 func setupSetting():
 	if definition.type == 1:
@@ -73,7 +85,7 @@ func setupSetting():
 			a.mouse_exited.connect(unscalerue_selector.bind(a))
 			a.pressed.connect(mouse_button.bind(a))
 
-func tickSound(value, _obj):
+func tickSound(_value, _obj):
 	MenuSounds.playMenuSound('slider_tick', true)
 	sliderValue()
 
@@ -94,12 +106,12 @@ func unscalerue_selector(b):
 			scalar[a] = 0.7
 			selectorButtons[a].modulate = Color(1.0,1.0,1.0)
 
-func scalerue(b):
+func scalerue(_b):
 	if substate.canInput:
 		_on_size_mouse_entered()
 		scalar[0] = 1.3 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 1.0
 
-func unscalerue(b):
+func unscalerue(_b):
 	if substate.canInput:
 		scalar[0] = 1.0
 	
@@ -170,7 +182,7 @@ func selectorMovement(dir):
 		
 
 func onvaluechange(setting:String, value):
-	var realLifeValue = SaveSystem.optionsData.set(setting, value)
+	var _realLifeValue = SaveSystem.optionsData.set(setting, value)
 	
 	SaveSystem.applySetting(setting, value)
 	SaveSystem.saveSave()

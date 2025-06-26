@@ -16,17 +16,17 @@ func _ready() -> void:
 		a.mouse_exited.connect(unscalerue.bind(a))
 		a.pressed.connect(mouse_button.bind(a))
 
-func scalerue(b):
+func scalerue(_b):
 	if substate.canInput:
 		_on_size_mouse_entered()
 		scalar = 1.3 if !SaveSystem.optionsData.get("video_reducedmotions", false) else 1.0
 
-func unscalerue(b):
+func unscalerue(_b):
 	if substate.canInput: scalar = 1.0
 	
 func areWeEvenSelected(): return selection == parenter.curSelected and category == parenter.curCategory
 
-func _process(delta):
+func _process(_delta):
 	$Buttons.get_child(0).scale.x = lerpf($Buttons.get_child(0).scale.x, scalar, 0.3)
 	$Buttons.get_child(0).scale.y = $Buttons.get_child(0).scale.x
 	
@@ -41,7 +41,7 @@ func askAway():
 	var askAwayState = load("res://assets/scenes/[SUB-SCENES]/question_menu/question_menu.tscn").instantiate()
 	PlayGlobals.addSubstate(self, askAwayState)
 
-func mouse_button(button):
+func mouse_button(_button):
 	if substate.canInput:
 		askAway()
 

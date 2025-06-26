@@ -92,7 +92,7 @@ func wellithinkitstimetomoveonok(): #hand materaliza
 		MenuSounds.playMenuSound("select")
 		TransFuncs.switchScenes(self, "res://assets/scenes/play_state/play_state.tscn")
 
-func applySetting(setting, value):
+func applySetting(setting, _value):
 	if setting == "video_reducedmotions":
 		$ParallaxBackground/Grave.updateButtonSelection()
 		$ParallaxBackground/Grave.instantScale()

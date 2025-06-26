@@ -4,9 +4,9 @@ var optionsData = {} ## will be automatically filled with values on loading save
 var _defaultOptionsData = { ## enter the options you want to add
 	"video_windowsize" = 0, ##PC ONLY
 	"video_windowmode" = 0, ##PC ONLY
-	"video_resolution" = 1.0, ##PC ONLY
-	"video_passion" = false,
+	"video_resolution" = 1.0,
 	"video_reducedmotions" = false,
+	"video_passion" = false,
 	
 	"audio_master" = 1.0,
 	"audio_music" = 1.0,
@@ -127,7 +127,10 @@ var optionDefines = {
 		"min": 0,
 		"max": 50,
 		"step": 1,
-		"label": 'db'
+		"label": 'db',
+		"override": {
+			"0": "NONE"
+		}
 	},
 	"audio_subtitles": {
 		"name": "Subtitles",
@@ -340,8 +343,7 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 			DisplayServer.window_set_mode(displayModeThing);
 		return
 	elif type == 'video_resolution':
-		if not OS.has_feature("web"): # sumimasen deshita minaide kutedasai onegai.
-			get_viewport().scaling_3d_scale = valuemysanityplease;
+		get_viewport().scaling_3d_scale = valuemysanityplease;
 		return
 	elif type == 'video_passion':
 		Passion.visibility(valuemysanityplease)
