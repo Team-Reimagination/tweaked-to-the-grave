@@ -132,7 +132,7 @@ func calculateScrollBar(forceInstant = false):
 	
 	var valueToExpect = 0;
 	
-	if curSelected < 3: scrolly.value = 0
+	if curSelected < 3: valueToExpect = 0
 	elif curSelected > $Options.get_child(curCategory).get_child_count()-2: valueToExpect = scrolly.max_value
 	else:
 		var exponenty = scrolly.max_value / ($Options.get_child(curCategory).get_child_count() - 4)
