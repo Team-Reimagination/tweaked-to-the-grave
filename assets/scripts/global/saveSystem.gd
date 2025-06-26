@@ -4,6 +4,7 @@ var optionsData = {} ## will be automatically filled with values on loading save
 var _defaultOptionsData = { ## enter the options you want to add
 	"video_windowsize" = 0, ##PC ONLY
 	"video_windowmode" = 0, ##PC ONLY
+	"video_vsync" = 1,
 	"video_resolution" = 1.0,
 	"video_reducedmotions" = false,
 	"video_passion" = false,
@@ -64,6 +65,13 @@ var optionDefines = {
 		"options": ["Windowed",
 					"Borderless",
 					"Fullscreen"]
+	},
+	"video_vsync": {
+		"name": "V-Sync",
+		"type": 2,
+		"options": ["Disabled",
+					"Adaptive",
+					"Enabled"]
 	},
 	"video_resolution": {
 		"name": "3D Resolution Scale",
@@ -341,6 +349,12 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 			if valuemysanityplease == 2: displayModeThing = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN;
 			
 			DisplayServer.window_set_mode(displayModeThing);
+		return
+	elif type == "viseo_vsync":
+		if not OS.has_feature('web'):
+			if valuemysanityplease == 0: DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+			elif valuemysanityplease == 1: DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ADAPTIVE)
+			elif valuemysanityplease == 2: DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 		return
 	elif type == 'video_resolution':
 		get_viewport().scaling_3d_scale = valuemysanityplease;
