@@ -24,6 +24,7 @@ var _defaultOptionsData = { ## enter the options you want to add
 	"gameplay_autofire" = false,
 	"gameplay_warningalarm" = true,
 	"gameplay_lirabonus" = true,
+	"gameplay_screenshake" = 1,
 	"gameplay_hitflash" = 1,
 }
 
@@ -193,6 +194,14 @@ var optionDefines = {
 		"name": "Hit Flash Intensity",
 		"type": 0,
 		"min": 0.5,
+		"max": 1,
+		"step": 0.01,
+		"label": 'percent',
+	},
+	"gameplay_screenshake": {
+		"name": "Screen Shake Intensity",
+		"type": 0,
+		"min": 0,
 		"max": 1,
 		"step": 0.01,
 		"label": 'percent',

@@ -10,7 +10,7 @@ var rotiMod = 0.0
 var rotiPos = 0.0
 
 func shake(stt, time):
-	strength = stt
+	strength = stt * SaveSystem.optionsData.get("gameplay_screenshake", 1)
 	
 	var shakeT = get_tree().create_tween()
 	shakeT.tween_property(self, "strength", 0, time).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
