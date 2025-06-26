@@ -8,14 +8,6 @@ var justPressedMouse = []
 var pressedMouse = []
 var alreadyJustPressed = false
 
-func _ready():
-	# Changes only the arrow shape of the cursor.
-	# This is similar to changing it in the project settings.
-	Input.set_custom_mouse_cursor(arrow)
-
-	# Changes a specific shape of the cursor (here, the I-beam shape).
-	Input.set_custom_mouse_cursor(hand, Input.CURSOR_POINTING_HAND)
-
 func _process(_delta: float) -> void:
 	if true in justPressedMouse: 
 		justPressedMouse = [false,false,false]
@@ -38,3 +30,11 @@ func isMousePressed(button):
 func isMouseJustPressed(button):
 	var press = justPressedMouse[getButton(button)]
 	return false if press == null else press
+	
+func forceLoad():
+	if SaveSystem.optionsData.get("video_customcursor", true):
+		Input.set_custom_mouse_cursor(arrow)
+		Input.set_custom_mouse_cursor(hand, Input.CURSOR_POINTING_HAND)
+	else:
+		Input.set_custom_mouse_cursor(null)
+		Input.set_custom_mouse_cursor(null, Input.CURSOR_POINTING_HAND)

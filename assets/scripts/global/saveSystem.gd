@@ -8,6 +8,7 @@ var _defaultOptionsData = { ## enter the options you want to add
 	"video_framecount" = true,
 	"video_vsync" = 1,
 	"video_frameratemax" = 1,
+	"video_customcursor" = true,
 	"video_reducedmotions" = false,
 	"video_passion" = false,
 	
@@ -106,6 +107,12 @@ var optionDefines = {
 		"name": "Reduced Motions",
 		"type": 1
 	},
+	'video_customcursor': {
+		"name": "Custom Cursor",
+		"type": 1
+	},
+	
+	
 	"audio_master": {
 		"name": "Master Volume",
 		"type": 0,
@@ -162,6 +169,8 @@ var optionDefines = {
 		"type": 2,
 		"options": ["Off", "Voicelines", "SFX", "All"]
 	},
+	
+	
 	"gameplay_autofire": {
 		"name": "Auto-Fire",
 		"type": 1
@@ -385,8 +394,11 @@ func applySetting(type, valuemysanityplease): #this shit has no switch cases :so
 		return
 	elif type == "video_frameratemax":
 		Engine.max_fps = valuemysanityplease if valuemysanityplease < 360 else 0
-		
 		return
+	elif type == "video_customcursor":
+		CustomCursor.forceLoad()
+		return;
+	
 	
 	elif type == 'audio_master':
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(valuemysanityplease))
