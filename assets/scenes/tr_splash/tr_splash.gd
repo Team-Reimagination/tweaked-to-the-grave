@@ -22,7 +22,7 @@ func ready():
 	
 	get_tree().create_tween().tween_property($Camera2D, "zoom", Vector2(1.0,1.0), 3.0);
 	
-	await get_tree().create_timer(3.2, true).timeout
+	await get_tree().create_timer(3.2, false).timeout
 	$Cloud.play("Move")
 	var tweener = get_tree().create_tween()
 	
@@ -33,10 +33,10 @@ func ready():
 	tweener.parallel().tween_property($Background.material, "shader_parameter/blueAdd", 0.0, 1.48)
 	tweener.parallel().tween_property($Background.material, "shader_parameter/checkAlpha", 0.08, 0.79).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	
-	await get_tree().create_timer(0.09, true).timeout
+	await get_tree().create_timer(0.09, false).timeout
 	$Text.play("Text")
 	
-	await get_tree().create_timer(4.31, true).timeout
+	await get_tree().create_timer(4.31, false).timeout
 	tweener = get_tree().create_tween()
 	tweener.parallel().tween_property($FadeLines.material, "shader_parameter/barPos", 0.0, 0.88)
 

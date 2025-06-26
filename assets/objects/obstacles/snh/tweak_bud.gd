@@ -13,7 +13,7 @@ func spawnLogic():
 	$Model/Sprite.play("Appear")
 	$Laugh.subtitle_play()
 	
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.5, false).timeout
 	
 	$Model/Sprite.play("Explode")
 	$Scream.subtitle_play()

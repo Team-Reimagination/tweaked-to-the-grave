@@ -20,6 +20,7 @@ var _defaultOptionsData = { ## enter the options you want to add
 	"audio_dialogueattenuation" = 10,
 	"audio_subtitles" = 0,
 	
+	"gameplay_autopause" = true,
 	"gameplay_autofire" = false,
 	"gameplay_warningalarm" = true,
 	"gameplay_lirabonus" = true,
@@ -172,6 +173,10 @@ var optionDefines = {
 	},
 	
 	
+	"gameplay_autopause": {
+		"name": "Pause on Lost Focus",
+		"type": 1
+	},
 	"gameplay_autofire": {
 		"name": "Auto-Fire",
 		"type": 1
@@ -473,3 +478,18 @@ func resetSaves():
 	setSaveDefaults(false)
 	
 	saveSave()
+	
+var auto_paused := false
+
+func _notification(what):
+	if optionsData.get("gameplay_autopause", true):
+		if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+			if !get_tree().paused:  # Only auto-pause if game wasn't already paused
+				auto_paused = true
+				Engine.time_scale = 0.0
+				get_tree().paused = true
+		elif what == NOTIFICATION_APPLICATION_FOCUS_IN:
+			if auto_paused:  # Only unpause if we were the ones who paused it
+				auto_paused = false
+				Engine.time_scale = 1.0
+				get_tree().paused = false
