@@ -132,11 +132,11 @@ func calculateScrollBar(forceInstant = false):
 	
 	var valueToExpect = 0;
 	
-	if curSelected < 3: valueToExpect = 0
+	if curSelected <= 3: valueToExpect = 0
 	elif curSelected > $Options.get_child(curCategory).get_child_count()-2: valueToExpect = scrolly.max_value
 	else:
-		var exponenty = scrolly.max_value / ($Options.get_child(curCategory).get_child_count() - 4)
-		valueToExpect = exponenty * (curSelected - 2)
+		var exponenty = scrolly.max_value / ($Options.get_child(curCategory).get_child_count() - 5)
+		valueToExpect = exponenty * (curSelected - 3)
 	
 	if SaveSystem.optionsData.get("video_reducedmotions", false) and !forceInstant: scrolly.value = valueToExpect;
 	else:
