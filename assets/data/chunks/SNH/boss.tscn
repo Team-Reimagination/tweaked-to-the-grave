@@ -156,29 +156,28 @@ wait_time = 2.5
 one_shot = true
 
 [node name="Scrolling" type="Node3D" parent="."]
-visible = false
 script = ExtResource("1_ertsj")
 warningTime = 1.5
 
 [node name="Warning" type="Node3D" parent="Scrolling"]
 
 [node name="WarningSignal2" parent="Scrolling/Warning" instance=ExtResource("1_yl7gr")]
-transform = Transform3D(471.283, -2.32933e-06, 0, 4.84903e-05, 37.0942, 0, 0, 0, 2, 0, 18.9379, -1.63401)
+transform = Transform3D(68.6364, -4.33162e-06, 0, 7.062e-06, 68.9804, 0, 0, 0, 2, -24.3972, 22.1633, -1.63401)
 
 [node name="WarningSignal4" parent="Scrolling/Warning" instance=ExtResource("1_yl7gr")]
-transform = Transform3D(471.283, -2.32933e-06, 0, 4.84903e-05, 37.0942, 0, 0, 0, 2, 0, -20.7679, -1.63401)
+transform = Transform3D(75.4053, -4.02222e-06, 0, 7.75845e-06, 64.0532, 0, 0, 0, 2, 26.4689, -20.7679, -1.63401)
 
 [node name="WarningSignal3" parent="Scrolling/Warning" instance=ExtResource("2_piqvp")]
-transform = Transform3D(-6.55671e-07, -15, 0, 15, -6.55671e-07, 0, 0, 0, 15, -15.9509, 12.8633, 0.286571)
+transform = Transform3D(-6.55671e-07, -15, 0, 15, -6.55671e-07, 0, 0, 0, 15, -15.9509, 7.8633, 0.286571)
 
 [node name="WarningSignal5" parent="Scrolling/Warning" instance=ExtResource("2_piqvp")]
-transform = Transform3D(1.13247e-06, 15, 0, -15, 1.13247e-06, 0, 0, 0, 15, 15.4294, -13.1438, 0.286571)
+transform = Transform3D(1.13247e-06, 15, 0, -15, 1.13247e-06, 0, 0, 0, 15, 15.4294, -8.1438, 0.286571)
 
 [node name="WarningSignal7" parent="Scrolling/Warning" instance=ExtResource("3_qggtw")]
-transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 20, -8.27033, 12.4161, 0.17172)
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 20, -8.27033, 7.4161, 0.17172)
 
 [node name="WarningSignal8" parent="Scrolling/Warning" instance=ExtResource("3_qggtw")]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 12.9965, -12.9945, 0.17172)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 12.9965, -7.9945, 0.17172)
 
 [node name="View" parent="Scrolling/Warning/WarningSignal8" index="0"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 1, -0.245071, -0.00559211, 0)
@@ -210,20 +209,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 6, 0)
 [node name="Direction" parent="Scrolling/Attack/o/Spawn/Arm_Scroll" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
+[node name="Arm_Scroll3" parent="Scrolling/Attack/o/Spawn" instance=ExtResource("11_ladgq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.1019, 6, 0)
+
+[node name="Direction" parent="Scrolling/Attack/o/Spawn/Arm_Scroll3" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
 [node name="Arm_Scroll2" parent="Scrolling/Attack/o/Spawn" instance=ExtResource("11_ladgq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 6, 0)
 
 [node name="Direction" parent="Scrolling/Attack/o/Spawn/Arm_Scroll2" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
 [node name="Arm_Scroll5" parent="Scrolling/Attack/o/Spawn" instance=ExtResource("11_ladgq")]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -40, 26, 0)
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -52, 26, 0)
 
 [node name="Direction" parent="Scrolling/Attack/o/Spawn/Arm_Scroll5" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
+[node name="Arm_Scroll7" parent="Scrolling/Attack/o/Spawn" instance=ExtResource("11_ladgq")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -61.243, 26, 0)
+
+[node name="Direction" parent="Scrolling/Attack/o/Spawn/Arm_Scroll7" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
 [node name="Arm_Scroll6" parent="Scrolling/Attack/o/Spawn" instance=ExtResource("11_ladgq")]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -75, 26, 0)
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -71, 26, 0)
 
 [node name="Direction" parent="Scrolling/Attack/o/Spawn/Arm_Scroll6" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
@@ -674,6 +685,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Arms" type="Node3D" parent="."]
+visible = false
 script = ExtResource("18_lyfq5")
 warningTime = 1.5
 
@@ -740,8 +752,10 @@ one_shot = true
 [editable path="Slam/Attack/o/Spawn/Blob"]
 [editable path="Scrolling/Warning/WarningSignal8"]
 [editable path="Scrolling/Attack/o/Spawn/Arm_Scroll"]
+[editable path="Scrolling/Attack/o/Spawn/Arm_Scroll3"]
 [editable path="Scrolling/Attack/o/Spawn/Arm_Scroll2"]
 [editable path="Scrolling/Attack/o/Spawn/Arm_Scroll5"]
+[editable path="Scrolling/Attack/o/Spawn/Arm_Scroll7"]
 [editable path="Scrolling/Attack/o/Spawn/Arm_Scroll6"]
 [editable path="Punches/Warning/WarningSignal8"]
 [editable path="Teeth/Warning/WarningSignal8"]
