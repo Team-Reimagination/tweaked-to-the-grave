@@ -5,6 +5,9 @@
 </p>
 
 <br>
+  <h2>ALERT:</h2>
+  <h4>This game was made before knowledge of the actions related to the giftee the content was revolved after. I do not condone what they have done, and the matter has been taken care of privately.
+The title has retroactively been cancelled because of it. Please use common sense and do not send harrassment to anyone.</h4>
   <h2>Description</h2>
   <b>Tweaked To The Grave</b> is a <b>3D Fixed Camera Shooter</b> where the goal is to chase down the boss of each level and shoot them down as you dodge infinitely generating obstales, with variety in layouts and types of obstacles in question.<br>You play as <b>Seezee553</b>, and a creation of yours, <b>Bob Tweaked</b> has risen from the dead, looking for revenge on you for being left for years. And you must stop it on this (so far) short journey.
   <h2>Inspiration:</h2>
@@ -38,8 +41,6 @@ For The Cutting Room Floor potential and pull requests from the community, becau
 <h2>Available on:</h2>
 SEEZEE BIRTHDAY BASH 2025 DEMO:<br>
 Itch.io: <a href="https://verwex.itch.io/tweaked-grave">https://verwex.itch.io/tweaked-grave</a><br><br>
-PROPER DEMO:<br>
-Steam: [SOON]
 
 <br>
 <br>
